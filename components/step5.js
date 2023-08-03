@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
-import FrameComponent from "../../../components/frame-component";
-import PortalPopup from "../../../components/portal-popup";
+import FrameComponent from "./frame-component";
+import PortalPopup from "./portal-popup";
 
 const SignUp5 = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);

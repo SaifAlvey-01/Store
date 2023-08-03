@@ -1,8 +1,19 @@
+'use client'
 import { useCallback } from "react";
+ 
+import { useRouter } from 'next/navigation'
 
-const SignUp2 = () => {
+const SignUp1 = ({setCurrentStep}) => {
+  const router = useRouter()
+
+
   const onPrimaryContainerClick = useCallback(() => {
-    // Please sync "Sign Up 3" to the project
+    // Please sync "Sign Up 2" to the project
+    setCurrentStep(((prevStep) => prevStep + 1))
+  }, []);
+
+  const onAlreadyHaveAnClick = useCallback(() => {
+    // Please sync "LogIn 1" to the project
   }, []);
 
   return (
@@ -12,8 +23,8 @@ const SignUp2 = () => {
         alt=""
         src="/group-3.svg"
       />
-      <div className="absolute top-[calc(50%_-_231px)] left-[calc(50%_-_589px)] w-[1179px] h-[483px]">
-        <div className="absolute top-[0.43px] left-[-0.09px] w-[605.47px] h-[482.61px]">
+      <div className="absolute top-[calc(50%_-_275px)] left-[calc(50%_-_589.5px)] w-[1179px] h-[551px]">
+        <div className="absolute top-[34px] left-[0.41px] w-[605.47px] h-[482.61px]">
           <div className="absolute top-[175.86px] left-[0px] rounded-[50%] [background:linear-gradient(147.09deg,_#4162ff,_#96a8ff)] w-[75px] h-[75px]" />
           <div className="absolute top-[120.36px] left-[35.25px] w-[335.87px] h-[344.79px] text-grey-scale-body font-poppins">
             <div className="absolute top-[88.26px] left-[0px] rounded-[7.11px] bg-white w-[258.06px] h-[272.99px] [transform:_rotate(-20deg)] [transform-origin:0_0]" />
@@ -105,18 +116,18 @@ const SignUp2 = () => {
                 alt=""
                 src="/group-82.svg"
               />
-              <div className="absolute h-[24.02%] w-[23.33%] top-[23.53%] right-[30.33%] bottom-[52.45%] left-[46.33%] text-4xs text-white">
+              <div className="absolute h-[24.02%] w-[23.33%] top-[23.53%] right-[30.33%] bottom-[52.45%] left-[46.33%] text-[9px] text-white">
                 <div className="absolute h-[75.51%] w-full top-[0%] right-[0%] bottom-[24.49%] left-[0%]">
                   <img
                     className="absolute h-[31.12%] w-[23.11%] top-[29.89%] right-[27.28%] bottom-[38.99%] left-[49.6%] max-w-full overflow-hidden max-h-full"
                     alt=""
                     src="/polygon-2.svg"
                   />
-                  <div className="absolute h-[89.19%] w-full top-[0%] right-[0%] bottom-[10.81%] left-[0%] rounded-10xs bg-primary-300-main" />
+                  <div className="absolute h-[89.19%] w-full top-[0%] right-[0%] bottom-[10.81%] left-[0%] rounded-[3px] bg-primary-300-main" />
                   <div className="absolute top-[13.51%] left-[11.43%] leading-[110%]">
                     48k
                   </div>
-                  <div className="absolute top-[51.35%] left-[11.43%] text-7xs leading-[110%] opacity-[0.8]">
+                  <div className="absolute top-[51.35%] left-[11.43%] text-[6px] leading-[110%] opacity-[0.8]">
                     Visitor
                   </div>
                   <img
@@ -141,7 +152,7 @@ const SignUp2 = () => {
                 src="/group-80.svg"
               />
             </div>
-            <div className="relative w-[95.25px] h-[75px] [transform:_rotate(-20deg)] [transform-origin:0_0] text-lg font-roboto">
+            <div className="relative w-[95.25px] h-[75px] [transform:_rotate(-20deg)] [transform-origin:0_0] text-[18px] font-roboto">
               <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-8xs-5 bg-white shadow-[0px_6px_30px_-1.5px_rgba(6,_12,_59,_0.08)]" />
               <div className="absolute top-[50%] left-[12.99%] leading-[21px]">
                 8000+
@@ -157,40 +168,84 @@ const SignUp2 = () => {
             src="/group-10.svg"
           />
         </div>
-        <div className="absolute top-[94.5px] left-[770.5px] w-[408px] h-[274px] text-11xl text-neutral-600">
+        <div className="absolute top-[0px] left-[771px] w-[408px] h-[551px] text-[30px] text-neutral-600">
           <div className="absolute top-[-0.4px] left-[-0.4px] rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
-            <div className="flex flex-col items-center justify-start gap-[32px]">
-              <b className="relative">Create a password</b>
-              <div className="flex flex-col items-center justify-start text-sm text-dimgray">
-                <div className="flex flex-col items-end justify-start">
-                  <div className="flex flex-col items-center justify-start">
-                    <div className="flex flex-col items-start justify-start gap-[28px]">
-                      <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
-                        <div className="self-stretch flex flex-row items-start justify-start">
-                          <div className="relative leading-[20px] font-medium">
-                            Password
-                          </div>
-                        </div>
-                        <div className="self-stretch rounded-lg bg-white flex flex-row py-2.5 px-4 items-center justify-start text-darkgray font-roboto border-[1.5px] border-solid border-gainsboro">
-                          <div className="flex-1 relative h-6">
-                            <div className="absolute w-full top-[calc(50%_-_8px)] left-[0%] leading-[16px] inline-block">
-                              Enter your password
+            <div className="flex flex-col items-center justify-start gap-[92px]">
+              <div className="flex flex-col items-center justify-start gap-[32px]">
+                <b className="relative">Start 7 Days Free Trail</b>
+                <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">
+                  <div className="flex flex-col items-end justify-start gap-[32px]">
+                    <div className="flex flex-col items-center justify-start gap-[32px]">
+                      <div className="flex flex-col items-start justify-start gap-[28px]">
+                        <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
+                          <div className="self-stretch flex flex-row items-start justify-start">
+                            <div className="relative leading-[20px] font-medium">
+                              Email or Mobile Number
                             </div>
+                          </div>
+                          <input
+                              type="text"
+                              placeholder="Enter Email or Mobile Number"
+                              className="self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-darkgray font-roboto border-[1.5px] border-solid border-gainsboro"
+                            />
+                        </div>
+                        <div
+                          className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                          onClick={onPrimaryContainerClick}
+                        >
+                          <div className="relative w-[90px] h-0" />
+                          <div className="relative tracking-[0.02em] leading-[24px] font-medium">
+                            Get Stated
                           </div>
                         </div>
                       </div>
-                      <div
-                        className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
-                        onClick={onPrimaryContainerClick}
-                      >
-                        <div className="relative w-[90px] h-0" />
-                        <div className="relative tracking-[0.02em] leading-[24px] font-medium">
-                          Continue
+                      <div className="relative w-[328px] h-[17px] text-[11.25px] text-darkslategray font-poppins">
+                        <div className="absolute top-[0px] left-[113.66px] font-medium inline-block w-[100.67px]">
+                          Or continue with
+                        </div>
+                        <img
+                          className="absolute top-[8px] left-[0px] w-[106.09px] h-px"
+                          alt=""
+                          src="/rectangle-3.svg"
+                        />
+                        <img
+                          className="absolute top-[8px] left-[221.91px] w-[106.09px] h-px"
+                          alt=""
+                          src="/rectangle-4.svg"
+                        />
+                      </div>
+                    </div>
+                    <div className="rounded bg-white box-border w-[360px] flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                      <div className="relative w-[90px] h-0" />
+                      <div className="flex flex-row items-center justify-center gap-[6px]">
+                        <img
+                          className="relative w-[18px] h-[18px] overflow-hidden shrink-0"
+                          alt=""
+                          src="/google.svg"
+                        />
+                        <div className="relative leading-[24px] font-medium">
+                          Google
                         </div>
                       </div>
                     </div>
                   </div>
+                  <div className="relative text-[12px] leading-[20px] font-roboto">
+                    By continuing, you agree to our Terms of Use and Privacy
+                    Policy.
+                  </div>
                 </div>
+              </div>
+              <div
+                className="relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto"
+                onClick={onAlreadyHaveAnClick}
+              >
+                <span>
+                  <span>Already have an account?</span>
+                  <span className="text-mediumslateblue">{` `}</span>
+                </span>
+                <span className="font-medium text-primary-300-main">
+                  Sign In
+                </span>
               </div>
             </div>
           </div>
@@ -205,4 +260,4 @@ const SignUp2 = () => {
   );
 };
 
-export default SignUp2;
+export default SignUp1;
