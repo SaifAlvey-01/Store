@@ -17,7 +17,7 @@ const SignUp1 = ({setCurrentStep}) => {
   }, []);
 
   return (
-    <div className="relative bg-white w-full h-[1024px] overflow-hidden text-left text-2xs-5 text-midnightblue font-freesans">
+    <div className="relative bg-white w-full h-[1024px] overflow-hidden text-left text-2xs-5 text-midnightblue font-freesans bg-[url('/Background.png')]">
      
       <div className="absolute top-[calc(50%_-_275px)] left-[calc(50%_-_589.5px)] w-[1179px] h-[551px]">
 
@@ -30,7 +30,7 @@ const SignUp1 = ({setCurrentStep}) => {
           <div className="absolute top-[-0.4px] left-[-0.4px] rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
             <div className="flex flex-col items-center justify-start gap-[92px]">
               <div className="flex flex-col items-center justify-start gap-[32px]">
-                <b className="relative">Start 7 Days Free Trail</b>
+                <b className="relative font-freesans">Start 7 Days Free Trail</b>
                 <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">
                   <div className="flex flex-col items-end justify-start gap-[32px]">
                     <div className="flex flex-col items-center justify-start gap-[32px]">
@@ -108,7 +108,12 @@ const SignUp1 = ({setCurrentStep}) => {
             </div>
           </div>
         </div>
+
       </div>
+
+
+
+
       <img
         className="absolute top-[calc(50%_-_480px)] left-[calc(50%_-_656px)] w-[167px] h-[35px] object-cover"
         alt=""

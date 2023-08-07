@@ -6,7 +6,7 @@ const SignUp2 = ({setCurrentStep}) => {
   }, []);
 
   return (
-    <div className="relative bg-white w-full h-[1024px] overflow-hidden text-left text-2xs-5 text-midnightblue font-freesans">
+    <div className="relative bg-white w-full h-[1024px] overflow-hidden text-left text-2xs-5 text-midnightblue font-freesans bg-[url('/Background.png')]">
       <img
         className="absolute h-[77.31%] w-full top-[15.27%] right-[0%] bottom-[7.42%] left-[0%] max-w-full overflow-hidden max-h-full"
         alt=""
