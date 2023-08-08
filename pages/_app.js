@@ -12,7 +12,10 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
+      <div className="font-FreeSans">
+
       <Component {...pageProps} />
+      </div>
     </React.Fragment>
   );
 }
