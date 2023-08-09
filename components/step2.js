@@ -20,13 +20,11 @@ const SignUp2 = ({setCurrentStep}) => {
                             Password
                           </div>
                         </div>
-                        <div className="self-stretch rounded-lg bg-white flex flex-row py-2.5 px-4 items-center justify-start text-darkgray font-roboto border-[1.5px] border-solid border-gainsboro">
-                          <div className="flex-1 relative h-6">
-                            <div className="absolute w-full top-[calc(50%_-_8px)] left-[0%] leading-[16px] inline-block">
-                              Enter your password
-                            </div>
-                          </div>
-                        </div>
+                        <input
+                          type="password"
+                          className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-2.5 px-4 items-center justify-start text-darkgray font-roboto border-[1.5px] border-solid border-gainsboro focus:border-blue-500"
+                          placeholder="Enter your password"
+                        />
                       </div>
                       <div
                         className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
