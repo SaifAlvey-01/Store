@@ -39,7 +39,7 @@ const SignUp5 = () => {
                             
                           </div>
                           <div
-                            className="self-stretch rounded-lg bg-white flex flex-row py-2.5 px-4 items-center justify-start gap-[20px] cursor-pointer text-textcolor-placeholder-color-400 font-roboto border-[1.5px] border-solid  border-gainsboro"
+                            className="self-stretch rounded-lg md:bg-white flex flex-row py-2.5 px-4 items-center justify-start gap-[20px] cursor-pointer text-textcolor-placeholder-color-400 font-roboto border-[1.5px] border-solid  border-gainsboro"
                             onClick={handleChange}
                           >
                             <div className="flex-1 relative h-6">

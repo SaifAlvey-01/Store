@@ -35,7 +35,7 @@ const SignUp3 = ({setCurrentStep}) => {
 
   return (
       <div className=" w-[408px] h-[346px] text-11xl text-neutral-600">
-    <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
+    <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start gap-[32px]">
         <b className="relative">Verify Code</b>
         <div className="flex flex-col items-center justify-start text-base text-neutral-500">
