@@ -24,11 +24,8 @@ const SignupComponent = () => {
   };
 
   return (
-
-
-
-    <div>
-      <div className='w-full flex justify-center items-center md:justify-start md:ml-32 h-20'>
+    <div className="bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
+      <div className='container w-full mx-auto py-4 px-3 md:text-left text-center'>
        <img
         className="w-[167px] h-[35px] object-cover"
         alt=""
@@ -36,8 +33,8 @@ const SignupComponent = () => {
       />
 
       </div>
-       <div className="flex flex-col md:flex-row h-screen justify-around  items-center bg-[url('/Background.png')]  font-freesans">
-      <div className="hidden md:w-1/2 md:flex md:flex-col md:items-center h-[551px] ">
+       <div className="flex flex-col md:flex-row justify-center items-center font-freesans" style={{minHeight: "calc(100% - 72px)"}}>
+      <div className="hidden md:w-1/2 md:flex md:flex-col md:items-center h-[551px] " >
             <img
               src="/signupImg.png" 
               alt="Signup"
