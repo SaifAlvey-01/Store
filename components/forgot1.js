@@ -3,7 +3,7 @@ import { useCallback } from "react";
 
 import { useRouter } from 'next/navigation'
 
-const SignUp1 = ({ setCurrentStep }) => {
+const Forgot1 = ({ setCurrentStep }) => {
     const router = useRouter()
 
 
@@ -77,4 +77,4 @@ const SignUp1 = ({ setCurrentStep }) => {
     );
 };
 
-export default SignUp1;
+export default Forgot1;
