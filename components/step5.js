@@ -1,10 +1,34 @@
 import { useState, useCallback } from "react";
 import FrameComponent from "./frame-component";
 import PortalPopup from "./portal-popup";
+import CountrySelect from './CountrySelect';
+
 
 const SignUp5 = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
   const [isOpen, setOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const countryOptions = [
+    { label: 'United States', value: 'US',image: '/afg.png' },
+    { label: 'Canada', value: 'CA',image: '/afg.png' },
+    { label: 'India', value: 'IND',image: '/afg.png' },
+    { label: 'Pakistan', value: 'PAK',image: '/afg.png' },
+    // Add more countries...
+  ];
+
+
+  const CustomOption = ({ innerProps, label, data }) => (
+    <div {...innerProps} className="flex items-center gap-10 custom-option">
+      <img src={data.image} alt={label} className="w-6 h-6 country-image" />
+      {label}
+    </div>
+  );
+
+  const handleCountryChange = (selectedOption) => {
+    setSelectedCountry(selectedOption);
+  };
+
 
   const openFrame = useCallback(() => {
     setFrameOpen(true);
@@ -38,7 +62,8 @@ const SignUp5 = () => {
                             </div>
                             
                           </div>
-                          <div
+
+                          {/* <div
                             className="self-stretch rounded-lg md:bg-white flex flex-row py-2.5 px-4 items-center justify-start gap-[20px] cursor-pointer text-textcolor-placeholder-color-400 font-roboto border-[1.5px] border-solid  border-gainsboro"
                             onClick={handleChange}
                           >
@@ -54,6 +79,7 @@ const SignUp5 = () => {
                             />
 
 
+
                              <div className={`absolute ${isOpen ? "transform opacity-100 scale-100" : "transform opacity-0 scale-95" } z-10 mt-52 w-80 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                               <div  role="none">
                                 
@@ -65,7 +91,26 @@ const SignUp5 = () => {
                                 </form>
                               </div>
                             </div>
-                          </div>
+                          </div> */}
+
+
+                            {/* contury selecy */}
+                            <div className="w-full">
+                                {/* <h1>Select a Country</h1> */}
+                                <CountrySelect
+                                
+                                  components={{ Option: CustomOption }}
+                                  value={selectedCountry}
+                                  onChange={handleCountryChange}
+                                  options={countryOptions}
+                                />
+                                <div>
+                                  {selectedCountry && (
+                                    <p>Selected Country: {selectedCountry.label} ({selectedCountry.value})</p>
+                                  )}
+                                </div>
+                                {/* <img src="afg.png"></img> */}
+                              </div>
 
 
                           {/* <div class="relative inline-block text-left">
@@ -91,12 +136,6 @@ const SignUp5 = () => {
                               </div>
                             </div>
                           </div> */}
-
-
-
-
-
-                          
                         </div>
                         <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
                           <div className="self-stretch flex flex-row items-start justify-start">
