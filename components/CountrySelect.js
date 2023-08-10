@@ -40,7 +40,13 @@ const CountrySelect = ({ value, onChange, options }) => {
     },
   };
 
-  
+  const CustomOption = ({ innerProps, label, data }) => (
+    <div {...innerProps} className="flex items-center gap-8 h-12">
+      <img src={data.image} alt={label} className="w-6 h-6 pl-2" />
+      {label}
+    </div>
+  );
+
 
   return (
     <Select
@@ -51,6 +57,9 @@ const CountrySelect = ({ value, onChange, options }) => {
       isSearchable
       placeholder="Select a country..."
       styles={customStyles}
+      components={{
+        Option: CustomOption, // Use the CustomOption component to display each option
+      }}
       
     />
   );

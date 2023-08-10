@@ -14,16 +14,11 @@ const SignUp5 = () => {
     { label: 'Canada', value: 'CA',image: '/afg.png' },
     { label: 'India', value: 'IND',image: '/afg.png' },
     { label: 'Pakistan', value: 'PAK',image: '/afg.png' },
-    // Add more countries...
+   
   ];
 
 
-  const CustomOption = ({ innerProps, label, data }) => (
-    <div {...innerProps} className="flex items-center gap-10 custom-option">
-      <img src={data.image} alt={label} className="w-6 h-6 country-image" />
-      {label}
-    </div>
-  );
+ 
 
   const handleCountryChange = (selectedOption) => {
     setSelectedCountry(selectedOption);
@@ -42,7 +37,7 @@ const SignUp5 = () => {
     setOpen(!isOpen)
   }
   const onPrimaryContainerClick = useCallback(() => {
-    // Please sync "Sign Up 6" to the project
+    
   }, []);
 
   return (
@@ -99,7 +94,7 @@ const SignUp5 = () => {
                                 {/* <h1>Select a Country</h1> */}
                                 <CountrySelect
                                 
-                                  components={{ Option: CustomOption }}
+                                 
                                   value={selectedCountry}
                                   onChange={handleCountryChange}
                                   options={countryOptions}
