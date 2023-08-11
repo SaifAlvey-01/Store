@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
-import FrameComponent from "./frame-component";
-import PortalPopup from "./portal-popup";
-import CountrySelect from './CountrySelect';
+// import FrameComponent from "../frame-component";
+import PortalPopup from "../portal-popup";
+import CountrySelect from '../CountrySelect';
 
 
 const SignUp5 = () => {
@@ -177,7 +177,7 @@ const SignUp5 = () => {
           placement="Centered"
           onOutsideClick={closeFrame}
         >
-          <FrameComponent onClose={closeFrame} />
+          {/* <FrameComponent onClose={closeFrame} /> */}
         </PortalPopup>
       )}
     </>

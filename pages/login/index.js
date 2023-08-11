@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignUp1 from '../../components/signup/step1';
+import Login1 from '../../components/login/login1';
 import SignUp2 from '../../components/signup/step2';
 import SignUp3 from '../../components/signup/step3';
 import SignUp5 from '../../components/signup/step5';
@@ -11,13 +11,8 @@ const SignupComponent = () => {
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <SignUp1  setCurrentStep={setCurrentStep}/>;
-      case 2:
-        return <SignUp2  setCurrentStep={setCurrentStep}/>;
-      case 3:
-        return <SignUp3 setCurrentStep={setCurrentStep}/>;
-      case 4:
-        return <SignUp5 setCurrentStep={setCurrentStep}/>;
+        return <Login1  setCurrentStep={setCurrentStep}/>;
+   
       default:
         return null;
     }
@@ -34,13 +29,7 @@ const SignupComponent = () => {
 
       </div>
        <div className="flex flex-col md:flex-row justify-center items-center font-freesans" style={{minHeight: "calc(100% - 72px)"}}>
-      <div className="hidden md:w-1/2 md:flex md:flex-col md:items-center h-[551px] " >
-            <img
-              src="/signupImg.png" 
-              alt="Signup"
-              className="h-[551px]"
-            />
-          </div>     
+    
          
          {renderStep()}
         
