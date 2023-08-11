@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 
-const SignUp3 = ({setCurrentStep}) => {
+const Forgot4 = ({setCurrentStep}) => {
   const router = useRouter()
   const [inputValues, setInputValues] = useState(['', '', '', '', '', '']);
   const [active, setactive] = useState(false)
@@ -107,4 +107,4 @@ const SignUp3 = ({setCurrentStep}) => {
   );
 };
 
-export default SignUp3;
+export default Forgot4;
