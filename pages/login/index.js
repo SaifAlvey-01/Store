@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import Login1 from '../../components/login/login1';
-import SignUp2 from '../../components/signup/step2';
-import SignUp3 from '../../components/signup/step3';
-import SignUp5 from '../../components/signup/step5';
-
+import Login1 from '../../components/login/Login1';
+import Login2 from '../../components/login/Login2';
 
 const SignupComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -12,6 +9,8 @@ const SignupComponent = () => {
     switch (currentStep) {
       case 1:
         return <Login1  setCurrentStep={setCurrentStep}/>;
+      case 2:
+        return <Login2    setCurrentStep={setCurrentStep}/>;  
    
       default:
         return null;
