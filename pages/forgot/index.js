@@ -14,9 +14,9 @@ const ForgotComponent = () => {
       case 2:
         return <Forgot2  setCurrentStep={setCurrentStep}/>;
       case 3:
-        return <Forgot3 setCurrentStep={setCurrentStep}/>;
-      case 4:
         return <Forgot4 setCurrentStep={setCurrentStep}/>;
+      case 4:
+        return <Forgot3 setCurrentStep={setCurrentStep}/>;
       default:
         return null;
     }
@@ -24,7 +24,7 @@ const ForgotComponent = () => {
 
     return (
 
-        <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-center w-[100%]">
+        <div className="bg-[url('/Background.png')] bg-cover bg-center w-[100%]">
             <div className='w-full flex justify-center items-center md:justify-start md:ml-32 h-20'>
                 <img
                     className="w-[167px] h-[35px] object-cover"
