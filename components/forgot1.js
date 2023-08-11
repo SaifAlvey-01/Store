@@ -57,7 +57,7 @@ const Forgot1 = ({ setCurrentStep }) => {
                         </div>
                     </div>
                     <div
-                        className="relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto"
+                        className=" font-bold relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto"
                         onClick={onAlreadyHaveAnClick}
                     >
                         <span>
