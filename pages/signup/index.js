@@ -26,7 +26,7 @@ const SignupComponent = () => {
 
   return (
     <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
-      <div className='container w-full mx-auto py-4 px-3 md:text-left text-center'>
+      <div className='container w-full mx-auto py-4 md:px-3 md:text-left text-center'>
        <img
         className="w-[167px] h-[35px] object-cover"
         alt=""
