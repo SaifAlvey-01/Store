@@ -3,6 +3,7 @@ import SignUp1 from '../../components/signup/step1';
 import SignUp2 from '../../components/signup/step2';
 import SignUp3 from '../../components/signup/step3';
 import SignUp5 from '../../components/signup/step5';
+import ToastMessage from '../../components/ToastMessage';
 
 
 const SignupComponent = () => {
@@ -33,7 +34,7 @@ const SignupComponent = () => {
       />
 
       </div>
-       <div className="flex flex-col md:flex-row justify-center items-center font-freesans" style={{minHeight: "calc(100% - 72px)"}}>
+       <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(100vh-72px)] sm:min-h-[calc(100% - 72px)]">
       <div className="hidden md:w-1/2 md:flex md:flex-col md:items-center h-[551px] " >
             <img
               src="/signupImg.png" 
@@ -43,9 +44,9 @@ const SignupComponent = () => {
           </div>     
          
          {renderStep()}
-        
+      
        </div>
-        
+     
     </div>
   );
 };

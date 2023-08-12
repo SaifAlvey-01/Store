@@ -2,6 +2,7 @@
 import { useCallback } from "react";
  
 import { useRouter } from 'next/navigation'
+import ToastMessage from "../ToastMessage";
 
 const SignUp1 = ({setCurrentStep}) => {
   const router = useRouter()
@@ -98,7 +99,7 @@ const SignUp1 = ({setCurrentStep}) => {
               </div>
             </div>
           </div>
-
+        
 
          </div>
 

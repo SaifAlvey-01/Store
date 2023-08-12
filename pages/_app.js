@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <div className="font-FreeSans">
+      <div className="font-FreeSans overflow-x-hidden">
 
       <Component {...pageProps} />
       </div>
