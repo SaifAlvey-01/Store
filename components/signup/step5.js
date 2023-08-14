@@ -2,20 +2,13 @@ import { useState, useCallback } from "react";
 // import FrameComponent from "../frame-component";
 import PortalPopup from "../portal-popup";
 import CountrySelect from '../CountrySelect';
-
+import { countryOptions } from "../countryOptions";
 
 const SignUp5 = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  const countryOptions = [
-    { label: 'United States', value: 'US',image: '/afg.png' },
-    { label: 'Canada', value: 'CA',image: '/afg.png' },
-    { label: 'India', value: 'IND',image: '/afg.png' },
-    { label: 'Pakistan', value: 'PAK',image: '/afg.png' },
-   
-  ];
 
 
  
@@ -100,9 +93,7 @@ const SignUp5 = () => {
                                   options={countryOptions}
                                 />
                                 <div>
-                                  {selectedCountry && (
-                                    <p>Selected Country: {selectedCountry.label} ({selectedCountry.value})</p>
-                                  )}
+                               
                                 </div>
                                 {/* <img src="afg.png"></img> */}
                               </div>

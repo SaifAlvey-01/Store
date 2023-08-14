@@ -26,6 +26,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       ...provided,
       backgroundColor: state.isSelected ? '#CBD5E0' : 'white',
       color: state.isSelected ? 'black' : 'inherit',
+      
     }),
   
     // Additional styles for the custom option component
@@ -33,17 +34,28 @@ const CountrySelect = ({ value, onChange, options }) => {
       display: 'flex',
       alignItems: 'center',
       gap: '10px',
+
     },
     countryImage: {
       width: '24px', // Adjust size as needed
       height: '24px', // Adjust size as needed
     },
+    
   };
 
   const CustomOption = ({ innerProps, label, data }) => (
-    <div {...innerProps} className="flex items-center gap-8 h-12">
-      <img src={data.image} alt={label} className="w-6 h-6 pl-2" />
-      {label}
+    <div {...innerProps} className="flex items-center gap-8 h-12 justify-between ">
+      {console.log(data, "<-----data")}
+      <div className='flex-raw flex '>
+
+        <img src={data.image} alt={label} className="w-6 h-6 pl-2 " />
+        <div className='justify-center items-center flex pl-4 font-roboto text-[#8E8E8E]'>
+        {label}
+        </div>
+        </div>
+        <div className='m-2 font-roboto w-12 text-center m'>
+          <p className='p-2 rounded-sm text-sm bg-[#F6F7FF] w-full text-[#4162FF] font-medium'>{data.cur}</p>
+        </div>
     </div>
   );
 
