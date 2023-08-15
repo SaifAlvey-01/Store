@@ -7,10 +7,8 @@ function MyApp({ Component, pageProps }) {
     <React.Fragment>
       <Head>
         <title>launchmystore</title>
-        <meta
-          name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
+       
+         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
       </Head>
       <div className="font-FreeSans overflow-x-hidden">
 
