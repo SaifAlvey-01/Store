@@ -17,9 +17,6 @@ export const countryOptions = [
     { label: 'Bangladesh ', value: 'US',image: '/flags/emojione_flag-for-bangladesh.png', cur:"৳" },
     { label: 'Bangladesh ', value: 'US',image: '/flags/emojione_flag-for-bangladesh.png', cur:"৳" },
       
-
-    
-   
   ];
 
  

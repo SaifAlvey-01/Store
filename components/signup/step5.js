@@ -87,7 +87,6 @@ const SignUp5 = () => {
                                 {/* <h1>Select a Country</h1> */}
                                 <CountrySelect
                                 
-                                 
                                   value={selectedCountry}
                                   onChange={handleCountryChange}
                                   options={countryOptions}
