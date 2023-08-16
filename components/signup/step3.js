@@ -77,7 +77,7 @@ const SignUp3 = ({setCurrentStep}) => {
                         className="rounded-lg bg-white box-border w-11 flex flex-row py-2.5 px-4 items-center justify-start border-[1.5px] border-solid border-gainsboro"
                       >
                         <input
-                          className="flex-1 relative h-6 input-box border-transparent" style={{ outline: "none"}}
+                          className="flex-1 w-2.5 relative h-6 input-box border-transparent" style={{ outline: "none"}}
                           type="number"
                           value={value}
                           onChange={(e) => handleInputChange(index, e.target.value)}
