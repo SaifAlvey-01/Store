@@ -14,8 +14,11 @@ export const countryOptions = [
     { label: 'Bahamas ', value: 'US',image: '/flags/emojione_flag-for-bahamas.png', cur:"B$" },
     { label: 'Bahrain ', value: 'US',image: '/flags/emojione_flag-for-bahrain.png', cur:"BD" },
     { label: 'Bangladesh ', value: 'US',image: '/flags/emojione_flag-for-bangladesh.png', cur:"৳" },
-    { label: 'Bangladesh ', value: 'US',image: '/flags/emojione_flag-for-bangladesh.png', cur:"৳" },
-    { label: 'Bangladesh ', value: 'US',image: '/flags/emojione_flag-for-bangladesh.png', cur:"৳" },
+    { label: 'Barbados ', value: 'US',image: '/flags/emojione_flag-for-barbados.png', cur:"BBD" },
+    { label: 'Belarus ', value: 'US',image: '/flags/emojione_flag-for-belarus.png', cur:"BYN" },
+    { label: 'Belgium ', value: 'US',image: '/flags/emojione_flag-for-belgium.png', cur:"€" },
+    { label: 'Belize ', value: 'US',image: '/flags/emojione_flag-for-belize.png', cur:"$" },
+    { label: 'Benin ', value: 'US',image: '/flags/emojione_flag-for-bhutan.png', cur:"CFA" },
       
   ];
 

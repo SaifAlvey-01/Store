@@ -77,9 +77,22 @@ const SignUp3 = ({setCurrentStep}) => {
                         className="rounded-lg bg-white box-border w-11 flex flex-row py-2.5 px-4 items-center justify-start border-[1.5px] border-solid border-gainsboro"
                       >
                         <input
-                          className="flex-1 w-2.5 relative h-6 input-box border-transparent" style={{ outline: "none"}}
-                          type="number"
+                          className="flex-1 w-3.5 relative h-6 input-box border-transparent" style={{ outline: "none"}}
+                          type="text"
+                          maxlength="1"
+                          inputmode= "numeric"
                           value={value}
+                          onInput={(e) => {
+                            if (e.target.value.length > 1) {
+                              e.target.value = e.target.value.slice(0, 1);
+                            }
+                            handleInputChange(index, e.target.value);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                              e.preventDefault();
+                            }
+                          }}
                           onChange={(e) => handleInputChange(index, e.target.value)}
                         />
                       </div>
