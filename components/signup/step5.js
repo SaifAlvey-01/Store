@@ -8,7 +8,7 @@ const SignUp5 = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
-
+  const [isActive, setIsactive] = useState(false)
 
 
  
@@ -26,8 +26,13 @@ const SignUp5 = () => {
     setFrameOpen(false);
   }, []);
 
-  const handleChange = () =>{
-    setOpen(!isOpen)
+  const handleChange = (e) =>{
+    if(e.target.value.length > 0 ){
+      setIsactive(true)
+
+    }else{
+      setIsactive(false)
+    }
   }
   const onPrimaryContainerClick = useCallback(() => {
     
@@ -50,9 +55,6 @@ const SignUp5 = () => {
                             </div>
                             
                           </div>
-
-                      
-
 
                             {/* contury selecy */}
                             <div className="w-full">
@@ -80,13 +82,15 @@ const SignUp5 = () => {
                          
                           <input
                               type="text"
+                              onChange={(e)=>handleChange(e)}
                               placeholder="Enter business name"
                               className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                             />
                         </div>
                         </div>
                         <div
-                          className="rounded bg-primary-100 w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                          
+                          className= {`rounded ${ isActive ? "bg-primary-300-main" : "bg-primary-100"} w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
                           onClick={onPrimaryContainerClick}
                         >
                           <div className="relative w-[90px] h-0" />

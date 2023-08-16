@@ -6,7 +6,7 @@ const CountrySelect = ({ value, onChange, options }) => {
     onChange(selectedOption);
   };
 
-  console.log(value, "<----value")
+ 
   const flag = (imageUrl) => ({
     alignItems: 'center',
     display: 'flex',
