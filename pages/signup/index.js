@@ -8,13 +8,21 @@ import ToastMessage from '../../components/ToastMessage';
 
 const SignupComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({});
 
+  const handleStepSubmit = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+
+
+  
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <SignUp1  setCurrentStep={setCurrentStep}/>;
+        return <SignUp1  setCurrentStep={handleStepSubmit} setFormData={setFormData}/>;
       case 2:
-        return <SignUp2  setCurrentStep={setCurrentStep}/>;
+        return <SignUp2  setCurrentStep={handleStepSubmit} setFormData={setFormData}/>;
       case 3:
         return <SignUp3 setCurrentStep={setCurrentStep}/>;
       case 4:

@@ -1,0 +1,44 @@
+/* Add these styles to your CSS or SCSS file */
+.toast-container {
+    z-index: 9999;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .toast {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* background-color: #fff; */
+    margin-bottom: 10px;
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%,-50%);
+    transition: .3s;
+  }
+  
+  .toast-enter {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  
+  .toast-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .toast-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .toast-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  
