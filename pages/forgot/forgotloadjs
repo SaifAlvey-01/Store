@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from 'lottie-react'
-import animationData from '../public/animation_ll6mnwur.json'
+import animationData from '../../public/animation_ll6mnwur.json'
 
 const forgot3 = () => {
   return (

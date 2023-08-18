@@ -39,8 +39,8 @@ const Forgot1 = ({ setCurrentStep }) => {
                                             <input
                                                 type="text"
                                                 placeholder="Enter Email or Mobile Number"
-                                                className="self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-darkgray font-roboto border-[1.5px] md:border-solid md:border-gainsboro"
-                                            />
+                                                className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                                                />
                                         </div>
                                         <div
                                             className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
