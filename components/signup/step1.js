@@ -25,7 +25,7 @@ const SignUp1 = ({setCurrentStep,setFormData}) => {
           <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
             <div className="flex flex-col items-center justify-start gap-[92px]">
               <div className="flex flex-col items-center justify-start gap-[32px]">
-                <h2 className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">Start 7 Days Free Trail</h2>
+                <h2 className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">Start 7 Days Free Trial</h2>
                 <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">
                   <div className="flex flex-col items-end justify-start gap-[32px]">
                     <div className="flex flex-col items-center justify-start gap-[32px]">
@@ -42,7 +42,7 @@ const SignUp1 = ({setCurrentStep,setFormData}) => {
                               placeholder="Enter Email or Mobile Number"
                               className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.email ? 'border-red-500' : ''}`}
                             />
-                            {errors.email && ( <ToastMessage type="error" toast={true} message="Success message" />  )}
+                            {errors.email &&<p className="text-red-500">Email is required</p>}
                         </div>
                         <button
                       

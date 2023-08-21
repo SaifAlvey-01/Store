@@ -1,8 +1,8 @@
 import React from 'react'
 import Lottie from 'lottie-react'
-import animationData from '../../public/animation_ll6mnwur.json'
+import animationData from '../public/animation_ll6mnwur.json'
 
-const forgot3 = () => {
+const Loading = () => {
   return (
     <div>
       <div>
@@ -21,4 +21,4 @@ const forgot3 = () => {
   )
 }
 
-export default forgot3
+export default Loading
