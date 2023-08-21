@@ -1,6 +1,6 @@
 'use client'
 import { useCallback,useEffect,useState } from "react";  
-import ToastMessage from "../ToastMessage";
+
 import { useForm } from 'react-hook-form';
 
 
@@ -105,7 +105,6 @@ const SignUp1 = ({setCurrentStep,setFormData}) => {
               </div>
             </div>
           </div>
-        {/* {emailError&&<ToastMessage type="success" message="Success message" />} */}
         </div>
     </form>
   );

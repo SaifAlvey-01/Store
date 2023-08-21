@@ -1,8 +1,6 @@
 import { useState, useCallback } from "react";
-// import FrameComponent from "../frame-component";
-import PortalPopup from "../portal-popup";
-import CountrySelect from '../CountrySelect';
-import { countryOptions } from "../countryOptions";
+import CountrySelect from '../../components/CountrySelect';
+import { countryOptions } from "../../components/countryOptions";
 
 const SignUp5 = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
@@ -18,13 +16,6 @@ const SignUp5 = () => {
   };
 
 
-  const openFrame = useCallback(() => {
-    setFrameOpen(true);
-  }, []);
-
-  const closeFrame = useCallback(() => {
-    setFrameOpen(false);
-  }, []);
 
   const handleChange = (e) =>{
     if(e.target.value.length > 0 ){
@@ -105,15 +96,7 @@ const SignUp5 = () => {
               </div>
             </div>
           </div>
-      {isFrameOpen && (
-        <PortalPopup
-          overlayColor="rgba(113, 113, 113, 0.3)"
-          placement="Centered"
-          onOutsideClick={closeFrame}
-        >
-          {/* <FrameComponent onClose={closeFrame} /> */}
-        </PortalPopup>
-      )}
+  
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Login1 from '../../components/login/Login1';
-import Login2 from '../../components/login/Login2';
+import Login1 from './Login1';
+import Login2 from './Login2';
 
 const SignupComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);

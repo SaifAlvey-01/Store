@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import SignUp1 from '../../components/signup/step1';
-import SignUp2 from '../../components/signup/step2';
-import SignUp3 from '../../components/signup/step3';
-import SignUp5 from '../../components/signup/step5';
-import ToastMessage from '../../components/ToastMessage';
+import SignUp1 from './step1';
+import SignUp2 from './step2';
+import SignUp3 from './step3';
+import SignUp5 from './step5';
 
 
 const SignupComponent = () => {
