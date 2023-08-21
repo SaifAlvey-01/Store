@@ -33,16 +33,16 @@ const SignUp1 = ({setCurrentStep,setFormData}) => {
                         <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
                           <div className="self-stretch flex flex-row items-start justify-start">
                             <div className="relative leading-[20px] font-medium">
-                              Email or Mobile Number
+                              Email 
                             </div>
                           </div>
                           <input
                               type="text"
                               {...register('email', { required: 'Email is required', pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
-                              placeholder="Enter Email or Mobile Number"
+                              placeholder="Enter your email"
                               className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.email ? 'border-red-500' : ''}`}
                             />
-                            {errors.email &&<p className="text-red-500">Email is required</p>}
+                              {errors.email && <p className="text-[#F64C4C]">email is required</p>}
                         </div>
                         <button
                       

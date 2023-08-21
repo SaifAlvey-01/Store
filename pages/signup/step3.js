@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
+import Verify from "../../components/Verify/Verify";
+
+
 
 const SignUp3 = ({setCurrentStep}) => {
+  const [OTP, setOTP] = useState("");
   const router = useRouter()
   const [inputValues, setInputValues] = useState(['', '', '', '', '', '']);
   const [active, setactive] = useState(false)
@@ -70,10 +74,11 @@ const SignUp3 = ({setCurrentStep}) => {
                     </div>
                   </div>
 
-                  <div className="w-[360px] flex flex-row items-start justify-between">
-                    {inputValues.map((value, index) => (
+                  {/* <div className="w-[360px] flex flex-row items-start justify-between">
+                    
+                   
                       <div
-                        key={index}
+                     
                         className="rounded-lg bg-white box-border w-11 flex flex-row py-2.5 px-4 items-center justify-start border-[1.5px] border-solid border-gainsboro"
                       >
                         <input
@@ -81,7 +86,7 @@ const SignUp3 = ({setCurrentStep}) => {
                           type="text"
                           maxlength="1"
                           inputmode= "numeric"
-                          value={value}
+                          
                           onInput={(e) => {
                             if (e.target.value.length > 1) {
                               e.target.value = e.target.value.slice(0, 1);
@@ -96,14 +101,16 @@ const SignUp3 = ({setCurrentStep}) => {
                           onChange={(e) => handleInputChange(index, e.target.value)}
                         />
                       </div>
-                    ))}
-                  </div>
+                
+                    
+                  </div> */}
 
-                 
+                   
+                 <Verify OTP={OTP} setOTP={setOTP}/>
 
 
                 </div>
-                <button onClick={onTextFieldContainer1Click} className={`rounded ${ inputValues[inputValues.length-1] !== "" ? "bg-primary-300-main" : "bg-primary-100"} w-[360px] flex flex-col p-2 box-border items-center justify-center text-center text-white font-poppins`}>
+                <button onClick={onTextFieldContainer1Click} className={`rounded ${ OTP.length === 6 ? "bg-primary-300-main" : "bg-primary-100"} w-[360px] flex flex-col p-2 box-border items-center justify-center text-center text-white font-poppins`}>
                   <div className="relative w-[90px] h-0" />
                       Verify
                   {/* <div className="relative leading-[24px] font-medium"  >
