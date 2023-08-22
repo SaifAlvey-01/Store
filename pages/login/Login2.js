@@ -1,18 +1,28 @@
 'use client'
-import { useCallback } from "react";
+import { useState } from "react";
+import { useForm } from 'react-hook-form';
+import { useSelector, useDispatch } from 'react-redux'
+
 
 const Login2 = ({setCurrentStep}) => {
+  const [formData, setFormData] = useState({});
+  const user = useSelector((state) => state.userSlice.items)
 
-  const onPrimaryContainerClick = useCallback(() => {
-    // Please sync "Sign Up 2" to the project
-    setCurrentStep(((prevStep) => prevStep + 1))
-  }, []);
+  const { handleSubmit, register, formState: { errors } } = useForm();
 
-  const onAlreadyHaveAnClick = useCallback(() => {
-    // Please sync "LogIn 1" to the project
-  }, []);
+  const onSubmit = (data) => {
+    if(user.email === formData.email && user.password === formData.password){
+      console.log("Login done")
+      setCurrentStep(((prevStep) => prevStep + 1))
+    }
+    
+    setFormData((prevData) => ({ ...prevData, ...data }));
+
+  };
+
 
   return (
+    <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
             <div className="flex flex-col items-center justify-start gap-[92px]">
@@ -30,9 +40,11 @@ const Login2 = ({setCurrentStep}) => {
                           </div>
                           <input
                               type="text"
-                              placeholder="Enter Email or Mobile Number"
-                              className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                              {...register('email', { required: 'Email is required', pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
+                              placeholder="Enter your email"
+                              className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.email ? 'border-red-500' : ''}`}
                             />
+                              {errors.email && <p className="text-[#F64C4C]">email is required</p>}
                         </div>
                         <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
                           <div className="self-stretch flex flex-row items-start justify-between ">
@@ -44,20 +56,24 @@ const Login2 = ({setCurrentStep}) => {
                             </div>
                           </div>
                           <input
-                              type="text"
+                              type="password"
                               placeholder="Enter your password"
+                              {...register('password', { required: true })}
                               className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                             />
                         </div>
-                        <div
-                          className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
-                          onClick={onPrimaryContainerClick}
-                        >
-                          <div className="relative w-[90px] h-0" />
-                          <div className="relative tracking-[0.02em] leading-[24px] font-medium">
-                            Log in
-                          </div>
-                        </div>
+
+                        <button
+                              className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                              type="submit"
+                            >
+                              <div className="relative w-[90px] h-0" />
+                              <div className="relative tracking-[0.02em] leading-[24px] font-medium">
+                                Log in
+                              </div>
+                            </button>
+
+
                       </div>
                       <div className="relative w-[328px] h-[17px] text-[11.25px] text-darkslategray font-poppins">
                         <div className="absolute top-[0px] left-[113.66px] font-medium inline-block w-[100.67px]">
@@ -97,7 +113,6 @@ const Login2 = ({setCurrentStep}) => {
               </div>
               <div
                 className="relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto"
-                onClick={onAlreadyHaveAnClick}
               >
                 <span>
                   <span>Don't have an account?</span>
@@ -112,7 +127,7 @@ const Login2 = ({setCurrentStep}) => {
 
 
          </div>
-
+    </form>
   );
 };
 

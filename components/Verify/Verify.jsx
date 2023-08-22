@@ -1,12 +1,8 @@
 import OTPInput from "react-otp-input";
 import React, { useState } from "react";
-import styles from "./styledVerify.module.css"; // Import your CSS module
-
+import styles from "./styledVerify.module.css"; 
 function Verify({setOTP, OTP}) {
  
-
-  // Define a renderInput function
-
   function handleChange(OTP) {
     setOTP(OTP);
   }

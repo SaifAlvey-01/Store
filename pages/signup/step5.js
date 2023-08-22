@@ -1,13 +1,14 @@
 import { useState, useCallback } from "react";
 import CountrySelect from '../../components/CountrySelect';
 import { countryOptions } from "../../components/countryOptions";
+import { useRouter } from 'next/navigation'
 
 const SignUp5 = () => {
   const [isFrameOpen, setFrameOpen] = useState(false);
   const [isOpen, setOpen] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [isActive, setIsactive] = useState(false)
-
+  const router = useRouter()
 
  
 
@@ -26,7 +27,7 @@ const SignUp5 = () => {
     }
   }
   const onPrimaryContainerClick = useCallback(() => {
-    
+    router.push("/login")
   }, []);
 
   return (
