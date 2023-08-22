@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
+import Verify from "../../components/Verify/Verify";
 
 const Forgot2 = ({setCurrentStep}) => {
   const router = useRouter()
-  const [inputValues, setInputValues] = useState(['', '', '', '', '', '']);
+  const [OTP, setOTP] = useState("");
   const [active, setactive] = useState(false)
   // Function to update input value in the state array
   const handleInputChange = (index, value) => {
@@ -16,15 +17,6 @@ const Forgot2 = ({setCurrentStep}) => {
 
   };
 
-  useEffect(()=>{
-
-    if(inputValues.length === 6 && !inputValues.includes('')){
-      console.log("Active")
-
-      setactive(true)
-    }
-  
-  },[inputValues])
 
   const onTextFieldContainer1Click = useCallback(() => {
     console.log(active)
@@ -70,40 +62,14 @@ const Forgot2 = ({setCurrentStep}) => {
                     </div>
                   </div>
 
-                  <div className="w-[360px] flex flex-row items-start justify-between">
-                    {inputValues.map((value, index) => (
-                      <div
-                        key={index}
-                        className="rounded-lg bg-white box-border w-11 flex flex-row py-2.5 px-4 items-center justify-start border-[1.5px] border-solid border-gainsboro"
-                      >
-                        <input
-                          className="flex-1 w-3.5 relative h-6 input-box border-transparent" style={{ outline: "none"}}
-                          type="text"
-                          maxlength="1"
-                          inputmode= "numeric"
-                          value={value}
-                          onInput={(e) => {
-                            if (e.target.value.length > 1) {
-                              e.target.value = e.target.value.slice(0, 1);
-                            }
-                            handleInputChange(index, e.target.value);
-                          }}
-                          onKeyDown={(e) => {
-                            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-                              e.preventDefault();
-                            }
-                          }}
-                          onChange={(e) => handleInputChange(index, e.target.value)}
-                        />
-                      </div>
-                    ))}
-                  </div>
+                  <Verify OTP={OTP} setOTP={setOTP}/>
+                 
 
                  
 
 
                 </div>
-                <button onClick={onTextFieldContainer1Click} className={`rounded ${ inputValues[inputValues.length-1] !== "" ? "bg-primary-300-main" : "bg-primary-100"} w-[360px] flex flex-col p-2 box-border items-center justify-center text-center text-white font-poppins`}>
+                <button onClick={onTextFieldContainer1Click} className={`rounded ${OTP.length === 6 ? "bg-primary-300-main" : "bg-primary-100"} w-[360px] flex flex-col p-2 box-border items-center justify-center text-center text-white font-poppins`}>
                   <div className="relative w-[90px] h-0" />
                       Verify
                   {/* <div className="relative leading-[24px] font-medium"  >

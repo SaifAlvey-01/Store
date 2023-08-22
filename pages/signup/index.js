@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { postUser } from '../../redux/slices/userSlice';
 import SignUp1 from './step1';
 import SignUp2 from './step2';
 import SignUp3 from './step3';
@@ -8,12 +10,18 @@ import SignUp5 from './step5';
 const SignupComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({});
-
+  const dispatch = useDispatch()
   const handleStepSubmit = () => {
+   
     setCurrentStep(currentStep + 1);
   };
 
-
+  console.log(formData)
+  
+ 
+  if(formData.email && formData.password){
+    dispatch(postUser(formData))
+  }
 
   
   const renderStep = () => {

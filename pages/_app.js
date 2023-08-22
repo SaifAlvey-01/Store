@@ -2,8 +2,8 @@ import React from "react";
 import Head from "next/head";
 import "./global.css";
 import { SessionProvider } from "next-auth/react";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { store } from "../redux/slices";
+import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,8 +15,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <div className="font-FreeSans overflow-x-hidden">
       <SessionProvider session={pageProps.session}>  
+      <Provider store={store} >
       <Component {...pageProps} />
-      <ToastContainer />
+      </Provider>
       </SessionProvider>   
       </div>
     </React.Fragment>

@@ -1,8 +1,15 @@
 import React from 'react'
 import Lottie from 'lottie-react'
 import animationData from '../public/animation_ll6mnwur.json'
+import { useRouter } from 'next/navigation'
 
-const Loading = () => {
+const Loading = ({url}) => {
+  const router = useRouter()
+
+  setTimeout(()=>{
+    router.push(url, { scroll: false })
+  },5000)
+
   return (
     <div>
       <div>

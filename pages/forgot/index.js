@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Forgot1 from './forgot1';
 import Forgot2 from './forgot2';
 import Forgot3 from './forgot3';
+import Loading from '../../components/loading';
 // import Forgot4 from './forgot4';
 
 const ForgotComponent = () => {
@@ -15,6 +16,8 @@ const ForgotComponent = () => {
         return <Forgot2  setCurrentStep={setCurrentStep}/>;
       case 3:
         return <Forgot3 setCurrentStep={setCurrentStep}/>;
+      case 4:
+          return <Loading url="/login"/>;
 
       default:
         return null;
