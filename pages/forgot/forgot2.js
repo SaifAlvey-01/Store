@@ -36,7 +36,7 @@ const Forgot2 = ({ setCurrentStep }) => {
                         Code sent to your email{" "}
                         <span className="self-stretch  text-sm text-dimgray">
                           <a
-                            href=""
+                            href="mailto:ahmedakram018@gmail.com"
                             style={{
                               textDecoration: "underline",
                               cursor: "pointer",
