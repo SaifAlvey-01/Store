@@ -15,7 +15,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       display: "block",
       // marginRight: 4,
       height: 20,
-      width: 30,
+      width: 26,
       backgroundImage: `url(${imageUrl})`,
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
@@ -29,7 +29,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
-      padding: "6px 10px", // py-2.5 px-4
+      padding: "6px 8px", // py-2.5 px-4
       cursor: "pointer",
       borderRadius: "0.375rem", // rounded-lg
       backgroundColor: "white", // md:bg-white
@@ -59,6 +59,11 @@ const CountrySelect = ({ value, onChange, options }) => {
       maxHeight: 170,
       overflowY: "scroll",
       overflowX: "hidden",
+    }),
+
+    valueContainer: (provided, state) => ({
+      ...provided,
+      padding: "0px",
     }),
 
     // Additional styles for the custom option component
@@ -102,7 +107,6 @@ const CountrySelect = ({ value, onChange, options }) => {
   );
   return (
     <Select
-      //   className="self-stretch rounded-lg md:bg-white flex flex-row py-2.5 px-4 items-center justify-start gap-[20px] cursor-pointer text-textcolor-placeholder-color-400 font-roboto border-[1.5px] border-solid  border-gainsboro"
       value={value}
       onChange={handleChange}
       options={options}
