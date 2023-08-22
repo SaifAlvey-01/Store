@@ -48,7 +48,6 @@ const CountrySelect = ({ value, onChange, options }) => {
 
     menu: (provided) => ({
       ...provided,
-      // Optional: You can set a shadow, border, etc.
       boxShadow: "0 2px 10px rgba(0, 0, 0, 0.4)",
       border: "1px solid rgb(229 231 235 / var(--tw-border-opacity)) ",
       margin: "6px 0px",
