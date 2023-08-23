@@ -17,8 +17,11 @@ const Forgot1 = ({ setCurrentStep }) => {
 
   return (
     <div>
-      <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-6 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
-        <div className="flex flex-col items-center justify-start gap-[92px]">
+      <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-4 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
+        <div
+          style={{ minHeight: "calc(66vh - 180px)" }}
+          className="flex flex-col items-center justify-start gap-[50px]"
+        >
           <div className="flex flex-col items-center justify-start gap-[32px]">
             <h1 className="text-neutral-600 font-semibold text-24 font-FreeSans tracking-normal">
               Forgot Passcode !

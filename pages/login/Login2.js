@@ -1,132 +1,134 @@
-'use client'
+"use client";
 import { useState } from "react";
-import { useForm } from 'react-hook-form';
-import { useSelector, useDispatch } from 'react-redux'
+import { useForm } from "react-hook-form";
+import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
 
-
-const Login2 = ({setCurrentStep}) => {
+const Login2 = ({ setCurrentStep }) => {
   const [formData, setFormData] = useState({});
-  const user = useSelector((state) => state.userSlice.items)
+  const user = useSelector((state) => state.userSlice.items);
 
-  const { handleSubmit, register, formState: { errors } } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
-    if(user.email === formData.email && user.password === formData.password){
-      console.log("Login done")
-      setCurrentStep(((prevStep) => prevStep + 1))
+    if (user.email === formData.email && user.password === formData.password) {
+      console.log("Login done");
+      setCurrentStep((prevStep) => prevStep + 1);
     }
-    
+
     setFormData((prevData) => ({ ...prevData, ...data }));
-
   };
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
-            <div className="flex flex-col items-center justify-start gap-[92px]">
-              <div className="flex flex-col items-center justify-start gap-[32px]">
-                <h2 className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">Welcome Back!</h2>
-                <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">
-                  <div className="flex flex-col items-end justify-start gap-[32px]">
-                    <div className="flex flex-col items-center justify-start gap-[32px]">
-                      <div className="flex flex-col items-start justify-start gap-[28px]">
-                        <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
-                          <div className="self-stretch flex flex-row items-start justify-start">
-                            <div className="relative leading-[20px] font-medium">
-                              Email or Mobile Number
-                            </div>
+      <div>
+        <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
+          <div className="flex flex-col items-center justify-start gap-[92px]">
+            <div className="flex flex-col items-center justify-start gap-[32px]">
+              <h2 className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">
+                Welcome Back!
+              </h2>
+              <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">
+                <div className="flex flex-col items-end justify-start gap-[32px]">
+                  <div className="flex flex-col items-center justify-start gap-[32px]">
+                    <div className="flex flex-col items-start justify-start gap-[28px]">
+                      <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
+                        <div className="self-stretch flex flex-row items-start justify-start">
+                          <div className="relative leading-[20px] font-medium">
+                            Email or Mobile Number
                           </div>
-                          <input
-                              type="text"
-                              {...register('email', { required: 'Email is required', pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
-                              placeholder="Enter your email"
-                              className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.email ? 'border-red-500' : ''}`}
-                            />
-                              {errors.email && <p className="text-[#F64C4C]">email is required</p>}
                         </div>
-                        <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
-                          <div className="self-stretch flex flex-row items-start justify-between ">
-                            <div className="relative leading-[20px] font-medium">
-                              Password
-                            </div>
-                            <div className="relative leading-[20px] font-medium text-[#4162FF]">
-                            Forgot Password?
-                            </div>
-                          </div>
-                          <input
-                              type="password"
-                              placeholder="Enter your password"
-                              {...register('password', { required: true })}
-                              className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
-                            />
-                        </div>
-
-                        <button
-                              className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
-                              type="submit"
-                            >
-                              <div className="relative w-[90px] h-0" />
-                              <div className="relative tracking-[0.02em] leading-[24px] font-medium">
-                                Log in
-                              </div>
-                            </button>
-
-
-                      </div>
-                      <div className="relative w-[328px] h-[17px] text-[11.25px] text-darkslategray font-poppins">
-                        <div className="absolute top-[0px] left-[113.66px] font-medium inline-block w-[100.67px]">
-                          Or continue with
-                        </div>
-                        <img
-                          className="absolute top-[8px] left-[0px] w-[106.09px] h-px"
-                          alt=""
-                          src="/rectangle-3.svg"
+                        <input
+                          type="text"
+                          {...register("email", {
+                            required: "Email is required",
+                            pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          })}
+                          placeholder="Enter your email"
+                          className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                            errors.email ? "border-red-500" : ""
+                          }`}
                         />
-                        <img
-                          className="absolute top-[8px] left-[221.91px] w-[106.09px] h-px"
-                          alt=""
-                          src="/rectangle-4.svg"
+                        {errors.email && (
+                          <p className="text-[#F64C4C] my-1 mx-1">
+                            email is required
+                          </p>
+                        )}
+                      </div>
+                      <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
+                        <div className="self-stretch flex flex-row items-start justify-between ">
+                          <div className="relative leading-[20px] font-medium">
+                            Password
+                          </div>
+                          <Link legacyBehavior href="/forgot">
+                            <a className="relative leading-[20px] font-medium text-[#4162FF] cursor-pointer">
+                              Forgot Password?
+                            </a>
+                          </Link>
+                        </div>
+                        <input
+                          type="password"
+                          placeholder="Enter your password"
+                          {...register("password", { required: true })}
+                          className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                         />
                       </div>
+
+                      <button
+                        className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                        type="submit"
+                      >
+                        <div className="relative w-[90px] h-0" />
+                        <div className="relative tracking-[0.02em] leading-[24px] font-medium">
+                          Log in
+                        </div>
+                      </button>
                     </div>
-                    <div className="rounded bg-white box-border w-[360px] flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
-                      <div className="relative w-[90px] h-0" />
-                      <div className="flex flex-row items-center justify-center gap-[6px]">
-                        <img
-                          className="relative w-[18px] h-[18px] overflow-hidden shrink-0"
-                          alt=""
-                          src="/google.svg"
-                        />
-                        <div className="relative leading-[24px] font-medium">
-                          Google
-                        </div>
-                      </div>
+
+                    <div className="flex items-center justify-center w-full">
+                      <hr className="h-px w-[90px] bg-gradient-line-270 mx-3" />
+                      <span className="font-semibold text-sm">
+                        Or continue with
+                      </span>
+                      <hr className="h-px w-[90px] bg-gradient-line mx-3" />
                     </div>
                   </div>
-                  <div className="relative text-[12px] leading-[20px] font-roboto">
-                    By continuing, you agree to our Terms of Use and Privacy
-                    Policy.
+                  <div className="rounded bg-white box-border w-[360px] flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                    <div className="relative w-[90px] h-0" />
+                    <div className="flex flex-row items-center justify-center gap-[6px]">
+                      <img
+                        className="relative w-[18px] h-[18px] overflow-hidden shrink-0"
+                        alt=""
+                        src="/google.svg"
+                      />
+                      <div className="relative leading-[24px] font-medium">
+                        Google
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                className="relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto"
-              >
-                <span>
-                  <span>Don't have an account?</span>
-                  <span className="text-mediumslateblue">{` `}</span>
-                </span>
-                <span className="font-medium text-primary-300-main">
-                  Get Stated
-                </span>
+                <div className="relative text-[12px] leading-[20px] font-roboto">
+                  By continuing, you agree to our Terms of Use and Privacy
+                  Policy.
+                </div>
               </div>
             </div>
+            <div className="relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto">
+              <span>
+                <span>Don't have an account?</span>
+                <span className="text-mediumslateblue">{` `}</span>
+              </span>
+              <span className="font-medium text-primary-300-main">
+                Get Stated
+              </span>
+            </div>
           </div>
-
-
-         </div>
+        </div>
+      </div>
     </form>
   );
 };
