@@ -1,10 +1,8 @@
 import { useCallback } from "react";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
-const SignUp2 = ({setCurrentStep, setFormData}) => {
+const SignUp2 = ({ setCurrentStep, setFormData }) => {
   const { handleSubmit, register } = useForm();
-
-
 
   const onSubmit = (data) => {
     setFormData((prevData) => ({ ...prevData, ...data }));
@@ -13,44 +11,44 @@ const SignUp2 = ({setCurrentStep, setFormData}) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-    <div className=" w-[408px] h-[274px] text-11xl text-neutral-600">
-          <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
-            <div className="flex flex-col items-center justify-start gap-[32px]">
-              <b className="relative">Create a password</b>
-              <div className="flex flex-col items-center justify-start text-sm text-dimgray">
-                <div className="flex flex-col items-end justify-start">
-                  <div className="flex flex-col items-center justify-start">
-                    <div className="flex flex-col items-start justify-start gap-[28px]">
-                      <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
-                        <div className="self-stretch flex flex-row items-start justify-start">
-                          <div className="relative leading-[20px] font-medium">
-                            Password
-                          </div>
+      <div className=" w-[408px] h-[274px] text-11xl text-neutral-600">
+        <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
+          <div className="flex flex-col items-center justify-start gap-[32px]">
+            <b className="relative">Create a password</b>
+            <div className="flex flex-col items-center justify-start text-sm text-dimgray">
+              <div className="flex flex-col items-end justify-start">
+                <div className="flex flex-col items-center justify-start">
+                  <div className="flex flex-col items-start justify-start gap-[28px]">
+                    <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
+                      <div className="self-stretch flex flex-row items-start justify-start">
+                        <div className="relative leading-[20px] font-medium">
+                          Password
                         </div>
-                        
-                        <input
-                              type="password"
-                              placeholder="Enter your password"
-                              className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
-                              {...register('password', { required: true })}
-                            />
                       </div>
-                      <button
-                        className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
-                        type="submit"
-                      >
-                        <div className="relative w-[90px] h-0" />
-                        <div className="relative tracking-[0.02em] leading-[24px] font-medium">
-                          Continue
-                        </div>
-                      </button>
+
+                      <input
+                        type="password"
+                        placeholder="Enter your password"
+                        className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                        {...register("password", { required: true })}
+                      />
                     </div>
+                    <button
+                      className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                      type="submit"
+                    >
+                      <div className="relative w-[90px] h-0" />
+                      <div className="relative tracking-[0.02em] leading-[24px] font-medium">
+                        Continue
+                      </div>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </form>
   );
 };

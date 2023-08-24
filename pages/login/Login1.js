@@ -46,7 +46,7 @@ const Login1 = ({ setCurrentStep }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
-        <div className="rounded-3xl md:bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start md:border-[0.8px] border-solid border-gainsboro">
+        <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
           <div className="flex flex-col items-center justify-start gap-[92px]">
             <div className="flex flex-col items-center justify-start gap-[32px]">
               <h2 className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">
@@ -66,10 +66,10 @@ const Login1 = ({ setCurrentStep }) => {
                           type="text"
                           placeholder="Enter Email or Mobile Number"
                           {...register("email", {
-                            required: "* field is required",
+                            required: "This field is required.",
                             pattern: {
                               value:
-                                /^(?:[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|(\+?\d{1,4}[-.\s])?(?:\(?(\d{1,3}?)\)?[-.\s])?(\d{3,4}[-.\s]?\d{4}))$/i,
+                                /^(?:[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|^\+[0-9]{10,15}$)/i,
                               message: "Invalid email or mobile number",
                             },
                           })}
