@@ -1,7 +1,8 @@
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+// Utility function to hash strings.
 function simpleHash(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
@@ -12,7 +13,8 @@ function simpleHash(str) {
   return hash.toString();
 }
 
-export const users = [
+// Dummy users data
+const users = [
   {
     id: "1",
     name: "J Smith",
@@ -28,6 +30,13 @@ export const users = [
     passwordHash: simpleHash("abc123"),
   },
 ];
+
+const findUserByCredentials = (username, password) =>
+  users.find(
+    (user) =>
+      (username === user.email || username === user.phone) &&
+      simpleHash(password) === user.passwordHash
+  );
 
 const authOptions = {
   providers: [
@@ -45,20 +54,12 @@ const authOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
-        const matchingUser = users.find(
-          (user) =>
-            (credentials.username === user.email ||
-              credentials.username === user.phone) &&
-            simpleHash(credentials.password) === user.passwordHash
-        );
-
-        return matchingUser || null;
-      },
+      authorize: async (credentials) =>
+        findUserByCredentials(credentials.username, credentials.password),
     }),
-    // ... your other providers ...
+    // ... add other providers here ...
   ],
-  // ... your other configurations ...
+  // ... add other NextAuth configurations here if any ...
 };
 
 export default NextAuth(authOptions);

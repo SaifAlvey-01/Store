@@ -29,14 +29,14 @@ const CountrySelect = ({ value, onChange, options }) => {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
-      padding: "6px 8px", // py-2.5 px-4
+      padding: "6px 8px",
       cursor: "pointer",
-      borderRadius: "0.375rem", // rounded-lg
-      backgroundColor: "white", // md:bg-white
-      border: "1.5px solid gainsboro", // border-[1.5px] border-solid border-gainsboro
-      color: "var(--textcolor-placeholder-color-400)", // text-textcolor-placeholder-color-400
-      fontFamily: "Roboto, sans-serif", // font-roboto
-      gap: "20px", // gap-[20px]
+      borderRadius: "0.375rem",
+      backgroundColor: "white",
+      border: "1.5px solid gainsboro",
+      color: "var(--textcolor-placeholder-color-400)",
+      fontFamily: "Roboto, sans-serif",
+      gap: "20px",
       width: "100%",
       maxHeight: "46px",
     }),
@@ -59,6 +59,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       maxHeight: 170,
       overflowY: "scroll",
       overflowX: "hidden",
+      cursor: "pointer",
     }),
 
     valueContainer: (provided, state) => ({

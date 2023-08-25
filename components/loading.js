@@ -11,14 +11,10 @@ const Loading = ({ url }) => {
   }, 5000);
 
   return (
-    <div>
-      <div>
-        <div className=" bg-transparent">
-          <Lottie animationData={animationData} loop={true} autoplay={true} />
-        </div>
-        <div className="flex flex-row justify-center items-center font-bold text-lg	">
-          Resetting Password...
-        </div>
+    <div className="bg-transparent">
+      <Lottie animationData={animationData} loop={true} autoplay={true} />
+      <div className="flex flex-row justify-center items-center font-bold text-lg">
+        Resetting Password...
       </div>
     </div>
   );

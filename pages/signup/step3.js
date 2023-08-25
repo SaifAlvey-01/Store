@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Verify from "../../components/Verify/Verify";
 
-const SignUp3 = ({ setCurrentStep }) => {
+const SignUp3 = ({ setCurrentStep, email }) => {
   const [OTP, setOTP] = useState("");
+  const isEmail = /\S+@\S+\.\S+/.test(email);
+
   const router = useRouter();
-  const [inputValues, setInputValues] = useState(["", "", "", "", "", ""]);
   const [active, setactive] = useState(false);
   // Function to update input value in the state array
   const handleInputChange = (index, value) => {
@@ -16,19 +17,15 @@ const SignUp3 = ({ setCurrentStep }) => {
     });
   };
 
-  useEffect(() => {
-    if (inputValues.length === 6 && !inputValues.includes("")) {
-      console.log("Active");
-
-      setactive(true);
-    }
-  }, [inputValues]);
-
   const onTextFieldContainer1Click = useCallback(() => {
     console.log(active);
 
     setCurrentStep((prevStep) => prevStep + 1);
   }, []);
+
+  const handleSignInClick = () => {
+    router.push("/login");
+  };
 
   return (
     <div className=" w-[408px] h-[346px] text-11xl text-neutral-600">
@@ -38,29 +35,39 @@ const SignUp3 = ({ setCurrentStep }) => {
           <div className="flex flex-col items-center justify-start text-base text-neutral-500">
             <div className="flex flex-col items-end justify-start">
               <div className="flex flex-col items-center justify-start">
-                <div className="flex flex-col items-start justify-start gap-[30px]">
-                  <div className="w-[360px] flex flex-col items-start justify-start gap-[10px]">
-                    <div className="self-stretch flex flex-row items-start justify-start">
-                      <div className="relative leading-[20px] text-[14px] text-center">
-                        Code sent to your email{" "}
-                        <span className="self-stretch  text-sm text-dimgray">
-                          <a
-                            href="mailto:ahmedakram018@gmail.com"
-                            style={{
-                              textDecoration: "underline",
-                              cursor: "pointer",
-                              color: "#4162ff",
-                            }}
-                            className="relative leading-[20px] font-medium"
-                          >
-                            ahmedakram018@gmail.com
-                          </a>
+                <div className="flex flex-col items-start justify-start gap-[24px]">
+                  <div className="w-[360px] flex flex-col items-start justify-start ">
+                    <div className="flex items-center justify-center">
+                      <div className="text-[14px] text-center leading-[20px]">
+                        Code sent to your {isEmail ? "email" : "phone no"}{" "}
+                        <span className="text-sm text-dimgray">
+                          {isEmail ? (
+                            <a
+                              href={`mailto:${email}`}
+                              style={{
+                                cursor: "pointer",
+                                color: "#4162ff",
+                              }}
+                              className="leading-[20px] font-medium"
+                            >
+                              ({email}){" "}
+                            </a>
+                          ) : (
+                            <span
+                              style={{
+                                color: "#4162ff",
+                              }}
+                              className="relative leading-[20px] font-medium"
+                            >
+                              ({email}){" "}
+                            </span>
+                          )}
                         </span>{" "}
                         please write it here.
                       </div>
                     </div>
                   </div>
-                  <div className="w-[360px] flex flex-col items-start justify-start mb-10 gap-[4px] cursor-pointer text-sm text-dimgray">
+                  <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
                     <div className="self-stretch flex flex-row items-start justify-between">
                       <div className="relative leading-[20px] font-medium">
                         Code
@@ -68,39 +75,42 @@ const SignUp3 = ({ setCurrentStep }) => {
                     </div>
 
                     <Verify OTP={OTP} setOTP={setOTP} />
-
-                    <div className="w-[360px] flex flex-col  items-end justify-end cursor-pointer text-sm text-dimgray ">
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          alignItems: "flex-end",
-                          justifyContent: "space-between",
-                        }}
-                        className=" leading-[20px] font-medium "
-                      >
-                        <span>{`Didn’t get the code? `}</span>
-                        <span className="text-primary-300-main mx-2">
-                          Resend OPT
-                        </span>
-                      </div>
-                    </div>
                   </div>
 
                   <button
                     onClick={onTextFieldContainer1Click}
+                    disabled={OTP.length !== 6}
                     className={`rounded ${
                       OTP.length === 6
-                        ? "bg-primary-300-main"
-                        : "bg-primary-100"
+                        ? "bg-primary-300-main cursor-pointer"
+                        : "bg-primary-100 cursor-not-allowed"
                     } w-[360px] flex flex-col p-2 box-border items-center mb-4 justify-center text-center text-white font-poppins`}
                   >
                     <div className="relative w-[90px] h-0" />
-                    Verify
-                    {/* <div className="relative leading-[24px] font-medium"  >
-                    Verify
-                  </div> */}
+                    Continue
                   </button>
+
+                  <div
+                    className="font-bold relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto"
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "0 auto",
+                    }}
+                  >
+                    <span className="font-bold relative mr-1 text-sm tracking-[0.25px] leading-[20px] text-center  text-darkslategray font-roboto">
+                      Remembered your password?
+                    </span>
+                    {/* Attach the handleSignInClick function here */}
+                    <span
+                      className="font-medium text-primary-300-main cursor-pointer"
+                      onClick={handleSignInClick}
+                    >
+                      Sign In
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

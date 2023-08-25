@@ -1,11 +1,10 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import CountrySelect from "../../components/CountrySelect";
 import { countryOptions } from "../../components/countryOptions";
 import { useRouter } from "next/navigation";
 
 const SignUp5 = () => {
-  const [isFrameOpen, setFrameOpen] = useState(false);
-  const [isOpen, setOpen] = useState(false);
+  const router = useRouter();
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [isActive, setIsactive] = useState(false);
 
@@ -20,7 +19,10 @@ const SignUp5 = () => {
       setIsactive(false);
     }
   };
-  const onPrimaryContainerClick = useCallback(() => {}, []);
+
+  const handleSignInClick = () => {
+    router.push("/login");
+  };
 
   return (
     <>
@@ -84,7 +86,7 @@ const SignUp5 = () => {
                       className={`rounded ${
                         isActive ? "bg-primary-300-main" : "bg-primary-100"
                       } w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
-                      onClick={onPrimaryContainerClick}
+                      onClick={handleSignInClick}
                     >
                       <div className="relative w-[90px] h-0" />
                       <div className="relative leading-[24px] font-medium">
