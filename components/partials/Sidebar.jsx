@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import SidebarLinkGroup from './SidebarLinkGroup';
 
-function Sidebar({ sidebarOpen, setSidebarOpen }) {
+const  Sidebar = ({ sidebarOpen, setSidebarOpen }) =>{
 
   const trigger = useRef(null);
   const sidebar = useRef(null);
@@ -42,7 +42,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   // }, [sidebarExpanded]);
 
   return (
-    <div>
+    <div className='font-freesans'>
       {/* Sidebar backdrop (mobile only) */}
       <div
         className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
@@ -55,7 +55,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 transition-all duration-200 ease-in-out ${
+        className={`flex  flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 transition-all duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0 rounded-r-lg' : '-translate-x-64'
         }`}
       >
@@ -92,9 +92,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 {(handleClick, open) => {
                   return (
                     <React.Fragment>
-                      <Link
+                      <a
                         href="#0"
-                        className={`block text-[#1F1D2B] truncate transition duration-150 ${
+                        className={`no-underline  block text-[#1F1D2B] truncate transition duration-150 ${
                           pathname === '/' || pathname.includes('dashboard') ? 'hover:text-slate-200 text-[#1F1D2B]' : 'hover:text-white'
                         }`}
                         onClick={(e) => {
@@ -105,13 +105,13 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
                             <img src='/logos/dashboard/SideMenuIcons.png'></img>
-                            <span className="text-sm font-medium ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <span className=" text-base font-normal leading-5 tracking-tight ml-3 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Dashboard
                             </span>
                           </div>
                           
                         </div>
-                      </Link>
+                      </a>
                       
                     </React.Fragment>
                   );
@@ -124,7 +124,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                     <React.Fragment>
                       <a
                         href="#0"
-                        className={`block text-slate-200 truncate transition duration-150 ${
+                        className={`no-underline  block text-slate-200 truncate transition duration-150 ${
                           pathname.includes('ecommerce') ? 'hover:text-slate-200' : 'hover:text-white'
                         }`}
                         onClick={(e) => {
@@ -135,7 +135,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
                             
-                            <span className="text-sm text-white font-medium ml-3  lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            <span className="text-base   text-white font-medium ml-3  lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                               Order
                             </span>
                           </div>
