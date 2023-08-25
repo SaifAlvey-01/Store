@@ -85,7 +85,7 @@ const Forgot3 = ({ setCurrentStep }) => {
           </form>
 
           <div
-            className="font-bold relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto"
+            className=" relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto"
             style={{
               display: "flex",
               flexDirection: "row",
@@ -94,7 +94,7 @@ const Forgot3 = ({ setCurrentStep }) => {
               margin: "0 auto",
             }}
           >
-            <span className="font-bold relative mr-1 text-sm tracking-[0.25px] leading-[20px] text-center  text-darkslategray font-roboto">
+            <span className="font-medium relative mr-1 text-sm tracking-[0.25px] leading-[20px] text-center  text-darkslategray font-roboto">
               Remembered your password?
             </span>
             {/* Attach the handleSignInClick function here */}

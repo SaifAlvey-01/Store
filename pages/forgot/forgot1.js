@@ -68,8 +68,8 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
           </button>
         </form>
 
-        <div className="font-bold relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto flex flex-row justify-center items-center">
-          <span className="font-bold relative mr-1">
+        <div className=" relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto flex flex-row justify-center items-center">
+          <span className="font-medium relative mr-1">
             Remembered your password?
           </span>
           <span
