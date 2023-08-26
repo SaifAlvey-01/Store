@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import animationData from "../public/animation_ll6mnwur.json";
 import { useRouter } from "next/navigation";
-import cogoToast from 'cogo-toast';
+// import cogoToast from 'cogo-toast';
 
 const Loading = ({ url }) => {
   const router = useRouter();
@@ -11,9 +11,9 @@ const Loading = ({ url }) => {
     router.push(url, { scroll: false });
   }, 3000);
 
-  useEffect(()=>{
-    cogoToast.success('Password has been reset! Login Now');
-  },[])
+  // useEffect(()=>{
+  //   cogoToast.success('Password has been reset! Login Now');
+  // },[])
 
   return (
     <div className="bg-transparent">

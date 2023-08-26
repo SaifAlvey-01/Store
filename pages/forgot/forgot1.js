@@ -52,7 +52,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
                 setErrorMessage("");
               }}
               required
-              className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid border-gainsboro"
+              className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid "
             />
             {errorMessage && (
               <div className="text-red-500 text-[12px]">{errorMessage}</div>
