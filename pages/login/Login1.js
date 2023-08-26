@@ -28,7 +28,9 @@ const Login1 = ({ setCurrentStep }) => {
       console.log("Login done");
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
-      router.push("/signup");
+      setCurrentStep((prevStep) => prevStep + 1);
+
+      // router.push("/signup");
     }
   };
 

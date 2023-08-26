@@ -36,43 +36,39 @@ const SignUp3 = ({ setCurrentStep, email }) => {
             <div className="flex flex-col items-end justify-start">
               <div className="flex flex-col items-center justify-start">
                 <div className="flex flex-col items-start justify-start gap-[24px]">
-                  <div className="w-[360px] flex flex-col items-start justify-start ">
-                    <div className="flex items-center justify-center">
-                      <div className="text-[14px] text-center leading-[20px]">
-                        Code sent to your {isEmail ? "email" : "phone no"}{" "}
-                        <span className="text-sm text-dimgray">
-                          {isEmail ? (
-                            <a
-                              href={`mailto:${email}`}
-                              style={{
-                                cursor: "pointer",
-                                color: "#4162ff",
-                              }}
-                              className="leading-[20px] font-medium"
-                            >
-                              ({email}){" "}
-                            </a>
-                          ) : (
-                            <span
-                              style={{
-                                color: "#4162ff",
-                              }}
-                              className="relative leading-[20px] font-medium"
-                            >
-                              ({email}){" "}
-                            </span>
-                          )}
-                        </span>{" "}
-                        please write it here.
+                <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] cursor-pointer text-neutral text-dimgray mt-4">
+                    <div className="self-stretch flex flex-row items-start justify-between">
+                      <div className="relative leading-[20px] font-medium text-neutral-500">
+                      Enter code sent to you at 
                       </div>
                     </div>
-                  </div>
+
+                    {email}
+                  
+                </div>
+                  {/* <div className="w-[360px] flex flex-col items-start justify-start ">
+                    <div className="flex items-center justify-center">
+                      <p className="text-[14px] text-center leading-[20px]">
+                        Enter code sent to you at 
+                      </p> 
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <p className="text-[14px] text-center leading-[20px]">
+                      {email}
+                      </p> 
+                    </div>
+                    
+                  </div> */}
                   <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
                     <div className="self-stretch flex flex-row items-start justify-between">
                       <div className="relative leading-[20px] font-medium">
                         Code
                       </div>
+                      <div>
+                        Didn’t get the code? <a className="text-[#4162FF]">Resend OTP</a>
                     </div>
+                    </div>
+                    
 
                     <Verify OTP={OTP} setOTP={setOTP} />
                   </div>
@@ -90,27 +86,8 @@ const SignUp3 = ({ setCurrentStep, email }) => {
                     Continue
                   </button>
 
-                  <div
-                    className=" relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto"
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      margin: "0 auto",
-                    }}
-                  >
-                    <span className="font-medium relative mr-1 text-sm tracking-[0.25px] leading-[20px] text-center  text-darkslategray font-roboto">
-                      Remembered your password?
-                    </span>
-                    {/* Attach the handleSignInClick function here */}
-                    <span
-                      className="font-medium text-primary-300-main cursor-pointer"
-                      onClick={handleSignInClick}
-                    >
-                      Sign In
-                    </span>
-                  </div>
+                  
+                 
                 </div>
               </div>
             </div>

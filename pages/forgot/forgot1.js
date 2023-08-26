@@ -27,7 +27,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-center border-[0.8px] border-solid border-gainsboro">
       <div
         className="flex flex-col items-center justify-start gap-[50px]"
-        style={{ minHeight: "calc(66vh - 180px)" }}
+       
       >
         <h1 className="text-neutral-600 font-semibold text-24 font-FreeSans tracking-normal my-0">
           Forgot Passcode !
@@ -67,18 +67,22 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
             Reset Password
           </button>
         </form>
-
-        <div className=" relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto flex flex-row justify-center items-center">
-          <span className="font-medium relative mr-1">
-            Remembered your password?
-          </span>
-          <span
-            className="font-medium text-primary-300-main cursor-pointer"
-            onClick={handleSignInClick}
+        <div
+            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-12"
+            // onClick={onAlreadyHaveAnClick}
           >
-            Sign In
-          </span>
-        </div>
+            <span>
+              <span>Remembered your password?</span>
+              <span className="text-mediumslateblue">{` `}</span>
+            </span>
+            <span
+              className="font-medium text-primary-300-main cursor-pointer "
+              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+            >
+               Sign In
+            </span>
+          </div>
+       
       </div>
     </div>
   );

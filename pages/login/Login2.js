@@ -64,7 +64,7 @@ const Login2 = ({ setCurrentStep }) => {
                           Password
                         </div>
                         <Link legacyBehavior href="/forgot">
-                          <a className="relative leading-[20px] font-medium text-[#4162FF] cursor-pointer">
+                          <a className="relative leading-[20px] font-medium text-[#4162FF] cursor-pointer no-underline">
                             Forgot Password?
                           </a>
                         </Link>

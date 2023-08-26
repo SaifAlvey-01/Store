@@ -41,7 +41,7 @@ const Forgot3 = ({ setCurrentStep }) => {
           <form onSubmit={handleFormSubmit}>
             <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] mb-12">
               <div className="self-stretch flex flex-row items-start justify-start">
-                <div className="relative leading-[20px] font-medium">
+                <div className="relative leading-[20px] font-medium text-neutral-600">
                   New Password
                 </div>
               </div>
@@ -55,7 +55,7 @@ const Forgot3 = ({ setCurrentStep }) => {
               />
 
               <div className="self-stretch flex flex-row items-start justify-start pt-5">
-                <div className="relative leading-[20px] font-medium">
+                <div className="relative leading-[20px] font-medium text-neutral-600">
                   Confirm Password
                 </div>
               </div>
@@ -85,24 +85,18 @@ const Forgot3 = ({ setCurrentStep }) => {
           </form>
 
           <div
-            className=" relative mb-5 text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: "0 auto",
-            }}
+            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto  mt-12"
+            // onClick={onAlreadyHaveAnClick}
           >
-            <span className="font-medium relative mr-1 text-sm tracking-[0.25px] leading-[20px] text-center  text-darkslategray font-roboto">
-              Remembered your password?
+            <span>
+              <span>Remembered your password?</span>
+              <span className="text-mediumslateblue">{` `}</span>
             </span>
-            {/* Attach the handleSignInClick function here */}
             <span
-              className="font-medium text-primary-300-main cursor-pointer"
-              onClick={handleSignInClick}
+              className="font-medium text-primary-300-main cursor-pointer "
+              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Sign In
+               Sign In
             </span>
           </div>
         </div>
