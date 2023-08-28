@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import { users } from "../../utils/userData";
 
 const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
   const router = useRouter();
@@ -12,8 +13,21 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
     const mobilePattern = /^\+[0-9]{12}$/;
     const inputVal = inputValue.trim();
 
-    if (emailPattern.test(inputVal) || mobilePattern.test(inputVal)) {
+    const isEmail = emailPattern.test(inputVal);
+    const isMobile = mobilePattern.test(inputVal);
+
+    const userExists = users.some(
+      (user) =>
+        (isEmail && user.email === inputVal) ||
+        (isMobile && user.phone === inputVal)
+    );
+
+    if (userExists) {
       setCurrentStep((prevStep) => prevStep + 1);
+    } else if (isEmail || isMobile) {
+      setErrorMessage(
+        isEmail ? "Email does not exist" : "Mobile no does not exist"
+      );
     } else {
       setErrorMessage("Please enter a valid email or mobile number");
     }
