@@ -45,7 +45,7 @@ const  Sidebar = ({ sidebarOpen, setSidebarOpen }) =>{
     <div className='font-freesans'>
       {/* Sidebar backdrop (mobile only) */}
       <div
-        className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
+        className={`fixed inset-0 bg-[#1F1D2B] bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         aria-hidden="true"
@@ -55,7 +55,7 @@ const  Sidebar = ({ sidebarOpen, setSidebarOpen }) =>{
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex  flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-slate-800 transition-all duration-200 ease-in-out ${
+        className={`flex  flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] transition-all duration-200 ease-in-out ${
           sidebarOpen ? 'translate-x-0 rounded-r-lg' : '-translate-x-64'
         }`}
       >
@@ -95,7 +95,7 @@ const  Sidebar = ({ sidebarOpen, setSidebarOpen }) =>{
                       <a
                         href="#0"
                         className={`no-underline  block text-[#1F1D2B] truncate transition duration-150 ${
-                          pathname === '/' || pathname.includes('dashboard') ? 'hover:text-slate-200 text-[#1F1D2B]' : 'hover:text-white'
+                          pathname === '/' || pathname.includes('dashboard') ? ' text-[#1F1D2B]' : 'hover:text-white'
                         }`}
                         onClick={(e) => {
                           e.preventDefault();
