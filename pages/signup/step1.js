@@ -3,9 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { users } from "../../utils/userData";
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
+  const [customError, setCustomError] = useState("");
 
   const {
     handleSubmit,
@@ -14,9 +16,17 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setFormData((prevData) => ({ ...prevData, ...data }));
-    setEmail(data.email);
-    setCurrentStep(2);
+    setCustomError(""); // Reset custom error
+
+    const emailExists = users.some((user) => data.email === user.email);
+
+    if (emailExists) {
+      setCustomError("Email already exists.");
+    } else {
+      setFormData((prevData) => ({ ...prevData, ...data }));
+      setEmail(data.email);
+      setCurrentStep(2);
+    }
   };
 
   const handleGetStartedClick = () => {
@@ -60,6 +70,11 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                       {errors.email && (
                         <p className="text-[#F64C4C] mx-1 my-1">
                           Email is required
+                        </p>
+                      )}
+                      {customError && (
+                        <p className="text-[#F64C4C] mx-1 my-1">
+                          {customError}
                         </p>
                       )}
                     </div>

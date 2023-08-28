@@ -8,6 +8,7 @@ import { users } from "../../utils/userData";
 const Login1 = ({ setCurrentStep }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
+  const [customError, setCustomError] = useState("");
 
   const {
     handleSubmit,
@@ -17,6 +18,7 @@ const Login1 = ({ setCurrentStep }) => {
 
   const onSubmit = async (data) => {
     setFormData((prevData) => ({ ...prevData, ...data }));
+    setCustomError(""); // Reset the custom error
 
     const matchingUser = users.find(
       (user) =>
@@ -24,21 +26,28 @@ const Login1 = ({ setCurrentStep }) => {
         data.password === user.password
     );
 
+    const userWithEmailOrPhone = users.find(
+      (user) => data.email === user.email || data.email === user.phone
+    );
+
     if (matchingUser) {
       console.log("Login done");
       setCurrentStep((prevStep) => prevStep + 1);
+    } else if (!userWithEmailOrPhone) {
+      setCustomError("Email does not exist.");
+      setTimeout(() => {
+        router.push("/signup");
+      }, 2000);
     } else {
       router.push("/signup");
     }
   };
 
   const handleGetStartedClick = () => {
-    router.push("/signup"); // Redirect to /signup
+    router.push("/signup");
   };
 
-  const onAlreadyHaveAnClick = useCallback(() => {
-    // Please sync "LogIn 1" to the project
-  }, []);
+  const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,6 +85,12 @@ const Login1 = ({ setCurrentStep }) => {
                       {errors.email && (
                         <p className="text-[#F64C4C] my-1 mx-1">
                           {errors.email.message}
+                        </p>
+                      )}
+
+                      {customError && (
+                        <p className="text-[#F64C4C] my-1 mx-1">
+                          {customError}
                         </p>
                       )}
                     </div>
