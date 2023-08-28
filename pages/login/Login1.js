@@ -31,7 +31,6 @@ const Login1 = ({ setCurrentStep }) => {
     );
 
     if (matchingUser) {
-      console.log("Login done");
       setCurrentStep((prevStep) => prevStep + 1);
     } else if (!userWithEmailOrPhone) {
       setCustomError("Email does not exist.");

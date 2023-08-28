@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
+import { simpleHash, users } from "../../utils/userData";
 
 const Login2 = ({ setCurrentStep }) => {
   const [formData, setFormData] = useState({});
   const user = useSelector((state) => state.userSlice.items);
+  const [passwordError, setPasswordError] = useState(null);
 
   const {
     handleSubmit,
@@ -15,12 +17,15 @@ const Login2 = ({ setCurrentStep }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    if (user.email === formData.email && user.password === formData.password) {
+    const matchedUser = users.find((u) => u.email === data.email);
+
+    if (matchedUser && matchedUser.passwordHash === simpleHash(data.password)) {
       console.log("Login done");
       setCurrentStep((prevStep) => prevStep + 1);
+      setPasswordError(null);
+    } else {
+      setPasswordError("Password is incorrect");
     }
-
-    setFormData((prevData) => ({ ...prevData, ...data }));
   };
 
   return (
@@ -75,6 +80,11 @@ const Login2 = ({ setCurrentStep }) => {
                         {...register("password", { required: true })}
                         className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                       />
+                      {passwordError && (
+                        <p className="text-[#F64C4C] my-1 mx-1">
+                          {passwordError}
+                        </p>
+                      )}
                     </div>
 
                     <button
