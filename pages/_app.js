@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }) {
       <SessionProvider session={pageProps.session}>  
       <Provider store={store} >
       <Component {...pageProps} />
+      
       </Provider>
       </SessionProvider>   
       </div>

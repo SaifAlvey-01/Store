@@ -39,7 +39,9 @@ const Login1 = ({ setCurrentStep }) => {
         router.push("/signup");
       }, 2000);
     } else {
-      router.push("/signup");
+      setCurrentStep((prevStep) => prevStep + 1);
+
+      // router.push("/signup");
     }
   };
 
