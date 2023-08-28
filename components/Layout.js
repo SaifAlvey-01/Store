@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Sidebar from '../../components/partials/Sidebar';
-import Header from '../../components/partials/Header';
+import Sidebar from './partials/Sidebar';
+import Header from './partials/Header';
 
 
-const index = () => {
+const Layout = ({children}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
@@ -13,7 +13,7 @@ const index = () => {
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           <main>
             <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto  bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen bg-[#F6F7FF]">
-                <p>Hello</p>    
+               {children}  
             </div>
           </main>
         </div>
@@ -21,4 +21,4 @@ const index = () => {
     );
 }
 
-export default index;
+export default Layout;
