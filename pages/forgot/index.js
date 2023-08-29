@@ -26,7 +26,13 @@ const ForgotComponent = () => {
       case 3:
         return <Forgot3 setCurrentStep={setCurrentStep} />;
       case 4:
-        return <Loading url="/login" />;
+        return (
+          <Loading
+            url="/login"
+            message="Resetting Password..."
+            duration="3000"
+          />
+        );
 
       default:
         return null;

@@ -1,25 +1,24 @@
 import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import animationData from "../public/animation_ll6mnwur.json";
-import { useRouter } from "next/navigation";
-// import cogoToast from 'cogo-toast';
+import { useRouter } from "next/router";
 
-const Loading = ({ url }) => {
+const Loading = ({ url = "/", message = "Loading...", duration = 3000 }) => {
   const router = useRouter();
 
-  setTimeout(() => {
-    router.push(url, { scroll: false });
-  }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push(url, { scroll: false });
+    }, duration);
 
-  // useEffect(()=>{
-  //   cogoToast.success('Password has been reset! Login Now');
-  // },[])
+    return () => clearTimeout(timer);
+  }, [url, duration, router]);
 
   return (
     <div className="bg-transparent">
       <Lottie animationData={animationData} loop={true} autoplay={true} />
-      <div className="flex flex-row justify-center items-center font-bold text-lg">
-        Resetting Password...
+      <div className="flex flex-row justify-center font-bold text-lg">
+        {message}
       </div>
     </div>
   );

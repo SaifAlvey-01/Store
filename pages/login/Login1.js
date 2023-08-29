@@ -16,29 +16,33 @@ const Login1 = ({ setCurrentStep }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    setFormData((prevData) => ({ ...prevData, ...data }));
-    setCustomError(""); // Reset the custom error
-
-    const matchingUser = users.find(
-      (user) =>
-        (data.email === user.email || data.email === user.phone) &&
-        data.password === user.password
-    );
+  const onSubmit = async (data, e) => {
+    e.preventDefault();
 
     const userWithEmailOrPhone = users.find(
       (user) => data.email === user.email || data.email === user.phone
     );
 
-    if (matchingUser) {
+    if (userWithEmailOrPhone) {
+      setCustomError("");
       setCurrentStep((prevStep) => prevStep + 1);
-    } else if (!userWithEmailOrPhone) {
-      setCustomError("Email does not exist.");
     } else {
-      setCurrentStep((prevStep) => prevStep + 1);
-
-      // router.push("/signup");
+      setCustomError("Email or mobile number does not exist.");
     }
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    const userWithEmailOrPhone = users.find(
+      (user) => value === user.email || value === user.phone
+    );
+
+    if (userWithEmailOrPhone) {
+      setCustomError(""); // Clear the error message if a valid email or phone number is found
+    }
+
+    // Let react-hook-form handle its internal onChange
+    register("email").onChange(e);
   };
 
   const handleGetStartedClick = () => {
@@ -76,6 +80,7 @@ const Login1 = ({ setCurrentStep }) => {
                             message: "Invalid email or mobile number",
                           },
                         })}
+                        onChange={handleInputChange}
                         className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                           errors.email ? "border-red-500" : ""
                         }`}
@@ -86,7 +91,7 @@ const Login1 = ({ setCurrentStep }) => {
                         </p>
                       )}
 
-                      {customError && (
+                      {!errors.email && customError && (
                         <p className="text-[#F64C4C] my-1 mx-1">
                           {customError}
                         </p>
