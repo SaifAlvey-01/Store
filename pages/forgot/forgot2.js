@@ -2,13 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Verify from "../../components/Verify/Verify";
 
-const Forgot2 = ({ setCurrentStep, email }) => {
+const Forgot2 = ({ setCurrentStep, inputValue }) => {
   const [OTP, setOTP] = useState("");
-  const isEmail = /\S+@\S+\.\S+/.test(email);
+  const isEmail = /\S+@\S+\.\S+/.test(inputValue);
+
+  console.log(inputValue);
 
   const router = useRouter();
   const [active, setactive] = useState(false);
-  // Function to update input value in the state array
   const handleInputChange = (index, value) => {
     setInputValues((prevValues) => {
       const newValues = [...prevValues];
@@ -36,39 +37,25 @@ const Forgot2 = ({ setCurrentStep, email }) => {
             <div className="flex flex-col items-end justify-start">
               <div className="flex flex-col items-center justify-start">
                 <div className="flex flex-col items-start justify-start gap-[24px]">
-                <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] cursor-pointer text-neutral text-dimgray mt-4">
-                    <div className="self-stretch flex flex-row items-start justify-between">
-                      <div className="relative leading-[20px] font-medium text-neutral-500">
-                      Enter code sent to you at 
+                  <div className="w-[360px] flex flex-row items-start justify-center  gap-[4px] text-neutral text-dimgray mt-4">
+                    <div className="self-stretch flex flex-row items-center justify-center">
+                      <div className="relative leading-[20px] font-medium text-neutral-500 mr-1">
+                      Code sent to your please write it here.
                       </div>
                     </div>
-
-                    {email}
-                  
-                </div>
-                  {/* <div className="w-[360px] flex flex-col items-start justify-start ">
-                    <div className="flex items-center justify-center">
-                      <p className="text-[14px] text-center leading-[20px]">
-                        Enter code sent to you at 
-                      </p> 
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <p className="text-[14px] text-center leading-[20px]">
-                      {email}
-                      </p> 
-                    </div>
                     
-                  </div> */}
+                  </div>
+
                   <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
-                    <div className="self-stretch flex flex-row items-start justify-between">
+                    {/* <div className="self-stretch flex flex-row items-start justify-between">
                       <div className="relative leading-[20px] font-medium">
                         Code
                       </div>
                       <div>
-                        Didn’t get the code? <a className="text-[#4162FF]">Resend OTP</a>
-                    </div>
-                    </div>
-                    
+                        Didn’t get the code?{" "}
+                        <a className="text-[#4162FF]">Resend OTP</a>
+                      </div>
+                    </div> */}
 
                     <Verify OTP={OTP} setOTP={setOTP} />
                   </div>
@@ -85,24 +72,22 @@ const Forgot2 = ({ setCurrentStep, email }) => {
                     <div className="relative w-[90px] h-0" />
                     Continue
                   </button>
-
-                 
                 </div>
-                  <div
-            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto  mt-12"
-            // onClick={onAlreadyHaveAnClick}
-          >
-            <span>
-              <span>Remembered your password?</span>
-              <span className="text-mediumslateblue">{` `}</span>
-            </span>
-            <span
-              className="font-medium text-primary-300-main cursor-pointer "
-              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
-            >
-               Sign In
-            </span>
-          </div>
+                <div
+                  className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto  mt-12"
+                  // onClick={onAlreadyHaveAnClick}
+                >
+                  <span>
+                    <span>Remembered your password?</span>
+                    <span className="text-mediumslateblue">{` `}</span>
+                  </span>
+                  <span
+                    className="font-medium text-primary-300-main cursor-pointer "
+                    // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+                  >
+                    Sign In
+                  </span>
+                </div>
               </div>
             </div>
           </div>

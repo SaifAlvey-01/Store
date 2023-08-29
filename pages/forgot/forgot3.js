@@ -10,19 +10,27 @@ const Forgot3 = ({ setCurrentStep }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Clear previous error messages
+    setErrorMessage("");
+
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if (!password || !confirmPassword) {
-      setErrorMessage("Please enter the password.");
+      setErrorMessage("Please fill out both password fields.");
       return;
     }
 
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords does not match.");
+      setErrorMessage("Passwords do not match.");
       return;
     }
 
-    // Continue if everything is okay
+    if (!passwordPattern.test(password)) {
+      setErrorMessage(
+        "Password must contain at least one lowercase letter, one uppercase letter, one digit, and be at least eight characters long."
+      );
+      return;
+    }
+
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
@@ -96,7 +104,7 @@ const Forgot3 = ({ setCurrentStep }) => {
               className="font-medium text-primary-300-main cursor-pointer "
               // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-               Sign In
+              Sign In
             </span>
           </div>
         </div>

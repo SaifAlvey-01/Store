@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
 
 const SignUp2 = ({ setCurrentStep, setFormData }) => {
-  const { handleSubmit, register } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     setFormData((prevData) => ({ ...prevData, ...data }));
@@ -28,9 +32,25 @@ const SignUp2 = ({ setCurrentStep, setFormData }) => {
                       <input
                         type="password"
                         placeholder="Enter your password"
-                        className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
-                        {...register("password", { required: true })}
+                        className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                          errors.password ? "border-red-500" : ""
+                        }`}
+                        {...register("password", {
+                          required: "Password is required",
+                          pattern: {
+                            value:
+                              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/,
+                            message:
+                              "Password must contain at least one uppercase letter, one lowercase letter, and one number, and be at least 8 characters long.",
+                          },
+                        })}
                       />
+
+                      {errors.password && (
+                        <p className="text-[#F64C4C] my-1 mx-1">
+                          {errors.password.message}
+                        </p>
+                      )}
                     </div>
                     <button
                       className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
