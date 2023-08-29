@@ -34,9 +34,6 @@ const Login1 = ({ setCurrentStep }) => {
       setCurrentStep((prevStep) => prevStep + 1);
     } else if (!userWithEmailOrPhone) {
       setCustomError("Email does not exist.");
-      setTimeout(() => {
-        router.push("/signup");
-      }, 2000);
     } else {
       setCurrentStep((prevStep) => prevStep + 1);
 
