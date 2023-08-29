@@ -37,23 +37,17 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
             <div className="flex flex-col items-end justify-start">
               <div className="flex flex-col items-center justify-start">
                 <div className="flex flex-col items-start justify-start gap-[24px]">
-                  <div className="w-[360px] flex flex-row items-start justify-start  gap-[4px] text-neutral text-dimgray mt-4">
-                    <div className="self-stretch flex flex-row items-start justify-between">
+                  <div className="w-[360px] flex flex-row items-start justify-center  gap-[4px] text-neutral text-dimgray mt-4">
+                    <div className="self-stretch flex flex-row items-center justify-center">
                       <div className="relative leading-[20px] font-medium text-neutral-500 mr-1">
-                        Enter code sent to you at
+                      Code sent to your please write it here.
                       </div>
                     </div>
-                    <a
-                      href={`mailto:${inputValue}`}
-                      className="text-[#4162FF] "
-                      style={{ textDecoration: "none" }}
-                    >
-                      ({inputValue})
-                    </a>
+                    
                   </div>
 
                   <div className="w-[360px] flex flex-col items-start justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
-                    <div className="self-stretch flex flex-row items-start justify-between">
+                    {/* <div className="self-stretch flex flex-row items-start justify-between">
                       <div className="relative leading-[20px] font-medium">
                         Code
                       </div>
@@ -61,7 +55,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
                         Didn’t get the code?{" "}
                         <a className="text-[#4162FF]">Resend OTP</a>
                       </div>
-                    </div>
+                    </div> */}
 
                     <Verify OTP={OTP} setOTP={setOTP} />
                   </div>
