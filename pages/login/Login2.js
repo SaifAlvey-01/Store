@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { simpleHash, users } from "../../utils/userData";
+import cogoToast from 'cogo-toast';
+
 
 const Login2 = ({ setCurrentStep }) => {
   const [formData, setFormData] = useState({});
@@ -23,6 +25,7 @@ const Login2 = ({ setCurrentStep }) => {
       console.log("Login done");
       setCurrentStep((prevStep) => prevStep + 1);
       setPasswordError(null);
+      cogoToast.success('User Successfully logged in');
     } else {
       setPasswordError("Password is incorrect");
     }
