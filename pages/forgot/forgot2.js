@@ -33,48 +33,17 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
         <div className="flex flex-col items-center justify-start gap-[14px]">
           <b className="relative">Confirmation Code</b>
           <div className="flex w-full flex-col items-center justify-start text-base text-neutral-500">
-            <div className="flex w-full flex-col items-start justify-start gap-[24px]">
-              <div className="flex flex-col items-center justify-start text-center w-full gap-[4px] cursor-pointer text-neutral text-dimgray ml-3 mt-2">
-                <div className="self-stretch flex flex-row items-start justify-between">
-                  <div className="relative leading-[20px] md:text-text-[16px] lg:text-[16px] text-[15px] font-medium text-neutral-500">
-                    Enter code sent to you at
+            <div className="flex w-full flex-col items-center justify-center gap-[24px]">
+              <div className="flex flex-col items-center justify-center text-center w-full gap-[4px] cursor-pointer text-neutral text-dimgray ml-3 mt-2">
+                <div className="self-stretch flex flex-row items-center justify-center">
+                  <div className="relative leading-[20px] md:text-text-[16px] lg:text-[16px] text-[15px] font-medium text-neutral-500 text-center">
+                  Code sent to your please write it here.
                   </div>
                 </div>
-                <div
-                  style={{
-                    textDecoration: "none",
-                    color: "#4162FF",
-                    cursor: "pointer",
-                  }}
-                  className=" w-full flex flex-col items-start justify-start"
-                >
-                  {isEmail ? (
-                    <a
-                      style={{
-                        textDecoration: "none",
-                        color: "#4162FF",
-                        cursor: "pointer",
-                      }}
-                      href={`mailto:${inputValue}`}
-                    >
-                      ({inputValue})
-                    </a>
-                  ) : (
-                    `(${inputValue})`
-                  )}
-                </div>
+                
               </div>
               <div className="w-full flex flex-col items-center justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
-                <div className="self-stretch flex flex-row items-center justify-start ml-2">
-                  <div className=" flex flex-row items-center justify-start relative mr-14 leading-[20px] font-medium">
-                    Code
-                  </div>
-                  <div className=" flex flex-row items-center justify-start ml-14">
-                    Didn’t get the code?{" "}
-                    <a className="text-[#4162FF] ml-1">Resend OTP</a>
-                  </div>
-                </div>
-
+                
                 <div className="w-full flex flex-row items-center justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
                   <Verify OTP={OTP} setOTP={setOTP} />
                 </div>
@@ -93,6 +62,21 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
                 Continue
               </button>
             </div>
+            <div
+            className="relative w-full text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-6"
+            // onClick={onAlreadyHaveAnClick}
+          >
+            <span>
+              <span>Remembered your password?</span>
+              <span className="text-mediumslateblue">{` `}</span>
+            </span>
+            <span
+              className="font-medium text-primary-300-main cursor-pointer "
+              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+            >
+              Log In
+            </span>
+          </div>
           </div>
         </div>
       </div>

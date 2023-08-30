@@ -26,10 +26,10 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
       setCurrentStep((prevStep) => prevStep + 1);
     } else if (isEmail || isMobile) {
       setErrorMessage(
-        isEmail ? "Email does not exist" : "Mobile no does not exist"
+        isEmail ? "Invalid Email" : "Mobile no does not exist"
       );
     } else {
-      setErrorMessage("Please enter a valid email or mobile number");
+      setErrorMessage("Invalid Email");
     }
   };
 
@@ -54,11 +54,12 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
             >
               <div className="w-full flex flex-col items-start justify-start gap-[6px] mb-6">
                 <label className="self-stretch flex flex-row items-start justify-start relative leading-[20px] font-medium">
-                  Email or Mobile Number
+                  Email 
                 </label>
                 <input
                   type="text"
                   value={inputValue}
+                  placeholder="Enter your email "
                   onChange={(e) => {
                     setInputValue(e.target.value);
                     setErrorMessage("");
@@ -94,7 +95,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
               className="font-medium text-primary-300-main cursor-pointer "
               // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Sign In
+              Log In
             </span>
           </div>
         </div>

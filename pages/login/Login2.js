@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { simpleHash, users } from "../../utils/userData";
 import { useRouter } from "next/router";
 import Loading from "../../components/loading";
-import cogoToast from 'cogo-toast';
+
 
 
 
@@ -29,8 +29,8 @@ const Login2 = ({ setCurrentStep }) => {
 
     // No user found with the given email
     if (!matchedUser) {
-      setPasswordError("Email does not exist");
-      return; // exit early
+      setPasswordError("Invalid Email or password");
+      return; 
     }
 
     // Check password hash
@@ -42,10 +42,10 @@ const Login2 = ({ setCurrentStep }) => {
         router.push("/dashboard");
       }, 2000);
 
-      cogoToast.success('User Successfully logged in');
+      
 
     } else {
-      setPasswordError("Password is incorrect");
+      setPasswordError("Invalid Email or password");
     }
   };
 
@@ -68,7 +68,7 @@ const Login2 = ({ setCurrentStep }) => {
                         <div className=" flex w-full flex-col items-center gap-[4px]">
                           <div className="self-stretch flex flex-row items-start justify-start">
                             <div className="relative leading-[20px] font-medium">
-                              Email or Mobile Number
+                              Email
                             </div>
                           </div>
                           <input

@@ -27,7 +27,7 @@ const Login1 = ({ setCurrentStep }) => {
       setCustomError("");
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
-      setCustomError("Email or mobile number does not exist.");
+      setCustomError("Invalid Email");
     }
   };
 
@@ -66,18 +66,18 @@ const Login1 = ({ setCurrentStep }) => {
                     <div className="flex w-full flex-col items-center">
                       <div className="self-stretch flex flex-row items-start justify-start">
                         <div className="relative leading-[20px] font-medium">
-                          Email or Mobile Number
+                          Email
                         </div>
                       </div>
                       <input
                         type="text"
-                        placeholder="Enter Email or Mobile Number"
+                        placeholder="Enter your email "
                         {...register("email", {
                           required: "This field is required.",
                           pattern: {
                             value:
                               /^(?:[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|^\+[0-9]{10,15}$)/i,
-                            message: "Invalid email or mobile number",
+                            message: "Invalid email ",
                           },
                         })}
                         onChange={handleInputChange}
@@ -149,7 +149,7 @@ const Login1 = ({ setCurrentStep }) => {
               className="font-medium text-primary-300-main"
               onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Get Stated
+              Get Started
             </span>
           </div>
         </div>
