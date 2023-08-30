@@ -4,6 +4,7 @@ import styles from "./styledVerify.module.css";
 function Verify({setOTP, OTP}) {
  
   function handleChange(OTP) {
+    const numericValue = OTP.replace(/[^0-9]/g, "");
     setOTP(OTP);
   }
 
@@ -16,6 +17,7 @@ function Verify({setOTP, OTP}) {
           numInputs={6}
           separator={<span>-</span>}
           isInputNum
+          inputType="number"
           inputStyle={styles.inputbox}
           renderInput={(props, index) => (
             <input
