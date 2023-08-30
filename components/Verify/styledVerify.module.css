@@ -1,7 +1,13 @@
 /* Verify.module.css */
+.otpinput input::-webkit-outer-spin-button,
+.otpinput input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /* Style for the container div */
 .verifycontainer {
+  
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -17,9 +23,10 @@
   width: 2.75rem; /* 44px */
   display: flex;
   flex-direction: row;
-
   align-items: center;
   justify-content: flex-start;
+ 
+  
 }
 
 /* Style for the OTP input box */
