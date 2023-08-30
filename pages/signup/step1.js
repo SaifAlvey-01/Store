@@ -133,7 +133,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
               className="font-medium text-primary-300-main"
               onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Get Stated
+              Log In
             </span>
           </div>
         </div>

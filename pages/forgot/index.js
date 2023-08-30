@@ -32,6 +32,7 @@ const ForgotComponent = () => {
             message="Resetting Password..."
             duration="3000"
           />
+          
         );
 
       default:
