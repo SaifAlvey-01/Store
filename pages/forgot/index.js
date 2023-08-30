@@ -26,7 +26,13 @@ const ForgotComponent = () => {
       case 3:
         return <Forgot3 setCurrentStep={setCurrentStep} />;
       case 4:
-        return <Loading url="/login" />;
+        return (
+          <Loading
+            url="/login"
+            message="Resetting Password..."
+            duration="3000"
+          />
+        );
 
       default:
         return null;
@@ -42,7 +48,7 @@ const ForgotComponent = () => {
           src="/logo-1@2x.png"
         />
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(100vh-100px)] sm:min-h-[calc(100% - 72px)]">
+      <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(100vh-160px)] sm:min-h-[calc(100% - 72px)]">
         {renderStep()}
       </div>
     </div>

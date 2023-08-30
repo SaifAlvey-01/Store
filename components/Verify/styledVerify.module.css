@@ -11,7 +11,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -23,10 +23,8 @@
   width: 2.75rem; /* 44px */
   display: flex;
   flex-direction: row;
+  width: 100%;
   align-items: center;
-  justify-content: flex-start;
- 
-  
 }
 
 /* Style for the OTP input box */
@@ -43,8 +41,8 @@
   justify-content: flex-start;
   border: 1.5px solid gainsboro;
   outline: none; /* Inline style for outline */
-  margin:4px;
-  height:45px
+  margin: 4px 6px;
+  height: 50px;
 }
 .inputbox:focus {
   outline: none;

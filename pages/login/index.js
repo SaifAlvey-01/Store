@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Login1 from "./Login1";
 import Login2 from "./Login2";
 
-const SignupComponent = () => {
+const LoginComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const renderStep = () => {
@@ -26,11 +26,11 @@ const SignupComponent = () => {
           src="/logo-1@2x.png"
         />
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(100vh-100px)] sm:min-h-[calc(100% - 72px)] ">
+      <div className="flex flex-col md:flex-row items-center w-auto justify-center font-freesans min-h-[calc(100vh-120px)] sm:min-h-[calc(100% - 72px)] ">
         {renderStep()}
       </div>
     </div>
   );
 };
 
-export default SignupComponent;
+export default LoginComponent;
