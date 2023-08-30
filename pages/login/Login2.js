@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { simpleHash, users } from "../../utils/userData";
 import { useRouter } from "next/router";
 import Loading from "../../components/loading";
+import cogoToast from 'cogo-toast';
+
+
 
 const Login2 = ({ setCurrentStep }) => {
   const router = useRouter();
@@ -33,10 +36,14 @@ const Login2 = ({ setCurrentStep }) => {
     // Check password hash
     if (matchedUser.passwordHash === simpleHash(data.password)) {
       setPasswordError(null);
+
       setIsLoading(true);
       setTimeout(() => {
         router.push("/dashboard");
       }, 2000);
+
+      cogoToast.success('User Successfully logged in');
+
     } else {
       setPasswordError("Password is incorrect");
     }
