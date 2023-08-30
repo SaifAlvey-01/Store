@@ -17,7 +17,14 @@ function Verify({setOTP, OTP}) {
           separator={<span>-</span>}
           isInputNum
           inputStyle={styles.inputbox}
-          renderInput={(props) => <input {...props} />}
+          renderInput={(props, index) => (
+            <input
+              {...props}
+              key={index}
+              // style={{ width: "30px" }} // Set the width of the input boxes
+              maxLength={1} // Set max length to 1 to ensure only one character is allowed
+            />
+          )}
         />
       </div>
     </div>
