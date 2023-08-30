@@ -26,7 +26,7 @@ const LoginComponent = () => {
           src="/logo-1@2x.png"
         />
       </div>
-      <div className="flex flex-col md:flex-row justify-center font-freesans min-h-[calc(100vh-100px)] sm:min-h-[calc(100% - 72px)] ">
+      <div className="flex flex-col md:flex-row items-center w-auto justify-center font-freesans min-h-[calc(100vh-120px)] sm:min-h-[calc(100% - 72px)] ">
         {renderStep()}
       </div>
     </div>

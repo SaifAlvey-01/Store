@@ -12,7 +12,8 @@ const Forgot3 = ({ setCurrentStep }) => {
     e.preventDefault();
     setErrorMessage("");
 
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    const passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$.!%*?&#]+$/i;
 
     if (!password || !confirmPassword) {
       setErrorMessage("Please fill out both password fields.");
@@ -24,9 +25,9 @@ const Forgot3 = ({ setCurrentStep }) => {
       return;
     }
 
-    if (!passwordPattern.test(password)) {
+    if (!passwordPattern.test(password) || password.length < 8) {
       setErrorMessage(
-        "Password must contain at least one lowercase letter, one uppercase letter, one digit, and be at least eight characters long."
+        "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one digit. Special characters are allowed but not mandatory."
       );
       return;
     }
@@ -39,7 +40,7 @@ const Forgot3 = ({ setCurrentStep }) => {
   };
 
   return (
-    <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-10 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
+    <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start ">
         <div className="flex flex-col items-center justify-start gap-[18px]">
           <h1 className="text-neutral-600 font-semibold text-[28px] font-FreeSans tracking-normal my-2">

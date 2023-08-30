@@ -38,51 +38,52 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
   };
 
   return (
-    <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-center border-[0.8px] border-solid border-gainsboro">
-      <div
-        className="flex flex-col items-center justify-start gap-[50px]"
-       
-      >
-        <h1 className="text-neutral-600 font-semibold text-24 font-FreeSans tracking-normal my-0">
-          Forgot Passcode !
-          <span className="flex text-neutral-500 font-roboto font-normal text-sm pt-3 justify-center items-center">
-            No worries, we'll help you reset it!
-          </span>
-        </h1>
+    <div className=" w-full sm:w-[450px] md:w-[450px] lg:w-[450px] min-h-[calc(100% - 100px)]  text-neutral-600">
+      <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden mx-2 py-8 px-3 items-center justify-center border-[0.8px] border-solid border-gainsboro">
+        <div className="flex flex-col items-center justify-start gap-[20px]">
+          <h1 className="text-neutral-600 font-semibold text-24 font-FreeSans tracking-normal my-0">
+            Forgot Passcode !
+            <span className="flex text-neutral-500 font-roboto font-normal text-sm pt-3 justify-center items-center">
+              No worries, we'll help you reset it!
+            </span>
+          </h1>
+          <div className=" w-full text-neutral-600">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center justify-start text-sm text-dimgray"
+            >
+              <div className="w-full flex flex-col items-start justify-start gap-[6px] mb-6">
+                <label className="self-stretch flex flex-row items-start justify-start relative leading-[20px] font-medium">
+                  Email or Mobile Number
+                </label>
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    setErrorMessage("");
+                  }}
+                  required
+                  className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid "
+                />
+                {errorMessage && (
+                  <div className="text-red-500  mx-1 text-[13px]">
+                    {errorMessage}
+                  </div>
+                )}
+              </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col items-center justify-start text-sm text-dimgray"
-        >
-          <div className="w-[360px] flex flex-col items-start justify-start gap-[6px] mb-8">
-            <label className="self-stretch flex flex-row items-start justify-start relative leading-[20px] font-medium">
-              Email or Mobile Number
-            </label>
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => {
-                setInputValue(e.target.value);
-                setErrorMessage("");
-              }}
-              required
-              className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid "
-            />
-            {errorMessage && (
-              <div className="text-red-500 text-[12px]">{errorMessage}</div>
-            )}
+              <button
+                type="submit"
+                className="rounded bg-primary-300-main w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+              >
+                <div className="relative w-[90px] h-0" />
+                Reset Password
+              </button>
+            </form>
           </div>
-
-          <button
-            type="submit"
-            className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
-          >
-            <div className="relative w-[90px] h-0" />
-            Reset Password
-          </button>
-        </form>
-        <div
-            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-12"
+          <div
+            className="relative w-full text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-6"
             // onClick={onAlreadyHaveAnClick}
           >
             <span>
@@ -93,10 +94,10 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
               className="font-medium text-primary-300-main cursor-pointer "
               // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-               Sign In
+              Sign In
             </span>
           </div>
-       
+        </div>
       </div>
     </div>
   );
