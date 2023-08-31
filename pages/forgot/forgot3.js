@@ -27,7 +27,7 @@ const Forgot3 = ({ setCurrentStep }) => {
 
     if (!passwordPattern.test(password) || password.length < 8) {
       setErrorMessage(
-        "Password must be at least 8 characters long and contain at least one lowercase letter, one uppercase letter, and one digit. Special characters are allowed but not mandatory."
+        "Password must be at least 8 characters, 1 uppercase, 1 lowercase & 1 number"
       );
       return;
     }

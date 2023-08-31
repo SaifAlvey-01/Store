@@ -6,11 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { simpleHash, users } from "../../utils/userData";
 import { useRouter } from "next/router";
 import Loading from "../../components/loading";
-import cogoToast from 'cogo-toast';
+import cogoToast from "cogo-toast";
 
-
-
-const Login2 = ({ setCurrentStep }) => {
+const Login2 = ({ inputData }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
   const user = useSelector((state) => state.userSlice.items);
@@ -42,8 +40,7 @@ const Login2 = ({ setCurrentStep }) => {
         router.push("/dashboard");
       }, 2000);
 
-      cogoToast.success('User Successfully logged in');
-
+      cogoToast.success("User Successfully logged in");
     } else {
       setPasswordError("Password is incorrect");
     }
@@ -52,7 +49,7 @@ const Login2 = ({ setCurrentStep }) => {
   return (
     <div>
       {isLoading ? (
-        <Loading url="/dashboard" message="Loading..." duration="2000" />
+        <Loading url="/dashboard" message="Logging in..." duration="2000" />
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-10 px-4 sm:px-2 md:px-3 lg:px-4  items-center justify-center border-[0.8px] border-solid border-gainsboro">
@@ -82,6 +79,7 @@ const Login2 = ({ setCurrentStep }) => {
                             className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 text-[13px]  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                               errors.email ? "border-red-500" : ""
                             }`}
+                            value={inputData}
                           />
                           {errors.email && (
                             <p className=" self-start text-[#F64C4C]  text-[13px] my-1 mx-1">

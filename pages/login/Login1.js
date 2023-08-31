@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { users } from "../../utils/userData";
 
-const Login1 = ({ setCurrentStep }) => {
+const Login1 = ({ setCurrentStep, setInputData }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
   const [customError, setCustomError] = useState("");
@@ -25,6 +25,7 @@ const Login1 = ({ setCurrentStep }) => {
 
     if (userWithEmailOrPhone) {
       setCustomError("");
+      setInputData(data.email);
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
       setCustomError("Email or mobile number does not exist.");

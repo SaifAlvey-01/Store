@@ -4,13 +4,16 @@ import Login2 from "./Login2";
 
 const LoginComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [inputData, setInputData] = useState("");
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return <Login1 setCurrentStep={setCurrentStep} />;
+        return (
+          <Login1 setCurrentStep={setCurrentStep} setInputData={setInputData} />
+        );
       case 2:
-        return <Login2 setCurrentStep={setCurrentStep} />;
+        return <Login2 setCurrentStep={setCurrentStep} inputData={inputData} />;
 
       default:
         return null;
