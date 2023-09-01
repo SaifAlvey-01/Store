@@ -9,10 +9,10 @@ const Loading = ({ url = "/", message = "Loading...", duration = 3000 }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      router.push(url, { scroll: false });
       if(url === "/login"){
         cogoToast.success('Password has been reset! Login Now');
       }
-      router.push(url, { scroll: false });
     }, duration);
 
     return () => clearTimeout(timer);
