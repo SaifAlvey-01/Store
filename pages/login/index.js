@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Login1 from "./Login1";
 import Login2 from "./Login2";
+import Footer from "../../components/footer/footer";
+
 
 const LoginComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -26,9 +28,10 @@ const LoginComponent = () => {
           src="/logo-1@2x.png"
         />
       </div>
-      <div className="flex flex-col md:flex-row items-center w-auto justify-center font-freesans min-h-[calc(100vh-120px)] sm:min-h-[calc(100% - 72px)] ">
+      <div className="flex flex-col md:flex-row items-center w-auto justify-center font-freesans min-h-[calc(98vh-180px)] sm:min-h-[calc(100% - 72px)] ">
         {renderStep()}
       </div>
+      <Footer />
     </div>
   );
 };

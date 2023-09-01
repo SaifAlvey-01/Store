@@ -73,7 +73,7 @@ const Login1 = ({ setCurrentStep }) => {
                         type="text"
                         placeholder="Enter your email "
                         {...register("email", {
-                          required: "This field is required.",
+                          required: "Enter A Valid Email Address !",
                           pattern: {
                             value:
                               /^(?:[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|^\+[0-9]{10,15}$)/i,
