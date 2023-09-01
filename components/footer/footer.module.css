@@ -1,0 +1,30 @@
+
+/* Apply the animation to an element */
+.footer {
+  background-image: url("../../public/footer.png");
+  background-repeat: repeat-x;
+  background-position: center 80%;
+  background-size: cover; 
+  -webkit-animation: mymove 500s infinite;
+  animation: mymove 500s infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  background-size: auto 120px;
+  height: 110px;
+  align-items: end;
+  justify-content: center;
+  display: flex;
+}
+
+        
+@keyframes mymove {
+  0% {
+    background-position-x: 0;
+}
+100% {
+    background-position-x: -90000px;
+}
+}
+
