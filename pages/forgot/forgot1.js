@@ -25,11 +25,8 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
 
   return (
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-8 px-6 items-start justify-center border-[0.8px] border-solid border-gainsboro">
-      <div
-        className="flex flex-col items-center justify-start gap-[50px]"
-       
-      >
-        <h1 className="text-neutral-600 font-semibold text-24 font-FreeSans tracking-normal my-0">
+      <div className="flex flex-col items-center justify-start gap-[50px]">
+        <h1 className="text-neutral-600 font-semibold text-24 font-freesans tracking-normal my-0">
           Forgot Passcode !
           <span className="flex text-neutral-500 font-roboto font-normal text-sm pt-3 justify-center items-center">
             No worries, we'll help you reset it!
@@ -68,21 +65,20 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
           </button>
         </form>
         <div
-            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-12"
-            // onClick={onAlreadyHaveAnClick}
+          className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-12"
+          // onClick={onAlreadyHaveAnClick}
+        >
+          <span>
+            <span>Remembered your password?</span>
+            <span className="text-mediumslateblue">{` `}</span>
+          </span>
+          <span
+            className="font-medium text-primary-300-main cursor-pointer "
+            // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
           >
-            <span>
-              <span>Remembered your password?</span>
-              <span className="text-mediumslateblue">{` `}</span>
-            </span>
-            <span
-              className="font-medium text-primary-300-main cursor-pointer "
-              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
-            >
-               Sign In
-            </span>
-          </div>
-       
+            Sign In
+          </span>
+        </div>
       </div>
     </div>
   );

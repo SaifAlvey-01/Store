@@ -32,7 +32,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
       <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-16 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
         <div className="flex flex-col items-center justify-start gap-[40px]">
           <div className="flex flex-col items-center justify-start gap-[32px]">
-            <h2 className="text-neutral-600 my-0 font-semibold text-24 font-FreeSans  tracking-normal">
+            <h2 className="text-neutral-600 my-0 font-semibold text-24 font-freesans  tracking-normal">
               Start 7 Days Free Trial
             </h2>
             <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">

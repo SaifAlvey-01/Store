@@ -26,7 +26,7 @@ const SignUp5 = () => {
 
   return (
     <>
-      <div className="w-[408px] h-[373px] text-11xl text-neutral-600 font-FreeSans ">
+      <div className="w-[408px] h-[373px] text-11xl text-neutral-600 font-freesans ">
         <div
           style={{
             margin: "0px 10px",
@@ -39,7 +39,7 @@ const SignUp5 = () => {
           className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  py-8 px-6 items-start border-[0.8px] border-solid  border-gainsboro"
         >
           <div className="flex flex-col items-center justify-start gap-[31px]">
-            <b className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">
+            <b className="text-neutral-600 font-semibold text-24 font-freesans  tracking-normal">
               Enter business details
             </b>
             <div className="flex flex-col items-center justify-start text-sm text-dimgray">
