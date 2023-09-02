@@ -37,13 +37,11 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
               <div className="flex flex-col items-center justify-center text-center w-full gap-[4px] cursor-pointer text-neutral text-dimgray ml-3 mt-2">
                 <div className="self-stretch flex flex-row items-center justify-center">
                   <div className="relative leading-[20px] md:text-text-[16px] lg:text-[16px] text-[15px] font-medium text-neutral-500 text-center">
-                  Code sent to your please write it here.
+                    Code sent to your please write it here.
                   </div>
                 </div>
-                
               </div>
               <div className="w-full flex flex-col items-center justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
-                
                 <div className="w-full flex flex-row items-center justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
                   <Verify OTP={OTP} setOTP={setOTP} />
                 </div>
@@ -63,20 +61,20 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
               </button>
             </div>
             <div
-            className="relative w-full text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-6"
-            // onClick={onAlreadyHaveAnClick}
-          >
-            <span>
-              <span>Remembered your password?</span>
-              <span className="text-mediumslateblue">{` `}</span>
-            </span>
-            <span
-              className="font-medium text-primary-300-main cursor-pointer "
-              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+              className="relative w-full text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-6"
+              // onClick={onAlreadyHaveAnClick}
             >
-              Log In
-            </span>
-          </div>
+              <span>
+                <span>Remembered your password?</span>
+                <span className="text-mediumslateblue">{` `}</span>
+              </span>
+              <span
+                className="font-medium text-primary-300-main cursor-pointer "
+                // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+              >
+                Log In
+              </span>
+            </div>
           </div>
         </div>
       </div>
