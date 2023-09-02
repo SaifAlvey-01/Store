@@ -54,7 +54,7 @@ const SignUp5 = () => {
             className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden mx-2 py-8 px-4 items-center justify-center border-[0.8px] border-solid border-gainsboro"
           >
             <div className=" w-full flex flex-col items-center justify-start gap-[31px]">
-              <b className="text-neutral-600 font-semibold text-24 font-FreeSans  tracking-normal">
+              <b className="text-neutral-600 font-semibold text-24 font-freesans  tracking-normal">
                 Enter business details
               </b>
               <div className=" w-full flex flex-col items-center justify-center text-sm text-dimgray">

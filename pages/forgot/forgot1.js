@@ -25,9 +25,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
     if (userExists) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else if (isEmail || isMobile) {
-      setErrorMessage(
-        isEmail ? "Invalid Email" : "Mobile no does not exist"
-      );
+      setErrorMessage(isEmail ? "Invalid Email" : "Mobile no does not exist");
     } else {
       setErrorMessage("Invalid Email");
     }
@@ -41,7 +39,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
     <div className=" w-full sm:w-[450px] md:w-[450px] lg:w-[450px] min-h-[calc(100% - 100px)]  text-neutral-600">
       <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden mx-2 py-8 px-3 items-center justify-center border-[0.8px] border-solid border-gainsboro">
         <div className="flex flex-col items-center justify-start gap-[20px]">
-          <h1 className="text-neutral-600 font-semibold text-24 font-FreeSans tracking-normal my-0">
+          <h1 className="text-neutral-600 font-semibold text-24 font-freesans tracking-normal my-0">
             Forgot Passcode !
             <span className="flex text-neutral-500 font-roboto font-normal text-sm pt-3 justify-center items-center">
               No worries, we'll help you reset it!
@@ -54,7 +52,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
             >
               <div className="w-full flex flex-col items-start justify-start gap-[6px] mb-6">
                 <label className="self-stretch flex flex-row items-start justify-start relative leading-[20px] font-medium">
-                  Email 
+                  Email
                 </label>
                 <input
                   type="text"

@@ -35,13 +35,11 @@ const Forgot3 = ({ setCurrentStep }) => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
- 
-
   return (
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start ">
         <div className="flex flex-col items-center justify-start gap-[18px]">
-          <h1 className="text-neutral-600 font-semibold text-[28px] font-FreeSans tracking-normal my-2">
+          <h1 className="text-neutral-600 font-semibold text-[28px] font-freesans tracking-normal my-2">
             Create New Password
           </h1>
 
