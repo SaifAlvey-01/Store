@@ -3,9 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { users } from "../../utils/userData";
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
+  const [customError, setCustomError] = useState("");
 
   const {
     handleSubmit,
@@ -14,10 +16,20 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setFormData((prevData) => ({ ...prevData, ...data }));
-    setEmail(data.email);
-    setCurrentStep(2);
+    setCustomError("Enter A Valid Email Address !"); // Reset custom error
+
+    const emailExists = users.some((user) => data.email === user.email);
+
+    if (emailExists) {
+      setCustomError("Email already exists.");
+    } else {
+      setFormData((prevData) => ({ ...prevData, ...data }));
+      setEmail(data.email);
+      setCurrentStep(2);
+    }
   };
+
+  console.log(errors.email, "<----errors.email")
 
   const handleGetStartedClick = () => {
     router.push("/login"); // Redirect to /signup
@@ -29,17 +41,17 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-16 px-6 items-start justify-start border-[0.8px] border-solid border-gainsboro">
-        <div className="flex flex-col items-center justify-start gap-[40px]">
+      <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-12 px-3 sm:px-2 md:px-3 lg:px-4 mx-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
+        <div className="flex flex-col items-center gap-[30px]">
           <div className="flex flex-col items-center justify-start gap-[32px]">
             <h2 className="text-neutral-600 my-0 font-semibold text-24 font-freesans  tracking-normal">
               Start 7 Days Free Trial
             </h2>
             <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">
-              <div className="flex flex-col items-end justify-start gap-[32px]">
-                <div className="flex flex-col items-center justify-start gap-[32px]">
-                  <div className="flex flex-col items-start justify-start gap-[28px]">
-                    <div className="w-[360px] flex flex-col items-start justify-start gap-[4px]">
+              <div className="flex flex-col w-full items-center justify-start gap-[36px]">
+                <div className="flex flex-col w-full items-center justify-start gap-[32px]">
+                  <div className="flex flex-col w-full items-start justify-start gap-[28px]">
+                    <div className="flex w-full flex-col items-center justify-center gap-[4px]">
                       <div className="self-stretch flex flex-row items-start justify-start">
                         <div className="relative leading-[20px] font-medium">
                           Email
@@ -58,13 +70,24 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                         }`}
                       />
                       {errors.email && (
-                        <p className="text-[#F64C4C] mx-1 my-1">
-                          Email is required
-                        </p>
+                        <div className="flex flex-col w-full items-start">
+                          <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
+                            {errors.email.message}
+                          </p>
+                        </div>
+                      )}
+
+                      {!errors.email && customError && (
+                        <div className="flex flex-col w-full items-start">
+                          <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
+                            {customError}
+                          </p>
+                        </div>
                       )}
                     </div>
+
                     <button
-                      className="rounded bg-primary-300-main w-[360px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                      className="rounded bg-primary-300-main w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
                       type="submit"
                     >
                       <div className="relative w-[90px] h-0" />
@@ -81,7 +104,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                     <hr className="h-px w-[90px] bg-gradient-line mx-3" />
                   </div>
                 </div>
-                <div className="rounded bg-white box-border w-[360px] flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                <div className="rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                   <div className="relative w-[90px] h-0" />
                   <div className="flex flex-row items-center justify-center gap-[6px]">
                     <img
@@ -95,13 +118,13 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                   </div>
                 </div>
               </div>
-              <div className="relative text-[12px] leading-[20px] font-roboto">
+              <div className="relative text-[12px] leading-[20px] mx-3 text-center  font-roboto">
                 By continuing, you agree to our Terms of Use and Privacy Policy.
               </div>
             </div>
           </div>
           <div
-            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto"
+            className="relative text-sm tracking-[0.25px] leading-[20px] text-center cursor-pointer text-darkslategray font-roboto"
             onClick={onAlreadyHaveAnClick}
           >
             <span>
@@ -109,10 +132,10 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
               <span className="text-mediumslateblue">{` `}</span>
             </span>
             <span
-              className="font-medium text-primary-300-main cursor-pointer "
+              className="font-medium text-primary-300-main"
               onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Get Stated
+              Log In
             </span>
           </div>
         </div>

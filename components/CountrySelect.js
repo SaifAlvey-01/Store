@@ -84,7 +84,13 @@ const CountrySelect = ({ value, onChange, options }) => {
       ...flag(data.flagImageUrl),
     }),
   };
-
+  const NoOptionsMessage = () => {
+    return (
+      <div className="flex justify-center text-center items-center p-2">
+        Countries Will Be Added Soon.
+      </div>
+    );
+  };
   const CustomOption = ({ innerProps, label, data }) => (
     <div
       {...innerProps}
@@ -116,6 +122,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       styles={customStyles}
       components={{
         Option: CustomOption,
+        NoOptionsMessage,  
       }}
     />
   );

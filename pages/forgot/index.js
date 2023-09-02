@@ -3,6 +3,7 @@ import Forgot1 from "./forgot1";
 import Forgot2 from "./forgot2";
 import Forgot3 from "./forgot3";
 import Loading from "../../components/loading";
+import Footer from "../../components/footer/footer";
 // import Forgot4 from './forgot4';
 
 const ForgotComponent = () => {
@@ -26,7 +27,14 @@ const ForgotComponent = () => {
       case 3:
         return <Forgot3 setCurrentStep={setCurrentStep} />;
       case 4:
-        return <Loading url="/login" />;
+        return (
+          <Loading
+            url="/login"
+            message="Resetting Password..."
+            duration="3000"
+          />
+          
+        );
 
       default:
         return null;
@@ -42,9 +50,10 @@ const ForgotComponent = () => {
           src="/logo-1@2x.png"
         />
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(100vh-100px)] sm:min-h-[calc(100% - 72px)]">
+      <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(98vh-180px)] sm:min-h-[calc(100% - 72px)]">
         {renderStep()}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -1,12 +1,18 @@
 /* Verify.module.css */
+.otpinput input::-webkit-outer-spin-button,
+.otpinput input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /* Style for the container div */
 .verifycontainer {
+  
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center
 }
 
 /* Style for each OTP input */
@@ -17,9 +23,9 @@
   width: 2.75rem; /* 44px */
   display: flex;
   flex-direction: row;
-
+  width: 100%;
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
 }
 
 /* Style for the OTP input box */
@@ -36,8 +42,8 @@
   justify-content: flex-start;
   border: 1.5px solid gainsboro;
   outline: none; /* Inline style for outline */
-  margin:4px;
-  height:45px
+  margin: 4px 6px;
+  height: 50px;
 }
 .inputbox:focus {
   outline: none;
