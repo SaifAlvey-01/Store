@@ -25,9 +25,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
     if (userExists) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else if (isEmail || isMobile) {
-      setErrorMessage(
-        isEmail ? "Invalid Email" : "Mobile no does not exist"
-      );
+      setErrorMessage(isEmail ? "Invalid Email" : "Mobile no does not exist");
     } else {
       setErrorMessage("Invalid Email");
     }
@@ -54,7 +52,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
             >
               <div className="w-full flex flex-col items-start justify-start gap-[6px] mb-6">
                 <label className="self-stretch flex flex-row items-start justify-start relative leading-[20px] font-medium">
-                  Email 
+                  Email
                 </label>
                 <input
                   type="text"

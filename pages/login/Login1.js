@@ -57,7 +57,7 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
       <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-12 px-2 sm:px-2 md:px-3 lg:px-4 mx-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
         <div className="flex flex-col items-center gap-[30px]">
           <div className="flex flex-col items-center justify-start gap-[32px]">
-            <h2 className="text-neutral-600 my-0 font-semibold text-24 font-FreeSans  tracking-normal">
+            <h2 className="text-neutral-600 my-0 font-semibold text-24 font-freesans  tracking-normal">
               Welcome Back!
             </h2>
             <div className="flex flex-col items-center justify-start gap-[24px] text-sm text-dimgray">

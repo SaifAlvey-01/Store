@@ -32,6 +32,10 @@ module.exports = {
         "neutral-300": "#e1e1e1",
       },
 
+      borderColor: {
+        "primary-300-main": "#4162FF",
+      },
+
       fontFamily: {
         freesans: ["FreeSans", "sans-serif"],
         roboto: "Roboto",

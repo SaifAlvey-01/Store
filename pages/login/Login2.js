@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import Loading from "../../components/loading";
 import cogoToast from "cogo-toast";
 
+
+
 const Login2 = ({ inputData }) => {
   const router = useRouter();
   const [formData, setFormData] = useState({});
@@ -40,7 +42,10 @@ const Login2 = ({ inputData }) => {
         router.push("/dashboard");
       }, 2000);
 
+
+
       cogoToast.success("User Successfully logged in");
+
     } else {
       setPasswordError("Invalid Email or password");
     }
