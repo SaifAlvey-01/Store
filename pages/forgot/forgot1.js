@@ -91,7 +91,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
             </span>
             <span
               className="font-medium text-primary-300-main cursor-pointer "
-              // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+              onClick={handleSignInClick} // Attach the handleGetStartedClick function to the onClick event
             >
               Log In
             </span>
