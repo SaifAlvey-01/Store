@@ -27,8 +27,8 @@ const Login2 = ({ inputData }) => {
 
     // No user found with the given email
     if (!matchedUser) {
-      setPasswordError("Email does not exist");
-      return; // exit early
+      setPasswordError("Invalid Email or password");
+      return;
     }
 
     // Check password hash
@@ -42,7 +42,7 @@ const Login2 = ({ inputData }) => {
 
       cogoToast.success("User Successfully logged in");
     } else {
-      setPasswordError("Password is incorrect");
+      setPasswordError("Invalid Email or password");
     }
   };
 
@@ -65,7 +65,7 @@ const Login2 = ({ inputData }) => {
                         <div className=" flex w-full flex-col items-center gap-[4px]">
                           <div className="self-stretch flex flex-row items-start justify-start">
                             <div className="relative leading-[20px] font-medium">
-                              Email or Mobile Number
+                              Email
                             </div>
                           </div>
                           <input

@@ -16,7 +16,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setCustomError(""); // Reset custom error
+    setCustomError("Enter A Valid Email Address !"); // Reset custom error
 
     const emailExists = users.some((user) => data.email === user.email);
 
@@ -28,6 +28,8 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
       setCurrentStep(2);
     }
   };
+
+  console.log(errors.email, "<----errors.email")
 
   const handleGetStartedClick = () => {
     router.push("/login"); // Redirect to /signup
@@ -133,7 +135,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
               className="font-medium text-primary-300-main"
               onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Get Stated
+              Log In
             </span>
           </div>
         </div>

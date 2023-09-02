@@ -35,9 +35,7 @@ const Forgot3 = ({ setCurrentStep }) => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
-  const handleSignInClick = () => {
-    router.push("/login");
-  };
+ 
 
   return (
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
@@ -105,7 +103,7 @@ const Forgot3 = ({ setCurrentStep }) => {
               className="font-medium text-primary-300-main cursor-pointer "
               onClick={handleSignInClick} // Attach the handleGetStartedClick function to the onClick event
             >
-              Sign In
+              Log In
             </span>
           </div>
         </div>

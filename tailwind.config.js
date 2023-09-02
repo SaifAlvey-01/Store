@@ -57,6 +57,9 @@ module.exports = {
       "5xs-5": "7.5px",
       "5xs-1": "7.1px",
     },
+    bgfooter: {
+      'auto-120px': 'auto 120px',
+    },
   },
   corePlugins: {
     preflight: false,
