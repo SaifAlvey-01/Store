@@ -29,7 +29,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     }
   };
 
-  console.log(errors.email, "<----errors.email")
+  console.log(errors.email, "<----errors.email");
 
   const handleGetStartedClick = () => {
     router.push("/login"); // Redirect to /signup

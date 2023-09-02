@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import '../styles/global.css';
+import "../styles/global.css";
 import { SessionProvider } from "next-auth/react";
 import { store } from "../redux/slices";
 import { Provider } from "react-redux";
