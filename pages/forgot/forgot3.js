@@ -39,6 +39,7 @@ const Forgot3 = ({ setCurrentStep }) => {
     router.push("/login");
   };
 
+
   return (
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start ">
