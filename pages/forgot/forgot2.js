@@ -60,10 +60,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
                 Continue
               </button>
             </div>
-            <div
-              className="relative w-full text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-6"
-              // onClick={onAlreadyHaveAnClick}
-            >
+            <div className="relative w-full text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto mt-6">
               <span>
                 <span>Remembered your password?</span>
                 <span className="text-mediumslateblue">{` `}</span>
