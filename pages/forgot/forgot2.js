@@ -8,7 +8,6 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
 
   const router = useRouter();
   const [active, setactive] = useState(false);
-  // Function to update input value in the state array
   const handleInputChange = (index, value) => {
     setInputValues((prevValues) => {
       const newValues = [...prevValues];
