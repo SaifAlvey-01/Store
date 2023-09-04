@@ -39,7 +39,6 @@ const Forgot3 = ({ setCurrentStep }) => {
     router.push("/login");
   };
 
-
   return (
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start ">
@@ -94,17 +93,14 @@ const Forgot3 = ({ setCurrentStep }) => {
             </button>
           </form>
 
-          <div
-            className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto  mt-12"
-            // onClick={onAlreadyHaveAnClick}
-          >
+          <div className="relative text-sm tracking-[0.25px] leading-[20px] text-center text-darkslategray font-roboto  mt-12">
             <span>
               <span>Remembered your password?</span>
               <span className="text-mediumslateblue">{` `}</span>
             </span>
             <span
               className="font-medium text-primary-300-main cursor-pointer "
-              onClick={handleSignInClick} // Attach the handleGetStartedClick function to the onClick event
+              onClick={handleSignInClick}
             >
               Log In
             </span>
