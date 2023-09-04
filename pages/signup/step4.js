@@ -39,7 +39,11 @@ const SignUp5 = () => {
   return (
     <>
       {isLoading ? (
-        <Loading url="/dashboard" message="Loading..." duration="2000" />
+        <Loading
+          url="/dashboard"
+          message="Creating your store.."
+          duration="2000"
+        />
       ) : (
         <div className=" w-full sm:w-[450px] md:w-[450px] lg:w-[450px] min-h-[calc(100% - 100px)] text-11xl text-neutral-600">
           <div
