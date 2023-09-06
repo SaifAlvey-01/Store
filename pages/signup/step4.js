@@ -3,8 +3,9 @@ import CountrySelect from "../../components/CountrySelect";
 import { countryOptions } from "../../components/countryOptions";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
+import Cookie from "js-cookie";
 
-const SignUp5 = () => {
+const SignUp4 = () => {
   const router = useRouter();
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [isActive, setIsactive] = useState(false);
@@ -34,6 +35,8 @@ const SignUp5 = () => {
 
   const handleSignInClick = () => {
     setIsLoading(true);
+
+    Cookie.remove("email");
   };
 
   return (
@@ -120,4 +123,4 @@ const SignUp5 = () => {
   );
 };
 
-export default SignUp5;
+export default SignUp4;
