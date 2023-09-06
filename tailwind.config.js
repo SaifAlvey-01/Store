@@ -12,6 +12,9 @@ module.exports = {
         "gradient-line-270":
           "linear-gradient(270deg, rgba(75, 75, 75, 0.75) 0%, rgba(109, 109, 109, 0) 94.39%)",
       },
+      backgroundColor: {
+        "neutral-200": "#f1f1f1",
+      },
       colors: {
         white: "#fff",
         gainsboro: "#e5e7eb",
@@ -62,7 +65,7 @@ module.exports = {
       "5xs-1": "7.1px",
     },
     bgfooter: {
-      'auto-120px': 'auto 120px',
+      "auto-120px": "auto 120px",
     },
   },
   corePlugins: {
