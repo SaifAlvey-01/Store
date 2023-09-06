@@ -6,6 +6,7 @@ import SignUp2 from "./step2";
 import SignUp3 from "./step3";
 import SignUp5 from "./step4";
 import Footer from "../../components/footer/footer";
+import { NextSeo } from 'next-seo'
 //seo
 
 const SignupComponent = () => {
@@ -64,6 +65,17 @@ const SignupComponent = () => {
   }
 
   return (
+    <>
+    <div>
+        <NextSeo
+            title="Page Title"
+            description="The description"
+            openGraph={{
+                type: "website"
+            }}
+        />
+    </div>
+    
     <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
       <div className="container w-full mx-auto py-4 md:px-3 md:text-left text-center">
         <img
@@ -81,6 +93,7 @@ const SignupComponent = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 
