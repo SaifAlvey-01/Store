@@ -1,7 +1,7 @@
 import React from "react";
 import FreeTrialFooter from "../free-trial-footer";
 
-export default function AllOrders() {
+export default function Builder() {
   return (
     <div
       className="h-auto overflow-y-auto flex flex-col items-center justify-between "
@@ -22,7 +22,7 @@ export default function AllOrders() {
       >
         <div className="flex flex-col items-center justify-between ">
           <img
-            src={"/dashboard_images/all_orders.png"}
+            src={"/dashboard_images/builder.png"}
             // alt={label}
             className="w-600 h-600 "
           />
@@ -30,35 +30,11 @@ export default function AllOrders() {
           <div className="flex flex-col items-center justify-between ">
             <h2
               style={{ color: "#4B4B4B" }}
-              className="mt-0 mb-4 font-bold font-freesans"
+              className="mt-0 mb-8 font-bold font-freesans"
             >
-              Manage orders
+              Page Builder{" "}
             </h2>
-            <p
-              style={{
-                color: "#8E8E8E",
-                // width: "100%",
-                // maxWidth: "80%",
-                textAlign: "center",
-              }}
-              className="mt-0 mb-2 my-0 font-thin text-base w-[100%] lg:max-w-[80%] max-w-[100%]"
-            >
-              Track and manage your orders here once you receive them, or create
-              a manual order now.
-            </p>
           </div>
-
-          <button
-            className="mt-4 mb-8 cursor-pointer"
-            style={{
-              backgroundColor: "#4162FF",
-              color: "#ffffff",
-              padding: "10px 30px",
-              borderRadius: "4px",
-            }}
-          >
-            Create Order
-          </button>
         </div>
       </div>
 
