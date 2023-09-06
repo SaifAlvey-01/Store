@@ -74,7 +74,7 @@ const SignupComponent = () => {
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center font-freesans min-h-[calc(98vh-180px)] sm:min-h-[calc(100% - 100px)]">
         <div className="hidden md:w-1/2 md:flex md:flex-col md:items-center h-[551px] ">
-          <img src="/signupImg.png" alt="Signup" className="h-[551px]" />
+          <img src="/signupImg.png" alt="Signup" className="h-[551px] w-[705.473px] " />
         </div>
 
         {renderStep()}
