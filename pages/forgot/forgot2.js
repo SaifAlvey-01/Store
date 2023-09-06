@@ -36,8 +36,8 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
               <div className="flex flex-col items-center justify-center text-center w-full gap-[4px] cursor-pointer text-neutral text-dimgray ml-3 mt-2">
                 <div className="self-stretch flex flex-row items-center justify-center">
                   <div className="relative leading-[20px] md:text-text-[16px] lg:text-[16px] text-[15px] font-medium text-neutral-500 text-center">
-                    Code sent to your please write it here.
-                  </div>
+                  A Code Has Been To Your Mail Please Write It Here
+                                    </div>
                 </div>
               </div>
               <div className="w-full flex flex-col items-center justify-start  gap-[4px] cursor-pointer text-sm text-dimgray">
