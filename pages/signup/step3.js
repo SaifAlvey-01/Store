@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Verify from "../../components/Verify/Verify";
+import Cookie from "js-cookie";
 
 const SignUp3 = ({ setCurrentStep, email }) => {
   const [OTP, setOTP] = useState("");
   const isEmail = /\S+@\S+\.\S+/.test(email);
+  const savedEmail = Cookie.get("email");
 
   const router = useRouter();
   const [active, setactive] = useState(false);
@@ -47,9 +49,9 @@ const SignUp3 = ({ setCurrentStep, email }) => {
                       color: "#4162FF",
                       cursor: "pointer",
                     }}
-                    href={`mailto:${email}`}
+                    href={`mailto:${savedEmail}`}
                   >
-                    ({email})
+                    ({savedEmail})
                   </a>
                 </div>
               </div>

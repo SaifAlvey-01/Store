@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postUser } from "../../redux/slices/userSlice";
 import SignUp1 from "./step1";
@@ -9,15 +9,25 @@ import Footer from "../../components/footer/footer";
 //seo
 
 const SignupComponent = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(null);
   const [email, setEmail] = useState("");
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const savedStep = Number(localStorage.getItem("signupCurrentStep")) || 1;
+    setCurrentStep(savedStep);
+  }, []);
+
+  useEffect(() => {
+    if (currentStep !== null) {
+      localStorage.setItem("signupCurrentStep", currentStep.toString());
+    }
+  }, [currentStep]);
+
   const handleStepSubmit = () => {
     setCurrentStep(currentStep + 1);
   };
-
-  console.log(formData);
 
   if (formData.email && formData.password) {
     dispatch(postUser(formData));
@@ -48,6 +58,10 @@ const SignupComponent = () => {
         return null;
     }
   };
+
+  if (currentStep === null) {
+    return null; // or <LoadingSpinner />
+  }
 
   return (
     <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
