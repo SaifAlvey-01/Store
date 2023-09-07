@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import Search from "./Search";
+import { useRouter } from 'next/router';
 
 function Header({ sidebarOpen, setSidebarOpen }) {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
-
+  const router = useRouter()
+  const header = router.pathname.slice(1);
+  const headerValue = header.replace(/^./, header[0].toUpperCase()) 
+ 
   return (
     <header className="sticky top-0 lg:shadow bg-white border-b border-slate-200 z-30">
       <div className="px-4 sm:px-2 lg:px-8 ">
@@ -26,7 +30,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               />
             </button>
             <p className="text-[#4B5563] font-bold sm:text-base lg:text-lg leading-18 font-freesans">
-              Dashboard
+              {headerValue}
             </p>
           </div>
 
