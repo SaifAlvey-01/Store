@@ -35,7 +35,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
             <Search />
           </div>
           {/* third div */}
-          <div className="flex items-center sw-[256px] h-12 top-24 left-920 lg:gap-2">
+          <div className="flex items-center sw-[256px] h-12 top-24 left-920 gap-[6px] lg:gap-2">
             <img
               src="/nav/needhelp.png"
               className="hidden sm:block w-[112px] h-[32px] cursor-pointer "

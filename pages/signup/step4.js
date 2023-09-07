@@ -69,7 +69,7 @@ const SignUp4 = () => {
           >
             <div className=" w-full flex flex-col items-center justify-start gap-[31px]">
               <b className="text-neutral-600 font-semibold text-24 font-freesans  tracking-normal">
-                Enter business details
+                Enter Store Name
               </b>
               <div className=" w-full flex flex-col items-center justify-center text-sm text-dimgray">
                 <div className=" w-full flex flex-col items-start justify-start gap-[28px]">
@@ -93,7 +93,7 @@ const SignUp4 = () => {
                   <div className="w-full flex flex-col items-start justify-start gap-[4px]">
                     <div className="self-stretch flex flex-row items-start justify-start">
                       <div className="relative leading-[20px] font-medium">
-                        <span>{`Business Name `}</span>
+                        <span>{`Store Name `}</span>
                         <span className="text-tomato">*</span>
                       </div>
                       <div className="relative leading-[160%] font-body-sm text-indication-colors-error opacity-[0]">
@@ -104,7 +104,7 @@ const SignUp4 = () => {
                       <input
                         type="text"
                         onChange={(e) => handleChange(e)}
-                        placeholder="Enter business name"
+                        placeholder="Enter Store Name"
                         className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                       />
                     </div>
