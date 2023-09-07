@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Login1 from "./Login1";
 import Login2 from "./Login2";
 import Footer from "../../components/footer/footer";
-
+import { NextSeo } from 'next-seo'
 
 const LoginComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -23,6 +23,21 @@ const LoginComponent = () => {
   };
 
   return (
+    <>
+     <div>
+        <NextSeo
+          openGraph={{
+            title: 'The title used by twitter',
+            description: 'The description used by twitter',
+          }}
+          twitter={{
+            handle: '@handle',
+            site: '@site',
+            cardType: 'summary_large_image',
+          }}
+        />
+    </div>
+    
     <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
       <div className="container w-full mx-auto py-4 md:px-3 md:text-left text-center">
         <img
@@ -36,6 +51,7 @@ const LoginComponent = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

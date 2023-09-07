@@ -3,12 +3,14 @@ import CountrySelect from "../../components/CountrySelect";
 import { countryOptions } from "../../components/countryOptions";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
+import Cookie from "js-cookie";
 
-const SignUp5 = () => {
+const SignUp4 = () => {
   const router = useRouter();
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedCountry, setSelectedCountry] = useState({});
   const [isActive, setIsactive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [business, setBusiness] = useState("");
 
   const handleCountryChange = (selectedOption) => {
     setSelectedCountry(selectedOption);
@@ -19,21 +21,29 @@ const SignUp5 = () => {
       const timer = setTimeout(() => {
         router.push("/dashboard");
       }, 2000);
+      
 
       return () => clearTimeout(timer);
     }
-  }, [isLoading]);
 
-  const handleChange = (e) => {
-    if (e.target.value.length > 0) {
+    if ( business.length > 0  && Object.keys(selectedCountry).length > 0 ) {
+      console.log(business.length > 0, Object.keys(selectedCountry).length > 0 )
+      console.log("here")
       setIsactive(true);
     } else {
       setIsactive(false);
     }
+  }, [isLoading, business, selectedCountry, isActive]);
+
+  const handleChange = (e) => {
+      setBusiness(e.target.value)
+    
   };
 
   const handleSignInClick = () => {
     setIsLoading(true);
+
+    Cookie.remove("email");
   };
 
   return (
@@ -120,4 +130,4 @@ const SignUp5 = () => {
   );
 };
 
-export default SignUp5;
+export default SignUp4;

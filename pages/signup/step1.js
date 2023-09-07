@@ -1,9 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { users } from "../../utils/userData";
+import Cookie from "js-cookie";
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
@@ -26,6 +26,8 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
       setFormData((prevData) => ({ ...prevData, ...data }));
       setEmail(data.email);
       setCurrentStep(2);
+
+      Cookie.set("email", data.email);
     }
   };
 
