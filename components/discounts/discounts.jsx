@@ -1,7 +1,7 @@
 import React from "react";
 import FreeTrialFooter from "../free-trial-footer";
 
-export default function AllOrders() {
+export default function Discounts() {
   return (
     <div
       className="h-auto overflow-y-auto flex flex-col items-center justify-between "
@@ -22,7 +22,7 @@ export default function AllOrders() {
       >
         <div className="flex flex-col items-center justify-between ">
           <img
-            src={"/dashboard_images/all_orders.png"}
+            src={"/dashboard_images/discounts.png"}
             // alt={label}
             className="w-600 h-600 "
           />
@@ -32,7 +32,7 @@ export default function AllOrders() {
               style={{ color: "#4B4B4B" }}
               className="mt-0 mb-4 font-bold font-freesans"
             >
-              Manage orders
+              Get more sales with coupons{" "}
             </h2>
             <p
               style={{
@@ -43,8 +43,8 @@ export default function AllOrders() {
               }}
               className="mt-0 mb-2 my-0 font-thin text-base w-[100%] lg:max-w-[80%] max-w-[100%]"
             >
-              Track and manage your orders here once you receive them, or create
-              a manual order now.
+              Now you can create and share coupons for your store to get more
+              and more orders on your store.{" "}
             </p>
           </div>
 
@@ -57,7 +57,7 @@ export default function AllOrders() {
               borderRadius: "4px",
             }}
           >
-            Create Order
+            Create a coupon
           </button>
         </div>
       </div>

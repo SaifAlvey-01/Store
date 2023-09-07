@@ -1,7 +1,7 @@
 import React from "react";
 import FreeTrialFooter from "../free-trial-footer";
 
-export default function AllOrders() {
+export default function Audience() {
   return (
     <div
       className="h-auto overflow-y-auto flex flex-col items-center justify-between "
@@ -22,7 +22,7 @@ export default function AllOrders() {
       >
         <div className="flex flex-col items-center justify-between ">
           <img
-            src={"/dashboard_images/all_orders.png"}
+            src={"/dashboard_images/audience.png"}
             // alt={label}
             className="w-600 h-600 "
           />
@@ -32,7 +32,7 @@ export default function AllOrders() {
               style={{ color: "#4B4B4B" }}
               className="mt-0 mb-4 font-bold font-freesans"
             >
-              Manage orders
+              You don’t have any customers yet{" "}
             </h2>
             <p
               style={{
@@ -43,13 +43,13 @@ export default function AllOrders() {
               }}
               className="mt-0 mb-2 my-0 font-thin text-base w-[100%] lg:max-w-[80%] max-w-[100%]"
             >
-              Track and manage your orders here once you receive them, or create
-              a manual order now.
+              View and manage the list of all customers who ordered from your
+              store.
             </p>
           </div>
 
           <button
-            className="mt-4 mb-8 cursor-pointer"
+            className="mt-4 cursor-pointer"
             style={{
               backgroundColor: "#4162FF",
               color: "#ffffff",
@@ -57,7 +57,20 @@ export default function AllOrders() {
               borderRadius: "4px",
             }}
           >
-            Create Order
+            Add Customers{" "}
+          </button>
+
+          <button
+            className="mt-2 mb-8 cursor-pointer"
+            style={{
+              backgroundColor: "#ffffff",
+              color: "#4162FF",
+              padding: "10px 22px",
+              borderRadius: "4px",
+              border: "1px solid #eeeeee",
+            }}
+          >
+            Import Customers{" "}
           </button>
         </div>
       </div>
