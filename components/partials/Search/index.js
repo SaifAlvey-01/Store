@@ -5,7 +5,7 @@ const Search = () => {
         <React.Fragment>
             <div className={Style.inputcontainer}>
             <input 
-                className=' w-[400px] sm:w-[300px] h-[44px] rounded-lg border-[0.8px] border-solid border-gainsboro '
+                className=' w-[340px] sm:w-[400px] h-[44px] rounded-lg border-[0.8px] border-solid border-gainsboro '
                 placeholder='Search'
                 type="text"
             />   
