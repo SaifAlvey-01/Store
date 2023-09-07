@@ -4,6 +4,7 @@ import Forgot2 from "./forgot2";
 import Forgot3 from "./forgot3";
 import Loading from "../../components/loading";
 import Footer from "../../components/footer/footer";
+import { NextSeo } from 'next-seo'
 // import Forgot4 from './forgot4';
 
 const ForgotComponent = () => {
@@ -42,6 +43,20 @@ const ForgotComponent = () => {
   };
 
   return (
+    <>
+    <div>
+        <NextSeo
+          openGraph={{
+            title: 'The title used by twitter',
+            description: 'The description used by twitter',
+          }}
+          twitter={{
+            handle: '@handle',
+            site: '@site',
+            cardType: 'summary_large_image',
+          }}
+        />
+    </div>
     <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
       <div className="container w-full mx-auto py-4 md:px-3 md:text-left text-center">
         <img
@@ -55,6 +70,7 @@ const ForgotComponent = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

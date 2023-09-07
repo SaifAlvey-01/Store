@@ -1,12 +1,17 @@
 "use client";
 import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
+import Loading from "../../components/loading";
+import cogoToast from "cogo-toast"
+
 
 const Forgot3 = ({ setCurrentStep }) => {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -31,15 +36,24 @@ const Forgot3 = ({ setCurrentStep }) => {
       );
       return;
     }
-
-    setCurrentStep((prevStep) => prevStep + 1);
+    setIsLoading(true);
+    cogoToast.success('Password has been reset! Login Now');
+    setTimeout(() => {
+      router.push("/login");
+    }, 2000);
+    
   };
 
   const handleSignInClick = () => {
     router.push("/login");
+    
   };
 
   return (
+    <div>
+    {isLoading ? (
+        <Loading url="/login" message="Resetting Password..." duration="2000" />
+      ) :(
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start ">
         <div className="flex flex-col items-center justify-start gap-[18px]">
@@ -107,6 +121,8 @@ const Forgot3 = ({ setCurrentStep }) => {
           </div>
         </div>
       </div>
+    </div>)
+      }
     </div>
   );
 };

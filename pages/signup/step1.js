@@ -1,9 +1,9 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { users } from "../../utils/userData";
+import Cookie from "js-cookie";
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
@@ -26,6 +26,8 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
       setFormData((prevData) => ({ ...prevData, ...data }));
       setEmail(data.email);
       setCurrentStep(2);
+
+      Cookie.set("email", data.email);
     }
   };
 
@@ -59,12 +61,16 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                       </div>
                       <input
                         type="text"
+                        placeholder="Enter your email "
                         {...register("email", {
-                          required: "Email is required",
-                          pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          required: "Enter A Valid Email Address !",
+                          pattern: {
+                            value:
+                              /^(?:[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|^\+[0-9]{10,15}$)/i,
+                            message: "Invalid email ",
+                          },
                         })}
                         onChange={(e) => {}}
-                        placeholder="Enter your email"
                         className={`focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                           errors.email ? "border-red-500" : ""
                         }`}

@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <div className="font-freesans overflow-x-hidden">
         <SessionProvider session={pageProps.session}>
