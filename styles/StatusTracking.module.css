@@ -1,0 +1,143 @@
+.track-order-container {
+  /* max-width: 500px; */
+  /* margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px; */
+}
+
+.stepper {
+  list-style-type: none;
+  padding: 0;
+  position: relative;
+}
+
+.stepper::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  height: calc(100% - 40px);
+  width: 3px;
+  background-color: #cacaca; /* default color */
+}
+
+.step {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 50px;
+  font-size: 18px;
+  color: #8e8e8e;
+}
+
+.step-1 .step-title,
+.step-2 .step-title {
+  color: black;
+}
+
+.step-1 .circle {
+  background-color: #4162ff;
+  border: 2px solid #4162ff;
+}
+
+.step-2 {
+  color: #333;
+}
+
+.step-2 .circle {
+  background-color: #ecefff;
+  border: 2px solid #4162ff;
+}
+
+.step-3 .circle {
+  background-color: white;
+  border: 2px solid #8e8e8e;
+}
+
+.step-3 .step-title {
+  color: #8e8e8e;
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle img {
+  width: 20px;
+  height: 13px;
+}
+
+.step-title {
+  font-weight: 500;
+  margin-bottom: 6px;
+  margin-top: 0px;
+}
+
+.step-content {
+  margin-top: 3px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #8e8e8e;
+}
+
+.link {
+  display: block;
+  margin-top: 10px;
+  color: #4162ff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.btn {
+  margin-bottom: 16px;
+  padding: 10px 24px;
+  background-color: #4162ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2d44cc;
+}
+
+.additional-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #8e8e8e;
+  font-size: 14px;
+}
+
+.additional-content img {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #7a91ff;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.step-1.active + .step-2::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 15px;
+  height: 30px;
+  width: 3px;
+  background-color: #4162ff;
+  z-index: -1;
+}
