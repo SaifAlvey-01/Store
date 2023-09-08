@@ -109,10 +109,10 @@ export default function Themes() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "16px", // Adjust for spacing between cards
+          gap: "16px",
           overflowY: "auto",
-          maxHeight: "660px", // Adjust height if needed
-          padding: "16px 0", // Some vertical padding for aesthetic reasons
+          maxHeight: "660px",
+          padding: "16px 0",
         }}
       >
         {cardsData.map((item, index) => (

@@ -23,7 +23,6 @@ export default function CustomizeThemes() {
         <div className="flex flex-col items-center justify-between ">
           <img
             src={"/dashboard_images/coding-page.png"}
-            // alt={label}
             className="w-600 h-600 "
           />
 
