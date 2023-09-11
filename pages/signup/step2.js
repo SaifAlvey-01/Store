@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import useAxios from '../../hooks/useAxios';
 
 const SignUp2 = ({ setCurrentStep, setFormData }) => {
   const {
@@ -6,8 +7,10 @@ const SignUp2 = ({ setCurrentStep, setFormData }) => {
     register,
     formState: { errors },
   } = useForm();
+  const { resdata, error, loading, postData: postRequest } = useAxios();
 
   const onSubmit = (data) => {
+    postRequest('/user/register-password', { password: data.password });
     setFormData((prevData) => ({ ...prevData, ...data }));
     setCurrentStep(2);
   };
