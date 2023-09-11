@@ -4,34 +4,39 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { users } from "../../utils/userData";
 import Cookie from "js-cookie";
+import useAxios from '../../hooks/useAxios';
+
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
-
+  const { resdata, error, loading, postData: postRequest } = useAxios();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    setCustomError("Enter A Valid Email Address !"); // Reset custom error
-
+  const onSubmit = async (data) => {
+    setCustomError("Enter A Valid Email Address !"); 
+    
     const emailExists = users.some((user) => data.email === user.email);
+
+    postRequest('/user/register-email', { email: data.email });
+   
+    setFormData((prevData) => ({ ...prevData, ...data }));
+    setEmail(data.email);
 
     if (emailExists) {
       setCustomError("Email already exists.");
     } else {
-      setFormData((prevData) => ({ ...prevData, ...data }));
-      setEmail(data.email);
+     
       setCurrentStep(2);
 
       Cookie.set("email", data.email);
     }
   };
 
-  console.log(errors.email, "<----errors.email");
 
   const handleGetStartedClick = () => {
     router.push("/login"); // Redirect to /signup
