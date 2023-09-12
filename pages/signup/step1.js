@@ -19,13 +19,14 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const email = getValues()
     setFormData((prevData) => ({ ...prevData, ...data }));
     setCustomError("Enter A Valid Email Address !"); 
-    postRequest('/user/register-email', { email: data.email });
-    console.log(resdata, "<---resdata")
-   
+    postRequest('/user/register-email', email);
 
-    if (resdata) {
+    console.log(resdata, "<----resdata")
+
+    if (resdata?.message === null) {
       setCurrentStep(2);
       setEmail(data.email);
       Cookie.set("email", data.email);

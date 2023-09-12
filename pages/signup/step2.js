@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import useAxios from '../../hooks/useAxios';
+import Cookie from "js-cookie";
 
 const SignUp2 = ({ setCurrentStep, setFormData }) => {
   const {
@@ -10,7 +11,8 @@ const SignUp2 = ({ setCurrentStep, setFormData }) => {
   const { resdata, error, loading, postData: postRequest } = useAxios();
 
   const onSubmit = (data) => {
-    postRequest('/user/register-password', { password: data.password });
+    const savedEmail = Cookie.get("email");
+    postRequest('/user/register-password', { password: data.password, email:savedEmail });
     setFormData((prevData) => ({ ...prevData, ...data }));
     setCurrentStep(2);
   };

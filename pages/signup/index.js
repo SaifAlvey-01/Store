@@ -30,9 +30,9 @@ const SignupComponent = () => {
     setCurrentStep(currentStep + 1);
   };
 
-  if (formData.email && formData.password) {
-    dispatch(postUser(formData));
-  }
+  // if (formData.email && formData.password) {
+  //   dispatch(postUser(formData));
+  // }
 
   const renderStep = () => {
     switch (currentStep) {
@@ -49,6 +49,7 @@ const SignupComponent = () => {
           <SignUp2
             setCurrentStep={handleStepSubmit}
             setFormData={setFormData}
+            email={email}
           />
         );
       case 3:
