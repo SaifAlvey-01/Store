@@ -14,26 +14,24 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
-    setCustomError("Enter A Valid Email Address !"); 
-    
-    const emailExists = users.some((user) => data.email === user.email);
-
-    postRequest('/user/register-email', { email: data.email });
-   
     setFormData((prevData) => ({ ...prevData, ...data }));
-    setEmail(data.email);
+    setCustomError("Enter A Valid Email Address !"); 
+    postRequest('/user/register-email', { email: data.email });
+    console.log(resdata, "<---resdata")
+   
 
-    if (emailExists) {
-      setCustomError("Email already exists.");
-    } else {
-     
+    if (resdata) {
       setCurrentStep(2);
-
+      setEmail(data.email);
       Cookie.set("email", data.email);
+    } else {
+   
+      setCustomError("Email already exists.");
     }
   };
 
