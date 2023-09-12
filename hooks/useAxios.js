@@ -1,33 +1,33 @@
-// hooks/useAxios.js
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 
 const useAxios = () => {
   const [resdata, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const baseUrl = "http://localhost:5500"
+  const baseUrl = "http://localhost:5500";
 
   const headers = {
-    headers: {
-      'Content-Type': 'application/json',
-  },
-  }
+    'Content-Type': 'application/json',
+    'credentials': 'include',
+  };
 
-
-
-  const fetchData = async (url, method = 'get', requestData = null) => {
+  const fetchData = async (url, method = 'GET', requestData = null) => {
     setLoading(true);
 
     try {
-      const response = await axios({
+      const response = await fetch(`${baseUrl}${url}`, {
         method,
-        url:`${baseUrl}${url}`,
-        data: requestData,
-        headers
+        headers,
+        body: JSON.stringify(requestData),
       });
-      setData(response.data);
+
+      if (!response.ok) {
+        throw new Error(`HTTP Error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setData(data);
     } catch (err) {
       setError(err);
     } finally {
@@ -36,11 +36,11 @@ const useAxios = () => {
   };
 
   const getData = async (url) => {
-    await fetchData(url, 'get');
+    await fetchData(url, 'GET');
   };
 
   const postData = async (url, requestData) => {
-    await fetchData(url, 'post', requestData);
+    await fetchData(url, 'POST', requestData);
   };
 
   return { resdata, error, loading, getData, postData };
