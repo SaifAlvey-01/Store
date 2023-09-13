@@ -25,6 +25,14 @@ const Login2 = ({ inputData }) => {
     e.preventDefault();
     const matchedUser = users.find((u) => u.email === data.email);
 
+    // const data = await response.json();
+    // const token = data.token; // Assuming your backend sends a token
+    // // Store the token securely, e.g., in localStorage
+    // localStorage.setItem('token', token);
+    
+    // // Redirect to a protected route, e.g., the dashboard
+    // router.push('/dashboard');
+
     // No user found with the given email
     if (!matchedUser) {
       setPasswordError("Invalid Email or password");

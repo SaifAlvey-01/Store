@@ -1,11 +1,11 @@
 import OTPInput from "react-otp-input";
 import React, { useState } from "react";
 import styles from "./styledVerify.module.css"; 
-function Verify({setOTP, OTP}) {
+function Verify({setOTP, OTP, setOtpValue}) {
  
   function handleChange(OTP) {
     const numericValue = OTP.replace(/[^0-9]/g, "");
-    setOTP(OTP);
+    setOTP(numericValue);
   }
 
   return (
