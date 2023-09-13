@@ -4,7 +4,7 @@ import { postUser } from "../../redux/slices/userSlice";
 import SignUp1 from "./step1";
 import SignUp2 from "./step2";
 import SignUp3 from "./step3";
-import SignUp5 from "./step4";
+import SignUp4 from "./step4";
 import Footer from "../../components/footer/footer";
 import { NextSeo } from 'next-seo'
 //seo
@@ -42,6 +42,7 @@ const SignupComponent = () => {
             setCurrentStep={handleStepSubmit}
             setEmail={setEmail}
             setFormData={setFormData}
+            email={email}
           />
         );
       case 2:
@@ -55,7 +56,7 @@ const SignupComponent = () => {
       case 3:
         return <SignUp3 setCurrentStep={setCurrentStep} email={email} />;
       case 4:
-        return <SignUp5 setCurrentStep={setCurrentStep} />;
+        return <SignUp4 setCurrentStep={setCurrentStep} email={email}/>;
       default:
         return null;
     }

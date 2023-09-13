@@ -4,7 +4,7 @@ import Header from "./partials/Header";
 
 const Layout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  // useAuth();
   return (
     <div className="flex h-screen overflow-hidden ">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
