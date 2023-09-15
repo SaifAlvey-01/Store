@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./partials/Sidebar";
 import Header from "./partials/Header";
+import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
+  const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [headerValue, setHeaderValue] = useState(
+    router.pathname === "/dashboard" ? "Dashboard" : ""
+  );
 
   return (
     <div className="flex h-screen overflow-hidden ">
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        setHeaderValue={setHeaderValue}
+      />
       <div className="relative flex flex-col flex-1  overflow-x-hidden">
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <Header
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          headerValue={headerValue}
+        />
         <main>
           <div
             style={{ backgroundColor: "#F7F9FB" }}

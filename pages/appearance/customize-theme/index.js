@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../../../components/Layout";
-import CustomizeThemes from "../../../components/appearance/customize-themes";
+import CustomizeTheme from "../../../components/appearance/customize-theme";
 
 export default function index() {
   return (
     <Layout>
-      <CustomizeThemes />
+      <CustomizeTheme />
     </Layout>
   );
 }
