@@ -26,7 +26,7 @@ const ForgotComponent = () => {
           <Forgot2 inputValue={inputValue} setCurrentStep={setCurrentStep} />
         );
       case 3:
-        return <Forgot3 setCurrentStep={setCurrentStep} />;
+        return <Forgot3 setCurrentStep={setCurrentStep} inputValue= {inputValue}/>;
       case 4:
         return (
           <Loading

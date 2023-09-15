@@ -4,8 +4,11 @@ import { countryOptions } from "../../components/countryOptions";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import Cookie from "js-cookie";
+import useAxios from '../../hooks/useAxios';
 
-const SignUp4 = () => {
+
+const SignUp4 = ({email}) => {
+  const { resdata, error, loading, putData: putRequest } = useAxios();
   const router = useRouter();
   const [selectedCountry, setSelectedCountry] = useState({});
   const [isActive, setIsactive] = useState(false);
@@ -13,19 +16,26 @@ const SignUp4 = () => {
   const [business, setBusiness] = useState("");
 
   const handleCountryChange = (selectedOption) => {
+
+
     setSelectedCountry(selectedOption);
   };
 
   useEffect(() => {
-    if (isLoading) {
+    if(resdata.message === "Business has been Updated"){
+      router.push("/dashboard");
+       if (isLoading) {
       const timer = setTimeout(() => {
         router.push("/dashboard");
       }, 2000);
-      
-
       return () => clearTimeout(timer);
     }
 
+
+    }
+      
+
+    
     if ( business.length > 0  && Object.keys(selectedCountry).length > 0 ) {
       console.log(business.length > 0, Object.keys(selectedCountry).length > 0 )
       console.log("here")
@@ -33,7 +43,9 @@ const SignUp4 = () => {
     } else {
       setIsactive(false);
     }
-  }, [isLoading, business, selectedCountry, isActive]);
+
+   
+  }, [isLoading, business, selectedCountry,resdata, isActive]);
 
   const handleChange = (e) => {
       setBusiness(e.target.value)
@@ -41,6 +53,8 @@ const SignUp4 = () => {
   };
 
   const handleSignInClick = () => {
+    putRequest('/user/business', { business, country:selectedCountry.label,  email});
+
     setIsLoading(true);
 
     Cookie.remove("email");
@@ -108,6 +122,9 @@ const SignUp4 = () => {
                         className="focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch rounded-lg bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                       />
                     </div>
+                    <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
+                      {resdata.message}
+                    </p>
                   </div>
                   <div
                     className={`rounded ${

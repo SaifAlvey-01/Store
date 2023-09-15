@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 const Layout = ({ children }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const [headerValue, setHeaderValue] = useState(
     router.pathname === "/dashboard" ? "Dashboard" : ""
   );
