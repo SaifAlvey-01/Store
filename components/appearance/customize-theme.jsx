@@ -1,7 +1,7 @@
 import React from "react";
 import FreeTrialFooter from "../free-trial-footer";
 
-export default function CustomizeThemes() {
+export default function CustomizeTheme() {
   return (
     <div
       className="h-auto overflow-y-auto flex flex-col items-center justify-between "

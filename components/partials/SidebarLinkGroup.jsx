@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SidebarLinkGroup({ children, activecondition }) {
+function SidebarLinkGroup({ children, activecondition, onClick = () => {} }) {
   const [open, setOpen] = useState(activecondition);
 
   const handleClick = () => {
@@ -8,13 +8,17 @@ function SidebarLinkGroup({ children, activecondition }) {
   };
 
   return (
-    <li
-      className={`p-[12px] w-[200px]  font-freesans mb-0.5 last:mb-0 ${
-        activecondition && "bg-white text-[#1F1D2B] rounded-2xl"
-      }`}
+    <div
+      onClick={onClick}
+      style={
+        activecondition
+          ? { backgroundColor: "white", borderRadius: 12 }
+          : { backgroundColor: "transparent" }
+      }
+      className="px-[12px] py-[11px] w-[180px] font-freesans mb-2 last:mb-0 "
     >
       {children(handleClick, open)}
-    </li>
+    </div>
   );
 }
 

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Search from "./Search";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
-function Header({ sidebarOpen, setSidebarOpen }) {
+function Header({ sidebarOpen, setSidebarOpen, headerValue }) {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
   const header = router.pathname.slice(1);
-  const headerValue = header.replace(/^./, header[0].toUpperCase()) 
- 
+
   return (
     <header className="sticky top-0 lg:shadow bg-white border-b border-slate-200 z-30">
       <div className="px-4 sm:px-2 lg:px-8 ">
