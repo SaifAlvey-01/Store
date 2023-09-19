@@ -3,7 +3,7 @@ import ChevronDownIcon from "@heroicons/react/solid/ChevronDownIcon";
 
 export default function ToolBar() {
   return (
-    <div className="flex justify-between items-center mt-5 w-[97%]">
+    <div className="flex justify-between items-center mt-4 w-[97%]">
       {/* Search Bar - Placed to the left */}
       <div className="relative text-gray-600 self-stretch flex flex-row items-start justify-start">
         <img

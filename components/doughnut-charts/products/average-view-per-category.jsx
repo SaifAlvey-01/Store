@@ -11,9 +11,9 @@ import {
 Chart.register(CategoryScale, LinearScale, ArcElement, DoughnutController);
 
 function AverageViewPerCategoryChart() {
-  const xValues = ["Color1", "Color2"]; // Only two labels
-  const yValues = [70, 30]; // Two values that sum to 100 to split the doughnut equally
-  const barColors = ["#F5F5F5", "#E1E1E1"]; // The two desired colors
+  const xValues = ["Color1", "Color2"];
+  const yValues = [70, 30];
+  const barColors = ["#F5F5F5", "#E1E1E1"];
 
   const data = {
     labels: xValues,

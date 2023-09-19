@@ -207,7 +207,7 @@ export default function Payments() {
           borderRadius: "10px",
         }}
       >
-        <div className="flex justify-between items-center mt-1 mb-10 w-[100%] ">
+        <div className="flex justify-between items-center mt-1 mb-6 w-[100%] ">
           <h4
             className="font-freesans my-0"
             style={{

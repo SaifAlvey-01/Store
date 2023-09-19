@@ -13,17 +13,16 @@ export default function InstalledApps() {
       }}
     >
       <div
-        className="my-8 mx-4 sm:my-8 sm:mx-4 lg:my-16 lg:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
           borderRadius: "10px",
         }}
       >
-        <div className="flex flex-col items-center justify-between ">
+        <div className="flex flex-col items-center justify-between my-10 ">
           <img
             src={"/dashboard_images/nothing-found.png"}
-            // alt={label}
             className="w-700 h-700 "
           />
 

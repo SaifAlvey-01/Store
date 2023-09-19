@@ -51,7 +51,7 @@ export default function Traffic() {
 
       <div className="flex justify-between w-[98%]">
         <div
-          className="w-1/2 p-4 mx-3 mb-10 flex flex-col"
+          className="w-1/2 p-4 mx-3 mb-8 flex flex-col"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -79,7 +79,7 @@ export default function Traffic() {
         </div>
 
         <div
-          className="w-1/2 p-4 mx-3 mb-10 flex flex-col"
+          className="w-1/2 p-4 mx-3 mb-8 flex flex-col"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -109,7 +109,7 @@ export default function Traffic() {
 
       <div className="flex justify-between w-[98%]">
         <div
-          className="w-1/2 p-4 mx-3 mb-10"
+          className="w-1/2 p-4 mx-3 mb-8"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -164,7 +164,7 @@ export default function Traffic() {
         </div>
 
         <div
-          className="w-1/2 p-4 mx-3 mb-10"
+          className="w-1/2 p-4 mx-3 mb-8"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",

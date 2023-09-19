@@ -13,7 +13,7 @@ export default function Discounts() {
       }}
     >
       <div
-        className="my-8 mx-4 sm:my-8 sm:mx-4 lg:my-16 lg:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
@@ -62,7 +62,7 @@ export default function Discounts() {
         </div>
       </div>
 
-      <div className="w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
+      <div className="w-[90%] mx-4 mb-8 mt-0   flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

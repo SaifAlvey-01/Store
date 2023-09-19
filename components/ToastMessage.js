@@ -1,31 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import 'tailwindcss/tailwind.css'; // Import Tailwind CSS styles
+import React, { useState, useEffect } from "react";
+import "tailwindcss/tailwind.css";
 
-const ToastMessage = ({ type, message,toast }) => {
+const ToastMessage = ({ type, message, toast }) => {
   const [showToast, setShowToast] = useState(toast);
 
-//   const showToastHandler = () => {
-//     setShowToast(true);
-//     setTimeout(() => {
-//       setShowToast(false);
-//     }, 3000); // Adjust the duration as needed
-//   };
-  useEffect(()=>{
-    if(toast == true){
-        setTimeout(()=>{
-            setShowToast(false)
-        },3000)
+  useEffect(() => {
+    if (toast == true) {
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
     }
-    // showToastHandler()
-  },[])
+  }, []);
 
   return (
     <div>
-     
       {showToast && (
         <div
-          className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full max-w-lg p-4 rounded-md shadow-md ${getTypeStyles(type)}`}
-          style={{ marginTop: '2rem' }} // Adjust the margin as needed
+          className={`fixed top-0 left-1/2 transform -translate-x-1/2 w-full max-w-lg p-4 rounded-md shadow-md ${getTypeStyles(
+            type
+          )}`}
+          style={{ marginTop: "2rem" }}
         >
           <div className="flex items-center">
             <img
@@ -41,34 +35,33 @@ const ToastMessage = ({ type, message,toast }) => {
   );
 };
 
-// Helper functions to get dynamic class names and icon sources
 const getTypeStyles = (type) => {
   switch (type) {
-    case 'success':
-      return 'bg-green-100 text-green-800';
-    case 'error':
-      return 'bg-red-100 text-red-800';
-    case 'warning':
-      return 'bg-yellow-100 text-yellow-800';
-    case 'info':
-      return 'bg-blue-100 text-blue-800';
+    case "success":
+      return "bg-green-100 text-green-800";
+    case "error":
+      return "bg-red-100 text-red-800";
+    case "warning":
+      return "bg-yellow-100 text-yellow-800";
+    case "info":
+      return "bg-blue-100 text-blue-800";
     default:
-      return '';
+      return "";
   }
 };
 
 const getIconSrc = (type) => {
   switch (type) {
-    case 'success':
-      return 'tick-circle.png';
-    case 'error':
-      return 'close-circle.png';
-    case 'warning':
-      return 'Vector.png';
-    case 'info':
-      return 'message-question.png';
+    case "success":
+      return "tick-circle.png";
+    case "error":
+      return "close-circle.png";
+    case "warning":
+      return "Vector.png";
+    case "info":
+      return "message-question.png";
     default:
-      return '';
+      return "";
   }
 };
 

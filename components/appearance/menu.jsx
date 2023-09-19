@@ -141,7 +141,7 @@ export default function Menu() {
           </button>
         </div>
       </div>
-      <div className=" w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
+      <div className=" w-[96%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

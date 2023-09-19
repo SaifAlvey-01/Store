@@ -13,7 +13,7 @@ export default function Pages() {
       }}
     >
       <div
-        className="my-8 mx-4 sm:my-8 sm:mx-4 lg:my-16 lg:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-6 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
@@ -45,7 +45,7 @@ export default function Pages() {
           </div>
 
           <button
-            className="mt-4 mb-8 cursor-pointer"
+            className="mt-2 mb-8 cursor-pointer"
             style={{
               backgroundColor: "#4162FF",
               color: "#ffffff",
@@ -58,7 +58,7 @@ export default function Pages() {
         </div>
       </div>
 
-      <div className=" w-[100%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
+      <div className=" w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

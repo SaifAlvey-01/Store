@@ -50,7 +50,7 @@ export default function Sales() {
 
       <div className="flex justify-between w-[97%]">
         <div
-          className="w-1/4 px-4 pt-5 pb-2 mb-10 mx-2 flex flex-col justify-between"
+          className="w-1/4 px-4 pt-5 pb-2 mb-8 mx-2 flex flex-col justify-between"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -86,7 +86,7 @@ export default function Sales() {
         </div>
 
         <div
-          className="w-1/4 px-4 pt-5 pb-2 mb-10 mx-2 flex flex-col justify-between"
+          className="w-1/4 px-4 pt-5 pb-2 mb-8 mx-2 flex flex-col justify-between"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -122,7 +122,7 @@ export default function Sales() {
         </div>
 
         <div
-          className="w-1/4 px-4 pt-5 pb-2 mb-10 mx-2 flex flex-col justify-between"
+          className="w-1/4 px-4 pt-5 pb-2 mb-8 mx-2 flex flex-col justify-between"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -157,7 +157,7 @@ export default function Sales() {
           </div>
         </div>
         <div
-          className="w-1/4 px-4 pt-5 pb-2 mb-10 mx-2 flex flex-col justify-between"
+          className="w-1/4 px-4 pt-5 pb-2 mb-8 mx-2 flex flex-col justify-between"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -195,7 +195,7 @@ export default function Sales() {
 
       <div className="flex justify-between w-[98%]">
         <div
-          className="w-1/2 p-4 mx-3 mb-10"
+          className="w-1/2 p-4 mx-3 mb-8"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -234,7 +234,7 @@ export default function Sales() {
         </div>
 
         <div
-          className="w-1/2 p-4 mx-3 mb-10"
+          className="w-1/2 p-4 mx-3 mb-8"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -291,7 +291,7 @@ export default function Sales() {
 
       <div className="flex justify-between w-[98%]">
         <div
-          className="w-1/2 p-4 mx-3 mb-10"
+          className="w-1/2 p-4 mx-3 mb-8"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
@@ -355,7 +355,7 @@ export default function Sales() {
         </div>
 
         <div
-          className="w-1/2 p-4 mx-3 mb-10"
+          className="w-1/2 p-4 mx-3 mb-8"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",

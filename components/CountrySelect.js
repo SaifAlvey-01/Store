@@ -13,7 +13,6 @@ const CountrySelect = ({ value, onChange, options }) => {
     ":before": {
       content: `" "`,
       display: "block",
-      // marginRight: 4,
       height: 20,
       width: 26,
       backgroundImage: `url(${imageUrl})`,
@@ -67,18 +66,17 @@ const CountrySelect = ({ value, onChange, options }) => {
       padding: "0px",
     }),
 
-    // Additional styles for the custom option component
     customOption: {
       display: "flex",
       alignItems: "center",
       gap: "10px",
     },
     countryImage: {
-      width: "24px", // Adjust size as needed
-      height: "24px", // Adjust size as needed
+      width: "24px",
+      height: "24px",
     },
-    input: (provided) => ({ ...provided, ...flag(value?.image) }), // Replace with actual flag image path
-    placeholder: (provided) => ({ ...provided, ...flag(value?.image) }), // Replace with actual flag placeholder image path
+    input: (provided) => ({ ...provided, ...flag(value?.image) }),
+    placeholder: (provided) => ({ ...provided, ...flag(value?.image) }),
     singleValue: (provided, { data }) => ({
       ...provided,
       ...flag(data.flagImageUrl),
@@ -122,7 +120,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       styles={customStyles}
       components={{
         Option: CustomOption,
-        NoOptionsMessage,  
+        NoOptionsMessage,
       }}
     />
   );

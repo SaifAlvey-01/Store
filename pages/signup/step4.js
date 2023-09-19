@@ -4,10 +4,9 @@ import { countryOptions } from "../../components/countryOptions";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import Cookie from "js-cookie";
-import useAxios from '../../hooks/useAxios';
+import useAxios from "../../hooks/useAxios";
 
-
-const SignUp4 = ({email}) => {
+const SignUp4 = ({ email }) => {
   const { resdata, error, loading, putData: putRequest } = useAxios();
   const router = useRouter();
   const [selectedCountry, setSelectedCountry] = useState({});
@@ -16,44 +15,39 @@ const SignUp4 = ({email}) => {
   const [business, setBusiness] = useState("");
 
   const handleCountryChange = (selectedOption) => {
-
-
     setSelectedCountry(selectedOption);
   };
 
   useEffect(() => {
-    if(resdata.message === "Business has been Updated"){
+    if (resdata.message === "Business has been Updated") {
       router.push("/dashboard");
-       if (isLoading) {
-      const timer = setTimeout(() => {
-        router.push("/dashboard");
-      }, 2000);
-      return () => clearTimeout(timer);
+      if (isLoading) {
+        const timer = setTimeout(() => {
+          router.push("/dashboard");
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
     }
 
-
-    }
-      
-
-    
-    if ( business.length > 0  && Object.keys(selectedCountry).length > 0 ) {
-      console.log(business.length > 0, Object.keys(selectedCountry).length > 0 )
-      console.log("here")
+    if (business.length > 0 && Object.keys(selectedCountry).length > 0) {
+      console.log(business.length > 0, Object.keys(selectedCountry).length > 0);
+      console.log("here");
       setIsactive(true);
     } else {
       setIsactive(false);
     }
-
-   
-  }, [isLoading, business, selectedCountry,resdata, isActive]);
+  }, [isLoading, business, selectedCountry, resdata, isActive]);
 
   const handleChange = (e) => {
-      setBusiness(e.target.value)
-    
+    setBusiness(e.target.value);
   };
 
   const handleSignInClick = () => {
-    putRequest('/user/business', { business, country:selectedCountry.label,  email});
+    putRequest("/user/business", {
+      business,
+      country: selectedCountry.label,
+      email,
+    });
 
     setIsLoading(true);
 

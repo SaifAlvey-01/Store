@@ -104,17 +104,17 @@ export default function DashboardHome() {
         }}
       >
         <div
-          className="my-8 mx-4 sm:my-8 sm:mx-4 md:my-4 md:mx-24 lg:my-4 lg:mx-24 lg:w-[70%] w-[90%]"
+          className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-6 lg:mx-24 lg:w-[70%] w-[90%]"
           style={{
             border: "1px solid #e3e3e3",
             backgroundColor: "var(--white-color, #FFF)",
             borderRadius: "10px",
           }}
         >
-          <div className="flex flex-col items-start justify-start p-8 ">
+          <div className="flex flex-col items-start justify-start p-6 ">
             <h2
               style={{ color: "#4B4B4B", fontSize: "20px" }}
-              className="mt-0 mb-3 font-bold font-freesans"
+              className="mt-0 mb-2 font-bold font-freesans"
             >
               Complete your store setup..{" "}
             </h2>
@@ -124,7 +124,7 @@ export default function DashboardHome() {
                 fontSize: "14px",
                 textAlign: "center",
               }}
-              className="mt-0 mb-2 my-0 font-thin text-base "
+              className="mt-0 mb-0 my-0 font-thin text-base "
             >
               Use high quality images and product descriptions to have a great
               looking product page. Let's get started.
@@ -134,7 +134,7 @@ export default function DashboardHome() {
               style={{
                 display: "flex",
                 alignItems: "flex-end",
-                marginTop: 40,
+                marginTop: 30,
                 width: "90%",
               }}
             >

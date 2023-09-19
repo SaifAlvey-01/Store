@@ -1,24 +1,24 @@
 .inputcontainer {
-    position: relative;
+  position: relative;
 }
 
 .inputcontainer input {
-    padding-left: 40px; 
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+  padding-left: 40px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .inputcontainer::before {
-    content: '';
-    background-image: url('/nav/search.png');
-    background-size: 20px 20px; /* Adjust the size of your SVG */
-    width: 20px; /* Adjust the width of your SVG */
-    height: 20px; /* Adjust the height of your SVG */
-    position: absolute;
-    left: 10px; /* Adjust the position of your SVG */
-    top: 50%; /* Adjust the vertical position of your SVG */
-    transform: translateY(-50%); /* Center the SVG vertically */
-    z-index: 1; /* Place the SVG above the input text */
+  content: "";
+  background-image: url("/nav/search.png");
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 }
