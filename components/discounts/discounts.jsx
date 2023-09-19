@@ -23,7 +23,6 @@ export default function Discounts() {
         <div className="flex flex-col items-center justify-between ">
           <img
             src={"/dashboard_images/discounts.png"}
-            // alt={label}
             className="w-600 h-600 "
           />
 
@@ -37,8 +36,6 @@ export default function Discounts() {
             <p
               style={{
                 color: "#8E8E8E",
-                // width: "100%",
-                // maxWidth: "80%",
                 textAlign: "center",
               }}
               className="mt-0 mb-2 my-0 font-thin text-base w-[100%] lg:max-w-[80%] max-w-[100%]"
