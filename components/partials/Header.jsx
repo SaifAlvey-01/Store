@@ -3,7 +3,6 @@ import Search from "./Search";
 import { useRouter } from "next/router";
 
 function Header({ sidebarOpen, setSidebarOpen, headerValue }) {
-  const [searchModalOpen, setSearchModalOpen] = useState(false);
   const router = useRouter();
   const header = router.pathname.slice(1);
 

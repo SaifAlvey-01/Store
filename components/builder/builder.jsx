@@ -13,7 +13,7 @@ export default function Builder() {
       }}
     >
       <div
-        className="my-8 mx-4 sm:my-8 sm:mx-4 lg:my-16 lg:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
@@ -21,16 +21,12 @@ export default function Builder() {
         }}
       >
         <div className="flex flex-col items-center justify-between ">
-          <img
-            src={"/dashboard_images/builder.png"}
-            // alt={label}
-            className="w-600 h-600 "
-          />
+          <img src={"/dashboard_images/builder.png"} className="w-600 h-600 " />
 
           <div className="flex flex-col items-center justify-between ">
             <h2
               style={{ color: "#4B4B4B" }}
-              className="mt-0 mb-8 font-bold font-freesans"
+              className="mt-0 mb-12 font-bold font-freesans"
             >
               Page Builder{" "}
             </h2>

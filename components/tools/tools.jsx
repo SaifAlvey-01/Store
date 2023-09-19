@@ -55,22 +55,151 @@ export default function Tools() {
 
         {activeDiv === "qr" && (
           <div
-            className="ml-3 w-[65%] text-blue-600 px-5 py-2 "
+            className="ml-3 w-[65%] text-blue-600 p-6 "
             style={{
               borderRadius: "10px",
               backgroundColor: "var(--white-color, #FFF)",
               border: "1px solid #e3e3e3",
             }}
           >
-            {" "}
-            <div className="flex flex-col items-center justify-between ">
-              <img
-                src={"/dashboard_images/QR.png"}
-                // alt={label}
-                className="w-600 h-600 "
-              />
+            <div className="flex flex-col items-center justify-between">
+              <div
+                style={{
+                  backgroundColor: "#FAFBFF",
+                  borderTopLeftRadius: "16px",
+                  borderTopRightRadius: "16px",
+                  borderBottom: "6px solid #4162FF",
+                  backgroundImage: "url('/bg1.png')",
+                  backgroundPosition: "center center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "auto 240px",
+                  boxShadow: `#00000011 0px 2px 4px 2px`,
+                }}
+                className="flex flex-col items-center p-4 h-[500px] w-[300px]"
+              >
+                <span
+                  className="font-freesans mb-2"
+                  style={{ color: "#8E8E8E", fontSize: "14px" }}
+                >
+                  Powered By
+                </span>
 
-              <div className="flex mb-10 mt-4  flex-row items-center justify-between ">
+                <img src={"/Logo1.png"} alt="#" />
+
+                <ul
+                  style={{ backgroundColor: "#1F1D2B", borderRadius: "10px" }}
+                  class="flex flex-wrap text-sm font-medium text-center list-none p-0"
+                >
+                  <li>
+                    <a
+                      href="#"
+                      class="no-underline inline-flex items-center px-2 py-2 rounded-lg text-white"
+                    >
+                      <span class="mr-2">•</span>
+                      Scan
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="no-underline inline-flex items-center px-2 py-2 rounded-lg text-white"
+                    >
+                      <span class="mr-2">•</span>
+                      Order
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="no-underline inline-flex items-center px-2 py-2 rounded-lg text-white"
+                    >
+                      <span class="mr-2">•</span>
+                      Pay
+                    </a>
+                  </li>
+                </ul>
+
+                <div
+                  style={{
+                    boxShadow: "0px 0px 32px 4px rgba(31, 29, 43, 0.25)",
+                    borderRadius: "16px",
+                  }}
+                  className="flex items-center justify-center bg-white h-[172px] w-[172px] mt-10"
+                >
+                  <div className="relative flex items-center justify-center">
+                    <img src={"/qr.png"} alt="" className="h-auto" />
+                    <img
+                      src={"/qr2.png"}
+                      alt=""
+                      className="absolute h-[30px] w-auto"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center justify-center mt-14">
+                  <span
+                    className="font-freesans mb-2"
+                    style={{
+                      color: "#4B4B4B",
+                      fontSize: "13px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Ray Naz{" "}
+                  </span>
+                  <a
+                    style={{
+                      color: "#7A91FF",
+                      fontSize: "12px",
+                      textAlign: "center",
+                    }}
+                    href="#"
+                  >
+                    launchmystore.io/raynaz
+                  </a>
+
+                  <div className="flex justify-center space-x-4 mt-6">
+                    <img
+                      style={{
+                        backgroundColor: "#ECEFFF",
+                        borderRadius: "6px",
+                      }}
+                      src="/visa.png"
+                      alt="Image 1"
+                      className="w-5 h-4 p-2"
+                    />
+                    <img
+                      style={{
+                        backgroundColor: "#ECEFFF",
+                        borderRadius: "6px",
+                      }}
+                      src="/master.png"
+                      alt="Image 2"
+                      className="w-5 h-4 p-2"
+                    />
+                    <img
+                      style={{
+                        backgroundColor: "#ECEFFF",
+                        borderRadius: "6px",
+                      }}
+                      src="/american.png"
+                      alt="Image 3"
+                      className="w-5 h-4 p-2"
+                    />
+                    <img
+                      style={{
+                        backgroundColor: "#ECEFFF",
+                        borderRadius: "6px",
+                      }}
+                      src="/unified.png"
+                      alt="Image 4"
+                      className="w-5 h-4 p-2"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-10 mt-4 ">
                 <button
                   className="mt-2 cursor-pointer"
                   style={{

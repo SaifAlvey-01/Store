@@ -13,7 +13,7 @@ export default function AbandonedCarts() {
       }}
     >
       <div
-        className="my-8 mx-4 sm:my-8 sm:mx-4 lg:my-16 lg:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
@@ -23,7 +23,6 @@ export default function AbandonedCarts() {
         <div className="flex flex-col items-center justify-between ">
           <img
             src={"/dashboard_images/abandoned_carts.png"}
-            // alt={label}
             className="w-600 h-600 "
           />
 
@@ -41,7 +40,7 @@ export default function AbandonedCarts() {
         </div>
       </div>
 
-      <div className="w-[90%] mx-4 mb-8 mt-4  flex flex-col items-center justify-between">
+      <div className="w-[90%] mx-4 mb-10 mt-4  flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

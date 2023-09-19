@@ -13,7 +13,7 @@ export default function Audience() {
       }}
     >
       <div
-        className="my-8 mx-4 sm:my-8 sm:mx-4 lg:my-16 lg:mx-24 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-6 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
@@ -23,23 +23,21 @@ export default function Audience() {
         <div className="flex flex-col items-center justify-between ">
           <img
             src={"/dashboard_images/audience.png"}
-            // alt={label}
             className="w-600 h-600 "
           />
 
           <div className="flex flex-col items-center justify-between ">
-            <h2
-              style={{ color: "#4B4B4B" }}
-              className="mt-0 mb-4 font-bold font-freesans"
+            <h3
+              style={{ color: "#4B4B4B", fontSize: "20px" }}
+              className="mt-0 mb-2 font-bold font-freesans"
             >
               You don’t have any customers yet{" "}
-            </h2>
+            </h3>
             <p
               style={{
                 color: "#8E8E8E",
-                // width: "100%",
-                // maxWidth: "80%",
                 textAlign: "center",
+                fontSize: "14px",
               }}
               className="mt-0 mb-2 my-0 font-thin text-base w-[100%] lg:max-w-[80%] max-w-[100%]"
             >
@@ -49,7 +47,7 @@ export default function Audience() {
           </div>
 
           <button
-            className="mt-4 cursor-pointer"
+            className="mt-2 cursor-pointer"
             style={{
               backgroundColor: "#4162FF",
               color: "#ffffff",
@@ -61,7 +59,7 @@ export default function Audience() {
           </button>
 
           <button
-            className="mt-2 mb-8 cursor-pointer"
+            className="mt-2 mb-4 cursor-pointer"
             style={{
               backgroundColor: "#ffffff",
               color: "#4162FF",
@@ -75,7 +73,7 @@ export default function Audience() {
         </div>
       </div>
 
-      <div className="w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
+      <div className="w-[90%] mx-4 mb-6 mt-2 flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

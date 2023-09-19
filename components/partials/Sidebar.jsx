@@ -71,8 +71,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     } else if (router.pathname.startsWith("/settings")) {
       setActiveGroup("settings");
     }
-
-    // Add more conditions here if you have more groups
   }, [router.pathname]);
 
   useEffect(() => {
@@ -147,8 +145,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  padding: "10px", // adjust as needed
-                  borderRadius: "6px", // adjust as needed
+                  padding: "10px",
+                  borderRadius: "6px",
                 }}
               >
                 <img src={"/logo.png"} alt="Your Image Description" />
@@ -358,7 +356,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   <ul
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/orders/all-orders"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       {" "}
                       <Link
                         onClick={(e) =>
@@ -375,7 +379,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/orders/abandoned-carts"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(
@@ -552,7 +562,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   <ul
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/products/all-products"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       {" "}
                       <Link
                         onClick={(e) =>
@@ -573,7 +589,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/products/categories"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(
@@ -593,7 +615,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/products/inventory"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Inventory", "/products/inventory")
@@ -684,7 +712,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   <ul
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/analytics/sales"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       {" "}
                       <Link
                         onClick={(e) =>
@@ -701,7 +735,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/analytics/traffic"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Traffic", "/analytics/traffic")
@@ -717,7 +757,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/analytics/products"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Products", "/analytics/products")
@@ -1189,7 +1235,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   <ul
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/appearance/themes"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       {" "}
                       <Link
                         onClick={(e) =>
@@ -1206,7 +1258,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/appearance/pages"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Pages", "/appearance/pages")
@@ -1222,7 +1280,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/appearance/menu"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Menu", "/appearance/menu")
@@ -1238,7 +1302,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/appearance/blogs"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Blogs", "/appearance/blogs")
@@ -1254,7 +1324,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/appearance/media"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(e, "Media", "/appearance/media")
@@ -1270,7 +1346,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
                     </li>
-                    <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                    <li
+                      className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                        router.pathname === "/appearance/customize-theme"
+                          ? "font-bold"
+                          : ""
+                      }`}
+                    >
                       <Link
                         onClick={(e) =>
                           handleLinkClick(

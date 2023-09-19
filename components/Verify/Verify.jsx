@@ -1,8 +1,7 @@
 import OTPInput from "react-otp-input";
 import React, { useState } from "react";
-import styles from "./styledVerify.module.css"; 
-function Verify({setOTP, OTP, setOtpValue}) {
- 
+import styles from "./styledVerify.module.css";
+function Verify({ setOTP, OTP, setOtpValue }) {
   function handleChange(OTP) {
     const numericValue = OTP.replace(/[^0-9]/g, "");
     setOTP(numericValue);
@@ -20,12 +19,7 @@ function Verify({setOTP, OTP, setOtpValue}) {
           inputType="number"
           inputStyle={styles.inputbox}
           renderInput={(props, index) => (
-            <input
-              {...props}
-              key={index}
-              // style={{ width: "30px" }} // Set the width of the input boxes
-              maxLength={1} // Set max length to 1 to ensure only one character is allowed
-            />
+            <input {...props} key={index} maxLength={1} />
           )}
         />
       </div>

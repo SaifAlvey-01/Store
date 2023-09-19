@@ -15,8 +15,6 @@ export default function Themes() {
     { imgSrc: "/3.png", title: "Hawaii" },
     { imgSrc: "/1.png", title: "Tinker" },
     { imgSrc: "/2.png", title: "Ursa" },
-
-    //... Add more objects here for other cards
   ];
   return (
     <div
