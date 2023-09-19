@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
+import CreateOrder from "./create-order";
 
 export default function AllOrders() {
+  const [showCreateOrder, setShowCreateOrder] = useState(false);
+
+  if (showCreateOrder) {
+    return <CreateOrder />;
+  }
+
   return (
     <div
       className="h-auto overflow-y-auto flex flex-col items-center justify-between "
@@ -45,6 +52,7 @@ export default function AllOrders() {
           </div>
 
           <button
+            onClick={() => setShowCreateOrder(true)}
             className="mt-4 mb-8 cursor-pointer"
             style={{
               backgroundColor: "#4162FF",
