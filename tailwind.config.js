@@ -44,8 +44,6 @@ module.exports = {
         roboto: "Roboto",
         chivo: "Chivo",
         poppins: "Poppins",
-        leagueGothic: ["League Gothic", "sans-serif"],
-        lato: ["Lato", "sans-serif"],
       },
       borderRadius: {
         "8xs-5": "4.5px",
