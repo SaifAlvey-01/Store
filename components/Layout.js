@@ -3,7 +3,7 @@ import Sidebar from "./partials/Sidebar";
 import Header from "./partials/Header";
 import { useRouter } from "next/router";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, backText, backImageUrl, backUrl }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -26,6 +26,9 @@ const Layout = ({ children }) => {
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
           headerValue={headerValue}
+          backText={backText}
+          backImageUrl={backImageUrl}
+          backUrl={backUrl}
         />
         <main>
           <div
