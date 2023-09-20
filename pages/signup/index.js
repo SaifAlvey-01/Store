@@ -82,18 +82,18 @@ const SignupComponent = () => {
             type: 'website', // Replace with the appropriate type
           }}
           twitter={{
-            handle: '@handle',
-            site: '@site',
-            cardType: 'summary_large_image',
-            title: 'Twitter Card Title', // Replace with Twitter card title
-            description: 'Twitter Card Description', // Replace with Twitter card description
-            image: 'https://example.com/twitter-card-image.jpg', // Replace with Twitter card image URL
-            creator: '@creator', // Replace with Twitter card creator
+            handle: '@handle', // Twitter handle
+            site: '@site', // Twitter site handle
+            cardType: 'summary_large_image', // Twitter card type
+            title: 'Twitter Card Title', // Twitter card title
+            description: 'Twitter Card Description', // Twitter card description
+            image: 'https://example.com/twitter-card-image.jpg', // Twitter card image URL
+            creator: '@creator', // Twitter card creator
           }}
         />
     </div>
 
-      <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
+      <div className="bg-[url('/BackgroundMob ile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
         <div className="container w-full mx-auto py-4 md:px-3 md:text-left text-center">
           <img
             className="w-[167px] h-[35px] object-cover"

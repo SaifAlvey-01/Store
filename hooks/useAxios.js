@@ -5,7 +5,7 @@ const useAxios = () => {
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const baseUrl = "http://localhost:5500";
+  const baseUrl = "http://localhost:8080";
 
   const fetchData = async (url, method = "GET", requestData = null) => {
     setLoading(true);
