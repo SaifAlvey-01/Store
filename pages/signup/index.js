@@ -66,15 +66,29 @@ const SignupComponent = () => {
   return (
     <>
        <div>
-        <NextSeo
+       <NextSeo
           openGraph={{
             title: 'The title used by twitter',
             description: 'The description used by twitter',
+            images: [
+              {
+                url: 'https://example.com/og-image.jpg', // Replace with your image URL
+                width: 1200, // Replace with the image width
+                height: 630, // Replace with the image height
+                alt: 'Open Graph Image Alt Text', // Replace with alt text
+              },
+            ],
+            site_name: 'Your Site Name', // Replace with your site name
+            type: 'website', // Replace with the appropriate type
           }}
           twitter={{
             handle: '@handle',
             site: '@site',
             cardType: 'summary_large_image',
+            title: 'Twitter Card Title', // Replace with Twitter card title
+            description: 'Twitter Card Description', // Replace with Twitter card description
+            image: 'https://example.com/twitter-card-image.jpg', // Replace with Twitter card image URL
+            creator: '@creator', // Replace with Twitter card creator
           }}
         />
     </div>
