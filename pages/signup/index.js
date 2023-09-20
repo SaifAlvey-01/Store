@@ -7,6 +7,7 @@ import SignUp3 from "./step3";
 import SignUp4 from "./step4";
 import Footer from "../../components/footer/footer";
 import { NextSeo } from "next-seo";
+//seo
 
 const SignupComponent = () => {
   const [currentStep, setCurrentStep] = useState(null);
