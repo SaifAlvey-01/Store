@@ -130,7 +130,6 @@ export default function Tools() {
                     <img src={"/qr.png"} alt="" className="h-auto" />
                     <img
                       src={"/qr2.png"}
-                      alt=""
                       className="absolute h-[30px] w-auto"
                     />
                   </div>
@@ -165,7 +164,6 @@ export default function Tools() {
                         borderRadius: "6px",
                       }}
                       src="/visa.png"
-                      alt="Image 1"
                       className="w-5 h-4 p-2"
                     />
                     <img
@@ -174,7 +172,6 @@ export default function Tools() {
                         borderRadius: "6px",
                       }}
                       src="/master.png"
-                      alt="Image 2"
                       className="w-5 h-4 p-2"
                     />
                     <img
@@ -183,7 +180,6 @@ export default function Tools() {
                         borderRadius: "6px",
                       }}
                       src="/american.png"
-                      alt="Image 3"
                       className="w-5 h-4 p-2"
                     />
                     <img
