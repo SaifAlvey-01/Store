@@ -65,11 +65,7 @@ export default function index() {
         }}
       >
         {" "}
-        <img
-          className="h-[450px] w-auto"
-          src={"/error401.png"}
-          alt="404-error"
-        />
+        <img className="h-[450px] w-auto" src={"/error401.png"} />
       </div>
     </div>
   );
