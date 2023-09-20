@@ -58,11 +58,7 @@ export default function ToolBar() {
             className="flex items-center px-3 py-2 hover:bg-gray-300"
           >
             Filters
-            <img
-              src={"/filter.png"}
-              alt="Dropdown Icon"
-              className="ml-2 w-4 h-4"
-            />
+            <img src={"/filter.png"} className="ml-2 w-4 h-4" />
           </button>
         </div>
 
@@ -79,11 +75,7 @@ export default function ToolBar() {
             className="flex items-center px-3 py-2 hover:bg-gray-300"
           >
             Add New Product
-            <img
-              src={"/chevron-down.png"}
-              alt="Dropdown Icon"
-              className="ml-2 w-4 h-4"
-            />
+            <img src={"/chevron-down.png"} className="ml-2 w-4 h-4" />
           </button>
         </div>
       </div>
