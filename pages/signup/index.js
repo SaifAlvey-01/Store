@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postUser } from "../../redux/slices/userSlice";
+import Image from "next/image";
 import SignUp1 from "./step1";
 import SignUp2 from "./step2";
 import SignUp3 from "./step3";
