@@ -2,9 +2,26 @@ import React, { useState } from "react";
 import Search from "./Search";
 import { useRouter } from "next/router";
 
-function Header({ sidebarOpen, setSidebarOpen, headerValue }) {
+function Header({
+  sidebarOpen,
+  setSidebarOpen,
+  headerValue,
+  backText,
+  backImageUrl,
+  backUrl,
+}) {
   const router = useRouter();
   const header = router.pathname.slice(1);
+
+  const handleBackClick = () => {
+    if (backUrl) {
+      if (typeof backUrl === "function") {
+        backUrl();
+      } else {
+        router.push(backUrl);
+      }
+    }
+  };
 
   return (
     <header className="sticky top-0 lg:shadow bg-white border-b border-slate-200 z-30">
@@ -27,9 +44,29 @@ function Header({ sidebarOpen, setSidebarOpen, headerValue }) {
                 className="w-[24px] h-[24px] bg-white "
               />
             </button>
-            <p className="text-[#4B5563] font-bold sm:text-base lg:text-lg leading-18 font-freesans">
-              {headerValue}
-            </p>
+            {backText ? (
+              <div className="flex items-center">
+                <img
+                  onClick={handleBackClick}
+                  src={backImageUrl}
+                  alt="Back"
+                  className="mr-1.5 cursor-pointer"
+                />
+                <span
+                  style={{ fontSize: "18px" }}
+                  className="text-[#4B5563] font-bold leading-18 font-freesans"
+                >
+                  {backText}
+                </span>
+              </div>
+            ) : (
+              <p
+                style={{ fontSize: "18px" }}
+                className="text-[#4B5563] font-bold leading-18 font-freesans"
+              >
+                {headerValue}
+              </p>
+            )}
           </div>
 
           {/* Header: Right side */}

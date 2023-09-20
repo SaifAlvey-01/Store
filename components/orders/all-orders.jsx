@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
 import CreateOrder from "./create-order";
 
-export default function AllOrders() {
-  const [showCreateOrder, setShowCreateOrder] = useState(false);
-
+export default function AllOrders({ showCreateOrder, setShowCreateOrder }) {
   if (showCreateOrder) {
-    return <CreateOrder />;
+    return <CreateOrder goBack={() => setShowCreateOrder(false)} />;
   }
 
   return (
