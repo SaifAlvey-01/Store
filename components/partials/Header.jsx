@@ -11,7 +11,11 @@ function Header({
   backUrl,
 }) {
   const router = useRouter();
-  const header = router.pathname.slice(1);
+  let header = router.pathname.slice(1);
+ 
+   const val =  header.split("/")
+   let lastElement = val[val.length - 1];
+  console.log(lastElement,"<-----")
 
   const handleBackClick = () => {
     if (backUrl) {
@@ -64,7 +68,7 @@ function Header({
                 style={{ fontSize: "18px" }}
                 className="text-[#4B5563] font-bold leading-18 font-freesans"
               >
-                {headerValue}
+                {lastElement}
               </p>
             )}
           </div>
