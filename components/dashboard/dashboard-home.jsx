@@ -8,9 +8,9 @@ export default function DashboardHome() {
       <div
         className="h-auto overflow-y-auto flex flex-col items-center justify-between"
         style={{
-          backgroundColor: "#FFF",
+          backgroundColor: "#ffffff",
           background: `
-  linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.2) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1)), 
+  linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 20%, rgba(255,255,255,1)), 
   url('/Rectangle_green.png') no-repeat left center / 18% 100%`,
           borderRadius: "10px",
           boxShadow: "#00000011 0px 2px 4px 2px",
@@ -54,9 +54,9 @@ export default function DashboardHome() {
       <div
         className="h-auto overflow-y-auto flex flex-col items-center justify-between"
         style={{
-          backgroundColor: "#FFF",
+          backgroundColor: "#ffffff",
           background: `
-  linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1)), 
+  linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 20%, rgba(255,255,255,1)), 
   url('/Rectangle_purple.png') no-repeat left center / 16% 100%`,
           borderRadius: "10px",
           boxShadow: "#00000011 0px 2px 4px 2px",
