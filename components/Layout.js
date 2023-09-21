@@ -14,14 +14,14 @@ const Layout = ({ children, backText, backImageUrl, backUrl }) => {
   return (
     <div
       style={{ backgroundColor: "#F7F9FB" }}
-      className="flex h-screen overflow-hidden "
+      className="flex overflow-hidden h-screen "
     >
       <Sidebar
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
         setHeaderValue={setHeaderValue}
       />
-      <div className="relative flex flex-col flex-1  overflow-x-hidden">
+      <div className="relative flex flex-col flex-1 overflow-x-hidden">
         <Header
           sidebarOpen={sidebarOpen}
           setSidebarOpen={setSidebarOpen}
