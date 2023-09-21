@@ -25,7 +25,12 @@ export default function Tools() {
           }}
         >
           <ul className="m-0 px-0 font-medium list-none">
-            <li>
+            <li
+              style={{
+                borderRadius: "10px",
+                backgroundColor: activeDiv === "qr" ? "#F6F7FF" : "",
+              }}
+            >
               <a
                 href="#"
                 onClick={() => setActiveDiv("qr")}
@@ -35,7 +40,12 @@ export default function Tools() {
                 <span className="ml-3">QR Code</span>
               </a>
             </li>
-            <li>
+            <li
+              style={{
+                borderRadius: "10px",
+                backgroundColor: activeDiv === "affiliate" ? "#F6F7FF" : "",
+              }}
+            >
               <a
                 href="#"
                 onClick={() => setActiveDiv("affiliate")}

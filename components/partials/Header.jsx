@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Search from "./Search";
 import { useRouter } from "next/router";
+import NotificationDropdown from "./notification-dropdown";
 
 function Header({
   sidebarOpen,
@@ -12,6 +13,21 @@ function Header({
 }) {
   const router = useRouter();
   const header = router.pathname.slice(1);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   const handleBackClick = () => {
     if (backUrl) {
@@ -83,10 +99,18 @@ function Header({
               src="/nav/download.png"
               className="w-[32px] h-[32px] cursor-pointer"
             />
-            <img
-              src="/nav/bell.png"
-              className="w-[32px] h-[32px] cursor-pointer"
-            />
+
+            <div className="relative">
+              {" "}
+              {/* New wrapper for the bell icon and dropdown */}
+              <img
+                src="/nav/bell.png"
+                className="w-[32px] h-[32px] cursor-pointer"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              />
+              {dropdownOpen && <NotificationDropdown ref={dropdownRef} />}
+            </div>
+
             <img
               src="/nav/open.png"
               className="w-[32px] h-[32px] cursor-pointer"

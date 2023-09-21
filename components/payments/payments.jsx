@@ -6,7 +6,7 @@ export default function Payments() {
 
   return (
     <div
-      className="h-auto overflow-y-auto flex flex-col items-center justify-between "
+      className="h-[84vh] overflow-y-auto flex flex-col items-center justify-between "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",

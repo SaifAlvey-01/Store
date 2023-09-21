@@ -13,7 +13,7 @@ export default function Menu() {
 
   return (
     <div
-      className="h-auto p-6"
+      className="p-6"
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
@@ -21,7 +21,7 @@ export default function Menu() {
         marginBottom: "10px",
       }}
     >
-      <div className="w-full h-[470px]">
+      <div className="w-full h-[60vh]">
         <div className="w-full">
           <div className="flex justify-between w-[20%] border-b border-gray-200">
             <button
