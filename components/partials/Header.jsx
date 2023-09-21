@@ -12,9 +12,9 @@ function Header({
   backUrl,
 }) {
   const router = useRouter();
-  const header = router.pathname.slice(1);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
+  let header = router.pathname.slice(1);
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -28,6 +28,10 @@ function Header({
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  const val = header.split("/");
+  let lastElement = val[val.length - 1];
+  console.log(lastElement, "<-----");
 
   const handleBackClick = () => {
     if (backUrl) {
@@ -80,7 +84,7 @@ function Header({
                 style={{ fontSize: "18px" }}
                 className="text-[#4B5563] font-bold leading-18 font-freesans"
               >
-                {headerValue}
+                {lastElement}
               </p>
             )}
           </div>

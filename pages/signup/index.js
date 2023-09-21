@@ -65,17 +65,35 @@ const SignupComponent = () => {
 
   return (
     <>
-      <div>
-        <NextSeo
-          title="Page Title"
-          description="The description"
+       <div>
+       <NextSeo
           openGraph={{
-            type: "website",
+            title: 'The title used by twitter',
+            description: 'The description used by twitter',
+            images: [
+              {
+                url: 'https://example.com/og-image.jpg', // Replace with your image URL
+                width: 1200, // Replace with the image width
+                height: 630, // Replace with the image height
+                alt: 'Open Graph Image Alt Text', // Replace with alt text
+              },
+            ],
+            site_name: 'Your Site Name', // Replace with your site name
+            type: 'website', // Replace with the appropriate type
+          }}
+          twitter={{
+            handle: '@handle', // Twitter handle
+            site: '@site', // Twitter site handle
+            cardType: 'summary_large_image', // Twitter card type
+            title: 'Twitter Card Title', // Twitter card title
+            description: 'Twitter Card Description', // Twitter card description
+            image: 'https://example.com/twitter-card-image.jpg', // Twitter card image URL
+            creator: '@creator', // Twitter card creator
           }}
         />
-      </div>
+    </div>
 
-      <div className="bg-[url('/BackgroundMobile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
+      <div className="bg-[url('/BackgroundMob ile.png')] md:bg-[url('/Background.png')] bg-cover bg-no-repeat bg-center h-screen">
         <div className="container w-full mx-auto py-4 md:px-3 md:text-left text-center">
           <img
             className="w-[167px] h-[35px] object-cover"
