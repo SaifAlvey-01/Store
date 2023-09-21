@@ -8,7 +8,7 @@ export default function DashboardHome() {
       <div
         className="h-auto overflow-y-auto flex flex-col items-center justify-between"
         style={{
-          backgroundColor: "var(--white-color, #FFF)",
+          backgroundColor: "#FFF",
           background: `
   linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.2) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1)), 
   url('/Rectangle_green.png') no-repeat left center / 18% 100%`,
@@ -20,7 +20,7 @@ export default function DashboardHome() {
         <div className="flex justify-between items-center w-[97%]">
           <div className="flex flex-row justify-between items-center w-9/10 space-x-28">
             <h4
-              className="self-stretch font-freesans"
+              className="self-stretch font-freesans mr-10"
               style={{ color: "#ffffff" }}
             >
               Share Store Link
@@ -54,9 +54,9 @@ export default function DashboardHome() {
       <div
         className="h-auto overflow-y-auto flex flex-col items-center justify-between"
         style={{
-          backgroundColor: "var(--white-color, #FFF)",
+          backgroundColor: "#FFF",
           background: `
-  linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.2) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1)), 
+  linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.1) 20%, rgba(255,255,255,1) 20%, rgba(255,255,255,1)), 
   url('/Rectangle_purple.png') no-repeat left center / 16% 100%`,
           borderRadius: "10px",
           boxShadow: "#00000011 0px 2px 4px 2px",
@@ -64,9 +64,9 @@ export default function DashboardHome() {
         }}
       >
         <div className="flex justify-between items-center w-[97%]">
-          <div className="flex flex-row justify-between items-center w-9/10 space-x-28">
+          <div className="flex flex-row justify-between items-center w-9/10 ">
             <h4
-              className="self-stretch font-freesans"
+              className="self-stretch font-freesans mr-44"
               style={{ color: "#ffffff" }}
             >
               Get Domain{" "}

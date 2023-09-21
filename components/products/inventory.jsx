@@ -5,7 +5,7 @@ import ToolBar from "../tool-bar";
 export default function Inventory() {
   return (
     <div
-      className="h-auto overflow-y-auto flex flex-col items-center justify-between "
+      className="h-[84vh] overflow-y-auto flex flex-col items-center justify-between "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
@@ -14,7 +14,7 @@ export default function Inventory() {
       }}
     >
       <div
-        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-24 lg:my-8 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="h-screen my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-8 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
