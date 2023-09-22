@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { users } from "../../utils/userData";
-import Cookie from "js-cookie";
+import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
@@ -17,13 +17,21 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     formState: { errors },
   } = useForm();
   useEffect(() => {
-    if (resdata.message && resdata.message === "Success") {
+    
+    if (resdata.message && resdata.message === "User Added Successfully" ) {
+      const email = getValues();
+      Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(2);
     }
 
     if (resdata.message && resdata.message === "User already exist") {
       setCustomError(resdata.message);
     }
+
+    if(error){
+      setCustomError(resdata.message)
+    }
+
   }, [resdata]);
 
   const onSubmit = async (data) => {
@@ -31,7 +39,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     setEmail(email.email);
     setFormData((prevData) => ({ ...prevData, ...data }));
 
-    postRequest("/user/register-email", email);
+    postRequest("/auth/register-email", email);
   };
 
   const handleGetStartedClick = () => {

@@ -9,12 +9,12 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
     register,
     formState: { errors },
   } = useForm();
-  const { resdata, error, loading, postData: postRequest } = useAxios();
+  const { resdata, error, loading, putData: putRequest } = useAxios();
 
   useEffect(() => {
     if (
       resdata.message &&
-      resdata.message === "OTP has been deliverd to your email"
+      resdata.message === "OTP has been send on provided email"
     ) {
       setCurrentStep(3);
     }
@@ -26,8 +26,8 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
 
   const onSubmit = (data) => {
     console.log(email, "<---email");
-    // const savedEmail = Cookie.get("email");
-    postRequest("/user/register-password", { password: data.password, email });
+    const savedEmail = Cookie.get("email");
+    putRequest("/auth/create-password", { password: data.password, email: savedEmail});
     setFormData((prevData) => ({ ...prevData, ...data }));
   };
 

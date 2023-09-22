@@ -9,16 +9,39 @@ import useAxios from "../../hooks/useAxios";
 const SignUp4 = ({ email }) => {
   const { resdata, error, loading, putData: putRequest } = useAxios();
   const router = useRouter();
+  const [defaultCountry, setDefault] = useState({});
   const [selectedCountry, setSelectedCountry] = useState({});
   const [isActive, setIsactive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSelect, setIsSelect] = useState(false);
   const [business, setBusiness] = useState("");
 
   const handleCountryChange = (selectedOption) => {
-    setSelectedCountry(selectedOption);
+    if(selectedOption){
+      setIsSelect(true)
+      setSelectedCountry(selectedOption);
+    }
   };
 
   useEffect(() => {
+    fetch('http://ip-api.com/json/')
+    .then( res => res.json())
+    .then(response => {
+      setDefault(response)
+     console.log("Country is : ", response);
+   })
+   .catch((data, status) => {
+     console.log('Request failed:', data);
+   });
+
+ },[])
+
+
+  useEffect(() => {
+    if(defaultCountry.status === "success" && !isSelect){
+      const country = countryOptions.filter((opt)=> opt.label === defaultCountry.country)
+      setSelectedCountry(country[0])
+    }
     if (resdata.message === "Business has been Updated") {
       router.push("/dashboard");
       if (isLoading) {
@@ -31,16 +54,16 @@ const SignUp4 = ({ email }) => {
 
     if (business.length > 0 && Object.keys(selectedCountry).length > 0) {
       console.log(business.length > 0, Object.keys(selectedCountry).length > 0);
-      console.log("here");
       setIsactive(true);
     } else {
       setIsactive(false);
     }
-  }, [isLoading, business, selectedCountry, resdata, isActive]);
+  }, [isLoading, business, selectedCountry, resdata, isActive,defaultCountry]);
 
   const handleChange = (e) => {
     setBusiness(e.target.value);
   };
+
 
   const handleSignInClick = () => {
     putRequest("/user/business", {
@@ -88,7 +111,7 @@ const SignUp4 = ({ email }) => {
                       </div>
                     </div>
 
-                    {/* contury select */}
+                    {/* contury select */}  
                     <div className="w-full">
                       <CountrySelect
                         value={selectedCountry}

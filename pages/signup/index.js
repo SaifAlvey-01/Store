@@ -7,6 +7,7 @@ import SignUp4 from "./step4";
 import Footer from "../../components/footer/footer";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
+import Cookie from "js-cookie";
 
 //seo
 
@@ -17,6 +18,7 @@ const SignupComponent = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    
     const savedStep = Number(localStorage.getItem("signupCurrentStep")) || 1;
     setCurrentStep(savedStep);
   }, []);
