@@ -29,9 +29,16 @@ function Header({
     };
   }, []);
 
+  function capitalizeAndSpace(str) {
+    return str
+      .replace(/-/g, " ")
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
   const val = header.split("/");
   let lastElement = val[val.length - 1];
-  console.log(lastElement, "<-----");
 
   const handleBackClick = () => {
     if (backUrl) {
@@ -84,7 +91,7 @@ function Header({
                 style={{ fontSize: "18px" }}
                 className="text-[#4B5563] font-bold leading-18 font-freesans"
               >
-                {lastElement}
+                {capitalizeAndSpace(lastElement)}
               </p>
             )}
           </div>

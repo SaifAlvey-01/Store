@@ -14,9 +14,9 @@ body {
   border-width: 0;
 }
 
-/* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 10px; /* for vertical scrollbars */
+  height: 10px; /* for horizontal scrollbars */
 }
 
 /* Track */

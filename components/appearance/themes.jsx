@@ -23,7 +23,6 @@ export default function Themes() {
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
         boxShadow: `#00000011 0px 2px 4px 2px`,
-        marginBottom: "10px",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between" }}>

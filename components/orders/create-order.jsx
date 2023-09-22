@@ -108,7 +108,7 @@ export default function CreateOrder() {
                   className="px-0 py-3 mt-2 font-roboto w-[70%]"
                   style={{
                     color: "#8E8E8E",
-                    backgroundColor: "#FAFAFA",
+                    backgroundColor: "#f1f1f1",
                     fontSize: "14px",
                     fontWeight: 500,
                     borderRadius: "10px",
@@ -138,7 +138,7 @@ export default function CreateOrder() {
                   className="px-0 py-3 mt-2 font-roboto w-[70%]"
                   style={{
                     color: "#8E8E8E",
-                    backgroundColor: "#FAFAFA",
+                    backgroundColor: "#f1f1f1",
                     fontSize: "14px",
                     fontWeight: 500,
                     borderRadius: "10px",
@@ -168,7 +168,7 @@ export default function CreateOrder() {
                   className="px-0 py-3 mt-2 font-roboto w-[70%]"
                   style={{
                     color: "#8E8E8E",
-                    backgroundColor: "#FAFAFA",
+                    backgroundColor: "#f1f1f1",
                     fontSize: "14px",
                     fontWeight: 500,
                     borderRadius: "10px",

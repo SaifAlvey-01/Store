@@ -21,7 +21,6 @@ export default function AllApps() {
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
         boxShadow: `#00000011 0px 2px 4px 2px`,
-        marginBottom: "10px",
         padding: "30px ",
       }}
     >

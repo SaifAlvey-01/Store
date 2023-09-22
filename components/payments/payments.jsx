@@ -6,12 +6,11 @@ export default function Payments() {
 
   return (
     <div
-      className="h-[84vh] overflow-y-auto flex flex-col items-center justify-between "
+      className="overflow-y-auto flex flex-col items-center justify-between "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
         boxShadow: `#00000011 0px 2px 4px 2px`,
-        marginBottom: "10px",
       }}
     >
       <div className="flex justify-between items-center mt-6 mb-6 w-[96%]">

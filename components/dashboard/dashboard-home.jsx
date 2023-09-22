@@ -18,9 +18,9 @@ export default function DashboardHome() {
         }}
       >
         <div className="flex justify-between items-center w-[97%]">
-          <div className="flex flex-row justify-between items-center w-9/10 space-x-28">
+          <div className="flex flex-row justify-between items-center w-9/10">
             <h4
-              className="self-stretch font-freesans mr-10"
+              className="self-stretch font-freesans sm:mr-12 md:mr-12 lg:mr-20 xl:mr-20"
               style={{ color: "#ffffff" }}
             >
               Share Store Link
@@ -66,7 +66,7 @@ export default function DashboardHome() {
         <div className="flex justify-between items-center w-[97%]">
           <div className="flex flex-row justify-between items-center w-9/10 ">
             <h4
-              className="self-stretch font-freesans mr-44"
+              className="self-stretch font-freesans sm:mr-20 md:mr-20 lg:mr-28 xl:mr-28"
               style={{ color: "#ffffff" }}
             >
               Get Domain{" "}
@@ -78,7 +78,7 @@ export default function DashboardHome() {
             </span>
           </div>
 
-          <div className="flex flex-row space-y-4 w-1/10 md:space-y-0 md:space-x-4">
+          <div className="flex flex-row space-y-4 w-1/10 md:space-y-0">
             <button
               className="cursor-pointer"
               style={{
@@ -100,7 +100,6 @@ export default function DashboardHome() {
           backgroundColor: "var(--white-color, #FFF)",
           borderRadius: "10px",
           boxShadow: `#00000011 0px 2px 4px 2px`,
-          marginBottom: "10px",
         }}
       >
         <div
