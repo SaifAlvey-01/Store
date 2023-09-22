@@ -4,10 +4,10 @@ import Verify from "../../components/Verify/Verify";
 import Cookie from "js-cookie";
 import useAxios from "../../hooks/useAxios";
 
-const SignUp3 = ({ setCurrentStep, email }) => {
+const SignUp3 = ({ setCurrentStep }) => {
   const [OTP, setOTP] = useState("");
-  const isEmail = /\S+@\S+\.\S+/.test(email);
   const savedEmail = Cookie.get("email");
+  const isEmail = /\S+@\S+\.\S+/.test(savedEmail);
   const { resdata, error, loading, putData: putRequest } = useAxios();
 
   const router = useRouter();
@@ -21,13 +21,15 @@ const SignUp3 = ({ setCurrentStep, email }) => {
   };
 
   useEffect(() => {
-    if (resdata.message === "User has been Verified") {
+    if (resdata.state === "success") {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   }, [resdata]);
 
   const onTextFieldContainer1Click = async () => {
-    putRequest("/user/verify-otp", { otp: OTP, email });
+    const data ={ verificationCode: Number(OTP), email:savedEmail }
+    
+    putRequest("/auth/verify-email-verification-code", data);
   };
 
   const handleSignInClick = () => {
