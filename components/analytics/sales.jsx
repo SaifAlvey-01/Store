@@ -12,7 +12,6 @@ export default function Sales() {
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
         boxShadow: `#00000011 0px 2px 4px 2px`,
-        marginBottom: "10px",
       }}
     >
       <div className="flex justify-between items-center mt-6 mb-6 w-[96%]">
