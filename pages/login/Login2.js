@@ -25,27 +25,25 @@ const Login2 = ({ inputData }) => {
   } = useForm();
 
   useEffect(()=>{
-    if(resdata.message === "User not existed, Try SignUp"){
-      setPasswordError("Invalid Email or password");
-    }
-    if(resdata.message === "Loged In"){
+    
+    if(resdata.status === 200){
       setPasswordError(null);
       setIsLoading(true);
       setTimeout(() => {
         router.push("/dashboard");
       }, 2000);
 
+    }else{
+      setPasswordError(resdata.message)
     }
-    if(resdata.message === "Incorrect Password"){
-      setPasswordError("Invalid Email or password");
-    }
+   
   },[resdata])
 
   const onSubmit = (data, e) => {
     e.preventDefault();
     // const matchedUser = users.find((u) => u.email === data.email);
 
-    postRequest('/user/login', {email:data.email, password: data.password });
+    postRequest('/auth/manual-login', {accountId:data.email, password: data.password });
 
 
     // const data = await response.json();
