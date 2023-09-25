@@ -36,6 +36,10 @@ const SignUp3 = ({ setCurrentStep }) => {
     router.push("/login");
   };
 
+  const handleresend = ()=> {
+
+  };
+
   return (
     <div className=" w-full sm:w-[450px] md:w-[450px] lg:w-[450px] min-h-[calc(100% - 100px)] text-11xl text-neutral-600">
       <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden mx-2 py-8 px-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
@@ -67,7 +71,7 @@ const SignUp3 = ({ setCurrentStep }) => {
                   <div className=" flex flex-row items-center justify-start relative mr-14 leading-[20px] font-medium">
                     Code
                   </div>
-                  <div className=" flex flex-row items-center justify-start ml-14">
+                  <div onClick={handleresend} className=" flex flex-row items-center justify-start ml-14">
                     Didn’t get the code?{" "}
                     <a className="text-[#4162FF] ml-1">Resend OTP</a>
                   </div>

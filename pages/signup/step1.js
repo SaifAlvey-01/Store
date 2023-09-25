@@ -5,11 +5,16 @@ import { useForm } from "react-hook-form";
 import { users } from "../../utils/userData";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
+import { signIn, useSession } from 'next-auth/react';
+import { sendGoogleAccessToken } from "../api/auth/sendToken";
+import { getSession } from 'next-auth/react';
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
   const { resdata, error, loading, postData: postRequest } = useAxios();
+  const { data, status } = useSession();
+
   const {
     handleSubmit,
     register,
@@ -17,34 +22,36 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     formState: { errors },
   } = useForm();
   useEffect(() => {
+    console.log(data, "<----SESSION DATA")
+    //google auth calls
+    if (data?.user) {
+      Cookies.set('email', email.email, { expires: 7 });
+      setCurrentStep(4);
+    }
     
-    if (resdata.message && resdata.message === "User Added Successfully" ) {
+    if (resdata.message && resdata.state === "success" ) {
       const email = getValues();
       Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(2);
-    }
-
-    if (resdata.message && resdata.message === "User already exist") {
-      setCustomError(resdata.message);
     }
 
     if(error){
       setCustomError(resdata.message)
     }
 
-  }, [resdata]);
+  }, [resdata,data]);
 
   const onSubmit = async (data) => {
     const email = getValues();
     setEmail(email.email);
     setFormData((prevData) => ({ ...prevData, ...data }));
-
     postRequest("/auth/register-email", email);
   };
 
   const handleGetStartedClick = () => {
     router.push("/login");
   };
+
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
@@ -137,7 +144,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                     <hr className="h-px w-[90px] bg-gradient-line mx-3" />
                   </div>
                 </div>
-                <div className="rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                <div onClick={() => signIn('google')} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                   <div className="relative w-[90px] h-0" />
                   <div className="flex flex-row items-center justify-center gap-[6px]">
                     <img

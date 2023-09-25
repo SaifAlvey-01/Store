@@ -11,10 +11,10 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
 
 
   useEffect(()=>{
-    if(resdata.message === "User not found with email."){
-      setErrorMessage("User not found with email.");
+    if(resdata.state === "info"){
+      setErrorMessage(resdata.message);
     }
-    if(resdata.message === "OTP for Reset Password has been delivered to your email."){
+    if(resdata.state === "state"){
       setCurrentStep((prevStep) => prevStep + 1);
     } 
   },[resdata])
@@ -27,19 +27,11 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
 
     const isEmail = emailPattern.test(inputVal);
     if (isEmail) {
-      postRequest('/user/forget-password', {email:inputValue });
+      postRequest('/auth/forget-password', {step:1, email:inputValue });
     }else{
        setErrorMessage("Invalid Email");
 
      }
-
-
-
-    // const userExists = users.some(
-    //   (user) =>
-    //     (isEmail && user.email === inputVal) ||
-    //     (isMobile && user.phone === inputVal)
-    // );
 
   };
 
