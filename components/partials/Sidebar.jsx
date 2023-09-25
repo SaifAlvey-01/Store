@@ -3,66 +3,27 @@ import Link from "next/link";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { useRouter } from "next/router";
-import useActiveGroup from "../../hooks/useActiveGroup";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
   const router = useRouter();
-
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
-  const activeGroup = useActiveGroup(router.pathname);
+  const [activeGroup, setActiveGroup] = useState("dashboard");
   const ordersSubLinksVisible = activeGroup === "orders";
   const productsSubLinksVisible = activeGroup === "products";
   const analyticsSubLinksVisible = activeGroup === "analytics";
   const appearanceSubLinksVisible = activeGroup === "appearance";
   const appstoreSubLinksVisible = activeGroup === "appstore";
-  const dashboardRef = useRef(null);
-  const ordersRef = useRef(null);
-  const deliveryRef = useRef(null);
-  const productsRef = useRef(null);
-  const analyticsRef = useRef(null);
-  const paymentsRef = useRef(null);
-  const discountsRef = useRef(null);
-  const audienceRef = useRef(null);
-  const builderRef = useRef(null);
-  const appearanceRef = useRef(null);
-  const toolsRef = useRef(null);
-  const appStoreRef = useRef(null);
-  const settingsRef = useRef(null);
-  const scrollTargetRef = useRef(null);
 
   const intendedHeaderValue = useRef("");
 
-  const handleLinkClick = (e, headerValue, path, ref) => {
+  const handleLinkClick = (e, headerValue, path) => {
     e.preventDefault();
     intendedHeaderValue.current = headerValue;
-
-    if (ref && ref.current) {
-      scrollTargetRef.current = ref.current;
-    }
-
     setSidebarOpen(false);
-
     router.push(path);
   };
-
-  useEffect(() => {
-    if (
-      scrollTargetRef.current &&
-      document.body.contains(scrollTargetRef.current)
-    ) {
-      const timeout = setTimeout(() => {
-        scrollTargetRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-        scrollTargetRef.current = null;
-      }, 300);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [scrollTargetRef.current]);
 
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -81,6 +42,47 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
   });
+
+  useEffect(() => {
+    if (router.pathname.startsWith("/orders")) {
+      setActiveGroup("orders");
+    } else if (router.pathname.startsWith("/dashboard")) {
+      setActiveGroup("dashboard");
+    } else if (router.pathname.startsWith("/delivery")) {
+      setActiveGroup("delivery");
+    } else if (router.pathname.startsWith("/products")) {
+      setActiveGroup("products");
+    } else if (router.pathname.startsWith("/analytics")) {
+      setActiveGroup("analytics");
+    } else if (router.pathname.startsWith("/payments")) {
+      setActiveGroup("payments");
+    } else if (router.pathname.startsWith("/discounts")) {
+      setActiveGroup("discounts");
+    } else if (router.pathname.startsWith("/audience")) {
+      setActiveGroup("audience");
+    } else if (router.pathname.startsWith("/builder")) {
+      setActiveGroup("builder");
+    } else if (router.pathname.startsWith("/appearance")) {
+      setActiveGroup("appearance");
+    } else if (router.pathname.startsWith("/tools")) {
+      setActiveGroup("tools");
+    } else if (router.pathname.startsWith("/appstore")) {
+      setActiveGroup("appstore");
+    } else if (router.pathname.startsWith("/settings")) {
+      setActiveGroup("settings");
+    }
+  }, [router.pathname]);
+
+  useEffect(() => {
+    const handleRouteComplete = () => {
+      setHeaderValue(intendedHeaderValue.current);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteComplete);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteComplete);
+    };
+  }, []);
 
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
@@ -184,15 +186,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Dashboard",
-                            "/dashboard",
-                            dashboardRef
-                          )
+                          handleLinkClick(e, "Dashboard", "/dashboard")
                         }
                         style={{ textDecoration: "none" }}
                         href="/dashboard"
+                        prefetch={false}
                       >
                         <div
                           role="button"
@@ -270,7 +268,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               </SidebarLinkGroup>
 
               {/* Orders */}
-              <div className="mb-2" ref={ordersRef}>
+              <div className="mb-2">
                 <SidebarLinkGroup
                   activecondition={activeGroup === "orders"}
                   onClick={() => {
@@ -287,12 +285,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             handleLinkClick(
                               e,
                               "All Orders",
-                              "/orders/all-orders",
-                              ordersRef
+                              "/orders/all-orders"
                             )
                           }
                           style={{ textDecoration: "none" }}
                           href="/orders/all-orders"
+                          prefetch={false}
                         >
                           <div
                             // onClick={(e) => {
@@ -370,15 +368,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "All Orders",
-                            "/orders/all-orders",
-                            ordersRef
-                          )
+                          handleLinkClick(e, "All Orders", "/orders/all-orders")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/orders/all-orders"
+                        prefetch={false}
                       >
                         <div
                           role="button"
@@ -400,12 +394,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           handleLinkClick(
                             e,
                             "All Orders",
-                            "/orders/abandoned-carts",
-                            ordersRef
+                            "/orders/abandoned-carts"
                           )
+                          
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/orders/abandoned-carts"
+                        prefetch={false}
                       >
                         <div
                           role="button"
@@ -433,12 +428,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Delivery",
-                            "/delivery",
-                            deliveryRef
-                          )
+                          handleLinkClick(e, "Delivery", "/delivery")
                         }
                         style={{ textDecoration: "none" }}
                         href="/delivery"
@@ -501,7 +491,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               </SidebarLinkGroup>
 
               {/* Products */}
-              <div className="mb-2" ref={productsRef}>
+              <div className="mb-2">
                 <SidebarLinkGroup
                   activecondition={activeGroup === "products"}
                   onClick={() => {
@@ -518,8 +508,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             handleLinkClick(
                               e,
                               "All Products",
-                              "/products/all-products",
-                              productsRef
+                              "/products/all-products"
                             )
                           }
                           style={{ textDecoration: "none" }}
@@ -591,8 +580,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           handleLinkClick(
                             e,
                             "All Products",
-                            "/products/all-products",
-                            productsRef
+                            "/products/all-products"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -618,8 +606,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           handleLinkClick(
                             e,
                             "Categories",
-                            "/products/categories",
-                            productsRef
+                            "/products/categories"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -642,12 +629,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Inventory",
-                            "/products/inventory",
-                            productsRef
-                          )
+                          handleLinkClick(e, "Inventory", "/products/inventory")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/products/inventory"
@@ -665,7 +647,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               </div>
 
               {/* Analytics */}
-              <div className="mb-2" ref={analyticsRef}>
+              <div className="mb-2">
                 <SidebarLinkGroup
                   activecondition={activeGroup === "analytics"}
                   onClick={() => {
@@ -679,12 +661,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       <React.Fragment>
                         <Link
                           onClick={(e) =>
-                            handleLinkClick(
-                              e,
-                              "Sales",
-                              "/analytics/sales",
-                              analyticsRef
-                            )
+                            handleLinkClick(e, "Sales", "/analytics/sales")
                           }
                           style={{ textDecoration: "none", color: "#FAFAFA" }}
                           href="/analytics/sales"
@@ -750,12 +727,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Sales",
-                            "/analytics/sales",
-                            analyticsRef
-                          )
+                          handleLinkClick(e, "Sales", "/analytics/sales")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/analytics/sales"
@@ -777,12 +749,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Traffic",
-                            "/analytics/traffic",
-                            analyticsRef
-                          )
+                          handleLinkClick(e, "Traffic", "/analytics/traffic")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/analytics/traffic"
@@ -804,12 +771,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Products",
-                            "/analytics/products",
-                            analyticsRef
-                          )
+                          handleLinkClick(e, "Products", "/analytics/products")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/analytics/products"
@@ -840,12 +802,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Payouts",
-                            "/payments",
-                            paymentsRef
-                          )
+                          handleLinkClick(e, "Payouts", "/payments")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/payments"
@@ -925,12 +882,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Discounts",
-                            "/discounts",
-                            discountsRef
-                          )
+                          handleLinkClick(e, "Discounts", "/discounts")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/discounts"
@@ -1018,12 +970,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Audience",
-                            "/audience",
-                            audienceRef
-                          )
+                          handleLinkClick(e, "Audience", "/audience")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/audience"
@@ -1147,12 +1094,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Page Builder",
-                            "/builder",
-                            builderRef
-                          )
+                          handleLinkClick(e, "Page Builder", "/builder")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/builder"
@@ -1208,7 +1150,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               </SidebarLinkGroup>
 
               {/* Appearance */}
-              <div className="mb-2" ref={appearanceRef}>
+              <div className="mb-2">
                 <SidebarLinkGroup
                   activecondition={activeGroup === "appearance"}
                   onClick={() => {
@@ -1222,12 +1164,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       <React.Fragment>
                         <Link
                           onClick={(e) =>
-                            handleLinkClick(
-                              e,
-                              "Themes",
-                              "/appearance/themes",
-                              appearanceRef
-                            )
+                            handleLinkClick(e, "Themes", "/appearance/themes")
                           }
                           style={{ textDecoration: "none", color: "#FAFAFA" }}
                           href="/appearance/themes"
@@ -1313,12 +1250,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Themes",
-                            "/appearance/themes",
-                            appearanceRef
-                          )
+                          handleLinkClick(e, "Themes", "/appearance/themes")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/appearance/themes"
@@ -1340,12 +1272,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Pages",
-                            "/appearance/pages",
-                            appearanceRef
-                          )
+                          handleLinkClick(e, "Pages", "/appearance/pages")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/appearance/pages"
@@ -1367,12 +1294,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Menu",
-                            "/appearance/menu",
-                            appearanceRef
-                          )
+                          handleLinkClick(e, "Menu", "/appearance/menu")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/appearance/menu"
@@ -1394,12 +1316,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Blogs",
-                            "/appearance/blogs",
-                            appearanceRef
-                          )
+                          handleLinkClick(e, "Blogs", "/appearance/blogs")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/appearance/blogs"
@@ -1421,12 +1338,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
-                            e,
-                            "Media",
-                            "/appearance/media",
-                            appearanceRef
-                          )
+                          handleLinkClick(e, "Media", "/appearance/media")
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/appearance/media"
@@ -1451,8 +1363,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           handleLinkClick(
                             e,
                             "Customize Theme",
-                            "/appearance/customize-theme",
-                            appearanceRef
+                            "/appearance/customize-theme"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1483,9 +1394,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   return (
                     <React.Fragment>
                       <Link
-                        onClick={(e) =>
-                          handleLinkClick(e, "Tools", "/tools-page", toolsRef)
-                        }
+                        onClick={(e) => handleLinkClick(e, "Tools", "/tools")}
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/tools"
                       >
@@ -1536,7 +1445,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               </SidebarLinkGroup>
 
               {/* App Store */}
-              <div className="mb-2" ref={appStoreRef}>
+              <div className="mb-2">
                 <SidebarLinkGroup
                   activecondition={activeGroup === "appstore"}
                   onClick={() => {
@@ -1553,8 +1462,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             handleLinkClick(
                               e,
                               "All Plugins",
-                              "/appstore/all-apps",
-                              appStoreRef
+                              "/appstore/all-apps"
                             )
                           }
                           style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1643,8 +1551,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           handleLinkClick(
                             e,
                             "All Plugins",
-                            "/appstore/all-apps",
-                            appStoreRef
+                            "/appstore/all-apps"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1664,8 +1571,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           handleLinkClick(
                             e,
                             "All Plugins",
-                            "/appstore/installed-apps",
-                            appStoreRef
+                            "/appstore/installed-apps"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1698,9 +1604,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   return (
                     <React.Fragment>
                       <Link
-                        onClick={(e) =>
-                          handleLinkClick(e, "Settings", "#", settingsRef)
-                        }
+                        onClick={(e) => handleLinkClick(e, "Settings", "#")}
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="#"
                       >
