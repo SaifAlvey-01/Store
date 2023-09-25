@@ -20,7 +20,7 @@ export default function DashboardHome() {
         <div className="flex justify-between items-center w-[97%]">
           <div className="flex flex-row justify-between items-center w-9/10">
             <h4
-              className="self-stretch font-freesans sm:mr-12 md:mr-12 lg:mr-20 xl:mr-20"
+              className="self-stretch font-freesans sm:mr-12 md:mr-12 lg:mr-20 xl:mr-32"
               style={{ color: "#ffffff" }}
             >
               Share Store Link
@@ -66,7 +66,7 @@ export default function DashboardHome() {
         <div className="flex justify-between items-center w-[97%]">
           <div className="flex flex-row justify-between items-center w-9/10 ">
             <h4
-              className="self-stretch font-freesans sm:mr-20 md:mr-20 lg:mr-28 xl:mr-28"
+              className="self-stretch font-freesans sm:mr-20 md:mr-20 lg:mr-28 xl:mr-40"
               style={{ color: "#ffffff" }}
             >
               Get Domain{" "}
