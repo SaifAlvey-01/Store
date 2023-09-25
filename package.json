@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev ",
+    "dev": "next dev 80 ",
     "build": "next build",
     "start": "next start ",
     "lint": "next lint"
@@ -15,6 +15,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.5.0",
     "chart.js": "^4.4.0",
+    "chartjs-plugin-annotation": "^3.0.1",
     "cogo-toast": "^4.2.3",
     "js-cookie": "^3.0.5",
     "lottie-react": "^2.4.0",

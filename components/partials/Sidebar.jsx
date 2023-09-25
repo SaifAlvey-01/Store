@@ -1484,7 +1484,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(e, "Tools", "/tools", toolsRef)
+                          handleLinkClick(e, "Tools", "/tools-page", toolsRef)
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/tools"
