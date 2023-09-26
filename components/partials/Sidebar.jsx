@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
@@ -9,13 +9,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const sidebar = useRef(null);
   const router = useRouter();
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
-  const [activeGroup, setActiveGroup] = useState("dashboard");
-  const ordersSubLinksVisible = activeGroup === "orders";
-  const productsSubLinksVisible = activeGroup === "products";
-  const analyticsSubLinksVisible = activeGroup === "analytics";
-  const appearanceSubLinksVisible = activeGroup === "appearance";
-  const appstoreSubLinksVisible = activeGroup === "appstore";
-
+  const [activeGroup, setActiveGroup] = useState("");
+  
+  const ordersSubLinksVisible = useMemo(() => activeGroup === "orders", [activeGroup]);
+  const productsSubLinksVisible = useMemo(() => activeGroup === "products", [activeGroup]);
+  const analyticsSubLinksVisible = useMemo(() => activeGroup === "analytics", [activeGroup]);
+  const appearanceSubLinksVisible = useMemo(() => activeGroup === "appearance", [activeGroup]);
+  const appstoreSubLinksVisible = useMemo(() => activeGroup === "appstore", [activeGroup]);
   const intendedHeaderValue = useRef("");
 
   const handleLinkClick = (e, headerValue, path) => {
@@ -41,7 +41,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
-  });
+  },[]);
 
   useEffect(() => {
     if (router.pathname.startsWith("/orders")) {
@@ -91,7 +91,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
-  });
+  },[]);
 
   return (
     <div className="font-freesans">
@@ -190,16 +190,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         }
                         style={{ textDecoration: "none" }}
                         href="/dashboard"
-                        prefetch={false}
                       >
                         <div
                           role="button"
                           tabIndex={0}
-                          className={`no-underline block truncate transition duration-150 ${
-                            activeGroup === "dashboard"
-                              ? "text-[#1F1D2B]"
-                              : "hover:text-white"
-                          }`}
+                          className={`no-underline block truncate transition duration-150 `}
                         >
                           <div className="flex flex-row items-center">
                             <svg
@@ -354,7 +349,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   }}
                 </SidebarLinkGroup>
 
-                {ordersSubLinksVisible && (
+                {activeGroup === "orders" && (
                   <ul
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
@@ -563,7 +558,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   }}
                 </SidebarLinkGroup>
 
-                {productsSubLinksVisible && (
+                {activeGroup === "products" && (
                   <ul
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >

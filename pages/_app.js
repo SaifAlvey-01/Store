@@ -5,7 +5,7 @@ import { SessionProvider } from 'next-auth/react';
 import { store } from "../redux/slices";
 import { Provider } from "react-redux";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <React.Fragment>
       <Head>
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <div className="font-freesans overflow-x-hidden">
-        <SessionProvider session={pageProps.session}>
+        <SessionProvider session={session}>
           <Provider store={store}>
             <Component {...pageProps} />
           </Provider>

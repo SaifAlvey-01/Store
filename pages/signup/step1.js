@@ -13,7 +13,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
   const { resdata, error, loading, postData: postRequest } = useAxios();
-  const { data, status } = useSession();
+  const { data, status, session } = useSession();
 
   const {
     handleSubmit,
@@ -21,15 +21,16 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     getValues,
     formState: { errors },
   } = useForm();
+  const jwtToken = session?.accessToken || null;
   useEffect(() => {
-    console.log(data, "<----SESSION DATA")
     //google auth calls
     if (data?.user) {
-      Cookies.set('email', email.email, { expires: 7 });
+      console.log(data?.user, "<------data?.user")
+      // Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(4);
     }
     
-    if (resdata.message && resdata.state === "success" ) {
+    if (resdata.state === "success") {
       const email = getValues();
       Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(2);

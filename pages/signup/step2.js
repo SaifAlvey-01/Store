@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxios from "../../hooks/useAxios";
 import Cookie from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
   const {
@@ -10,6 +10,7 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
     formState: { errors },
   } = useForm();
   const { resdata, error, loading, putData: putRequest } = useAxios();
+  const [customError, setCustomError] = useState(null);
 
   useEffect(() => {
     if (
@@ -65,7 +66,7 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
 
                   {errors.password && (
                     <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                      {errors.password.message}
+                      {customError? customError : errors.password.message}
                     </p>
                   )}
                 </div>
