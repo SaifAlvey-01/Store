@@ -19,13 +19,13 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
       setCurrentStep(3);
     }
 
-    if (resdata.message && resdata.message === "User already exist") {
+    if (resdata.message && resdata.state === "success") {
       setCustomError(resdata.message);
     }
+    
   }, [resdata]);
 
   const onSubmit = (data) => {
-    console.log(email, "<---email");
     const savedEmail = Cookie.get("email");
     putRequest("/auth/create-password", { password: data.password, email: savedEmail});
     setFormData((prevData) => ({ ...prevData, ...data }));
