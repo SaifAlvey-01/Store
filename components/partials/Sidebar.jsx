@@ -8,6 +8,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
   const router = useRouter();
+  const [shouldScroll, setShouldScroll] = useState(false);
   const [activeGroup, setActiveGroup] = useState("");
 
   useEffect(() => {
@@ -48,6 +49,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
     if (ref && ref.current) {
       scrollTargetRef.current = ref.current;
+      setShouldScroll(true);
     }
 
     router.push(path);
@@ -55,6 +57,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   useEffect(() => {
     if (
+      shouldScroll &&
       scrollTargetRef.current &&
       document.body.contains(scrollTargetRef.current)
     ) {
@@ -63,12 +66,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           behavior: "smooth",
           block: "center",
         });
+        setShouldScroll(false);
         scrollTargetRef.current = null;
       }, 300);
 
       return () => clearTimeout(timeout);
     }
-  }, [scrollTargetRef.current]);
+  }, [scrollTargetRef.current, shouldScroll]);
 
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -111,9 +115,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex  flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] transition-all duration-200 ease-in-out ${
-          sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"
-        }`}
+        className={`flex  flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] transition-transform duration-200 ease-in-out
+ ${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
       >
         {/* Sidebar header */}
         <div className="flex justify-center items-center h-full mt-6 mb-8 pr-3 sm:px-2">
@@ -361,6 +364,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
                 {ordersSubLinksVisible && (
                   <ul
+                    style={{
+                      display: ordersSubLinksVisible ? "block" : "none",
+                    }}
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
                     <li
@@ -583,6 +589,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
                 {productsSubLinksVisible && (
                   <ul
+                    style={{
+                      display: productsSubLinksVisible ? "block" : "none",
+                    }}
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
                     <li
@@ -749,6 +758,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
                 {analyticsSubLinksVisible && (
                   <ul
+                    style={{
+                      display: analyticsSubLinksVisible ? "block" : "none",
+                    }}
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
                     <li
@@ -1320,6 +1332,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
                 {appearanceSubLinksVisible && (
                   <ul
+                    style={{
+                      display: appearanceSubLinksVisible ? "block" : "none",
+                    }}
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
                     <li
@@ -1666,6 +1681,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
                 {appstoreSubLinksVisible && (
                   <ul
+                    style={{
+                      display: appstoreSubLinksVisible ? "block" : "none",
+                    }}
                     className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
                   >
                     <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
