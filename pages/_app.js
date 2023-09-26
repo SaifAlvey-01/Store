@@ -1,13 +1,13 @@
 import React from "react";
 import Head from "next/head";
 import "../styles/global.css";
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider } from "next-auth/react";
 import { store } from "../redux/slices";
 import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <React.Fragment>
+    <React.StrictMode>
       <Head>
         <title>launchmystore</title>
 
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
           </Provider>
         </SessionProvider>
       </div>
-    </React.Fragment>
+    </React.StrictMode>
   );
 }
 
