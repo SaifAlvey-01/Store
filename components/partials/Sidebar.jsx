@@ -8,9 +8,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
   const router = useRouter();
-  const [activeGroup, setActiveGroup] = useState(() => {
-    return sessionStorage.getItem("activeGroup") || "";
-  });
+  const [activeGroup, setActiveGroup] = useState("");
+
+  useEffect(() => {
+    const storedGroup = sessionStorage.getItem("activeGroup");
+    if (storedGroup) {
+      setActiveGroup(storedGroup);
+    }
+  }, []);
 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
   const ordersSubLinksVisible = activeGroup === "orders";
