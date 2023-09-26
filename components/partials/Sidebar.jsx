@@ -3,15 +3,15 @@ import Link from "next/link";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { useRouter } from "next/router";
-import useActiveGroup from "../../hooks/useActiveGroup";
+import { useContext } from "react";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
   const router = useRouter();
+  const [activeGroup, setActiveGroup] = useState("");
 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
-  const activeGroup = useActiveGroup(router.pathname);
   const ordersSubLinksVisible = activeGroup === "orders";
   const productsSubLinksVisible = activeGroup === "products";
   const analyticsSubLinksVisible = activeGroup === "analytics";
@@ -34,8 +34,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   const intendedHeaderValue = useRef("");
 
-  const handleLinkClick = (e, headerValue, path, ref) => {
+  const handleLinkClick = (e, headerValue, path, ref, group) => {
     e.preventDefault();
+    setActiveGroup(group); // Set the active group
     intendedHeaderValue.current = headerValue;
 
     if (ref && ref.current) {
@@ -44,8 +45,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
     setSidebarOpen(false);
 
+    // router.push(path);
+  };
+
+  const handleSubLinkClick = (e, headerValue, path, group) => {
+    e.preventDefault();
+    setActiveGroup(group); // Set the active group
+    intendedHeaderValue.current = headerValue;
+
+    setSidebarOpen(false);
+
     router.push(path);
   };
+
+  // useEffect(() => {
+  //   router.push(path);
+  // }, [activeGroup, intendedHeaderValue]);
 
   useEffect(() => {
     if (
@@ -188,7 +203,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             e,
                             "Dashboard",
                             "/dashboard",
-                            dashboardRef
+                            dashboardRef,
+                            "dashboard"
                           )
                         }
                         style={{ textDecoration: "none" }}
@@ -288,18 +304,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                               e,
                               "All Orders",
                               "/orders/all-orders",
-                              ordersRef
+                              ordersRef,
+                              "orders"
                             )
                           }
                           style={{ textDecoration: "none" }}
                           href="/orders/all-orders"
                         >
                           <div
-                            // onClick={(e) => {
-                            //   e.preventDefault();
-                            //   setActiveGroup("orders");
-                            //   router.push("/orders/all-orders");
-                            // }}
                             className={`no-underline block truncate transition duration-150 ${
                               activeGroup === "orders"
                                 ? "text-[#1F1D2B]"
@@ -370,11 +382,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "All Orders",
                             "/orders/all-orders",
-                            ordersRef
+                            "orders"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -397,11 +409,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "All Orders",
                             "/orders/abandoned-carts",
-                            ordersRef
+                            "orders"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -437,7 +449,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             e,
                             "Delivery",
                             "/delivery",
-                            deliveryRef
+                            deliveryRef,
+                            "delivery"
                           )
                         }
                         style={{ textDecoration: "none" }}
@@ -519,7 +532,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                               e,
                               "All Products",
                               "/products/all-products",
-                              productsRef
+                              productsRef,
+                              "products"
                             )
                           }
                           style={{ textDecoration: "none" }}
@@ -588,11 +602,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "All Products",
                             "/products/all-products",
-                            productsRef
+                            "products"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -615,11 +629,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Categories",
                             "/products/categories",
-                            productsRef
+                            "products"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -642,11 +656,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Inventory",
                             "/products/inventory",
-                            productsRef
+                            "products"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -683,7 +697,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                               e,
                               "Sales",
                               "/analytics/sales",
-                              analyticsRef
+                              analyticsRef,
+                              "analytics"
                             )
                           }
                           style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -750,11 +765,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Sales",
                             "/analytics/sales",
-                            analyticsRef
+                            "analytics"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -777,11 +792,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Traffic",
                             "/analytics/traffic",
-                            analyticsRef
+                            "analytics"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -804,11 +819,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Products",
                             "/analytics/products",
-                            analyticsRef
+                            "analytics"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -844,7 +859,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             e,
                             "Payouts",
                             "/payments",
-                            paymentsRef
+                            paymentsRef,
+                            "payments"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -929,7 +945,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             e,
                             "Discounts",
                             "/discounts",
-                            discountsRef
+                            discountsRef,
+                            "discounts"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1022,7 +1039,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             e,
                             "Audience",
                             "/audience",
-                            audienceRef
+                            audienceRef,
+                            "audience"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1151,7 +1169,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             e,
                             "Page Builder",
                             "/builder",
-                            builderRef
+                            builderRef,
+                            "builder"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1226,7 +1245,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                               e,
                               "Themes",
                               "/appearance/themes",
-                              appearanceRef
+                              appearanceRef,
+                              "appearance"
                             )
                           }
                           style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1313,11 +1333,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Themes",
                             "/appearance/themes",
-                            appearanceRef
+                            "appearance"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1340,11 +1360,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Pages",
                             "/appearance/pages",
-                            appearanceRef
+                            "appearance"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1367,11 +1387,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Menu",
                             "/appearance/menu",
-                            appearanceRef
+                            "appearance"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1394,11 +1414,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Blogs",
                             "/appearance/blogs",
-                            appearanceRef
+                            "appearance"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1421,11 +1441,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Media",
                             "/appearance/media",
-                            appearanceRef
+                            "appearance"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1448,11 +1468,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "Customize Theme",
                             "/appearance/customize-theme",
-                            appearanceRef
+                            "appearance"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1484,7 +1504,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(e, "Tools", "/tools-page", toolsRef)
+                          handleLinkClick(
+                            e,
+                            "Tools",
+                            "/tools-page",
+                            toolsRef,
+                            "tools"
+                          )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="/tools"
@@ -1554,7 +1580,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                               e,
                               "All Plugins",
                               "/appstore/all-apps",
-                              appStoreRef
+                              appStoreRef,
+                              "appstore"
                             )
                           }
                           style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1640,11 +1667,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "All Plugins",
                             "/appstore/all-apps",
-                            appStoreRef
+                            "appstore"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1661,11 +1688,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(
+                          handleSubLinkClick(
                             e,
                             "All Plugins",
                             "/appstore/installed-apps",
-                            appStoreRef
+                            "appstore"
                           )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -1699,7 +1726,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <React.Fragment>
                       <Link
                         onClick={(e) =>
-                          handleLinkClick(e, "Settings", "#", settingsRef)
+                          handleLinkClick(
+                            e,
+                            "Settings",
+                            "#",
+                            settingsRef,
+                            "settings"
+                          )
                         }
                         style={{ textDecoration: "none", color: "#FAFAFA" }}
                         href="#"
@@ -1768,7 +1801,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
               {/* Sign Out */}
               <SidebarLinkGroup
-                activecondition={activeGroup === "sign-out"}
+                activecondition={activeGroup === "Signout"}
                 onClick={() => {
                   if (!sidebarExpanded) {
                     setSidebarExpanded(true);
