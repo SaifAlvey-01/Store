@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
@@ -19,6 +19,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   }, []);
 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
+
   const ordersSubLinksVisible = activeGroup === "orders";
   const productsSubLinksVisible = activeGroup === "products";
   const analyticsSubLinksVisible = activeGroup === "analytics";
@@ -38,6 +39,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const appStoreRef = useRef(null);
   const settingsRef = useRef(null);
   const scrollTargetRef = useRef(null);
+
 
   const intendedHeaderValue = useRef("");
 
@@ -90,7 +92,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
-  });
+  },[]);
 
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
@@ -99,7 +101,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
-  });
+  },[]);
 
   return (
     <div className="font-freesans">
@@ -207,11 +209,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         <div
                           role="button"
                           tabIndex={0}
-                          className={`no-underline block truncate transition duration-150 ${
-                            activeGroup === "dashboard"
-                              ? "text-[#1F1D2B]"
-                              : "hover:text-white"
-                          }`}
+                          className={`no-underline block truncate transition duration-150 `}
                         >
                           <div className="flex flex-row items-center">
                             <svg
@@ -362,7 +360,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   }}
                 </SidebarLinkGroup>
 
-                {ordersSubLinksVisible && (
+                {activeGroup === "orders" && (
                   <ul
                     style={{
                       display: ordersSubLinksVisible ? "block" : "none",
@@ -587,7 +585,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   }}
                 </SidebarLinkGroup>
 
-                {productsSubLinksVisible && (
+                {activeGroup === "products" && (
                   <ul
                     style={{
                       display: productsSubLinksVisible ? "block" : "none",

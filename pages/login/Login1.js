@@ -39,7 +39,12 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   };
 
   useEffect(()=>{
-    console.log(session, "<-----session")
+    if(session?.user) {
+      console.log(session?.user)
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 2000);
+    }
     if(session){
       const response =  fetch("http://localhost:3000/api/auth/callback/google");
       console.log(response)

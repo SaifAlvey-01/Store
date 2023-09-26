@@ -29,16 +29,16 @@ const SignupComponent = () => {
     }
   }, [currentStep]);
 
-  const handleStepSubmit = () => {
-    setCurrentStep(currentStep + 1);
-  };
+  // const handleStepSubmit = () => {
+  //   setCurrentStep(currentStep + 1);
+  // };
 
   const renderStep = () => {
     switch (currentStep) {
       case 1:
         return (
           <SignUp1
-            setCurrentStep={handleStepSubmit}
+            setCurrentStep={setCurrentStep}
             setEmail={setEmail}
             setFormData={setFormData}
             email={email}
@@ -47,7 +47,7 @@ const SignupComponent = () => {
       case 2:
         return (
           <SignUp2
-            setCurrentStep={handleStepSubmit}
+            setCurrentStep={setCurrentStep}
             setFormData={setFormData}
             email={email}
           />

@@ -21,7 +21,7 @@ const SignUp3 = ({ setCurrentStep }) => {
   };
 
   useEffect(() => {
-    if (resdata.state === "success") {
+    if (resdata.state === "success" && resdata.message !== "OTP has been Resended on provided email") {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   }, [resdata]);
@@ -36,7 +36,9 @@ const SignUp3 = ({ setCurrentStep }) => {
     router.push("/login");
   };
 
-  const handleresend = ()=> {
+  const handleresend = async ()=> {
+
+    putRequest("/auth/resend-email-verification-code", {email:savedEmail});
 
   };
 

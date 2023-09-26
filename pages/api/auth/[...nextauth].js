@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import axios from "axios";
 // Utility function to hash strings.
 // function simpleHash(str) {
 //   let hash = 0;
@@ -21,16 +22,42 @@ import GoogleProvider from "next-auth/providers/google";
 const authOptions = {
   providers: [
     GoogleProvider({
-      clientId: "126868255686-jmsmtbjg8c1i37och32l4go6hdfc6bsj.apps.googleusercontent.com",
-      clientSecret: "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",
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+
     })
   ],
-  pages: {
-    signIn: '/dashboard', // on successfully signin    
-    signOut: '/auth/login', // on signout redirects users to a custom login page.
-    error: '/auth/error',  // displays authentication errors
-    newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
-  }
+  callbacks: {
+    async jwt(token, user) {
+      console.log(token, "<----token")
+      console.log(user, "<-----user")
+      if (token) {
+        // Send the user's token to your backend
+        try {
+          const response = await axios.post(`${process.env.BASE_URL}/auth/google-login`, {
+            access_token: token.accessToken,
+          })
+          console.log(response, "<----asd")
+          
+          // Handle the response as needed
+        } catch (error) {
+          console.error('Error sending token to backend:', error);
+          // Handle the error or retry the request if necessary
+        }
+       
+      }
+
+      return token
+    },
+  },
+//   callbacks: {
+//     redirect: async (url, _baseUrl)=>{
+//       if (url === '/user') {
+//         return Promise.resolve('/')
+//       }
+//       return  Promise.resolve('/dashboard')
+//     }
+// }
  
 };
 

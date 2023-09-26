@@ -7,6 +7,7 @@ import { simpleHash, users } from "../../utils/userData";
 import { useRouter } from "next/router";
 import Loading from "../../components/loading";
 import useAxios from '../../hooks/useAxios';
+import { signIn, useSession } from 'next-auth/react';
 
 
 const Login2 = ({ inputData }) => {
@@ -16,6 +17,7 @@ const Login2 = ({ inputData }) => {
   const [passwordError, setPasswordError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
+  const { data, status, session } = useSession();
 
 
   const {
@@ -25,6 +27,14 @@ const Login2 = ({ inputData }) => {
   } = useForm();
 
   useEffect(()=>{
+    if (data?.user) {
+      console.log(data?.user)
+      setPasswordError(null);
+      setIsLoading(true);
+      setTimeout(() => {
+        router.push("/dashboard");
+      }, 2000);
+    }
     
     if(resdata.status === 200){
       setPasswordError(null);
@@ -168,7 +178,7 @@ const Login2 = ({ inputData }) => {
                       <hr className="h-px w-[90px] bg-gradient-line mx-3" />
                     </div>
 
-                    <div className="rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                    <div onClick={() => signIn('google')} className="rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                       <div className="relative w-[90px] h-0" />
                       <div className="flex flex-row items-center justify-center gap-[6px]">
                         <img
