@@ -66,10 +66,9 @@ const SignUp4 = ({ email }) => {
 
 
   const handleSignInClick = () => {
-    putRequest("/user/business", {
+    putRequest("http://localhost:8080/api", {
       business,
       country: selectedCountry.label,
-      email,
     });
 
     setIsLoading(true);

@@ -18,8 +18,7 @@ const Forgot3 = ({ setCurrentStep,  inputValue}) => {
   const { resdata, error, loading, putData: putRequest } = useAxios();
 
   useEffect(()=>{
-    console.log(resdata, "<----sd")
-    if(resdata.message === "Password has been changed, Login!"){
+    if(resdata.status === 200){
 
       setIsLoading(true);
       cogoToast.success('Password has been reset! Login Now');
@@ -33,6 +32,12 @@ const Forgot3 = ({ setCurrentStep,  inputValue}) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setErrorMessage("");
+    const data = {
+      step:3,
+      password:password , 
+      confirmPassword:confirmPassword, 
+      email:inputValue
+    }
 
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$.!%*?&#]+$/i;
@@ -54,7 +59,7 @@ const Forgot3 = ({ setCurrentStep,  inputValue}) => {
       return;
     }
 
-    putRequest('/user/reset-password', {password:password , confirmPassword:confirmPassword, email:inputValue});
+    putRequest('/auth/forget-password', );
 
     
     

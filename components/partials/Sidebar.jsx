@@ -3,14 +3,12 @@ import Link from "next/link";
 
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { useRouter } from "next/router";
-import { useContext } from "react";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
   const router = useRouter();
   const [activeGroup, setActiveGroup] = useState(() => {
-    // Try getting the value from sessionStorage or default to an empty string
     return sessionStorage.getItem("activeGroup") || "";
   });
 
@@ -49,10 +47,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
     router.push(path);
   };
-
-  // useEffect(() => {
-  //   router.push(path);
-  // }, [activeGroup, intendedHeaderValue]);
 
   useEffect(() => {
     if (

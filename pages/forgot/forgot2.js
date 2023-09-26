@@ -11,13 +11,16 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
   const router = useRouter();
   const [active, setactive] = useState(false);
   const { resdata, error, loading, putData: putRequest } = useAxios();
+  const [errorMessage, setErrorMessage] = useState("");
 
 
   const onTextFieldContainer1Click = () => {
-
-    putRequest('/user/verify-otp-reset-password', {userOtp:OTP , email:inputValue});
-
-    
+    const data ={
+      step:2, 
+      verificationCode: OTP,
+      email: inputValue
+    }
+    putRequest('/auth/forget-password', data);
   }
 
   const handleSignInClick = () => {
@@ -25,9 +28,10 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
   };
 
   useEffect(()=>{
-    if(resdata.message === "You Can Change Your Password Now!"){
-
+    if(resdata.status === 200){
       setCurrentStep((prevStep) => prevStep + 1);
+    }else{
+      setErrorMessage(resdata.message);
     }
   },[resdata])
 
@@ -50,7 +54,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
                   <Verify OTP={OTP} setOTP={setOTP} />
                 </div>
                 <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                          {resdata.message}
+                          {errorMessage}
                           </p>
               </div>
 
