@@ -9,7 +9,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const trigger = useRef(null);
   const sidebar = useRef(null);
   const router = useRouter();
-  const [activeGroup, setActiveGroup] = useState("");
+  const [activeGroup, setActiveGroup] = useState(() => {
+    // Try getting the value from sessionStorage or default to an empty string
+    return sessionStorage.getItem("activeGroup") || "";
+  });
 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
   const ordersSubLinksVisible = activeGroup === "orders";
@@ -36,24 +39,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   const handleLinkClick = (e, headerValue, path, ref, group) => {
     e.preventDefault();
-    setActiveGroup(group); // Set the active group
+    setActiveGroup(group);
+    sessionStorage.setItem("activeGroup", group);
     intendedHeaderValue.current = headerValue;
 
     if (ref && ref.current) {
       scrollTargetRef.current = ref.current;
     }
-
-    setSidebarOpen(false);
-
-    // router.push(path);
-  };
-
-  const handleSubLinkClick = (e, headerValue, path, group) => {
-    e.preventDefault();
-    setActiveGroup(group); // Set the active group
-    intendedHeaderValue.current = headerValue;
-
-    setSidebarOpen(false);
 
     router.push(path);
   };
@@ -382,10 +374,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "All Orders",
                             "/orders/all-orders",
+                            ordersRef,
                             "orders"
                           )
                         }
@@ -409,10 +402,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "All Orders",
                             "/orders/abandoned-carts",
+                            ordersRef,
                             "orders"
                           )
                         }
@@ -602,10 +596,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "All Products",
                             "/products/all-products",
+                            productsRef,
                             "products"
                           )
                         }
@@ -629,10 +624,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Categories",
                             "/products/categories",
+                            productsRef,
                             "products"
                           )
                         }
@@ -656,10 +652,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Inventory",
                             "/products/inventory",
+                            productsRef,
                             "products"
                           )
                         }
@@ -765,10 +762,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Sales",
                             "/analytics/sales",
+                            analyticsRef,
                             "analytics"
                           )
                         }
@@ -792,10 +790,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Traffic",
                             "/analytics/traffic",
+                            analyticsRef,
                             "analytics"
                           )
                         }
@@ -819,10 +818,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Products",
                             "/analytics/products",
+                            analyticsRef,
                             "analytics"
                           )
                         }
@@ -1333,10 +1333,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Themes",
                             "/appearance/themes",
+                            appearanceRef,
                             "appearance"
                           )
                         }
@@ -1360,10 +1361,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Pages",
                             "/appearance/pages",
+                            appearanceRef,
                             "appearance"
                           )
                         }
@@ -1387,10 +1389,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Menu",
                             "/appearance/menu",
+                            appearanceRef,
                             "appearance"
                           )
                         }
@@ -1414,10 +1417,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Blogs",
                             "/appearance/blogs",
+                            appearanceRef,
                             "appearance"
                           )
                         }
@@ -1441,10 +1445,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Media",
                             "/appearance/media",
+                            appearanceRef,
                             "appearance"
                           )
                         }
@@ -1468,10 +1473,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     >
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "Customize Theme",
                             "/appearance/customize-theme",
+                            appearanceRef,
                             "appearance"
                           )
                         }
@@ -1667,10 +1673,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       {" "}
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "All Plugins",
                             "/appstore/all-apps",
+                            appStoreRef,
                             "appstore"
                           )
                         }
@@ -1688,10 +1695,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     <li className="w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600">
                       <Link
                         onClick={(e) =>
-                          handleSubLinkClick(
+                          handleLinkClick(
                             e,
                             "All Plugins",
                             "/appstore/installed-apps",
+                            appStoreRef,
                             "appstore"
                           )
                         }
