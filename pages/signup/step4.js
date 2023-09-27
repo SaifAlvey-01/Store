@@ -5,16 +5,20 @@ import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import Cookie from "js-cookie";
 import useAxios from "../../hooks/useAxios";
+import Cookies from 'js-cookie';
 
-const SignUp4 = ({ email }) => {
+
+const SignUp4 = ({ setloading,setCurrentStep }) => {
   const { resdata, error, loading, putData: putRequest } = useAxios();
   const router = useRouter();
   const [defaultCountry, setDefault] = useState({});
   const [selectedCountry, setSelectedCountry] = useState({});
   const [isActive, setIsactive] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
   const [business, setBusiness] = useState("");
+  const id = Cookie.get("id");
+
 
   const handleCountryChange = (selectedOption) => {
     if(selectedOption){
@@ -42,9 +46,10 @@ const SignUp4 = ({ email }) => {
       const country = countryOptions.filter((opt)=> opt.label === defaultCountry.country)
       setSelectedCountry(country[0])
     }
-    if (resdata.message === "Business has been Updated") {
-      router.push("/dashboard");
-      if (isLoading) {
+    if (resdata.message && resdata.message === "Business has been Updated") {
+          // setCurrentStep(5)
+          // setloading(true)
+      if (loading) {
         const timer = setTimeout(() => {
           router.push("/dashboard");
         }, 2000);
@@ -58,7 +63,7 @@ const SignUp4 = ({ email }) => {
     } else {
       setIsactive(false);
     }
-  }, [isLoading, business, selectedCountry, resdata, isActive,defaultCountry]);
+  }, [loading, business, selectedCountry, resdata, isActive,defaultCountry]);
 
   const handleChange = (e) => {
     setBusiness(e.target.value);
@@ -66,30 +71,30 @@ const SignUp4 = ({ email }) => {
 
 
   const handleSignInClick = () => {
-    putRequest("http://localhost:8080/api", {
+    // this is done in signup
+    // setCurrentStep(5)
+    // setloading(true)
+    // const timer = setTimeout(() => {
+    //   router.push("/dashboard");
+    // }, 2000);
+    // return () => clearTimeout(timer);
+
+    setloading(loading);
+    putRequest(`/accounts/add-business-detail/${id}`, {
       business,
       country: selectedCountry.label,
     });
-
-    setIsLoading(true);
-
     Cookie.remove("email");
   };
 
   return (
     <>
-      {isLoading ? (
-        <Loading
-          url="/dashboard"
-          message="Creating your store.."
-          duration="2000"
-        />
-      ) : (
+     
         <div className=" w-full sm:w-[450px] md:w-[450px] lg:w-[450px] min-h-[calc(100% - 100px)] text-11xl text-neutral-600">
           <div
             style={{
               margin: "0px 10px",
-              display: "flex",
+              display: "flex",  
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "space-between",
@@ -158,7 +163,7 @@ const SignUp4 = ({ email }) => {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 };

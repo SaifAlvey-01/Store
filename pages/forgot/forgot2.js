@@ -17,7 +17,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
   const onTextFieldContainer1Click = () => {
     const data ={
       step:2, 
-      verificationCode: OTP,
+      verificationCode: Number(OTP),
       email: inputValue
     }
     putRequest('/auth/forget-password', data);
@@ -28,10 +28,12 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
   };
 
   useEffect(()=>{
-    if(resdata.status === 200){
-      setCurrentStep((prevStep) => prevStep + 1);
-    }else{
-      setErrorMessage(resdata.message);
+    if(resdata.state === 'success'){
+      setCurrentStep(3);
+    }
+
+    if(resdata.error){
+      setErrorMessage("Invalid Verification Code !");
     }
   },[resdata])
 
@@ -86,7 +88,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
               </span>
               <span
                 className="font-medium text-primary-300-main cursor-pointer "
-                // onClick={handleGetStartedClick} // Attach the handleGetStartedClick function to the onClick event
+                onClick={handleSignInClick} // Attach the handleGetStartedClick function to the onClick event
               >
                 Log In
               </span>

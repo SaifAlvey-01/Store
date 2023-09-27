@@ -14,7 +14,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
     if(resdata.state === "info"){
       setErrorMessage(resdata.message);
     }
-    if(resdata.state === "state"){
+    if(resdata.state === 'success'){
       setCurrentStep((prevStep) => prevStep + 1);
     } 
   },[resdata])

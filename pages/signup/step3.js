@@ -22,6 +22,7 @@ const SignUp3 = ({ setCurrentStep }) => {
 
   useEffect(() => {
     if (resdata.state === "success" && resdata.message !== "OTP has been Resended on provided email") {
+      Cookies.set('id', resdata.data.id, { expires: 7 });
       setCurrentStep((prevStep) => prevStep + 1);
     }
   }, [resdata]);

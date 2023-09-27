@@ -26,7 +26,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     //google auth calls
     if (data?.user) {
       console.log(data?.user, "<------data?.user")
-      // Cookies.set('email', email.email, { expires: 7 });
+      Cookies.set('email', data.user.email, { expires: 7 });
       setCurrentStep(4);
     }
     

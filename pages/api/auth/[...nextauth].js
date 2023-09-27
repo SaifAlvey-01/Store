@@ -27,29 +27,7 @@ const authOptions = {
 
     })
   ],
-  callbacks: {
-    async jwt(token, user) {
-      console.log(token, "<----token")
-      console.log(user, "<-----user")
-      if (token) {
-        // Send the user's token to your backend
-        try {
-          const response = await axios.post(`${process.env.BASE_URL}/auth/google-login`, {
-            access_token: token.accessToken,
-          })
-          console.log(response, "<----asd")
-          
-          // Handle the response as needed
-        } catch (error) {
-          console.error('Error sending token to backend:', error);
-          // Handle the error or retry the request if necessary
-        }
-       
-      }
-
-      return token
-    },
-  },
+ 
 //   callbacks: {
 //     redirect: async (url, _baseUrl)=>{
 //       if (url === '/user') {
