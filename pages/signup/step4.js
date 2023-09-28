@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import Cookie from "js-cookie";
 import useAxios from "../../hooks/useAxios";
-import Cookies from 'js-cookie';
 
 
 const SignUp4 = ({ setloading,setCurrentStep }) => {
@@ -46,15 +45,9 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
       const country = countryOptions.filter((opt)=> opt.label === defaultCountry.country)
       setSelectedCountry(country[0])
     }
-    if (resdata.message && resdata.message === "Business has been Updated") {
-          // setCurrentStep(5)
-          // setloading(true)
-      if (loading) {
-        const timer = setTimeout(() => {
-          router.push("/dashboard");
-        }, 2000);
-        return () => clearTimeout(timer);
-      }
+    if (resdata.state && resdata.state === "success") {
+           setloading(true)
+           setCurrentStep(5)
     }
 
     if (business.length > 0 && Object.keys(selectedCountry).length > 0) {
@@ -63,6 +56,7 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
     } else {
       setIsactive(false);
     }
+
   }, [loading, business, selectedCountry, resdata, isActive,defaultCountry]);
 
   const handleChange = (e) => {

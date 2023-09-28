@@ -3,6 +3,8 @@ import { useRouter } from "next/navigation";
 import Verify from "../../components/Verify/Verify";
 import Cookie from "js-cookie";
 import useAxios from "../../hooks/useAxios";
+import Cookies from 'js-cookie';
+
 
 const SignUp3 = ({ setCurrentStep }) => {
   const [OTP, setOTP] = useState("");

@@ -60,7 +60,7 @@ const SignupComponent = () => {
         case 5:
         return (
           <Loading
-            url="/login"
+            url="/dashboard"
             message="Creating Store..."
             duration="3000"
           />)
