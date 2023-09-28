@@ -25,6 +25,7 @@ const SignupComponent = () => {
   }, []);
 
   useEffect(() => {
+    //google auth calls
     if (currentStep !== null) {
       localStorage.setItem("signupCurrentStep", currentStep.toString());
     }

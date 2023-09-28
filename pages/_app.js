@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <div className="font-freesans overflow-x-hidden">
-        <SessionProvider session={session}>
+        <SessionProvider session={pageProps.session}>
           <Provider store={store}>
             <Component {...pageProps} />
           </Provider>
