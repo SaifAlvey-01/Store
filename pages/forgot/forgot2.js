@@ -4,13 +4,13 @@ import Verify from "../../components/Verify/Verify";
 import useAxios from '../../hooks/useAxios';
 
 
-const Forgot2 = ({ setCurrentStep, inputValue }) => {
-  const [OTP, setOTP] = useState("");
+const Forgot2 = ({ setCurrentStep, inputValue, OTP,  setOTP}) => {
+
   const isEmail = /\S+@\S+\.\S+/.test(inputValue);
 
   const router = useRouter();
   const [active, setactive] = useState(false);
-  const { resdata, error, loading, putData: putRequest } = useAxios();
+  const { resdata, error, loading, postData: postRequest } = useAxios();
   const [errorMessage, setErrorMessage] = useState("");
 
 
@@ -20,7 +20,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
       verificationCode: Number(OTP),
       email: inputValue
     }
-    putRequest('/auth/forget-password', data);
+    postRequest('/auth/forget-password', data);
   }
 
   const handleSignInClick = () => {
@@ -28,7 +28,7 @@ const Forgot2 = ({ setCurrentStep, inputValue }) => {
   };
 
   useEffect(()=>{
-    if(resdata.state === 'success'){
+    if(resdata.status === 200){
       setCurrentStep(3);
     }
 
