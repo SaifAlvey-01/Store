@@ -2,7 +2,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { users } from "../../utils/userData";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from 'next-auth/react';
@@ -20,17 +19,22 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     formState: { errors },
   } = useForm();
   useEffect(() => {
+    //google login
     if(session && session.user){
       postRequest("/auth/google-login", {access_token:session.accessToken});
       Cookies.set('email', session.user.email, { expires: 7 });
       setCurrentStep(4);
     }
 
+
+    //menual login
     if (resdata.state === "success") {
       const email = getValues();
       Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(2);
     }
+
+
 
     if(error){
       setCustomError(resdata.message)

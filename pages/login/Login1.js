@@ -41,7 +41,6 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   useEffect(()=>{
     if(session?.user) {
       postRequest("/auth/google-login", {access_token:session.accessToken});
-      console.log(session?.user)
       setTimeout(() => {
         router.push("/dashboard");
       }, 2000);
