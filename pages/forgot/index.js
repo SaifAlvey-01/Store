@@ -10,6 +10,7 @@ import { NextSeo } from 'next-seo'
 const ForgotComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [inputValue, setInputValue] = useState("");
+  const [OTP, setOTP] = useState("");
 
   const renderStep = () => {
     switch (currentStep) {
@@ -23,10 +24,18 @@ const ForgotComponent = () => {
         );
       case 2:
         return (
-          <Forgot2 inputValue={inputValue} setCurrentStep={setCurrentStep} />
+          <Forgot2 inputValue={inputValue}
+           setCurrentStep={setCurrentStep} 
+           setOTP={setOTP}
+           OTP={OTP}
+           />
         );
       case 3:
-        return <Forgot3 setCurrentStep={setCurrentStep} inputValue= {inputValue}/>;
+        return <Forgot3 
+        setCurrentStep={setCurrentStep} 
+        inputValue= {inputValue}
+        OTP={OTP}
+        />;
       case 4:
         return (
           <Loading

@@ -7,7 +7,7 @@ import useAxios from '../../hooks/useAxios';
 
 
 
-const Forgot3 = ({ setCurrentStep,  inputValue}) => {
+const Forgot3 = ({ setCurrentStep,  inputValue, OTP}) => {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,16 +15,17 @@ const Forgot3 = ({ setCurrentStep,  inputValue}) => {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const { resdata, error, loading, putData: putRequest } = useAxios();
+  const { resdata, error, loading, postData: postRequest } = useAxios();
 
   useEffect(()=>{
     if(resdata.status === 200){
-
       setIsLoading(true);
       cogoToast.success('Password has been reset! Login Now');
       setTimeout(() => {
         router.push("/login");
       }, 2000);
+    }else{
+      setErrorMessage(resdata.message)
     }
   },[resdata])
 
@@ -34,10 +35,11 @@ const Forgot3 = ({ setCurrentStep,  inputValue}) => {
     setErrorMessage("");
     const data = {
       step:3,
-      password:password , 
-      confirmPassword:confirmPassword, 
+      verificationCode:Number(OTP) , 
+      password:confirmPassword, 
       email:inputValue
     }
+
 
     const passwordPattern =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$.!%*?&#]+$/i;
@@ -59,7 +61,7 @@ const Forgot3 = ({ setCurrentStep,  inputValue}) => {
       return;
     }
 
-    putRequest('/auth/forget-password', );
+    postRequest('/auth/forget-password', data);
 
     
     
