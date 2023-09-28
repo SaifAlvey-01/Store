@@ -1,42 +1,37 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import axios from "axios";
-// Utility function to hash strings.
-// function simpleHash(str) {
-//   let hash = 0;
-//   for (let i = 0; i < str.length; i++) {
-//     const char = str.charCodeAt(i);
-//     hash = (hash << 5) - hash + char;
-//     hash |= 0; // Convert to 32-bit integer
-//   }
-//   return hash.toString();
-// }
+import Cookies from 'js-cookie';
 
-// const findUserByCredentials = (username, password) =>
-//   users.find(
-//     (user) =>
-//       (username === user.email || username === user.phone) &&
-//       simpleHash(password) === user.passwordHash
-//   );
 
 const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      scope: ['https://www.googleapis.com/auth/userinfo.profile'],
 
     })
   ],
+  callbacks: {
+    async jwt({ token, account, profile }) {
+      if (account) {
+        token.accessToken = account.access_token
+        token.id = profile.id
+      }
+      return token
+    },
+    async session({ session, token, user }) {
+      session.accessToken = token.accessToken
+      session.user.id = token.id
+      return session
+    }
+  }
+
+}
  
-//   callbacks: {
-//     redirect: async (url, _baseUrl)=>{
-//       if (url === '/user') {
-//         return Promise.resolve('/')
-//       }
-//       return  Promise.resolve('/dashboard')
-//     }
-// }
+
  
-};
+
 
 export default NextAuth(authOptions);

@@ -40,25 +40,13 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
 
   useEffect(()=>{
     if(session?.user) {
+      postRequest("/auth/google-login", {access_token:session.accessToken});
       console.log(session?.user)
       setTimeout(() => {
         router.push("/dashboard");
       }, 2000);
     }
-    if(session){
-      const response =  fetch("http://localhost:3000/api/auth/callback/google");
-      console.log(response)
-      // try {
-      //   const accessToken = response.data.accessToken;
-  
-      //   console.log("Access Token:", accessToken);
-  
-      //   // Now you can send this access token to your Node.js backend or use it as needed.
-      // } catch (error) {
-      //   console.error("Error retrieving access token:", error);
-      // }
-
-    }
+   
   },[session])
 
   const handleGoogle = async () => {

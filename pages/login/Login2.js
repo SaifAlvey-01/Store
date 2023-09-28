@@ -17,7 +17,7 @@ const Login2 = ({ inputData }) => {
   const [passwordError, setPasswordError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
-  const { data, status, session } = useSession();
+  const { data: session } = useSession();
 
 
   const {
@@ -25,10 +25,11 @@ const Login2 = ({ inputData }) => {
     register,
     formState: { errors },
   } = useForm();
-
+ 
+  
   useEffect(()=>{
-    if (data?.user) {
-      console.log(data?.user)
+    if (session?.user) {
+      postRequest("/auth/google-login", {access_token:session.accessToken});
       setPasswordError(null);
       setIsLoading(true);
       setTimeout(() => {
