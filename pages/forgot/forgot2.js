@@ -62,9 +62,9 @@ const Forgot2 = ({ setCurrentStep, inputValue, OTP,  setOTP}) => {
 
               <button
                 onClick={onTextFieldContainer1Click}
-                disabled={OTP.length !== 6}
+                disabled={OTP?.length !== 6}
                 className={`rounded ${
-                  OTP.length === 6
+                  OTP?.length === 6
                     ? "bg-primary-300-main cursor-pointer"
                     : "bg-primary-100 cursor-not-allowed"
                 } w-full flex flex-col p-2 box-border items-center mb-2 justify-center text-center text-white font-poppins`}
