@@ -36,7 +36,7 @@ const Login2 = ({ inputData }) => {
       }, 2000);
     }
     
-    if(resdata.status === 200){
+    if(resdata?.status === 200){
       setPasswordError(null);
       setIsLoading(true);
       setTimeout(() => {
@@ -53,7 +53,7 @@ const Login2 = ({ inputData }) => {
     e.preventDefault();
     // const matchedUser = users.find((u) => u.email === data.email);
 
-    postRequest('/auth/manual-login', {accountId:data.email, password: data.password });
+    postRequest('/auth/manual-login', {accountId:data?.email, password: data?.password });
 
 
     // const data = await response.json();
