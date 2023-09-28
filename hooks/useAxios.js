@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Cookies from 'js-cookie';
+
 
 const useAxios = () => {
   const [resdata, setData] = useState({});
@@ -6,7 +8,6 @@ const useAxios = () => {
   const [loading, setLoading] = useState(false);
 
   const baseUrl = process.env.BASE_URL;
-  console.log(baseUrl, "<----baseUrl")
 
   const fetchData = async (url, method = "GET", requestData = null) => {
     setLoading(true);
@@ -20,9 +21,10 @@ const useAxios = () => {
     })
       .then((response) => response.text())
       .then((data) => {
-        console.log("--->", data);
         const jsonData = JSON.parse(data);
-        console.log(jsonData, "<-----jsonData");
+        if(jsonData?.data?.id){
+          Cookies.set('id', jsonData.data.id, { expires: 7 });
+        }
         setData(jsonData);
       })
       .catch((err) => {

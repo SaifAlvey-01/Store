@@ -57,19 +57,6 @@ const Login2 = ({ inputData }) => {
     postRequest('/auth/manual-login', {accountId:data?.email, password: data?.password });
 
 
-    // const data = await response.json();
-    // const token = data.token; // Assuming your backend sends a token
-    // // Store the token securely, e.g., in localStorage
-    // localStorage.setItem('token', token);
-    
-    // // Redirect to a protected route, e.g., the dashboard
-    // router.push('/dashboard');
-
-    // No user found with the given email
-    // if (!matchedUser) {
-     
-    //   return;
-    // }
 
     // Check password hash
     // if (matchedUser.passwordHash === simpleHash()) {

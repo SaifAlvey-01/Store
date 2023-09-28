@@ -67,7 +67,7 @@ const Forgot2 = ({ setCurrentStep, inputValue, OTP,  setOTP}) => {
                   OTP?.length === 6
                     ? "bg-primary-300-main cursor-pointer"
                     : "bg-primary-100 cursor-not-allowed"
-                } w-full flex flex-col p-2 box-border items-center mb-2 justify-center text-center text-white font-poppins`}
+                } w-[340px] md:w-[370px] flex flex-col p-2 box-border items-center mb-2 justify-center text-center text-white font-poppins`}
               >
                 <div className="relative w-[90px] h-0" />
                 { loading ? <svg aria-hidden="true" role="status" class="inline mr-3 w-6 h-6 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
