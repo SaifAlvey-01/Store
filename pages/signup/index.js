@@ -53,7 +53,7 @@ const SignupComponent = () => {
             setFormData={setFormData}
             email={email}
           />
-        );
+        ); 
       case 3:
         return <SignUp3 setCurrentStep={setCurrentStep} email={email} />;
       case 4:

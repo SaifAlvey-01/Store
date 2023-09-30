@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Cookies from 'js-cookie';
+import {  useSession } from 'next-auth/react';
 
 
 const useAxios = () => {
   const [resdata, setData] = useState({});
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
+  const {  status, data: session } = useSession();
 
   const baseUrl = process.env.BASE_URL;
 
@@ -16,6 +18,7 @@ const useAxios = () => {
       method,
       headers: {
         "Content-Type": "application/json",
+        'Authorization': session.accessToken
       },
       body: JSON.stringify(requestData),
     })
