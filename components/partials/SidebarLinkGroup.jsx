@@ -6,7 +6,7 @@ const SidebarLinkGroup = forwardRef(
 
     const handleClick = () => {
       setOpen(!open);
-    };
+    };  
 
     return (
       <div

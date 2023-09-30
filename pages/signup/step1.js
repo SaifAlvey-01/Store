@@ -20,6 +20,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
   useEffect(() => {
     //google login
+    console.log(session, "<----")
     if(session && session.user){
       postRequest("/auth/google-login", {access_token:session.accessToken});
       Cookies.set('email', session.user.email, { expires: 7 });
