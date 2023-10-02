@@ -18,7 +18,7 @@ const useAxios = () => {
       method,
       headers: {
         "Content-Type": "application/json",
-        'Authorization': session.accessToken
+        'Authorization': `Bearer ${session.accessToken}`
       },
       body: JSON.stringify(requestData),
     })

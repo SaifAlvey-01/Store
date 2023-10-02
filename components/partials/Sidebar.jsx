@@ -56,7 +56,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
         ${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
       >
         {/* Sidebar header */}
-        <div className="flex fixed justify-center items-center h-[100px] mt-2 mb-8 pr-3 sm:px-2">
+        <div className="flex fixed justify-center items-center h-[67px] lg:h-[100px] mt-2 mb-8 pr-3 sm:px-2">
           {/* Child flex container */}
           <div
             style={{ margin: "0px 20px" }}
@@ -65,23 +65,23 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
             {/* Close button on the left */}
             <button
               ref={trigger}
-              className="lg:hidden text-slate-500 hover:text-slate-400"
+              className="hidden text-slate-500 hover:text-slate-400 "
               onClick={() => setSidebarOpen(!sidebarOpen)}
               aria-controls="sidebar"
               aria-expanded={sidebarOpen}
             >
-              <span className="sr-only">Close sidebar</span>
+              {/* <span className="sr-only">Close sidebar</span>
               <svg
                 className="w-6 h-6 fill-current"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
-              </svg>
+              </svg> */}
             </button>
 
             {/* Logo in the center */}
-            <div className="flex flex-row items-center justify-center lg:flex lg:items-center lg:justify-center hidden">
+            <div className="flex flex-row items-center justify-center lg:flex lg:items-center lg:justify-center ">
               <div
                 style={{
                   backgroundColor: "#D9D9D9",
@@ -111,7 +111,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           </div>
         </div>
 
-        <div className="mt-[110px]">
+        <div className="lg:mt-[110px] mt-[90px]">
           {/* Links */}
           {navItems.map((item, index)=>{
             return(
@@ -119,14 +119,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               {/* Pages group */}
                 
                 <div>
-                <ul className="mt-2 list-none m-2 p-0 ">
+                <ul className="mt-1 lg:mt-2 list-none m-2 p-0 ">
                     <div
                       style={
                         activeIndex === index 
                           ? { backgroundColor: "white", borderRadius: 12 }
                           : { backgroundColor: "transparent" }
                       }
-                      className="px-[12px] py-[11px] w-[180px] font-freesans  last:mb-0 "
+                      className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans  last:mb-0 "
                       >
                       <Link
                         style={{ textDecoration: "none" }}
@@ -196,16 +196,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           }) 
           }
         </div>
-
-
-          <ul className="mt-14 list-none m-4 p-0 ">
+          <ul className="mt-9 lg:mt-14 list-none m-4 p-0 ">
             <div
                       style={
                         curPath === "settings"
                           ? { backgroundColor: "white", borderRadius: 12 }
                           : { backgroundColor: "transparent" }
                       }
-                      className="px-[12px] py-[11px] w-[180px] font-freesans  last:mb-0 "
+                      className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans  last:mb-0 "
                       >
                       <Link
                         style={{ textDecoration: "none" }}
@@ -269,7 +267,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           ? { backgroundColor: "white", borderRadius: 12 }
                           : { backgroundColor: "transparent" }
                       }
-                      className="px-[12px] py-[11px] w-[180px] font-freesans  last:mb-0 "
+                      className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans  last:mb-0 "
                       >
                       <Link
                         style={{ textDecoration: "none" }}
