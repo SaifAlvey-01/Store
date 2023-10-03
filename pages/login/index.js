@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Login1 from "./Login1";
 import Login2 from "./Login2";
+import { useRouter } from "next/navigation";
 import Footer from "../../components/footer/footer";
 import { NextSeo } from 'next-seo'
+import { useSession } from 'next-auth/react';
+import Cookie from "js-cookie";
 
 const LoginComponent = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [inputData, setInputData] = useState("");
+  const {  status, data: session } = useSession();
+  const token = Cookie.get("token");
+  const router = useRouter();
+
+
+  useEffect(()=>{
+    if(session?.accessToken || token){
+      router.push("/dashboard");
+    }
+  },[])
+
 
   const renderStep = () => {
     switch (currentStep) {

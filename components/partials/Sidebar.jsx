@@ -56,7 +56,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
         ${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
       >
         {/* Sidebar header */}
-        <div className="flex fixed justify-center items-center h-[67px] lg:h-[100px] mt-2 mb-8 pr-3 sm:px-2">
+        <div className="flex fixed justify-center items-center h-[67px] lg:h-[70px] mt-2 mb-8 pr-3 sm:px-2">
           {/* Child flex container */}
           <div
             style={{ margin: "0px 20px" }}
@@ -111,7 +111,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           </div>
         </div>
 
-        <div className="lg:mt-[110px] mt-[90px]">
+        <div className="lg:mt-[85px] mt-[90px]">
           {/* Links */}
           {navItems.map((item, index)=>{
             return(
@@ -196,7 +196,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           }) 
           }
         </div>
-          <ul className="mt-9 lg:mt-14 list-none m-4 p-0 ">
+          <ul className="mt-9 lg:mt-6 list-none m-4 p-0 ">
             <div
                       style={
                         curPath === "settings"

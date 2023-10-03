@@ -11,7 +11,6 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const [customError, setCustomError] = useState("");
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  status, data: session } = useSession();
-
   const {
     handleSubmit,
     register,
@@ -20,23 +19,17 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
   useEffect(() => {
     //google login
-    console.log(session, "<----")
     if(session && session.user){
       postRequest("/auth/google-login", {access_token:session.accessToken});
       Cookies.set('email', session.user.email, { expires: 7 });
       setCurrentStep(4);
     }
-
-
     //menual login
     if (resdata.state === "success") {
       const email = getValues();
       Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(2);
     }
-
-
-
     if(error){
       setCustomError(resdata.message)
     }
