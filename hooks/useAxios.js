@@ -10,16 +10,22 @@ const useAxios = () => {
   const {  status, data: session } = useSession();
 
   const baseUrl = process.env.BASE_URL;
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  // Add Authorization header if session.accessToken exists
+  if (session?.accessToken) {
+    headers['Authorization'] = `Bearer ${session.accessToken}`;
+  }
 
   const fetchData = async (url, method = "GET", requestData = null) => {
     setLoading(true);
 
+
     fetch(`${baseUrl}${url}`, {
       method,
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': `Bearer ${session.accessToken}`
-      },
+      headers,
       body: JSON.stringify(requestData),
     })
       .then((response) => response.text())
