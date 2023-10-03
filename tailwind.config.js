@@ -44,6 +44,7 @@ module.exports = {
         roboto: "Roboto",
         chivo: "Chivo",
         poppins: "Poppins",
+        plusJakartaSans: "Plus Jakarta Sans",
       },
       borderRadius: {
         "8xs-5": "4.5px",
