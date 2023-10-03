@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Cookies from 'js-cookie';
 import {  useSession } from 'next-auth/react';
-
+import Cookie from "js-cookie";
 
 const useAxios = () => {
   const [resdata, setData] = useState({});
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
   const {  status, data: session } = useSession();
+  const token = Cookie.get("token");
 
   const baseUrl = process.env.BASE_URL;
   const headers = {
@@ -15,8 +16,8 @@ const useAxios = () => {
   };
 
   // Add Authorization header if session.accessToken exists
-  if (session?.accessToken) {
-    headers['Authorization'] = `Bearer ${session.accessToken}`;
+  if (session?.accessToken || token) {
+    headers['Authorization'] = `Bearer ${session?.accessToken ? session?.accessToken  : token}`;
   }
 
   const fetchData = async (url, method = "GET", requestData = null) => {
@@ -31,8 +32,9 @@ const useAxios = () => {
       .then((response) => response.text())
       .then((data) => {
         const jsonData = JSON.parse(data);
-        if(jsonData?.data?.id){
+        if(jsonData?.data?.id && jsonData?.referhToken){
           Cookies.set('id', jsonData.data.id, { expires: 7 });
+          Cookies.set('token', jsonData.referhToken, { expires: 7 });
         }
         setData(jsonData);
       })
