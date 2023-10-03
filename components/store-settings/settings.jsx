@@ -18,6 +18,24 @@ import Policies from "./policies-components/policies";
 import Languages from "./languages-components/languages";
 import KYCVerification from "./kyc-verification-components/kyc-verification";
 
+const components = [
+  { id: "plans", component: <Plans /> },
+  { id: "billings", component: <Billings /> },
+  { id: "preferences", component: <Preferences /> },
+  { id: "staff-accounts", component: <StaffAccounts /> },
+  { id: "payments", component: <Payments /> },
+  { id: "shipping", component: <Shipping /> },
+  { id: "warehouse", component: <Warehouse /> },
+  { id: "tax", component: <Tax /> },
+  { id: "extra-charges", component: <ExtraCharges /> },
+  { id: "checkout", component: <Checkout /> },
+  { id: "support", component: <SupportAndSocial /> },
+  { id: "domains", component: <Domains /> },
+  { id: "policies", component: <Policies /> },
+  { id: "languages", component: <Languages /> },
+  { id: "kyc-verification", component: <KYCVerification /> },
+];
+
 export default function StoreSettings() {
   const [activeDiv, setActiveDiv] = useState("plans");
 
@@ -79,21 +97,10 @@ export default function StoreSettings() {
             ))}
           </ul>
         </div>
-        {activeDiv === "plans" && <Plans />}
-        {activeDiv === "billings" && <Billings />}
-        {activeDiv === "preferences" && <Preferences />}
-        {activeDiv === "staff-accounts" && <StaffAccounts />}
-        {activeDiv === "payments" && <Payments />}
-        {activeDiv === "shipping" && <Shipping />}
-        {activeDiv === "warehouse" && <Warehouse />}
-        {activeDiv === "tax" && <Tax />}
-        {activeDiv === "extra-charges" && <ExtraCharges />}
-        {activeDiv === "checkout" && <Checkout />}
-        {activeDiv === "support" && <SupportAndSocial />}
-        {activeDiv === "domains" && <Domains />}
-        {activeDiv === "policies" && <Policies />}
-        {activeDiv === "languages" && <Languages />}
-        {activeDiv === "kyc-verification" && <KYCVerification />}
+        {components.map((item) => {
+          if (item.id === activeDiv) return item.component;
+          return null; // or simply don't return anything
+        })}
       </div>
       <div className="w-[90%] mx-4 mb-4 mt-8 flex flex-col items-center justify-between">
         <FreeTrialFooter />
