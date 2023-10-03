@@ -34,3 +34,18 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.inputWithAsterisk {
+  display: flex;
+  align-items: center;
+  background: #eee;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.redAsteriskSpan {
+  color: red;
+  padding-left: 5px;
+  position: absolute;
+}

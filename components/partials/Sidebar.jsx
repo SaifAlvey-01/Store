@@ -1,43 +1,44 @@
-'use client'
+"use client";
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
-// import { navItems } from "./items";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { useRouter } from "next/router";
 import { useNavigation } from "../../hooks/useNavigation";
 
-
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const router = useRouter();
   const { pathname } = router;
-  const curPath = pathname.split('/')[1];
-  const curSubPath = pathname.split('/')[2];
-  const {navItems} = useNavigation()
+  const curPath = pathname.split("/")[1];
+  const curSubPath = pathname.split("/")[2];
+  const { navItems } = useNavigation();
   const trigger = useRef(null);
   const sidebar = useRef(null);
 
-  const activeItemIndex = navItems.findIndex(item => item.section === curPath);
+  const activeItemIndex = navItems.findIndex(
+    (item) => item.section === curPath
+  );
   const initialActiveIndex = curPath.length === 0 ? 0 : activeItemIndex;
 
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
-    
-  const activeSubItemIndex = navItems[activeIndex]?.subItems ? navItems[activeIndex]?.subItems?.findIndex(item => item.subSection === curSubPath) : 0
-  const initialSubActiveIndex = curSubPath?.length === 0 ? 0 : activeSubItemIndex;
+  const activeSubItemIndex = navItems[activeIndex]?.subItems
+    ? navItems[activeIndex]?.subItems?.findIndex(
+        (item) => item.subSection === curSubPath
+      )
+    : 0;
+  const initialSubActiveIndex =
+    curSubPath?.length === 0 ? 0 : activeSubItemIndex;
   const [activeSubIndex, setActiveSubIndex] = useState(initialSubActiveIndex);
-  
 
   useEffect(() => {
     setActiveSubIndex(initialSubActiveIndex);
   }, [initialSubActiveIndex]);
 
-
   useEffect(() => {
     setActiveIndex(initialActiveIndex);
-}, [initialActiveIndex]);
+  }, [initialActiveIndex]);
 
-  
   return (
     <div className="font-freesans">
       {/* Sidebar backdrop (mobile only) */}
@@ -113,37 +114,32 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
         <div className="lg:mt-[85px] mt-[90px]">
           {/* Links */}
-          {navItems.map((item, index)=>{
-            return(
+          {navItems.map((item, index) => {
+            return (
               <div className="space-y-80" key={index}>
-              {/* Pages group */}
-                
+                {/* Pages group */}
+
                 <div>
-                <ul className="mt-1 lg:mt-2 list-none m-2 p-0 ">
+                  <ul className="mt-1 lg:mt-2 list-none m-2 p-0 ">
                     <div
                       style={
-                        activeIndex === index 
+                        activeIndex === index
                           ? { backgroundColor: "white", borderRadius: 12 }
                           : { backgroundColor: "transparent" }
                       }
                       className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans  last:mb-0 "
-                      >
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        href={item.href}
-                      >
+                    >
+                      <Link style={{ textDecoration: "none" }} href={item.href}>
                         <div
-                          className={`no-underline block truncate transition duration-150 `}>
+                          className={`no-underline block truncate transition duration-150 `}
+                        >
                           <div className="flex flex-row items-center">
                             {item.icon}
                             <span
                               style={{
                                 color:
-                                activeIndex === index  
-                                    ? "#1F1D2B"
-                                    : "#FAFAFA",
-                                fontWeight:
-                                activeIndex === index ? 500 : 400,
+                                  activeIndex === index ? "#1F1D2B" : "#FAFAFA",
+                                fontWeight: activeIndex === index ? 500 : 400,
                                 marginLeft: 14,
                               }}
                             >
@@ -152,50 +148,51 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           </div>
                         </div>
                       </Link>
-
                     </div>
 
-                    {item.subItems && activeIndex === index &&
-                    <ul
-                      style={{
-                        // display: ordersSubLinksVisible ? "block" : "none",
-                      }}
-                      className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
-                    >
-                      {item.subItems.map((itm, idx)=> {
-                        return(
-                          <li
-                          className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
-                            activeSubIndex === idx ? "font-bold" : ""
-                          }`}
-                        >
-                          {" "}
-                          <Link
-                            style={{ textDecoration: "none", color: "#FAFAFA" }}
-                            href={itm.href}
-                          >
-                            <div
-                              role="button"
-                              className="block w-full h-full cursor-pointer"
-                            >
-                              {itm.label}
-                            </div>
-                          </Link>
-                        </li>
-                        )})
+                    {item.subItems && activeIndex === index && (
+                      <ul
+                        style={
+                          {
+                            // display: ordersSubLinksVisible ? "block" : "none",
+                          }
                         }
-                    
-                    
-                    </ul>
-                    }
-
-                </ul>
+                        className={`list-none text-sm font-medium px-10 mb-4 transition-max-height duration-300"`}
+                      >
+                        {item.subItems.map((itm, idx) => {
+                          return (
+                            <li
+                              className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                                activeSubIndex === idx ? "font-bold" : ""
+                              }`}
+                            >
+                              {" "}
+                              <Link
+                                style={{
+                                  textDecoration: "none",
+                                  color: "#FAFAFA",
+                                }}
+                                href={itm.href}
+                              >
+                                <div
+                                  role="button"
+                                  className="block w-full h-full cursor-pointer"
+                                >
+                                  {itm.label}
+                                </div>
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </ul>
                 </div>
               </div>
-            )
-          }) 
-          }
+            );
+          })}
         </div>
+
           <ul className="mt-9 lg:mt-6 list-none m-4 p-0 ">
             <div
                       style={
@@ -313,8 +310,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         </div>
                       </Link>
 
-            </div>
-          </ul>
+                  <span
+                    style={{
+                      color: curPath === "sign-out" ? "#1F1D2B" : "#FAFAFA",
+                      fontWeight: curPath === "sign-out" ? 500 : 400,
+                      marginLeft: 14,
+                    }}
+                  >
+                    Sign Out
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </ul>
 
         {/* Expand / collapse button */}
       </div>
