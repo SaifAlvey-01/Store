@@ -9,10 +9,10 @@ export default function FreeTrialFooter() {
         alignItems: "center",
         justifyContent: "space-between",
         borderRadius: "6px",
-        backgroundColor: "#FAFAFA",
-        boxShadow: `#00000022 0px 2px 6px 2px`,
+        background: "var(--Neutral-50, #FAFAFA)",
+        boxShadow: `0px 0px 4px #00000020`,
       }}
-      className="w-full px-2 py-2"
+      className="w-full px-6 py-3"
     >
       <span
         style={{
