@@ -4,7 +4,7 @@ import StatusTracking from "./status-tracking";
 
 export default function DashboardHome() {
   return (
-    <>
+    <div className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] ">
       <div
         className="h-auto overflow-y-auto flex flex-col items-center justify-between"
         style={{
@@ -95,7 +95,7 @@ export default function DashboardHome() {
         </div>
       </div>
       <div
-        className="h-auto overflow-y-auto flex flex-col items-center justify-between "
+        className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
         style={{
           backgroundColor: "var(--white-color, #FFF)",
           borderRadius: "10px",
@@ -157,6 +157,6 @@ export default function DashboardHome() {
           <FreeTrialFooter />
         </div>
       </div>
-    </>
+    </div>
   );
 }

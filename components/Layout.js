@@ -14,7 +14,7 @@ const Layout = ({ children, backText, backImageUrl, backUrl }) => {
   return (
     <div
       style={{ backgroundColor: "#F7F9FB" }}
-      className="flex overflow-hidden h-screen "
+      className="flex h-screen overflow-hidden "
     >
       <Sidebar
         sidebarOpen={sidebarOpen}
