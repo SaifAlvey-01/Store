@@ -53,11 +53,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] transition-transform duration-200 ease-in-out
-${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
+        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen 
+        overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] 
+        transition-transform duration-200 ease-in-out ${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
       >
         {/* Sidebar header */}
-        <div className="flex fixed justify-center items-center h-[67px] lg:h-[70px] mt-2 mb-8 pr-3 sm:px-2">
+        <div className="flex fixed justify-center items-center h-[67px] md:h-[70px] mt-2 mb-8 pr-3 sm:px-2">
           {/* Child flex container */}
           <div
             style={{ margin: "0px 20px" }}
@@ -72,13 +73,13 @@ ${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
               aria-expanded={sidebarOpen}
             >
               {/* <span className="sr-only">Close sidebar</span>
-<svg
-className="w-6 h-6 fill-current"
-viewBox="0 0 24 24"
-xmlns="http://www.w3.org/2000/svg"
->
-<path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
-</svg> */}
+                <svg
+                className="w-6 h-6 fill-current"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                >
+                <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
+                </svg> */}
             </button>
 
             {/* Logo in the center */}
@@ -241,9 +242,11 @@ xmlns="http://www.w3.org/2000/svg"
               </div>
             </Link>
           </div>
+       
+
           <div
             style={
-              curPath === "settings"
+              curPath === "sign-out"
                 ? { backgroundColor: "white", borderRadius: 12 }
                 : { backgroundColor: "transparent" }
             }
