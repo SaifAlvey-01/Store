@@ -4,7 +4,7 @@ import FreeTrialFooter from "../free-trial-footer";
 export default function Delivery() {
   return (
     <div
-      className="h-[84vh]  overflow-y-auto flex flex-col items-center justify-between "
+      className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)]  overflow-y-auto flex flex-col items-center justify-between "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
@@ -12,7 +12,7 @@ export default function Delivery() {
       }}
     >
       <div
-        className="h-screen my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-14 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-14 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",

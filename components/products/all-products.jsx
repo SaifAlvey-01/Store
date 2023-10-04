@@ -5,7 +5,7 @@ import ToolBar from "../tool-bar";
 export default function AllProducts() {
   return (
     <div
-      className="h-auto overflow-y-auto flex flex-col items-center justify-between "
+      className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
@@ -25,7 +25,7 @@ export default function AllProducts() {
         <div className="flex flex-col items-center justify-between ">
           <img
             src={"/dashboard_images/product_search.png"}
-            className="w-600 h-600 "
+            className="w-500 h-500 "
           />
 
           <div className="flex flex-col items-center justify-between ">
@@ -61,7 +61,7 @@ export default function AllProducts() {
         </div>
       </div>
 
-      <div className="w-[90%] mx-4 mb-6 mt-2   flex flex-col items-center justify-between">
+      <div className="w-[90%] mx-4 mb-4 mt-2   flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

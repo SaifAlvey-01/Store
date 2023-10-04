@@ -7,7 +7,7 @@ import StoreConversionRateChart from "../line-charts/sales/store-conversion-rate
 export default function Sales() {
   return (
     <div
-      className="h-auto overflow-y-auto flex flex-col items-center justify-between "
+      className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",

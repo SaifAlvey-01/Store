@@ -18,7 +18,7 @@ export default function Themes() {
   ];
   return (
     <div
-      className="h-auto p-6  "
+      className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)]  p-6  "
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
