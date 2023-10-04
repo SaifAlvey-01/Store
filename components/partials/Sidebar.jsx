@@ -113,7 +113,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           </div>
         </div>
 
-        <div className="lg:mt-[85px] mt-[90px]">
+        <div className="lg:mt-[90px] mt-[90px]">
           {/* Links */}
           {navItems.map((item, index) => {
             return (
@@ -127,7 +127,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           ? { backgroundColor: "white", borderRadius: 12 }
                           : { backgroundColor: "transparent" }
                       }
-                      className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans last:mb-0 "
+                      className=" p-[8px] md:p-[8px]  w-[180px] font-freesans last:mb-0 "
                     >
                       <Link style={{ textDecoration: "none" }} href={item.href}>
                         <div
