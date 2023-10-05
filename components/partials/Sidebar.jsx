@@ -43,7 +43,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     <div className="font-freesans">
       {/* Sidebar backdrop (mobile only) */}
       <div
-        className={`fixed inset-0 bg-[#1F1D2B] bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
+        className={`fixed inset-0 bg-[#1F1D2B] bg-opacity-30 z-40 xl:hidden xl:z-auto transition-opacity duration-200 ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden="true"
@@ -53,9 +53,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
       <div
         id="sidebar"
         ref={sidebar}
-        className={`flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen 
-        overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-64 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] 
-        transition-transform duration-200 ease-in-out ${sidebarOpen ? "translate-x-0 rounded-r-lg" : "-translate-x-64"}`}
+        className={`flex flex-col absolute z-40 left-0 top-0 xl:static xl:left-auto xl:top-auto xl:translate-x-0 h-screen 
+        overflow-y-scroll xl:overflow-y-auto no-scrollbar w-64 xl:w-64 xl:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] 
+        transition-transform duration-200 ease-in-out ${sidebarOpen ? "translate-x-0 rounded-r-xl" : "-translate-x-64"}`}
       >
         {/* Sidebar header */}
         <div className="flex fixed justify-center items-center h-[67px] md:h-[70px] mt-2 mb-8 pr-3 sm:px-2">
@@ -83,7 +83,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
             </button>
 
             {/* Logo in the center */}
-            <div className="flex flex-row items-center justify-center lg:flex lg:items-center lg:justify-center ">
+            <div className="flex flex-row items-center justify-center xl:flex xl:items-center xl:justify-center ">
               <div
                 style={{
                   backgroundColor: "#D9D9D9",
@@ -113,21 +113,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
           </div>
         </div>
 
-        <div className="lg:mt-[90px] mt-[90px]">
+        {/* <div className="xl:mt-[90px] mt-[90px] xl:mt-[]"> */}
+        <div className="xl:mt-[90px] mt-[90px] ">
           {/* Links */}
           {navItems.map((item, index) => {
             return (
               <div className="space-y-80" key={index}>
                 {/* Pages group */}
                 <div>
-                  <ul className="mt-1 lg:mt-2 list-none m-2 p-0 ">
+                  <ul className="mt-1 xl:mt-2 list-none m-2 p-0 ">
                     <div
                       style={
                         activeIndex === index
                           ? { backgroundColor: "white", borderRadius: 12 }
                           : { backgroundColor: "transparent" }
                       }
-                      className=" p-[8px] md:p-[8px]  w-[180px] font-freesans last:mb-0 "
+                      className=" p-[8px] xl:p-[12px]  w-[180px] font-freesans last:mb-0 "
                     >
                       <Link style={{ textDecoration: "none" }} href={item.href}>
                         <div
@@ -162,7 +163,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                         {item.subItems.map((itm, idx) => {
                           return (
                             <li
-                              className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-lg dark:border-gray-600 ${
+                              className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-xl dark:border-gray-600 ${
                                 activeSubIndex === idx ? "font-bold" : ""
                               }`}
                             >
@@ -191,15 +192,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
               </div>
             );
           })}
-        </div>
-        <ul className="mt-9 lg:mt-6 list-none m-4 p-0 ">
+        <div className="space-y-80" >
+                <div>
+        <ul className="mt-8 xl:mt-8 list-none m-2 p-0 ">
           <div
             style={
               curPath === "settings"
                 ? { backgroundColor: "white", borderRadius: 12 }
                 : { backgroundColor: "transparent" }
             }
-            className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans last:mb-0 "
+            className="px-[7px] py-[9px] xl:px-[12px] xl:py-[11px] w-[180px] font-freesans last:mb-0 "
           >
             <Link style={{ textDecoration: "none" }} href="/settings">
               <div
@@ -250,7 +252,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                 ? { backgroundColor: "white", borderRadius: 12 }
                 : { backgroundColor: "transparent" }
             }
-            className="px-[7px] py-[9px] lg:px-[12px] lg:py-[11px] w-[180px] font-freesans last:mb-0 "
+            className="px-[7px] py-[9px] xl:px-[12px] xl:py-[11px] w-[180px] font-freesans last:mb-0 "
           >
             <Link style={{ textDecoration: "none" }} href="/settings">
               <div
@@ -287,6 +289,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
             </Link>
           </div>
         </ul>
+        </div>
+        </div>
+
+        </div>
+
 
         {/* Expand / collapse button */}
       </div>
