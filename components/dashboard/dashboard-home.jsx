@@ -1,12 +1,12 @@
 import React from "react";
 import FreeTrialFooter from "../free-trial-footer";
 import StatusTracking from "./status-tracking";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 
 export default function DashboardHome() {
-  const mqMD = useMediaQuery({
-    query: "(max-width: 900px)",
-  });
+  // const mqMD = useMediaQuery({
+  //   query: "(max-width: 900px)",
+  // });
 
   return (
     <div className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] ">
