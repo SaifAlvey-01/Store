@@ -15,6 +15,7 @@ module.exports = {
       backgroundColor: {
         "neutral-200": "#f1f1f1",
       },
+      borderColor: {},
       colors: {
         white: "#fff",
         gainsboro: "#e5e7eb",
@@ -37,6 +38,7 @@ module.exports = {
 
       borderColor: {
         "primary-300-main": "#4162FF",
+        "primary-gray": "#e3e3e3",
       },
 
       fontFamily: {
