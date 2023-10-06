@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AllOrders from "../../../components/orders/all-orders";
 import Layout from "../../../components/Layout";
+import AllOrders from "../../../components/orders/initial-pages/all-orders";
 
 export default function index() {
   const [showCreateOrder, setShowCreateOrder] = useState(false);

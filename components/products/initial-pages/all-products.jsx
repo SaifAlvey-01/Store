@@ -1,8 +1,15 @@
 import React from "react";
-import FreeTrialFooter from "../free-trial-footer";
-import ToolBar from "../tool-bar";
+import FreeTrialFooter from "../../free-trial-footer";
+import ToolBar from "../../tool-bar";
+import AddNewProduct from "../inner-pages/add-new-product";
 
-export default function AllProducts() {
+export default function AllProducts({
+  showAddNewProduct,
+  setShowAddNewProduct,
+}) {
+  if (showAddNewProduct) {
+    return <AddNewProduct goBack={() => setShowAddNewProduct(false)} />;
+  }
   return (
     <div
       className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
@@ -49,6 +56,7 @@ export default function AllProducts() {
 
           <button
             className="mt-2 mb-6 cursor-pointer"
+            onClick={() => setShowAddNewProduct(true)}
             style={{
               backgroundColor: "#4162FF",
               color: "#ffffff",
