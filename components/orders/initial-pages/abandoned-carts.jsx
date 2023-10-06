@@ -1,5 +1,5 @@
 import React from "react";
-import FreeTrialFooter from "../free-trial-footer";
+import FreeTrialFooter from "../../free-trial-footer";
 
 export default function AbandonedCarts() {
   return (

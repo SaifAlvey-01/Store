@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import FreeTrialFooter from "../free-trial-footer";
-import CreateOrder from "./create-order";
+import FreeTrialFooter from "../../free-trial-footer";
+import CreateOrder from "../inner-pages/create-order";
 
 export default function AllOrders({ showCreateOrder, setShowCreateOrder }) {
   if (showCreateOrder) {

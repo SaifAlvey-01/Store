@@ -1,8 +1,7 @@
 import React from "react";
-import FreeTrialFooter from "../free-trial-footer";
-import ToolBar from "../tool-bar";
+import FreeTrialFooter from "../../free-trial-footer";
 
-export default function Inventory() {
+export default function Categories() {
   return (
     <div
       className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
@@ -13,7 +12,7 @@ export default function Inventory() {
       }}
     >
       <div
-        className=" my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-8 lg:mx-24 lg:w-[70%] w-[90%]"
+        className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           // border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
@@ -22,7 +21,7 @@ export default function Inventory() {
       >
         <div className="flex flex-col items-center justify-between ">
           <img
-            src={"/dashboard_images/product_search.png"}
+            src={"/dashboard_images/categories.png"}
             className="w-600 h-600 "
           />
 
@@ -31,7 +30,7 @@ export default function Inventory() {
               style={{ color: "#4B4B4B", fontSize: "20px" }}
               className="mt-0 mb-2 font-bold font-freesans	"
             >
-              Add products to your online store
+              Create your first category now
             </h2>
             <p
               style={{
@@ -40,8 +39,8 @@ export default function Inventory() {
               }}
               className="mt-0 mb-1 my-0 font-thin text-sm w-[100%] max-w-[90%]"
             >
-              It takes only few seconds to add your products and start selling
-              to the customers.
+              Showcase your products or services to the customers by creating
+              beautiful categories.
             </p>
           </div>
 
@@ -54,7 +53,7 @@ export default function Inventory() {
               borderRadius: "4px",
             }}
           >
-            Add New Product
+            Add New Category
           </button>
         </div>
       </div>

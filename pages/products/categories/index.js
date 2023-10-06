@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../../components/Layout";
-import Categories from "../../../components/products/categories";
+import Categories from "../../../components/products/initial-pages/categories";
 
 export default function index() {
   return (
