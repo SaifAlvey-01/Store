@@ -1,6 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import {Editor} from '@tinymce/tinymce-react'
 
 export default function AddNewProduct() {
+  const editorRef = useRef();
+  const [content, setContent] = useState('');
+
+      const handleEditorChange = (content, editor) => {
+          setContent(content);
+      };
+
+  const customCss = `
+        .tox .tox-notification {
+          display: none !important;
+        }
+      `;
   return (
     <div
       className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between p-3"
@@ -290,7 +303,42 @@ export default function AddNewProduct() {
                 </span>
               </div>
             </div>
+
+            
           </div>
+
+                  {/* editor   */}
+          <div
+            className="p-4 mt-3"
+           
+          >
+          
+            <style>{customCss}</style> 
+           <Editor onInt= {(evt, editor) => editorRef.current = editor} 
+          initialValue={content}
+          onEditorChange={handleEditorChange}
+          init={{
+            height: 150,
+            width: 860,
+            menubar: false,
+            branding: false,
+            // plugins: [
+            //   'advlist autolink lists link image charmap print preview anchor',
+            //   'searchreplace visualblocks code fullscreen',
+            //   'insertdatetime media table paste code help wordcount',
+            // ],
+            // toolbar:
+            //   'undo redo | formatselect | bold italic backcolor | \
+            //   alignleft aligncenter alignright alignjustify | \
+            //   bullist numlist outdent indent | removeformat | help',
+          }}
+        
+          />
+          </div>
+
+
+
+
         </div>
         <div
           className="w-full md:w-[40%] h-auto text-white p-1 md:p-3"
@@ -539,6 +587,10 @@ export default function AddNewProduct() {
               </div>
             </div>
           </div>
+
+
+
+
           <div
             className="p-4 mt-6"
             style={{
