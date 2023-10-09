@@ -5,6 +5,7 @@ const isAuthenticated = () => {
   const token = localStorage.getItem("token");
   return !!token;
 };
+
 const useAuth = () => {
   const router = useRouter();
 
