@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import axios from "axios";
-import Cookies from 'js-cookie';
+
 
 
 const authOptions = {

@@ -7,5 +7,6 @@ const nextConfig = {
       GOOGLE_CLIENT_SECRET:"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"
     },
   }
+  
 
   module.exports = nextConfig
