@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import Cookie from "js-cookie";
 import useAxios from "../../hooks/useAxios";
+import axios from "axios";
 
 
 const SignUp4 = ({ setloading,setCurrentStep }) => {
   const { resdata, error, loading, putData: putRequest } = useAxios();
   const router = useRouter();
-  const [defaultCountry, setDefault] = useState({});
+  const [defaultCountry, setDefault] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState({});
   const [isActive, setIsactive] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
@@ -27,22 +28,44 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
   };
 
   useEffect(() => {
-    fetch('http://ip-api.com/json/')
-    .then( res => res.json())
-    .then(response => {
-      setDefault(response)
-     console.log("Country is : ", response);
-   })
-   .catch((data, status) => {
-     console.log('Request failed:', data);
-   });
+    axios.get('https://1.1.1.1/cdn-cgi/trace').then((response) => {
+      console.log(typeof(response.data),"<----response")
+      var locRegex = /loc=([^\s]+)/;
+
+        // Use the regular expression to extract the value of "loc"
+        var match = response.data.match(locRegex);
+
+        // Check if a match was found and extract the value
+        var locValue = match ? match[1] : null;
+
+        const regionNames = new Intl.DisplayNames(
+          ['en'], {type: 'region'}
+        );
+
+        setDefault(regionNames.of(locValue))
+
+
+
+
+    });
+
+
+  //   fetch('https://1.1.1.1/cdn-cgi/trace')
+  //   .then(response => {
+  //     console.log(response,"<----response")
+  //     setDefault(response)
+  //    console.log("Country is : ", response);
+  //  })
+  //  .catch((data, status) => {
+  //    console.log('Request failed:', data);
+  //  });
 
  },[])
 
 
   useEffect(() => {
-    if(defaultCountry.status === "success" && !isSelect){
-      const country = countryOptions.filter((opt)=> opt.label === defaultCountry.country)
+    if(defaultCountry && !isSelect){
+      const country = countryOptions.filter((opt)=> opt.label === defaultCountry)
       setSelectedCountry(country[0])
     }
     if (resdata.state && resdata.state === "success") {
