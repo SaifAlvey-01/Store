@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import { signOut } from "next-auth/react"
 import Link from "next/link";
 // import { navItems } from "./items";
 import { useRouter } from "next/router";
 import { useNavigation } from "../../hooks/useNavigation";
+import Cookies from 'js-cookie';
+
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const router = useRouter();
@@ -38,6 +41,24 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   useEffect(() => {
     setActiveIndex(initialActiveIndex);
   }, [initialActiveIndex]);
+
+  const handleSignout = () =>{
+    signOut();
+    localStorage.removeItem('signupCurrentStep');
+    Cookies.remove('token');
+    Cookies.remove('id');
+
+  }
+ // close on click outside
+  useEffect(() => {
+    const clickHandler = ({ target }) => {
+      if (!sidebar.current || !trigger.current) return;
+      if (!sidebarOpen || sidebar.current.contains(target) || trigger.current.contains(target)) return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
 
   return (
     <div className="font-freesans">
@@ -254,9 +275,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
             }
             className="px-[7px] py-[9px] xl:px-[12px] xl:py-[11px] w-[180px] font-freesans last:mb-0 "
           >
-            <Link style={{ textDecoration: "none" }} href="/settings">
+            <Link href="" style={{ textDecoration: "none" }} >
               <div
                 className={`no-underline block truncate transition duration-150 `}
+                onClick={handleSignout}
               >
                 <div className="flex flex-row items-center">
                   <svg

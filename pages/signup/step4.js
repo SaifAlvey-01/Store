@@ -17,8 +17,9 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
   // const [isLoading, setIsLoading] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
   const [business, setBusiness] = useState("");
-  const id = Cookie.get("id");
-
+  let id = Number(Cookie.get("id"));
+  
+  console.log(typeof id, "<-----adsdsds")
 
   const handleCountryChange = (selectedOption) => {
     if(selectedOption){
@@ -29,7 +30,7 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
 
   useEffect(() => {
     axios.get('https://1.1.1.1/cdn-cgi/trace').then((response) => {
-      console.log(typeof(response.data),"<----response")
+      
       var locRegex = /loc=([^\s]+)/;
 
         // Use the regular expression to extract the value of "loc"

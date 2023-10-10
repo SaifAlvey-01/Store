@@ -16,7 +16,7 @@ const useAxios = () => {
   };
 
   // Add Authorization header if session.accessToken exists
-  if (session?.accessToken || token) {
+  if ( token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
