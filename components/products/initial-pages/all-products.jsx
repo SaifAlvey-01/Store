@@ -2,6 +2,7 @@ import React from "react";
 import FreeTrialFooter from "../../free-trial-footer";
 import ToolBar from "../../tool-bar";
 import AddNewProduct from "../inner-pages/add-new-product";
+import ProductListing from "../inner-pages/product-listing";
 
 export default function AllProducts({
   showAddNewProduct,
@@ -12,16 +13,23 @@ export default function AllProducts({
   }
   return (
     <div
-      className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
+      className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-stretch justify-between"
       style={{
         backgroundColor: "var(--white-color, #FFF)",
         borderRadius: "10px",
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      <ToolBar />
+      <div className="flex justify-center w-full">
+        <ToolBar />
+      </div>
 
-      <div
+      <div className="w-full flex-grow flex flex-col">
+        {" "}
+        <ProductListing className="flex-grow" />
+      </div>
+
+      {/* <div
         className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-6 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           // border: "1px solid #e3e3e3",
@@ -67,9 +75,10 @@ export default function AllProducts({
             Add New Product
           </button>
         </div>
-      </div>
+      </div> */}
 
-      <div className="w-[90%] mx-4 mb-4 mt-2   flex flex-col items-center justify-between">
+      <div className="w-[95%] mx-auto mb-4 mt-6 flex justify-center items-center">
+        {" "}
         <FreeTrialFooter />
       </div>
     </div>
