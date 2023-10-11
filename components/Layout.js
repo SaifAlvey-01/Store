@@ -2,14 +2,28 @@ import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./partials/Sidebar";
 import Header from "./partials/Header";
 import { useRouter } from "next/router";
+import {  useSession } from 'next-auth/react';
+import Cookie from "js-cookie";
+
 
 const Layout = ({ children, backText, backImageUrl, backUrl }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const {  status, data: session } = useSession();
+  const token = Cookie.get("token");
   const [headerValue, setHeaderValue] = useState(
     router.pathname === "/dashboard" ? "Dashboard" : ""
   );
+
+  useEffect(()=>{
+    if (!session?.accessToken || !token) {
+      router.push("/login")
+    }
+  },[])
+
+  if (!session?.accessToken || !token) {
+    return <></>
+  }
 
   return (
     <div
