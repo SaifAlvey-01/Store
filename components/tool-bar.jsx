@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function ToolBar() {
+export default function ToolBar({setShowAddNewProduct}) {
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [productDropdownOpen, setProductDropdownOpen] = useState(false);
   const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
@@ -454,7 +454,7 @@ export default function ToolBar() {
         {/* Add New Product Dropdown */}
         <div className="relative">
           <button
-            onClick={() => setProductDropdownOpen(!productDropdownOpen)}
+            onClick={() => setShowAddNewProduct(true)}
             style={{
               borderRadius: "6px",
               border: "1px solid #D0D5DD",
@@ -462,14 +462,14 @@ export default function ToolBar() {
               color: "#ffffff",
               backgroundColor: "#4162ff",
             }}
-            className="flex items-center px-1.5 md:px-3 py-2 hover:bg-gray-300"
+            className="flex cursor-pointer items-center px-1.5 md:px-3 py-2 hover:bg-gray-300"
           >
             Add New Product
             <img src={"/chevron-down.png"} className=" ml-1 md:ml-2 w-4 h-4" />
           </button>
 
           {/* New Dropdown */}
-          {productDropdownOpen && (
+          {/* {productDropdownOpen && (
             <div
               ref={ref}
               className="mt-2 px-3 py-1 w-64 bg-white rounded-md shadow-lg overflow-hidden z-50 flex flex-col items-start justify-center"
@@ -512,7 +512,7 @@ export default function ToolBar() {
                 </span>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

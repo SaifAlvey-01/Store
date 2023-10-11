@@ -21,7 +21,7 @@ export default function AllProducts({
       }}
     >
       <div className="flex justify-center w-full">
-        <ToolBar />
+        <ToolBar setShowAddNewProduct={setShowAddNewProduct}/>
       </div>
 
       <div className="w-full flex-grow flex flex-col">
