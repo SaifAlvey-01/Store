@@ -2,15 +2,15 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import useAxios from "../../hooks/useAxios";
-import { signIn, useSession } from 'next-auth/react';
+import { signIn, useSession } from "next-auth/react";
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
   const { resdata, error, loading, postData: postRequest } = useAxios();
-  const {  status, data: session } = useSession();
+  const { status, data: session } = useSession();
   const {
     handleSubmit,
     register,
@@ -19,21 +19,20 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
   useEffect(() => {
     //google login
-    if(session && session.user){
-      postRequest("/auth/google-login", {access_token:session.accessToken});
-      Cookies.set('email', session.user.email, { expires: 7 });
+    if (session && session.user) {
+      postRequest("/auth/google-login", { access_token: session.accessToken });
+      Cookies.set("email", session.user.email, { expires: 7 });
       setCurrentStep(4);
     }
     //menual login
     if (resdata.state === "success") {
       const email = getValues();
-      Cookies.set('email', email.email, { expires: 7 });
+      Cookies.set("email", email.email, { expires: 7 });
       setCurrentStep(2);
     }
-    if(error){
-      setCustomError(resdata.message)
+    if (error) {
+      setCustomError(resdata.message);
     }
-
   }, [resdata, session]);
 
   const onSubmit = async (data) => {
@@ -47,12 +46,11 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     router.push("/login");
   };
 
-
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-12 px-3 sm:px-2 md:px-3 lg:px-4 mx-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
+      <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-12 px-2 sm:px-2 md:px-3 lg:px-4 mx-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
         <div className="flex flex-col items-center gap-[30px]">
           <div className="flex flex-col items-center justify-start gap-[32px]">
             <h2 className="text-neutral-600 my-0 font-semibold text-24 font-freesans  tracking-normal">
@@ -139,7 +137,10 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                     <hr className="h-px w-[90px] bg-gradient-line mx-3" />
                   </div>
                 </div>
-                <div onClick={() => signIn('google')} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                <div
+                  onClick={() => signIn("google")}
+                  className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300"
+                >
                   <div className="relative w-[90px] h-0" />
                   <div className="flex flex-row items-center justify-center gap-[6px]">
                     <img
@@ -147,8 +148,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                       alt=""
                       src="/google.svg"
                     />
-                    {status === "loading" ?
-                    (
+                    {status === "loading" ? (
                       <svg
                         aria-hidden="true"
                         role="status"
@@ -166,10 +166,11 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                           fill="currentColor"
                         ></path>
                       </svg>
-                    )
-                    :( <div className="relative leading-[24px] font-medium">
-                      Google
-                    </div>)}
+                    ) : (
+                      <div className="relative leading-[24px] font-medium">
+                        Google
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

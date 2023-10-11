@@ -23,12 +23,14 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
     if (resdata.message && resdata.state === "success") {
       setCustomError(resdata.message);
     }
-    
   }, [resdata]);
 
   const onSubmit = (data) => {
     const savedEmail = Cookie.get("email");
-    putRequest("/auth/create-password", { password: data.password, email: savedEmail});
+    putRequest("/auth/create-password", {
+      password: data.password,
+      email: savedEmail,
+    });
     setFormData((prevData) => ({ ...prevData, ...data }));
   };
 
@@ -36,7 +38,7 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
     <div className=" w-full sm:w-[450px] md:w-[450px]lg:w-[450px] min-h-[calc(100% - 80px)] text-11xl text-neutral-600">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className=" w-full text-11xl text-neutral-600">
-          <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden mx-3 py-8 px-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
+          <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden mx-2 py-8 px-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
             <div className="flex flex-col items-center justify-start gap-[32px]">
               <b className="relative">Create a password</b>
               <div className="flex flex-col w-full items-center justify-center text-sm text-dimgray gap-[28px]">
@@ -66,7 +68,7 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
 
                   {errors.password && (
                     <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                      {customError? customError : errors.password.message}
+                      {customError ? customError : errors.password.message}
                     </p>
                   )}
                 </div>
