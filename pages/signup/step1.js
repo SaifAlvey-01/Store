@@ -9,6 +9,7 @@ import { signIn, useSession } from 'next-auth/react';
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
+  const [Loading, setLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  status, data: session } = useSession();
   const {
@@ -46,6 +47,11 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const handleGetStartedClick = () => {
     router.push("/login");
   };
+
+  const handleGoogle =async ()=>{
+      setLoading(true)
+    await signIn('google')
+  }
 
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
@@ -139,20 +145,14 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                     <hr className="h-px w-[90px] bg-gradient-line mx-3" />
                   </div>
                 </div>
-                <div onClick={() => signIn('google')} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+                <div onClick={handleGoogle} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                   <div className="relative w-[90px] h-0" />
-                  <div className="flex flex-row items-center justify-center gap-[6px]">
-                    <img
-                      className="relative w-[18px] h-[18px] overflow-hidden shrink-0"
-                      alt=""
-                      src="/google.svg"
-                    />
-                    {status === "loading" ?
+                  {Loading ?
                     (
                       <svg
                         aria-hidden="true"
                         role="status"
-                        class="inline mr-3 w-6 h-6 text-white animate-spin"
+                        class="inline mr-3 w-6 h-6 text-blue-500 animate-spin"
                         viewBox="0 0 100 101"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -167,10 +167,18 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                         ></path>
                       </svg>
                     )
-                    :( <div className="relative leading-[24px] font-medium">
+                    : (
+                  <div className="flex flex-row items-center justify-center gap-[6px]">
+                    <img
+                      className="relative w-[18px] h-[18px] overflow-hidden shrink-0"
+                      alt=""
+                      src="/google.svg"
+                    />
+                    <div className="relative leading-[24px] font-medium">
                       Google
-                    </div>)}
+                    </div>
                   </div>
+                    ) }
                 </div>
               </div>
               <div className="relative text-[12px] leading-[20px] mx-3 text-center  font-roboto">
