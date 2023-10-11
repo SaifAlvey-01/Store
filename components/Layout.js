@@ -16,7 +16,7 @@ const Layout = ({ children, backText, backImageUrl, backUrl }) => {
   );
 
   useEffect(()=>{
-    if (!session?.accessToken || !token) {
+    if (!token) {
       router.push("/login")
     }
   },[])

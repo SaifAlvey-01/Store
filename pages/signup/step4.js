@@ -19,7 +19,6 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
   const [business, setBusiness] = useState("");
   let id = Number(Cookie.get("id"));
   
-  console.log(typeof id, "<-----adsdsds")
 
   const handleCountryChange = (selectedOption) => {
     if(selectedOption){
@@ -44,10 +43,6 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
         );
 
         setDefault(regionNames.of(locValue))
-
-
-
-
     });
 
 
