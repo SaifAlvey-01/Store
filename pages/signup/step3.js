@@ -3,7 +3,8 @@ import { useRouter } from "next/navigation";
 import Verify from "../../components/Verify/Verify";
 import Cookie from "js-cookie";
 import useAxios from "../../hooks/useAxios";
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
+
 
 const SignUp3 = ({ setCurrentStep }) => {
   const [OTP, setOTP] = useState("");
@@ -22,18 +23,15 @@ const SignUp3 = ({ setCurrentStep }) => {
   };
 
   useEffect(() => {
-    if (
-      resdata.state === "success" &&
-      resdata.message !== "OTP has been Resended on provided email"
-    ) {
-      Cookies.set("id", resdata.data.id, { expires: 7 });
+    if (resdata.state === "success" && resdata.message !== "OTP has been Resended on provided email") {
+      Cookies.set('id', resdata.data.id, { expires: 7 });
       setCurrentStep((prevStep) => prevStep + 1);
     }
   }, [resdata]);
 
   const onTextFieldContainer1Click = async () => {
-    const data = { verificationCode: Number(OTP), email: savedEmail };
-
+    const data ={ verificationCode: Number(OTP), email:savedEmail }
+    
     putRequest("/auth/verify-email-verification-code", data);
   };
 
@@ -41,8 +39,10 @@ const SignUp3 = ({ setCurrentStep }) => {
     router.push("/login");
   };
 
-  const handleresend = async () => {
-    putRequest("/auth/resend-email-verification-code", { email: savedEmail });
+  const handleresend = async ()=> {
+
+    putRequest("/auth/resend-email-verification-code", {email:savedEmail});
+
   };
 
   return (
@@ -72,14 +72,11 @@ const SignUp3 = ({ setCurrentStep }) => {
                 </div>
               </div>
               <div className="w-full flex flex-col items-center justify-center  gap-[4px] cursor-pointer text-sm text-dimgray">
-                <div className="self-stretch flex flex-row items-center justify-center ml-1 md:ml-2">
+                <div className="self-stretch flex flex-row items-center justify-center ml-2">
                   <div className=" flex flex-row items-center justify-center relative mr-14 leading-[20px] font-medium">
                     Code
                   </div>
-                  <div
-                    onClick={handleresend}
-                    className=" flex flex-row items-center justify-start ml-6 md:ml-14"
-                  >
+                  <div onClick={handleresend} className=" flex flex-row items-center justify-start ml-14">
                     Didn’t get the code?{" "}
                     <a className="text-[#4162FF] ml-1">Resend OTP</a>
                   </div>
@@ -101,7 +98,7 @@ const SignUp3 = ({ setCurrentStep }) => {
                   OTP.length === 6
                     ? "bg-primary-300-main cursor-pointer"
                     : "bg-primary-100 cursor-not-allowed"
-                } w-[340px] md:w-[370px] flex flex-col p-2.5 box-border items-center mb-2 justify-center text-center text-white font-poppins`}
+                } w-[340px] md:w-[370px] flex flex-col p-2 box-border items-center mb-2 justify-center text-center text-white font-poppins`}
               >
                 {loading ? (
                   <svg

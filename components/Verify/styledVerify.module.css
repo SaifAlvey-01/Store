@@ -30,7 +30,7 @@
   background-color: #fff;
   box-sizing: border-box;
   width: 100%;
-  min-width: 45px;
+  min-width: 50px;
   display: flex;
   flex-direction: row;
   padding: 0.625rem 0.875rem;
@@ -44,23 +44,4 @@
 .inputbox:focus {
   outline: none;
   border-color: #b3c0ff;
-}
-
-@media (min-width: 768px) {
-  /* Adjust based on your requirements */
-
-  .verifycontainer {
-    flex-direction: column;
-  }
-
-  .otpinput {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .inputbox {
-    width: calc(100% - 10px); /* Reduce width slightly to account for margins */
-    min-width: 56px;
-    margin: 2px 3px;
-  }
 }

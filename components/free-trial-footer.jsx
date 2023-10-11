@@ -12,7 +12,7 @@ export default function FreeTrialFooter() {
         background: "var(--Neutral-50, #FAFAFA)",
         boxShadow: `0px 0px 4px #00000020`,
       }}
-      className="w-full md:px-6 px-2 py-3"
+      className="w-full md:px-6 px-0 py-3"
     >
       <span
         style={{
