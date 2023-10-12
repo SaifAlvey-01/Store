@@ -21,9 +21,9 @@ const Layout = ({ children, backText, backImageUrl, backUrl }) => {
   //   }
   // },[])
 
-  if (!session?.accessToken || !token) {
-    return <></>
-  }
+  // if (!session?.accessToken || !token) {
+  //   return <></>
+  // }
 
   return (
     <div
