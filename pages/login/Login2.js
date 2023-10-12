@@ -34,17 +34,17 @@ const Login2 = ({ inputData }) => {
       setPasswordError(null);
       setLoading(false)
       setIsLoading(true);
-      // setTimeout(() => {
+      setTimeout(() => {
         router.push("/dashboard");
-      // }, 2000);
+      }, 2000);
     }
     
     if(resdata?.status === 200){
       setPasswordError(null);
       setIsLoading(false);
-      // setTimeout(() => {
+      setTimeout(() => {
         router.push("/dashboard");
-      // }, 2000);
+      }, 2000);
 
     }else{
       setPasswordError(resdata.message)
