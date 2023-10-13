@@ -34,17 +34,17 @@ const Login2 = ({ inputData }) => {
       setPasswordError(null);
       setLoading(false)
       setIsLoading(true);
-      // setTimeout(() => {
+      setTimeout(() => {
         router.push("/dashboard");
-      // }, 2000);
+      }, 2000);
     }
     
     if(resdata?.status === 200){
       setPasswordError(null);
-      setIsLoading(false);
-      // setTimeout(() => {
+      setIsLoading(true);
+      setTimeout(() => {
         router.push("/dashboard");
-      // }, 2000);
+      }, 2000);
 
     }else{
       setPasswordError(resdata.message)
@@ -54,25 +54,8 @@ const Login2 = ({ inputData }) => {
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    // const matchedUser = users.find((u) => u.email === data.email);
-    setIsLoading(true)
     postRequest('/auth/manual-login', {accountId:data?.email, password: data?.password });
 
-
-
-    // Check password hash
-    // if (matchedUser.passwordHash === simpleHash()) {
-    //   setPasswordError(null);
-
-    //   setIsLoading(true);
-    //   setTimeout(() => {
-    //     router.push("/dashboard");
-    //   }, 2000);
-
-    //   // cogoToast.success("User Successfully logged in");
-    // } else {
-    //   setPasswordError("Invalid Email or password");
-    // }
   };
 
   const handleGoogle = async()=>{
