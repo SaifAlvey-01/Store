@@ -15,15 +15,15 @@ const Layout = ({ children, backText, backImageUrl, backUrl }) => {
     router.pathname === "/dashboard" ? "Dashboard" : ""
   );
 
-  // useEffect(()=>{
-  //   if (!token) {
-  //     router.push("/login")
-  //   }
-  // },[])
+  useEffect(()=>{
+    if (!token) {
+      router.push("/login")
+    }
+  },[])
 
-  // if (!session?.accessToken || !token) {
-  //   return <></>
-  // }
+  if (!token) {
+    return <></>
+  }
 
   return (
     <div
