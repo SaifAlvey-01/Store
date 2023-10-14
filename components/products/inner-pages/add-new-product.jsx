@@ -1,13 +1,54 @@
 import React, { useState, useRef } from "react";
-import {Editor} from '@tinymce/tinymce-react'
+import { Editor } from "@tinymce/tinymce-react";
+import CustomDrawer from "./custom-drawer";
 
+const units = [
+  "piece",
+  "kg",
+  "gm",
+  "ml",
+  "liter",
+  "mm",
+  "ft",
+  "meter",
+  "sq.ft",
+  "sq. meter",
+  "km",
+  "set",
+  "hour",
+  "day",
+  "bunch",
+  "bundle",
+  "month",
+  "year",
+  "service",
+  "work",
+  "packet",
+  "box",
+  "pound",
+  "dozen",
+  "gunta",
+  "pair",
+  "minute",
+  "quintal",
+  "ton",
+  "capsule",
+  "tablet",
+  "plate",
+  "inch",
+  "ounce",
+  "bottle",
+  "night",
+];
 export default function AddNewProduct() {
   const editorRef = useRef();
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [contentType, setContentType] = useState("");
 
-      const handleEditorChange = (content, editor) => {
-          setContent(content);
-      };
+  const handleEditorChange = (content, editor) => {
+    setContent(content);
+  };
 
   const customCss = `
         .tox .tox-notification {
@@ -237,7 +278,11 @@ export default function AddNewProduct() {
             <div className="w-[60%] mt-4">
               <span
                 className="font-freesans"
-                style={{ color: "#4B4B4B", fontWeight: 500, fontSize: "13px" }}
+                style={{
+                  color: "#4B4B4B",
+                  fontWeight: 500,
+                  fontSize: "13px",
+                }}
               >
                 Product Unit{" "}
                 <span
@@ -279,16 +324,19 @@ export default function AddNewProduct() {
                       borderRight: "1.5px solid #E5E7EB",
                     }}
                   >
-                    <option
-                      style={{
-                        color: "#8E8E8E",
-                        fontWeight: 400,
-                        fontSize: "12px",
-                      }}
-                      value="Per Piece"
-                    >
-                      Per Piece
-                    </option>
+                    {units.map((unit, index) => (
+                      <option
+                        style={{
+                          color: "#8E8E8E",
+                          fontWeight: 400,
+                          fontSize: "12px",
+                        }}
+                        key={index}
+                        value={unit}
+                      >
+                        {unit}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <span
@@ -303,41 +351,47 @@ export default function AddNewProduct() {
                 </span>
               </div>
             </div>
-
-            
           </div>
-
-                  {/* editor   */}
-          <div
-            className="p-4 mt-3"
-           
-          >
-          
-            <style>{customCss}</style> 
-           <Editor onInt= {(evt, editor) => editorRef.current = editor} 
-          initialValue={content}
-          onEditorChange={handleEditorChange}
-          init={{
-            height: 500,
-            menubar: false,
-            plugins: [
-              'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-              'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-              'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
-            ],
-            toolbar: 'undo redo | blocks | ' +
-              'bold italic forecolor | alignleft aligncenter ' +
-              'alignright alignjustify | bullist numlist outdent indent | ' +
-              'removeformat | help',
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-          }}
-        
-          />
+          {/* editor   */}
+          <div className="p-4 mt-3">
+            <style>{customCss}</style>
+            <Editor
+              onInt={(evt, editor) => (editorRef.current = editor)}
+              initialValue={content}
+              onEditorChange={handleEditorChange}
+              init={{
+                height: 500,
+                menubar: false,
+                plugins: [
+                  "advlist",
+                  "autolink",
+                  "lists",
+                  "link",
+                  "image",
+                  "charmap",
+                  "preview",
+                  "anchor",
+                  "searchreplace",
+                  "visualblocks",
+                  "code",
+                  "fullscreen",
+                  "insertdatetime",
+                  "media",
+                  "table",
+                  "code",
+                  "help",
+                  "wordcount",
+                ],
+                toolbar:
+                  "undo redo | blocks | " +
+                  "bold italic forecolor | alignleft aligncenter " +
+                  "alignright alignjustify | bullist numlist outdent indent | " +
+                  "removeformat | help",
+                content_style:
+                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              }}
+            />
           </div>
-
-
-
-
         </div>
         <div
           className="w-full md:w-[40%] h-auto text-white p-1 md:p-3"
@@ -481,16 +535,23 @@ export default function AddNewProduct() {
                       paddingRight: "30px",
                     }}
                   >
-                    <option
-                      style={{
-                        color: "#8E8E8E",
-                        fontWeight: 400,
-                        fontSize: "12px",
-                      }}
-                      value="Per Piece"
-                    >
-                      kg{" "}
-                    </option>
+                    {units.map((unit, index) => (
+                      <option
+                        style={{
+                          color: "#8E8E8E",
+                          fontWeight: 400,
+                          fontSize: "14px",
+                          borderRadius: "12px",
+                          border: "1px solid #EDEDED",
+                          background: "#FFF",
+                          boxShadow: "-1px 4px 4px 0px rgba(28, 28, 75, 0.08)",
+                        }}
+                        key={index}
+                        value={unit}
+                      >
+                        {unit}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -586,10 +647,6 @@ export default function AddNewProduct() {
               </div>
             </div>
           </div>
-
-
-
-
           <div
             className="p-4 mt-6"
             style={{
@@ -632,13 +689,99 @@ export default function AddNewProduct() {
                   borderRadius: "4px",
                   border: "1px dashed #4162FF",
                 }}
+                onClick={() => {
+                  setShowSidebar(true);
+                  setContentType("add");
+                }}
               >
                 Add Variants{" "}
               </button>
             </div>
           </div>
+          <div
+            className="p-4 mt-6"
+            style={{
+              borderRadius: "10px",
+              backgroundColor: "var(--white-color, #FFF)",
+              border: "1px solid #e3e3e3",
+            }}
+          >
+            <div className="font-freesans flex flex-col items-start justify-start">
+              <span
+                className="font-freesans mb-2"
+                style={{
+                  color: "#4B4B4B",
+                  fontWeight: 500,
+                  fontSize: "14px",
+                }}
+              >
+                Google Search Preview
+              </span>
+            </div>
+            <div className="flex justify-between items-start mt-4">
+              {/* Left Div with Product Name, Description, and URL */}
+              <div className="flex flex-col pr-4">
+                <span
+                  className="font-freesans mb-1"
+                  style={{
+                    fontWeight: 500,
+                    color: "#4162FF",
+                    fontSize: "16px",
+                  }}
+                >
+                  Shoes 003{" "}
+                </span>
+                <span
+                  style={{ color: "#4B4B4B", fontSize: "13px" }}
+                  className="font-freesans mb-1"
+                >
+                  Description Area
+                </span>
+                <span
+                  style={{ color: "#169C00", fontSize: "13px" }}
+                  className="font-freesans"
+                >
+                  launchmystore.io/product/shoes001/
+                </span>
+              </div>
+
+              {/* Spacer Div to ensure a gap between content and image */}
+              <div className="flex-grow"></div>
+
+              {/* Right Div with Image */}
+              <div className="flex-none">
+                <img src="/product1.png" alt="Product" className="w-14 h-14" />
+              </div>
+            </div>
+
+            <div className="flex flex-row items-center justify-center mt-6">
+              <button
+                className=" cursor-pointer ml-4"
+                style={{
+                  backgroundColor: "#ffffff",
+                  color: "#4162FF",
+                  padding: "8px 24px",
+                  borderRadius: "4px",
+                  border: "1px dashed #4162FF",
+                }}
+                onClick={() => {
+                  setShowSidebar(true);
+                  setContentType("edit");
+                }}
+              >
+                Edit Variant{" "}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <CustomDrawer
+        key={contentType}
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+        contentType={contentType}
+      />
     </div>
   );
 }
