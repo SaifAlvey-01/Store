@@ -6,7 +6,7 @@ const modules = {
   toolbar: [
     // [{ header: '1' }, { header: '2' }, { font: [] }],
     [{ size: [] }],
-    ['bold', 'italic', 'background',   'blockquote'],
+    ['bold', 'italic', 'background', 'link','image',  'blockquote'],
     
   ],
   clipboard: {
