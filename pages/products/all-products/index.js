@@ -16,6 +16,7 @@ export default function index() {
         showAddNewProduct={showAddNewProduct}
         setShowAddNewProduct={setShowAddNewProduct}
       />
+      
     </Layout>
   );
 }
