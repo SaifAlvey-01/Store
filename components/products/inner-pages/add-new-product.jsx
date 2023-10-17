@@ -374,7 +374,7 @@ export default function AddNewProduct() {
             </div>
           </div>
           {/* editor   */}
-          <div className="p-4 mt-3 ">
+          <div className="px-0 py-4 mt-3 ">
             <QuillNoSSRWrapper
               modules={modules}
               style={containerStyle}

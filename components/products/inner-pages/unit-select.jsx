@@ -92,8 +92,7 @@ const UnitSelect = ({ onChange, value }) => (
     isSearchable={true}
     onChange={onChange}
     value={value}
-    menuPlacement="top"
-    placeholder="unit" // This sets the placeholder text
+    placeholder="unit"
   />
 );
 
