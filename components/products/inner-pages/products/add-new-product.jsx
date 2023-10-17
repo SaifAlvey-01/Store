@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import CustomDrawer from "./custom-drawer";
 import UnitSelect from "./unit-select";
-import QuillNoSSRWrapper from "../../RichTextEditor";
+import QuillNoSSRWrapper from "../../../RichTextEditor";
 
 const modules = {
   toolbar: [
@@ -142,7 +142,7 @@ export default function AddNewProduct() {
                   style={{
                     backgroundColor: "#4162FF",
                     color: "#ffffff",
-                    padding: "6px 12px",
+                    padding: "8px 12px",
                     borderRadius: "4px",
                     width: "70%",
                     fontSize: "12px",
@@ -168,7 +168,7 @@ export default function AddNewProduct() {
             }}
           >
             <div
-              className="pb-2"
+              className="pb-3"
               style={{
                 borderBottom: "1px solid #E5E7EB",
               }}
@@ -178,7 +178,7 @@ export default function AddNewProduct() {
                 style={{
                   color: "#4B4B4B",
                   fontWeight: 400,
-                  fontSize: "12px",
+                  fontSize: "13px",
                 }}
               >
                 Product Information
