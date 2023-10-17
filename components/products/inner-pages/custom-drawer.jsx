@@ -35,7 +35,7 @@ export default function CustomDrawer({
           ref={sidebarRef}
         >
           {contentType === "add" && (
-            <div>
+            <div className="h-[820px]">
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
                   <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
@@ -50,7 +50,7 @@ export default function CustomDrawer({
                 <img
                   src="/cross.png"
                   alt="Close"
-                  className="cursor-pointer"
+                  className="cursor-pointer h-5 w-5"
                   onClick={() => setShowSidebar(false)}
                 />
               </div>
@@ -140,9 +140,9 @@ export default function CustomDrawer({
           )}
 
           {contentType === "edit" && (
-            <div>
+            <div className="h-[820px]">
               <div className="flex justify-between items-center">
-                <div className="flex flex-col items-start mt-8">
+                <div className="flex flex-col items-start mt-4">
                   <h3
                     className="m-0"
                     style={{ fontSize: "17px", fontWeight: "normal" }}
@@ -242,6 +242,21 @@ export default function CustomDrawer({
               </div>
             </div>
           )}
+
+          <div className="mt-4" style={{ borderTop: "1px solid #E5E7EB" }}>
+            <div className="flex justify-end items-center px-0 py-4">
+              {contentType === "add" && (
+                <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
+                  Add Variant{" "}
+                </button>
+              )}
+              {contentType === "edit" && (
+                <button className="bg-blue-600 text-white px-6 py-2 rounded cursor-pointer">
+                  Save{" "}
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </div>

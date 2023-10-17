@@ -1,43 +1,40 @@
 import React, { useState, useRef } from "react";
 import CustomDrawer from "./custom-drawer";
+import UnitSelect from "./unit-select";
 import QuillNoSSRWrapper from "../../RichTextEditor";
 
 const modules = {
   toolbar: [
-    // [{ header: '1' }, { header: '2' }, { font: [] }],
     [{ size: [] }],
-    ['bold', 'italic', 'background', 'link','image',  'blockquote'],
-    
+    ["bold", "italic", "background", "link", "image", "blockquote"],
   ],
   clipboard: {
     matchVisual: false,
   },
-}
+};
 const containerStyle = {
-  borderRadius: "10px", 
+  borderRadius: "10px",
   border: "1px solid #e3e3e3",
   backgroundColor: "white",
-  height: "300px"
-  
+  height: "300px",
 };
 
 const formats = [
-  'header',
-  'font',
-  'size',
-  'bold',
-  'italic',
-  'underline',
-  'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
-  'link',
-  'image',
-  'video',
-]
-
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "blockquote",
+  "list",
+  "bullet",
+  "indent",
+  "link",
+  "image",
+  "video",
+];
 
 const units = [
   "piece",
@@ -83,10 +80,18 @@ export default function AddNewProduct() {
   const [contentType, setContentType] = useState("");
 
   const handleQuillChange = (value) => {
-    // Handle changes to the Quill editor content here
     setContent(value);
   };
 
+  const handleUnitChange = (selectedOption) => {
+    console.log(`Selected: ${selectedOption.value}`);
+  };
+
+  const customCss = `
+        .tox .tox-notification {
+          display: none !important;
+        }
+      `;
   return (
     <div
       className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between p-3"
@@ -128,11 +133,7 @@ export default function AddNewProduct() {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img
-                  src={"/gallery.png"}
-                  // alt={`Description for ${item.title}`}
-                  className="w-7 h-7 object-contain"
-                />
+                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
               </div>
               <div className="flex flex-col">
                 {" "}
@@ -327,50 +328,32 @@ export default function AddNewProduct() {
                   *
                 </span>
               </span>
-              <div className="relative mt-1 flex flex-row items-center">
+
+              <div className="flex mt-1 items-center">
                 <div
-                  className="flex-grow relative border rounded-[10px] focus-within:border-bdbfc0"
+                  className="relative flex-grow flex items-center border rounded-[10px] focus-within:border-bdbfc0"
                   style={{
                     border: "1.5px solid #E5E7EB",
                     boxSizing: "border-box",
                   }}
                 >
                   <input
-                    className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] rounded-r-none block pl-4 pr-0 py-2.5 placeholder-gray-300 focus:outline-none"
-                    style={{
-                      border: "none",
-                      // paddingRight: "40px", // compensate for the dropdown arrow
-                    }}
+                    className="bg-[#FFF] text-gray-900 text-sm flex-grow rounded-[10px] block pl-4 py-2.5 placeholder-gray-300 focus:outline-none"
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     placeholder="Enter Price"
                     required
-                  />
-                  <select
-                    className="text-sm absolute top-0 right-0 h-full bg-transparent border-0 rounded-r-[10px] focus:outline-none"
                     style={{
-                      boxSizing: "border-box",
-                      appearance: "none",
-                      background: `url('/arrow-down.png') no-repeat right 0.5rem center/16px 16px`,
-                      paddingRight: "30px",
-                      borderRight: "1.5px solid #E5E7EB",
+                      border: "none",
+                      flex: "1", // Ensures input takes up available space
                     }}
-                  >
-                    {units.map((unit, index) => (
-                      <option
-                        style={{
-                          color: "#8E8E8E",
-                          fontWeight: 400,
-                          fontSize: "12px",
-                        }}
-                        key={index}
-                        value={unit}
-                      >
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
+                  />
+
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                    <UnitSelect onChange={handleUnitChange} />
+                  </div>
                 </div>
+
                 <span
                   className="font-freesans ml-3"
                   style={{
@@ -385,17 +368,17 @@ export default function AddNewProduct() {
             </div>
           </div>
           {/* editor   */}
-          <div className="p-4 mt-3 ">
-            <QuillNoSSRWrapper   
-            modules={modules}
-            style={containerStyle}
-            formats={formats}
-            value={content}
-            onChange={handleQuillChange} />
-          
+          <div className="px-0 py-4 mt-3 ">
+            <QuillNoSSRWrapper
+              modules={modules}
+              style={containerStyle}
+              formats={formats}
+              value={content}
+              onChange={handleQuillChange}
+            />
           </div>
         </div>
-       
+
         <div
           className="w-full md:w-[40%] h-auto text-white p-1 md:p-3"
           style={{
@@ -510,52 +493,29 @@ export default function AddNewProduct() {
                 </span>
               </div>
 
-              <div className="relative mt-1 flex flex-row items-center">
+              <div className="flex mt-1 items-center">
                 <div
-                  className="flex-grow relative border rounded-[10px] focus-within:border-bdbfc0"
+                  className="relative flex-grow flex items-center border rounded-[10px] focus-within:border-bdbfc0"
                   style={{
                     border: "1.5px solid #E5E7EB",
                     boxSizing: "border-box",
                   }}
                 >
                   <input
-                    className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] rounded-r-none block pl-4 pr-0 py-2.5 placeholder-gray-300 focus:outline-none"
-                    style={{
-                      border: "none",
-                      // paddingRight: "40px", // compensate for the dropdown arrow
-                    }}
+                    className="bg-[#FFF] text-gray-900 text-sm flex-grow rounded-[10px] block pl-4 py-2.5 placeholder-gray-300 focus:outline-none"
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-                    placeholder="Eg. 1.2"
+                    placeholder="Enter Price"
                     required
-                  />
-                  <select
-                    className="text-sm absolute top-0 right-0 h-full bg-transparent border-0 rounded-r-[10px] focus:outline-none"
                     style={{
-                      boxSizing: "border-box",
-                      appearance: "none",
-                      background: `url('/arrow-down.png') no-repeat right 0.5rem center/16px 16px`,
-                      paddingRight: "30px",
+                      border: "none",
+                      flex: "1",
                     }}
-                  >
-                    {units.map((unit, index) => (
-                      <option
-                        style={{
-                          color: "#8E8E8E",
-                          fontWeight: 400,
-                          fontSize: "14px",
-                          borderRadius: "12px",
-                          border: "1px solid #EDEDED",
-                          background: "#FFF",
-                          boxShadow: "-1px 4px 4px 0px rgba(28, 28, 75, 0.08)",
-                        }}
-                        key={index}
-                        value={unit}
-                      >
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
+                  />
+
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                    <UnitSelect onChange={handleUnitChange} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -748,10 +708,8 @@ export default function AddNewProduct() {
                 </span>
               </div>
 
-              {/* Spacer Div to ensure a gap between content and image */}
               <div className="flex-grow"></div>
 
-              {/* Right Div with Image */}
               <div className="flex-none">
                 <img src="/product1.png" alt="Product" className="w-14 h-14" />
               </div>
