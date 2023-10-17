@@ -21,9 +21,11 @@ const Layout = ({ children, backText, backImageUrl, backUrl }) => {
     }
   },[])
 
-  if (!token) {
-    return <></>
-  }
+  // if (!token) {
+  //   return (
+  //     <div></div>
+  //   )
+  // }
 
   return (
     <div

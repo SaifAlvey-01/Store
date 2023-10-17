@@ -1,6 +1,43 @@
 import React, { useState, useRef } from "react";
-import { Editor } from "@tinymce/tinymce-react";
 import CustomDrawer from "./custom-drawer";
+import QuillNoSSRWrapper from "../../RichTextEditor";
+
+const modules = {
+  toolbar: [
+    // [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'background', 'link','image',  'blockquote'],
+    
+  ],
+  clipboard: {
+    matchVisual: false,
+  },
+}
+const containerStyle = {
+  borderRadius: "10px", 
+  border: "1px solid #e3e3e3",
+  backgroundColor: "white",
+  height: "300px"
+  
+};
+
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+]
+
 
 const units = [
   "piece",
@@ -41,20 +78,15 @@ const units = [
   "night",
 ];
 export default function AddNewProduct() {
-  const editorRef = useRef();
   const [content, setContent] = useState("");
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
 
-  const handleEditorChange = (content, editor) => {
-    setContent(content);
+  const handleQuillChange = (value) => {
+    // Handle changes to the Quill editor content here
+    setContent(value);
   };
 
-  const customCss = `
-        .tox .tox-notification {
-          display: none !important;
-        }
-      `;
   return (
     <div
       className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between p-3"
@@ -66,7 +98,7 @@ export default function AddNewProduct() {
     >
       <div className="flex flex-col md:flex-row w-full items-stretch justify-between">
         <div
-          className="w-full md:w-[60%] h-auto text-white p-1 md:p-3 mr-0 md:mr-2 mb-4 md:mb-0"
+          className="w-full md:w-[60%] h-auto  p-1 md:p-3 mr-0 md:mr-2 mb-4 md:mb-0"
           style={{
             borderRadius: "10px",
             backgroundColor: "var(--white-color, #FFF)",
@@ -353,46 +385,17 @@ export default function AddNewProduct() {
             </div>
           </div>
           {/* editor   */}
-          <div className="p-4 mt-3">
-            <style>{customCss}</style>
-            <Editor
-              onInt={(evt, editor) => (editorRef.current = editor)}
-              initialValue={content}
-              onEditorChange={handleEditorChange}
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: [
-                  "advlist",
-                  "autolink",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "code",
-                  "fullscreen",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "code",
-                  "help",
-                  "wordcount",
-                ],
-                toolbar:
-                  "undo redo | blocks | " +
-                  "bold italic forecolor | alignleft aligncenter " +
-                  "alignright alignjustify | bullist numlist outdent indent | " +
-                  "removeformat | help",
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              }}
-            />
+          <div className="p-4 mt-3 ">
+            <QuillNoSSRWrapper   
+            modules={modules}
+            style={containerStyle}
+            formats={formats}
+            value={content}
+            onChange={handleQuillChange} />
+          
           </div>
         </div>
+       
         <div
           className="w-full md:w-[40%] h-auto text-white p-1 md:p-3"
           style={{
