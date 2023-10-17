@@ -1,8 +1,8 @@
 import React from "react";
 import FreeTrialFooter from "../../free-trial-footer";
-import ToolBar from "../../tool-bar";
-import AddNewProduct from "../inner-pages/add-new-product";
-import ProductListing from "../inner-pages/product-listing";
+import ProductsListing from "../inner-pages/products/products-listing";
+import AddNewProduct from "../inner-pages/products/add-new-product";
+import ProductsToolBar from "../inner-pages/products/products-tool-bar";
 
 export default function AllProducts({
   showAddNewProduct,
@@ -21,12 +21,12 @@ export default function AllProducts({
       }}
     >
       <div className="flex justify-center w-full">
-        <ToolBar setShowAddNewProduct={setShowAddNewProduct}/>
+        <ProductsToolBar setShowAddNewProduct={setShowAddNewProduct} />
       </div>
 
       <div className="w-full flex-grow flex flex-col">
         {" "}
-        <ProductListing className="flex-grow" />
+        <ProductsListing className="flex-grow" />
       </div>
 
       {/*Initial Product Page Content  */}
