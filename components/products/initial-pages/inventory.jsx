@@ -1,6 +1,5 @@
 import React from "react";
 import FreeTrialFooter from "../../free-trial-footer";
-import ToolBar from "../../tool-bar";
 
 export default function Inventory() {
   return (

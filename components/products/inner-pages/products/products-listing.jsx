@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import Pagination from "./pagination";
+import Pagination from "../../../pagination";
 
-export default function ProductListing() {
+export default function ProductsListing() {
   const headers = [
     { title: "Product" },
     { title: "Price" },

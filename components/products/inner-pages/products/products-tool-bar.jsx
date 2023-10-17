@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function ToolBar({setShowAddNewProduct}) {
+export default function ProductsToolBar({ setShowAddNewProduct }) {
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [productDropdownOpen, setProductDropdownOpen] = useState(false);
   const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
