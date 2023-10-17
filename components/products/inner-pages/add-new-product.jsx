@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import CustomDrawer from "./custom-drawer";
+import UnitSelect from "./unit-select";
 
 const units = [
   "piece",
@@ -48,6 +49,10 @@ export default function AddNewProduct() {
 
   const handleEditorChange = (content, editor) => {
     setContent(content);
+  };
+
+  const handleUnitChange = (selectedOption) => {
+    console.log(`Selected: ${selectedOption.value}`);
   };
 
   const customCss = `
@@ -295,50 +300,32 @@ export default function AddNewProduct() {
                   *
                 </span>
               </span>
-              <div className="relative mt-1 flex flex-row items-center">
+
+              <div className="flex mt-1 items-center">
                 <div
-                  className="flex-grow relative border rounded-[10px] focus-within:border-bdbfc0"
+                  className="relative flex-grow flex items-center border rounded-[10px] focus-within:border-bdbfc0"
                   style={{
                     border: "1.5px solid #E5E7EB",
                     boxSizing: "border-box",
                   }}
                 >
                   <input
-                    className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] rounded-r-none block pl-4 pr-0 py-2.5 placeholder-gray-300 focus:outline-none"
-                    style={{
-                      border: "none",
-                      // paddingRight: "40px", // compensate for the dropdown arrow
-                    }}
+                    className="bg-[#FFF] text-gray-900 text-sm flex-grow rounded-[10px] block pl-4 py-2.5 placeholder-gray-300 focus:outline-none"
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     placeholder="Enter Price"
                     required
-                  />
-                  <select
-                    className="text-sm absolute top-0 right-0 h-full bg-transparent border-0 rounded-r-[10px] focus:outline-none"
                     style={{
-                      boxSizing: "border-box",
-                      appearance: "none",
-                      background: `url('/arrow-down.png') no-repeat right 0.5rem center/16px 16px`,
-                      paddingRight: "30px",
-                      borderRight: "1.5px solid #E5E7EB",
+                      border: "none",
+                      flex: "1", // Ensures input takes up available space
                     }}
-                  >
-                    {units.map((unit, index) => (
-                      <option
-                        style={{
-                          color: "#8E8E8E",
-                          fontWeight: 400,
-                          fontSize: "12px",
-                        }}
-                        key={index}
-                        value={unit}
-                      >
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
+                  />
+
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                    <UnitSelect onChange={handleUnitChange} />
+                  </div>
                 </div>
+
                 <span
                   className="font-freesans ml-3"
                   style={{
@@ -507,52 +494,29 @@ export default function AddNewProduct() {
                 </span>
               </div>
 
-              <div className="relative mt-1 flex flex-row items-center">
+              <div className="flex mt-1 items-center">
                 <div
-                  className="flex-grow relative border rounded-[10px] focus-within:border-bdbfc0"
+                  className="relative flex-grow flex items-center border rounded-[10px] focus-within:border-bdbfc0"
                   style={{
                     border: "1.5px solid #E5E7EB",
                     boxSizing: "border-box",
                   }}
                 >
                   <input
-                    className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] rounded-r-none block pl-4 pr-0 py-2.5 placeholder-gray-300 focus:outline-none"
-                    style={{
-                      border: "none",
-                      // paddingRight: "40px", // compensate for the dropdown arrow
-                    }}
+                    className="bg-[#FFF] text-gray-900 text-sm flex-grow rounded-[10px] block pl-4 py-2.5 placeholder-gray-300 focus:outline-none"
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-                    placeholder="Eg. 1.2"
+                    placeholder="Enter Price"
                     required
-                  />
-                  <select
-                    className="text-sm absolute top-0 right-0 h-full bg-transparent border-0 rounded-r-[10px] focus:outline-none"
                     style={{
-                      boxSizing: "border-box",
-                      appearance: "none",
-                      background: `url('/arrow-down.png') no-repeat right 0.5rem center/16px 16px`,
-                      paddingRight: "30px",
+                      border: "none",
+                      flex: "1", // Ensures input takes up available space
                     }}
-                  >
-                    {units.map((unit, index) => (
-                      <option
-                        style={{
-                          color: "#8E8E8E",
-                          fontWeight: 400,
-                          fontSize: "14px",
-                          borderRadius: "12px",
-                          border: "1px solid #EDEDED",
-                          background: "#FFF",
-                          boxShadow: "-1px 4px 4px 0px rgba(28, 28, 75, 0.08)",
-                        }}
-                        key={index}
-                        value={unit}
-                      >
-                        {unit}
-                      </option>
-                    ))}
-                  </select>
+                  />
+
+                  <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                    <UnitSelect onChange={handleUnitChange} />
+                  </div>
                 </div>
               </div>
             </div>
