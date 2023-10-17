@@ -708,7 +708,6 @@ export default function AddNewProduct() {
                 </span>
               </div>
 
-              {/* Spacer Div to ensure a gap between content and image */}
               <div className="flex-grow"></div>
 
               <div className="flex-none">
