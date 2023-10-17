@@ -35,15 +35,17 @@ export function CustomEditor(props) {
           "code",
           "help",
           "wordcount",
+          
         ],
         toolbar:
-          "undo redo | blocks | " +
-          "bold italic forecolor | alignleft aligncenter " +
-          "alignright alignjustify | bullist numlist outdent indent | " +
-          "removeformat | help",
+          "| blocks | " +
+          "bold italic backcolor link " +
+          "image format bullist numlist indent " +
+          "blockquote code fullscreen  ",
         content_style:
           "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
           branding: false,
+          
       }}
       onEditorChange={props.handleOnEditorChange}
     />
