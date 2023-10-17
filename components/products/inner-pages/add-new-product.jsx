@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import CustomDrawer from "./custom-drawer";
 import UnitSelect from "./unit-select";
 import QuillNoSSRWrapper from "../../RichTextEditor";
+import { CustomEditor } from "../../TinyMCE";
 
 const modules = {
   toolbar: [
@@ -369,13 +370,7 @@ export default function AddNewProduct() {
           </div>
           {/* editor   */}
           <div className="px-0 py-4 mt-3 ">
-            <QuillNoSSRWrapper
-              modules={modules}
-              style={containerStyle}
-              formats={formats}
-              value={content}
-              onChange={handleQuillChange}
-            />
+          <CustomEditor />
           </div>
         </div>
 
