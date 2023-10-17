@@ -5,7 +5,6 @@ import QuillNoSSRWrapper from "../../RichTextEditor";
 
 const modules = {
   toolbar: [
-    // [{ header: '1' }, { header: '2' }, { font: [] }],
     [{ size: [] }],
     ["bold", "italic", "background", "link", "image", "blockquote"],
   ],
@@ -81,7 +80,6 @@ export default function AddNewProduct() {
   const [contentType, setContentType] = useState("");
 
   const handleQuillChange = (value) => {
-    // Handle changes to the Quill editor content here
     setContent(value);
   };
 
@@ -717,7 +715,6 @@ export default function AddNewProduct() {
               {/* Spacer Div to ensure a gap between content and image */}
               <div className="flex-grow"></div>
 
-              {/* Right Div with Image */}
               <div className="flex-none">
                 <img src="/product1.png" alt="Product" className="w-14 h-14" />
               </div>
