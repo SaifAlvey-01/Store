@@ -133,11 +133,7 @@ export default function AddNewProduct() {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img
-                  src={"/gallery.png"}
-                  // alt={`Description for ${item.title}`}
-                  className="w-7 h-7 object-contain"
-                />
+                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
               </div>
               <div className="flex flex-col">
                 {" "}
