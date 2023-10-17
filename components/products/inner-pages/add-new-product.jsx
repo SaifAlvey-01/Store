@@ -515,7 +515,7 @@ export default function AddNewProduct() {
                     required
                     style={{
                       border: "none",
-                      flex: "1", // Ensures input takes up available space
+                      flex: "1",
                     }}
                   />
 
