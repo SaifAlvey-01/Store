@@ -11,6 +11,7 @@ export default function index() {
       backText={showAddNewCategory ? "Add New Category" : undefined}
       backImageUrl={showAddNewCategory ? "/back-arrow.png" : undefined}
       backUrl={() => setShowAddNewCategory(false)}
+      showAddNewCategory={showAddNewCategory}
     >
       <Categories
         showAddNewCategory={showAddNewCategory}

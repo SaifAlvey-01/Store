@@ -1,5 +1,7 @@
 import React from "react";
 import FreeTrialFooter from "../../free-trial-footer";
+import InventoryToolBar from "../inner-pages/inventory/inventory-tool-bar";
+import InventoryListing from "../inner-pages/inventory/inventory-listing";
 
 export default function Inventory() {
   return (
@@ -11,10 +13,19 @@ export default function Inventory() {
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      <div
+      <div className="flex justify-center w-full">
+        <InventoryToolBar />
+      </div>
+
+      <div className="w-full flex-grow flex flex-col">
+        {" "}
+        <InventoryListing className="flex-grow" />
+      </div>
+
+      {/*Initial Inventory Page Content  */}
+      {/* <div
         className=" my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-8 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
-          // border: "1px solid #e3e3e3",
           backgroundColor: "var(--white-color, #FFF)",
           borderRadius: "10px",
         }}
@@ -56,7 +67,7 @@ export default function Inventory() {
             Add New Product
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className="w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
         <FreeTrialFooter />

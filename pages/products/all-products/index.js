@@ -11,12 +11,12 @@ export default function index() {
       backText={showAddNewProduct ? "Add New Product" : undefined}
       backImageUrl={showAddNewProduct ? "/back-arrow.png" : undefined}
       backUrl={() => setShowAddNewProduct(false)}
+      showAddNewProduct={showAddNewProduct}
     >
       <AllProducts
         showAddNewProduct={showAddNewProduct}
         setShowAddNewProduct={setShowAddNewProduct}
       />
-      
     </Layout>
   );
 }

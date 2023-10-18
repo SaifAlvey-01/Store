@@ -10,11 +10,17 @@ function Header({
   backText,
   backImageUrl,
   backUrl,
+  showAddNewProduct,
+  showAddNewCategory,
+  showCreateOrder,
 }) {
   const router = useRouter();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   let header = router.pathname.slice(1);
+
+  const isShowStateActive =
+    showAddNewProduct || showAddNewCategory || showCreateOrder;
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -50,6 +56,20 @@ function Header({
     }
   };
 
+  const renderButton = (label) => (
+    <button
+      className="cursor-pointer"
+      style={{
+        backgroundColor: "#4162FF",
+        color: "#ffffff",
+        padding: "9px 24px",
+        borderRadius: "4px",
+      }}
+    >
+      {label}
+    </button>
+  );
+
   return (
     <header className="sticky top-0 lg:shadow bg-white border-b border-slate-200 z-30">
       <div className="px-4 sm:px-2 lg:px-8 ">
@@ -73,15 +93,15 @@ function Header({
             </button>
             {backText ? (
               <>
-                <div className="flex items-center mr-3">
+                <div className="flex items-center mr-2">
                   <img
                     onClick={handleBackClick}
                     src={backImageUrl}
                     alt="Back"
-                    className="mr-1.5 cursor-pointer"
+                    className="mr-1.5 cursor-pointer h-6 w-6"
                   />
                   <span
-                    style={{ fontSize: "14px" }}
+                    style={{ fontSize: "16px" }}
                     className="text-[#4B5563] font-bold leading-18 font-freesans"
                   >
                     {backText}
@@ -117,37 +137,44 @@ function Header({
             )}
           </div>
 
-          {/* Header: Right side */}
-          <div className="order-1 w-full sm:order-none sm:w-auto">
-            <Search />
-          </div>
-          {/* third div */}
-          <div className="flex items-center sw-[256px] h-12 top-24 left-920 gap-[6px] lg:gap-2">
-            <img
-              src="/nav/needhelp.png"
-              className="hidden sm:block w-[112px] h-[32px] cursor-pointer "
-            />
-            <img
-              src="/nav/download.png"
-              className="w-[32px] h-[32px] cursor-pointer"
-            />
+          {!isShowStateActive && (
+            <>
+              <div className="order-1 w-full sm:order-none sm:w-auto">
+                <Search />
+              </div>
+              {/* third div */}
+              <div className="flex items-center sw-[256px] h-12 top-24 left-920 gap-[6px] lg:gap-2">
+                <img
+                  src="/nav/needhelp.png"
+                  className="hidden sm:block w-[112px] h-[32px] cursor-pointer "
+                />
+                <img
+                  src="/nav/download.png"
+                  className="w-[32px] h-[32px] cursor-pointer"
+                />
 
-            <div className="relative">
-              {" "}
-              {/* New wrapper for the bell icon and dropdown */}
-              <img
-                src="/nav/bell.png"
-                className="w-[32px] h-[32px] cursor-pointer"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-              />
-              {dropdownOpen && <NotificationDropdown ref={dropdownRef} />}
-            </div>
+                <div className="relative">
+                  {" "}
+                  {/* New wrapper for the bell icon and dropdown */}
+                  <img
+                    src="/nav/bell.png"
+                    className="w-[32px] h-[32px] cursor-pointer"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                  />
+                  {dropdownOpen && <NotificationDropdown ref={dropdownRef} />}
+                </div>
 
-            <img
-              src="/nav/open.png"
-              className="w-[32px] h-[32px] cursor-pointer"
-            />
-          </div>
+                <img
+                  src="/nav/open.png"
+                  className="w-[32px] h-[32px] cursor-pointer"
+                />
+              </div>
+            </>
+          )}
+
+          {showCreateOrder && renderButton("Create Order")}
+          {showAddNewProduct && renderButton("Add Product")}
+          {showAddNewCategory && renderButton("Add Category")}
         </div>
       </div>
     </header>

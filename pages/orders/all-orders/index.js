@@ -10,6 +10,7 @@ export default function index() {
       backText={showCreateOrder ? "Create Order" : undefined}
       backImageUrl={showCreateOrder ? "/back-arrow.png" : undefined}
       backUrl={() => setShowCreateOrder(false)}
+      showCreateOrder={showCreateOrder}
     >
       <AllOrders
         showCreateOrder={showCreateOrder}

@@ -149,52 +149,6 @@ export default function CategoriesToolBar({ setShowAddNewCategory }) {
             Add New Category
             <img src={"/chevron-down.png"} className=" ml-1 md:ml-2 w-4 h-4" />
           </button>
-
-          {/* New Dropdown */}
-          {/* {productDropdownOpen && (
-            <div
-              ref={ref}
-              className="mt-2 px-3 py-1 w-64 bg-white rounded-md shadow-lg overflow-hidden z-50 flex flex-col items-start justify-center"
-              style={{
-                position: "absolute",
-                top: 32,
-                right: -1,
-                border: "1px solid #EDEDED",
-                boxShadow: "-1px 4px 4px 0px rgba(28, 28, 75, 0.08)",
-                borderRadius: "12px",
-                width: "180px",
-                backgroundColor: "#fff",
-                height: "auto",
-              }}
-            >
-              <div className="flex flex-col">
-                <span
-                  className="font-lato"
-                  style={{
-                    color: "#4B4B4B",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                    textAlign: "center",
-                    padding: "10px 8px",
-                  }}
-                >
-                  Bulk Upload Products
-                </span>
-                <span
-                  className="font-lato"
-                  style={{
-                    color: "#4B4B4B",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                    textAlign: "center",
-                    padding: "10px 8px",
-                  }}
-                >
-                  Bulk Update Products
-                </span>
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     </div>
