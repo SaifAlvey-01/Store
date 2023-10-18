@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useNavigation } from "../../hooks/useNavigation";
 import Cookies from 'js-cookie';
+import axios from "axios";
+import useAxios from "../../hooks/useAxios";
 
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
@@ -17,6 +19,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const { navItems } = useNavigation();
   const trigger = useRef(null);
   const sidebar = useRef(null);
+  const { resdata, error, loading, postData: postRequest } = useAxios();
+
 
   const activeItemIndex = navItems.findIndex(
     (item) => item.section === curPath
@@ -47,8 +51,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     localStorage.removeItem('signupCurrentStep');
     Cookies.remove('token');
     Cookies.remove('id');
-
   }
+
+  const handleBusinessImage = () =>{
+    postRequest("/auth/google-login", {access_token:session.accessToken});
+  }
+
  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -116,7 +124,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   borderRadius: "6px",
                 }}
               >
-                <img src={"/logo.png"} alt="Your Image Description" />
+                <img src={"/logo.png"} onClick={handleBusinessImage} alt="Your Image Description" className="cursor-pointer"/>
               </div>
 
               <div className="flex flex-col items-center justify-center ml-3">
