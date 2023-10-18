@@ -93,6 +93,7 @@ const UnitSelect = ({ onChange, value }) => (
     onChange={onChange}
     value={value}
     placeholder="unit"
+    menuPlacement="top"
   />
 );
 
