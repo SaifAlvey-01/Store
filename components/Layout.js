@@ -22,17 +22,17 @@ const Layout = ({
     router.pathname === "/dashboard" ? "Dashboard" : ""
   );
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     router.push("/login");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!token) {
+      router.push("/login");
+    }
+  }, []);
 
-  // if (!token) {
-  //   return (
-  //     <div></div>
-  //   )
-  // }
+  if (!token) {
+    return (
+      <div></div>
+    )
+  }
 
   return (
     <div
