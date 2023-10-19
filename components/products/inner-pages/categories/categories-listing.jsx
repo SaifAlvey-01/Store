@@ -90,8 +90,8 @@ export default function CategoriesListing() {
           {data.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
-                style={{ borderBottom: "1px solid #EAECF0" }}
-                className="flex items-center py-3 pl-3 pr-12"
+                style={{ borderBottom: "1px solid #EAECF0", width: "300px" }}
+                className="flex items-center px-5 py-3"
               >
                 <img
                   className="h-11 w-11"
@@ -107,7 +107,7 @@ export default function CategoriesListing() {
                   </span>
                   <span
                     className="font-freesans"
-                    style={{ color: "8E8E8E", fontSize: "10px" }}
+                    style={{ color: "#8E8E8E", fontSize: "10px" }}
                   >
                     {" "}
                     {row.categoryDescription}
@@ -115,20 +115,24 @@ export default function CategoriesListing() {
                 </div>
               </td>
               <td
-                className="p-3"
+                className="px-6 py-3 w-60"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}
               >
                 <span
                   className="font-freesans"
-                  style={{ color: "8E8E8E", fontSize: "12px", fontWeight: 400 }}
+                  style={{
+                    color: "#8E8E8E",
+                    fontSize: "12px",
+                    fontWeight: 400,
+                  }}
                 >
                   {row.products}
                 </span>{" "}
               </td>
               <td
-                className="p-3"
+                className="p-3 w-60"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}
@@ -151,7 +155,7 @@ export default function CategoriesListing() {
                 </div>
               </td>
               <td
-                className="p-3"
+                className="p-3 w-40"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Style from "./createSearchStyle.module.css";
+import AddNewProduct from "../../products/inner-pages/products/add-new-product";
+import Link from "next/link";
 
 export default function CreateOrder() {
   const [selectedRadio, setSelectedRadio] = useState(1);
 
   const labels = ["Online Payment", "Cash on Delivery", "Prepaid"];
+
   return (
     <div
       className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between px-4 py-6 "
@@ -39,18 +42,21 @@ export default function CreateOrder() {
               </span>
             </div>
 
-            <button
-              style={{
-                borderRadius: "6px",
-                border: "1px dashed #7A91FF",
-                fontSize: "14px",
-                color: "#7A91FF",
-                backgroundColor: "#ffffff",
-              }}
-              className="flex items-center px-6 py-1.5 hover:bg-gray-300 cursor-pointer"
-            >
-              Add Product{" "}
-            </button>
+            <Link className="no-underline" href="/products/all-products">
+              <button
+                // onClick={() => setShowAddNewProduct(true)} // Add onClick handler here
+                style={{
+                  borderRadius: "6px",
+                  border: "1px dashed #7A91FF",
+                  fontSize: "14px",
+                  color: "#7A91FF",
+                  backgroundColor: "#ffffff",
+                }}
+                className="flex items-center px-6 py-1.5 hover:bg-gray-300 cursor-pointer"
+              >
+                Add Product{" "}
+              </button>
+            </Link>
           </div>
           <hr
             style={{ backgroundColor: "#E5E7EB" }}

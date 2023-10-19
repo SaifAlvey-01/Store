@@ -98,7 +98,7 @@ export default function ProductsListing() {
           {data.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
-                style={{ borderBottom: "1px solid #EAECF0" }}
+                style={{ borderBottom: "1px solid #EAECF0", width: "300px" }}
                 className="flex items-center p-3"
               >
                 <img
@@ -115,7 +115,7 @@ export default function ProductsListing() {
                   </span>
                   <span
                     className="font-freesans"
-                    style={{ color: "8E8E8E", fontSize: "10px" }}
+                    style={{ color: "#8E8E8E", fontSize: "10px" }}
                   >
                     {" "}
                     {row.productDescription}
@@ -123,33 +123,41 @@ export default function ProductsListing() {
                 </div>
               </td>
               <td
-                className="p-3"
+                className="p-3 w-40"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}
               >
                 <span
                   className="font-freesans"
-                  style={{ color: "8E8E8E", fontSize: "12px", fontWeight: 400 }}
+                  style={{
+                    color: "#8E8E8E",
+                    fontSize: "12px",
+                    fontWeight: 400,
+                  }}
                 >
                   {row.price}
                 </span>
               </td>
               <td
-                className="p-3"
+                className="p-3 w-40"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}
               >
                 <span
                   className="font-freesans"
-                  style={{ color: "8E8E8E", fontSize: "12px", fontWeight: 400 }}
+                  style={{
+                    color: "#8E8E8E",
+                    fontSize: "12px",
+                    fontWeight: 400,
+                  }}
                 >
                   {row.inventory}
                 </span>{" "}
               </td>
               <td
-                className="p-3"
+                className="p-3 w-40"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}

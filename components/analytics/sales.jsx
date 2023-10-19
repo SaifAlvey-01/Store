@@ -260,7 +260,7 @@ export default function Sales() {
               style={{
                 backgroundColor: "#ffffff",
                 color: "#4162FF",
-                padding: "10px 30px",
+                padding: "10px 4px",
                 borderRadius: "4px",
                 fontSize: "13px",
               }}

@@ -1,7 +1,20 @@
-import { configureStore } from "@reduxjs/toolkit";
+// slices/index.js
 
-import rootReducer from "./appSlice";
+import { combineReducers } from "redux";
+import counterReducer from "./counterSlice";
+import userReducer from "./userSlice";
+import productReducer from "./productSlice";
+import addNewProductReducer from "./addNewProductSlice";
+import addNewCategoryReducer from "./addNewCategorySlice";
+import showCreateOrderReducer from "./showCreateOrderSlice";
 
-export const store = configureStore({
-  reducer: rootReducer,
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  user: userReducer,
+  products: productReducer,
+  addNewProduct: addNewProductReducer,
+  addNewCategory: addNewCategoryReducer,
+  showCreateOrder: showCreateOrderReducer,
 });
+
+export default rootReducer;
