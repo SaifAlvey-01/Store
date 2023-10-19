@@ -120,8 +120,12 @@ export default function InventoryListing() {
           {data.map((row, index) => (
             <tr key={index} style={{ height: "36px !important" }}>
               <td
-                style={{ borderBottom: "1px solid #EAECF0", width: "100%" }}
-                className="flex items-center px-3 py-10 mr-32"
+                style={{
+                  borderBottom: "1px solid #EAECF0",
+                  width: "300px",
+                  height: row.variants.length > 1 ? "auto" : "36px",
+                }}
+                className="flex items-center px-3 py-10 "
               >
                 <img
                   className="h-11 w-11"
@@ -137,15 +141,15 @@ export default function InventoryListing() {
                   </span>
                   <span
                     className="font-freesans"
-                    style={{ color: "8E8E8E", fontSize: "10px" }}
+                    style={{ color: "#8E8E8E", fontSize: "10px" }}
                   >
                     {row.productDescription}
                   </span>
                 </div>
               </td>
               <td
-                style={{ borderBottom: "1px solid #EAECF0", width: "20%" }}
-                className="p-3 "
+                style={{ borderBottom: "1px solid #EAECF0" }}
+                className="px-6 py-3 w-40 "
               >
                 {row.variants.map((variant, vIndex) => (
                   <div
@@ -157,7 +161,10 @@ export default function InventoryListing() {
                   </div>
                 ))}
               </td>
-              <td style={{ borderBottom: "1px solid #EAECF0" }} className="p-3">
+              <td
+                style={{ borderBottom: "1px solid #EAECF0" }}
+                className="p-3 w-60 "
+              >
                 {row.variants.map((variant, vIndex) => (
                   <input
                     style={{
@@ -175,7 +182,10 @@ export default function InventoryListing() {
                   />
                 ))}
               </td>
-              <td style={{ borderBottom: "1px solid #EAECF0" }} className="p-3">
+              <td
+                style={{ borderBottom: "1px solid #EAECF0" }}
+                className="p-3 w-60 "
+              >
                 {row.variants.map((variant, vIndex) => (
                   <input
                     style={{
@@ -193,7 +203,10 @@ export default function InventoryListing() {
                   />
                 ))}
               </td>
-              <td style={{ borderBottom: "1px solid #EAECF0" }} className="p-3">
+              <td
+                style={{ borderBottom: "1px solid #EAECF0" }}
+                className="p-3 w-60 "
+              >
                 {row.variants.map((variant, vIndex) => (
                   <input
                     style={{

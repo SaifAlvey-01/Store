@@ -129,7 +129,7 @@ export default function Themes() {
                 position: "absolute",
                 bottom: 0,
                 left: 0,
-                height: "19%",
+                height: "30%",
                 width: "244px",
                 backgroundColor: "#FAFAFA",
                 display: "flex",
@@ -144,7 +144,7 @@ export default function Themes() {
               <span
                 style={{
                   color: "#4B4B4B",
-                  fontSize: "14px",
+                  fontSize: "16px",
                   fontWeight: "500",
                   fontFamily: "Roboto",
                 }}
@@ -158,7 +158,7 @@ export default function Themes() {
                   style={{
                     backgroundColor: "#ffffff",
                     color: "#8E8E8E",
-                    padding: "4px 8px",
+                    padding: "8px",
                     borderRadius: "4px",
                     border: "1px solid #8E8E8E",
                     marginRight: 6,
@@ -171,7 +171,7 @@ export default function Themes() {
                   style={{
                     backgroundColor: "#4162FF",
                     color: "#ffffff",
-                    padding: "4px 12px",
+                    padding: "8px 12px",
                     borderRadius: "4px",
                     border: "1px solid #4162FF",
                   }}

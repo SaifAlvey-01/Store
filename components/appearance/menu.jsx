@@ -20,7 +20,7 @@ export default function Menu() {
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      <div className="w-full h-[60vh]">
+      <div className="w-full h-[66vh]">
         <div className="w-full">
           <div className="flex justify-between w-[20%] border-b border-gray-200">
             <button
@@ -140,7 +140,7 @@ export default function Menu() {
           </button>
         </div>
       </div>
-      <div className=" w-[96%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
+      <div className=" w-[96%] mx-4 mt-14   flex flex-col items-center justify-between">
         <FreeTrialFooter />
       </div>
     </div>

@@ -220,12 +220,12 @@ export default function Payments() {
 
           <div
             style={{ backgroundColor: "#4162FF", borderRadius: "4px" }}
-            className="px-1.5 py-1 flex flex-col items-center cursor-pointer"
+            className="py-1.5 px-2 flex flex-col items-center cursor-pointer"
           >
             <img
               src={"document-download.png"}
               alt="Dropdown Icon"
-              className="w-4 h-4"
+              className="w-6 h-6"
             />
           </div>
         </div>

@@ -159,7 +159,7 @@ export default function Domains() {
                     }}
                   >
                     <div
-                      className="px-2 py-1 w-[26%]"
+                      className="px-2 py-1 w-[60%]"
                       style={{ borderRadius: "16px", background: "#ECFDF3" }}
                     >
                       <img
