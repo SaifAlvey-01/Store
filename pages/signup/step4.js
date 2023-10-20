@@ -45,16 +45,6 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
     });
 
 
-  //   fetch('https://1.1.1.1/cdn-cgi/trace')
-  //   .then(response => {
-  //     console.log(response,"<----response")
-  //     setDefault(response)
-  //    console.log("Country is : ", response);
-  //  })
-  //  .catch((data, status) => {
-  //    console.log('Request failed:', data);
-  //  });
-
  },[])
 
 
@@ -62,7 +52,7 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
     if(defaultCountry && !isSelect){
       const country = countryOptions.filter((opt)=> opt.label === defaultCountry)
       setSelectedCountry(country[0])
-    }
+    } 
     if (resdata.state && resdata.state === "success") {
            setloading(true)
            setCurrentStep(5)

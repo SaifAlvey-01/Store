@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from 'next-auth/react';
+import Cookie from "js-cookie";
+
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
@@ -12,18 +14,27 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const [Loading, setLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  status, data: session } = useSession();
+  
   const {
     handleSubmit,
     register,
     getValues,
     formState: { errors },
   } = useForm();
+
+
   useEffect(() => {
     //google login
     if(session && session?.user){
-      postRequest("/auth/google-login", {access_token:session.accessToken});
+      postRequest("/auth/google-login", {access_token: session.accessToken});
       Cookies.set('email', session.user.email, { expires: 7 });
-      setCurrentStep(4);
+      if(resdata?.data?.isProfileComplete ===  true){
+        router.push("/dashboard");
+      }else{
+        setCurrentStep(4);
+      }
+
+     
     }
     //menual login
     if (resdata.state === "success") {
@@ -34,8 +45,10 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     if(error){
       setCustomError(resdata.message)
     }
-
+    
   }, [resdata, session]);
+  
+
 
   const onSubmit = async (data) => {
     const email = getValues();
