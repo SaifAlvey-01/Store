@@ -16,14 +16,12 @@ const useAxios = () => {
   };
 
   // Add Authorization header if session.accessToken exists
-  if ( token) {
+  if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
 
   const fetchData = async (url, method = "GET", requestData = null) => {
     setLoading(true);
-
-
     fetch(`${baseUrl}${url}`, {
       method,
       headers,
@@ -32,7 +30,7 @@ const useAxios = () => {
       .then((response) => response.text())
       .then((data) => {
         const jsonData = JSON.parse(data);
-        if(jsonData?.data?.id && jsonData?.referhToken){
+        if(jsonData?.data?.id && jsonData?.accessToken){
           Cookies.set('id', jsonData.data.id, { expires: 7 });
           Cookies.set('token', jsonData.referhToken, { expires: 7 });
         }
