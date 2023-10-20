@@ -31,10 +31,11 @@ const Login2 = ({ inputData }) => {
       setPasswordError(null);
       setLoading(false);
       setIsLoading(true);
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 2000);
+      // setTimeout(() => {
+      //   router.push("/dashboard");
+      // }, 2000);
     }
+    
 
     if (resdata?.status === 200) {
       setPasswordError(null);
@@ -47,6 +48,19 @@ const Login2 = ({ inputData }) => {
     }
   }, [resdata]);
 
+  useEffect(()=>{
+    console.log(resdata, "<asasd")
+    if(Object.keys(resdata).length > 0 ){
+      if(resdata?.data?.isProfileComplete ===  true){
+        router.push("/dashboard");
+      }else{
+        router.push("/signup");
+        localStorage.setItem("signupCurrentStep", 4);
+      }
+
+    }
+
+  },[resdata])
   const onSubmit = (data, e) => {
     e.preventDefault();
     postRequest("/auth/manual-login", {

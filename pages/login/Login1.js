@@ -38,13 +38,26 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   const handleGetStartedClick = () => {
     router.push("/signup");
   };
+  useEffect(()=>{
+    console.log(resdata, "<asasd")
+    if(Object.keys(resdata).length > 0 ){
+      if(resdata?.data?.isProfileComplete ===  true){
+        router.push("/dashboard");
+      }else{
+        router.push("/signup");
+        localStorage.setItem("signupCurrentStep", 4);
+      }
+
+    }
+
+  },[resdata])
 
   useEffect(()=>{
     if(session?.user) {
       postRequest("/auth/google-login", {access_token:session.accessToken});
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 2000);
+      // setTimeout(() => {
+      //   router.push("/dashboard");
+      // }, 2000);
     }
    
   },[session])
