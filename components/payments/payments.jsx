@@ -1,6 +1,57 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
 
+const onHoldData = [
+  {
+    image: "solar.png",
+    orderNumber: "Order #99441033",
+    description: "On Hold Untill: Jul 27, Fri",
+    status: "On Hold",
+    amount: "₹552",
+  },
+  {
+    image: "solar.png",
+    orderNumber: "Order #99441033",
+    description: "On Hold Untill: Jul 27, Fri",
+    status: "On Hold",
+    amount: "₹552",
+  },
+];
+
+const payoutsData = [
+  {
+    image: "solar.png",
+    orderNumber: "Order #99441033",
+    description: "On Hold Untill: Jul 27, Fri",
+    status: "Payout",
+    amount: "₹552",
+  },
+  {
+    image: "solar.png",
+    orderNumber: "Order #99441033",
+    description: "On Hold Untill: Jul 27, Fri",
+    status: "Payout",
+    amount: "₹552",
+  },
+];
+
+const refundsData = [
+  {
+    image: "solar.png",
+    orderNumber: "Order #99441033",
+    description: "On Hold Untill: Jul 27, Fri",
+    status: "Payout",
+    amount: "₹552",
+  },
+  {
+    image: "solar.png",
+    orderNumber: "Order #99441033",
+    description: "On Hold Untill: Jul 27, Fri",
+    status: "Payout",
+    amount: "₹552",
+  },
+];
+
 export default function Payments() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -265,11 +316,275 @@ export default function Payments() {
           </div>
           <div
             style={{ borderTop: "2px solid #E5E7EB" }}
-            className="tab-content text-neutral-500 text-[14px] pt-12 mb-10 flex items-center justify-center "
+            className="tab-content text-neutral-500 text-[14px] pt-6 mb-10"
           >
-            {activeTab === 0 && <div>Not enough data to show.</div>}
-            {activeTab === 1 && <div>Not enough data to show.</div>}
-            {activeTab === 2 && <div>Not enough data to show.</div>}
+            {activeTab === 0 && (
+              <div className="flex flex-col">
+                {onHoldData.map((item, index) => (
+                  <div
+                    style={{ borderBottom: "1px solid #EAECF0" }}
+                    key={index}
+                    className="flex justify-between items-center mb-4 py-3"
+                  >
+                    <div className="flex items-center">
+                      <div
+                        style={{ backgroundColor: "#F3F5FF" }}
+                        className="rounded-[50px] mr-2 w-10 h-10 flex justify-center items-center"
+                      >
+                        <div className="flex justify-center items-center p-1.5">
+                          <img
+                            src={item.image}
+                            alt={`Description for ${item.orderNumber}`}
+                            className="max-w-full max-h-full object-contain"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col">
+                        <span
+                          className="mb-1.5"
+                          style={{ color: "#4B4B4B", fontSize: "14px" }}
+                        >
+                          {item.orderNumber}
+                        </span>
+                        <p
+                          style={{ color: "#8E8E8E", fontSize: "12px" }}
+                          className="m-0"
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{ width: "100%", maxWidth: "140px" }}
+                      className="flex items-center"
+                    >
+                      <div
+                        className="px-2 py-1 mr-1.5"
+                        style={{
+                          borderRadius: "16px",
+                          background: "#ECFDF3",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="8"
+                          height="8"
+                          viewBox="0 0 8 8"
+                          fill="none"
+                        >
+                          <circle cx="4" cy="4" r="3" fill="#FF5353" />
+                        </svg>
+
+                        <span
+                          className="font-freesans ml-1.5"
+                          style={{
+                            color: "#FF5353",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+
+                      <div
+                        style={{ backgroundColor: "#F3F5FF" }}
+                        className="rounded-[50px] w-6 h-6 flex items-center justify-center p-1.5"
+                      >
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            color: "#4162FF",
+                            fontWeight: 500,
+                          }}
+                          className="font-roboto"
+                        >
+                          {item.amount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {activeTab === 1 && (
+              <div className="flex flex-col">
+                {payoutsData.map((item, index) => (
+                  <div
+                    style={{ borderBottom: "1px solid #EAECF0" }}
+                    key={index}
+                    className="flex justify-between items-center mb-4 py-3"
+                  >
+                    <div className="flex items-center">
+                      <div
+                        style={{ backgroundColor: "#F3F5FF" }}
+                        className="rounded-[50px] mr-2 w-10 h-10 flex justify-center items-center"
+                      >
+                        <div className="flex justify-center items-center p-1.5">
+                          <img
+                            src={item.image}
+                            alt={`Description for ${item.orderNumber}`}
+                            className="max-w-full max-h-full object-contain"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col">
+                        <span
+                          className="mb-1.5"
+                          style={{ color: "#4B4B4B", fontSize: "14px" }}
+                        >
+                          {item.orderNumber}
+                        </span>
+                        <p
+                          style={{ color: "#8E8E8E", fontSize: "12px" }}
+                          className="m-0"
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{ width: "100%", maxWidth: "140px" }}
+                      className="flex items-center"
+                    >
+                      <div
+                        className="px-2 py-1 mr-1.5"
+                        style={{
+                          borderRadius: "16px",
+                          background: "#ECFDF3",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="8"
+                          height="8"
+                          viewBox="0 0 8 8"
+                          fill="none"
+                        >
+                          <circle cx="4" cy="4" r="3" fill="#029D11" />
+                        </svg>
+
+                        <span
+                          className="font-freesans ml-1.5"
+                          style={{
+                            color: "#029D11",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+
+                      <div
+                        style={{ backgroundColor: "#F3F5FF" }}
+                        className="rounded-[50px] w-6 h-6 flex items-center justify-center p-1.5"
+                      >
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            color: "#4162FF",
+                            fontWeight: 500,
+                          }}
+                          className="font-roboto"
+                        >
+                          {item.amount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {activeTab === 2 && (
+              <div className="flex flex-col">
+                {refundsData.map((item, index) => (
+                  <div
+                    style={{ borderBottom: "1px solid #EAECF0" }}
+                    key={index}
+                    className="flex justify-between items-center mb-4 py-3"
+                  >
+                    <div className="flex items-center">
+                      <div
+                        style={{ backgroundColor: "#F3F5FF" }}
+                        className="rounded-[50px] mr-2 w-10 h-10 flex justify-center items-center"
+                      >
+                        <div className="flex justify-center items-center p-1.5">
+                          <img
+                            src={item.image}
+                            alt={`Description for ${item.orderNumber}`}
+                            className="max-w-full max-h-full object-contain"
+                          />
+                        </div>
+                      </div>
+                      <div className="flex flex-col">
+                        <span
+                          className="mb-1.5"
+                          style={{ color: "#4B4B4B", fontSize: "14px" }}
+                        >
+                          {item.orderNumber}
+                        </span>
+                        <p
+                          style={{ color: "#8E8E8E", fontSize: "12px" }}
+                          className="m-0"
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      style={{ width: "100%", maxWidth: "140px" }}
+                      className="flex items-center"
+                    >
+                      <div
+                        className="px-2 py-1 mr-1.5"
+                        style={{
+                          borderRadius: "16px",
+                          background: "#ECFDF3",
+                        }}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="8"
+                          height="8"
+                          viewBox="0 0 8 8"
+                          fill="none"
+                        >
+                          <circle cx="4" cy="4" r="3" fill="#88029D" />
+                        </svg>
+
+                        <span
+                          className="font-freesans ml-1.5"
+                          style={{
+                            color: "#88029D",
+                            fontSize: "12px",
+                          }}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+
+                      <div
+                        style={{ backgroundColor: "#F3F5FF" }}
+                        className="rounded-[50px] w-6 h-6 flex items-center justify-center p-1.5"
+                      >
+                        <span
+                          style={{
+                            fontSize: "12px",
+                            color: "#4162FF",
+                            fontWeight: 500,
+                          }}
+                          className="font-roboto"
+                        >
+                          {item.amount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

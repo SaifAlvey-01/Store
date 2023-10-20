@@ -14,8 +14,8 @@ const NotificationDropdown = forwardRef(({ notifications = [] }, ref) => {
         border: "1px solid #DADADA",
         boxShadow: "0px 2px 16px 0px rgba(0, 0, 0, 0.10)",
         borderRadius: "8px",
-        width: "320px",
-        height: notifications.length > 1 ? "auto" : "340px",
+        width: "250px",
+        height: notifications.length > 1 ? "auto" : "230px",
       }}
     >
       <span
@@ -139,15 +139,21 @@ const NotificationDropdown = forwardRef(({ notifications = [] }, ref) => {
       ) : (
         <div>
           <div
-            className="mb-6 p-6"
-            style={{ backgroundColor: "#FAFAFA", borderRadius: "100px" }}
+            className="flex justify-center items-center mb-5 p-6"
+            style={{
+              backgroundColor: "#FAFAFA",
+              borderRadius: "50%",
+              width: "100px",
+              height: "100px",
+            }}
           >
             <img
               src={"/bell.png"}
               alt="Description of Image"
-              className="w-28 h-28 "
+              className="w-20 h-20"
             />
           </div>
+
           <span
             className="font-freesans text-center"
             style={{ color: "#4B4B4B", fontSize: "12px" }}
