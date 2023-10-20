@@ -1,58 +1,79 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
+import CategoriesEditDropdown from "../../../dropdowns/categories-edit-dropdown";
+
+const headers = [
+  { title: "Categories" },
+  { title: "Products" },
+  { title: "Status" },
+  { title: "Actions" },
+];
+
+const data = [
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 001",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 002",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 003",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 003",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 003",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 003",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+  {
+    categoryImage: "/product-img.png",
+    categoryName: "Category 003",
+    categoryDescription: "Men Shoes",
+    products: "05",
+  },
+];
 
 export default function CategoriesListing() {
-  const headers = [
-    { title: "Categories" },
-    { title: "Products" },
-    { title: "Status" },
-    { title: "Actions" },
-  ];
+  const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
+  const dropdownRef = useRef([]);
 
-  const data = [
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 001",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 002",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 003",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 003",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 003",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 003",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-    {
-      categoryImage: "/product-img.png",
-      categoryName: "Category 003",
-      categoryDescription: "Men Shoes",
-      products: "05",
-    },
-  ];
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (
+        dropdownOpenIndex !== null &&
+        dropdownRef.current[dropdownOpenIndex] &&
+        !dropdownRef.current[dropdownOpenIndex].contains(event.target)
+      ) {
+        setDropdownOpenIndex(null);
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [dropdownOpenIndex]);
 
   return (
     <div className="flex justify-between items-center mt-6 px-5 h-full">
@@ -179,7 +200,17 @@ export default function CategoriesListing() {
                   className="mr-2 h-7 w-7 cursor-pointer"
                   src="/dots.png"
                   alt="Action 4"
+                  onClick={() =>
+                    setDropdownOpenIndex(
+                      dropdownOpenIndex !== index ? index : null
+                    )
+                  }
                 />
+                <div ref={(el) => (dropdownRef.current[index] = el)}>
+                  <CategoriesEditDropdown
+                    isOpen={dropdownOpenIndex === index}
+                  />
+                </div>{" "}
               </td>
             </tr>
           ))}

@@ -1,66 +1,87 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
+import ProductsEditDropdown from "../../../dropdowns/products-edit-dropdown";
+
+const headers = [
+  { title: "Product" },
+  { title: "Price" },
+  { title: "Inventory" },
+  { title: "Status" },
+  { title: "Actions" },
+];
+
+const data = [
+  {
+    productImage: "/product-img.png",
+    productName: "Product 001",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+  {
+    productImage: "/product-img.png",
+    productName: "Product 002",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+  {
+    productImage: "/product-img.png",
+    productName: "Product 003",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+  {
+    productImage: "/product-img.png",
+    productName: "Product 003",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+  {
+    productImage: "/product-img.png",
+    productName: "Product 003",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+  {
+    productImage: "/product-img.png",
+    productName: "Product 003",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+  {
+    productImage: "/product-img.png",
+    productName: "Product 003",
+    productDescription: "Men Shoes",
+    price: "₹5,333",
+    inventory: "720",
+  },
+];
 
 export default function ProductsListing() {
-  const headers = [
-    { title: "Product" },
-    { title: "Price" },
-    { title: "Inventory" },
-    { title: "Status" },
-    { title: "Actions" },
-  ];
+  const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
+  const dropdownRef = useRef([]);
 
-  const data = [
-    {
-      productImage: "/product-img.png",
-      productName: "Product 001",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-    {
-      productImage: "/product-img.png",
-      productName: "Product 002",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-    {
-      productImage: "/product-img.png",
-      productName: "Product 003",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-    {
-      productImage: "/product-img.png",
-      productName: "Product 003",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-    {
-      productImage: "/product-img.png",
-      productName: "Product 003",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-    {
-      productImage: "/product-img.png",
-      productName: "Product 003",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-    {
-      productImage: "/product-img.png",
-      productName: "Product 003",
-      productDescription: "Men Shoes",
-      price: "₹5,333",
-      inventory: "720",
-    },
-  ];
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (
+        dropdownOpenIndex !== null &&
+        dropdownRef.current[dropdownOpenIndex] &&
+        !dropdownRef.current[dropdownOpenIndex].contains(event.target)
+      ) {
+        setDropdownOpenIndex(null);
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [dropdownOpenIndex]);
 
   return (
     <div className="flex justify-between items-center mt-6 px-5 h-full">
@@ -204,7 +225,15 @@ export default function ProductsListing() {
                   className="mr-2 h-7 w-7 cursor-pointer"
                   src="/dots.png"
                   alt="Action 4"
+                  onClick={() =>
+                    setDropdownOpenIndex(
+                      dropdownOpenIndex !== index ? index : null
+                    )
+                  }
                 />
+                <div ref={(el) => (dropdownRef.current[index] = el)}>
+                  <ProductsEditDropdown isOpen={dropdownOpenIndex === index} />
+                </div>{" "}
               </td>
             </tr>
           ))}

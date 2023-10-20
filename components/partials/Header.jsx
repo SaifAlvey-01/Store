@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Search from "./Search";
 import { useRouter } from "next/router";
-import NotificationDropdown from "./notification-dropdown";
+import NotificationDropdown from "../dropdowns/notification-dropdown";
+import ReportsDropdown from "../dropdowns/reports-dropdown";
+import StoreMenuDropdown from "../dropdowns/store-menu-dropdown";
 
 function Header({
   sidebarOpen,
@@ -15,8 +17,15 @@ function Header({
   showCreateOrder,
 }) {
   const router = useRouter();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [notificationDropdownOpen, setNotificationDropdownOpen] =
+    useState(false);
+  const [reportsDropdownOpen, setReportsDropdownOpen] = useState(false);
+  const [storeMenuDropdownOpen, setStoreMenuDropdownOpen] = useState(false);
+
+  const notificationDropdownRef = useRef(null);
+  const reportsDropdownRef = useRef(null);
+  const storeMenuDropdownRef = useRef(null);
+
   let header = router.pathname.slice(1);
 
   const isShowStateActive =
@@ -24,8 +33,28 @@ function Header({
 
   useEffect(() => {
     function handleOutsideClick(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setDropdownOpen(false);
+      // Check outside click for notificationDropdown
+      if (
+        notificationDropdownRef.current &&
+        !notificationDropdownRef.current.contains(event.target)
+      ) {
+        setNotificationDropdownOpen(false);
+      }
+
+      // Check outside click for reportsDropdown
+      if (
+        reportsDropdownRef.current &&
+        !reportsDropdownRef.current.contains(event.target)
+      ) {
+        setReportsDropdownOpen(false);
+      }
+
+      // Check outside click for storeMenuDropdown
+      if (
+        storeMenuDropdownRef.current &&
+        !storeMenuDropdownRef.current.contains(event.target)
+      ) {
+        setStoreMenuDropdownOpen(false);
       }
     }
 
@@ -151,7 +180,11 @@ function Header({
                 <img
                   src="/nav/download.png"
                   className="w-[32px] h-[32px] cursor-pointer"
+                  onClick={() => setReportsDropdownOpen(!reportsDropdownOpen)}
                 />
+                {reportsDropdownOpen && (
+                  <ReportsDropdown ref={reportsDropdownRef} />
+                )}
 
                 <div className="relative">
                   {" "}
@@ -159,15 +192,25 @@ function Header({
                   <img
                     src="/nav/bell.png"
                     className="w-[32px] h-[32px] cursor-pointer"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    onClick={() =>
+                      setNotificationDropdownOpen(!notificationDropdownOpen)
+                    }
                   />
-                  {dropdownOpen && <NotificationDropdown ref={dropdownRef} />}
+                  {notificationDropdownOpen && (
+                    <NotificationDropdown ref={notificationDropdownRef} />
+                  )}
                 </div>
 
                 <img
                   src="/nav/open.png"
                   className="w-[32px] h-[32px] cursor-pointer"
+                  onClick={() =>
+                    setStoreMenuDropdownOpen(!storeMenuDropdownOpen)
+                  }
                 />
+                {storeMenuDropdownOpen && (
+                  <StoreMenuDropdown ref={storeMenuDropdownRef} />
+                )}
               </div>
             </>
           )}
