@@ -98,15 +98,15 @@ export default function ProductsListing() {
           {data.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
-                style={{ borderBottom: "1px solid #EAECF0", width: "300px" }}
-                className="flex items-center p-3"
+                style={{ borderBottom: "1px solid #EAECF0" }}
+                className="flex items-center p-3 w-full"
               >
                 <img
                   className="h-11 w-11"
                   src={row.productImage}
                   alt={row.productName}
                 />
-                <div className="ml-2 flex flex-col ">
+                <div className="ml-2 flex flex-col w-full ">
                   <span
                     className="font-freesans mb-2"
                     style={{ color: "4B4B4B", fontSize: "12px" }}
@@ -180,7 +180,7 @@ export default function ProductsListing() {
                 </div>
               </td>
               <td
-                className="p-3"
+                className="p-3 w-48"
                 style={{
                   borderBottom: "1px solid #EAECF0",
                 }}

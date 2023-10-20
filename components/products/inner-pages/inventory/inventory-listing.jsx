@@ -122,10 +122,9 @@ export default function InventoryListing() {
               <td
                 style={{
                   borderBottom: "1px solid #EAECF0",
-                  width: "300px",
                   height: row.variants.length > 1 ? "auto" : "36px",
                 }}
-                className="flex items-center px-3 py-10 "
+                className="flex items-center px-3 py-10 w-full "
               >
                 <img
                   className="h-11 w-11"

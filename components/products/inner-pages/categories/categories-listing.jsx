@@ -90,8 +90,8 @@ export default function CategoriesListing() {
           {data.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
-                style={{ borderBottom: "1px solid #EAECF0", width: "300px" }}
-                className="flex items-center px-5 py-3"
+                style={{ borderBottom: "1px solid #EAECF0" }}
+                className="flex items-center px-5 py-3 w-full"
               >
                 <img
                   className="h-11 w-11"
