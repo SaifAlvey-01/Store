@@ -22,23 +22,32 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     formState: { errors },
   } = useForm();
 
-
-  useEffect(() => {
-    //google login
-    if(session && session?.user){
-      postRequest("/auth/google-login", {access_token: session.accessToken});
-      Cookies.set('email', session.user.email, { expires: 7 });
+  useEffect(()=>{
+    console.log(resdata, "<asasd")
+    if(Object.keys(resdata).length > 0 ){
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/dashboard");
       }else{
         setCurrentStep(4);
       }
 
-     
+    }
+
+  },[resdata])
+
+
+
+  useEffect(() => {
+    //google login
+    const email = getValues();
+    if(session && session?.user){
+      postRequest("/auth/google-login", {access_token: session.accessToken});
+      Cookies.set('email', session.user.email, { expires: 7 });
+      console.log(resdata,"<----resdata")
+    
     }
     //menual login
-    if (resdata.state === "success") {
-      const email = getValues();
+    if (resdata.state === "success" && email.email) {
       Cookies.set('email', email.email, { expires: 7 });
       setCurrentStep(2);
     }
