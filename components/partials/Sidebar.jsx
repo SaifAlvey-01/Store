@@ -47,10 +47,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   }, [initialActiveIndex]);
 
   const handleSignout = () =>{
-    signOut();
     localStorage.removeItem('signupCurrentStep');
     Cookies.remove('token');
     Cookies.remove('id');
+    signOut();
   }
 
   const handleBusinessImage = () =>{

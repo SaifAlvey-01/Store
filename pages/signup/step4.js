@@ -34,7 +34,6 @@ const SignUp4 = ({ setloading,setCurrentStep }) => {
 
         // Use the regular expression to extract the value of "loc"
         var match = response.data.match(locRegex);
-        console.log(match, "<----match")
         // Check if a match was found and extract the value
         var locValue = match ? match[1] : null;
 
