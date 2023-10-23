@@ -36,7 +36,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
   };
 
   const handleSignInClick = () => {
-    router.push("/login");
+    router.push("/");
   };
 
   return (

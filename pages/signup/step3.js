@@ -36,7 +36,7 @@ const SignUp3 = ({ setCurrentStep }) => {
   };
 
   const handleSignInClick = () => {
-    router.push("/login");
+    router.push("/");
   };
 
   const handleresend = async ()=> {

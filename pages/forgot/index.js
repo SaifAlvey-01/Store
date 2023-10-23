@@ -39,7 +39,7 @@ const ForgotComponent = () => {
       case 4:
         return (
           <Loading
-            url="/login"
+            url="/"
             message="Resetting Password..."
             duration="3000"
           />
