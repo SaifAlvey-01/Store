@@ -1,8 +1,8 @@
 import React, { use, useEffect, useState } from "react";
-import Login1 from "./Login1";
-import Login2 from "./Login2";
+import Login1 from "../components/login/Login1";
+import Login2 from "../components/login/Login2";
 import { useRouter } from "next/navigation";
-import Footer from "../../components/footer/footer";
+import Footer from "../components/footer/footer";
 import { NextSeo } from 'next-seo'
 import { useSession } from 'next-auth/react';
 import Cookie from "js-cookie";

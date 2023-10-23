@@ -24,7 +24,7 @@ const Forgot2 = ({ setCurrentStep, inputValue, OTP,  setOTP}) => {
   }
 
   const handleSignInClick = () => {
-    router.push("/login");
+    router.push("/");
   };
 
   useEffect(()=>{

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { simpleHash, users } from "../../utils/userData";
 import { useRouter } from "next/router";
-import Loading from "../../components/loading";
+import Loading from "../loading";
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from "next-auth/react";
 

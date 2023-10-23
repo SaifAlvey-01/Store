@@ -7,8 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useNavigation } from "../../hooks/useNavigation";
 import Cookies from 'js-cookie';
-import axios from "axios";
 import useAxios from "../../hooks/useAxios";
+
 
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
@@ -19,9 +19,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const { navItems } = useNavigation();
   const trigger = useRef(null);
   const sidebar = useRef(null);
-  const { resdata, error, loading, postData: postRequest } = useAxios();
+  const BusinessName = Cookies.get("email");
+  const ID = Cookies.get("id");
+  const inputFile = useRef(null) 
+  const [selectedImage, setSelectedImage] = useState(null);
 
+  const { resdata, error, loading, putData: putRequest, postData: postRequest} = useAxios();
 
+  console.log(BusinessName, "<---")
   const activeItemIndex = navItems.findIndex(
     (item) => item.section === curPath
   );
@@ -54,7 +59,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   }
 
   const handleBusinessImage = () =>{
-    postRequest("/auth/google-login", {access_token:session.accessToken});
+    inputFile.current.click();
+    console.log(selectedImage, "<----selectedImage")
+    putRequest(`/accounts/add-business-logo/${ID}`, {access_token:session.accessToken});
+    postRequest(`/media`);
   }
 
  // close on click outside
@@ -124,6 +132,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   borderRadius: "6px",
                 }}
               >
+                <input type='file' id='file' ref={inputFile} style={{display: 'none'}} 
+                onChange={(event) => {
+                console.log(event.target.files[0]);
+                setSelectedImage(event.target.files[0]);
+              }}/>
                 <img src={"/logo.png"} onClick={handleBusinessImage} alt="Your Image Description" className="cursor-pointer"/>
               </div>
 

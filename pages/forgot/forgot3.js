@@ -22,7 +22,7 @@ const Forgot3 = ({ setCurrentStep,  inputValue, OTP}) => {
       setIsLoading(true);
       cogoToast.success('Password has been reset! Login Now');
       setTimeout(() => {
-        router.push("/login");
+        router.push("/");
       }, 2000);
     }else{
       setErrorMessage(resdata.message)
@@ -68,14 +68,14 @@ const Forgot3 = ({ setCurrentStep,  inputValue, OTP}) => {
   };
 
   const handleSignInClick = () => {
-    router.push("/login");
+    router.push("/");
     
   };
 
   return (
     <div>
     {isLoading ? (
-        <Loading url="/login" message="Resetting Password..." duration="2000" />
+        <Loading url="/" message="Resetting Password..." duration="2000" />
       ) :(
     <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)]  overflow-hidden flex flex-row py-10 px-4 mx-2 items-start justify-start border-[0.8px] border-solid border-gainsboro">
       <div className="flex flex-col items-center justify-start ">
