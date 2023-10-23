@@ -17,7 +17,8 @@ const Login2 = ({ inputData }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [Loadings, setLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
-  const { data: session } = useSession();
+  const {  data: session } = useSession();
+
 
   const {
     handleSubmit,
@@ -38,7 +39,6 @@ const Login2 = ({ inputData }) => {
     
 
     if (resdata?.status === 200) {
-     console.log(resdata, "<---resdata")
       if(Object.keys(resdata).length > 0 ){
         if(resdata?.data?.isProfileComplete ===  true){
           setPasswordError(null);
@@ -47,8 +47,8 @@ const Login2 = ({ inputData }) => {
             router.push("/dashboard");
           }, 2000);
         }else{
-          console.log(error, "<----")
-          if(!error){
+          console.log(error,"<--error")
+          if(!error && resdata?.data?.isProfileComplete ===  false ){
             router.push("/signup");
             localStorage.setItem("signupCurrentStep", 4);
           }
@@ -65,7 +65,7 @@ const Login2 = ({ inputData }) => {
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/dashboard");
       }else{
-        if(!error){
+        if(!error && resdata?.data?.isProfileComplete ===  false){
           router.push("/signup");
           localStorage.setItem("signupCurrentStep", 4);
         }
