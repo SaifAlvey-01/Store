@@ -39,7 +39,6 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
     router.push("/signup");
   };
   useEffect(()=>{
-    console.log(resdata, "<asasd")
     if(Object.keys(resdata).length > 0 ){
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/dashboard");

@@ -38,26 +38,38 @@ const Login2 = ({ inputData }) => {
     
 
     if (resdata?.status === 200) {
-      setPasswordError(null);
-      setIsLoading(true);
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 2000);
+     console.log(resdata, "<---resdata")
+      if(Object.keys(resdata).length > 0 ){
+        if(resdata?.data?.isProfileComplete ===  true){
+          setPasswordError(null);
+          setIsLoading(true);
+          setTimeout(() => {
+            router.push("/dashboard");
+          }, 2000);
+        }else{
+          console.log(error, "<----")
+          if(!error){
+            router.push("/signup");
+            localStorage.setItem("signupCurrentStep", 4);
+          }
+        }
+      }
     } else {
       setPasswordError(resdata.message);
     }
   }, [resdata]);
 
   useEffect(()=>{
-    console.log(resdata, "<asasd")
+    
     if(Object.keys(resdata).length > 0 ){
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/dashboard");
       }else{
-        router.push("/signup");
-        localStorage.setItem("signupCurrentStep", 4);
+        if(!error){
+          router.push("/signup");
+          localStorage.setItem("signupCurrentStep", 4);
+        }
       }
-
     }
 
   },[resdata])
