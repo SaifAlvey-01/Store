@@ -3,14 +3,30 @@ import FreeTrialFooter from "../../free-trial-footer";
 import ProductsListing from "../inner-pages/products/products-listing";
 import AddNewProduct from "../inner-pages/products/add-new-product";
 import ProductsToolBar from "../inner-pages/products/products-tool-bar";
+import { useState } from "react";
+import EditProduct from "../inner-pages/products/edit-product";
 
 export default function AllProducts({
   showAddNewProduct,
   setShowAddNewProduct,
+  isEditingProduct,
+  setIsEditingProduct,
 }) {
+  const handleEditClick = () => {
+    setIsEditingProduct(true); // set the editing state to true
+  };
+
+  // Check if we need to show the Add New Product component
   if (showAddNewProduct) {
     return <AddNewProduct goBack={() => setShowAddNewProduct(false)} />;
   }
+
+  // Check if we need to show the Edit Product component
+  if (isEditingProduct) {
+    return <EditProduct goBack={() => setIsEditingProduct(false)} />;
+  }
+
+  // If none of the above, show the main component layout
   return (
     <div
       className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-stretch justify-between"
@@ -26,7 +42,7 @@ export default function AllProducts({
 
       <div className="w-full flex-grow flex flex-col">
         {" "}
-        <ProductsListing className="flex-grow" />
+        <ProductsListing onEditClick={handleEditClick} className="flex-grow" />
       </div>
 
       {/*Initial Product Page Content  */}

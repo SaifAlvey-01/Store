@@ -15,6 +15,8 @@ function Header({
   showAddNewProduct,
   showAddNewCategory,
   showCreateOrder,
+  isEditingProduct,
+  isEditingCategory,
 }) {
   const router = useRouter();
   const [notificationDropdownOpen, setNotificationDropdownOpen] =
@@ -33,7 +35,6 @@ function Header({
 
   useEffect(() => {
     function handleOutsideClick(event) {
-      // Check outside click for notificationDropdown
       if (
         notificationDropdownRef.current &&
         !notificationDropdownRef.current.contains(event.target)
@@ -41,7 +42,6 @@ function Header({
         setNotificationDropdownOpen(false);
       }
 
-      // Check outside click for reportsDropdown
       if (
         reportsDropdownRef.current &&
         !reportsDropdownRef.current.contains(event.target)
@@ -49,7 +49,6 @@ function Header({
         setReportsDropdownOpen(false);
       }
 
-      // Check outside click for storeMenuDropdown
       if (
         storeMenuDropdownRef.current &&
         !storeMenuDropdownRef.current.contains(event.target)
@@ -97,6 +96,46 @@ function Header({
     >
       {label}
     </button>
+  );
+
+  const renderEditButtons = () => (
+    <div className="flex gap-4">
+      <button
+        className="cursor-pointer"
+        style={{
+          backgroundColor: "#fff",
+          border: "1px dashed #FF5353",
+          color: "#FF5353",
+          padding: "9px 24px",
+          borderRadius: "4px",
+        }}
+      >
+        Delete
+      </button>
+      <button
+        className="cursor-pointer"
+        style={{
+          backgroundColor: "#fff",
+          border: "1px solid #4162FF",
+          color: "#4162FF",
+          padding: "9px 24px",
+          borderRadius: "4px",
+        }}
+      >
+        Preview
+      </button>
+      <button
+        className="cursor-pointer"
+        style={{
+          backgroundColor: "#4162FF",
+          color: "#ffffff",
+          padding: "9px 24px",
+          borderRadius: "4px",
+        }}
+      >
+        Update
+      </button>
+    </div>
   );
 
   return (
@@ -165,7 +204,6 @@ function Header({
               </p>
             )}
           </div>
-
           {!isShowStateActive && (
             <>
               <div className="order-1 w-full sm:order-none sm:w-auto">
@@ -214,10 +252,19 @@ function Header({
               </div>
             </>
           )}
-
-          {showCreateOrder && renderButton("Create Order")}
-          {showAddNewProduct && renderButton("Add Product")}
-          {showAddNewCategory && renderButton("Add Category")}
+          {showCreateOrder &&
+            !isEditingProduct &&
+            !isEditingCategory &&
+            renderButton("Create Order")}
+          {showAddNewProduct &&
+            !isEditingCategory &&
+            !isEditingProduct &&
+            renderButton("Add Product")}
+          {showAddNewCategory &&
+            !isEditingCategory &&
+            !isEditingProduct &&
+            renderButton("Add Category")}
+          {isEditingProduct || (isEditingCategory && renderEditButtons())}
         </div>
       </div>
     </header>

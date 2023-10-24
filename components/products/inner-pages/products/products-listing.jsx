@@ -62,7 +62,7 @@ const data = [
   },
 ];
 
-export default function ProductsListing() {
+export default function ProductsListing({ onEditClick }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
 
@@ -232,7 +232,10 @@ export default function ProductsListing() {
                   }
                 />
                 <div ref={(el) => (dropdownRef.current[index] = el)}>
-                  <ProductsEditDropdown isOpen={dropdownOpenIndex === index} />
+                  <ProductsEditDropdown
+                    isOpen={dropdownOpenIndex === index}
+                    onEditClick={onEditClick}
+                  />
                 </div>{" "}
               </td>
             </tr>
