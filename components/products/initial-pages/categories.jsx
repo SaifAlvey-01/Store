@@ -3,14 +3,26 @@ import FreeTrialFooter from "../../free-trial-footer";
 import AddNewCategory from "../inner-pages/categories/add-new-category";
 import CategoriesToolBar from "../inner-pages/categories/categories-tool-bar";
 import CategoriesListing from "../inner-pages/categories/categories-listing";
+import EditCategory from "../inner-pages/categories/edit-category";
 
 export default function Categories({
   showAddNewCategory,
   setShowAddNewCategory,
+  isEditingCategory,
+  setIsEditingCategory,
 }) {
+  const handleEditClick = () => {
+    setIsEditingCategory(true);
+  };
+
   if (showAddNewCategory) {
     return <AddNewCategory goBack={() => setShowAddNewCategory(false)} />;
   }
+
+  if (isEditingCategory) {
+    return <EditCategory goBack={() => setIsEditingCategory(false)} />;
+  }
+
   return (
     <div
       className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
@@ -26,7 +38,10 @@ export default function Categories({
 
       <div className="w-full flex-grow flex flex-col">
         {" "}
-        <CategoriesListing className="flex-grow" />
+        <CategoriesListing
+          onEditClick={handleEditClick}
+          className="flex-grow"
+        />
       </div>
 
       {/*Initial category Page Content  */}

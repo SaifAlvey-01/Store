@@ -54,7 +54,7 @@ const data = [
   },
 ];
 
-export default function CategoriesListing() {
+export default function CategoriesListing({ onEditClick }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
 
@@ -209,6 +209,7 @@ export default function CategoriesListing() {
                 <div ref={(el) => (dropdownRef.current[index] = el)}>
                   <CategoriesEditDropdown
                     isOpen={dropdownOpenIndex === index}
+                    onEditClick={onEditClick}
                   />
                 </div>{" "}
               </td>

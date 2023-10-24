@@ -13,6 +13,8 @@ const Layout = ({
   showAddNewProduct,
   showAddNewCategory,
   showCreateOrder,
+  isEditingProduct,
+  isEditingCategory,
 }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -29,9 +31,7 @@ const Layout = ({
   }, []);
 
   if (!token) {
-    return (
-      <div></div>
-    )
+    return <div></div>;
   }
 
   return (
@@ -55,6 +55,8 @@ const Layout = ({
           showAddNewProduct={showAddNewProduct}
           showAddNewCategory={showAddNewCategory}
           showCreateOrder={showCreateOrder}
+          isEditingProduct={isEditingProduct}
+          isEditingCategory={isEditingCategory}
         />
         <main className="flex-grow ">
           <div

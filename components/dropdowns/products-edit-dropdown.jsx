@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductsEditDropdown = ({ isOpen }) => {
+const ProductsEditDropdown = ({ isOpen, onEditClick }) => {
   if (!isOpen) return null;
 
   return (
@@ -24,7 +24,8 @@ const ProductsEditDropdown = ({ isOpen }) => {
           fontSize: "14px",
           fontWeight: 600,
         }}
-        className="block px-4 py-2.5 w-full text-left font-lato"
+        onClick={onEditClick}
+        className="block px-4 py-2.5 w-full text-left font-lato cursor-pointer"
       >
         Edit{" "}
       </button>
