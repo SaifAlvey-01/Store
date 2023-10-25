@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import CustomDrawer from "./custom-drawer";
 import UnitSelect from "./unit-select";
-// import QuillNoSSRWrapper from "../../../RichTextEditor";
 import { CustomEditor } from "../../../TinyMCE";
+import TagSelect from "./tag-select";
 
 const modules = {
   toolbar: [
@@ -14,13 +14,17 @@ const modules = {
   },
 };
 
-export default function AddNewProduct() {
+export default function EditProduct() {
   const [content, setContent] = useState("");
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
 
   const handleQuillChange = (value) => {
     setContent(value);
+  };
+
+  const handleTagChange = (selectedOption) => {
+    console.log(`Selected: ${selectedOption.value}`);
   };
 
   const handleUnitChange = (selectedOption) => {
@@ -72,8 +76,11 @@ export default function AddNewProduct() {
             </h3>
             <div className="flex items-center mt-6">
               {" "}
-              <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+              <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-20 h-20 flex items-center justify-center overflow-hidden">
+                <img
+                  src={"/product1.png"}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex flex-col">
                 {" "}
@@ -593,6 +600,60 @@ export default function AddNewProduct() {
               >
                 Add Variants{" "}
               </button>
+            </div>
+          </div>
+          <div
+            className="p-4 mt-6"
+            style={{
+              borderRadius: "10px",
+              backgroundColor: "var(--white-color, #FFF)",
+              border: "1px solid #e3e3e3",
+            }}
+          >
+            {" "}
+            <div className="font-freesans flex flex-col items-start justify-start">
+              <span
+                className="font-freesans mb-1"
+                style={{
+                  color: "#4B4B4B",
+                  fontWeight: 500,
+                  fontSize: "14px",
+                }}
+              >
+                Additional Information{" "}
+              </span>
+              <span
+                className="m-0 font-freesans"
+                style={{
+                  color: "#8E8E8E",
+                  fontWeight: 400,
+                  fontSize: "12px",
+                }}
+              >
+                Add tags to the products.{" "}
+              </span>
+            </div>
+            <div className="w-full mt-6">
+              <div className="flex justify-between items-center mb-2">
+                <span
+                  className="font-freesans"
+                  style={{
+                    color: "#4B4B4B",
+                    fontWeight: 500,
+                    fontSize: "13px",
+                  }}
+                >
+                  Tags{" "}
+                </span>
+
+                <span
+                  className="font-freesans"
+                  style={{ color: "#7A91FF", fontSize: "12px" }}
+                >
+                  Manage{" "}
+                </span>
+              </div>
+              <TagSelect onChange={handleTagChange} />
             </div>
           </div>
           <div
