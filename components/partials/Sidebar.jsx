@@ -24,11 +24,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const inputFile = useRef(null);
   const businessNam = useRef();
   const dispatch = useDispatch(); 
-  const { resdata, error, loading, getData:getReq} = useAxios();
 
-  const business = useSelector((state) => state?.business?.business);
+  const business = useSelector((state) => state?.getBusiness?.business?.business
+  );
 
-  console.log(business, "<----business")
   const activeItemIndex = navItems.findIndex(
     (item) => item.section === curPath
   );
@@ -60,14 +59,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     // getReq(`/accounts/${ID}`)
   },[])
 
-  useEffect(()=>{
-    if(resdata.status === 200 ){
-      // setBusinessName(resdata.data.business)
-      businessNam.current = resdata.data.business;
-    }
-  },[resdata])
+
   
-  console.log(resdata, "<----resdata")
   const storedValue = businessNam.current;
   const handleSignout = () =>{
     localStorage.removeItem('signupCurrentStep');
@@ -78,7 +71,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   const handleBusinessImage = () =>{
     inputFile.current.click();
-    console.log(selectedImage, "<----selectedImage")
     // putRequest(`/accounts/add-business-logo/${ID}`, {access_token:session.accessToken});
     // postRequest(`/media`); 
   }
@@ -176,7 +168,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   />
                 </div>
 
-                <div className="flex flex-col items-center justify-center ml-3">
+                {/* <div className="flex flex-col items-center justify-center ml-3">
                   <span
                     className="mb-2"
                     style={{ color: "#FAFAFA", fontWeight: 600 }}
@@ -188,14 +180,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                       className="cursor-pointer"
                     />
                   </span>{" "}
-                </div>
+                </div> */}
 
                 <div className="flex flex-col items-center justify-center ml-3">
                   <span
                     className="mb-2"
                     style={{ color: "#FAFAFA", fontWeight: 600 }}
                   >
-                    Ray Naz
+                    {business}
                   </span>{" "}
                   <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
                     Visit Store

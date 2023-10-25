@@ -7,6 +7,8 @@ import addNewCategoryReducer from "./addNewCategorySlice";
 import showCreateOrderReducer from "./showCreateOrderSlice";
 import editProductReducer from "./editProductSlice";
 import editCategoryReducer from "./editCategorySlice";
+import getBusiness from "./getBusiness";
+import addCategory from "./addCategory";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -17,6 +19,8 @@ const rootReducer = combineReducers({
   showCreateOrder: showCreateOrderReducer,
   editProduct: editProductReducer,
   editCategory: editCategoryReducer,
+  getBusiness,
+  addCategory
 });
 
 export default rootReducer;

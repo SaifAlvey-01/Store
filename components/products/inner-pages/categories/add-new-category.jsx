@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
+import {addCategory} from "../../../../redux/slices/addCategory";
+import { useDispatch } from 'react-redux';
+
 
 const modules = {
   toolbar: [
@@ -37,10 +40,47 @@ const formats = [
 export default function AddNewCategory() {
   const [content, setContent] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const fileInputRef = useRef(null);
+  const [mainImageUrl, setMainImageUrl] = useState(null);
+  const [mobileImageUrl, setMobileImageUrl] = useState(null);
+  const [bannerImageUrl, setBannerImageUrl] = useState(null);
+  const [name, setName] = useState("");
 
   const handleQuillChange = (value) => {
     setContent(value);
   };
+
+  const handleImageButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleMainImageUrlChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      const imageUrl = URL.createObjectURL(selectedFile);
+      setMainImageUrl(imageUrl);
+    }
+  };
+  
+  const handleMobileImageUrlChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      const imageUrl = URL.createObjectURL(selectedFile);
+      setMobileImageUrl(imageUrl);
+    }
+  };
+  const handleDesktopImageUrlChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      const imageUrl = URL.createObjectURL(selectedFile);
+      setBannerImageUrl(imageUrl);
+    }
+  };
+
+
+
+
+  
 
   return (
     <div
@@ -103,9 +143,16 @@ export default function AddNewCategory() {
                     width: "70%",
                     fontSize: "12px",
                   }}
+                  onClick={handleImageButtonClick}
                 >
                   Add Image{" "}
                 </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleMainImageUrlChange}
+                  />
                 <p
                   style={{ color: "#8E8E8E", fontSize: "12px" }}
                   className="m-0 mt-2"
@@ -143,6 +190,7 @@ export default function AddNewCategory() {
                 }}
                 onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                 onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                onChange={(e)=> setName(e.target.value)}
                 placeholder="Enter Category Name"
                 required
               />
@@ -287,9 +335,17 @@ export default function AddNewCategory() {
                   width: "40%",
                   fontSize: "12px",
                 }}
+                onClick={handleImageButtonClick}
+
               >
                 Add Mobile Banner{" "}
               </button>
+              <input
+                    ref={fileInputRef}
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleMobileImageUrlChange}
+                  />
             </div>
             <div className="flex items-center mt-6">
               {" "}
@@ -306,9 +362,17 @@ export default function AddNewCategory() {
                   width: "40%",
                   fontSize: "12px",
                 }}
+                onClick={handleImageButtonClick}
               >
                 Add Desktop Banner{" "}
               </button>
+              <input
+                    ref={fileInputRef}
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={handleDesktopImageUrlChange}
+                  />
+
             </div>
           </div>
         </div>
