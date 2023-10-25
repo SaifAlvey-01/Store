@@ -1,23 +1,14 @@
-<<<<<<< HEAD
 "use client";
 
 import React, { useState, useEffect, useRef, useMemo, use } from "react";
 import { signOut } from "next-auth/react"
-=======
-import React, { useState, useEffect, useRef, useMemo } from "react";
-import { signOut } from "next-auth/react";
->>>>>>> aae7683cf9a8c919d3dae0e4b8e3a8cfbf16afff
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useNavigation } from "../../hooks/useNavigation";
 import Cookies from "js-cookie";
 import useAxios from "../../hooks/useAxios";
-<<<<<<< HEAD
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBusiness } from '../../redux/slices/getBusiness';
-=======
-import Loading from "../loading";
->>>>>>> aae7683cf9a8c919d3dae0e4b8e3a8cfbf16afff
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -31,7 +22,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const sidebar = useRef(null);
   const ID = Cookies.get("id");
   const inputFile = useRef(null);
-<<<<<<< HEAD
   const businessNam = useRef();
   const dispatch = useDispatch(); 
   const { resdata, error, loading, getData:getReq} = useAxios();
@@ -39,19 +29,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const business = useSelector((state) => state?.business?.business);
 
   console.log(business, "<----business")
-=======
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const {
-    resdata,
-    error,
-    loading,
-    putData: putRequest,
-    postData: postRequest,
-  } = useAxios();
-
-  console.log(BusinessName, "<---");
->>>>>>> aae7683cf9a8c919d3dae0e4b8e3a8cfbf16afff
   const activeItemIndex = navItems.findIndex(
     (item) => item.section === curPath
   );
@@ -78,7 +55,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     setActiveIndex(initialActiveIndex);
   }, [initialActiveIndex]);
 
-<<<<<<< HEAD
   useEffect(()=>{
     dispatch(fetchBusiness());
     // getReq(`/accounts/${ID}`)
@@ -106,30 +82,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     // putRequest(`/accounts/add-business-logo/${ID}`, {access_token:session.accessToken});
     // postRequest(`/media`); 
   }
-=======
-  const handleSignout = async () => {
-    setShowLoading(true);
-
-    const handleBusinessImage = () => {
-      inputFile.current.click();
-      console.log(selectedImage, "<----selectedImage");
-      putRequest(`/accounts/add-business-logo/${ID}`, {
-        access_token: session.accessToken,
-      });
-      postRequest(`/media`);
-    };
-
-    setTimeout(async () => {
-      await signOut({ redirect: false });
-      setShowLoading(false);
-      router.push("/login");
-    }, 5000);
-  };
-
-  const handleBusinessImage = () => {
-    postRequest("/auth/google-login", { access_token: session.accessToken });
-  };
->>>>>>> aae7683cf9a8c919d3dae0e4b8e3a8cfbf16afff
 
   // close on click outside
   useEffect(() => {
@@ -143,15 +95,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
         return;
       setSidebarOpen(false);
     };
-<<<<<<< HEAD
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
   },[]);
-=======
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  });
->>>>>>> aae7683cf9a8c919d3dae0e4b8e3a8cfbf16afff
 
   return (
     <>
@@ -212,57 +158,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     borderRadius: "6px",
                   }}
                 >
-<<<<<<< HEAD
                   {storedValue }
                 </span>{" "}
                 <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
                   Visit Store
                 </a>
-=======
-                  <input
-                    type="file"
-                    id="file"
-                    ref={inputFile}
-                    style={{ display: "none" }}
-                    onChange={(event) => {
-                      console.log(event.target.files[0]);
-                      setSelectedImage(event.target.files[0]);
-                    }}
-                  />
-                  <img
-                    src={"/logo.png"}
-                    onClick={handleBusinessImage}
-                    alt="Your Image Description"
-                    className="cursor-pointer"
-                  />
-                </div>
-
-                <div className="flex flex-col items-center justify-center ml-3">
-                  <span
-                    className="mb-2"
-                    style={{ color: "#FAFAFA", fontWeight: 600 }}
-                  >
-                    <img
-                      src={"/logo.png"}
-                      onClick={handleBusinessImage}
-                      alt="Your Image Description"
-                      className="cursor-pointer"
-                    />
-                  </span>{" "}
-                </div>
-
-                <div className="flex flex-col items-center justify-center ml-3">
-                  <span
-                    className="mb-2"
-                    style={{ color: "#FAFAFA", fontWeight: 600 }}
-                  >
-                    Ray Naz
-                  </span>{" "}
-                  <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
-                    Visit Store
-                  </a>
-                </div>
->>>>>>> aae7683cf9a8c919d3dae0e4b8e3a8cfbf16afff
               </div>
             </div>
           </div>
