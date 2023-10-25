@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, use } from "react";
 import { signOut } from "next-auth/react"
 import Link from "next/link";
 // import { navItems } from "./items";
@@ -8,10 +8,12 @@ import { useRouter } from "next/router";
 import { useNavigation } from "../../hooks/useNavigation";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchBusiness } from '../../redux/slices/getBusiness';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [businessName, setBusinessName] = useState("");
   const router = useRouter();
   const { pathname } = router;
   const curPath = pathname.split("/")[1];
@@ -19,14 +21,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const { navItems } = useNavigation();
   const trigger = useRef(null);
   const sidebar = useRef(null);
-  const BusinessName = Cookies.get("email");
   const ID = Cookies.get("id");
-  const inputFile = useRef(null) 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const inputFile = useRef(null);
+  const businessNam = useRef();
+  const dispatch = useDispatch(); 
+  const { resdata, error, loading, getData:getReq} = useAxios();
 
-  const { resdata, error, loading, putData: putRequest, postData: postRequest} = useAxios();
+  const business = useSelector((state) => state?.business?.business);
 
-  console.log(BusinessName, "<---")
+  console.log(business, "<----business")
   const activeItemIndex = navItems.findIndex(
     (item) => item.section === curPath
   );
@@ -51,6 +54,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     setActiveIndex(initialActiveIndex);
   }, [initialActiveIndex]);
 
+  useEffect(()=>{
+    dispatch(fetchBusiness());
+    // getReq(`/accounts/${ID}`)
+  },[])
+
+  useEffect(()=>{
+    if(resdata.status === 200 ){
+      // setBusinessName(resdata.data.business)
+      businessNam.current = resdata.data.business;
+    }
+  },[resdata])
+  
+  console.log(resdata, "<----resdata")
+  const storedValue = businessNam.current;
   const handleSignout = () =>{
     localStorage.removeItem('signupCurrentStep');
     Cookies.remove('token');
@@ -61,8 +78,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const handleBusinessImage = () =>{
     inputFile.current.click();
     console.log(selectedImage, "<----selectedImage")
-    putRequest(`/accounts/add-business-logo/${ID}`, {access_token:session.accessToken});
-    postRequest(`/media`);
+    // putRequest(`/accounts/add-business-logo/${ID}`, {access_token:session.accessToken});
+    // postRequest(`/media`); 
   }
 
  // close on click outside
@@ -74,7 +91,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     };
     document.addEventListener('click', clickHandler);
     return () => document.removeEventListener('click', clickHandler);
-  });
+  },[]);
 
   return (
     <div className="font-freesans">
@@ -145,7 +162,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                   className="mb-2"
                   style={{ color: "#FAFAFA", fontWeight: 600 }}
                 >
-                  Ray Naz
+                  {storedValue }
                 </span>{" "}
                 <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
                   Visit Store

@@ -6,7 +6,7 @@ import rootReducer from "./slices";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["addNewProduct", "user", "addNewCategory", "showCreateOrder"],
+  whitelist: ["addNewProduct", "user", "addNewCategory", "showCreateOrder", "business"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

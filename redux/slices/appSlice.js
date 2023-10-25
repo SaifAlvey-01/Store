@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import counterSlice from "./counterSlice";
 import userSlice from "./userSlice";
+import businessSlice from "./getBusiness";
 
 const rootReducer = combineReducers({
   counterSlice: counterSlice,
-  userSlice,
+  businessSlice,
+
 });
 
 export default rootReducer;
