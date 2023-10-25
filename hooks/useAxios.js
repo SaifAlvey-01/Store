@@ -21,16 +21,21 @@ const useAxios = () => {
   }
 
   const fetchData = async (url, method = "GET", requestData = null) => {
-    setLoading(true);
-    fetch(`${baseUrl}${url}`, {
+    const reqParams = {
       method,
-      headers,
-      body: JSON.stringify(requestData),
-    })
+      headers: headers,
+     
+    }
+    if(requestData){
+      reqParams['body'] = JSON.stringify(requestData) 
+
+    }
+    setLoading(true);
+    fetch(`${baseUrl}${url}`, reqParams)
       .then((response) => response.text())
       .then((data) => {
         const jsonData = JSON.parse(data);
-        if(jsonData?.data?.id && jsonData?.accessToken){
+        if(jsonData?.data?.id && jsonData?.referhToken){
           Cookies.set('id', jsonData.data.id, { expires: 7 });
           Cookies.set('token', jsonData.referhToken, { expires: 7 });
         }
@@ -49,8 +54,8 @@ const useAxios = () => {
     await fetchData(url, "GET");
   };
 
-  const postData = async (url, requestData) => {
-    await fetchData(url, "POST", requestData);
+  const postData = async (url, requestData, headers) => {
+    await fetchData(url, "POST", requestData, headers);
   };
   const putData = async (url, requestData) => {
     await fetchData(url, "PUT", requestData);
