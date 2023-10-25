@@ -158,11 +158,49 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     borderRadius: "6px",
                   }}
                 >
-                  {storedValue }
-                </span>{" "}
-                <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
-                  Visit Store
-                </a>
+                  <input
+                    type="file"
+                    id="file"
+                    ref={inputFile}
+                    style={{ display: "none" }}
+                    onChange={(event) => {
+                      console.log(event.target.files[0]);
+                      setSelectedImage(event.target.files[0]);
+                    }}
+                  />
+                  <img
+                    src={"/logo.png"}
+                    onClick={handleBusinessImage}
+                    alt="Your Image Description"
+                    className="cursor-pointer"
+                  />
+                </div>
+
+                <div className="flex flex-col items-center justify-center ml-3">
+                  <span
+                    className="mb-2"
+                    style={{ color: "#FAFAFA", fontWeight: 600 }}
+                  >
+                    <img
+                      src={"/logo.png"}
+                      onClick={handleBusinessImage}
+                      alt="Your Image Description"
+                      className="cursor-pointer"
+                    />
+                  </span>{" "}
+                </div>
+
+                <div className="flex flex-col items-center justify-center ml-3">
+                  <span
+                    className="mb-2"
+                    style={{ color: "#FAFAFA", fontWeight: 600 }}
+                  >
+                    Ray Naz
+                  </span>{" "}
+                  <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
+                    Visit Store
+                  </a>
+                </div>
               </div>
             </div>
           </div>
