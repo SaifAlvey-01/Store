@@ -26,7 +26,6 @@ export const fetchBusiness = createAsyncThunk('business/fetchBusiness', async ()
 
   try {
     const response = await axios.get(url, { headers });
-    console.log(response,"<---response")
     return response.data;
   } catch (error) {
       console.log(error)
@@ -45,7 +44,7 @@ const businessSlice = createSlice({
       })
       .addCase(fetchBusiness.fulfilled, (state, action) => {
         state.loading = 'fulfilled';
-        state.business = action.payload;
+        state.business = action.payload.data;
       })
       .addCase(fetchBusiness.rejected, (state, action) => {
         state.loading = 'rejected';

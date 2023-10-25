@@ -5,7 +5,7 @@ import businessSlice from "./getBusiness";
 
 const rootReducer = combineReducers({
   counterSlice: counterSlice,
-  businessSlice,
+  businessSlice: businessSlice,
 
 });
 
