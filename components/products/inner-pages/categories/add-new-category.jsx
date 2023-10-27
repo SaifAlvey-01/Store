@@ -41,17 +41,25 @@ export default function AddNewCategory() {
   const [content, setContent] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const fileInputRef = useRef(null);
+  const fileInputRef2 = useRef(null);
+  const fileInputRef3 = useRef(null);
   const [mainImageUrl, setMainImageUrl] = useState(null);
   const [mobileImageUrl, setMobileImageUrl] = useState(null);
   const [bannerImageUrl, setBannerImageUrl] = useState(null);
   const [name, setName] = useState("");
-
+  const dispatch = useDispatch();
   const handleQuillChange = (value) => {
     setContent(value);
   };
 
   const handleImageButtonClick = () => {
     fileInputRef.current.click();
+  }; 
+  const handleImageButtonClick2 = () => {
+    fileInputRef2.current.click();
+  }; 
+  const handleImageButtonClick3 = () => {
+    fileInputRef3.current.click();
   };
 
   const handleMainImageUrlChange = (e) => {
@@ -61,6 +69,8 @@ export default function AddNewCategory() {
       setMainImageUrl(imageUrl);
     }
   };
+
+
   
   const handleMobileImageUrlChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -77,10 +87,15 @@ export default function AddNewCategory() {
     }
   };
 
+  const handleSubmit = ()=>{
 
+    if(mainImageUrl && bannerImageUrl && mobileImageUrl && name && content){
 
-
-  
+      const body = {mainImageUrl: mainImageUrl, desktopBannerUrl: bannerImageUrl, mobileBannerUrl: mobileImageUrl, name: name, description: content, parentCategoryId: "12"}
+     
+      dispatch(addCategory(body))
+    }
+  }
 
   return (
     <div
@@ -335,13 +350,13 @@ export default function AddNewCategory() {
                   width: "40%",
                   fontSize: "12px",
                 }}
-                onClick={handleImageButtonClick}
+                onClick={handleImageButtonClick2}
 
               >
                 Add Mobile Banner{" "}
               </button>
               <input
-                    ref={fileInputRef}
+                    ref={fileInputRef2}
                     type="file"
                     style={{ display: "none" }}
                     onChange={handleMobileImageUrlChange}
@@ -362,17 +377,18 @@ export default function AddNewCategory() {
                   width: "40%",
                   fontSize: "12px",
                 }}
-                onClick={handleImageButtonClick}
+                onClick={handleImageButtonClick3}
               >
                 Add Desktop Banner{" "}
               </button>
               <input
-                    ref={fileInputRef}
+                    ref={fileInputRef3}
                     type="file"
                     style={{ display: "none" }}
                     onChange={handleDesktopImageUrlChange}
                   />
 
+              <button onClick={handleSubmit}>Add Category</button>
             </div>
           </div>
         </div>

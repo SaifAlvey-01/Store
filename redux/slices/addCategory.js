@@ -1,5 +1,10 @@
 // categorySlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+
+const token = Cookies.get("token");
+const baseUrl = process.env.BASE_URL;
 
 // Define the initial state
 const initialState = {
@@ -20,8 +25,8 @@ export const addCategory = createAsyncThunk('categories/addCategory', async (cat
 
 
 
-    const response = await axios.post(url, categoryData, headers);
-    return response.data; // Assuming the server returns the created category
+    const response = await axios.post(url, categoryData, { headers });
+    return response.data;
   } catch (error) {
     throw error;
   }
