@@ -264,7 +264,7 @@ function Header({
             !isEditingCategory &&
             !isEditingProduct &&
             renderButton("Add Category")}
-          {isEditingProduct || (isEditingCategory && renderEditButtons())}
+          {(isEditingProduct || isEditingCategory) && renderEditButtons()}
         </div>
       </div>
     </header>

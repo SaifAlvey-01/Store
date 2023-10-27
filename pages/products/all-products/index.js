@@ -31,8 +31,7 @@ export default function index() {
         showAddNewProduct || isEditingProduct ? "/back-arrow.png" : undefined
       }
       backUrl={() => {
-        if (isEditingProduct)
-          handleSetIsEditingProduct(false); // Dispatch the action
+        if (isEditingProduct) handleSetIsEditingProduct(false);
         else handleSetShowAddNewProduct(false);
       }}
       showAddNewProduct={showAddNewProduct || isEditingProduct}
@@ -42,7 +41,7 @@ export default function index() {
         showAddNewProduct={showAddNewProduct}
         setShowAddNewProduct={handleSetShowAddNewProduct}
         isEditingProduct={isEditingProduct}
-        setIsEditingProduct={handleSetIsEditingProduct} // Pass the handler to the child component
+        setIsEditingProduct={handleSetIsEditingProduct}
       />
     </Layout>
   );

@@ -13,15 +13,13 @@ export default function AllProducts({
   setIsEditingProduct,
 }) {
   const handleEditClick = () => {
-    setIsEditingProduct(true); // set the editing state to true
+    setIsEditingProduct(true);
   };
 
-  // Check if we need to show the Add New Product component
   if (showAddNewProduct) {
     return <AddNewProduct goBack={() => setShowAddNewProduct(false)} />;
   }
 
-  // Check if we need to show the Edit Product component
   if (isEditingProduct) {
     return <EditProduct goBack={() => setIsEditingProduct(false)} />;
   }
