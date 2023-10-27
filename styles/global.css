@@ -50,5 +50,15 @@ body {
   position: absolute;
 }
 
-.ql-container.ql-snow{ border: none !important;}
-.ql-toolbar.ql-snow{ border-top: none !important; border-left: none !important; border-right: none !important;}
+.ql-container.ql-snow {
+  border: none !important;
+}
+.ql-toolbar.ql-snow {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.scroll-section::-webkit-scrollbar {
+  display: none;
+}

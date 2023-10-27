@@ -311,6 +311,57 @@ export default function AddNewProduct() {
           <div className="px-0 py-4 mt-3 ">
             <CustomEditor />
           </div>
+          <div
+            className="p-4 mt-4"
+            style={{
+              borderRadius: "10px",
+              backgroundColor: "var(--white-color, #FFF)",
+              border: "1px solid #e3e3e3",
+            }}
+          >
+            {" "}
+            <div className="font-freesans flex flex-col items-start justify-start">
+              <span
+                className="font-freesans mb-2"
+                style={{
+                  color: "#4B4B4B",
+                  fontWeight: 500,
+                  fontSize: "14px",
+                }}
+              >
+                Variants{" "}
+              </span>
+              <span
+                className="m-0 font-freesans"
+                style={{
+                  color: "#8E8E8E",
+                  fontWeight: 400,
+                  fontSize: "12px",
+                }}
+              >
+                Add variants like size, color, etc to the product.
+              </span>
+            </div>
+            <div className="flex flex-row items-center justify-center mt-6">
+              {" "}
+              <button
+                className=" cursor-pointer ml-4"
+                style={{
+                  backgroundColor: "#ffffff",
+                  color: "#4162FF",
+                  padding: "8px 24px",
+                  borderRadius: "4px",
+                  border: "1px dashed #4162FF",
+                }}
+                onClick={() => {
+                  setShowSidebar(true);
+                  setContentType("add");
+                }}
+              >
+                Add Variants{" "}
+              </button>
+            </div>
+          </div>
         </div>
 
         <div
@@ -542,57 +593,6 @@ export default function AddNewProduct() {
                   Set up GST{" "}
                 </span>
               </div>
-            </div>
-          </div>
-          <div
-            className="p-4 mt-6"
-            style={{
-              borderRadius: "10px",
-              backgroundColor: "var(--white-color, #FFF)",
-              border: "1px solid #e3e3e3",
-            }}
-          >
-            {" "}
-            <div className="font-freesans flex flex-col items-start justify-start">
-              <span
-                className="font-freesans mb-2"
-                style={{
-                  color: "#4B4B4B",
-                  fontWeight: 500,
-                  fontSize: "14px",
-                }}
-              >
-                Variants{" "}
-              </span>
-              <span
-                className="m-0 font-freesans"
-                style={{
-                  color: "#8E8E8E",
-                  fontWeight: 400,
-                  fontSize: "12px",
-                }}
-              >
-                Add variants like size, color, etc to the product.
-              </span>
-            </div>
-            <div className="flex flex-row items-center justify-center mt-6">
-              {" "}
-              <button
-                className=" cursor-pointer ml-4"
-                style={{
-                  backgroundColor: "#ffffff",
-                  color: "#4162FF",
-                  padding: "8px 24px",
-                  borderRadius: "4px",
-                  border: "1px dashed #4162FF",
-                }}
-                onClick={() => {
-                  setShowSidebar(true);
-                  setContentType("add");
-                }}
-              >
-                Add Variants{" "}
-              </button>
             </div>
           </div>
           <div

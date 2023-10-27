@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../../free-trial-footer";
 import CreateOrder from "../inner-pages/create-order";
+import OrdersToolBar from "../inner-pages/orders-tool-bar";
+import OrderListing from "../inner-pages/orders-listing";
+import OrdersFilterBar from "../inner-pages/orders-filter-bar";
 
 export default function AllOrders({ showCreateOrder, setShowCreateOrder }) {
   if (showCreateOrder) {
@@ -16,7 +19,16 @@ export default function AllOrders({ showCreateOrder, setShowCreateOrder }) {
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      <div
+      <div className="flex justify-center w-full">
+        <OrdersFilterBar setShowCreateOrder={setShowCreateOrder} />
+      </div>
+
+      <div className="w-full flex-grow flex flex-col mb-4">
+        {" "}
+        <OrderListing className="flex-grow" />
+      </div>
+
+      {/* <div
         className=" my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-6 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           // border: "1px solid #e3e3e3",
@@ -62,7 +74,7 @@ export default function AllOrders({ showCreateOrder, setShowCreateOrder }) {
             Create Order
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className="w-[90%] mx-4 mb-8 mt-2 flex flex-col items-center justify-between">
         <FreeTrialFooter />
