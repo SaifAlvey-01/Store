@@ -8,7 +8,7 @@ const baseUrl = process.env.BASE_URL;
 
 // Define the initial state
 const initialState = {
-  category: null,
+  category: {},
   loading: false,
   error: null,
 };
@@ -32,6 +32,23 @@ export const addCategory = createAsyncThunk('categories/addCategory', async (cat
   }
 });
 
+export const getAllCategories = createAsyncThunk('categories/getAllCategories', async (categoryData) => {
+  try {
+    const url = `${baseUrl}/categories/get-all-categories`;
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    };
+    
+
+    const response = await axios.get(url,{params: categoryData, headers:headers});
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+});
+
 // Create the slice
 const categorySlice = createSlice({
   name: 'categories',
@@ -48,6 +65,19 @@ const categorySlice = createSlice({
         state.category = action.payload;
       })
       .addCase(addCategory.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getAllCategories.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getAllCategories.fulfilled, (state, action) => {
+        state.loading = false;
+        console.log(action.payload)
+        state.category = action.payload;
+      })
+      .addCase(getAllCategories.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
