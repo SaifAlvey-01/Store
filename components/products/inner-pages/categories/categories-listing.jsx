@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
 import CategoriesEditDropdown from "../../../dropdowns/categories-edit-dropdown";
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCategories } from '../../../../redux/slices/addCategory';
+import Cookies from 'js-cookie';
 
 const headers = [
   { title: "Categories" },
@@ -57,7 +60,16 @@ const data = [
 export default function CategoriesListing({ onEditClick }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
+  const dispatch = useDispatch();
+  const {category, loading, error} = useSelector((state) => state.addCategory);
+  const id = Cookies.get("id");
 
+  useEffect(() => {
+    // Dispatch the getAllCategories action when the component mounts
+    dispatch(getAllCategories({ storeId: id }));
+  }, [dispatch]);
+
+  console.log(category,"<---category")
   useEffect(() => {
     function handleOutsideClick(event) {
       if (
@@ -108,7 +120,7 @@ export default function CategoriesListing({ onEditClick }) {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {data.map((row, index) => (
+          {category?.data?.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
                 style={{ borderBottom: "1px solid #EAECF0" }}
@@ -116,22 +128,22 @@ export default function CategoriesListing({ onEditClick }) {
               >
                 <img
                   className="h-11 w-11"
-                  src={row.categoryImage}
-                  alt={row.categoryName}
+                  src={row.mobileBannerUrl}
+                  alt={row.mobileBannerUrl}
                 />
                 <div className="ml-2 flex flex-col ">
                   <span
                     className="font-freesans mb-2"
                     style={{ color: "4B4B4B", fontSize: "12px" }}
                   >
-                    {row.categoryName}
+                    {row.name}
                   </span>
                   <span
                     className="font-freesans"
                     style={{ color: "#8E8E8E", fontSize: "10px" }}
                   >
                     {" "}
-                    {row.categoryDescription}
+                    {row.description}
                   </span>
                 </div>
               </td>
@@ -149,7 +161,7 @@ export default function CategoriesListing({ onEditClick }) {
                     fontWeight: 400,
                   }}
                 >
-                  {row.products}
+                  {row.totalProducts}
                 </span>{" "}
               </td>
               <td
