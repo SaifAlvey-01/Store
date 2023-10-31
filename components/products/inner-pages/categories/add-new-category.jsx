@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
 import {addCategory} from "../../../../redux/slices/addCategory";
 import { useDispatch } from 'react-redux';
-
+import cogoToast from 'cogo-toast';
 
 const modules = {
   toolbar: [
@@ -43,9 +43,9 @@ export default function AddNewCategory() {
   const fileInputRef = useRef(null);
   const fileInputRef2 = useRef(null);
   const fileInputRef3 = useRef(null);
-  const [mainImageUrl, setMainImageUrl] = useState(null);
-  const [mobileImageUrl, setMobileImageUrl] = useState(null);
-  const [bannerImageUrl, setBannerImageUrl] = useState(null);
+  const [mainImageUrl, setMainImageUrl] = useState("");
+  const [mobileImageUrl, setMobileImageUrl] = useState("");
+  const [bannerImageUrl, setBannerImageUrl] = useState("");
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const handleQuillChange = (value) => {
@@ -89,11 +89,13 @@ export default function AddNewCategory() {
 
   const handleSubmit = ()=>{
 
-    if(mainImageUrl && bannerImageUrl && mobileImageUrl && name && content){
+    if(name){
 
       const body = {mainImageUrl: mainImageUrl, desktopBannerUrl: bannerImageUrl, mobileBannerUrl: mobileImageUrl, name: name, description: content, parentCategoryId: "12"}
      
       dispatch(addCategory(body))
+    }else{
+      cogoToast.error('Please enter the required field');
     }
   }
 
