@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import CustomDrawer from "./custom-drawer";
-import UnitSelect from "./unit-select";
+import CustomDrawer from "../../../drawer-contents/custom-drawer";
 // import QuillNoSSRWrapper from "../../../RichTextEditor";
 import { CustomEditor } from "../../../TinyMCE";
+import UnitSelect from "../../../dropdown-selects/unit-select";
 
 const modules = {
   toolbar: [
@@ -355,7 +355,7 @@ export default function AddNewProduct() {
                 }}
                 onClick={() => {
                   setShowSidebar(true);
-                  setContentType("add");
+                  setContentType("add-variant");
                 }}
               >
                 Add Variants{" "}
@@ -661,7 +661,7 @@ export default function AddNewProduct() {
                 }}
                 onClick={() => {
                   setShowSidebar(true);
-                  setContentType("edit");
+                  setContentType("edit-variant");
                 }}
               >
                 Edit Variant{" "}

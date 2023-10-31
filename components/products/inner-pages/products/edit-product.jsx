@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
-import CustomDrawer from "./custom-drawer";
-import UnitSelect from "./unit-select";
+import CustomDrawer from "../../../drawer-contents/custom-drawer";
 import { CustomEditor } from "../../../TinyMCE";
-import TagSelect from "./tag-select";
+import UnitSelect from "../../../dropdown-selects/unit-select";
+import TagSelect from "../../../dropdown-selects/tag-select";
 
 const variantData = [
   {
@@ -649,7 +649,7 @@ export default function EditProduct() {
                   <div
                     onClick={() => {
                       setShowSidebar(true);
-                      setContentType("edit-variant");
+                      setContentType("edit-product-variant");
                     }}
                     style={{
                       borderRadius: "6px",
@@ -791,7 +791,7 @@ export default function EditProduct() {
                 }}
                 onClick={() => {
                   setShowSidebar(true);
-                  setContentType("edit");
+                  setContentType("edit-variant");
                 }}
               >
                 Edit Variant{" "}

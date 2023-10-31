@@ -21,12 +21,12 @@ const OtherTabValues = [
 
 export default function OrdersFilterBar({ setShowCreateOrder }) {
   const [activeTab, setActiveTab] = useState(0);
-  const [isDropdownVisible, setDropdownVisible] = useState(false); // New state
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isDownloadDropdownVisible, setDownloadDropdownVisible] =
     useState(false);
   const downloadRef = useRef(null);
-  const otherTabRef = useRef(null); // New reference
-  const dropdownRef = useRef(null); // New ref for the dropdown
+  const otherTabRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     function handleDocumentClick(event) {
