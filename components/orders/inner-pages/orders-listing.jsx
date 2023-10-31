@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../pagination";
-import ProductsEditDropdown from "../../dropdowns/products-edit-dropdown";
 import OrdersToolBar from "./orders-tool-bar";
 
 const headers = [
@@ -102,7 +101,6 @@ const data = [
     status: "Pending",
     amount: "₹5,333",
   },
-  // ... Add more rows similar to the above format
 ];
 
 export default function OrderListing({ onEditClick }) {
@@ -298,11 +296,11 @@ export default function OrderListing({ onEditClick }) {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="8" // fixed width
-                    height="8" // fixed height
+                    width="8"
+                    height="8"
                     viewBox="0 0 8 8"
                     fill="none"
-                    style={{ flexShrink: 0 }} // This ensures the SVG doesn't shrink
+                    style={{ flexShrink: 0 }}
                   >
                     <circle
                       cx="4"

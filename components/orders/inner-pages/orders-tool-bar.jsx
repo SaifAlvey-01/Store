@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import ConditionSelect from "./condition-select";
+import ConditionSelect from "../../dropdown-selects/condition-select";
 
 export default function OrdersToolBar({ setShowAddNewProduct }) {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -232,7 +232,7 @@ export default function OrdersToolBar({ setShowAddNewProduct }) {
                 border: "1px solid #EDEDED",
                 boxShadow: "-1px 4px 4px 0px rgba(28, 28, 75, 0.08)",
                 borderRadius: "8px",
-                width: "200px", // Adjusted width
+                width: "200px",
                 backgroundColor: "#fff",
                 height: "auto",
               }}
