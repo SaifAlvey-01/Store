@@ -3,10 +3,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import axiosInstance from '../../middleware/axiosInstance';
 
 
 const ID = Cookies.get("id");
-const token = Cookies.get("token");
+
 const baseUrl = process.env.BASE_URL;
 
 const initialState = {
@@ -15,17 +16,12 @@ const initialState = {
   error: null,
 };
 
-export const fetchBusiness = createAsyncThunk('business/fetchBusiness', async () => {
+export const fetchBusiness = createAsyncThunk('business/fetchBusiness', async (token) => {
 
   const url = `${baseUrl}/accounts/${ID}`;
 
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
-  };
-
   try {
-    const response = await axios.get(url, { headers });
+    const response = await axiosInstance.get(url);
     return response.data;
   } catch (error) {
       console.log(error)
