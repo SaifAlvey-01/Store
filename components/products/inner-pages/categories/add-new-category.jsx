@@ -69,8 +69,6 @@ export default function AddNewCategory() {
       setMainImageUrl(imageUrl);
     }
   };
-
-
   
   const handleMobileImageUrlChange = (e) => {
     const selectedFile = e.target.files[0];

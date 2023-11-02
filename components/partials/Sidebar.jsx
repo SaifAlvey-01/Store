@@ -35,7 +35,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
   const [showLoading, setShowLoading] = useState(false);
-  const [, forceUpdate] = useState();
 
   const activeSubItemIndex = navItems[activeIndex]?.subItems
     ? navItems[activeIndex]?.subItems?.findIndex(
@@ -55,9 +54,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   }, [initialActiveIndex]);
 
   useEffect(()=>{
-    dispatch(fetchBusiness());
-    // getReq(`/accounts/${ID}`)
+    const token = Cookies.get("token");
+    dispatch(fetchBusiness(token));
   },[])
+
+  
 
 
   

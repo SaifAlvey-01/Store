@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { use, useEffect } from "react";
 import Lottie from "lottie-react";
 import animationData from "../public/animation_ll6mnwur.json";
 import { useRouter } from "next/router";
 import cogoToast from "cogo-toast";
+
 
 const Loading = ({
   url = "/forgot",

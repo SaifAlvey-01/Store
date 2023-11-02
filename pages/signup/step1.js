@@ -23,7 +23,6 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   } = useForm();
 
   useEffect(()=>{
-    console.log(resdata, "<asasd")
     if(Object.keys(resdata).length > 0 ){
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/dashboard");
@@ -32,9 +31,9 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
       }
 
     }
-
+    
   },[resdata])
-
+  
 
 
   useEffect(() => {
