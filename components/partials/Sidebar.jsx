@@ -24,7 +24,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const inputFile = useRef(null);
   const businessNam = useRef();
   const dispatch = useDispatch(); 
-
+  const id = Cookies.get("id");
   const business = useSelector((state) => state?.getBusiness?.business?.business
   );
 
@@ -54,9 +54,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   }, [initialActiveIndex]);
 
   useEffect(()=>{
-    const token = Cookies.get("token");
-    dispatch(fetchBusiness(token));
-  },[])
+    dispatch(fetchBusiness(id));
+  },[id])
 
   
 

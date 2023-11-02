@@ -2,7 +2,6 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
-import axios from "axios";
 import axiosInstance from "../middleware/axiosInstance";
 
 const useAxios = () => {
@@ -26,7 +25,7 @@ const useAxios = () => {
       if (jsonData?.data?.id && jsonData?.accessToken) {
         Cookies.set("id", jsonData.data.id, { expires: 7 });
         Cookies.set("token", jsonData.accessToken, { expires: 7 });
-        Cookies.set("refreshToken", jsonData.refreshToken, { expires: 7 });
+        Cookies.set("referhToken", jsonData.referhToken, { expires: 7 });
       }
 
       setData(jsonData);
