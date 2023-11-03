@@ -11,8 +11,11 @@ const persistConfig = {
     "addNewProduct",
     "user",
     "addNewCategory",
+    "addNewSubCategory",
     "showCreateOrder",
     "business",
+    "editProduct",
+    "editCategory",
   ],
 };
 
