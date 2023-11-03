@@ -1,13 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-// import productService from "../services/productService";
 
-// Async Thunk for fetching products
 const fetchProducts = createAsyncThunk("products/fetchAll", async () => {
   const response = await productService.getProducts();
   return response.data;
 });
 
-// Async Thunk for creating a new product
 const createProduct = createAsyncThunk(
   "products/create",
   async (productData) => {
@@ -16,7 +13,6 @@ const createProduct = createAsyncThunk(
   }
 );
 
-// Async Thunk for updating a product
 const updateProduct = createAsyncThunk(
   "products/update",
   async (productData) => {
@@ -63,5 +59,4 @@ const productSlice = createSlice({
 
 export default productSlice.reducer;
 
-// Export the async thunks for use in components
 export { fetchProducts, createProduct, updateProduct };

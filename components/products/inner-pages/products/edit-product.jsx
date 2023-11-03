@@ -99,13 +99,12 @@ export default function EditProduct() {
               <div className="flex flex-col">
                 {" "}
                 <button
-                  className="cursor-pointer"
+                  className="cursor-pointer w-[80%] md:w-[70%]"
                   style={{
                     backgroundColor: "#4162FF",
                     color: "#ffffff",
                     padding: "8px 12px",
                     borderRadius: "4px",
-                    width: "70%",
                     fontSize: "12px",
                   }}
                 >
@@ -575,7 +574,7 @@ export default function EditProduct() {
           >
             {" "}
             <div className="font-freesans flex flex-row items-center justify-between">
-              <div className="font-freesans flex flex-col items-start justify-start">
+              <div className="font-freesans flex flex-col items-start justify-start w-[50%]">
                 <span
                   className="font-freesans mb-2"
                   style={{
@@ -592,7 +591,7 @@ export default function EditProduct() {
                     color: "#8E8E8E",
                     fontWeight: 400,
                     fontSize: "12px",
-                    width: "calc(100% - 90px)",
+                    width: "80%",
                   }}
                 >
                   Add variants like size, color, etc to the product.

@@ -78,13 +78,12 @@ export default function AddNewProduct() {
               <div className="flex flex-col">
                 {" "}
                 <button
-                  className="cursor-pointer"
+                  className="cursor-pointer w-[80%] md:w-[70%]"
                   style={{
                     backgroundColor: "#4162FF",
                     color: "#ffffff",
                     padding: "8px 12px",
                     borderRadius: "4px",
-                    width: "70%",
                     fontSize: "12px",
                   }}
                 >

@@ -59,7 +59,7 @@ export default function InventoryToolBar() {
       </div>
 
       {/* Buttons and Dropdowns - Placed to the right */}
-      <div className="flex flex-row mt-4 md:mt-0 space-x-2 md:space-y-0 md:space-x-4">
+      <div className="flex flex-row items-center mt-4 md:mt-0 space-x-2 md:space-y-0 md:space-x-4">
         <div className="flex items-center flex-row mt-4 md:mt-0 space-x-2 md:space-y-0 md:space-x-4">
           <input
             style={{

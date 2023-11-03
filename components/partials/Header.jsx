@@ -17,6 +17,7 @@ function Header({
   showCreateOrder,
   isEditingProduct,
   isEditingCategory,
+  showAddNewSubCategory,
 }) {
   const router = useRouter();
   const [notificationDropdownOpen, setNotificationDropdownOpen] =
@@ -83,60 +84,6 @@ function Header({
       }
     }
   };
-
-  const renderButton = (label) => (
-    <button
-      className="cursor-pointer"
-      style={{
-        backgroundColor: "#4162FF",
-        color: "#ffffff",
-        padding: "9px 24px",
-        borderRadius: "4px",
-      }}
-    >
-      {label}
-    </button>
-  );
-
-  const renderEditButtons = () => (
-    <div className="flex gap-4">
-      <button
-        className="cursor-pointer"
-        style={{
-          backgroundColor: "#fff",
-          border: "1px dashed #FF5353",
-          color: "#FF5353",
-          padding: "9px 24px",
-          borderRadius: "4px",
-        }}
-      >
-        Delete
-      </button>
-      <button
-        className="cursor-pointer"
-        style={{
-          backgroundColor: "#fff",
-          border: "1px solid #4162FF",
-          color: "#4162FF",
-          padding: "9px 24px",
-          borderRadius: "4px",
-        }}
-      >
-        Preview
-      </button>
-      <button
-        className="cursor-pointer"
-        style={{
-          backgroundColor: "#4162FF",
-          color: "#ffffff",
-          padding: "9px 24px",
-          borderRadius: "4px",
-        }}
-      >
-        Update
-      </button>
-    </div>
-  );
 
   return (
     <header className="sticky top-0 lg:shadow bg-white border-b border-slate-200 z-30">
@@ -252,19 +199,106 @@ function Header({
               </div>
             </>
           )}
-          {showCreateOrder &&
-            !isEditingProduct &&
-            !isEditingCategory &&
-            renderButton("Create Order")}
-          {showAddNewProduct &&
-            !isEditingCategory &&
-            !isEditingProduct &&
-            renderButton("Add Product")}
+          {showCreateOrder && !isEditingProduct && !isEditingCategory && (
+            <button
+              // onClick={handleCreateOrderClick}
+              className="cursor-pointer"
+              style={{
+                backgroundColor: "#4162FF",
+                color: "#ffffff",
+                padding: "9px 24px",
+                borderRadius: "4px",
+              }}
+            >
+              Create Order
+            </button>
+          )}
+          {showAddNewProduct && !isEditingCategory && !isEditingProduct && (
+            <button
+              // onClick={handleAddProductClick}
+              className="cursor-pointer"
+              style={{
+                backgroundColor: "#4162FF",
+                color: "#ffffff",
+                padding: "9px 24px",
+                borderRadius: "4px",
+              }}
+            >
+              Add Product
+            </button>
+          )}
           {showAddNewCategory &&
             !isEditingCategory &&
             !isEditingProduct &&
-            renderButton("Add Category")}
-          {(isEditingProduct || isEditingCategory) && renderEditButtons()}
+            !showAddNewSubCategory && (
+              <button
+                // onClick={handleAddCategory}
+                className="cursor-pointer"
+                style={{
+                  backgroundColor: "#4162FF",
+                  color: "#ffffff",
+                  padding: "9px 24px",
+                  borderRadius: "4px",
+                }}
+              >
+                Add Category
+              </button>
+            )}
+          {showAddNewSubCategory && !isEditingCategory && !isEditingProduct && (
+            <button
+              className="cursor-pointer"
+              style={{
+                backgroundColor: "#4162FF",
+                color: "#ffffff",
+                padding: "9px 24px",
+                borderRadius: "4px",
+              }}
+            >
+              Add SubCategory
+            </button>
+          )}
+          {(isEditingProduct || isEditingCategory) && (
+            <div className="flex gap-4">
+              <button
+                // onClick={handleDeleteClick}
+                className="cursor-pointer"
+                style={{
+                  backgroundColor: "#fff",
+                  border: "1px dashed #FF5353",
+                  color: "#FF5353",
+                  padding: "9px 24px",
+                  borderRadius: "4px",
+                }}
+              >
+                Delete
+              </button>
+              <button
+                // onClick={handlePreviewClick}
+                className="cursor-pointer"
+                style={{
+                  backgroundColor: "#fff",
+                  border: "1px solid #4162FF",
+                  color: "#4162FF",
+                  padding: "9px 24px",
+                  borderRadius: "4px",
+                }}
+              >
+                Preview
+              </button>
+              <button
+                // onClick={handleUpdateClick}
+                className="cursor-pointer"
+                style={{
+                  backgroundColor: "#4162FF",
+                  color: "#ffffff",
+                  padding: "9px 24px",
+                  borderRadius: "4px",
+                }}
+              >
+                Update
+              </button>
+            </div>
+          )}{" "}
         </div>
       </div>
     </header>
