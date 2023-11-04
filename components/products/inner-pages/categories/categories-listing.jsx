@@ -69,7 +69,6 @@ export default function CategoriesListing({ onEditClick }) {
     dispatch(getAllCategories({ storeId: id }));
   }, [dispatch]);
 
-  console.log(category,"<---category")
   useEffect(() => {
     function handleOutsideClick(event) {
       if (
