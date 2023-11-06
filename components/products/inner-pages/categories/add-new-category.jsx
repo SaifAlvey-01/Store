@@ -4,6 +4,7 @@ import { addCategory } from "../../../../redux/slices/addCategory";
 import { useDispatch, useSelector } from "react-redux";
 import cogoToast from "cogo-toast";
 import AddNewSubCategory from "./add-new-sub-category";
+import { useCustomEventListener } from "../../../../utils/custom_events";
 
 const modules = {
   toolbar: [
@@ -40,7 +41,7 @@ const formats = [
 
 export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const [content, setContent] = useState("");
-  const [isChecked, setIsChecked] = useState(false); // Initialize isChecked to false
+  const [isChecked, setIsChecked] = useState(false);
   const fileInputRef = useRef(null);
   const fileInputRef2 = useRef(null);
   const fileInputRef3 = useRef(null);
@@ -93,15 +94,15 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (data) => {
     if (name) {
       const body = {
-        mainImageUrl: mainImageUrl,
-        desktopBannerUrl: bannerImageUrl,
-        mobileBannerUrl: mobileImageUrl,
-        name: name,
-        description: content,
-        parentCategoryId: "12",
+        mainImageUrl: data?.mainImageUrl,
+        desktopBannerUrl: data?.bannerImageUrl,
+        mobileBannerUrl: data?.mobileImageUrl,
+        name: data?.name,
+        description: data?.content,
+        parentCategoryId: data?.categoryID ?? "12",
       };
 
       dispatch(addCategory(body));
@@ -109,6 +110,8 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
       cogoToast.error("Please enter the required field");
     }
   };
+
+  useCustomEventListener("add-category", handleSubmit);
 
   return (
     <>
