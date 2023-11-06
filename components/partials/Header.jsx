@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import NotificationDropdown from "../dropdowns/notification-dropdown";
 import ReportsDropdown from "../dropdowns/reports-dropdown";
 import StoreMenuDropdown from "../dropdowns/store-menu-dropdown";
+import { emitCustomEvent } from "../../utils/custom_events";
 
 function Header({
   sidebarOpen,
@@ -24,6 +25,11 @@ function Header({
     useState(false);
   const [reportsDropdownOpen, setReportsDropdownOpen] = useState(false);
   const [storeMenuDropdownOpen, setStoreMenuDropdownOpen] = useState(false);
+  const [mainImageUrl, setMainImageUrl] = useState("");
+  const [mobileImageUrl, setMobileImageUrl] = useState("");
+  const [bannerImageUrl, setBannerImageUrl] = useState("");
+  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
 
   const notificationDropdownRef = useRef(null);
   const reportsDropdownRef = useRef(null);
@@ -232,7 +238,16 @@ function Header({
             !isEditingProduct &&
             !showAddNewSubCategory && (
               <button
-                // onClick={handleAddCategory}
+                onClick={() =>
+                  emitCustomEvent("add-category", {
+                    mainImageUrl,
+                    bannerImageUrl,
+                    mobileImageUrl,
+                    name,
+                    content,
+                    // categoryID,
+                  })
+                }
                 className="cursor-pointer"
                 style={{
                   backgroundColor: "#4162FF",
