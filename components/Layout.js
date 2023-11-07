@@ -13,6 +13,7 @@ const Layout = ({
   showAddNewProduct,
   showAddNewCategory,
   showCreateOrder,
+  showOrderDetails,
   isEditingProduct,
   isEditingCategory,
   showAddNewSubCategory,
@@ -56,6 +57,7 @@ const Layout = ({
           showAddNewProduct={showAddNewProduct}
           showAddNewCategory={showAddNewCategory}
           showCreateOrder={showCreateOrder}
+          showOrderDetails={showOrderDetails}
           isEditingProduct={isEditingProduct}
           isEditingCategory={isEditingCategory}
           showAddNewSubCategory={showAddNewSubCategory}

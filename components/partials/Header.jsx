@@ -16,6 +16,7 @@ function Header({
   showAddNewProduct,
   showAddNewCategory,
   showCreateOrder,
+  showOrderDetails,
   isEditingProduct,
   isEditingCategory,
   showAddNewSubCategory,
@@ -38,7 +39,10 @@ function Header({
   let header = router.pathname.slice(1);
 
   const isShowStateActive =
-    showAddNewProduct || showAddNewCategory || showCreateOrder;
+    showAddNewProduct ||
+    showAddNewCategory ||
+    showCreateOrder ||
+    showOrderDetails;
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -128,25 +132,27 @@ function Header({
                     {backText}
                   </span>
                 </div>{" "}
-                <div className="flex flex-row items-center">
-                  {" "}
-                  <img
-                    style={{
-                      color: "#8E8E8E",
-                    }}
-                    src={"/question-circle.png"}
-                    className="mr-1 w-3 h-3"
-                  />
-                  <span
-                    style={{
-                      color: "#8E8E8E",
-                      fontSize: "12px",
-                    }}
-                  >
+                {!showOrderDetails && (
+                  <div className="flex flex-row items-center">
                     {" "}
-                    How it works{" "}
-                  </span>
-                </div>
+                    <img
+                      style={{
+                        color: "#8E8E8E",
+                      }}
+                      src={"/question-circle.png"}
+                      className="mr-1 w-3 h-3"
+                    />
+                    <span
+                      style={{
+                        color: "#8E8E8E",
+                        fontSize: "12px",
+                      }}
+                    >
+                      {" "}
+                      How it works{" "}
+                    </span>
+                  </div>
+                )}
               </>
             ) : (
               <p
@@ -311,6 +317,37 @@ function Header({
                 }}
               >
                 Update
+              </button>
+            </div>
+          )}{" "}
+          {showOrderDetails && (
+            <div className="flex gap-4">
+              <button
+                // onClick={handleDeleteClick}
+                className="cursor-pointer font-freesans"
+                style={{
+                  backgroundColor: "#fff",
+                  color: "#FF2323",
+                  padding: "9px 20px",
+                  borderRadius: "4px",
+                  fontWeight: 500,
+                  fontSize: 16,
+                }}
+              >
+                Reject Order
+              </button>
+              <button
+                // onClick={handlePreviewClick}
+                className="cursor-pointer"
+                style={{
+                  backgroundColor: "#009821",
+                  color: "#ffffff",
+                  padding: "9px 24px",
+                  borderRadius: "4px",
+                  fontSize: 15,
+                }}
+              >
+                Accept Order
               </button>
             </div>
           )}{" "}
