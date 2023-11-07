@@ -103,7 +103,11 @@ const data = [
   },
 ];
 
-export default function OrderListing({ onEditClick }) {
+export default function OrderListing({
+  showOrderDetails,
+  setShowOrderDetails,
+  setSelectedOrder,
+}) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
 
@@ -175,6 +179,11 @@ export default function OrderListing({ onEditClick }) {
     }
   }
 
+  const handleOrderClick = (order) => {
+    setShowOrderDetails(true);
+    setSelectedOrder(order);
+  };
+
   return (
     <div className="flex justify-between items-center mt-2 px-5 h-full">
       <table
@@ -218,8 +227,15 @@ export default function OrderListing({ onEditClick }) {
         </thead>
         <tbody className="bg-white">
           {data.map((row, index) => (
-            <tr key={index} className="h-auto">
-              <td style={{ borderBottom: "1px solid #EAECF0" }} className="p-3">
+            <tr
+              key={index}
+              onClick={() => handleOrderClick(row)}
+              className="h-auto cursor-pointer"
+            >
+              <td
+                style={{ borderBottom: "1px solid #EAECF0", cursor: "pointer" }}
+                className="p-3"
+              >
                 <div className="flex items-center">
                   <div
                     style={{ backgroundColor: "#F3F5FF" }}

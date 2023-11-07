@@ -8,6 +8,7 @@ import addNewSubCategoryReducer from "./addNewSubCategorySlice";
 import showCreateOrderReducer from "./showCreateOrderSlice";
 import editProductReducer from "./editProductSlice";
 import editCategoryReducer from "./editCategorySlice";
+import showOrderDetailsReducer from "./orderDetailsSlice";
 import getBusiness from "./getBusiness";
 import addCategory from "./addCategory";
 
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   showCreateOrder: showCreateOrderReducer,
   editProduct: editProductReducer,
   editCategory: editCategoryReducer,
+  showOrderDetails: showOrderDetailsReducer,
   getBusiness,
   addCategory,
 });
