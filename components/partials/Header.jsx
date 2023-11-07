@@ -227,7 +227,8 @@ function Header({
           )}
           {showAddNewProduct && !isEditingCategory && !isEditingProduct && (
             <button
-              // onClick={handleAddProductClick}
+              onClick={() => emitCustomEvent("add-product")}
+              type="submit"
               className="cursor-pointer"
               style={{
                 backgroundColor: "#4162FF",
