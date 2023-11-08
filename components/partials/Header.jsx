@@ -26,11 +26,6 @@ function Header({
     useState(false);
   const [reportsDropdownOpen, setReportsDropdownOpen] = useState(false);
   const [storeMenuDropdownOpen, setStoreMenuDropdownOpen] = useState(false);
-  const [mainImageUrl, setMainImageUrl] = useState("");
-  const [mobileImageUrl, setMobileImageUrl] = useState("");
-  const [bannerImageUrl, setBannerImageUrl] = useState("");
-  const [name, setName] = useState("");
-  const [content, setContent] = useState("");
 
   const notificationDropdownRef = useRef(null);
   const reportsDropdownRef = useRef(null);
@@ -245,16 +240,7 @@ function Header({
             !isEditingProduct &&
             !showAddNewSubCategory && (
               <button
-                onClick={() =>
-                  emitCustomEvent("add-category", {
-                    mainImageUrl,
-                    bannerImageUrl,
-                    mobileImageUrl,
-                    name,
-                    content,
-                    // categoryID,
-                  })
-                }
+                onClick={() => emitCustomEvent("add-category")}
                 className="cursor-pointer"
                 style={{
                   backgroundColor: "#4162FF",

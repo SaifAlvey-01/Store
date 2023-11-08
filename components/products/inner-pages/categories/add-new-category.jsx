@@ -97,15 +97,15 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const handleSubmit = (data) => {
     if (name) {
       const body = {
-        mainImageUrl: data?.mainImageUrl,
-        desktopBannerUrl: data?.bannerImageUrl,
-        mobileBannerUrl: data?.mobileImageUrl,
-        name: data?.name,
-        description: data?.content,
-        parentCategoryId: data?.categoryID ?? "12",
+        mainImageUrl: mainImageUrl,
+        desktopBannerUrl: bannerImageUrl,
+        mobileBannerUrl: mobileImageUrl,
+        name: name,
+        description: content,
+        parentCategoryId: "12",
       };
 
-      console.log(body, "<<<----")
+      console.log(body, "<<<----");
       dispatch(addCategory(body));
     } else {
       cogoToast.error("Please enter the required field");
@@ -230,6 +230,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     onChange={(e) => setName(e.target.value)}
+                    value={name}
                     placeholder="Enter Category Name"
                     required
                   />

@@ -488,7 +488,7 @@ export default function OrderDetails() {
               <button
                 onClick={() => {
                   setShowSidebar(true);
-                  setContentType("add-customer-details");
+                  setContentType("add-new-customer");
                 }}
                 style={{
                   borderRadius: "6px",
@@ -909,12 +909,12 @@ export default function OrderDetails() {
         </div>
       </div>
 
-      {/* <CustomDrawer
+      <CustomDrawer
         key={contentType}
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         contentType={contentType}
-      /> */}
+      />
     </div>
   );
 }

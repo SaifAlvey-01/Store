@@ -7,26 +7,27 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddProdyctschema from "../../../../utils/Schemas/productSchema";
 
-
 export default function AddNewProduct() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
-  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     resolver: yupResolver(AddProdyctschema),
   });
-
-
 
   const handleUnitChange = (selectedOption) => {
     console.log(`Selected: ${selectedOption.value}`);
   };
 
-
-  const onSubmitHandler = (data) =>{
-    console.log( data );
+  const onSubmitHandler = (data) => {
+    console.log(data);
     // reset();
-  }
-  useCustomEventListener("add-product", onSubmitHandler)
+  };
+  useCustomEventListener("add-product", onSubmitHandler);
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
       <div
@@ -69,7 +70,10 @@ export default function AddNewProduct() {
               <div className="flex items-center mt-6">
                 {" "}
                 <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                  <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+                  <img
+                    src={"/gallery.png"}
+                    className="w-7 h-7 object-contain"
+                  />
                 </div>
                 <div className="flex flex-col">
                   {" "}
@@ -118,7 +122,6 @@ export default function AddNewProduct() {
                 >
                   Product Information
                 </span>
-
               </div>
               <div className="mt-6">
                 <span
@@ -305,62 +308,70 @@ export default function AddNewProduct() {
                   </span>
                 </div>
               </div>
-
-
-            </div>
-            {/* editor   */}
-            <div className="px-0 py-4 mt-3 ">
-              <CustomEditor />
-            </div>
-            <div
-              className="p-4 mt-4"
-              style={{
-                borderRadius: "10px",
-                backgroundColor: "var(--white-color, #FFF)",
-                border: "1px solid #e3e3e3",
-              }}
-            >
-              {" "}
-              <div className="font-freesans flex flex-col items-start justify-start">
-                <span
-                  className="font-freesans mb-2"
-                  style={{
-                    color: "#4B4B4B",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                  }}
-                >
-                  Variants{" "}
-                </span>
-                <span
-                  className="m-0 font-freesans"
-                  style={{
-                    color: "#8E8E8E",
-                    fontWeight: 400,
-                    fontSize: "12px",
-                  }}
-                >
-                  Add variants like size, color, etc to the product.
-                </span>
-              </div>
-              <div className="flex flex-row items-center justify-center mt-6">
+              <div
+                className="p-4 mt-4"
+                style={{
+                  borderRadius: "10px",
+                  backgroundColor: "var(--white-color, #FFF)",
+                  border: "1px solid #e3e3e3",
+                }}
+              >
                 {" "}
-                <button
-                  className=" cursor-pointer ml-4"
+                <div className="font-freesans flex flex-col items-start justify-start">
+                  <span
+                    className="font-freesans mb-2"
+                    style={{
+                      color: "#4B4B4B",
+                      fontWeight: 500,
+                      fontSize: "14px",
+                    }}
+                  >
+                    Variants{" "}
+                  </span>
+                  <span
+                    className="m-0 font-freesans"
+                    style={{
+                      color: "#8E8E8E",
+                      fontWeight: 400,
+                      fontSize: "12px",
+                    }}
+                  >
+                    Add variants like size, color, etc to the product.
+                  </span>
+                </div>
+                <div className="flex flex-row items-center justify-center mt-6">
+                  {" "}
+                  <button
+                    className=" cursor-pointer ml-4"
+                    style={{
+                      backgroundColor: "#ffffff",
+                      color: "#4162FF",
+                      padding: "8px 24px",
+                      borderRadius: "4px",
+                      border: "1px dashed #4162FF",
+                    }}
+                    onClick={() => {
+                      setShowSidebar(true);
+                      setContentType("add-variant");
+                    }}
+                  >
+                    Add Variants{" "}
+                  </button>
+                </div>
+              </div>
+              {/* editor   */}
+              <div className="px-0 py-4 mt-3 ">
+                <div
+                  className="font-freesans mb-2 mx-1.5"
                   style={{
-                    backgroundColor: "#ffffff",
-                    color: "#4162FF",
-                    padding: "8px 24px",
-                    borderRadius: "4px",
-                    border: "1px dashed #4162FF",
-                  }}
-                  onClick={() => {
-                    setShowSidebar(true);
-                    setContentType("add-variant");
+                    color: "#4B5563",
+                    fontWeight: 500,
+                    fontSize: "13px",
                   }}
                 >
-                  Add Variants{" "}
-                </button>
+                  Product Description{" "}
+                </div>
+                <CustomEditor />
               </div>
             </div>
           </div>
@@ -646,7 +657,11 @@ export default function AddNewProduct() {
                 <div className="flex-grow"></div>
 
                 <div className="flex-none">
-                  <img src="/product1.png" alt="Product" className="w-14 h-14" />
+                  <img
+                    src="/product1.png"
+                    alt="Product"
+                    className="w-14 h-14"
+                  />
                 </div>
               </div>
 
@@ -671,7 +686,7 @@ export default function AddNewProduct() {
             </div>
           </div>
         </div>
-        <button type="submit" >CLICK ME</button>
+        <button type="submit">CLICK ME</button>
         <CustomDrawer
           key={contentType}
           showSidebar={showSidebar}
