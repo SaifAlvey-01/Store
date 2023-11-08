@@ -11,7 +11,7 @@ export default function EditProductVariant({ setShowSidebar }) {
       <div className="h-[600px]">
         <div className="flex justify-between items-center">
           <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-            Edit Variant
+            Edit Variants
           </h3>
         </div>
 

@@ -93,7 +93,7 @@ export default function CustomDrawer({
             {contentType === "add-customer-details" && !addingNewCustomer && (
               <AddCustomerDetails setShowSidebar={setShowSidebar} />
             )}
-            {addingNewCustomer && (
+            {(contentType === "add-new-customer" || addingNewCustomer) && (
               <AddNewCustomer setShowSidebar={setShowSidebar} />
             )}
             {contentType === "add-notes" && !addingNewCustomer && (
@@ -156,7 +156,7 @@ export default function CustomDrawer({
               </button>
             )}
 
-            {addingNewCustomer && (
+            {(contentType === "add-new-customer" || addingNewCustomer) && (
               <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
                 Add Customer{" "}
               </button>

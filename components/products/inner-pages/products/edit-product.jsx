@@ -326,10 +326,121 @@ export default function EditProduct() {
                 </span>
               </div>
             </div>
-          </div>
-          {/* editor   */}
-          <div className="px-0 py-4 mt-3 ">
-            <CustomEditor />
+
+            <div
+              className="p-4 mt-6"
+              style={{
+                borderRadius: "10px",
+                backgroundColor: "var(--white-color, #FFF)",
+                border: "1px solid #e3e3e3",
+              }}
+            >
+              {" "}
+              <div className="font-freesans flex flex-row items-center justify-between">
+                <div className="font-freesans flex flex-col items-start justify-start w-[50%]">
+                  <span
+                    className="font-freesans mb-2"
+                    style={{
+                      color: "#4B4B4B",
+                      fontWeight: 500,
+                      fontSize: "14px",
+                    }}
+                  >
+                    Variants{" "}
+                  </span>
+                  <span
+                    className="m-0 font-freesans"
+                    style={{
+                      color: "#8E8E8E",
+                      fontWeight: 400,
+                      fontSize: "12px",
+                      width: "100%",
+                    }}
+                  >
+                    Add variants like size, color, etc to the product.
+                  </span>
+                </div>{" "}
+              </div>
+              <div className="flex flex-col mt-6">
+                {variantData.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between items-center mb-6"
+                  >
+                    <div className="flex items-center">
+                      {" "}
+                      <div className="bg-[#E1E1E1] rounded-[8px] mr-2.5 w-10 h-10 flex items-center justify-center p-2.5">
+                        <img
+                          src={item.image}
+                          alt={`Description for ${item.title}`}
+                          className="w-7 h-7 object-contain"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        {" "}
+                        <span
+                          className="mb-1"
+                          style={{ color: "#4B4B4B", fontSize: "14px" }}
+                        >
+                          {item.title}
+                        </span>
+                        <p
+                          style={{ color: "#04B000", fontSize: "14px" }}
+                          className="m-0"
+                        >
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      className=" cursor-pointer"
+                      style={{
+                        backgroundColor: "#ffffff",
+                        color: "#4162FF",
+                        padding: "8px 18px",
+                        borderRadius: "4px",
+                        border: "1px dashed #4162FF",
+                      }}
+                      onClick={() => {
+                        setShowSidebar(true);
+                        setContentType("edit-product-variant");
+                      }}
+                    >
+                      Edit Variants{" "}
+                    </button>
+                  </div>
+                ))}
+
+                <div className="flex flex-row items-center justify-center">
+                  <button
+                    className=" cursor-pointer ml-4"
+                    style={{
+                      backgroundColor: "#4162FF",
+                      color: "#ffffff",
+                      padding: "8px 24px",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    Add Another Option{" "}
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* editor   */}
+            <div className="px-0 py-4 mt-3 ">
+              <div
+                className="font-freesans mb-2 mx-1.5"
+                style={{
+                  color: "#4B5563",
+                  fontWeight: 500,
+                  fontSize: "13px",
+                }}
+              >
+                Product Description{" "}
+              </div>
+              <CustomEditor />
+            </div>
           </div>
         </div>
 
@@ -573,112 +684,6 @@ export default function EditProduct() {
             }}
           >
             {" "}
-            <div className="font-freesans flex flex-row items-center justify-between">
-              <div className="font-freesans flex flex-col items-start justify-start w-[50%]">
-                <span
-                  className="font-freesans mb-2"
-                  style={{
-                    color: "#4B4B4B",
-                    fontWeight: 500,
-                    fontSize: "14px",
-                  }}
-                >
-                  Variants{" "}
-                </span>
-                <span
-                  className="m-0 font-freesans"
-                  style={{
-                    color: "#8E8E8E",
-                    fontWeight: 400,
-                    fontSize: "12px",
-                    width: "80%",
-                  }}
-                >
-                  Add variants like size, color, etc to the product.
-                </span>
-              </div>{" "}
-              <button
-                className=" cursor-pointer"
-                style={{
-                  backgroundColor: "#ffffff",
-                  color: "#4162FF",
-                  padding: "8px 18px",
-                  borderRadius: "4px",
-                  border: "1px dashed #4162FF",
-                }}
-                onClick={() => {
-                  setShowSidebar(true);
-                  setContentType("add-variant");
-                }}
-              >
-                Add Variants{" "}
-              </button>
-            </div>
-            <div className="flex flex-col mt-6">
-              {variantData.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between items-center mb-6"
-                >
-                  <div className="flex items-center">
-                    {" "}
-                    <div className="bg-[#E1E1E1] rounded-[8px] mr-2.5 w-10 h-10 flex items-center justify-center p-2.5">
-                      <img
-                        src={item.image}
-                        alt={`Description for ${item.title}`}
-                        className="w-7 h-7 object-contain"
-                      />
-                    </div>
-                    <div className="flex flex-col">
-                      {" "}
-                      <span
-                        className="mb-1"
-                        style={{ color: "#4B4B4B", fontSize: "14px" }}
-                      >
-                        {item.title}
-                      </span>
-                      <p
-                        style={{ color: "#04B000", fontSize: "14px" }}
-                        className="m-0"
-                      >
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    onClick={() => {
-                      setShowSidebar(true);
-                      setContentType("edit-product-variant");
-                    }}
-                    style={{
-                      borderRadius: "6px",
-                      border: "1px dashed #7A91FF",
-                      background: "#FFF",
-                      width: "30px",
-                      height: "30px",
-                      cursor: "pointer",
-                    }}
-                    className="flex justify-center items-center"
-                  >
-                    <img
-                      src="/edit-blue.png"
-                      alt="Description"
-                      className="max-h-full max-w-full"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div
-            className="p-4 mt-6"
-            style={{
-              borderRadius: "10px",
-              backgroundColor: "var(--white-color, #FFF)",
-              border: "1px solid #e3e3e3",
-            }}
-          >
-            {" "}
             <div className="font-freesans flex flex-col items-start justify-start">
               <span
                 className="font-freesans mb-1"
@@ -787,13 +792,14 @@ export default function EditProduct() {
                   padding: "8px 24px",
                   borderRadius: "4px",
                   border: "1px dashed #4162FF",
+                  width: "30%",
                 }}
                 onClick={() => {
                   setShowSidebar(true);
                   setContentType("edit-variant");
                 }}
               >
-                Edit Variant{" "}
+                Edit{" "}
               </button>
             </div>
           </div>
