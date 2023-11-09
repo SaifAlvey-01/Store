@@ -104,8 +104,6 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         description: content,
         parentCategoryId: "12",
       };
-
-      console.log(body, "<<<----");
       dispatch(addCategory(body));
     } else {
       cogoToast.error("Please enter the required field");

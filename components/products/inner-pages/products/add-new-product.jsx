@@ -6,15 +6,18 @@ import UnitSelect from "../../../dropdown-selects/unit-select";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddProdyctschema from "../../../../utils/Schemas/productSchema";
+  
 
 export default function AddNewProduct() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
+ 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
   } = useForm({
     resolver: yupResolver(AddProdyctschema),
   });
@@ -23,10 +26,13 @@ export default function AddNewProduct() {
     console.log(`Selected: ${selectedOption.value}`);
   };
 
-  const onSubmitHandler = (data) => {
-    console.log(data);
-    // reset();
+  const onSubmitHandler = () => {
+    const values = getValues();
+    console.log(values, "<----values")
+    reset();
   };
+
+  console.log(errors, "<---errors")
   useCustomEventListener("add-product", onSubmitHandler);
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -158,6 +164,9 @@ export default function AddNewProduct() {
                   required
                 />
               </div>
+              {errors.name && (
+                    <span style={{ color: "red" }}>{errors.name.message}</span>
+                  )}
               <div className="mt-4">
                 <span
                   className="font-freesans"
