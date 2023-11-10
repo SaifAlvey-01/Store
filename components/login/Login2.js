@@ -25,7 +25,7 @@ const Login2 = ({ inputData }) => {
     register,
     formState: { errors },
   } = useForm();
-
+  
   useEffect(() => {
     if (session?.user) {
       postRequest("/auth/google-login", { access_token: session.accessToken });
@@ -33,13 +33,13 @@ const Login2 = ({ inputData }) => {
       setLoading(false);
       setIsLoading(true);
       // setTimeout(() => {
-      //   router.push("/dashboard");
-      // }, 2000);
-    }
-    
-
-    if (resdata?.status === 200) {
-      if(Object.keys(resdata).length > 0 ){
+        //   router.push("/dashboard");
+        // }, 2000);
+      }
+      
+      
+      if (resdata?.status === 200) {
+        if(Object.keys(resdata).length > 0 ){
         if(resdata?.data?.isProfileComplete ===  true){
           setPasswordError(null);
           setIsLoading(true);
@@ -47,17 +47,17 @@ const Login2 = ({ inputData }) => {
             router.push("/dashboard");
           }, 2000);
         }else{
-          console.log(error,"<--error")
           if(!error && resdata?.data?.isProfileComplete ===  false ){
             router.push("/signup");
             localStorage.setItem("signupCurrentStep", 4);
           }
         }
       }
-    } else {
-      setPasswordError(resdata.message);
+    } 
+    if(error){
+        setPasswordError(error);
     }
-  }, [resdata]);
+  }, [resdata, error]);
 
   useEffect(()=>{
     

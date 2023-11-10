@@ -25,45 +25,45 @@ const useAxios = () => {
       if (jsonData?.data?.id && jsonData?.accessToken) {
         Cookies.set("id", jsonData.data.id, { expires: 7 });
         Cookies.set("token", jsonData.accessToken, { expires: 7 });
-        Cookies.set("referhToken", jsonData.referhToken, { expires: 7 });
       }
 
       setData(jsonData);
     } catch (err) {
-      console.error("Axios error:", err);
-      // setError(err);
-      if (err.response && err.response.status === 401) {
-        // Access token expired, try refreshing it
-        try {
-          const response = await axiosInstance({
-            method: "POST",
-            url: "/refresh-token-endpoint", // Replace with your actual refresh token endpoint
-            data: {
-              refreshToken: Cookie.get("refreshToken"), // Send the stored refresh token
-            },
-          });
+      console.log("Axios error:-->>", err);
 
-          if (response.data.accessToken) {
-            // Refresh successful, store the new access token
-            Cookies.set("token", response.data.accessToken, { expires: 7 });
-            // Retry the original request
-            const retryResponse = await axiosInstance({
-              method,
-              url: `${baseUrl}${url}`,
-              data: requestData,
-            });
+      setError(err?.response?.data?.message);
+      // if (err.response && err.response.status === 401) {
+      //   // Access token expired, try refreshing it
+      //   try {
+      //     const response = await axiosInstance({
+      //       method: "POST",
+      //       url: "/refresh-token-endpoint", // Replace with your actual refresh token endpoint
+      //       data: {
+      //         refreshToken: Cookie.get("refreshToken"), // Send the stored refresh token
+      //       },
+      //     });
 
-            const retryData = retryResponse.data;
-            setData(retryData);
-          } else {
-            setError("Token refresh failed");
-          }
-        } catch (refreshError) {
-          setError("Token refresh failed");
-        }
-      } else {
-        setError(err);
-      }
+      //     if (response.data.accessToken) {
+      //       // Refresh successful, store the new access token
+      //       Cookies.set("token", response.data.accessToken, { expires: 7 });
+      //       // Retry the original request
+      //       const retryResponse = await axiosInstance({
+      //         method,
+      //         url: `${baseUrl}${url}`,
+      //         data: requestData,
+      //       });
+
+      //       const retryData = retryResponse.data;
+      //       setData(retryData);
+      //     } else {
+      //       setError("Token refresh failed");
+      //     }
+      //   } catch (refreshError) {
+      //     setError("Token refresh failed");
+      //   }
+      // } else {
+      //   setError(err);
+      // }
     } finally {
       setLoading(false);
     }

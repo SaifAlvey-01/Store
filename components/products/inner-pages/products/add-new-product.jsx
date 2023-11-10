@@ -26,7 +26,6 @@ export default function AddNewProduct() {
   };
 
   const onSubmitHandler = async (data) => {
-    console.log(data, "<----form data");
     reset();
   };
 

@@ -16,7 +16,7 @@ const SignUp4 = ({ setloading, setCurrentStep }) => {
   // const [isLoading, setIsLoading] = useState(false);
   const [isSelect, setIsSelect] = useState(false);
   const [business, setBusiness] = useState("");
-  let id = Number(Cookie.get("id"));
+  let id = Cookie.get("id");
 
   const handleCountryChange = (selectedOption) => {
     if (selectedOption) {
@@ -136,7 +136,7 @@ const SignUp4 = ({ setloading, setCurrentStep }) => {
                     />
                   </div>
                   <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                    {resdata.message}
+                    {error}
                   </p>
                 </div>
                 <div
