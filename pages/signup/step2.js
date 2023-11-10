@@ -21,7 +21,7 @@ const SignUp2 = ({ setCurrentStep, setFormData, email }) => {
     }
 
     if (resdata.message && resdata.state === "success") {
-      setCustomError(resdata.message);
+      setCustomError(error);
     }
     
   }, [resdata]);

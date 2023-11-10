@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from 'next-auth/react';
-import Cookie from "js-cookie";
 
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
@@ -33,8 +32,6 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     }
     
   },[resdata])
-  
-console.log(errors, "<------errors")
 
   useEffect(() => {
     //google login
@@ -42,7 +39,6 @@ console.log(errors, "<------errors")
     if(session && session?.user){
       postRequest("/auth/google-login", {access_token: session.accessToken});
       Cookies.set('email', session.user.email, { expires: 7 });
-      console.log(resdata,"<----resdata")
     
     }
     //menual login
@@ -51,7 +47,7 @@ console.log(errors, "<------errors")
       setCurrentStep(2);
     }
     if(error){
-      setCustomError(resdata.message)
+      setCustomError(error)
     }
     
   }, [resdata, session]);

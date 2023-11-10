@@ -87,7 +87,7 @@ const SignUp3 = ({ setCurrentStep }) => {
                 </div>
 
                 <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                  {resdata.message}
+                  {error}
                 </p>
               </div>
 
