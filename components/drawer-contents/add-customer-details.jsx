@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 
 const headers = [
   { title: "Name & Email" },
@@ -63,7 +64,21 @@ const data = [
   },
 ];
 
-export default function AddCustomerDetails({ setShowSidebar }) {
+export default function AddCustomerDetails({
+  setShowSidebar,
+  setAddingNewCustomer,
+  showSidebar,
+  contentType,
+}) {
+  const handleAddNewCustomer = () => {
+    setAddingNewCustomer(true);
+    setShowSidebar(true);
+  };
+
+  useEffect(() => {
+    setAddingNewCustomer(false);
+  }, [contentType]);
+
   return (
     <div>
       {" "}
@@ -196,6 +211,35 @@ export default function AddCustomerDetails({ setShowSidebar }) {
             </tbody>
           </table>
         </div>
+      </div>
+      <div
+        style={{
+          borderTop: "1px solid #E5E7EB",
+          padding: "16px 0",
+          position: "sticky",
+          bottom: 16,
+          background: "white",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <button
+          style={{
+            borderRadius: "6px",
+            border: "1px dashed #7A91FF",
+            fontSize: "14px",
+            color: "#7A91FF",
+            backgroundColor: "#ffffff",
+          }}
+          className="px-7 py-2.5 rounded cursor-pointer mr-4"
+          onClick={handleAddNewCustomer}
+        >
+          Add New Customer{" "}
+        </button>
+        <button className="bg-blue-600 text-white px-8 py-2.5 rounded cursor-pointer">
+          Select{" "}
+        </button>
       </div>
     </div>
   );

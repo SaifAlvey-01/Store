@@ -749,7 +749,7 @@ export default function EditProduct() {
                 Google Search Preview
               </span>
             </div>
-            <div className="flex justify-between items-start mt-4">
+            <div className="flex justify-between items-start  my-4">
               {/* Left Div with Product Name, Description, and URL */}
               <div className="flex flex-col pr-4">
                 <span
@@ -811,6 +811,7 @@ export default function EditProduct() {
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         contentType={contentType}
+        setContentType={setContentType}
       />
     </div>
   );

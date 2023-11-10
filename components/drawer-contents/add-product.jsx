@@ -13,7 +13,7 @@ const products = [
   { id: 2, img: "/product-img.png", name: "Shoes 002", price: 10 },
 ];
 
-export default function AddProduct({ setShowSidebar }) {
+export default function AddProduct() {
   const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -132,6 +132,22 @@ export default function AddProduct({ setShowSidebar }) {
             </div>
           ))}
         </div>
+      </div>
+      <div
+        style={{
+          borderTop: "1px solid #E5E7EB",
+          padding: "16px",
+          position: "sticky",
+          bottom: 16,
+          background: "white",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
+          Add Products{" "}
+        </button>
       </div>
     </div>
   );

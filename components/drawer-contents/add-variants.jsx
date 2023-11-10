@@ -1,7 +1,7 @@
 import React from "react";
 import UnitSelect from "../dropdown-selects/unit-select";
 
-export default function AddVariants({ setShowSidebar }) {
+export default function AddVariants() {
   const handleUnitChange = (selectedOption) => {
     console.log(`Selected: ${selectedOption.value}`);
   };
@@ -255,6 +255,22 @@ export default function AddVariants({ setShowSidebar }) {
             </div>
           </div>
         </div>
+      </div>
+      <div
+        style={{
+          borderTop: "1px solid #E5E7EB",
+          padding: "16px 0",
+          position: "sticky",
+          bottom: 16,
+          background: "white",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <button className="bg-blue-600 text-white px-5 py-2.5 rounded cursor-pointer">
+          Add Variant{" "}
+        </button>
       </div>
     </div>
   );

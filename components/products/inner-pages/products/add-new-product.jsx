@@ -6,18 +6,17 @@ import UnitSelect from "../../../dropdown-selects/unit-select";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddProdyctschema from "../../../../utils/Schemas/productSchema";
-  
 
 export default function AddNewProduct() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
- 
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     getValues,
+    reset,
   } = useForm({
     resolver: yupResolver(AddProdyctschema),
   });
@@ -26,16 +25,14 @@ export default function AddNewProduct() {
     console.log(`Selected: ${selectedOption.value}`);
   };
 
-
-  const onSubmitHandler = () => {
-    const values = getValues();
-    console.log(values, "<----values")
+  const onSubmitHandler = async (data) => {
+    console.log(data, "<----form data");
     reset();
   };
-  
-  
-  useCustomEventListener("add-product", onSubmitHandler)
 
+  useCustomEventListener("add-product", () => {
+    handleSubmit(onSubmitHandler)();
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
@@ -164,12 +161,11 @@ export default function AddNewProduct() {
                   placeholder="Enter Product Name"
                   id="name"
                   name="name"
-                  
                 />
               </div>
               {errors.name && (
-                    <span style={{ color: "red" }}>{errors.name.message}</span>
-                  )}
+                <span style={{ color: "red" }}>{errors.name.message}</span>
+              )}
               <div className="mt-4">
                 <span
                   className="font-freesans"
@@ -199,7 +195,6 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Enter Category"
-                  
                 />
               </div>
 
@@ -233,7 +228,6 @@ export default function AddNewProduct() {
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     placeholder="Enter Price"
-                    
                   />
                 </div>
 
@@ -257,7 +251,6 @@ export default function AddNewProduct() {
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     placeholder="Enter Discounted Price"
-                    
                   />
                 </div>
               </div>
@@ -296,7 +289,6 @@ export default function AddNewProduct() {
                       onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                       onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                       placeholder="Enter Price"
-                      
                       style={{
                         border: "none",
                         flex: "1", // Ensures input takes up available space
@@ -329,7 +321,7 @@ export default function AddNewProduct() {
                 }}
               >
                 {" "}
-                <div className="font-freesans flex flex-col items-start justify-start">
+                <div className="font-freesans flex flex-col items-start justify-start  mb-6">
                   <span
                     className="font-freesans mb-2"
                     style={{
@@ -351,10 +343,10 @@ export default function AddNewProduct() {
                     Add variants like size, color, etc to the product.
                   </span>
                 </div>
-                <div className="flex flex-row items-center justify-center mt-6">
+                <div className="flex flex-row items-center justify-center">
                   {" "}
                   <button
-                    className=" cursor-pointer ml-4"
+                    className=" cursor-pointer"
                     style={{
                       backgroundColor: "#ffffff",
                       color: "#4162FF",
@@ -435,7 +427,6 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Eg. 10"
-                  
                 />
               </div>
               <div className="mt-4">
@@ -458,7 +449,6 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Eg. 100007733"
-                  
                 />
               </div>
             </div>
@@ -515,7 +505,6 @@ export default function AddNewProduct() {
                       onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                       onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                       placeholder="Enter Price"
-                      
                       style={{
                         border: "none",
                         flex: "1",
@@ -548,7 +537,6 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Enter HSN Code"
-                  
                 />
 
                 <div className="flex mt-1">
@@ -593,7 +581,6 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Enter GST Percentage"
-                  
                 />
 
                 <div className="flex mt-1">
@@ -639,7 +626,7 @@ export default function AddNewProduct() {
                   Google Search Preview
                 </span>
               </div>
-              <div className="flex justify-between items-start mt-4">
+              <div className="flex justify-between items-start my-4">
                 {/* Left Div with Product Name, Description, and URL */}
                 <div className="flex flex-col pr-4">
                   <span
@@ -704,6 +691,7 @@ export default function AddNewProduct() {
           showSidebar={showSidebar}
           setShowSidebar={setShowSidebar}
           contentType={contentType}
+          setContentType={setContentType}
         />
       </div>
     </form>

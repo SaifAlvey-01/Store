@@ -1,14 +1,14 @@
 import React from "react";
 import UnitSelect from "../dropdown-selects/unit-select";
 
-export default function EditProductVariant({ setShowSidebar }) {
+export default function EditProductVariant() {
   const handleUnitChange = (selectedOption) => {
     console.log(`Selected: ${selectedOption.value}`);
   };
   return (
     <div>
       {" "}
-      <div className="h-[600px]">
+      <div className="h-[650px]">
         <div className="flex justify-between items-center">
           <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
             Edit Variants
@@ -191,6 +191,22 @@ export default function EditProductVariant({ setShowSidebar }) {
           }}
         >
           Delete Variant{" "}
+        </button>
+      </div>
+      <div
+        style={{
+          borderTop: "1px solid #E5E7EB",
+          padding: "16px 0",
+          position: "sticky",
+          bottom: 16,
+          background: "white",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
+          Edit Variant{" "}
         </button>
       </div>
     </div>
