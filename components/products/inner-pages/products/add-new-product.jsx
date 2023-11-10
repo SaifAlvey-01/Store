@@ -6,15 +6,18 @@ import UnitSelect from "../../../dropdown-selects/unit-select";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import AddProdyctschema from "../../../../utils/Schemas/productSchema";
+  
 
 export default function AddNewProduct() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
+ 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
   } = useForm({
     resolver: yupResolver(AddProdyctschema),
   });
@@ -23,11 +26,17 @@ export default function AddNewProduct() {
     console.log(`Selected: ${selectedOption.value}`);
   };
 
-  const onSubmitHandler = (data) => {
-    console.log(data);
-    // reset();
+
+  const onSubmitHandler = () => {
+    const values = getValues();
+    console.log(values, "<----values")
+    reset();
   };
-  useCustomEventListener("add-product", onSubmitHandler);
+  
+  
+  useCustomEventListener("add-product", onSubmitHandler)
+
+
   return (
     <form onSubmit={handleSubmit(onSubmitHandler)}>
       <div
@@ -155,9 +164,12 @@ export default function AddNewProduct() {
                   placeholder="Enter Product Name"
                   id="name"
                   name="name"
-                  required
+                  
                 />
               </div>
+              {errors.name && (
+                    <span style={{ color: "red" }}>{errors.name.message}</span>
+                  )}
               <div className="mt-4">
                 <span
                   className="font-freesans"
@@ -187,7 +199,7 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Enter Category"
-                  required
+                  
                 />
               </div>
 
@@ -221,7 +233,7 @@ export default function AddNewProduct() {
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     placeholder="Enter Price"
-                    required
+                    
                   />
                 </div>
 
@@ -245,7 +257,7 @@ export default function AddNewProduct() {
                     onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                     onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                     placeholder="Enter Discounted Price"
-                    required
+                    
                   />
                 </div>
               </div>
@@ -284,7 +296,7 @@ export default function AddNewProduct() {
                       onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                       onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                       placeholder="Enter Price"
-                      required
+                      
                       style={{
                         border: "none",
                         flex: "1", // Ensures input takes up available space
@@ -423,7 +435,7 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Eg. 10"
-                  required
+                  
                 />
               </div>
               <div className="mt-4">
@@ -446,7 +458,7 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Eg. 100007733"
-                  required
+                  
                 />
               </div>
             </div>
@@ -503,7 +515,7 @@ export default function AddNewProduct() {
                       onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                       onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                       placeholder="Enter Price"
-                      required
+                      
                       style={{
                         border: "none",
                         flex: "1",
@@ -536,7 +548,7 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Enter HSN Code"
-                  required
+                  
                 />
 
                 <div className="flex mt-1">
@@ -581,7 +593,7 @@ export default function AddNewProduct() {
                   onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
                   onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                   placeholder="Enter GST Percentage"
-                  required
+                  
                 />
 
                 <div className="flex mt-1">

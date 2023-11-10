@@ -222,7 +222,10 @@ function Header({
           )}
           {showAddNewProduct && !isEditingCategory && !isEditingProduct && (
             <button
-              onClick={() => emitCustomEvent("add-product")}
+              onClick={(e) => 
+              {  e.preventDefault()
+                emitCustomEvent("add-product")
+              }}
               type="submit"
               className="cursor-pointer"
               style={{
