@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function EditVariants({ setShowSidebar }) {
+export default function EditVariants() {
   return (
     <div>
       {" "}
-      <div className="h-[600px]">
+      <div className="h-[650px]">
         <div className="flex justify-between items-center">
           <div className="flex flex-col items-start mt-4">
             <h3
@@ -76,6 +76,22 @@ export default function EditVariants({ setShowSidebar }) {
             required
           ></textarea>
         </div>
+      </div>
+      <div
+        style={{
+          borderTop: "1px solid #E5E7EB",
+          padding: "16px 0",
+          position: "sticky",
+          bottom: 16,
+          background: "white",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+        }}
+      >
+        <button className="bg-blue-600 text-white px-5 py-2.5 rounded cursor-pointer">
+          Save{" "}
+        </button>
       </div>
     </div>
   );

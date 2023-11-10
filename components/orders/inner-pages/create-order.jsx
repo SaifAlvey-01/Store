@@ -500,6 +500,7 @@ export default function CreateOrder() {
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         contentType={contentType}
+        setContentType={setContentType}
       />
     </div>
   );

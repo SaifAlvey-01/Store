@@ -7,19 +7,20 @@ import AddProduct from "./add-product";
 import AddCustomerDetails from "./add-customer-details";
 import AddNewCustomer from "./add-new-customer";
 import AddNotes from "./add-notes";
+import ShipOrder from "./ship-order";
+import ChooseDeliveryTime from "./choose-delivery time";
+import PickupTimeAndPartner from "./pickup-time-and-partner";
+import AddTrackingDetails from "./add-tracking-details";
 
 export default function CustomDrawer({
   showSidebar,
   setShowSidebar,
   contentType,
+  setContentType,
+  setShowDeliveredButtons,
 }) {
   const [addingNewCustomer, setAddingNewCustomer] = useState(false);
   const sidebarRef = useRef(null);
-
-  const handleAddNewCustomer = () => {
-    setAddingNewCustomer(true);
-    setShowSidebar(true);
-  };
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -36,11 +37,8 @@ export default function CustomDrawer({
   }, []);
 
   useEffect(() => {
-    setAddingNewCustomer(false);
-  }, [contentType]);
-
-  useEffect(() => {
-    if (!showSidebar) {
+    // Reset the state when the sidebar is opened
+    if (showSidebar) {
       setAddingNewCustomer(false);
     }
   }, [showSidebar]);
@@ -58,7 +56,7 @@ export default function CustomDrawer({
             transform: "translateX(0%)",
             transition: "transform 0.3s ease-in-out",
           }}
-          className="fixed top-0 right-0 w-[460px] bg-white z-50 p-4 shadow-lg"
+          className="fixed top-0 right-0 w-[440px] bg-white z-50 p-4 shadow-lg"
           ref={sidebarRef}
         >
           <div
@@ -79,93 +77,75 @@ export default function CustomDrawer({
               onClick={() => setShowSidebar(false)}
             />{" "}
             {contentType === "add-variant" && (
-              <AddVariants setShowSidebar={setShowSidebar} />
+              <AddVariants
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
             {contentType === "edit-variant" && (
-              <EditVariants setShowSidebar={setShowSidebar} />
+              <EditVariants
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
             {contentType === "edit-product-variant" && (
-              <EditProductVariant setShowSidebar={setShowSidebar} />
+              <EditProductVariant
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
             {contentType === "add-product" && (
-              <AddProduct setShowSidebar={setShowSidebar} />
+              <AddProduct
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
             {contentType === "add-customer-details" && !addingNewCustomer && (
-              <AddCustomerDetails setShowSidebar={setShowSidebar} />
+              <AddCustomerDetails
+                setShowSidebar={setShowSidebar}
+                showSidebar={showSidebar}
+                contentType={contentType}
+                setAddingNewCustomer={setAddingNewCustomer}
+              />
             )}
             {(contentType === "add-new-customer" || addingNewCustomer) && (
-              <AddNewCustomer setShowSidebar={setShowSidebar} />
+              <AddNewCustomer
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
             {contentType === "add-notes" && !addingNewCustomer && (
-              <AddNotes setShowSidebar={setShowSidebar} />
+              <AddNotes
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
-          </div>
-
-          <div
-            style={{
-              borderTop: "1px solid #E5E7EB",
-              padding: "16px 0",
-              position: "sticky",
-              bottom: "0",
-              background: "white",
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
-            {contentType === "add-variant" && (
-              <button className="bg-blue-600 text-white px-5 py-2.5 rounded cursor-pointer">
-                Add Variant{" "}
-              </button>
+            {contentType === "ship-order" && (
+              <ShipOrder
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+                setContentType={setContentType}
+              />
             )}
-
-            {contentType === "edit-variant" && (
-              <button className="bg-blue-600 text-white px-5 py-2.5 rounded cursor-pointer">
-                Edit Variant{" "}
-              </button>
+            {contentType === "pickup-time" && (
+              <PickupTimeAndPartner
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+              />
             )}
-            {contentType === "edit-product-variant" && (
-              <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
-                Save{" "}
-              </button>
+            {contentType === "delivery-time" && (
+              <ChooseDeliveryTime
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+                setShowDeliveredButtons={setShowDeliveredButtons}
+              />
             )}
-            {contentType === "add-product" && (
-              <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
-                Add Products{" "}
-              </button>
-            )}
-
-            {contentType === "add-customer-details" && !addingNewCustomer && (
-              <button
-                style={{
-                  borderRadius: "6px",
-                  border: "1px dashed #7A91FF",
-                  fontSize: "14px",
-                  color: "#7A91FF",
-                  backgroundColor: "#ffffff",
-                }}
-                className="px-7 py-2.5 rounded cursor-pointer mr-4"
-                onClick={handleAddNewCustomer}
-              >
-                Add New Customer{" "}
-              </button>
-            )}
-            {contentType === "add-customer-details" && !addingNewCustomer && (
-              <button className="bg-blue-600 text-white px-8 py-2.5 rounded cursor-pointer">
-                Select{" "}
-              </button>
-            )}
-
-            {(contentType === "add-new-customer" || addingNewCustomer) && (
-              <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
-                Add Customer{" "}
-              </button>
-            )}
-
-            {contentType === "add-notes" && (
-              <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
-                Save{" "}
-              </button>
+            {contentType === "tracking-details" && (
+              <AddTrackingDetails
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+                setShowDeliveredButtons={setShowDeliveredButtons}
+              />
             )}
           </div>
         </div>

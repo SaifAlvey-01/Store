@@ -3,12 +3,42 @@ import Style from "./createSearchStyle.module.css";
 import Link from "next/link";
 import CustomDrawer from "../../drawer-contents/custom-drawer";
 
+const orders = [
+  {
+    id: 1,
+    status: "Order Accepted",
+    email: "nftwatcher022@gmail.com",
+    time: "Today, 05:00PM",
+  },
+  {
+    id: 2,
+    status: "Order Shipped",
+    email: "nftwatcher022@gmail.com",
+    time: "Today, 05:00PM",
+  },
+  {
+    id: 3,
+    status: "Order Accepted",
+    email: "nftwatcher022@gmail.com",
+    time: "Today, 05:00PM",
+  },
+  {
+    id: 4,
+    status: "Order Received",
+    email: "nftwatcher022@gmail.com",
+    time: "Today, 05:00PM",
+  },
+  // Add more orders as needed
+];
+
 export default function OrderDetails() {
-  const [selectedRadio, setSelectedRadio] = useState(1);
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
+  const [selectedOrderId, setSelectedOrderId] = useState(null);
 
-  const labels = ["Online Payment", "Cash on Delivery", "Prepaid"];
+  const handleRadioChange = (orderId) => {
+    setSelectedOrderId(orderId);
+  };
 
   return (
     <div
@@ -817,52 +847,63 @@ export default function OrderDetails() {
               style={{ backgroundColor: "#E5E7EB" }}
               className="my-3 h-0.5 border-t-0 opacity-80"
             />
-            <div
-              className="w-[100%]  text-white px-3 py-2.5 flex flex-row justify-between items-center"
-              style={{
-                borderRadius: "6px",
-                backgroundColor: "#F6F7FF",
-                boxSizing: "border-box",
-              }}
-            >
-              <div className="flex justify-between items-center">
-                {" "}
-                <label
-                  className="flex flex-row items-center py-1.5 w-full border border-gray-200 rounded dark:border-gray-700"
+            <div>
+              {orders.map((order) => (
+                <div
+                  key={order.id}
+                  className={`w-[100%] text-white my-1.5 px-3 py-2.5 flex flex-row justify-between items-center ${
+                    selectedOrderId === order.id ? "bg-gray-100" : "bg-F6F7FF"
+                  }`}
                   style={{
-                    color: "#4B4B4B",
-                    fontSize: "14px",
-                    fontWeight: "500",
+                    borderRadius: "6px",
+                    boxSizing: "border-box",
                   }}
                 >
-                  <input
-                    type="radio"
-                    name="selected-customer"
-                    className="w-5 h-5 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    style={{
-                      boxShadow: "none",
-                    }}
-                  />
-                  <span className="flex flex-col ml-2 font-lato ">
-                    <span style={{ fontSize: "14px", color: "#4B4B4B" }}>
-                      Order Received{" "}
-                    </span>{" "}
-                    <span
-                      className="mt-1.5"
-                      style={{ fontSize: "12px", color: "#8E8E8E" }}
+                  <div className="flex justify-between items-center">
+                    <label
+                      className="flex flex-row items-center py-1.5 w-full border border-gray-200 rounded dark:border-gray-700"
+                      style={{
+                        color: "#4B4B4B",
+                        fontSize: "14px",
+                        fontWeight: "500",
+                      }}
                     >
-                      nftwatcher022@gmail.com{" "}
-                    </span>
-                  </span>
-                </label>
-              </div>
+                      <input
+                        type="radio"
+                        name="selected-customer"
+                        checked={selectedOrderId === order.id}
+                        onChange={() => handleRadioChange(order.id)}
+                        className="w-5 h-5 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        style={{
+                          boxShadow: "none",
+                        }}
+                      />
+                      <span className="flex flex-col ml-2 font-lato">
+                        <span style={{ fontSize: "14px", color: "#4B4B4B" }}>
+                          {order.status}
+                        </span>{" "}
+                        <span
+                          className="mt-1.5"
+                          style={{ fontSize: "12px", color: "#8E8E8E" }}
+                        >
+                          {order.email}
+                        </span>
+                      </span>
+                    </label>
+                  </div>
 
-              <span
-                className="font-freesans mt-4 mb-2"
-                style={{ color: "#8E8E8E", fontSize: "13px", fontWeight: 500 }}
-              >
-                Today, 05:00PM{" "}
-              </span>
+                  <span
+                    className="font-freesans mt-4 mb-2"
+                    style={{
+                      color: "#8E8E8E",
+                      fontSize: "13px",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {order.time}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
           <div
@@ -914,6 +955,7 @@ export default function OrderDetails() {
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         contentType={contentType}
+        setContentType={setContentType}
       />
     </div>
   );

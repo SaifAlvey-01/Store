@@ -30,6 +30,7 @@ function Header({
   const [orderAccepted, setOrderAccepted] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
+  const [showDeliveredButtons, setShowDeliveredButtons] = useState(false);
 
   const notificationDropdownRef = useRef(null);
   const reportsDropdownRef = useRef(null);
@@ -95,14 +96,10 @@ function Header({
   };
 
   const handleAcceptOrder = () => {
-    // Perform the logic to accept the order here.
-    // This is just a sample, and you should implement your logic.
     setOrderAccepted(true);
   };
 
   const handleCancelOrder = () => {
-    // Perform the logic to cancel the order here.
-    // This is just a sample, and you should implement your logic.
     setOrderAccepted(false);
   };
 
@@ -357,7 +354,7 @@ function Header({
                 </button>
               </div>
             )}
-            {orderAccepted && showOrderDetails && (
+            {!showDeliveredButtons && orderAccepted && showOrderDetails && (
               <div className="flex gap-4">
                 <button
                   onClick={handleCancelOrder}
@@ -391,6 +388,40 @@ function Header({
                 </button>
               </div>
             )}
+            {showDeliveredButtons && showOrderDetails && (
+              <div className="flex gap-4">
+                <button
+                  // onClick={handleCancelOrder}
+                  className="cursor-pointer"
+                  style={{
+                    backgroundColor: "#fff",
+                    color: "#FF2323",
+                    padding: "9px 30px",
+                    borderRadius: "4px",
+                    fontWeight: 500,
+                    fontSize: 16,
+                  }}
+                >
+                  Failed
+                </button>
+                <button
+                  // onClick={() => {
+                  //   setShowSidebar(true);
+                  //   setContentType("ship-order");
+                  // }}
+                  className="cursor-pointer font-freesans"
+                  style={{
+                    backgroundColor: "#FF9141",
+                    color: "#ffffff",
+                    padding: "9px 36px",
+                    borderRadius: "4px",
+                    fontSize: 15,
+                  }}
+                >
+                  Delivered
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -400,6 +431,7 @@ function Header({
         setShowSidebar={setShowSidebar}
         contentType={contentType}
         setContentType={setContentType}
+        setShowDeliveredButtons={setShowDeliveredButtons}
       />
     </>
   );
