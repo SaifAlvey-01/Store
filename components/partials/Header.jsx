@@ -68,10 +68,11 @@ function Header({
       }
     }
 
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
+    handleOutsideClick()
+    // document.addEventListener("mousedown", handleOutsideClick);
+    // return () => {
+    //   document.removeEventListener("mousedown", handleOutsideClick);
+    // };
   }, []);
 
   function capitalizeAndSpace(str) {
