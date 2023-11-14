@@ -31,6 +31,7 @@ function Header({
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
   const [showDeliveredButtons, setShowDeliveredButtons] = useState(false);
+  const [hideButtons, setHideButtons] = useState(false);
 
   const notificationDropdownRef = useRef(null);
   const reportsDropdownRef = useRef(null);
@@ -68,7 +69,7 @@ function Header({
       }
     }
 
-    handleOutsideClick()
+    handleOutsideClick();
     // document.addEventListener("mousedown", handleOutsideClick);
     // return () => {
     //   document.removeEventListener("mousedown", handleOutsideClick);
@@ -98,10 +99,18 @@ function Header({
 
   const handleAcceptOrder = () => {
     setOrderAccepted(true);
+    setShowDeliveredButtons(false);
   };
 
   const handleCancelOrder = () => {
     setOrderAccepted(false);
+    setShowDeliveredButtons(false);
+  };
+
+  const handleDeliveredOrder = () => {
+    setHideButtons(true);
+    setOrderAccepted(false);
+    setShowDeliveredButtons(false);
   };
 
   return (
@@ -221,207 +230,210 @@ function Header({
                 </div>
               </>
             )}
-            {showCreateOrder && !isEditingProduct && !isEditingCategory && (
-              <button
-                // onClick={handleCreateOrderClick}
-                className="cursor-pointer"
-                style={{
-                  backgroundColor: "#4162FF",
-                  color: "#ffffff",
-                  padding: "9px 24px",
-                  borderRadius: "4px",
-                }}
-              >
-                Create Order
-              </button>
-            )}
-            {showAddNewProduct && !isEditingCategory && !isEditingProduct && (
-              <button
-                onClick={() => emitCustomEvent("add-product")}
-                type="submit"
-                className="cursor-pointer"
-                style={{
-                  backgroundColor: "#4162FF",
-                  color: "#ffffff",
-                  padding: "9px 24px",
-                  borderRadius: "4px",
-                }}
-              >
-                Add Product
-              </button>
-            )}
-            {showAddNewCategory &&
-              !isEditingCategory &&
-              !isEditingProduct &&
-              !showAddNewSubCategory && (
-                <button
-                  onClick={() => emitCustomEvent("add-category")}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#4162FF",
-                    color: "#ffffff",
-                    padding: "9px 24px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Add Category
-                </button>
-              )}
-            {showAddNewSubCategory &&
-              !isEditingCategory &&
-              !isEditingProduct && (
-                <button
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#4162FF",
-                    color: "#ffffff",
-                    padding: "9px 24px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Add SubCategory
-                </button>
-              )}
-            {(isEditingProduct || isEditingCategory) && (
-              <div className="flex gap-4">
-                <button
-                  // onClick={handleDeleteClick}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#fff",
-                    border: "1px dashed #FF5353",
-                    color: "#FF5353",
-                    padding: "9px 24px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Delete
-                </button>
-                <button
-                  // onClick={handlePreviewClick}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#fff",
-                    border: "1px solid #4162FF",
-                    color: "#4162FF",
-                    padding: "9px 24px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Preview
-                </button>
-                <button
-                  // onClick={handleUpdateClick}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#4162FF",
-                    color: "#ffffff",
-                    padding: "9px 24px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Update
-                </button>
-              </div>
-            )}{" "}
-            {!orderAccepted && showOrderDetails && (
-              <div className="flex gap-4">
-                <button
-                  onClick={handleCancelOrder}
-                  className="cursor-pointer font-freesans"
-                  style={{
-                    backgroundColor: "#fff",
-                    color: "#FF2323",
-                    padding: "9px 20px",
-                    borderRadius: "4px",
-                    fontWeight: 500,
-                    fontSize: 16,
-                  }}
-                >
-                  Reject Order
-                </button>
-                <button
-                  onClick={handleAcceptOrder}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#009821",
-                    color: "#ffffff",
-                    padding: "9px 24px",
-                    borderRadius: "4px",
-                    fontSize: 15,
-                  }}
-                >
-                  Accept Order
-                </button>
-              </div>
-            )}
-            {!showDeliveredButtons && orderAccepted && showOrderDetails && (
-              <div className="flex gap-4">
-                <button
-                  onClick={handleCancelOrder}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#fff",
-                    color: "#FF2323",
-                    padding: "9px 16px",
-                    borderRadius: "4px",
-                    fontWeight: 500,
-                    fontSize: 16,
-                  }}
-                >
-                  Cancel Order
-                </button>
-                <button
-                  onClick={() => {
-                    setShowSidebar(true);
-                    setContentType("ship-order");
-                  }}
-                  className="cursor-pointer font-freesans"
-                  style={{
-                    backgroundColor: "#FF5353",
-                    color: "#ffffff",
-                    padding: "9px 30px",
-                    borderRadius: "4px",
-                    fontSize: 15,
-                  }}
-                >
-                  Ship Order
-                </button>
-              </div>
-            )}
-            {showDeliveredButtons && showOrderDetails && (
-              <div className="flex gap-4">
-                <button
-                  // onClick={handleCancelOrder}
-                  className="cursor-pointer"
-                  style={{
-                    backgroundColor: "#fff",
-                    color: "#FF2323",
-                    padding: "9px 30px",
-                    borderRadius: "4px",
-                    fontWeight: 500,
-                    fontSize: 16,
-                  }}
-                >
-                  Failed
-                </button>
-                <button
-                  // onClick={() => {
-                  //   setShowSidebar(true);
-                  //   setContentType("ship-order");
-                  // }}
-                  className="cursor-pointer font-freesans"
-                  style={{
-                    backgroundColor: "#FF9141",
-                    color: "#ffffff",
-                    padding: "9px 36px",
-                    borderRadius: "4px",
-                    fontSize: 15,
-                  }}
-                >
-                  Delivered
-                </button>
-              </div>
+
+            {hideButtons ? null : (
+              <>
+                {showCreateOrder && !isEditingProduct && !isEditingCategory && (
+                  <button
+                    // onClick={handleCreateOrderClick}
+                    className="cursor-pointer"
+                    style={{
+                      backgroundColor: "#4162FF",
+                      color: "#ffffff",
+                      padding: "9px 24px",
+                      borderRadius: "4px",
+                    }}
+                  >
+                    Create Order
+                  </button>
+                )}
+                {showAddNewProduct &&
+                  !isEditingCategory &&
+                  !isEditingProduct && (
+                    <button
+                      onClick={() => emitCustomEvent("add-product")}
+                      type="submit"
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#4162FF",
+                        color: "#ffffff",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      Add Product
+                    </button>
+                  )}
+                {showAddNewCategory &&
+                  !isEditingCategory &&
+                  !isEditingProduct &&
+                  !showAddNewSubCategory && (
+                    <button
+                      onClick={() => emitCustomEvent("add-category")}
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#4162FF",
+                        color: "#ffffff",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      Add Category
+                    </button>
+                  )}
+                {showAddNewSubCategory &&
+                  !isEditingCategory &&
+                  !isEditingProduct && (
+                    <button
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#4162FF",
+                        color: "#ffffff",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      Add SubCategory
+                    </button>
+                  )}
+                {(isEditingProduct || isEditingCategory) && (
+                  <div className="flex gap-4">
+                    <button
+                      // onClick={handleDeleteClick}
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#fff",
+                        border: "1px dashed #FF5353",
+                        color: "#FF5353",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      // onClick={handlePreviewClick}
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#fff",
+                        border: "1px solid #4162FF",
+                        color: "#4162FF",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      Preview
+                    </button>
+                    <button
+                      // onClick={handleUpdateClick}
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#4162FF",
+                        color: "#ffffff",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      Update
+                    </button>
+                  </div>
+                )}{" "}
+                {!orderAccepted && showOrderDetails && (
+                  <div className="flex gap-4">
+                    <button
+                      onClick={handleCancelOrder}
+                      className="cursor-pointer font-freesans"
+                      style={{
+                        backgroundColor: "#fff",
+                        color: "#FF2323",
+                        padding: "9px 20px",
+                        borderRadius: "4px",
+                        fontWeight: 500,
+                        fontSize: 16,
+                      }}
+                    >
+                      Reject Order
+                    </button>
+                    <button
+                      onClick={handleAcceptOrder}
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#009821",
+                        color: "#ffffff",
+                        padding: "9px 24px",
+                        borderRadius: "4px",
+                        fontSize: 15,
+                      }}
+                    >
+                      Accept Order
+                    </button>
+                  </div>
+                )}
+                {!showDeliveredButtons && orderAccepted && showOrderDetails && (
+                  <div className="flex gap-4">
+                    <button
+                      onClick={handleCancelOrder}
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#fff",
+                        color: "#FF2323",
+                        padding: "9px 16px",
+                        borderRadius: "4px",
+                        fontWeight: 500,
+                        fontSize: 16,
+                      }}
+                    >
+                      Cancel Order
+                    </button>
+                    <button
+                      onClick={() => {
+                        setShowSidebar(true);
+                        setContentType("ship-order");
+                      }}
+                      className="cursor-pointer font-freesans"
+                      style={{
+                        backgroundColor: "#FF5353",
+                        color: "#ffffff",
+                        padding: "9px 30px",
+                        borderRadius: "4px",
+                        fontSize: 15,
+                      }}
+                    >
+                      Ship Order
+                    </button>
+                  </div>
+                )}
+                {showDeliveredButtons && showOrderDetails && (
+                  <div className="flex gap-4">
+                    <button
+                      className="cursor-pointer"
+                      style={{
+                        backgroundColor: "#fff",
+                        color: "#FF2323",
+                        padding: "9px 30px",
+                        borderRadius: "4px",
+                        fontWeight: 500,
+                        fontSize: 16,
+                      }}
+                    >
+                      Failed
+                    </button>
+                    <button
+                      onClick={handleDeliveredOrder}
+                      className="cursor-pointer font-freesans"
+                      style={{
+                        backgroundColor: "#FF9141",
+                        color: "#ffffff",
+                        padding: "9px 36px",
+                        borderRadius: "4px",
+                        fontSize: 15,
+                      }}
+                    >
+                      Delivered
+                    </button>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>
