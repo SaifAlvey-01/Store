@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import useAxios from "../../hooks/useAxios";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBusiness } from '../../redux/slices/getBusiness';
+import FormData from 'form-data'
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const { resdata, error, loading, postData: postRequest } = useAxios();
@@ -69,12 +70,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     signOut();
   }
 
-  const handleFile = (event) =>{
+  const handleFile = (event) => {
+    console.log("Event Object:", event);
     const formData = new FormData();
-    formData.append("image", event.target.files[0]);
-    postRequest(`/media`, event.target.files[0]); 
-    
-  }
+    const selectedFile = event.target.files[0];
+  
+    if (selectedFile) {
+      formData.append("file", selectedFile);
+      postRequest(`/media`, formData);
+    } else {
+      console.error("No file selected");
+    }
+  };
 
   const handleBusinessImage = () =>{
     inputFile.current.click();
@@ -163,13 +170,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     borderRadius: "6px",
                   }}
                 >
-                  <input
-                    type="file"
-                    id="file"
-                    ref={inputFile}
-                    style={{ display: "none" }}
-                    onChange={handleFile}
-                  />
+                  <input type="file" id="file" ref={inputFile} style={{ display: "none" }} onChange={handleFile} />
                   <img
                     src={"/logo.png"}
                     onClick={handleBusinessImage}
