@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
 import axiosInstance from "../middleware/axiosInstance";
 
+
 const useAxios = () => {
   const [resdata, setData] = useState({});
   const [error, setError] = useState(null);
@@ -29,7 +30,6 @@ const useAxios = () => {
 
       setData(jsonData);
     } catch (err) {
-      console.log("Axios error:-->>", err);
 
       setError(err?.response?.data?.message);
       // if (err.response && err.response.status === 401) {

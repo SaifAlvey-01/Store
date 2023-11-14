@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import useAxios from "../../hooks/useAxios";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBusiness } from '../../redux/slices/getBusiness';
+import FormData from 'form-data'
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const { resdata, error, loading, postData: postRequest } = useAxios();
@@ -75,9 +76,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     const selectedFile = event.target.files[0];
   
     if (selectedFile) {
-      console.log("selectedFile--->>>", selectedFile)
-      formData.append("image", selectedFile);
-      console.log("Form Data:", formData);
+      formData.append("file", selectedFile);
       postRequest(`/media`, formData);
     } else {
       console.error("No file selected");
