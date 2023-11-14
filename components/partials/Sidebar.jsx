@@ -11,8 +11,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchBusiness } from '../../redux/slices/getBusiness';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
+  const { resdata, error, loading, postData: postRequest } = useAxios();
   const [selectedImage, setSelectedImage] = useState(null);
-  const [businessName, setBusinessName] = useState("");
   const router = useRouter();
   const { pathname } = router;
   const curPath = pathname.split("/")[1];
@@ -69,27 +69,40 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     signOut();
   }
 
-  const handleBusinessImage = () =>{
-    inputFile.current.click();
-    // putRequest(`/accounts/add-business-logo/${ID}`, {access_token:session.accessToken});
-    // postRequest(`/media`); 
+  const handleFile = (event) =>{
+    const formData = new FormData();
+    formData.append("image", event.target.files[0]);
+    postRequest(`/media`, event.target.files[0]); 
+    
   }
 
-  // close on click outside
-  useEffect(() => {
-    const clickHandler = ({ target }) => {
-      if (!sidebar.current || !trigger.current) return;
-      if (
-        !sidebarOpen ||
-        sidebar.current.contains(target) ||
-        trigger.current.contains(target)
-      )
-        return;
-      setSidebarOpen(false);
-    };
-    document.addEventListener('click', clickHandler);
-    return () => document.removeEventListener('click', clickHandler);
-  },[]);
+  const handleBusinessImage = () =>{
+    inputFile.current.click();
+    
+  }
+
+
+  
+  // useEffect(()=>{
+  //   if(selectedImage){
+  //     const formData = new FormData();
+  //     console.log( selectedImage, "<=----formDathha")
+  //     console.log(formData, "<=----formData")
+  //     formData.append('file', selectedImage);
+  //     postRequest(`/media`, selectedImage); 
+  //   }
+  // },[selectedImage]);
+  
+    // close on click outside
+    useEffect(() => {
+      const clickHandler = ({ target }) => {
+        if (!sidebar.current || !trigger.current) return;
+        if (!sidebarOpen || sidebar.current.contains(target) || trigger.current.contains(target)) return;
+        setSidebarOpen(false);
+      };
+      document.addEventListener('click', clickHandler);
+      return () => document.removeEventListener('click', clickHandler);
+    });
 
   return (
     <>
@@ -155,10 +168,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     id="file"
                     ref={inputFile}
                     style={{ display: "none" }}
-                    onChange={(event) => {
-                      console.log(event.target.files[0]);
-                      setSelectedImage(event.target.files[0]);
-                    }}
+                    onChange={handleFile}
                   />
                   <img
                     src={"/logo.png"}

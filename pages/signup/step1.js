@@ -114,10 +114,10 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                         </div>
                       )}
 
-                      {!errors.email && customError && (
+                      {!errors.email && error && (
                         <div className="flex flex-col w-full items-start">
                           <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                            {customError}
+                            {error}
                           </p>
                         </div>
                       )}
