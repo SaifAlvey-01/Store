@@ -75,10 +75,22 @@ export default function InventoryListing() {
       productDescription: "Men Shoes",
       variants: [
         {
-          name: "01 Piece",
+          name: "Black",
           inventory: "720",
           price: "₹5,333",
           discountedPrice: "₹4,999",
+        },
+        {
+          name: "Brown",
+          inventory: "680",
+          price: "₹5,533",
+          discountedPrice: "₹5,099",
+        },
+        {
+          name: "Brown",
+          inventory: "680",
+          price: "₹5,533",
+          discountedPrice: "₹5,099",
         },
       ],
     },
@@ -118,37 +130,40 @@ export default function InventoryListing() {
         </thead>
         <tbody className="bg-white">
           {data.map((row, index) => (
-            <tr key={index} style={{ height: "36px !important" }}>
+            <tr key={index}>
               <td
                 style={{
                   borderBottom: "1px solid #EAECF0",
-                  height: row.variants.length > 1 ? "auto" : "36px",
                 }}
-                className="flex items-center px-3 py-10 w-full "
+                className="px-3 py-1.5 h-full"
               >
-                <img
-                  className="h-11 w-11"
-                  src={row.productImage}
-                  alt={row.productName}
-                />
-                <div className="ml-2 flex flex-col justify-center w-full">
-                  <span
-                    className="font-freesans mb-2"
-                    style={{ color: "4B4B4B", fontSize: "12px" }}
-                  >
-                    {row.productName}
-                  </span>
-                  <span
-                    className="font-freesans"
-                    style={{ color: "#8E8E8E", fontSize: "10px" }}
-                  >
-                    {row.productDescription}
-                  </span>
+                <div className="flex flex-row items-center">
+                  <img
+                    className="h-11 w-11"
+                    src={row.productImage}
+                    alt={row.productName}
+                  />
+                  <div className="ml-2 flex flex-col justify-center w-full">
+                    <span
+                      className="font-freesans mb-2"
+                      style={{ color: "4B4B4B", fontSize: "12px" }}
+                    >
+                      {row.productName}
+                    </span>
+                    <span
+                      className="font-freesans"
+                      style={{ color: "#8E8E8E", fontSize: "10px" }}
+                    >
+                      {row.productDescription}
+                    </span>
+                  </div>
                 </div>
               </td>
               <td
-                style={{ borderBottom: "1px solid #EAECF0" }}
-                className="px-6 py-3 w-40 "
+                style={{
+                  borderBottom: "1px solid #EAECF0",
+                }}
+                className="px-6 py-1.5 h-full w-40 "
               >
                 {row.variants.map((variant, vIndex) => (
                   <div
@@ -162,7 +177,7 @@ export default function InventoryListing() {
               </td>
               <td
                 style={{ borderBottom: "1px solid #EAECF0" }}
-                className="p-3 w-60 "
+                className="px-3 py-1.5 h-full w-60 "
               >
                 {row.variants.map((variant, vIndex) => (
                   <input
@@ -183,7 +198,7 @@ export default function InventoryListing() {
               </td>
               <td
                 style={{ borderBottom: "1px solid #EAECF0" }}
-                className="p-3 w-60 "
+                className="px-3 py-1.5 h-full w-60 "
               >
                 {row.variants.map((variant, vIndex) => (
                   <input
@@ -204,7 +219,7 @@ export default function InventoryListing() {
               </td>
               <td
                 style={{ borderBottom: "1px solid #EAECF0" }}
-                className="p-3 w-60 "
+                className="px-3 py-1.5 h-full w-60 "
               >
                 {row.variants.map((variant, vIndex) => (
                   <input

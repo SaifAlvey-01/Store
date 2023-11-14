@@ -1,6 +1,4 @@
 import React from "react";
-import UnitSelect from "../dropdown-selects/unit-select";
-import StateSelect from "../dropdown-selects/state-select";
 import TrackingIDSelect from "../dropdown-selects/tracking-id-select";
 import ShippingPartnerSelect from "../dropdown-selects/shipping-partner-select";
 

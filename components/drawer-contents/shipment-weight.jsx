@@ -1,109 +1,90 @@
 import React, { useEffect } from "react";
 
 const headers = [
-  { title: "Name & Email" },
-  { title: "Numbers" },
-  { title: "City" },
+  { title: "Product" },
+  { title: "Unit Weight" },
+  { title: "Qty" },
 ];
 
 const data = [
   {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
+    productImage: "/product-img.png",
+    productName: "Product 001",
+    productDescription: "Men Shoes",
+    unitWeight: "1.25 KG",
+    qty: "x 1",
   },
   {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
+    productImage: "/product-img.png",
+    productName: "Product 001",
+    productDescription: "Men Shoes",
+    unitWeight: "1.25 KG",
+    qty: "x 1",
   },
   {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
+    productImage: "/product-img.png",
+    productName: "Product 001",
+    productDescription: "Men Shoes",
+    unitWeight: "1.25 KG",
+    qty: "x 1",
   },
   {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
-  },
-  {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
-  },
-  {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
-  },
-  {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
-  },
-  {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
-  },
-  {
-    name: "Hayden Par",
-    email: "hayden@gmail.com",
-    numbers: "+91-8452733694",
-    city: "Dehli",
+    productImage: "/product-img.png",
+    productName: "Product 001",
+    productDescription: "Men Shoes",
+    unitWeight: "1.25 KG",
+    qty: "x 1",
   },
 ];
 
-export default function AddCustomerDetails({
+export default function ShipmentWeight({
   setShowSidebar,
-  setAddingNewCustomer,
+  showSidebar,
   contentType,
+  setContentType,
+  setShowDeliveredButtons,
 }) {
-  const handleAddNewCustomer = () => {
-    setAddingNewCustomer(true);
-    setShowSidebar(true);
+  const handleProceed = () => {
+    setShowSidebar(false);
   };
-
-  useEffect(() => {
-    setAddingNewCustomer(false);
-  }, [contentType]);
-
   return (
     <div>
       {" "}
       <div className="h-[820px]">
         <div className="flex justify-between items-center">
           <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-            Select Customer{" "}
+            Shipment Weight{" "}
           </h3>
         </div>
 
-        <div className="relative text-gray-600 mt-2">
-          <img
-            style={{ position: "absolute", top: 10, left: 0 }}
-            src={"/search.png"}
-            className="w-4 h-4 flex items-center pl-3 "
-          />
-          <input
-            style={{
-              borderRadius: "6px",
-              border: "1px solid #D0D5DD",
-              fontSize: "13px",
-            }}
-            type="search"
-            name="search"
-            placeholder="Search by Name, Email or Number...."
-            className="w-full pl-9 pr-32 py-2.5 focus:outline-none focus:border-blue-500"
-          />
+        <div
+          style={{
+            borderRadius: "6px",
+            border: "1px solid #EEE",
+            background: "#FFF",
+          }}
+          className="flex flex-row items-center justify-between py-6 px-3"
+        >
+          <span style={{ fontSize: "14px", color: "#8E8E8E" }}>
+            Shipping Charges
+          </span>
+          <span className="mx-4" style={{ fontSize: "14px", color: "#4B4B4B" }}>
+            ₹100
+          </span>
+        </div>
+
+        <div
+          style={{
+            borderRadius: "6px",
+            border: "1px solid #EEE",
+            background: "#FFF",
+          }}
+          className="flex flex-row items-center justify-between py-6 px-3 mt-4"
+        >
+          <span style={{ fontSize: "14px", color: "#8E8E8E" }}>
+            Shipping Partner{" "}
+          </span>
+          <img className="mx-4" src={"/xpress.png"} />
         </div>
 
         <div className="flex justify-between items-center mt-6">
@@ -119,7 +100,7 @@ export default function AddCustomerDetails({
                 {headers.map((header, idx) => (
                   <th
                     key={idx}
-                    className="py-3 px-4 bg-f9fafb text-start font-freesans "
+                    className="py-3 px-2 bg-f9fafb text-start font-freesans "
                     style={{
                       borderBottom: "1px solid #EAECF0",
                       backgroundColor: "#F9FAFB",
@@ -135,7 +116,7 @@ export default function AddCustomerDetails({
               </tr>
             </thead>
             <tbody className="bg-white">
-              {data.map((customer, index) => (
+              {data.map((product, index) => (
                 <tr key={index}>
                   <td
                     style={{ borderBottom: "1px solid #EAECF0" }}
@@ -149,23 +130,20 @@ export default function AddCustomerDetails({
                         fontWeight: "500",
                       }}
                     >
-                      <input
-                        type="radio"
-                        name="selected-customer"
-                        className="w-4 h-4 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        style={{
-                          boxShadow: "none",
-                        }}
+                      <img
+                        className="h-11 w-11"
+                        src={product.productImage}
+                        alt={product.productName}
                       />
                       <span className="flex flex-col ml-2 font-lato ">
                         <span style={{ fontSize: "13px", color: "#4B4B4B" }}>
-                          {customer.name}
+                          {product.productName}
                         </span>{" "}
                         <span
                           className="mt-1.5"
                           style={{ fontSize: "12px", color: "#8E8E8E" }}
                         >
-                          {customer.email}
+                          {product.productDescription}
                         </span>
                       </span>
                     </label>
@@ -176,16 +154,21 @@ export default function AddCustomerDetails({
                       borderBottom: "1px solid #EAECF0",
                     }}
                   >
-                    <span
-                      className="font-freesans"
+                    <div
+                      className="font-freesans p-2"
                       style={{
                         color: "#8E8E8E",
                         fontSize: "12px",
                         fontWeight: 400,
+                        borderRadius: "4px",
+                        border: "1px solid #E5E7EB",
+                        background: "#FFF",
+                        textAlign: "center",
+                        width: "40%",
                       }}
                     >
-                      {customer.numbers}
-                    </span>
+                      {product.unitWeight}
+                    </div>
                   </td>
                   <td
                     className="p-2 w-[30%]"
@@ -201,7 +184,7 @@ export default function AddCustomerDetails({
                         fontWeight: 400,
                       }}
                     >
-                      {customer.city}
+                      {product.qty}
                     </span>
                   </td>
                 </tr>
@@ -223,20 +206,10 @@ export default function AddCustomerDetails({
         }}
       >
         <button
-          style={{
-            borderRadius: "6px",
-            border: "1px dashed #7A91FF",
-            fontSize: "14px",
-            color: "#7A91FF",
-            backgroundColor: "#ffffff",
-          }}
-          className="px-7 py-2.5 rounded cursor-pointer mr-4"
-          onClick={handleAddNewCustomer}
+          onClick={handleProceed}
+          className="bg-blue-600 text-white px-5 py-2.5 rounded cursor-pointer"
         >
-          Add New Customer{" "}
-        </button>
-        <button className="bg-blue-600 text-white px-8 py-2.5 rounded cursor-pointer">
-          Select{" "}
+          Proceed to ship{" "}
         </button>
       </div>
     </div>

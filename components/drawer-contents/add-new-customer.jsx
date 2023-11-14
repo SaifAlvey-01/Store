@@ -1,8 +1,7 @@
 import React from "react";
-import UnitSelect from "../dropdown-selects/unit-select";
 import StateSelect from "../dropdown-selects/state-select";
 
-export default function AddNewCustomer() {
+export default function AddNewCustomer({ setShowSidebar }) {
   const handleUnitChange = (selectedOption) => {
     console.log(`Selected: ${selectedOption.value}`);
   };

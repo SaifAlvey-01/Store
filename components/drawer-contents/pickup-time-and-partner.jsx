@@ -1,162 +1,130 @@
 import React from "react";
 import { useState } from "react";
 
-export default function PickupTimeAndPartner() {
-  const [isChecked, setIsChecked] = useState(false);
+const SurfaceHeaders = [
+  { title: "Shipping partner" },
+  { title: "Delivery by (est.)" },
+  { title: "Shipping charge (per 500g)" },
+];
+
+const ExpressHeaders = [
+  { title: "Shipping partner" },
+  { title: "Delivery by (est.)" },
+  { title: "Shipping charge (per 500g)" },
+];
+
+const HeavyHeaders = [
+  { title: "Shipping partner" },
+  { title: "Delivery by (est.)" },
+  { title: "Shipping charge (per 25KG)" },
+];
+
+const SurfaceData = [
+  {
+    name: "Xpress Bees",
+    type: "Surface",
+    date: "Jul 31",
+    charges: "From ₹25",
+  },
+  {
+    name: "Delhivery",
+    type: "Surface",
+    date: "Jul 31",
+    charges: "From ₹25",
+  },
+  {
+    name: "Blue Dart",
+    type: "Surface",
+    date: "Jul 31",
+    charges: "From ₹25",
+  },
+  {
+    name: "DotZot",
+    type: "Surface",
+    date: "Jul 31",
+    charges: "From ₹25",
+  },
+  {
+    name: "Shaqowfax",
+    type: "Surface",
+    date: "Jul 31",
+    charges: "From ₹25",
+  },
+];
+
+const ExpressData = [
+  {
+    name: "Xpress Bees",
+    type: "Express",
+    date: "Jul 31",
+    charges: "From ₹45",
+  },
+  {
+    name: "Delhivery",
+    type: "Express",
+    date: "Jul 31",
+    charges: "From ₹45",
+  },
+  {
+    name: "Blue Dart",
+    type: "Express",
+    date: "Jul 31",
+    charges: "From ₹45",
+  },
+  {
+    name: "DotZot",
+    type: "Express",
+    date: "Jul 31",
+    charges: "From ₹45",
+  },
+  {
+    name: "Shaqowfax",
+    type: "Express",
+    date: "Jul 31",
+    charges: "From ₹45",
+  },
+];
+
+const HeavyData = [
+  {
+    name: "Blue Dart",
+    type: "Heavy 25KG",
+    date: "Jul 31",
+    charges: "From ₹450",
+  },
+  {
+    name: "DotZot",
+    type: "Heavy 25KG",
+    date: "Jul 31",
+    charges: "From ₹450",
+  },
+  {
+    name: "Shaqowfax",
+    type: "Heavy 25KG",
+    date: "Jul 31",
+    charges: "From ₹450",
+  },
+  {
+    name: "Aramex",
+    type: "Heavy 25KG",
+    date: "Jul 31",
+    charges: "From ₹450",
+  },
+  {
+    name: "DHL",
+    type: "Heavy 25KG",
+    date: "Jul 31",
+    charges: "From ₹450",
+  },
+];
+
+export default function PickupTimeAndPartner({ setContentType }) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const SurfaceHeaders = [
-    { title: "Shipping partner" },
-    { title: "Delivery by (est.)" },
-    { title: "Shipping charge (per 500g)" },
-  ];
+  const handleProceed = () => {
+    setContentType("shipment-weight");
+  };
 
-  const ExpressHeaders = [
-    { title: "Shipping partner" },
-    { title: "Delivery by (est.)" },
-    { title: "Shipping charge (per 500g)" },
-  ];
-
-  const HeavyHeaders = [
-    { title: "Shipping partner" },
-    { title: "Delivery by (est.)" },
-    { title: "Shipping charge (per 25KG)" },
-  ];
-
-  const SurfaceData = [
-    {
-      name: "Xpress Bees",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-    {
-      name: "Delhivery",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-    {
-      name: "Blue Dart",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-    {
-      name: "DotZot",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-    {
-      name: "Shaqowfax",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-    {
-      name: "Aramex",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-    {
-      name: "DHL",
-      type: "Surface",
-      date: "Jul 31",
-      charges: "From ₹25",
-    },
-  ];
-
-  const ExpressData = [
-    {
-      name: "Xpress Bees",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-    {
-      name: "Delhivery",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-    {
-      name: "Blue Dart",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-    {
-      name: "DotZot",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-    {
-      name: "Shaqowfax",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-    {
-      name: "Aramex",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-    {
-      name: "DHL",
-      type: "Express",
-      date: "Jul 31",
-      charges: "From ₹45",
-    },
-  ];
-
-  const HeavyData = [
-    {
-      name: "Xpress Bees",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-    {
-      name: "Delhivery",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-    {
-      name: "Blue Dart",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-    {
-      name: "DotZot",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-    {
-      name: "Shaqowfax",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-    {
-      name: "Aramex",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-    {
-      name: "DHL",
-      type: "Heavy 25KG",
-      date: "Jul 31",
-      charges: "From ₹450",
-    },
-  ];
   return (
     <div>
       {" "}
@@ -575,7 +543,10 @@ export default function PickupTimeAndPartner() {
           alignItems: "center",
         }}
       >
-        <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
+        <button
+          onClick={handleProceed}
+          className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer"
+        >
           Continue{" "}
         </button>
       </div>

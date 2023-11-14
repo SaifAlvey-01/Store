@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import UnitSelect from "../dropdown-selects/unit-select";
 import AddVariants from "./add-variants";
 import EditVariants from "./edit-variants";
 import EditProductVariant from "./edit-product-variant";
@@ -11,6 +10,7 @@ import ShipOrder from "./ship-order";
 import ChooseDeliveryTime from "./choose-delivery time";
 import PickupTimeAndPartner from "./pickup-time-and-partner";
 import AddTrackingDetails from "./add-tracking-details";
+import ShipmentWeight from "./shipment-weight";
 
 export default function CustomDrawer({
   showSidebar,
@@ -37,7 +37,6 @@ export default function CustomDrawer({
   }, []);
 
   useEffect(() => {
-    // Reset the state when the sidebar is opened
     if (showSidebar) {
       setAddingNewCustomer(false);
     }
@@ -103,7 +102,6 @@ export default function CustomDrawer({
             {contentType === "add-customer-details" && !addingNewCustomer && (
               <AddCustomerDetails
                 setShowSidebar={setShowSidebar}
-                showSidebar={showSidebar}
                 contentType={contentType}
                 setAddingNewCustomer={setAddingNewCustomer}
               />
@@ -131,6 +129,7 @@ export default function CustomDrawer({
               <PickupTimeAndPartner
                 setShowSidebar={setShowSidebar}
                 contentType={contentType}
+                setContentType={setContentType}
               />
             )}
             {contentType === "delivery-time" && (
@@ -142,6 +141,13 @@ export default function CustomDrawer({
             )}
             {contentType === "tracking-details" && (
               <AddTrackingDetails
+                setShowSidebar={setShowSidebar}
+                contentType={contentType}
+                setShowDeliveredButtons={setShowDeliveredButtons}
+              />
+            )}
+            {contentType === "shipment-weight" && (
+              <ShipmentWeight
                 setShowSidebar={setShowSidebar}
                 contentType={contentType}
                 setShowDeliveredButtons={setShowDeliveredButtons}
