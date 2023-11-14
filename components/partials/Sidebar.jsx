@@ -69,12 +69,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     signOut();
   }
 
-  const handleFile = (event) =>{
+  const handleFile = (event) => {
+    console.log("Event Object:", event);
     const formData = new FormData();
-    formData.append("image", event.target.files[0]);
-    postRequest(`/media`, event.target.files[0]); 
-    
-  }
+    const selectedFile = event.target.files[0];
+  
+    if (selectedFile) {
+      console.log("selectedFile--->>>", selectedFile)
+      formData.append("image", selectedFile);
+      console.log("Form Data:", formData);
+      postRequest(`/media`, formData);
+    } else {
+      console.error("No file selected");
+    }
+  };
 
   const handleBusinessImage = () =>{
     inputFile.current.click();
@@ -163,13 +171,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     borderRadius: "6px",
                   }}
                 >
-                  <input
-                    type="file"
-                    id="file"
-                    ref={inputFile}
-                    style={{ display: "none" }}
-                    onChange={handleFile}
-                  />
+                  <input type="file" id="file" ref={inputFile} style={{ display: "none" }} onChange={handleFile} />
                   <img
                     src={"/logo.png"}
                     onClick={handleBusinessImage}
