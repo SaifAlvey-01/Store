@@ -1,6 +1,5 @@
 import React from "react";
-import UnitSelect from "../dropdown-selects/unit-select";
-import StateSelect from "../dropdown-selects/state-select";
+
 import { useState } from "react";
 
 export default function ShipOrder({ setContentType }) {
