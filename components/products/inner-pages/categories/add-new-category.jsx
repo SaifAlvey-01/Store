@@ -45,6 +45,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const fileInputRef = useRef(null);
   const fileInputRef2 = useRef(null);
   const fileInputRef3 = useRef(null);
+  const [activeTab, setActiveTab] = useState(0);
   const [mainImageUrl, setMainImageUrl] = useState("");
   const [mobileImageUrl, setMobileImageUrl] = useState("");
   const [bannerImageUrl, setBannerImageUrl] = useState("");
@@ -337,7 +338,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                 }}
               >
                 {" "}
-                <div className="font-freesans flex flex-col items-start justify-start">
+                <div className="font-freesans flex flex-col items-start justify-start mb-6">
                   <span
                     className="font-freesans mb-1"
                     style={{
@@ -359,63 +360,106 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                     Add a category banner at the top of product listing.{" "}
                   </span>
                 </div>
-                <div className="flex items-center mt-6">
-                  {" "}
-                  <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                    <img
-                      src={"/gallery.png"}
-                      className="w-7 h-7 object-contain"
-                    />
-                  </div>{" "}
-                  <button
-                    className="cursor-pointer w-[60%] lg:w-[40%]"
-                    style={{
-                      backgroundColor: "#4162FF",
-                      color: "#ffffff",
-                      padding: "8px 12px",
-                      borderRadius: "4px",
-
-                      fontSize: "12px",
-                    }}
-                    onClick={handleImageButtonClick2}
+                <div className="w-full">
+                  <div className="flex justify-between w-[80%] border-b border-gray-200">
+                    <button
+                      onClick={() => setActiveTab(0)}
+                      className={`flex-grow text-center py-2 px-1 text-[14px] bg-white cursor-pointer ${
+                        activeTab === 0
+                          ? "border-b-2 border-primary-300-main text-primary-300-main font-bold"
+                          : "text-neutral-500 hover:bg-gray-100"
+                      }`}
+                    >
+                      Desktop Banner{" "}
+                    </button>
+                    <button
+                      onClick={() => setActiveTab(1)}
+                      className={`flex-grow text-center py-2 px-1 text-[14px] bg-white cursor-pointer ${
+                        activeTab === 1
+                          ? "border-b-2 border-primary-300-main text-primary-300-main font-bold"
+                          : "text-neutral-500 hover:bg-gray-100"
+                      }`}
+                    >
+                      Mobile Banner{" "}
+                    </button>
+                  </div>
+                  <div
+                    style={{ borderTop: "2px solid #E5E7EB" }}
+                    className="tab-content text-neutral-500 text-[14px] pt-8 mb-0 flex items-center justify-start"
                   >
-                    Add Mobile Banner{" "}
-                  </button>
-                  <input
-                    ref={fileInputRef2}
-                    type="file"
-                    style={{ display: "none" }}
-                    onChange={handleMobileImageUrlChange}
-                  />
-                </div>
-                <div className="flex items-center mt-6">
-                  {" "}
-                  <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                    <img
-                      src={"/gallery.png"}
-                      className="w-7 h-7 object-contain"
-                    />
-                  </div>{" "}
-                  <button
-                    className="cursor-pointer w-[60%] lg:w-[40%]"
-                    style={{
-                      backgroundColor: "#4162FF",
-                      color: "#ffffff",
-                      padding: "8px 12px",
-                      borderRadius: "4px",
+                    {activeTab === 1 ? (
+                      <div
+                        style={{
+                          borderRadius: "16px",
+                          border: "2px dashed #E5E7EB",
+                        }}
+                        className=" w-full flex flex-row items-center justify-start  p-4"
+                      >
+                        {" "}
+                        <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
+                          <img
+                            src={"/gallery.png"}
+                            className="w-7 h-7 object-contain"
+                          />
+                        </div>{" "}
+                        <button
+                          className="cursor-pointer w-[60%] lg:w-[40%]"
+                          style={{
+                            backgroundColor: "#4162FF",
+                            color: "#ffffff",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
+                            fontSize: "12px",
+                          }}
+                          onClick={handleImageButtonClick2}
+                        >
+                          Add Banner{" "}
+                        </button>
+                        <input
+                          ref={fileInputRef2}
+                          type="file"
+                          style={{ display: "none" }}
+                          onChange={handleMobileImageUrlChange}
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        style={{
+                          borderRadius: "16px",
+                          border: "2px dashed #E5E7EB",
+                        }}
+                        className="w-full flex flex-row items-center justify-start  p-4"
+                      >
+                        {" "}
+                        <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
+                          <img
+                            src={"/gallery.png"}
+                            className="w-7 h-7 object-contain"
+                          />
+                        </div>{" "}
+                        <button
+                          className="cursor-pointer w-[60%] lg:w-[40%]"
+                          style={{
+                            backgroundColor: "#4162FF",
+                            color: "#ffffff",
+                            padding: "8px 12px",
+                            borderRadius: "4px",
 
-                      fontSize: "12px",
-                    }}
-                    onClick={handleImageButtonClick3}
-                  >
-                    Add Desktop Banner{" "}
-                  </button>
-                  <input
-                    ref={fileInputRef3}
-                    type="file"
-                    style={{ display: "none" }}
-                    onChange={handleDesktopImageUrlChange}
-                  />
+                            fontSize: "12px",
+                          }}
+                          onClick={handleImageButtonClick3}
+                        >
+                          Add Banner{" "}
+                        </button>
+                        <input
+                          ref={fileInputRef3}
+                          type="file"
+                          style={{ display: "none" }}
+                          onChange={handleDesktopImageUrlChange}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

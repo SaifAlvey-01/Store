@@ -314,8 +314,6 @@ export default function OrdersToolBar({ setShowAddNewProduct }) {
                 height: "auto",
               }}
             >
-              {/* scroll part */}
-
               <div
                 className="scroll-section"
                 style={{

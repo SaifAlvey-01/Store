@@ -268,17 +268,25 @@ export default function Payments() {
       <div
         style={{
           border: "1px solid #EAECF0",
-          padding: "18px",
+          padding: "14px",
           borderRadius: "8px",
         }}
         className="mt-6"
       >
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <div className="flex flex-col w-[76%]">
+            {" "}
+            <div className="bg-[#E9F4FF] rounded-[6px] mr-3 w-8 h-8 flex items-center justify-center p-2.5">
+              <img
+                src={"/wallet-money.png"}
+                // alt={`Description for ${item.title}`}
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
+            <div className="flex flex-col w-[60%]">
               {" "}
               <span
-                className="mb-3"
+                className="mb-1"
                 style={{ color: "#4B4B4B", fontSize: "14px" }}
               >
                 Other Payment Methods{" "}
@@ -289,11 +297,35 @@ export default function Payments() {
               </p>
             </div>
           </div>
-
           <label className="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" value="" className="sr-only peer" />
             <div className="w-11 h-6 bg-gray-200 focus:ring-0 peer-focus:outline-none dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
           </label>
+        </div>
+
+        <div
+          style={{
+            padding: "16px 16px 0px 16px",
+            background: "white",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <button
+            className="cursor-pointer w-[40%]"
+            style={{
+              backgroundColor: "#ffffff",
+              color: "#4162FF",
+              border: "1px dashed #4162FF ",
+              padding: "8px 12px",
+              borderRadius: "4px",
+              fontSize: "12px",
+            }}
+          >
+            Add Manual Payment Method{" "}
+          </button>
         </div>
       </div>
     </div>
