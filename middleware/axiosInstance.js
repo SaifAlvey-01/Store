@@ -5,9 +5,7 @@ import { signOut } from "next-auth/react"
 
 const axiosInstance = axios.create({
   baseURL: process.env.BASE_URL,
-  headers: {
-    // "Content-Type": "application/json",
-  },
+  headers: {},
 });
 
 axiosInstance.interceptors.request.use(
