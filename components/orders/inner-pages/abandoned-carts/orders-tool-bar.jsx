@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import ConditionSelect from "../../dropdown-selects/condition-select";
+import ConditionSelect from "../../../dropdown-selects/condition-select";
 
 export default function OrdersToolBar({ setShowAddNewProduct }) {
   const [openDropdown, setOpenDropdown] = useState(null);

@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
 import CategoriesEditDropdown from "../../../dropdowns/categories-edit-dropdown";
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllCategories } from '../../../../redux/slices/addCategory';
-import Cookies from 'js-cookie';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "../../../../redux/slices/categoriesSlices/addCategory";
+import Cookies from "js-cookie";
 
 const headers = [
   { title: "Categories" },
@@ -61,7 +61,9 @@ export default function CategoriesListing({ onEditClick }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
   const dispatch = useDispatch();
-  const {category, loading, error} = useSelector((state) => state.addCategory);
+  const { category, loading, error } = useSelector(
+    (state) => state.addCategory
+  );
   const id = Cookies.get("id");
 
   useEffect(() => {

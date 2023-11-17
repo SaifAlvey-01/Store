@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Pagination from "../../pagination";
+import Pagination from "../../../pagination";
 import OrdersToolBar from "./orders-tool-bar";
 
 const headers = [
@@ -20,8 +20,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "01",
-    payment: "COD",
-    status: "Rejected",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -31,8 +31,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "03",
-    payment: "Paid",
-    status: "Shipped",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -42,8 +42,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "05",
-    payment: "Paid",
-    status: "Delivered",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -53,8 +53,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "08",
-    payment: "Paid",
-    status: "Shipped",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -64,8 +64,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "09",
-    payment: "COD",
-    status: "Failed",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -75,8 +75,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "06",
-    payment: "COD",
-    status: "Delivered",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -86,8 +86,8 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "08",
-    payment: "COD",
-    status: "Pending",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
   {
@@ -97,17 +97,13 @@ const data = [
     date: "Mar 03, Fri - 01:30PM",
     customer: "John Doe",
     items: "04",
-    payment: "Paid",
-    status: "Pending",
+    payment: "N/A",
+    status: "Abandoned",
     amount: "₹5,333",
   },
 ];
 
-export default function OrderListing({
-  showOrderDetails,
-  setShowOrderDetails,
-  setSelectedOrder,
-}) {
+export default function OrderListing() {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
 
@@ -128,61 +124,10 @@ export default function OrderListing({
     };
   }, [dropdownOpenIndex]);
 
-  function getStatusBackgroundColor(status) {
-    switch (status) {
-      case "Rejected":
-        return "#FFE4E4";
-      case "Shipped":
-        return "#FFF6DD";
-      case "Delivered":
-        return "#ECFDF3";
-      case "Failed":
-        return "#F5F5F5";
-      case "Pending":
-        return "#ECEFFF";
-      default:
-        return "#ECEFFF";
-    }
-  }
-
-  function getStatusColor(status) {
-    switch (status) {
-      case "Rejected":
-        return "#FF4A4A";
-      case "Shipped":
-        return "#F2B500";
-      case "Delivered":
-        return "#47B263";
-      case "Failed":
-        return "#4B4B4B";
-      case "Pending":
-        return "#4162FF";
-      default:
-        return "#4162FF";
-    }
-  }
-
-  function getStatusTextColor(status) {
-    switch (status) {
-      case "Rejected":
-        return "#FF4A4A";
-      case "Shipped":
-        return "#F2B500";
-      case "Delivered":
-        return "#47B263";
-      case "Failed":
-        return "#4B4B4B";
-      case "Pending":
-        return "#4162FF";
-      default:
-        return "#4162FF";
-    }
-  }
-
-  const handleOrderClick = (order) => {
-    setShowOrderDetails(true);
-    setSelectedOrder(order);
-  };
+  // const handleOrderClick = (order) => {
+  //   setShowOrderDetails(true);
+  //   setSelectedOrder(order);
+  // };
 
   return (
     <div className="flex justify-between items-center mt-2 px-5 h-full">
@@ -229,13 +174,10 @@ export default function OrderListing({
           {data.map((row, index) => (
             <tr
               key={index}
-              onClick={() => handleOrderClick(row)}
-              className="h-auto cursor-pointer"
+              // onClick={() => handleOrderClick(row)}
+              className="h-"
             >
-              <td
-                style={{ borderBottom: "1px solid #EAECF0", cursor: "pointer" }}
-                className="p-3"
-              >
+              <td style={{ borderBottom: "1px solid #EAECF0" }} className="p-3">
                 <div className="flex items-center">
                   <div
                     style={{ backgroundColor: "#F3F5FF" }}
@@ -286,15 +228,15 @@ export default function OrderListing({
               </td>
               <td style={{ borderBottom: "1px solid #EAECF0" }} className="p-3">
                 <div
-                  className="flex items-center justify-center p-1.5 w-full md:w-[70%]"
+                  className="flex items-center justify-center p-1.5 w-[60%]"
                   style={{
                     borderRadius: "16px",
-                    background: row.payment === "COD" ? "#FFF6DD" : "#ECFDF3",
+                    background: "#FFF6DD",
                   }}
                 >
                   <span
                     style={{
-                      color: row.payment === "COD" ? "#F2B500" : "#47B263",
+                      color: "#F2B500",
                       fontSize: "13px",
                     }}
                   >
@@ -307,7 +249,7 @@ export default function OrderListing({
                   className="flex items-center justify-center p-1.5 w-full md:w-[70%]"
                   style={{
                     borderRadius: "16px",
-                    background: getStatusBackgroundColor(row.status),
+                    background: "#F3EFEA",
                   }}
                 >
                   <svg
@@ -318,18 +260,13 @@ export default function OrderListing({
                     fill="none"
                     style={{ flexShrink: 0 }}
                   >
-                    <circle
-                      cx="4"
-                      cy="4"
-                      r="3"
-                      fill={getStatusColor(row.status)}
-                    />
+                    <circle cx="4" cy="4" r="3" fill="#8B590E" />
                   </svg>
 
                   <span
                     style={{
                       marginLeft: "5px",
-                      color: getStatusTextColor(row.status),
+                      color: "#8B590E",
                       fontSize: "13px",
                     }}
                   >

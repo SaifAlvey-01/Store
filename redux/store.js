@@ -17,6 +17,9 @@ const persistConfig = {
     "business",
     "editProduct",
     "editCategory",
+    "showConfirmDelivery",
+    "showDeliveredButtons",
+    "showUpgradePlan ",
   ],
 };
 

@@ -1,6 +1,6 @@
 // categorySlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axiosInstance from "../../middleware/axiosInstance";
+import axiosInstance from "../../../middleware/axiosInstance";
 import axios from "axios";
 
 const baseUrl = process.env.BASE_URL;
