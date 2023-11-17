@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { setShowConfirmDelivery } from "../../redux/slices/ordersSlices/confirmDeliverySlice";
+import { useDispatch } from "react-redux";
 
 const headers = [
   { title: "Product" },
@@ -42,11 +44,14 @@ export default function ShipmentWeight({
   showSidebar,
   contentType,
   setContentType,
-  setShowDeliveredButtons,
 }) {
+  const dispatch = useDispatch();
+
   const handleProceed = () => {
     setShowSidebar(false);
+    dispatch(setShowConfirmDelivery(true));
   };
+
   return (
     <div>
       {" "}

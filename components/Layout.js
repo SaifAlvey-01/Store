@@ -14,9 +14,11 @@ const Layout = ({
   showAddNewCategory,
   showCreateOrder,
   showOrderDetails,
+  showConfirmDelivery,
   isEditingProduct,
   isEditingCategory,
   showAddNewSubCategory,
+  showUpgradePlan,
 }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -58,9 +60,11 @@ const Layout = ({
           showAddNewCategory={showAddNewCategory}
           showCreateOrder={showCreateOrder}
           showOrderDetails={showOrderDetails}
+          showConfirmDelivery={showConfirmDelivery}
           isEditingProduct={isEditingProduct}
           isEditingCategory={isEditingCategory}
           showAddNewSubCategory={showAddNewSubCategory}
+          showUpgradePlan={showUpgradePlan}
         />
         <main className="flex-grow ">
           <div

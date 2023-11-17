@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function AddNotes() {
+export default function AddNotes({ setShowSidebar }) {
   return (
     <div>
       {" "}

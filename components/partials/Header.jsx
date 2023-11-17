@@ -6,6 +6,8 @@ import ReportsDropdown from "../dropdowns/reports-dropdown";
 import StoreMenuDropdown from "../dropdowns/store-menu-dropdown";
 import { emitCustomEvent } from "../../utils/custom_events";
 import CustomDrawer from "../drawer-contents/custom-drawer";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowDeliveredButtons } from "../../redux/slices/ordersSlices/showDeliveredButtons";
 
 function Header({
   sidebarOpen,
@@ -21,8 +23,11 @@ function Header({
   isEditingProduct,
   isEditingCategory,
   showAddNewSubCategory,
+  showConfirmDelivery,
+  showUpgradePlan,
 }) {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [notificationDropdownOpen, setNotificationDropdownOpen] =
     useState(false);
   const [reportsDropdownOpen, setReportsDropdownOpen] = useState(false);
@@ -30,8 +35,10 @@ function Header({
   const [orderAccepted, setOrderAccepted] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
-  const [showDeliveredButtons, setShowDeliveredButtons] = useState(false);
   const [hideButtons, setHideButtons] = useState(false);
+  const showDeliveredButtons = useSelector(
+    (state) => state.showDeliveredButtons
+  );
 
   const notificationDropdownRef = useRef(null);
   const reportsDropdownRef = useRef(null);
@@ -43,7 +50,8 @@ function Header({
     showAddNewProduct ||
     showAddNewCategory ||
     showCreateOrder ||
-    showOrderDetails;
+    showOrderDetails ||
+    showConfirmDelivery;
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -99,18 +107,18 @@ function Header({
 
   const handleAcceptOrder = () => {
     setOrderAccepted(true);
-    setShowDeliveredButtons(false);
+    dispatch(setShowDeliveredButtons(false));
   };
 
   const handleCancelOrder = () => {
     setOrderAccepted(false);
-    setShowDeliveredButtons(false);
+    dispatch(setShowDeliveredButtons(false));
   };
 
   const handleDeliveredOrder = () => {
     setHideButtons(true);
     setOrderAccepted(false);
-    setShowDeliveredButtons(false);
+    dispatch(setShowDeliveredButtons(false));
   };
 
   return (
@@ -151,7 +159,7 @@ function Header({
                       {backText}
                     </span>
                   </div>{" "}
-                  {!showOrderDetails && (
+                  {!showOrderDetails && !showConfirmDelivery && (
                     <div className="flex flex-row items-center">
                       {" "}
                       <img
@@ -184,9 +192,12 @@ function Header({
             </div>
             {!isShowStateActive && (
               <>
-                <div className="order-1 w-full sm:order-none sm:w-auto">
-                  <Search />
-                </div>
+                {showUpgradePlan ? null : (
+                  <div className="order-1 w-full sm:order-none sm:w-auto">
+                    <Search />
+                  </div>
+                )}
+
                 {/* third div */}
                 <div className="flex items-center sw-[256px] h-12 top-24 left-920 gap-[6px] lg:gap-2">
                   <img
@@ -338,7 +349,7 @@ function Header({
                     </button>
                   </div>
                 )}{" "}
-                {!orderAccepted && showOrderDetails && (
+                {!orderAccepted && showOrderDetails && !showConfirmDelivery && (
                   <div className="flex gap-4">
                     <button
                       onClick={handleCancelOrder}
@@ -369,40 +380,43 @@ function Header({
                     </button>
                   </div>
                 )}
-                {!showDeliveredButtons && orderAccepted && showOrderDetails && (
-                  <div className="flex gap-4">
-                    <button
-                      onClick={handleCancelOrder}
-                      className="cursor-pointer"
-                      style={{
-                        backgroundColor: "#fff",
-                        color: "#FF2323",
-                        padding: "9px 16px",
-                        borderRadius: "4px",
-                        fontWeight: 500,
-                        fontSize: 16,
-                      }}
-                    >
-                      Cancel Order
-                    </button>
-                    <button
-                      onClick={() => {
-                        setShowSidebar(true);
-                        setContentType("ship-order");
-                      }}
-                      className="cursor-pointer font-freesans"
-                      style={{
-                        backgroundColor: "#FF5353",
-                        color: "#ffffff",
-                        padding: "9px 30px",
-                        borderRadius: "4px",
-                        fontSize: 15,
-                      }}
-                    >
-                      Ship Order
-                    </button>
-                  </div>
-                )}
+                {!showDeliveredButtons &&
+                  orderAccepted &&
+                  showOrderDetails &&
+                  !showConfirmDelivery && (
+                    <div className="flex gap-4">
+                      <button
+                        onClick={handleCancelOrder}
+                        className="cursor-pointer"
+                        style={{
+                          backgroundColor: "#fff",
+                          color: "#FF2323",
+                          padding: "9px 16px",
+                          borderRadius: "4px",
+                          fontWeight: 500,
+                          fontSize: 16,
+                        }}
+                      >
+                        Cancel Order
+                      </button>
+                      <button
+                        onClick={() => {
+                          setShowSidebar(true);
+                          setContentType("ship-order");
+                        }}
+                        className="cursor-pointer font-freesans"
+                        style={{
+                          backgroundColor: "#FF5353",
+                          color: "#ffffff",
+                          padding: "9px 30px",
+                          borderRadius: "4px",
+                          fontSize: 15,
+                        }}
+                      >
+                        Ship Order
+                      </button>
+                    </div>
+                  )}
                 {showDeliveredButtons && showOrderDetails && (
                   <div className="flex gap-4">
                     <button
@@ -444,7 +458,6 @@ function Header({
         setShowSidebar={setShowSidebar}
         contentType={contentType}
         setContentType={setContentType}
-        setShowDeliveredButtons={setShowDeliveredButtons}
       />
     </>
   );

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
-import GrowthChart from "../bar-charts/growth";
 import StoreSettingsLinks from "./settings-link";
 import Billings from "./billings-components/billings";
 import Preferences from "./preferences-components/preferences-components/preferences";
 import Plans from "./plans-components/plans";
+import UpgradePlans from "./plans-components/upgrade-plans";
 import StaffAccounts from "./staff-accounts-components/staff-accounts";
 import Payments from "./payments-components/payments";
 import Shipping from "./shipping-components/shipping";
@@ -18,29 +18,40 @@ import Policies from "./policies-components/policies";
 import Languages from "./languages-components/languages";
 import KYCVerification from "./kyc-verification-components/kyc-verification";
 
-const components = [
-  { id: "plans", component: <Plans /> },
-  { id: "billings", component: <Billings /> },
-  { id: "preferences", component: <Preferences /> },
-  { id: "staff-accounts", component: <StaffAccounts /> },
-  { id: "payments", component: <Payments /> },
-  { id: "shipping", component: <Shipping /> },
-  { id: "warehouse", component: <Warehouse /> },
-  { id: "tax", component: <Tax /> },
-  { id: "extra-charges", component: <ExtraCharges /> },
-  { id: "checkout", component: <Checkout /> },
-  { id: "support", component: <SupportAndSocial /> },
-  { id: "domains", component: <Domains /> },
-  { id: "policies", component: <Policies /> },
-  { id: "languages", component: <Languages /> },
-  { id: "kyc-verification", component: <KYCVerification /> },
-];
-
-export default function StoreSettings() {
+export default function StoreSettings({ showUpgradePlan, setShowUpgradePlan }) {
+  const components = [
+    {
+      id: "plans",
+      component: (
+        <Plans
+          showUpgradePlan={showUpgradePlan}
+          setShowUpgradePlan={setShowUpgradePlan}
+        />
+      ),
+    },
+    { id: "billings", component: <Billings /> },
+    { id: "preferences", component: <Preferences /> },
+    { id: "staff-accounts", component: <StaffAccounts /> },
+    { id: "payments", component: <Payments /> },
+    { id: "shipping", component: <Shipping /> },
+    { id: "warehouse", component: <Warehouse /> },
+    { id: "tax", component: <Tax /> },
+    { id: "extra-charges", component: <ExtraCharges /> },
+    { id: "checkout", component: <Checkout /> },
+    { id: "support", component: <SupportAndSocial /> },
+    { id: "domains", component: <Domains /> },
+    { id: "policies", component: <Policies /> },
+    { id: "languages", component: <Languages /> },
+    { id: "kyc-verification", component: <KYCVerification /> },
+  ];
   const [activeDiv, setActiveDiv] = useState("plans");
 
   function modifySVGColor(svg, color) {
     return svg.replace(/#4B4B4B/g, color);
+  }
+
+  if (showUpgradePlan) {
+    return <UpgradePlans goBack={() => setShowUpgradePlan(false)} />;
   }
 
   return (
@@ -98,8 +109,13 @@ export default function StoreSettings() {
           </ul>
         </div>
         {components.map((item) => {
-          if (item.id === activeDiv) return item.component;
-          return null; // or simply don't return anything
+          if (item.id === activeDiv) {
+            return React.cloneElement(item.component, {
+              showUpgradePlan,
+              setShowUpgradePlan,
+            });
+          }
+          return null;
         })}
       </div>
       <div className="w-[90%] mx-4 mb-4 mt-8 flex flex-col items-center justify-between">
