@@ -62,7 +62,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   };
 
   const handleGetStartedClick = () => {
-    router.push("/login");
+    router.push("/");
   };
 
   const handleGoogle =async ()=>{

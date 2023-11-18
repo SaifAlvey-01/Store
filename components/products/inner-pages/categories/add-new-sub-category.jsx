@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
-import { addCategory } from "../../../../redux/slices/categoriesSlices/addCategory";
+import { addSubCategory } from "../../../../redux/slices/categoriesSlices/addCategory";
+
 import { useDispatch } from "react-redux";
+import { useCustomEventListener } from "../../../../utils/custom_events";
 import cogoToast from "cogo-toast";
 
 const modules = {
@@ -37,7 +39,7 @@ const formats = [
   "video",
 ];
 
-export default function AddNewSubCategory() {
+export default function AddNewSubCategory({subCategories}) {
   const [content, setContent] = useState("");
   const fileInputRef = useRef(null);
   const fileInputRef2 = useRef(null);
@@ -51,7 +53,7 @@ export default function AddNewSubCategory() {
   const handleQuillChange = (value) => {
     setContent(value);
   };
-
+  
   const handleImageButtonClick = () => {
     fileInputRef.current.click();
   };
@@ -93,14 +95,17 @@ export default function AddNewSubCategory() {
         mobileBannerUrl: mobileImageUrl,
         name: name,
         description: content,
-        parentCategoryId: "12",
       };
+      dispatch(addSubCategory(body));
 
-      dispatch(addCategory(body));
+
     } else {
       cogoToast.error("Please enter the required field");
     }
   };
+
+  useCustomEventListener("add-new-subcategory", handleSubmit);
+
 
   return (
     <div
