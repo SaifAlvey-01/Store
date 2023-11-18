@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
-import { addSubCategory } from "../../../../redux/slices/addCategory";
+import { addSubCategory } from "../../../../redux/slices/categoriesSlices/addCategory";
+
 import { useDispatch } from "react-redux";
 import { useCustomEventListener } from "../../../../utils/custom_events";
 import cogoToast from "cogo-toast";
@@ -53,10 +54,6 @@ export default function AddNewSubCategory({subCategories}) {
     setContent(value);
   };
   
-  
-  useEffect(()=>{
-
-  },[subCategories])
   const handleImageButtonClick = () => {
     fileInputRef.current.click();
   };
