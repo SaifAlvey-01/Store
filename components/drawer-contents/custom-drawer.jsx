@@ -11,13 +11,13 @@ import ChooseDeliveryTime from "./choose-delivery time";
 import PickupTimeAndPartner from "./pickup-time-and-partner";
 import AddTrackingDetails from "./add-tracking-details";
 import ShipmentWeight from "./shipment-weight";
+import MyCredit from "./my-credit";
 
 export default function CustomDrawer({
   showSidebar,
   setShowSidebar,
   contentType,
   setContentType,
-  setShowDeliveredButtons,
 }) {
   const [addingNewCustomer, setAddingNewCustomer] = useState(false);
   const sidebarRef = useRef(null);
@@ -76,28 +76,16 @@ export default function CustomDrawer({
               onClick={() => setShowSidebar(false)}
             />{" "}
             {contentType === "add-variant" && (
-              <AddVariants
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-              />
+              <AddVariants setShowSidebar={setShowSidebar} />
             )}
             {contentType === "edit-variant" && (
-              <EditVariants
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-              />
+              <EditVariants setShowSidebar={setShowSidebar} />
             )}
             {contentType === "edit-product-variant" && (
-              <EditProductVariant
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-              />
+              <EditProductVariant setShowSidebar={setShowSidebar} />
             )}
             {contentType === "add-product" && (
-              <AddProduct
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-              />
+              <AddProduct setShowSidebar={setShowSidebar} />
             )}
             {contentType === "add-customer-details" && !addingNewCustomer && (
               <AddCustomerDetails
@@ -107,51 +95,28 @@ export default function CustomDrawer({
               />
             )}
             {(contentType === "add-new-customer" || addingNewCustomer) && (
-              <AddNewCustomer
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-              />
+              <AddNewCustomer setShowSidebar={setShowSidebar} />
             )}
             {contentType === "add-notes" && !addingNewCustomer && (
-              <AddNotes
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-              />
+              <AddNotes setShowSidebar={setShowSidebar} />
             )}
             {contentType === "ship-order" && (
-              <ShipOrder
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-                setContentType={setContentType}
-              />
+              <ShipOrder setContentType={setContentType} />
             )}
             {contentType === "pickup-time" && (
-              <PickupTimeAndPartner
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-                setContentType={setContentType}
-              />
+              <PickupTimeAndPartner setContentType={setContentType} />
             )}
             {contentType === "delivery-time" && (
-              <ChooseDeliveryTime
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-                setShowDeliveredButtons={setShowDeliveredButtons}
-              />
+              <ChooseDeliveryTime setShowSidebar={setShowSidebar} />
             )}
             {contentType === "tracking-details" && (
-              <AddTrackingDetails
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-                setShowDeliveredButtons={setShowDeliveredButtons}
-              />
+              <AddTrackingDetails setShowSidebar={setShowSidebar} />
             )}
             {contentType === "shipment-weight" && (
-              <ShipmentWeight
-                setShowSidebar={setShowSidebar}
-                contentType={contentType}
-                setShowDeliveredButtons={setShowDeliveredButtons}
-              />
+              <ShipmentWeight setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "my-credit" && (
+              <MyCredit setShowSidebar={setShowSidebar} />
             )}
           </div>
         </div>

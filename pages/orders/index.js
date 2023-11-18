@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 export default function Orders() {
   return (
     <Layout>
-      <div>abc</div>
+      <div></div>
     </Layout>
   );
 }

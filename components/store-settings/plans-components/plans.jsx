@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Plans() {
+export default function Plans({ setShowUpgradePlan }) {
   const data = [
     {
       plan: { title: "Silver", description: "Billed Quarterly" },
@@ -86,12 +86,14 @@ export default function Plans() {
             Your plan will renew on 17 Oct 2023{" "}
           </span>
           <button
+            // onClick={() => setShowUpgradePlan(true)}
             style={{
               backgroundColor: "#FF5353",
               color: "white",
               padding: "10px 18px",
               borderRadius: "4px",
               fontSize: "12px",
+              cursor: "pointer",
             }}
           >
             Upgrade Plan{" "}

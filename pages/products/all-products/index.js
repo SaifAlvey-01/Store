@@ -2,8 +2,8 @@ import React from "react";
 import Layout from "../../../components/Layout";
 import AllProducts from "../../../components/products/initial-pages/all-products";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowAddNewProduct } from "../../../redux/slices/addNewProductSlice";
-import { setIsEditingProduct } from "../../../redux/slices/editProductSlice";
+import { setShowAddNewProduct } from "../../../redux/slices/productsSlices/addNewProductSlice";
+import { setIsEditingProduct } from "../../../redux/slices/productsSlices/editProductSlice";
 
 export default function index() {
   const dispatch = useDispatch();

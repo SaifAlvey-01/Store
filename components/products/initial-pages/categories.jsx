@@ -6,7 +6,7 @@ import CategoriesListing from "../inner-pages/categories/categories-listing";
 import EditCategory from "../inner-pages/categories/edit-category";
 import addCategory, {
   getAllCategories,
-} from "../../../redux/slices/addCategory";
+} from "../../../redux/slices/categoriesSlices/addCategory";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 

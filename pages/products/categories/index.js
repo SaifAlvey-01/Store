@@ -2,9 +2,9 @@ import React from "react";
 import Layout from "../../../components/Layout";
 import Categories from "../../../components/products/initial-pages/categories";
 import { useDispatch, useSelector } from "react-redux";
-import { setShowAddNewCategory } from "../../../redux/slices/addNewCategorySlice";
-import { setIsEditingCategory } from "../../../redux/slices/editCategorySlice";
-import { setShowAddNewSubCategory } from "../../../redux/slices/addNewSubCategorySlice";
+import { setShowAddNewCategory } from "../../../redux/slices/categoriesSlices/addNewCategorySlice";
+import { setIsEditingCategory } from "../../../redux/slices/categoriesSlices/editCategorySlice";
+import { setShowAddNewSubCategory } from "../../../redux/slices/categoriesSlices/addNewSubCategorySlice";
 
 export default function index() {
   const dispatch = useDispatch();

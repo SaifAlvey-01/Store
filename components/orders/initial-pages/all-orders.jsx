@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../../free-trial-footer";
-import CreateOrder from "../inner-pages/create-order";
-import OrdersToolBar from "../inner-pages/orders-tool-bar";
-import OrderListing from "../inner-pages/orders-listing";
-import OrdersFilterBar from "../inner-pages/orders-filter-bar";
-import OrderDetails from "../inner-pages/order-details";
+import CreateOrder from "../inner-pages/all-orders/create-order";
+import OrderDetails from "../inner-pages/all-orders/order-details";
+import ConfirmDelivery from "../inner-pages/all-orders/confirm-delivery";
+import OrdersFilterBar from "../inner-pages/all-orders/orders-filter-bar";
+import OrderListing from "../inner-pages/all-orders/orders-listing";
 
 export default function AllOrders({
   showCreateOrder,
   setShowCreateOrder,
   showOrderDetails,
   setShowOrderDetails,
+  showConfirmDelivery,
+  setShowConfirmDelivery,
 }) {
   const [selectedOrder, setSelectedOrder] = useState(null);
 
@@ -20,7 +22,7 @@ export default function AllOrders({
 
   return (
     <>
-      {showOrderDetails && (
+      {showOrderDetails && !showConfirmDelivery && (
         <div
           className="relative h-auto overflow-y-auto flex flex-col md:flex-row items-center justify-between bg-white rounded-lg shadow-md mb-5"
           style={{
@@ -80,12 +82,16 @@ export default function AllOrders({
         }}
       >
         <div className="w-full flex-grow flex flex-col mb-4">
-          {showOrderDetails ? (
+          {showOrderDetails && !showConfirmDelivery && (
             <OrderDetails
               goBack={() => setShowOrderDetails(false)}
               selectedOrder={selectedOrder}
             />
-          ) : (
+          )}
+          {showConfirmDelivery && (
+            <ConfirmDelivery goBack={() => setShowConfirmDelivery(false)} />
+          )}
+          {!showOrderDetails && !showConfirmDelivery && (
             <>
               <div className="flex justify-center w-full">
                 <OrdersFilterBar setShowCreateOrder={setShowCreateOrder} />

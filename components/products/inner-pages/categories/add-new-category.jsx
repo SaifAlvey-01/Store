@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
-import { addCategory } from "../../../../redux/slices/addCategory";
+import { addCategory } from "../../../../redux/slices/categoriesSlices/addCategory";
 import { useDispatch, useSelector } from "react-redux";
 import cogoToast from "cogo-toast";
 import AddNewSubCategory from "./add-new-sub-category";

@@ -1,5 +1,6 @@
 import React from "react";
 import FreeTrialFooter from "../../free-trial-footer";
+import OrderListing from "../inner-pages/abandoned-carts/orders-listing";
 
 export default function AbandonedCarts() {
   return (
@@ -11,7 +12,11 @@ export default function AbandonedCarts() {
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      <div
+      <div className="w-full flex-grow flex flex-col my-5">
+        <OrderListing className="flex-grow" />
+      </div>
+
+      {/* <div
         className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           // border: "1px solid #e3e3e3",
@@ -37,7 +42,7 @@ export default function AbandonedCarts() {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="w-[90%] mx-4 mb-10 mt-4  flex flex-col items-center justify-between">
         <FreeTrialFooter />
