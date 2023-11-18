@@ -406,7 +406,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
       </div>
 
       {showLoading && (
-        <Loading url="/login" message="Signing out..." duration={5000} />
+        <Loading url="/" message="Signing out..." duration={5000} />
       )}
     </>
   );

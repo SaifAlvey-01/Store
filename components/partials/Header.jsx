@@ -286,6 +286,7 @@ function Header({
                   !isEditingProduct && (
                     <button
                       className="cursor-pointer"
+                      onClick={() => emitCustomEvent("add-new-subcategory")}
                       style={{
                         backgroundColor: "#4162FF",
                         color: "#ffffff",

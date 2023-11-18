@@ -51,6 +51,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const [bannerImageUrl, setBannerImageUrl] = useState("");
   const [name, setName] = useState("");
   const dispatch = useDispatch();
+  const subCategories = []
   const showAddNewSubCategory = useSelector((state) => state.addNewSubCategory);
 
   const handleQuillChange = (value) => {
@@ -103,7 +104,6 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         mobileBannerUrl: mobileImageUrl,
         name: name,
         description: content,
-        parentCategoryId: "12",
       };
       dispatch(addCategory(body));
     } else {
@@ -116,7 +116,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   return (
     <>
       {showAddNewSubCategory ? (
-        <AddNewSubCategory goBack={() => setShowAddNewSubCategory(false)} />
+        <AddNewSubCategory subCategories= {subCategories} goBack={() => setShowAddNewSubCategory(false)} />
       ) : (
         <div
           className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between p-3"
