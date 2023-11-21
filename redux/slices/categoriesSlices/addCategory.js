@@ -18,10 +18,13 @@ export const addCategory = createAsyncThunk(
   async (categoryData, subCategoriesData) => {
     try {
       const url = `${baseUrl}/categories/add-category`;
+      console.log(categoryData, "<-----categoryDatacategoryData")
       const payload = {
         ...categoryData,
         subCategories: subCategoriesData,
       };
+
+      console.log(payload)
       const response = await axiosInstance.post(url, payload);
       return response.data;
     } catch (error) {
@@ -38,12 +41,14 @@ export const addSubCategory = createAsyncThunk(
 
     // Ensure subCategories is always an array
     const existingSubCategories = Array.isArray(category.subCategories)
-      ? category.subCategories
-      : [];
-
+    ? category.subCategories
+    : [];
+    
     // Add the new subcategory object to the array
+    // existingSubCategories.push(subCategoryData)
     const updatedSubCategories = [...existingSubCategories, subCategoryData];
-
+    
+    console.log("updatedSubCategories:", updatedSubCategories);
     // Return the updated subCategories array
     return updatedSubCategories;
   }
@@ -87,7 +92,7 @@ const categorySlice = createSlice({
       })
       .addCase(addSubCategory.fulfilled, (state, action) => {
         // Update the subCategories array with the new array from the async thunk
-        state.category.subCategories = action.payload;
+        state.category.subCategories = [...state.category.subCategories, action.payload];
         
       })
       .addCase(addCategory.rejected, (state, action) => {
