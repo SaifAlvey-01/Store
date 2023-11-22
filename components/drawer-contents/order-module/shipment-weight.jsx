@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { setShowConfirmDelivery } from "../../redux/slices/ordersSlices/confirmDeliverySlice";
+import { setShowConfirmDelivery } from "../../../redux/slices/ordersSlices/confirmDeliverySlice";
 import { useDispatch } from "react-redux";
 
 const headers = [

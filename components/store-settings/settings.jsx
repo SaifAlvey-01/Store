@@ -51,7 +51,13 @@ export default function StoreSettings({ showUpgradePlan, setShowUpgradePlan }) {
   }
 
   if (showUpgradePlan) {
-    return <UpgradePlans goBack={() => setShowUpgradePlan(false)} />;
+    return (
+      <UpgradePlans
+        goBack={() => setShowUpgradePlan(false)}
+        setActiveDiv={setActiveDiv}
+        setShowUpgradePlan={setShowUpgradePlan}
+      />
+    );
   }
 
   return (

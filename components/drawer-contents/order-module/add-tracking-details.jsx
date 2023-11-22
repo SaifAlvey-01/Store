@@ -1,8 +1,8 @@
 import React from "react";
-import TrackingIDSelect from "../dropdown-selects/tracking-id-select";
-import ShippingPartnerSelect from "../dropdown-selects/shipping-partner-select";
+import TrackingIDSelect from "../../dropdown-selects/tracking-id-select";
+import ShippingPartnerSelect from "../../dropdown-selects/shipping-partner-select";
 import { useDispatch } from "react-redux";
-import { setShowDeliveredButtons } from "../../redux/slices/ordersSlices/showDeliveredButtons";
+import { setShowDeliveredButtons } from "../../../redux/slices/ordersSlices/showDeliveredButtons";
 
 export default function AddTrackingDetails({ setShowSidebar }) {
   const dispatch = useDispatch();

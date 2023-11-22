@@ -86,7 +86,7 @@ export default function Plans({ setShowUpgradePlan }) {
             Your plan will renew on 17 Oct 2023{" "}
           </span>
           <button
-            // onClick={() => setShowUpgradePlan(true)}
+            onClick={() => setShowUpgradePlan(true)}
             style={{
               backgroundColor: "#FF5353",
               color: "white",

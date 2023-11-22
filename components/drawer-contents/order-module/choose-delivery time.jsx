@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setShowDeliveredButtons } from "../../redux/slices/ordersSlices/showDeliveredButtons";
+import { setShowDeliveredButtons } from "../../../redux/slices/ordersSlices/showDeliveredButtons";
 
 const delivery_time = [
   { id: 1, time: "30-60 Minutes" },

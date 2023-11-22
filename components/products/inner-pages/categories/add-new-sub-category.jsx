@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
-import { addSubCategory } from "../../../../redux/slices/categoriesSlices/addCategory";
+import { addSubCategory } from "../../../../redux/slices/categoriesSlices/addSubCategory";
 
 import { useDispatch } from "react-redux";
 import { useCustomEventListener } from "../../../../utils/custom_events";
@@ -39,7 +39,7 @@ const formats = [
   "video",
 ];
 
-export default function AddNewSubCategory({subCategories}) {
+export default function AddNewSubCategory({ subCategories }) {
   const [content, setContent] = useState("");
   const fileInputRef = useRef(null);
   const fileInputRef2 = useRef(null);
@@ -53,7 +53,7 @@ export default function AddNewSubCategory({subCategories}) {
   const handleQuillChange = (value) => {
     setContent(value);
   };
-  
+
   const handleImageButtonClick = () => {
     fileInputRef.current.click();
   };
@@ -97,15 +97,12 @@ export default function AddNewSubCategory({subCategories}) {
         description: content,
       };
       dispatch(addSubCategory(body));
-
-
     } else {
       cogoToast.error("Please enter the required field");
     }
   };
 
   useCustomEventListener("add-new-subcategory", handleSubmit);
-
 
   return (
     <div

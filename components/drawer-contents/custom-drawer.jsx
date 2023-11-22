@@ -1,17 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-import AddVariants from "./add-variants";
-import EditVariants from "./edit-variants";
-import EditProductVariant from "./edit-product-variant";
-import AddProduct from "./add-product";
-import AddCustomerDetails from "./add-customer-details";
-import AddNewCustomer from "./add-new-customer";
-import AddNotes from "./add-notes";
-import ShipOrder from "./ship-order";
-import ChooseDeliveryTime from "./choose-delivery time";
-import PickupTimeAndPartner from "./pickup-time-and-partner";
-import AddTrackingDetails from "./add-tracking-details";
-import ShipmentWeight from "./shipment-weight";
-import MyCredit from "./my-credit";
+import AddVariants from "./product-module/add-variants";
+import EditVariants from "./product-module/edit-variants";
+import EditProductVariant from "./product-module/edit-product-variant";
+import AddProduct from "./product-module/add-product";
+import AddCustomerDetails from "./order-module/add-customer-details";
+import AddNewCustomer from "./order-module/add-new-customer";
+import AddNotes from "./product-module/add-notes";
+import ShipOrder from "./order-module/ship-order";
+import ChooseDeliveryTime from "./order-module/choose-delivery time";
+import PickupTimeAndPartner from "./order-module/pickup-time-and-partner";
+import AddTrackingDetails from "./order-module/add-tracking-details";
+import ShipmentWeight from "./order-module/shipment-weight";
+import MyCredit from "./order-module/my-credit";
+import AutoAcceptOrders from "./settings-module/auto-accept-orders";
 
 export default function CustomDrawer({
   showSidebar,
@@ -117,6 +118,9 @@ export default function CustomDrawer({
             )}
             {contentType === "my-credit" && (
               <MyCredit setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "auto-accept-orders" && (
+              <AutoAcceptOrders setShowSidebar={setShowSidebar} />
             )}
           </div>
         </div>

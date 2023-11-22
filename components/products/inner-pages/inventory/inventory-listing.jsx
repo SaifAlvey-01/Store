@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Pagination from "../../../pagination";
 
-export default function InventoryListing() {
+export default function InventoryListing({ isEditing }) {
   const headers = [
     { title: "Product" },
     { title: "Variants" },
@@ -186,12 +186,13 @@ export default function InventoryListing() {
                       color: "#8E8E8E",
                       borderRadius: "6px",
                       border: "1px solid #D0D5DD",
-                      background: "#FFF",
+                      background: isEditing ? "#FFF" : "#F5F5F5",
                       boxShadow: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
                     }}
                     key={vIndex}
                     className="border mb-2 py-1.5 px-4 w-[50%]"
                     defaultValue={variant.inventory}
+                    disabled={!isEditing}
                     type="text"
                   />
                 ))}
@@ -207,9 +208,10 @@ export default function InventoryListing() {
                       color: "#8E8E8E",
                       borderRadius: "6px",
                       border: "1px solid var(--gray-300, #D0D5DD)",
-                      background: "#FFF",
+                      background: isEditing ? "#FFF" : "#F5F5F5",
                       boxShadow: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
                     }}
+                    disabled={!isEditing}
                     key={vIndex}
                     className="border mb-2 py-1.5 px-4 w-[50%]"
                     defaultValue={variant.price}
@@ -228,10 +230,11 @@ export default function InventoryListing() {
                       color: "#8E8E8E",
                       borderRadius: "6px",
                       border: "1px solid var(--gray-300, #D0D5DD)",
-                      background: "#FFF",
+                      background: isEditing ? "#FFF" : "#F5F5F5",
                       boxShadow: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
                     }}
                     key={vIndex}
+                    disabled={!isEditing}
                     className="border mb-2 py-1.5 px-4 w-[50%]"
                     defaultValue={variant.discountedPrice}
                     type="text"

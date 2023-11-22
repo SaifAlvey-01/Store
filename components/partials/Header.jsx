@@ -55,34 +55,72 @@ function Header({
 
   useEffect(() => {
     function handleOutsideClick(event) {
+      const notificationDropdown = notificationDropdownRef.current;
+      const reportsDropdown = reportsDropdownRef.current;
+      const storeMenuDropdown = storeMenuDropdownRef.current;
+
       if (
-        notificationDropdownRef.current &&
-        !notificationDropdownRef.current.contains(event.target)
+        notificationDropdown &&
+        !notificationDropdown.contains(event.target)
       ) {
         setNotificationDropdownOpen(false);
       }
 
-      if (
-        reportsDropdownRef.current &&
-        !reportsDropdownRef.current.contains(event.target)
-      ) {
+      if (reportsDropdown && !reportsDropdown.contains(event.target)) {
         setReportsDropdownOpen(false);
       }
 
-      if (
-        storeMenuDropdownRef.current &&
-        !storeMenuDropdownRef.current.contains(event.target)
-      ) {
+      if (storeMenuDropdown && !storeMenuDropdown.contains(event.target)) {
         setStoreMenuDropdownOpen(false);
       }
     }
 
-    handleOutsideClick();
-    // document.addEventListener("mousedown", handleOutsideClick);
-    // return () => {
-    //   document.removeEventListener("mousedown", handleOutsideClick);
-    // };
-  }, []);
+    function handleDropdownToggle(dropdown, setOpenState) {
+      if (!dropdown) return;
+      const isDropdownOpen = isOpen(dropdown);
+      if (isDropdownOpen) {
+        setOpenState(false);
+      } else {
+        closeOtherDropdowns(dropdown);
+        setOpenState(true);
+      }
+    }
+
+    function isOpen(dropdown) {
+      return (
+        dropdown &&
+        (dropdown === notificationDropdownRef.current
+          ? notificationDropdownOpen
+          : dropdown === reportsDropdownRef.current
+          ? reportsDropdownOpen
+          : dropdown === storeMenuDropdownRef.current
+          ? storeMenuDropdownOpen
+          : false)
+      );
+    }
+
+    function closeOtherDropdowns(currentDropdown) {
+      const allDropdowns = [
+        notificationDropdownRef.current,
+        reportsDropdownRef.current,
+        storeMenuDropdownRef.current,
+      ];
+
+      allDropdowns
+        .filter((dropdown) => dropdown !== currentDropdown)
+        .forEach((dropdown) => {
+          if (isOpen(dropdown)) {
+            handleDropdownToggle(dropdown, () => {});
+          }
+        });
+    }
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [notificationDropdownOpen, reportsDropdownOpen, storeMenuDropdownOpen]);
 
   function capitalizeAndSpace(str) {
     return str

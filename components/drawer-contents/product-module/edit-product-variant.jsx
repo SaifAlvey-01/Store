@@ -1,5 +1,5 @@
 import React from "react";
-import UnitSelect from "../dropdown-selects/unit-select";
+import UnitSelect from "../../dropdown-selects/unit-select";
 
 export default function EditProductVariant() {
   const handleUnitChange = (selectedOption) => {

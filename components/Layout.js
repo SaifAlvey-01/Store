@@ -17,8 +17,8 @@ const Layout = ({
   showConfirmDelivery,
   isEditingProduct,
   isEditingCategory,
-  showAddNewSubCategory,
   showUpgradePlan,
+  showAddNewSubCategory,
 }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);

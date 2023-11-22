@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setShowOrderDetails } from "../../redux/slices/ordersSlices/orderDetailsSlice";
-import { setShowConfirmDelivery } from "../../redux/slices/ordersSlices/confirmDeliverySlice";
-import { setShowDeliveredButtons } from "../../redux/slices/ordersSlices/showDeliveredButtons";
+import { setShowOrderDetails } from "../../../redux/slices/ordersSlices/orderDetailsSlice";
+import { setShowConfirmDelivery } from "../../../redux/slices/ordersSlices/confirmDeliverySlice";
+import { setShowDeliveredButtons } from "../../../redux/slices/ordersSlices/showDeliveredButtons";
 
 export default function MyCredit({ setShowSidebar }) {
   const dispatch = useDispatch();
