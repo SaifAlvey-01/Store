@@ -51,14 +51,17 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const [bannerImageUrl, setBannerImageUrl] = useState("");
   const [name, setName] = useState("");
   const dispatch = useDispatch();
-  const subCategories = [];
   const showAddNewSubCategory = useSelector((state) => state.addNewSubCategory);
+  const subCategories = useSelector((state) => state.addSubCategory.subCategories);
+  const loadingAddCategory = useSelector((state) => state.categories.loading);
+
+  console.log(loadingAddCategory, "<---sd")
 
   const handleQuillChange = (value) => {
     setContent(value);
   };
 
-  const handleShowSubCategory = () => {
+  const handleCheckboxChange = () => {
     const updatedValue = !showAddNewSubCategory;
     setShowAddNewSubCategory(updatedValue);
   };
@@ -104,6 +107,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         mobileBannerUrl: mobileImageUrl,
         name: name,
         description: content,
+        subCategories
       };
       dispatch(addCategory(body));
     } else {
@@ -116,10 +120,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   return (
     <>
       {showAddNewSubCategory ? (
-        <AddNewSubCategory
-          subCategories={subCategories}
-          goBack={() => setShowAddNewSubCategory(false)}
-        />
+        <AddNewSubCategory subCategories= {subCategories} goBack={() => setShowAddNewSubCategory(false)} />
       ) : (
         <div
           className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between p-3"
@@ -260,7 +261,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   />
                 </div>
 
-                {/* <div className="flex items-center mt-2">
+                <div className="flex items-center mt-2">
                   <input
                     style={{
                       appearance: "none",
@@ -319,55 +320,6 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                     )}
                     Add as Subcategory{" "}
                   </label>
-                </div> */}
-
-                <div
-                  className="p-4 mt-2"
-                  style={{
-                    borderRadius: "10px",
-                    backgroundColor: "var(--white-color, #FFF)",
-                    border: "1px solid #e3e3e3",
-                  }}
-                >
-                  {" "}
-                  <div className="font-freesans flex flex-col items-start justify-start  mb-6">
-                    <span
-                      className="font-freesans mb-2"
-                      style={{
-                        color: "#4B4B4B",
-                        fontWeight: 500,
-                        fontSize: "14px",
-                      }}
-                    >
-                      Add Subcategory{" "}
-                    </span>
-                    <span
-                      className="m-0 font-freesans"
-                      style={{
-                        color: "#8E8E8E",
-                        fontWeight: 400,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Add subcategories if you have any.{" "}
-                    </span>
-                  </div>
-                  <div className="flex flex-row items-center justify-center">
-                    {" "}
-                    <button
-                      className=" cursor-pointer"
-                      style={{
-                        backgroundColor: "#ffffff",
-                        color: "#4162FF",
-                        padding: "8px 24px",
-                        borderRadius: "4px",
-                        border: "1px dashed #4162FF",
-                      }}
-                      onClick={handleShowSubCategory}
-                    >
-                      Add Subcategory{" "}
-                    </button>
-                  </div>
                 </div>
                 {showAddNewSubCategory ? <AddNewSubCategory /> : null}
               </div>

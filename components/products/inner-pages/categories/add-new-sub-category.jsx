@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
 import { addSubCategory } from "../../../../redux/slices/categoriesSlices/addSubCategory";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCustomEventListener } from "../../../../utils/custom_events";
 import cogoToast from "cogo-toast";
 
@@ -53,6 +53,7 @@ export default function AddNewSubCategory({ subCategories }) {
   const handleQuillChange = (value) => {
     setContent(value);
   };
+
 
   const handleImageButtonClick = () => {
     fileInputRef.current.click();

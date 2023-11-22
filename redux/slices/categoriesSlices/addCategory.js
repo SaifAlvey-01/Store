@@ -6,26 +6,17 @@ import axiosInstance from "../../../middleware/axiosInstance";
 const baseUrl = process.env.BASE_URL;
 
 const initialState = {
-  category: {
-    subCategories: [],
-  },
+  category: {},
   loading: false,
   error: null,
 };
 
 export const addCategory = createAsyncThunk(
   "categories/addCategory",
-  async (categoryData, subCategoriesData) => {
+  async (categoryData) => {
     try {
       const url = `${baseUrl}/categories/add-category`;
-      console.log(categoryData, "<-----categoryDatacategoryData")
-      const payload = {
-        ...categoryData,
-        subCategories: subCategoriesData,
-      };
-
-      console.log(payload)
-      const response = await axiosInstance.post(url, payload);
+      const response = await axiosInstance.post(url, categoryData);
       return response.data;
     } catch (error) {
       throw error;
@@ -33,26 +24,6 @@ export const addCategory = createAsyncThunk(
   }
 );
 
-export const addSubCategory = createAsyncThunk(
-  "categories/addSubCategory",
-  async (subCategoryData, { getState }) => {
-    // Access the current state to get the existing subCategories array
-    const { category } = getState().categories || { category: { subCategories: [] } };
-
-    // Ensure subCategories is always an array
-    const existingSubCategories = Array.isArray(category.subCategories)
-    ? category.subCategories
-    : [];
-    
-    // Add the new subcategory object to the array
-    // existingSubCategories.push(subCategoryData)
-    const updatedSubCategories = [...existingSubCategories, subCategoryData];
-    
-    console.log("updatedSubCategories:", updatedSubCategories);
-    // Return the updated subCategories array
-    return updatedSubCategories;
-  }
-);
 
 export const getAllCategories = createAsyncThunk(
   "categories/getAllCategories",
@@ -89,11 +60,6 @@ const categorySlice = createSlice({
       .addCase(addCategory.fulfilled, (state, action) => {
         state.loading = false;
         state.category = action.payload;
-      })
-      .addCase(addSubCategory.fulfilled, (state, action) => {
-        // Update the subCategories array with the new array from the async thunk
-        state.category.subCategories = [...state.category.subCategories, action.payload];
-        
       })
       .addCase(addCategory.rejected, (state, action) => {
         state.loading = false;
