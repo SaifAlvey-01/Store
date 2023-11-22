@@ -1,7 +1,7 @@
 import React from "react";
-import StateSelect from "../dropdown-selects/state-select";
+import UnitSelect from "../../dropdown-selects/unit-select";
 
-export default function AddNewCustomer({ setShowSidebar }) {
+export default function AddVariants() {
   const handleUnitChange = (selectedOption) => {
     console.log(`Selected: ${selectedOption.value}`);
   };
@@ -9,16 +9,34 @@ export default function AddNewCustomer({ setShowSidebar }) {
   return (
     <div>
       {" "}
-      <div className="h-[850px]">
+      <div className="h-[750px]">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-              Add New Customer{" "}
+              Add Variants
             </h3>
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="flex items-center">
+          {" "}
+          <div className="bg-[#E1E1E1] rounded-[8px] mr-2.5 w-10 h-10 flex items-center justify-center p-2.5">
+            <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+          </div>
+          <div className="flex flex-col w-[60%]">
+            {" "}
+            <span
+              className="mb-1"
+              style={{ color: "#4B4B4B", fontSize: "14px" }}
+            >
+              Small{" "}
+            </span>
+            <p style={{ color: "#04B000", fontSize: "14px" }} className="m-0">
+              In stock{" "}
+            </p>
+          </div>
+        </div>
+        <div className="mt-6">
           <span
             className="font-freesans"
             style={{
@@ -27,7 +45,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
               fontSize: "13px",
             }}
           >
-            Name{" "}
+            Option Name{" "}
             <span
               style={{
                 color: "#FF3A3A",
@@ -46,7 +64,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
             }}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="Enter Name"
+            placeholder="Eg. Style, Material"
             required
           />
         </div>
@@ -59,7 +77,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
               fontSize: "13px",
             }}
           >
-            Phone Number{" "}
+            Option Value{" "}
             <span
               style={{
                 color: "#FF3A3A",
@@ -79,11 +97,11 @@ export default function AddNewCustomer({ setShowSidebar }) {
             }}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="0334 0050391"
+            placeholder="Enter Category"
             required
           />
           <img
-            src="/india.png"
+            src="/trash.png"
             alt="Description"
             className="absolute right-3 top-[66%] transform -translate-y-1/2 w-4 h-4"
           />
@@ -97,30 +115,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
               fontSize: "13px",
             }}
           >
-            Email{" "}
-          </span>
-          <input
-            className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] block w-full px-4 py-2.5 mt-1 placeholder-gray-300  focus:outline-none"
-            style={{
-              border: "1.5px solid #E5E7EB",
-              boxSizing: "border-box",
-            }}
-            onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
-            onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="Enter Email"
-            required
-          />
-        </div>
-        <div className="mt-6">
-          <span
-            className="font-freesans"
-            style={{
-              color: "#4B4B4B",
-              fontWeight: 500,
-              fontSize: "13px",
-            }}
-          >
-            Address{" "}
+            Price{" "}
             <span
               style={{
                 color: "#FF3A3A",
@@ -139,7 +134,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
             }}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="Flat/House No, Building, Colony"
+            placeholder="Eg. 99"
             required
           />
         </div>
@@ -152,7 +147,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
               fontSize: "13px",
             }}
           >
-            Location/Area{" "}
+            Discounted Price{" "}
           </span>
           <input
             className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] block w-full px-4 py-2.5 mt-1 placeholder-gray-300  focus:outline-none"
@@ -162,7 +157,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
             }}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="E.g. MG Road, Gandhi Nagar"
+            placeholder="Eg. 99"
             required
           />
         </div>
@@ -175,30 +170,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
               fontSize: "13px",
             }}
           >
-            Landmark{" "}
-          </span>
-          <input
-            className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] block w-full px-4 py-2.5 mt-1 placeholder-gray-300  focus:outline-none"
-            style={{
-              border: "1.5px solid #E5E7EB",
-              boxSizing: "border-box",
-            }}
-            onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
-            onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="E.g. Near Bank, Chowk, etc."
-            required
-          />
-        </div>
-        <div className="mt-6">
-          <span
-            className="font-freesans"
-            style={{
-              color: "#4B4B4B",
-              fontWeight: 500,
-              fontSize: "13px",
-            }}
-          >
-            Pin Code{" "}
+            SKU ID{" "}
             <span
               style={{
                 color: "#FF3A3A",
@@ -217,7 +189,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
             }}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="Enter Pin"
+            placeholder="Eg. 000010023002"
             required
           />
         </div>
@@ -230,16 +202,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
               fontSize: "13px",
             }}
           >
-            City{" "}
-            <span
-              style={{
-                color: "#FF3A3A",
-                fontSize: "14px",
-                fontWeight: "bold",
-              }}
-            >
-              *
-            </span>
+            Quantity{" "}
           </span>
           <input
             className="bg-[#FFF] text-gray-900 text-sm rounded-[10px] block w-full px-4 py-2.5 mt-1 placeholder-gray-300  focus:outline-none"
@@ -249,14 +212,48 @@ export default function AddNewCustomer({ setShowSidebar }) {
             }}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
-            placeholder="Enter City"
+            placeholder="Eg. 10"
             required
           />
         </div>
 
         <div className="mt-6">
-          {" "}
-          <StateSelect onChange={handleUnitChange} />
+          <span
+            className="font-freesans"
+            style={{
+              color: "#4B4B4B",
+              fontWeight: 500,
+              fontSize: "13px",
+            }}
+          >
+            Weight{" "}
+          </span>
+
+          <div className="flex mt-1 items-center">
+            <div
+              className="relative flex-grow flex items-center border rounded-[10px] focus-within:border-bdbfc0"
+              style={{
+                border: "1.5px solid #E5E7EB",
+                boxSizing: "border-box",
+              }}
+            >
+              <input
+                className="bg-[#FFF] text-gray-900 text-sm flex-grow rounded-[10px] block pl-4 py-2.5 placeholder-gray-300 focus:outline-none"
+                onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
+                onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                placeholder="Eg. 1.2"
+                required
+                style={{
+                  border: "none",
+                  flex: "1",
+                }}
+              />
+
+              <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                <UnitSelect onChange={handleUnitChange} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -271,8 +268,8 @@ export default function AddNewCustomer({ setShowSidebar }) {
           alignItems: "center",
         }}
       >
-        <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
-          Add Customer{" "}
+        <button className="bg-blue-600 text-white px-5 py-2.5 rounded cursor-pointer">
+          Add Variant{" "}
         </button>
       </div>
     </div>

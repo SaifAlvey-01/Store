@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-export default function InventoryToolBar() {
-  const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
-  const [productDropdownOpen, setProductDropdownOpen] = useState(false);
+export default function InventoryToolBar({ isEditing, setIsEditing }) {
   const [filterDropdownOpen, setFilterDropdownOpen] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -11,8 +9,6 @@ export default function InventoryToolBar() {
   useEffect(() => {
     function handleOutsideClick(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        setSortDropdownOpen(false);
-        setProductDropdownOpen(false);
         setFilterDropdownOpen(false);
       }
     }
@@ -23,18 +19,9 @@ export default function InventoryToolBar() {
     };
   }, []);
 
-  const radioOptions = [
-    { id: "bordered-radio-1", label: "Created (Newest Date)" },
-    { id: "bordered-radio-2", label: "Created (Oldest Date)" },
-    { id: "bordered-radio-3", label: "Updated (Newest Date)" },
-    { id: "bordered-radio-4", label: "Updated (Oldest Date)" },
-    { id: "bordered-radio-5", label: "Product Name (A-Z)" },
-    { id: "bordered-radio-6", label: "Product Name (Z-A)" },
-    { id: "bordered-radio-7", label: "Inventory (High to Low)" },
-    { id: "bordered-radio-8", label: "Inventory (Low to High)" },
-    { id: "bordered-radio-9", label: "Price (High to Low)" },
-    { id: "bordered-radio-10", label: "Price (Low to High)" },
-  ];
+  const handleUpdateButtonClick = () => {
+    setIsEditing(!isEditing);
+  };
 
   return (
     <div className="flex flex-col md:flex-row md:justify-between items-center mt-4 w-[97%]">
@@ -435,6 +422,7 @@ export default function InventoryToolBar() {
         {/* Add New Product Dropdown */}
         <div className="relative">
           <button
+            onClick={handleUpdateButtonClick}
             style={{
               borderRadius: "6px",
               border: "1px solid #D0D5DD",
@@ -442,9 +430,9 @@ export default function InventoryToolBar() {
               color: "#ffffff",
               backgroundColor: "#4162ff",
             }}
-            className="flex cursor-pointer items-center px-1.5 md:px-7 py-2 hover:bg-gray-300"
+            className="flex cursor-pointer items-center px-2 md:px-7 py-2 hover:bg-gray-300"
           >
-            Update{" "}
+            {isEditing ? "Update" : "Edit"}{" "}
           </button>
         </div>
       </div>

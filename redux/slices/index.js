@@ -3,8 +3,9 @@ import counterReducer from "./counterSlice";
 import userReducer from "./userSlice";
 import productReducer from "./productsSlices/productSlice";
 import addNewProductReducer from "./productsSlices/addNewProductSlice";
-import addNewCategoryReducer from "./categoriesSlices/addNewCategorySlice";
-import addNewSubCategoryReducer from "./categoriesSlices/addNewSubCategorySlice";
+import addNewCategoryReducer from "./categoriesSlices/showCategorySlice";
+import addNewSubCategoryReducer from "./categoriesSlices/showSubCategorySlice";
+import addSubCategoryReducer from "./categoriesSlices/addSubCategory";
 import editCategoryReducer from "./categoriesSlices/editCategorySlice";
 import showCreateOrderReducer from "./ordersSlices/showCreateOrderSlice";
 import editProductReducer from "./productsSlices/editProductSlice";
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   showUpgradePlan: showUpgradePlanReducer,
   getBusiness,
   addCategory,
+  addSubCategory: addSubCategoryReducer,
 });
 
 export default rootReducer;

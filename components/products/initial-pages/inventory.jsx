@@ -2,8 +2,11 @@ import React from "react";
 import FreeTrialFooter from "../../free-trial-footer";
 import InventoryToolBar from "../inner-pages/inventory/inventory-tool-bar";
 import InventoryListing from "../inner-pages/inventory/inventory-listing";
+import { useState } from "react";
 
 export default function Inventory() {
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <div
       className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
@@ -14,12 +17,12 @@ export default function Inventory() {
       }}
     >
       <div className="flex justify-center w-full">
-        <InventoryToolBar />
+        <InventoryToolBar isEditing={isEditing} setIsEditing={setIsEditing} />
       </div>
 
       <div className="w-full flex-grow flex flex-col">
         {" "}
-        <InventoryListing className="flex-grow" />
+        <InventoryListing isEditing={isEditing} className="flex-grow" />
       </div>
 
       {/*Initial Inventory Page Content  */}
