@@ -17,17 +17,19 @@ export default function AddTrackingDetails({ setShowSidebar }) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[850px]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-              Add Tracking Details{" "}
-            </h3>
-          </div>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+            Add Tracking Details{" "}
+          </h3>
         </div>
-
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div className="mt-2">
           {" "}
           <ShippingPartnerSelect onChange={handleChange} />

@@ -126,15 +126,16 @@ export default function PickupTimeAndPartner({ setContentType }) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[820px]">
+      <div className="flex flex-col justify-between">
         <div className="flex justify-between items-center">
           <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
             Pickup time & Partner{" "}
           </h3>
         </div>
-        <div className="w-full">
+
+        <div style={{ borderBottom: "2px solid #E5E7EB" }}>
           <div className="flex justify-between w-[80%] border-b border-gray-200">
             <button
               className={`flex-grow text-center py-2 px-2 text-[14px] bg-white cursor-pointer ${
@@ -167,10 +168,14 @@ export default function PickupTimeAndPartner({ setContentType }) {
               Heavy Shipment{" "}
             </button>
           </div>
-          <div
-            style={{ borderTop: "2px solid #E5E7EB" }}
-            className="tab-content text-neutral-500 text-[14px] pt-6 mb-10"
-          >
+        </div>
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
+        <div className="w-full">
+          <div className="tab-content text-neutral-500 text-[14px] pt-6 mb-10">
             <div className="flex flex-col">
               <div className="mt-2">
                 <span

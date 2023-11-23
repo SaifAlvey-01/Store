@@ -78,9 +78,9 @@ export default function AddCustomerDetails({
   }, [contentType]);
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[820px]">
+      <div className="flex flex-col justify-between">
         <div className="flex justify-between items-center">
           <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
             Select Customer{" "}
@@ -105,7 +105,11 @@ export default function AddCustomerDetails({
             className="w-full pl-9 pr-32 py-2.5 focus:outline-none focus:border-blue-500"
           />
         </div>
-
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div className="flex justify-between items-center mt-6">
           <table
             className="w-full font-freesans"

@@ -16,17 +16,19 @@ export default function ShipOrder({ setContentType }) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[650px]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-              Ship Order VIA{" "}
-            </h3>
-          </div>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+            Ship Order VIA{" "}
+          </h3>
         </div>
-
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div
           style={{ borderBottom: "1px solid #EAECF0" }}
           className="mt-4 px-6 py-2 "

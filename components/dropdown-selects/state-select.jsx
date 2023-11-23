@@ -18,11 +18,13 @@ const customStyles = {
     fontSize: "13px",
     border: "1.5px solid #E5E7EB",
     borderRadius: "10px",
+    cursor: "pointer",
   }),
   option: (provided) => ({
     ...provided,
     color: "#4B4B4B",
     fontWeight: "400",
+    cursor: "pointer",
     fontSize: "14px",
   }),
   input: (provided) => ({
@@ -77,7 +79,7 @@ const StateSelect = ({ onChange, value }) => (
       onChange={onChange}
       value={value}
       placeholder="Select State"
-      menuPlacement="top"
+      // menuPlacement="top"
     />
   </div>
 );

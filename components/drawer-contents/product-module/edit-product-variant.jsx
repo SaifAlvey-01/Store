@@ -6,15 +6,17 @@ export default function EditProductVariant() {
     console.log(`Selected: ${selectedOption.value}`);
   };
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[650px]">
-        <div className="flex justify-between items-center">
-          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-            Edit Variants
-          </h3>
-        </div>
-
+      <div className="flex justify-between items-center">
+        <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+          Edit Variants
+        </h3>
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div className="flex flex-row justify-between items-center">
           <div className="flex items-center w-[calc(100%-210px)]">
             {" "}

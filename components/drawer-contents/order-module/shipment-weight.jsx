@@ -53,15 +53,17 @@ export default function ShipmentWeight({
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[820px]">
-        <div className="flex justify-between items-center">
-          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-            Shipment Weight{" "}
-          </h3>
-        </div>
-
+      <div className="flex justify-between items-center">
+        <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+          Shipment Weight{" "}
+        </h3>
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div
           style={{
             borderRadius: "6px",

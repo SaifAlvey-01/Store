@@ -208,7 +208,13 @@ export default function Preferences() {
             </div>
           </div>
 
-          <div className="flex justify-between items-center mt-6">
+          <div
+            onClick={() => {
+              setShowSidebar(true);
+              setContentType("sender-email");
+            }}
+            className="flex justify-between items-center mt-6 cursor-pointer"
+          >
             <div className="flex flex-row items-center">
               {" "}
               <span
@@ -250,7 +256,13 @@ export default function Preferences() {
               />
             </div>
           </div>
-          <div className="flex justify-between items-center mt-4">
+          <div
+            onClick={() => {
+              setShowSidebar(true);
+              setContentType("whatsApp-notifications");
+            }}
+            className="flex justify-between items-center mt-4 cursor-pointer"
+          >
             <div className="flex flex-row items-center">
               {" "}
               <span

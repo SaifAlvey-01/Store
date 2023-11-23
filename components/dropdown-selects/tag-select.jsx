@@ -25,12 +25,14 @@ const customStyles = {
     fontSize: "13px",
     border: "1.5px solid #E5E7EB",
     borderRadius: "10px",
+    cursor: "pointer",
   }),
   option: (provided) => ({
     ...provided,
     color: "#4B4B4B",
     fontWeight: "500",
     fontSize: "14px",
+    cursor: "pointer",
   }),
   input: (provided) => ({
     ...provided,

@@ -7,17 +7,19 @@ export default function AddNewCustomer({ setShowSidebar }) {
   };
 
   return (
-    <div>
-      {" "}
-      <div className="h-[850px]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-              Add New Customer{" "}
-            </h3>
-          </div>
+    <div className="flex flex-col h-screen">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+            Add New Customer
+          </h3>
         </div>
+      </div>
 
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div className="mt-4">
           <span
             className="font-freesans"
@@ -259,6 +261,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
           <StateSelect onChange={handleUnitChange} />
         </div>
       </div>
+
       <div
         style={{
           borderTop: "1px solid #E5E7EB",
@@ -272,7 +275,7 @@ export default function AddNewCustomer({ setShowSidebar }) {
         }}
       >
         <button className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer">
-          Add Customer{" "}
+          Add Customer
         </button>
       </div>
     </div>

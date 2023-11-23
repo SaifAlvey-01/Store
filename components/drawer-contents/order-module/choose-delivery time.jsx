@@ -23,15 +23,17 @@ export default function ChooseDeliveryTime({ setShowSidebar }) {
   };
 
   return (
-    <div>
-      {" "}
-      <div className="h-[650px]">
-        <div className="flex justify-between items-center">
-          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-            Choose Delivery Time{" "}
-          </h3>
-        </div>
+    <div className="flex flex-col h-screen">
+      <div className="flex justify-between items-center">
+        <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+          Choose Delivery Time{" "}
+        </h3>
+      </div>
 
+      <div
+        className="flex-1 overflow-y-auto pb-[80px] "
+        style={{ overflowY: "scroll" }}
+      >
         <div className="mt-2">
           {delivery_time.map((time) => (
             <div
