@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import AddVariants from "./product-module/add-variants";
 import EditVariants from "./product-module/edit-variants";
 import EditProductVariant from "./product-module/edit-product-variant";
-import AddProduct from "./product-module/add-product";
+import AddProduct from "./order-module/add-product";
 import AddCustomerDetails from "./order-module/add-customer-details";
 import AddNewCustomer from "./order-module/add-new-customer";
-import AddNotes from "./product-module/add-notes";
+import AddNotes from "./order-module/add-notes";
 import ShipOrder from "./order-module/ship-order";
 import ChooseDeliveryTime from "./order-module/choose-delivery time";
 import PickupTimeAndPartner from "./order-module/pickup-time-and-partner";
@@ -13,6 +13,9 @@ import AddTrackingDetails from "./order-module/add-tracking-details";
 import ShipmentWeight from "./order-module/shipment-weight";
 import MyCredit from "./order-module/my-credit";
 import AutoAcceptOrders from "./settings-module/auto-accept-orders";
+import SenderEmail from "./settings-module/sender-email";
+import WhatsAppNotifications from "./settings-module/whatsapp-notificatios";
+import AddStaff from "./settings-module/add-staff";
 
 export default function CustomDrawer({
   showSidebar,
@@ -121,6 +124,15 @@ export default function CustomDrawer({
             )}
             {contentType === "auto-accept-orders" && (
               <AutoAcceptOrders setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "sender-email" && (
+              <SenderEmail setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "whatsApp-notifications" && (
+              <WhatsAppNotifications setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "add-staff" && (
+              <AddStaff setShowSidebar={setShowSidebar} />
             )}
           </div>
         </div>

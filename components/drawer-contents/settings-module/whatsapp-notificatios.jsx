@@ -1,43 +1,55 @@
 import React from "react";
+import { useState } from "react";
 
 const radioOptions = [
-  { id: "radio-1", label: "COD Orders Only" },
-  { id: "radio-2", label: "Prepaid Orders Only" },
-  { id: "radio-3", label: "All (COD + Prepaid)" },
-  { id: "radio-4", label: "Never" },
+  { id: "radio-1", label: "LaunchMyStore" },
+  { id: "radio-2", label: "None" },
 ];
 
-export default function AutoAcceptOrders({ setShowSidebar }) {
+export default function WhatsAppNotifications({ setShowSidebar }) {
   return (
     <div className="flex flex-col h-screen">
       {" "}
       <div className="flex justify-between items-center">
-        <div className="flex flex-rowitems-start mt-4">
-          <h3
-            className="m-0"
-            style={{ fontSize: "17px", fontWeight: "normal" }}
-          >
-            Auto-accept Orders{" "}
-          </h3>
-          <div className="flex flex-row items-center ml-3">
-            {" "}
-            <img
-              style={{
-                color: "#8E8E8E",
-              }}
-              src={"/question-circle.png"}
-              className="mr-1 w-4 h-4"
-            />
-            <span
-              style={{
-                color: "#8E8E8E",
-                fontSize: "12px",
-              }}
+        <div className="flex flex-col items-start">
+          <div className="flex flex-row items-start mt-4">
+            <h3
+              className="m-0"
+              style={{ fontSize: "17px", fontWeight: "normal" }}
             >
+              WhatsApp notifications{" "}
+            </h3>
+            <div className="flex flex-row items-center ml-3">
               {" "}
-              How it works{" "}
-            </span>
+              <img
+                style={{
+                  color: "#8E8E8E",
+                }}
+                src={"/question-circle.png"}
+                className="mr-1 w-4 h-4"
+              />
+              <span
+                style={{
+                  color: "#8E8E8E",
+                  fontSize: "12px",
+                }}
+              >
+                {" "}
+                How it works{" "}
+              </span>
+            </div>
           </div>
+          <span
+            className="font-freesans mt-1.5"
+            style={{
+              color: "#8E8E8E",
+              fontWeight: 400,
+              fontSize: "13px",
+              maxWidth: "380px",
+            }}
+          >
+            Receive notifications about your orders through WhatsApp.
+          </span>
         </div>
       </div>
       <div
@@ -100,7 +112,7 @@ export default function AutoAcceptOrders({ setShowSidebar }) {
           onClick={() => setShowSidebar(false)}
           className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer"
         >
-          Save{" "}
+          Update{" "}
         </button>
       </div>
     </div>

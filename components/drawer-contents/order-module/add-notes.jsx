@@ -2,20 +2,22 @@ import React from "react";
 
 export default function AddNotes({ setShowSidebar }) {
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[650px]">
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col items-start mt-4">
-            <h3
-              className="m-0"
-              style={{ fontSize: "17px", fontWeight: "normal" }}
-            >
-              Add Notes{" "}
-            </h3>
-          </div>
+      <div className="flex justify-between items-center">
+        <div className="flex flex-col items-start mt-4">
+          <h3
+            className="m-0"
+            style={{ fontSize: "17px", fontWeight: "normal" }}
+          >
+            Add Notes{" "}
+          </h3>
         </div>
-
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div className="mt-6">
           <span
             className="font-freesans"

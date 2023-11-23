@@ -7,17 +7,19 @@ export default function AddVariants() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col h-screen">
       {" "}
-      <div className="h-[750px]">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
-              Add Variants
-            </h3>
-          </div>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <h3 style={{ fontSize: "18px", fontWeight: "normal" }}>
+            Add Variants
+          </h3>
         </div>
-
+      </div>
+      <div
+        className="flex-1 overflow-y-auto pb-[80px]"
+        style={{ overflowY: "scroll" }}
+      >
         <div className="flex items-center">
           {" "}
           <div className="bg-[#E1E1E1] rounded-[8px] mr-2.5 w-10 h-10 flex items-center justify-center p-2.5">

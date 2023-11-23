@@ -38,11 +38,13 @@ const CountrySelect = ({ value, onChange, options }) => {
       gap: "20px",
       width: "100%",
       maxHeight: "46px",
+      cursor: "pointer",
     }),
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isSelected ? "#CBD5E0" : "white",
       color: state.isSelected ? "black" : "inherit",
+      cursor: "pointer",
     }),
 
     menu: (provided) => ({
