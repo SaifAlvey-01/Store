@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
 import { addCategory } from "../../../../redux/slices/categoriesSlices/addCategory";
 import { useDispatch, useSelector } from "react-redux";
@@ -53,9 +53,8 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const dispatch = useDispatch();
   const showAddNewSubCategory = useSelector((state) => state.addNewSubCategory);
   const subCategories = useSelector((state) => state.addSubCategory.subCategories);
-  const loadingAddCategory = useSelector((state) => state.categories.loading);
 
-  console.log(loadingAddCategory, "<---sd")
+  const {category} = useSelector((state) => state.categories);
 
   const handleQuillChange = (value) => {
     setContent(value);
@@ -99,6 +98,15 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
     }
   };
 
+  useEffect(()=>{
+    if(category.state === "success"){
+      cogoToast.success("Categorry added successfully");
+      setName("")
+    }
+  },[category])
+
+
+
   const handleSubmit = (data) => {
     if (name) {
       const body = {
@@ -110,6 +118,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         subCategories
       };
       dispatch(addCategory(body));
+      
     } else {
       cogoToast.error("Please enter the required field");
     }

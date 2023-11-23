@@ -15,6 +15,7 @@ import showDeliveredButtonsReducer from "./ordersSlices/showDeliveredButtons";
 import showUpgradePlanReducer from "./storeSettingsSlices/upgradePlanSlice";
 import getBusiness from "./getBusiness";
 import addCategory from "./categoriesSlices/addCategory";
+import categories from "./categoriesSlices/addCategory";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -31,7 +32,7 @@ const rootReducer = combineReducers({
   showDeliveredButtons: showDeliveredButtonsReducer,
   showUpgradePlan: showUpgradePlanReducer,
   getBusiness,
-  addCategory,
+  categories,
   addSubCategory: addSubCategoryReducer,
 });
 
