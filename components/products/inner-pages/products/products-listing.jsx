@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
-import ProductsEditDropdown from "../../../dropdowns/products-edit-dropdown";
+import ProductsEditDropdown from "../../../dropdowns/products-edit";
 
 const headers = [
   { title: "Product" },

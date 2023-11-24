@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./staffAccountsSearchStyle.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import StaffAccountsEditDropdown from "../../dropdowns/staff-accounts-edit-dropdown";
+import StaffAccountsEditDropdown from "../../dropdowns/staff-accounts-edit";
 import { useRef } from "react";
 import CustomDrawer from "../../drawer-contents/custom-drawer";
 
@@ -28,6 +28,7 @@ export default function StaffAccounts({ onEditClick }) {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [dropdownOpenIndex]);
+
   const data = [
     {
       name: "Shivam",
@@ -244,22 +245,24 @@ export default function StaffAccounts({ onEditClick }) {
                       borderBottom: "1px solid var(--gray-200, #EAECF0)",
                     }}
                   >
-                    <img
-                      src={row.actionImage}
-                      alt={`Description for ${row.actionImage}`}
-                      className="max-w-full max-h-full object-contain cursor-pointer"
-                      onClick={() =>
-                        setDropdownOpenIndex(
-                          dropdownOpenIndex !== index ? index : null
-                        )
-                      }
-                    />
-                    <div ref={(el) => (dropdownRef.current[index] = el)}>
-                      <StaffAccountsEditDropdown
-                        isOpen={dropdownOpenIndex === index}
-                        onEditClick={onEditClick}
+                    <div className="relative">
+                      <img
+                        src={row.actionImage}
+                        alt={`Description for ${row.actionImage}`}
+                        className="max-w-full max-h-full object-contain cursor-pointer"
+                        onClick={() =>
+                          setDropdownOpenIndex(
+                            dropdownOpenIndex !== index ? index : null
+                          )
+                        }
                       />
-                    </div>{" "}
+                      <div ref={(el) => (dropdownRef.current[index] = el)}>
+                        <StaffAccountsEditDropdown
+                          isOpen={dropdownOpenIndex === index}
+                          onEditClick={onEditClick}
+                        />
+                      </div>{" "}
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -1,21 +1,38 @@
-import React from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
 
-const StaffAccountsEditDropdown = ({ isOpen }) => {
+const ManualPaymentEditDropdown = ({ isOpen, onClose }) => {
+  const dropdownRef = useRef();
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div
+      ref={dropdownRef}
       style={{
         position: "absolute",
-        right: 172,
+        right: 6,
         borderRadius: "12px",
         border: "1px solid #EDEDED",
         background: "#FFF",
         boxShadow: "-1px 4px 4px 0px rgba(28, 28, 75, 0.08)",
-        width: "160px",
-        height: "auto",
+        width: "110px",
+        height: "70px",
       }}
-      className="mt-0 z-10 py-1.5"
+      className="mt-0 z-10 py-2"
     >
       <button
         style={{
@@ -26,18 +43,7 @@ const StaffAccountsEditDropdown = ({ isOpen }) => {
         }}
         className="block px-4 py-2.5 w-full text-left font-lato cursor-pointer"
       >
-        Copy Invite Link{" "}
-      </button>
-      <button
-        style={{
-          background: "#FFF",
-          color: "#4B4B4B",
-          fontSize: "14px",
-          fontWeight: 600,
-        }}
-        className="block px-4 py-2.5 w-full text-left font-lato cursor-pointer"
-      >
-        Resend Invite{" "}
+        Edit{" "}
       </button>
       <button
         style={{
@@ -48,10 +54,10 @@ const StaffAccountsEditDropdown = ({ isOpen }) => {
         }}
         className="block px-4 py-2.5 w-full text-left font-lato"
       >
-        Remove Staff{" "}
+        Delete{" "}
       </button>
     </div>
   );
 };
 
-export default StaffAccountsEditDropdown;
+export default ManualPaymentEditDropdown;

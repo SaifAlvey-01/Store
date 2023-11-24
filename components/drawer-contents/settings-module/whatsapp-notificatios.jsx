@@ -17,7 +17,7 @@ export default function WhatsAppNotifications({ setShowSidebar }) {
               className="m-0"
               style={{ fontSize: "17px", fontWeight: "normal" }}
             >
-              WhatsApp notifications{" "}
+              WhatsApp Notifications{" "}
             </h3>
             <div className="flex flex-row items-center ml-3">
               {" "}
