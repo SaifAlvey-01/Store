@@ -16,12 +16,17 @@ import AutoAcceptOrders from "./settings-module/auto-accept-orders";
 import SenderEmail from "./settings-module/sender-email";
 import WhatsAppNotifications from "./settings-module/whatsapp-notificatios";
 import AddStaff from "./settings-module/add-staff";
+import SetupStripe from "./settings-module/setup-stripe";
+import SetupManualPayment from "./settings-module/setup-manual-payment";
+import AddWarehouse from "./settings-module/add-warehouse";
+import AddCheckoutFields from "./settings-module/add-checkout-fields";
 
 export default function CustomDrawer({
   showSidebar,
   setShowSidebar,
   contentType,
   setContentType,
+  onSetUpButtonClick,
 }) {
   const [addingNewCustomer, setAddingNewCustomer] = useState(false);
   const sidebarRef = useRef(null);
@@ -133,6 +138,21 @@ export default function CustomDrawer({
             )}
             {contentType === "add-staff" && (
               <AddStaff setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "setup-stripe" && (
+              <SetupStripe setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "setup-manual-payment" && (
+              <SetupManualPayment
+                setShowSidebar={setShowSidebar}
+                onSetUpButtonClick={onSetUpButtonClick}
+              />
+            )}
+            {contentType === "add-warehouse" && (
+              <AddWarehouse setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "add-checkout-fields" && (
+              <AddCheckoutFields setShowSidebar={setShowSidebar} />
             )}
           </div>
         </div>

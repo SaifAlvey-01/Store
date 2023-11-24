@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
-import CategoriesEditDropdown from "../../../dropdowns/categories-edit-dropdown";
+import CategoriesEditDropdown from "../../../dropdowns/categories-edit";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../../../redux/slices/categoriesSlices/addCategory";
 import Cookies from "js-cookie";

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Search from "./Search";
 import { useRouter } from "next/router";
-import NotificationDropdown from "../dropdowns/notification-dropdown";
-import ReportsDropdown from "../dropdowns/reports-dropdown";
-import StoreMenuDropdown from "../dropdowns/store-menu-dropdown";
+import NotificationDropdown from "../dropdowns/notification";
+import ReportsDropdown from "../dropdowns/reports";
+import StoreMenuDropdown from "../dropdowns/store-menu";
 import { emitCustomEvent } from "../../utils/custom_events";
 import CustomDrawer from "../drawer-contents/custom-drawer";
 import { useDispatch, useSelector } from "react-redux";
