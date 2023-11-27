@@ -52,15 +52,17 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const [name, setName] = useState("");
   const dispatch = useDispatch();
   const showAddNewSubCategory = useSelector((state) => state.addNewSubCategory);
-  const subCategories = useSelector((state) => state.addSubCategory.subCategories);
+  const subCategories = useSelector(
+    (state) => state.addSubCategory.subCategories
+  );
 
-  const {category} = useSelector((state) => state.categories);
+  const { category } = useSelector((state) => state.categories);
 
   const handleQuillChange = (value) => {
     setContent(value);
   };
 
-  const handleCheckboxChange = () => {
+  const handleShowSubCategory = () => {
     const updatedValue = !showAddNewSubCategory;
     setShowAddNewSubCategory(updatedValue);
   };
@@ -98,14 +100,12 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
     }
   };
 
-  useEffect(()=>{
-    if(category.state === "success"){
+  useEffect(() => {
+    if (category.state === "success") {
       cogoToast.success("Categorry added successfully");
-      setName("")
+      setName("");
     }
-  },[category])
-
-
+  }, [category]);
 
   const handleSubmit = (data) => {
     if (name) {
@@ -115,10 +115,9 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         mobileBannerUrl: mobileImageUrl,
         name: name,
         description: content,
-        subCategories
+        subCategories,
       };
       dispatch(addCategory(body));
-      
     } else {
       cogoToast.error("Please enter the required field");
     }
@@ -129,7 +128,10 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
   return (
     <>
       {showAddNewSubCategory ? (
-        <AddNewSubCategory subCategories= {subCategories} goBack={() => setShowAddNewSubCategory(false)} />
+        <AddNewSubCategory
+          subCategories={subCategories}
+          goBack={() => setShowAddNewSubCategory(false)}
+        />
       ) : (
         <div
           className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between p-3"
@@ -270,66 +272,55 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   />
                 </div>
 
-                <div className="flex items-center mt-2">
-                  <input
-                    style={{
-                      appearance: "none",
-                      display: "none",
-                    }}
-                    checked={showAddNewSubCategory}
-                    onChange={handleCheckboxChange}
-                    id="checked-checkbox"
-                    type="checkbox"
-                    value=""
-                  />
-                  <label
-                    style={{
-                      color: "#4B5563",
-                      fontSize: "14px",
-                      fontStyle: 500,
-                      display: "inline-flex",
-                      alignItems: "center",
-                      position: "relative",
-                    }}
-                    htmlFor="checked-checkbox"
-                    className="ml-1.5 text-sm font-medium cursor-pointer"
-                  >
+                <div
+                  className="p-4 mt-2"
+                  style={{
+                    borderRadius: "10px",
+                    backgroundColor: "var(--white-color, #FFF)",
+                    border: "1px solid #e3e3e3",
+                  }}
+                >
+                  {" "}
+                  <div className="font-freesans flex flex-col items-start justify-start  mb-6">
                     <span
+                      className="font-freesans mb-2"
                       style={{
-                        width: "16px",
-                        height: "16px",
-                        borderRadius: "4px",
-                        border: isChecked
-                          ? "2px solid #3B82F6"
-                          : "2px solid #D1D5DB",
-                        backgroundColor: isChecked ? "white" : "transparent",
-                        marginRight: "8px",
-                        display: "inline-block",
+                        color: "#4B4B4B",
+                        fontWeight: 500,
+                        fontSize: "14px",
                       }}
-                    ></span>
-                    {isChecked && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        className="absolute text-blue-600 w-4 h-4"
-                        style={{
-                          left: "2px",
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                        }}
-                      >
-                        <path
-                          d="M20 6L9 17L4 12"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    )}
-                    Add as Subcategory{" "}
-                  </label>
+                    >
+                      Add Subcategory{" "}
+                    </span>
+                    <span
+                      className="m-0 font-freesans"
+                      style={{
+                        color: "#8E8E8E",
+                        fontWeight: 400,
+                        fontSize: "12px",
+                      }}
+                    >
+                      Add subcategories if you have any.{" "}
+                    </span>
+                  </div>
+                  <div className="flex flex-row items-center justify-center">
+                    {" "}
+                    <button
+                      className=" cursor-pointer"
+                      style={{
+                        backgroundColor: "#ffffff",
+                        color: "#4162FF",
+                        padding: "8px 24px",
+                        borderRadius: "4px",
+                        border: "1px dashed #4162FF",
+                      }}
+                      onClick={handleShowSubCategory}
+                    >
+                      Add Subcategory{" "}
+                    </button>
+                  </div>
                 </div>
+
                 {showAddNewSubCategory ? <AddNewSubCategory /> : null}
               </div>
             </div>
