@@ -74,8 +74,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
     console.log("Event Object:", event);
     const formData = new FormData();
     const selectedFile = event.target.files[0];
-  
     if (selectedFile) {
+      const imageUrl = URL.createObjectURL(selectedFile);
+      setSelectedImage(imageUrl)
       formData.append("file", selectedFile);
       postRequest(`/media`, formData);
     } else {
@@ -172,26 +173,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                 >
                   <input type="file" id="file" ref={inputFile} style={{ display: "none" }} onChange={handleFile} />
                   <img
-                    src={"/logo.png"}
+                    src={selectedImage? selectedImage :"/logo.png"}
                     onClick={handleBusinessImage}
                     alt="Your Image Description"
-                    className="cursor-pointer"
+                    className={`${selectedImage? " h-9 w-9" : ""} cursor-pointer`}
                   />
                 </div>
 
-                {/* <div className="flex flex-col items-center justify-center ml-3">
-                  <span
-                    className="mb-2"
-                    style={{ color: "#FAFAFA", fontWeight: 600 }}
-                  >
-                    <img
-                      src={"/logo.png"}
-                      onClick={handleBusinessImage}
-                      alt="Your Image Description"
-                      className="cursor-pointer"
-                    />
-                  </span>{" "}
-                </div> */}
 
                 <div className="flex flex-col items-center justify-center ml-3">
                   <span
