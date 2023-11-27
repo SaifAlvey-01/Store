@@ -193,7 +193,9 @@ export default function AddNewSubCategory({ subCategories }) {
             >
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] w-14 h-14 flex items-center justify-center p-2.5 mb-3">
-                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+                <img 
+                            src={mainImageUrl? mainImageUrl : "/gallery.png"}
+                            className={`${mainImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`} />
               </div>{" "}
               <button
                 className="cursor-pointer"
@@ -324,8 +326,8 @@ export default function AddNewSubCategory({ subCategories }) {
                     {" "}
                     <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
                       <img
-                        src={"/gallery.png"}
-                        className="w-7 h-7 object-contain"
+                            src={mobileImageUrl? mobileImageUrl : "/gallery.png"}
+                            className={`${mobileImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
                       />
                     </div>{" "}
                     <button
@@ -359,8 +361,8 @@ export default function AddNewSubCategory({ subCategories }) {
                     {" "}
                     <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
                       <img
-                        src={"/gallery.png"}
-                        className="w-7 h-7 object-contain"
+                            src={bannerImageUrl? bannerImageUrl : "/gallery.png"}
+                            className={`${bannerImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
                       />
                     </div>{" "}
                     <button
