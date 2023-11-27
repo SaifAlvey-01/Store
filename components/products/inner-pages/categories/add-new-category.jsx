@@ -180,8 +180,8 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   {" "}
                   <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
                     <img
-                      src={"/gallery.png"}
-                      className="w-7 h-7 object-contain"
+                      src={mainImageUrl? mainImageUrl : "/gallery.png"}
+                      className={`${mainImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
                     />
                   </div>
                   <div className="flex flex-col">
@@ -401,9 +401,9 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       >
                         {" "}
                         <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                          <img
-                            src={"/gallery.png"}
-                            className="w-7 h-7 object-contain"
+                          <img mobileImageUrl
+                            src={mobileImageUrl? mobileImageUrl : "/gallery.png"}
+                            className={`${mobileImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
                           />
                         </div>{" "}
                         <button
@@ -437,9 +437,9 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                         {" "}
                         <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
                           <img
-                            src={"/gallery.png"}
-                            className="w-7 h-7 object-contain"
-                          />
+                            src={bannerImageUrl? bannerImageUrl : "/gallery.png"}
+                            className={`${bannerImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
+                            />
                         </div>{" "}
                         <button
                           className="cursor-pointer w-[60%] lg:w-[40%]"
