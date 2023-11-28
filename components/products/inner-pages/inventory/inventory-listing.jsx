@@ -146,7 +146,7 @@ export default function InventoryListing({ isEditing }) {
                   <div className="ml-2 flex flex-col justify-center w-full">
                     <span
                       className="font-freesans mb-2"
-                      style={{ color: "4B4B4B", fontSize: "12px" }}
+                      style={{ color: "#4B4B4B", fontSize: "12px" }}
                     >
                       {row.productName}
                     </span>

@@ -130,7 +130,7 @@ export default function ProductsListing({ onEditClick }) {
                 <div className="ml-2 flex flex-col w-full ">
                   <span
                     className="font-freesans mb-2"
-                    style={{ color: "4B4B4B", fontSize: "12px" }}
+                    style={{ color: "#4B4B4B", fontSize: "12px" }}
                   >
                     {row.productName}
                   </span>
