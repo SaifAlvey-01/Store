@@ -7,6 +7,7 @@ const axiosInstance = axios.create({
   headers: {},
 });
 
+
 axiosInstance.interceptors.request.use(
   async (config) => {
     // Add an "Authorization" header if the token is available
@@ -14,7 +15,6 @@ axiosInstance.interceptors.request.use(
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
-
     if (config.url.includes("/media")) {
       config.headers["Content-Type"] = "multipart/form-data";
     } else {
@@ -22,17 +22,20 @@ axiosInstance.interceptors.request.use(
     }
 
     return config;
-  },
-  async (error) => {
-    if (axios.isAxiosError(error) && error.response?.status === 401) {
-      // Token expired or invalid, perform logout
-      await handleLogout();
-    } else {
-      // Other error, reject the promise
-      return Promise.reject(error);
-    }
   }
 );
+
+// Response interceptor for token refresh
+  axiosInstance.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+      if (error.response?.status === 401) {
+        handleLogout();
+      }
+      return Promise.reject(error);
+    }
+  );
+
 
 const handleLogout = async () => {
   // You can perform additional cleanup/logic before signing out
