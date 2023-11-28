@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import cogoToast from "cogo-toast";
 import AddNewSubCategory from "./add-new-sub-category";
 import { useCustomEventListener } from "../../../../utils/custom_events";
+import SubCategoryEditDropdown from "../../../dropdowns/subcategory-edit";
 
 const modules = {
   toolbar: [
@@ -41,7 +42,7 @@ const formats = [
 
 export default function AddNewCategory({ setShowAddNewSubCategory }) {
   const [content, setContent] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const fileInputRef = useRef(null);
   const fileInputRef2 = useRef(null);
   const fileInputRef3 = useRef(null);
@@ -83,6 +84,13 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
       const imageUrl = URL.createObjectURL(selectedFile);
       setMainImageUrl(imageUrl);
     }
+  };
+
+  const handleCloseDropdown = () => {
+    setShowDropdown(false);
+  };
+  const handleOpenDropdown = () => {
+    setShowDropdown(true);
   };
 
   const handleMobileImageUrlChange = (e) => {
@@ -321,7 +329,68 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   </div>
                 </div>
 
-                {showAddNewSubCategory ? <AddNewSubCategory /> : null}
+                <div className="mt-4">
+                  <div
+                    className="pb-3"
+                    style={{
+                      borderBottom: "1px solid #E5E7EB",
+                    }}
+                  >
+                    <span
+                      className="font-roboto"
+                      style={{
+                        color: "#4B4B4B",
+                        fontWeight: 500,
+                        fontSize: "13px",
+                      }}
+                    >
+                      Subcategories{" "}
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      borderBottom: "1px solid #E5E7EB",
+                    }}
+                    className="flex flex-row justify-between items-center py-3 mt-6"
+                  >
+                    <div className="flex items-center">
+                      <img className="h-10 w-10" src={"/product-img.png"} />
+                      <span
+                        className="font-freesans ml-2.5"
+                        style={{ color: "#4B4B4B", fontSize: "12px" }}
+                      >
+                        Subcategory 001{" "}
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <img
+                        onClick={handleOpenDropdown}
+                        src={"/menu-dots-round.png"}
+                        className="w-6 h-6 object-contain cursor-pointer"
+                      />
+                      <SubCategoryEditDropdown
+                        isOpen={showDropdown}
+                        onClose={handleCloseDropdown}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-row items-center justify-center mt-6">
+                    {" "}
+                    <button
+                      className=" cursor-pointer"
+                      style={{
+                        backgroundColor: "#ffffff",
+                        color: "#4162FF",
+                        padding: "8px 24px",
+                        borderRadius: "4px",
+                        border: "1px dashed #4162FF",
+                      }}
+                      onClick={handleShowSubCategory}
+                    >
+                      Add Subcategory{" "}
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 

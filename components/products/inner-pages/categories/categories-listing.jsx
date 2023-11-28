@@ -135,7 +135,7 @@ export default function CategoriesListing({ onEditClick }) {
                 <div className="ml-2 flex flex-col ">
                   <span
                     className="font-freesans mb-2"
-                    style={{ color: "4B4B4B", fontSize: "12px" }}
+                    style={{ color: "#4B4B4B", fontSize: "12px" }}
                   >
                     {row.name}
                   </span>

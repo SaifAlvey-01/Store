@@ -54,7 +54,6 @@ export default function AddNewSubCategory({ subCategories }) {
     setContent(value);
   };
 
-
   const handleImageButtonClick = () => {
     fileInputRef.current.click();
   };
