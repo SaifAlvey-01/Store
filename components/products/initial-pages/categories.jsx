@@ -7,7 +7,7 @@ import EditCategory from "../inner-pages/categories/edit-category";
 import addCategory, {
   getAllCategories,
 } from "../../../redux/slices/categoriesSlices/addCategory";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 
 export default function Categories({
@@ -19,9 +19,10 @@ export default function Categories({
 }) {
   const dispatch = useDispatch();
   const id = Cookies.get("id");
+  const categories = useSelector((state)=> state.categories.category.data.data || []);
 
   useEffect(() => {
-    dispatch(getAllCategories({ storeId: id }));
+    dispatch(getAllCategories({params:{ page:1, limit:10, storeId: id }}));
   }, [dispatch]);
 
   const handleEditClick = () => {
@@ -41,9 +42,10 @@ export default function Categories({
     return <EditCategory goBack={() => setIsEditingCategory(false)} />;
   }
 
-  console.log(getAllCategories);
+  console.log(categories, "<=====Getall categories");
 
   return (
+
     <div
       className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
       style={{
@@ -52,7 +54,8 @@ export default function Categories({
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      <div
+      {categories.length < 0 ? 
+    (  <div
         className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
           backgroundColor: "var(--white-color, #FFF)",
@@ -92,21 +95,34 @@ export default function Categories({
             Add New Category
           </button>
         </div>
-      </div>
+      </div>)
+      
+      :
 
-      {/* <div className="flex justify-center w-full">
-        <CategoriesToolBar setShowAddNewCategory={setShowAddNewCategory} />
-      </div>
-      <div className="w-full flex-grow flex flex-col">
-        <CategoriesListing
-          onEditClick={handleEditClick}
-          className="flex-grow"
-        />
-      </div> */}
+      (
+        <>
+      <div className="flex justify-center w-full">
+      <CategoriesToolBar setShowAddNewCategory={setShowAddNewCategory} />
+    </div>
+    <div className="w-full flex-grow flex flex-col">
+      <CategoriesListing
+        categories={categories}
+        onEditClick={handleEditClick}
+        className="flex-grow"
+      />
+    </div> 
 
-      <div className="w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
-        <FreeTrialFooter />
-      </div>
+    <div className="w-[90%] mx-4 mb-8 mt-4   flex flex-col items-center justify-between">
+      <FreeTrialFooter />
+    </div> 
+        
+        </>
+    
+    )
+    
+    }
+
+        
     </div>
   );
 }

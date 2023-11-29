@@ -281,8 +281,8 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   />
                 </div>
 
-               {subCategories.length === 0 ?
-                (<div
+               {subCategories.length === 0 &&
+                <div
                   className="p-4 mt-2"
                   style={{
                     borderRadius: "10px",
@@ -329,12 +329,11 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       Add Subcategory{" "}
                     </button>
                   </div>
-                </div>)
-                :
-                (
+                </div>
+                }
                 
-                  subCategories.map((subcategory)=>{
-                    return(
+                               
+                  {subCategories.length > 0 &&
                   <div className="mt-4">
                     <div
                       className="pb-3"
@@ -353,6 +352,9 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                         Subcategories{" "}
                       </span>
                     </div>
+                    {
+                    subCategories.map((subcategory)=>{
+                    return(
                     <div
                       style={{
                         borderBottom: "1px solid #E5E7EB",
@@ -380,6 +382,9 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                         />
                       </div>
                     </div>
+                      )
+                      })
+                    }
                     <div className="flex flex-row items-center justify-center mt-6">
                       {" "}
                       <button
@@ -397,15 +402,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       </button>
                     </div>
                   </div>
-                    )
-                  })
-                  
-                  
-                
-                )
-                }
-
-
+                  }
               </div>
             </div>
 

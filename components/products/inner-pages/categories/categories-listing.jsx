@@ -57,19 +57,10 @@ const data = [
   },
 ];
 
-export default function CategoriesListing({ onEditClick }) {
+export default function CategoriesListing({ onEditClick, categories }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
-  const dispatch = useDispatch();
-  const { category, loading, error } = useSelector(
-    (state) => state.addCategory
-  );
-  const id = Cookies.get("id");
 
-  useEffect(() => {
-    // Dispatch the getAllCategories action when the component mounts
-    dispatch(getAllCategories({ storeId: id }));
-  }, [dispatch]);
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -121,7 +112,7 @@ export default function CategoriesListing({ onEditClick }) {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {category?.data?.map((row, index) => (
+          {categories?.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
                 style={{ borderBottom: "1px solid #EAECF0" }}

@@ -30,16 +30,7 @@ export const getAllCategories = createAsyncThunk(
   async (categoryData) => {
     try {
       const url = `${baseUrl}/categories/get-all-categories`;
-
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      };
-
-      const response = await axiosInstance.get(url, {
-        params: categoryData,
-        headers: headers,
-      });
+      const response = await axiosInstance.get(url,categoryData);
       return response.data;
     } catch (error) {
       throw error;
@@ -71,7 +62,6 @@ const categorySlice = createSlice({
       })
       .addCase(getAllCategories.fulfilled, (state, action) => {
         state.loading = false;
-        console.log(action.payload);
         state.category = action.payload;
       })
       .addCase(getAllCategories.rejected, (state, action) => {
