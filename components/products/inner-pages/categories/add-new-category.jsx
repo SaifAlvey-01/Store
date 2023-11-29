@@ -108,6 +108,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
     }
   };
 
+  console.log(subCategories,"<----")
   useEffect(() => {
     if (category.state === "success") {
       cogoToast.success("Categorry added successfully");
@@ -280,7 +281,8 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   />
                 </div>
 
-                <div
+               {subCategories.length === 0 ?
+                (<div
                   className="p-4 mt-2"
                   style={{
                     borderRadius: "10px",
@@ -327,70 +329,83 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       Add Subcategory{" "}
                     </button>
                   </div>
-                </div>
-
-                <div className="mt-4">
-                  <div
-                    className="pb-3"
-                    style={{
-                      borderBottom: "1px solid #E5E7EB",
-                    }}
-                  >
-                    <span
-                      className="font-roboto"
+                </div>)
+                :
+                (
+                
+                  subCategories.map((subcategory)=>{
+                    return(
+                  <div className="mt-4">
+                    <div
+                      className="pb-3"
                       style={{
-                        color: "#4B4B4B",
-                        fontWeight: 500,
-                        fontSize: "13px",
+                        borderBottom: "1px solid #E5E7EB",
                       }}
                     >
-                      Subcategories{" "}
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      borderBottom: "1px solid #E5E7EB",
-                    }}
-                    className="flex flex-row justify-between items-center py-3 mt-6"
-                  >
-                    <div className="flex items-center">
-                      <img className="h-10 w-10" src={"/product-img.png"} />
                       <span
-                        className="font-freesans ml-2.5"
-                        style={{ color: "#4B4B4B", fontSize: "12px" }}
+                        className="font-roboto"
+                        style={{
+                          color: "#4B4B4B",
+                          fontWeight: 500,
+                          fontSize: "13px",
+                        }}
                       >
-                        Subcategory 001{" "}
+                        Subcategories{" "}
                       </span>
                     </div>
-                    <div className="relative">
-                      <img
-                        onClick={handleOpenDropdown}
-                        src={"/menu-dots-round.png"}
-                        className="w-6 h-6 object-contain cursor-pointer"
-                      />
-                      <SubCategoryEditDropdown
-                        isOpen={showDropdown}
-                        onClose={handleCloseDropdown}
-                      />
+                    <div
+                      style={{
+                        borderBottom: "1px solid #E5E7EB",
+                      }}
+                      className="flex flex-row justify-between items-center py-3 mt-6"
+                    >
+                      <div className="flex items-center">
+                        <img className="h-10 w-10" src={subcategory.mainImageUrl ? subcategory.mainImageUrl : "/product-img.png"} />
+                        <span
+                          className="font-freesans ml-2.5"
+                          style={{ color: "#4B4B4B", fontSize: "12px" }}
+                        >
+                          {subcategory.name}
+                        </span>
+                      </div>
+                      <div className="relative">
+                        <img
+                          onClick={handleOpenDropdown}
+                          src={"/menu-dots-round.png"}
+                          className="w-6 h-6 object-contain cursor-pointer"
+                        />
+                        <SubCategoryEditDropdown
+                          isOpen={showDropdown}
+                          onClose={handleCloseDropdown}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-row items-center justify-center mt-6">
+                      {" "}
+                      <button
+                        className=" cursor-pointer"
+                        style={{
+                          backgroundColor: "#ffffff",
+                          color: "#4162FF",
+                          padding: "8px 24px",
+                          borderRadius: "4px",
+                          border: "1px dashed #4162FF",
+                        }}
+                        onClick={handleShowSubCategory}
+                      >
+                        Add Subcategory{" "}
+                      </button>
                     </div>
                   </div>
-                  <div className="flex flex-row items-center justify-center mt-6">
-                    {" "}
-                    <button
-                      className=" cursor-pointer"
-                      style={{
-                        backgroundColor: "#ffffff",
-                        color: "#4162FF",
-                        padding: "8px 24px",
-                        borderRadius: "4px",
-                        border: "1px dashed #4162FF",
-                      }}
-                      onClick={handleShowSubCategory}
-                    >
-                      Add Subcategory{" "}
-                    </button>
-                  </div>
-                </div>
+                    )
+                  })
+                  
+                  
+                
+                )
+                }
+
+
               </div>
             </div>
 
