@@ -7,10 +7,8 @@ const axiosInstance = axios.create({
   headers: {},
 });
 
-
 axiosInstance.interceptors.request.use(
   async (config) => {
-    // Add an "Authorization" header if the token is available
     const token = Cookies.get("token");
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
@@ -26,23 +24,48 @@ axiosInstance.interceptors.request.use(
 );
 
 // Response interceptor for token refresh
-  axiosInstance.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      if (error.response?.status === 401) {
-        handleLogout();
-      }
-      return Promise.reject(error);
-    }
-  );
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
 
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
+      try {
+        const refreshToken = Cookies.get("refreshToken");
+
+        // Make a request to refresh the access token
+        const response = await axios.post("/auth/refresh-token", {
+          refresh_token: refreshToken,
+        });
+
+        // If refresh is successful, update the access token and retry the original request
+        const newAccessToken = response.data.access_token;
+        Cookies.set("token", newAccessToken);
+        originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+
+        return axios(originalRequest);
+      } catch (refreshError) {
+        // If refresh token request fails, log out the user
+        handleLogout();
+        return Promise.reject(refreshError);
+      }
+    }
+
+    // If the error is not a 401 or refresh fails, log out the user
+    handleLogout();
+    return Promise.reject(error);
+  }
+);
 
 const handleLogout = async () => {
-  // You can perform additional cleanup/logic before signing out
-  localStorage.removeItem('signupCurrentStep');
-  Cookies.remove('token');
-  Cookies.remove('id');
-  
+  // Perform additional cleanup/logic before signing out
+  localStorage.removeItem("signupCurrentStep");
+  Cookies.remove("token");
+  Cookies.remove("refreshToken");
+  Cookies.remove("id");
+
   // Sign out the user
   await signOut();
 };
