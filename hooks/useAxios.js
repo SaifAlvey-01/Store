@@ -24,8 +24,9 @@ const useAxios = () => {
 
       const jsonData = response.data;
       if (jsonData?.data?.id && jsonData?.accessToken) {
-        Cookies.set("id", jsonData.data.id, { expires: 7 });
-        Cookies.set("token", jsonData.accessToken, { expires: 7 });
+        Cookies.set("id", jsonData.data.id);
+        Cookies.set("token", jsonData.accessToken);
+        Cookies.set("referhToken", jsonData.referhToken);
       }
 
       setData(jsonData);
