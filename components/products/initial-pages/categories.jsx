@@ -19,7 +19,7 @@ export default function Categories({
 }) {
   const dispatch = useDispatch();
   const id = Cookies.get("id");
-  const categories = useSelector((state)=> state.categories.category.data.data || []);
+  const categories = useSelector((state)=> state?.categories?.category?.data?.data || []);
 
   useEffect(() => {
     dispatch(getAllCategories({params:{ page:1, limit:10, storeId: id }}));
