@@ -108,13 +108,12 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
     }
   };
 
-  console.log(subCategories,"<----")
-  useEffect(() => {
-    if (category.state === "success") {
-      cogoToast.success("Categorry added successfully");
-      setName("");
-    }
-  }, [category]);
+  // useEffect(() => {
+  //   if (category.state === "success") {
+  //     cogoToast.success("Categorry added successfully");
+  //     setName("");
+  //   }
+  // }, [category]);
 
   const handleSubmit = (data) => {
     if (name) {
@@ -127,6 +126,11 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         subCategories,
       };
       dispatch(addCategory(body));
+      setName("");
+      if (category.state === "success") {
+        cogoToast.success("Categorry added successfully");
+
+      }
     } else {
       cogoToast.error("Please enter the required field");
     }
