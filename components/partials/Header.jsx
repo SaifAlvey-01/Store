@@ -172,6 +172,13 @@ function Header({
     cogoToast.success("Sub Categorry added successfully");
   };
 
+  const handleCategory = () =>{
+    emitCustomEvent("add-category")
+    handleBackClick();
+    // cogoToast.success("Categorry added successfully");
+
+  }
+
   return (
     <>
       <header className="sticky top-0 lg:shadow bg-white border-b border-slate-200 z-30">
@@ -331,7 +338,7 @@ function Header({
                   !isEditingProduct &&
                   !showAddNewSubCategory && (
                     <button
-                      onClick={() => emitCustomEvent("add-category")}
+                      onClick={handleCategory}
                       className="cursor-pointer"
                       style={{
                         backgroundColor: "#4162FF",

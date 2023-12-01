@@ -108,13 +108,12 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
     }
   };
 
-  console.log(subCategories, "<----");
-  useEffect(() => {
-    if (category.state === "success") {
-      cogoToast.success("Categorry added successfully");
-      setName("");
-    }
-  }, [category]);
+  // useEffect(() => {
+  //   if (category.state === "success") {
+  //     cogoToast.success("Categorry added successfully");
+  //     setName("");
+  //   }
+  // }, [category]);
 
   const handleSubmit = (data) => {
     if (name) {
@@ -127,6 +126,10 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
         subCategories,
       };
       dispatch(addCategory(body));
+      setName("");
+      if (category.state === "success") {
+        cogoToast.success("Categorry added successfully");
+      }
     } else {
       cogoToast.error("Please enter the required field");
     }
@@ -287,7 +290,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   />
                 </div>
 
-                {subCategories.length === 0 ? (
+                {subCategories.length === 0 && (
                   <div
                     className="p-4 mt-2"
                     style={{
@@ -336,27 +339,39 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       </button>
                     </div>
                   </div>
-                ) : (
-                  subCategories.map((subcategory) => {
-                    return (
-                      <div className="mt-4">
-                        <div
-                          className="pb-3"
-                          style={{
-                            borderBottom: "1px solid #E5E7EB",
-                          }}
-                        >
-                          <span
-                            className="font-roboto"
-                            style={{
-                              color: "#4B4B4B",
-                              fontWeight: 500,
-                              fontSize: "13px",
-                            }}
-                          >
-                            Subcategories{" "}
-                          </span>
-                        </div>
+                )}
+
+                {subCategories.length > 0 && (
+                  <div className="mt-4">
+                    <div
+                      className="pb-3"
+                      style={{
+                        borderBottom: "1px solid #E5E7EB",
+                      }}
+                    >
+                      <span
+                        className="font-freesans mb-2"
+                        style={{
+                          color: "#4B4B4B",
+                          fontWeight: 500,
+                          fontSize: "14px",
+                        }}
+                      >
+                        Add Subcategory{" "}
+                      </span>
+                      <span
+                        className="m-0 font-freesans"
+                        style={{
+                          color: "#8E8E8E",
+                          fontWeight: 400,
+                          fontSize: "12px",
+                        }}
+                      >
+                        Add subcategories if you have any.{" "}
+                      </span>
+                    </div>
+                    {subCategories.map((subcategory) => {
+                      return (
                         <div
                           style={{
                             borderBottom: "1px solid #E5E7EB",
@@ -391,25 +406,25 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                             />
                           </div>
                         </div>
-                        <div className="flex flex-row items-center justify-center mt-6">
-                          {" "}
-                          <button
-                            className=" cursor-pointer"
-                            style={{
-                              backgroundColor: "#ffffff",
-                              color: "#4162FF",
-                              padding: "8px 24px",
-                              borderRadius: "4px",
-                              border: "1px dashed #4162FF",
-                            }}
-                            onClick={handleShowSubCategory}
-                          >
-                            Add Subcategory{" "}
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })
+                      );
+                    })}
+                    <div className="flex flex-row items-center justify-center mt-6">
+                      {" "}
+                      <button
+                        className=" cursor-pointer"
+                        style={{
+                          backgroundColor: "#ffffff",
+                          color: "#4162FF",
+                          padding: "8px 24px",
+                          borderRadius: "4px",
+                          border: "1px dashed #4162FF",
+                        }}
+                        onClick={handleShowSubCategory}
+                      >
+                        Add Subcategory{" "}
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
