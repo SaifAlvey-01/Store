@@ -181,7 +181,11 @@ export default function OrderDetails() {
                       alignItems: "center",
                     }}
                   >
-                    <img src={"/sub.png"} alt="product" />
+                    <img
+                      src={"/sub.png"}
+                      className="max-w-5 max-h-5"
+                      alt="product"
+                    />
                   </div>
                   <span
                     className="mx-2"
@@ -204,7 +208,11 @@ export default function OrderDetails() {
                       alignItems: "center",
                     }}
                   >
-                    <img src={"/add.png"} alt="product" />
+                    <img
+                      src={"/add.png"}
+                      className="max-w-5 max-h-5"
+                      alt="product"
+                    />
                   </div>
 
                   <span
@@ -283,7 +291,11 @@ export default function OrderDetails() {
                       alignItems: "center",
                     }}
                   >
-                    <img src={"/sub.png"} alt="product" />
+                    <img
+                      src={"/sub.png"}
+                      className="max-w-5 max-h-5"
+                      alt="product"
+                    />
                   </div>
                   <span
                     className="mx-2"
@@ -306,7 +318,11 @@ export default function OrderDetails() {
                       alignItems: "center",
                     }}
                   >
-                    <img src={"/add.png"} alt="product" />
+                    <img
+                      src={"/add.png"}
+                      className="max-w-5 max-h-5"
+                      alt="product"
+                    />
                   </div>
 
                   <span
@@ -327,7 +343,11 @@ export default function OrderDetails() {
                 02 Item{" "}
               </span>
               <div className="flex flex-row items-center">
-                <img src={"/reciept.png"} alt="product" />
+                <img
+                  src={"/reciept.png"}
+                  className="max-w-5 max-h-5"
+                  alt="product"
+                />
                 <span
                   className="font-freesans  ml-1"
                   style={{ color: "#7A91FF", fontSize: "12px" }}
@@ -773,7 +793,11 @@ export default function OrderDetails() {
               >
                 463452434645756785{" "}
               </span>
-              <img src={"/copied.png"} alt="product" />
+              <img
+                src={"/copied.png"}
+                className="max-w-5 max-h-5"
+                alt="product"
+              />
             </div>
           </div>
           <div

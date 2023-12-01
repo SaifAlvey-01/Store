@@ -377,7 +377,7 @@ export default function OrderListing({
                       10
                       <img
                         className="w-5 h-5 ml-1.5"
-                        src="/arrow-up.png"
+                        src="/chevron-down-fill.png"
                         alt=""
                       />
                     </button>

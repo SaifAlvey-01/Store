@@ -191,10 +191,17 @@ export default function AddNewSubCategory({ subCategories }) {
               className="flex flex-col items-center justify-center mt-6 p-4"
             >
               {" "}
-              <div className="bg-[#E1E1E1] rounded-[8px] w-14 h-14 flex items-center justify-center p-2.5 mb-3">
-                <img 
-                            src={mainImageUrl? mainImageUrl : "/gallery.png"}
-                            className={`${mainImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`} />
+              <div
+                className={`bg-[#E1E1E1] rounded-[8px] w-14 h-14 flex items-center overflow-hidden justify-center ${
+                  mainImageUrl ? "p-0" : "p-2.5"
+                }  mb-3`}
+              >
+                <img
+                  src={mainImageUrl ? mainImageUrl : "/gallery.png"}
+                  className={`${
+                    mainImageUrl ? "w-full h-full " : "h-7 w-7"
+                  } object-fill`}
+                />
               </div>{" "}
               <button
                 className="cursor-pointer"
@@ -323,10 +330,16 @@ export default function AddNewSubCategory({ subCategories }) {
                     className=" w-full flex flex-row items-center justify-start  p-4"
                   >
                     {" "}
-                    <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
+                    <div
+                      className={`bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center overflow-hidden ${
+                        mobileImageUrl ? "p-0" : "p-2.5"
+                      }`}
+                    >
                       <img
-                            src={mobileImageUrl? mobileImageUrl : "/gallery.png"}
-                            className={`${mobileImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
+                        src={mobileImageUrl ? mobileImageUrl : "/gallery.png"}
+                        className={`${
+                          mobileImageUrl ? "w-full h-full " : "h-7 w-7"
+                        } object-fill`}
                       />
                     </div>{" "}
                     <button
@@ -358,10 +371,16 @@ export default function AddNewSubCategory({ subCategories }) {
                     className="w-full flex flex-row items-center justify-start  p-4"
                   >
                     {" "}
-                    <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
+                    <div
+                      className={`bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center overflow-hidden ${
+                        bannerImageUrl ? "p-0" : "p-2.5"
+                      } `}
+                    >
                       <img
-                            src={bannerImageUrl? bannerImageUrl : "/gallery.png"}
-                            className={`${bannerImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
+                        src={bannerImageUrl ? bannerImageUrl : "/gallery.png"}
+                        className={`${
+                          bannerImageUrl ? "w-full h-full " : "h-7 w-7"
+                        } object-fill`}
                       />
                     </div>{" "}
                     <button

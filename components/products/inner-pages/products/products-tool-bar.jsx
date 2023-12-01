@@ -71,7 +71,7 @@ export default function ProductsToolBar({ setShowAddNewProduct }) {
               color: "#8E8E8E",
               backgroundColor: "#fff",
             }}
-            className="flex items-center px-3 py-2 hover:bg-gray-300"
+            className="flex items-center px-3 py-2 hover:bg-gray-300 cursor-pointer"
           >
             Sort
             <img
@@ -149,7 +149,7 @@ export default function ProductsToolBar({ setShowAddNewProduct }) {
               color: "#8E8E8E",
               backgroundColor: "#fff",
             }}
-            className="flex items-center px-3 py-2 hover:bg-gray-300"
+            className="flex items-center px-3 py-2 hover:bg-gray-300 cursor-pointer"
           >
             Filters
             <img src={"/filter.png"} className="ml-2 w-4 h-4" />
@@ -465,7 +465,10 @@ export default function ProductsToolBar({ setShowAddNewProduct }) {
             className="flex cursor-pointer items-center px-1.5 md:px-3 py-2 hover:bg-gray-300"
           >
             Add New Product
-            <img src={"/chevron-down.png"} className=" ml-1 md:ml-2 w-4 h-4" />
+            <img
+              src={"/chevron-down-fill.png"}
+              className=" ml-1 md:ml-2 w-4 h-4"
+            />
           </button>
         </div>
       </div>

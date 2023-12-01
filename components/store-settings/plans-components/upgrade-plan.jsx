@@ -4,7 +4,7 @@ import PaymentMethodModal from "../../modals/payment-method-modal";
 import UpgradePlanSuccess from "./upgrade-plan-success";
 import { useEffect } from "react";
 
-export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
+export default function UpgradePlan({ setShowUpgradePlan }) {
   const [activeTab, setActiveTab] = useState("quarterly");
   const [showUpgradePlatinumModal, setShowUpgradePlatinumModal] =
     useState(false);
@@ -64,11 +64,6 @@ export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
       return () => clearTimeout(timeoutId);
     }
   }, [showUpgradePlanSuccess]);
-
-  const handleGetInTouch = () => {
-    setActiveDiv("preferences");
-    setShowUpgradePlan(false);
-  };
 
   return (
     <>
@@ -235,7 +230,7 @@ export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
                 </div>
 
                 <div
-                  className="w-[33%] mx-4 flex flex-col justify-between overflow-hidden"
+                  className="w-[33%] mx-4 overflow-hidden"
                   style={{
                     border: "1px solid #FF5353",
                     backgroundColor: "#FFF",
@@ -246,7 +241,7 @@ export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
                   <div className="font-freesans text-[18px] font-[400] text-white text-center bg-[#FF5353] overflow-hidden py-3.5 ">
                     Most Popular{" "}
                   </div>{" "}
-                  <div className="p-4">
+                  <div className="px-4 pt-5 pb-0">
                     <div
                       className="font-freesans p-2.5"
                       style={{
@@ -320,7 +315,7 @@ export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
                       ))}
                     </div>
 
-                    <div className="flex flex-col justify-center items-center ">
+                    <div className="flex flex-col justify-center items-center mt-[34px] ">
                       <button
                         className="mb-2 cursor-pointer"
                         style={{
@@ -465,7 +460,7 @@ export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
                         >
                           <img
                             src={item.imageSrc}
-                            className="w-4 h-4 object-cover mr-3"
+                            className="w-5 h-5 object-cover mr-2.5"
                             alt={`Image ${index + 1}`}
                           />
                           <p className="text-[#FAFAFA] text-[16px] font-freesans m-0">
@@ -487,10 +482,7 @@ export default function UpgradePlans({ setActiveDiv, setShowUpgradePlan }) {
                       >
                         Learn More{" "}
                       </button>
-                      <button
-                        onClick={handleGetInTouch}
-                        className="bg-white text-[#4B4B4B] px-7 py-2 rounded-[4px] cursor-pointer"
-                      >
+                      <button className="bg-white text-[#4B4B4B] px-7 py-2 rounded-[4px] cursor-pointer">
                         Get In Touch{" "}
                       </button>
                     </div>

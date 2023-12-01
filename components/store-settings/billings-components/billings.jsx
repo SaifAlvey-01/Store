@@ -6,7 +6,7 @@ export default function Billings() {
       invoiceID: "2023/220115",
       date: "Jul 31, 2023",
       charges: "₹1,999",
-      invoice: "Download", // or any structure you have for the invoice
+      invoice: "Download",
     },
     {
       invoiceID: "2023/220115",
@@ -227,13 +227,13 @@ export default function Billings() {
                     </span>{" "}
                   </td>
                   <td
-                    className="py-4 px-4"
+                    className="py-4 px-4 flex flex-row items-center"
                     style={{
                       borderBottom: "1px solid var(--gray-200, #EAECF0)",
                     }}
                   >
                     <img
-                      src="download.png"
+                      src="/download.png"
                       alt="Invoice Icon"
                       style={{
                         width: "16px",

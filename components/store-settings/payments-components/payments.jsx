@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import UpgradeYourPlanModal from "../../modals/upgrade-your-plan-modal";
 import CustomDrawer from "../../drawer-contents/custom-drawer";
-import ManualPaymentEditDropdown from "../../dropdowns/manual-payment-edit";
-import { useEffect } from "react";
-import { useRef } from "react";
+import ManualPaymentEditDropdown from "../../dropdowns/manual-payment-edit-dropdown";
 
 export default function Payments() {
   const [showSidebar, setShowSidebar] = useState(false);

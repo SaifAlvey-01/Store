@@ -4,7 +4,7 @@ import StoreSettingsLinks from "./settings-link";
 import Billings from "./billings-components/billings";
 import Preferences from "./preferences-components/preferences-components/preferences";
 import Plans from "./plans-components/plans";
-import UpgradePlans from "./plans-components/upgrade-plans";
+import UpgradePlan from "./plans-components/upgrade-plan";
 import StaffAccounts from "./staff-accounts-components/staff-accounts";
 import Payments from "./payments-components/payments";
 import Shipping from "./shipping-components/shipping";
@@ -17,8 +17,19 @@ import Domains from "./domain-components/domains";
 import Policies from "./policies-components/policies";
 import Languages from "./languages-components/languages";
 import KYCVerification from "./kyc-verification-components/kyc-verification";
+import ConnectExistingDomains from "./domain-components/connect-existing-domains";
+import SetupCustomDomains from "./domain-components/setup-custom-domain";
 
-export default function StoreSettings({ showUpgradePlan, setShowUpgradePlan }) {
+export default function StoreSettings({
+  showUpgradePlan,
+  setShowUpgradePlan,
+  showConnectExistingDomain,
+  setShowConnectExistingDomain,
+  showSetupCustomDomain,
+  setShowSetupCustomDomain,
+}) {
+  const [activeDiv, setActiveDiv] = useState("plans");
+  const [showCustomDomain, setShowCustomDomain] = useState(false);
   const components = [
     {
       id: "plans",
@@ -39,24 +50,48 @@ export default function StoreSettings({ showUpgradePlan, setShowUpgradePlan }) {
     { id: "extra-charges", component: <ExtraCharges /> },
     { id: "checkout", component: <Checkout /> },
     { id: "support", component: <SupportAndSocial /> },
-    { id: "domains", component: <Domains /> },
+    {
+      id: "domains",
+      component: (
+        <Domains
+          showConnectExistingDomain={showConnectExistingDomain}
+          setShowConnectExistingDomain={setShowConnectExistingDomain}
+          showCustomDomain={showCustomDomain}
+          showSetupCustomDomain={showSetupCustomDomain}
+          setShowSetupCustomDomain={setShowSetupCustomDomain}
+        />
+      ),
+    },
     { id: "policies", component: <Policies /> },
     { id: "languages", component: <Languages /> },
     { id: "kyc-verification", component: <KYCVerification /> },
   ];
-  const [activeDiv, setActiveDiv] = useState("plans");
 
   function modifySVGColor(svg, color) {
     return svg.replace(/#4B4B4B/g, color);
   }
 
+  if (showConnectExistingDomain) {
+    return (
+      <ConnectExistingDomains
+        goBack={() => setShowConnectExistingDomain(false)}
+        setShowCustomDomain={setShowCustomDomain}
+      />
+    );
+  }
+
   if (showUpgradePlan) {
     return (
-      <UpgradePlans
+      <UpgradePlan
         goBack={() => setShowUpgradePlan(false)}
-        setActiveDiv={setActiveDiv}
         setShowUpgradePlan={setShowUpgradePlan}
       />
+    );
+  }
+
+  if (showSetupCustomDomain) {
+    return (
+      <SetupCustomDomains goBack={() => setShowSetupCustomDomain(false)} />
     );
   }
 
@@ -119,6 +154,11 @@ export default function StoreSettings({ showUpgradePlan, setShowUpgradePlan }) {
             return React.cloneElement(item.component, {
               showUpgradePlan,
               setShowUpgradePlan,
+              showConnectExistingDomain,
+              setShowConnectExistingDomain,
+              showCustomDomain,
+              showSetupCustomDomain,
+              setShowSetupCustomDomain,
             });
           }
           return null;

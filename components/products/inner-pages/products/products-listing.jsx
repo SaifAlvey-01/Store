@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
-import ProductsEditDropdown from "../../../dropdowns/products-edit";
+import ProductsEditDropdown from "../../../dropdowns/products-edit-dropdown";
 
 const headers = [
   { title: "Product" },
@@ -267,7 +267,7 @@ export default function ProductsListing({ onEditClick }) {
                       10
                       <img
                         className="w-5 h-5 ml-1.5"
-                        src="/arrow-up.png"
+                        src="/chevron-down-fill.png"
                         alt=""
                       />
                     </button>
