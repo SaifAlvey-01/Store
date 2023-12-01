@@ -13,8 +13,9 @@ import showOrderDetailsReducer from "./ordersSlices/orderDetailsSlice";
 import showConfirmDeliveryReducer from "./ordersSlices/confirmDeliverySlice";
 import showDeliveredButtonsReducer from "./ordersSlices/showDeliveredButtons";
 import showUpgradePlanReducer from "./storeSettingsSlices/upgradePlanSlice";
+import showConnectExistingDomainReducer from "./storeSettingsSlices/connectExistingDomain";
+import showSetupCustomDomainReducer from "./storeSettingsSlices/setupCustomDomain";
 import getBusiness from "./getBusiness";
-import addCategory from "./categoriesSlices/addCategory";
 import categories from "./categoriesSlices/addCategory";
 
 const rootReducer = combineReducers({
@@ -31,6 +32,8 @@ const rootReducer = combineReducers({
   showConfirmDelivery: showConfirmDeliveryReducer,
   showDeliveredButtons: showDeliveredButtonsReducer,
   showUpgradePlan: showUpgradePlanReducer,
+  showConnectExistingDomain: showConnectExistingDomainReducer,
+  showSetupCustomDomain: showSetupCustomDomainReducer,
   getBusiness,
   categories,
   addSubCategory: addSubCategoryReducer,

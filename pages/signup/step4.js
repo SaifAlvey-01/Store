@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { countryOptions } from "../../components/countryOptions";
+import { countryOptions } from "../../components/constants/countryOptions";
 import { useRouter } from "next/navigation";
 import Loading from "../../components/loading";
 import Cookie from "js-cookie";

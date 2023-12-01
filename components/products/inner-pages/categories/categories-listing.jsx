@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Pagination from "../../../pagination";
-import CategoriesEditDropdown from "../../../dropdowns/categories-edit";
+import CategoriesEditDropdown from "../../../dropdowns/categories-edit-dropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../../../redux/slices/categoriesSlices/addCategory";
 import Cookies from "js-cookie";
@@ -246,7 +246,7 @@ export default function CategoriesListing({ onEditClick, categories }) {
                       10
                       <img
                         className="w-5 h-5 ml-1.5"
-                        src="/arrow-up.png"
+                        src="/chevron-down-fill.png"
                         alt=""
                       />
                     </button>

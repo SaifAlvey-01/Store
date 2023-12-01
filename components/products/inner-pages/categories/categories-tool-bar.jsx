@@ -147,7 +147,10 @@ export default function CategoriesToolBar({ setShowAddNewCategory }) {
             className="flex cursor-pointer items-center px-1.5 md:px-3 py-2 hover:bg-gray-300"
           >
             Add New Category
-            <img src={"/chevron-down.png"} className=" ml-1 md:ml-2 w-4 h-4" />
+            <img
+              src={"/chevron-down-fill.png"}
+              className=" ml-1 md:ml-2 w-4 h-4"
+            />
           </button>
         </div>
       </div>

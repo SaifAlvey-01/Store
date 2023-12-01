@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import cogoToast from "cogo-toast";
 import AddNewSubCategory from "./add-new-sub-category";
 import { useCustomEventListener } from "../../../../utils/custom_events";
-import SubCategoryEditDropdown from "../../../dropdowns/subcategory-edit";
+import SubCategoryEditDropdown from "../../../dropdowns/subcategory-edit-dropdown";
 
 const modules = {
   toolbar: [
@@ -129,7 +129,6 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
       setName("");
       if (category.state === "success") {
         cogoToast.success("Categorry added successfully");
-
       }
     } else {
       cogoToast.error("Please enter the required field");
@@ -191,10 +190,16 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                 </div>
                 <div className="flex items-center mt-6">
                   {" "}
-                  <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
+                  <div
+                    className={`bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center overflow-hidden ${
+                      mainImageUrl ? "p-0" : "p-2.5"
+                    }`}
+                  >
                     <img
-                      src={mainImageUrl? mainImageUrl : "/gallery.png"}
-                      className={`${mainImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
+                      src={mainImageUrl ? mainImageUrl : "/gallery.png"}
+                      className={`${
+                        mainImageUrl ? "w-full h-full " : "h-7 w-7"
+                      } object-fill`}
                     />
                   </div>
                   <div className="flex flex-col">
@@ -285,59 +290,58 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                   />
                 </div>
 
-               {subCategories.length === 0 &&
-                <div
-                  className="p-4 mt-2"
-                  style={{
-                    borderRadius: "10px",
-                    backgroundColor: "var(--white-color, #FFF)",
-                    border: "1px solid #e3e3e3",
-                  }}
-                >
-                  {" "}
-                  <div className="font-freesans flex flex-col items-start justify-start  mb-6">
-                    <span
-                      className="font-freesans mb-2"
-                      style={{
-                        color: "#4B4B4B",
-                        fontWeight: 500,
-                        fontSize: "14px",
-                      }}
-                    >
-                      Add Subcategory{" "}
-                    </span>
-                    <span
-                      className="m-0 font-freesans"
-                      style={{
-                        color: "#8E8E8E",
-                        fontWeight: 400,
-                        fontSize: "12px",
-                      }}
-                    >
-                      Add subcategories if you have any.{" "}
-                    </span>
-                  </div>
-                  <div className="flex flex-row items-center justify-center">
+                {subCategories.length === 0 && (
+                  <div
+                    className="p-4 mt-2"
+                    style={{
+                      borderRadius: "10px",
+                      backgroundColor: "var(--white-color, #FFF)",
+                      border: "1px solid #e3e3e3",
+                    }}
+                  >
                     {" "}
-                    <button
-                      className=" cursor-pointer"
-                      style={{
-                        backgroundColor: "#ffffff",
-                        color: "#4162FF",
-                        padding: "8px 24px",
-                        borderRadius: "4px",
-                        border: "1px dashed #4162FF",
-                      }}
-                      onClick={handleShowSubCategory}
-                    >
-                      Add Subcategory{" "}
-                    </button>
+                    <div className="font-freesans flex flex-col items-start justify-start  mb-6">
+                      <span
+                        className="font-freesans mb-2"
+                        style={{
+                          color: "#4B4B4B",
+                          fontWeight: 500,
+                          fontSize: "14px",
+                        }}
+                      >
+                        Add Subcategory{" "}
+                      </span>
+                      <span
+                        className="m-0 font-freesans"
+                        style={{
+                          color: "#8E8E8E",
+                          fontWeight: 400,
+                          fontSize: "12px",
+                        }}
+                      >
+                        Add subcategories if you have any.{" "}
+                      </span>
+                    </div>
+                    <div className="flex flex-row items-center justify-center">
+                      {" "}
+                      <button
+                        className=" cursor-pointer"
+                        style={{
+                          backgroundColor: "#ffffff",
+                          color: "#4162FF",
+                          padding: "8px 24px",
+                          borderRadius: "4px",
+                          border: "1px dashed #4162FF",
+                        }}
+                        onClick={handleShowSubCategory}
+                      >
+                        Add Subcategory{" "}
+                      </button>
+                    </div>
                   </div>
-                </div>
-                }
-                
-                               
-                  {subCategories.length > 0 &&
+                )}
+
+                {subCategories.length > 0 && (
                   <div className="mt-4">
                     <div
                       className="pb-3"
@@ -346,49 +350,64 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       }}
                     >
                       <span
-                        className="font-roboto"
+                        className="font-freesans mb-2"
                         style={{
                           color: "#4B4B4B",
                           fontWeight: 500,
-                          fontSize: "13px",
+                          fontSize: "14px",
                         }}
                       >
-                        Subcategories{" "}
+                        Add Subcategory{" "}
+                      </span>
+                      <span
+                        className="m-0 font-freesans"
+                        style={{
+                          color: "#8E8E8E",
+                          fontWeight: 400,
+                          fontSize: "12px",
+                        }}
+                      >
+                        Add subcategories if you have any.{" "}
                       </span>
                     </div>
-                    {
-                    subCategories.map((subcategory)=>{
-                    return(
-                    <div
-                      style={{
-                        borderBottom: "1px solid #E5E7EB",
-                      }}
-                      className="flex flex-row justify-between items-center py-3 mt-6"
-                    >
-                      <div className="flex items-center">
-                        <img className="h-10 w-10" src={subcategory.mainImageUrl ? subcategory.mainImageUrl : "/product-img.png"} />
-                        <span
-                          className="font-freesans ml-2.5"
-                          style={{ color: "#4B4B4B", fontSize: "12px" }}
+                    {subCategories.map((subcategory) => {
+                      return (
+                        <div
+                          style={{
+                            borderBottom: "1px solid #E5E7EB",
+                          }}
+                          className="flex flex-row justify-between items-center py-3 mt-6"
                         >
-                          {subcategory.name}
-                        </span>
-                      </div>
-                      <div className="relative">
-                        <img
-                          onClick={handleOpenDropdown}
-                          src={"/menu-dots-round.png"}
-                          className="w-6 h-6 object-contain cursor-pointer"
-                        />
-                        <SubCategoryEditDropdown
-                          isOpen={showDropdown}
-                          onClose={handleCloseDropdown}
-                        />
-                      </div>
-                    </div>
-                      )
-                      })
-                    }
+                          <div className="flex items-center">
+                            <img
+                              className="h-10 w-10"
+                              src={
+                                subcategory.mainImageUrl
+                                  ? subcategory.mainImageUrl
+                                  : "/product-img.png"
+                              }
+                            />
+                            <span
+                              className="font-freesans ml-2.5"
+                              style={{ color: "#4B4B4B", fontSize: "12px" }}
+                            >
+                              {subcategory.name}
+                            </span>
+                          </div>
+                          <div className="relative">
+                            <img
+                              onClick={handleOpenDropdown}
+                              src={"/menu-dots-round.png"}
+                              className="w-6 h-6 object-contain cursor-pointer"
+                            />
+                            <SubCategoryEditDropdown
+                              isOpen={showDropdown}
+                              onClose={handleCloseDropdown}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
                     <div className="flex flex-row items-center justify-center mt-6">
                       {" "}
                       <button
@@ -406,7 +425,7 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                       </button>
                     </div>
                   </div>
-                  }
+                )}
               </div>
             </div>
 
@@ -485,10 +504,19 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                         className=" w-full flex flex-row items-center justify-start  p-4"
                       >
                         {" "}
-                        <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                          <img mobileImageUrl
-                            src={mobileImageUrl? mobileImageUrl : "/gallery.png"}
-                            className={`${mobileImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
+                        <div
+                          className={`bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center overflow-hidden justify-center ${
+                            mobileImageUrl ? "p-0" : "p-2.5"
+                          } `}
+                        >
+                          <img
+                            mobileImageUrl
+                            src={
+                              mobileImageUrl ? mobileImageUrl : "/gallery.png"
+                            }
+                            className={`${
+                              mobileImageUrl ? "w-full h-full " : "h-7 w-7"
+                            } object-fill`}
                           />
                         </div>{" "}
                         <button
@@ -520,11 +548,19 @@ export default function AddNewCategory({ setShowAddNewSubCategory }) {
                         className="w-full flex flex-row items-center justify-start  p-4"
                       >
                         {" "}
-                        <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
+                        <div
+                          className={`bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center overflow-hidden ${
+                            bannerImageUrl ? "p-0" : "p-2.5"
+                          }`}
+                        >
                           <img
-                            src={bannerImageUrl? bannerImageUrl : "/gallery.png"}
-                            className={`${bannerImageUrl? "w-full h-full " : "h-7 w-7"} object-contain`}
-                            />
+                            src={
+                              bannerImageUrl ? bannerImageUrl : "/gallery.png"
+                            }
+                            className={`${
+                              bannerImageUrl ? "w-full h-full " : "h-7 w-7"
+                            } object-fill`}
+                          />
                         </div>{" "}
                         <button
                           className="cursor-pointer w-[60%] lg:w-[40%]"

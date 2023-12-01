@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./staffAccountsSearchStyle.module.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import StaffAccountsEditDropdown from "../../dropdowns/staff-accounts-edit";
+import StaffAccountsEditDropdown from "../../dropdowns/staff-accounts-edit-dropdown";
 import { useRef } from "react";
 import CustomDrawer from "../../drawer-contents/custom-drawer";
 
@@ -249,7 +249,7 @@ export default function StaffAccounts({ onEditClick }) {
                       <img
                         src={row.actionImage}
                         alt={`Description for ${row.actionImage}`}
-                        className="max-w-full max-h-full object-contain cursor-pointer"
+                        className="max-w-7 max-h-7 object-contain cursor-pointer"
                         onClick={() =>
                           setDropdownOpenIndex(
                             dropdownOpenIndex !== index ? index : null

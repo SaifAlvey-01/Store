@@ -20,6 +20,7 @@ const persistConfig = {
     "showConfirmDelivery",
     "showDeliveredButtons",
     "showUpgradePlan ",
+    "showConnectExistingDomain",
   ],
 };
 

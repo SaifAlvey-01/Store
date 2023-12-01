@@ -20,6 +20,9 @@ import SetupStripe from "./settings-module/setup-stripe";
 import SetupManualPayment from "./settings-module/setup-manual-payment";
 import AddWarehouse from "./settings-module/add-warehouse";
 import AddCheckoutFields from "./settings-module/add-checkout-fields";
+import ConnectDomain from "./settings-module/connect-domain";
+import AddLanguages from "./settings-module/add-languages";
+import KYCVerification from "./settings-module/kyc-verification";
 
 export default function CustomDrawer({
   showSidebar,
@@ -27,6 +30,9 @@ export default function CustomDrawer({
   contentType,
   setContentType,
   onSetUpButtonClick,
+  setShowConnectExistingDomain,
+  onAddLanguages,
+  setIsKYCVerified,
 }) {
   const [addingNewCustomer, setAddingNewCustomer] = useState(false);
   const sidebarRef = useRef(null);
@@ -64,7 +70,7 @@ export default function CustomDrawer({
             transform: "translateX(0%)",
             transition: "transform 0.3s ease-in-out",
           }}
-          className="fixed top-0 right-0 w-[440px] bg-white z-50 p-4 shadow-lg"
+          className="fixed top-0 right-0 w-[400px] bg-white z-50 p-4 shadow-lg"
           ref={sidebarRef}
         >
           <div
@@ -153,6 +159,24 @@ export default function CustomDrawer({
             )}
             {contentType === "add-checkout-fields" && (
               <AddCheckoutFields setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "connect-existing-domain" && (
+              <ConnectDomain
+                setShowSidebar={setShowSidebar}
+                setShowConnectExistingDomain={setShowConnectExistingDomain}
+              />
+            )}
+            {contentType === "add-languages" && (
+              <AddLanguages
+                setShowSidebar={setShowSidebar}
+                onAddLanguages={onAddLanguages}
+              />
+            )}
+            {contentType === "kyc-verification" && (
+              <KYCVerification
+                setShowSidebar={setShowSidebar}
+                setIsKYCVerified={setIsKYCVerified}
+              />
             )}
           </div>
         </div>
