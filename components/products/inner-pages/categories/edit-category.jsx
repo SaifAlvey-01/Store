@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
+import { useDispatch, useSelector } from "react-redux";
 
 const modules = {
   toolbar: [
@@ -34,9 +35,12 @@ const formats = [
   "video",
 ];
 
-export default function EditCategory() {
-  const [content, setContent] = useState("");
+export default function EditCategory({categoryId}) {
   const [isChecked, setIsChecked] = useState(false);
+  const categories = useSelector((state)=> state?.categories?.category?.data?.data || []);
+  const SingleCategory = categories.filter((category) => category.categoryId == categoryId);
+  console.log(SingleCategory, "<---SingleCategory")
+  const [content, setContent] = useState(SingleCategory[0]?.description);
 
   const handleQuillChange = (value) => {
     setContent(value);
@@ -89,7 +93,7 @@ export default function EditCategory() {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+                <img src={SingleCategory[0]?.mainImageUrl} className="w-7 h-7 object-contain" />
               </div>
               <div className="flex flex-col">
                 {" "}
@@ -145,6 +149,7 @@ export default function EditCategory() {
                 onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
                 placeholder="Enter Category Name"
                 required
+                value={SingleCategory[0]?.name}
               />
             </div>
 
@@ -275,7 +280,7 @@ export default function EditCategory() {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+                <img src={SingleCategory[0]?.mobileBannerUrl} className="w-7 h-7 object-contain" />
               </div>{" "}
               <button
                 className="cursor-pointer"
@@ -294,7 +299,7 @@ export default function EditCategory() {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={"/gallery.png"} className="w-7 h-7 object-contain" />
+                <img src={SingleCategory[0]?.desktopBannerUrl} className="w-7 h-7 object-contain" />
               </div>{" "}
               <button
                 className="cursor-pointer"

@@ -61,7 +61,6 @@ export default function CategoriesListing({ onEditClick, categories }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
 
-
   useEffect(() => {
     function handleOutsideClick(event) {
       if (
@@ -214,6 +213,7 @@ export default function CategoriesListing({ onEditClick, categories }) {
                   <CategoriesEditDropdown
                     isOpen={dropdownOpenIndex === index}
                     onEditClick={onEditClick}
+                    categoryId={row.categoryId}
                   />
                 </div>{" "}
               </td>
