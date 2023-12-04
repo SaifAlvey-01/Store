@@ -42,8 +42,6 @@ export default function Categories({
     return <EditCategory goBack={() => setIsEditingCategory(false)} />;
   }
 
-  console.log(categories, "<=====Getall categories");
-
   return (
 
     <div
@@ -54,7 +52,7 @@ export default function Categories({
         boxShadow: `#00000011 0px 2px 4px 2px`,
       }}
     >
-      {categories.length < 0 ? 
+      {categories.length < 1 ? 
     (  <div
         className="my-4 mx-4 sm:my-4 sm:mx-4 md:my-8 md:mx-4 lg:my-16 lg:mx-24 lg:w-[70%] w-[90%]"
         style={{
