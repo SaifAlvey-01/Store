@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoriesEditDropdown = ({ isOpen, onEditClick }) => {
+const CategoriesEditDropdown = ({ isOpen, onEditClick, categoryId }) => {
   if (!isOpen) return null;
 
   return (
@@ -24,7 +24,7 @@ const CategoriesEditDropdown = ({ isOpen, onEditClick }) => {
           fontSize: "14px",
           fontWeight: 600,
         }}
-        onClick={onEditClick}
+        onClick={()=> onEditClick(categoryId)}
         className="block px-4 py-2.5 w-full text-left font-lato cursor-pointer"
       >
         Edit{" "}

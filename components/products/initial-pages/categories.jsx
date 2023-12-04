@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FreeTrialFooter from "../../free-trial-footer";
 import AddNewCategory from "../inner-pages/categories/add-new-category";
 import CategoriesToolBar from "../inner-pages/categories/categories-tool-bar";
@@ -18,15 +18,18 @@ export default function Categories({
   setShowAddNewSubCategory,
 }) {
   const dispatch = useDispatch();
+  const [categoryId, setCategoryId] = useState(null)
   const id = Cookies.get("id");
   const categories = useSelector((state)=> state?.categories?.category?.data?.data || []);
+  const {loading} = useSelector((state)=> state?.categories);
 
   useEffect(() => {
     dispatch(getAllCategories({params:{ page:1, limit:10, storeId: id }}));
   }, [dispatch]);
 
-  const handleEditClick = () => {
+  const handleEditClick = (categoryId) => {
     setIsEditingCategory(true);
+    setCategoryId(categoryId)
   };
 
   if (showAddNewCategory) {
@@ -39,8 +42,13 @@ export default function Categories({
   }
 
   if (isEditingCategory) {
-    return <EditCategory goBack={() => setIsEditingCategory(false)} />;
+    return <EditCategory categoryId={categoryId} goBack={() => setIsEditingCategory(false)} />;
   }
+
+  if(loading){
+    return <p>Loading</p>
+  }  
+   
 
   return (
 
