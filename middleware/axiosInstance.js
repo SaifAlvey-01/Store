@@ -13,7 +13,9 @@ axiosInstance.interceptors.request.use(
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
-    if (config.url.includes("/media")) {
+
+    // Check if the request body is FormData (indicating file upload)
+    if (config.data instanceof FormData) {
       config.headers["Content-Type"] = "multipart/form-data";
     } else {
       config.headers["Content-Type"] = "application/json";
@@ -33,10 +35,10 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = Cookies.get("refreshToken");
+        const refreshToken = Cookies.get("referhToken");
 
         // Make a request to refresh the access token
-        const response = await axios.post("/auth/refresh-token", {
+        const response = await axios.put("/auth/refresh-token", {
           refresh_token: refreshToken,
         });
 

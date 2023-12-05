@@ -61,6 +61,7 @@ export default function CategoriesListing({ onEditClick, categories }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
 
+  console.log(categories, "<----categoriesss")
   useEffect(() => {
     function handleOutsideClick(event) {
       if (
@@ -111,7 +112,7 @@ export default function CategoriesListing({ onEditClick, categories }) {
           </tr>
         </thead>
         <tbody className="bg-white">
-          {categories?.map((row, index) => (
+          {categories?.data?.map((row, index) => (
             <tr key={index} className="h-auto">
               <td
                 style={{ borderBottom: "1px solid #EAECF0" }}
@@ -255,7 +256,7 @@ export default function CategoriesListing({ onEditClick, categories }) {
                     style={{ color: "#6B7280", fontWeight: 500 }}
                     className="font-plusJakartaSans ml-1"
                   >
-                    of 40 entries
+                   {` of ${categories.total} entries`}
                   </span>
                 </div>
 
