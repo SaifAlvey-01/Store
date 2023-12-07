@@ -38,14 +38,13 @@ axiosInstance.interceptors.response.use(
         const refreshToken = Cookies.get("referhToken");
 
         // Make a request to refresh the access token
-        const response = await axios.put("/auth/refresh-token", {
+        const response = await axios.put("https://api.launchmystore.io/auth/refresh-token", {
           refresh_token: refreshToken,
         });
-
         // If refresh is successful, update the access token and retry the original request
-        const newAccessToken = response.data.access_token;
-        Cookies.set("token", newAccessToken);
-        originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
+        Cookies.set("token", response.data.accessToken);
+        Cookies.set("referhToken", response.data.referhToken);
+        // originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
         return axios(originalRequest);
       } catch (refreshError) {
@@ -54,7 +53,6 @@ axiosInstance.interceptors.response.use(
         return Promise.reject(refreshError);
       }
     }
-
     // If the error is not a 401 or refresh fails, log out the user
     handleLogout();
     return Promise.reject(error);
