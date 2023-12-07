@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import PrivacyPolicy from "./privacy-policy";
-import RefundPolicy from "./refund-policy";
-import TermsAndCondition from "./terms-and-condition";
+import { CustomEditor } from "../../../components/TinyMCE";
+
 
 export default function Policies() {
   const [activeTab, setActiveTab] = useState(0);
@@ -130,71 +129,7 @@ export default function Policies() {
           }}
           className="mt-2"
         >
-          <div className="flex flex-wrap items-center">
-            <button
-              id="dropdownDefaultButton"
-              onClick={() => setShowDropdown(!showDropdown)}
-              className="text-center mr-2 mb-4 inline-flex items-center rounded-lg text-sm px-3 py-2.5 focus:outline-none justify-between"
-              type="button"
-              style={{
-                width: "60%",
-                borderRadius: "8px",
-                border: "1.5px solid #E5E7EB",
-                background: "#FFF",
-                color: "#4B4B4B",
-                cursor: "pointer",
-                fontSize: "14px",
-              }}
-            >
-              {"Paragraph"}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M16.5984 7.46094L11.1651 12.8943C10.5234 13.5359 9.47344 13.5359 8.83177 12.8943L3.39844 7.46094"
-                  stroke="#6B7280"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-
-            {images.map((imgSrc, index) => (
-              <div
-                key={index}
-                style={{
-                  border: "1px solid #E4E7EC",
-                  borderRadius: "6px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                className="p-2 w-6 h-6 mr-2 mb-4"
-              >
-                <img
-                  style={{
-                    color: "#8E8E8E",
-                  }}
-                  src={imgSrc}
-                  className="w-4 h-4"
-                />
-              </div>
-            ))}
-          </div>
-
-          <div
-            className="mb-2"
-            style={{ overflowY: "auto", maxHeight: "500px" }}
-          >
-            {activeTab === 0 && <PrivacyPolicy />}
-            {activeTab === 1 && <RefundPolicy />}
-            {activeTab === 2 && <TermsAndCondition />}
-          </div>
+         <CustomEditor />
         </div>
         <div className="flex justify-end w-full mt-4 mb-4">
           <button
