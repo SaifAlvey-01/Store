@@ -54,7 +54,7 @@ axiosInstance.interceptors.response.use(
       }
     }
     // If the error is not a 401 or refresh fails, log out the user
-    handleLogout();
+    // handleLogout();
     return Promise.reject(error);
   }
 );

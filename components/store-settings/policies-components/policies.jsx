@@ -1,26 +1,66 @@
-import React from "react";
+import React, { use, useEffect } from "react";
 import { useState } from "react";
 import { CustomEditor } from "../../../components/TinyMCE";
+import Cookies from "js-cookie";
+import { useDispatch, useSelector } from "react-redux";
+import { addPolicy } from "../../../redux/slices/policies/policies";
+import cogoToast from "cogo-toast";
 
 
 export default function Policies() {
+  const dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState(0);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [editorContent, setEditorContent] = useState("");
+  const [policyType, setpolicyType] = useState("Privacy Policy");
+  const storeId = Cookies.get("id");
+  const {error, loading,  policy} = useSelector(state => state.policies)
 
-  const images = [
-    "/text-bold.png",
-    "/text-italic.png",
-    "/text-underline.png",
-    "/gallery-tick.png",
-    "/attach.png",
-    "/quotes.png",
-    "/align-text-left.png",
-    "/align-text-center.png",
-    "/align-text-right.png",
-    "/quill_list.png",
-    "/number-list-line.png",
-    "/outline-code.png",
-  ];
+  const handleEditorChange = (content) => {
+    setEditorContent(content);
+  };
+  
+  console.log(error, "<----error")
+  
+  const handleActivePolicy = (id) =>{
+    
+    setActiveTab(id)
+    if(id === 0){
+      setpolicyType("Privacy Policy");
+    }
+    
+    if(id === 1){
+      setpolicyType("Refund Policy");
+    }
+    
+    if(id === 2){
+      setpolicyType("Terms and Conditions");
+    }
+  }
+
+  useEffect(()=>{
+    if(error){
+      cogoToast.error(error)
+    }
+  }, [error])
+  
+
+  const handleAddPolicy = async () => {
+    const policyData = {
+      policyType,
+      policyContent: editorContent,
+      storeId
+    }
+    try {
+      // Dispatch the addPolicy action with the policyData
+      await dispatch(addPolicy(policyData));
+
+      // You can perform additional actions after dispatch if needed
+      // For example, reset the form or navigate to another page
+    } catch (error) {
+      // Handle any errors that may occur during the dispatch
+      console.error("Error adding policy:", error.message);
+    }
+  };
 
   return (
     <div
@@ -74,7 +114,7 @@ export default function Policies() {
         <div className="w-[70%]">
           <div className="flex justify-between w-[100%] border-b border-gray-200">
             <button
-              onClick={() => setActiveTab(0)}
+              onClick={()=> handleActivePolicy(0)}
               className={`flex-grow text-center py-2 px-2 text-[14px] bg-white cursor-pointer ${
                 activeTab === 0
                   ? "border-b-2 border-primary-300-main text-primary-300-main font-bold"
@@ -84,7 +124,7 @@ export default function Policies() {
               Privacy Policy{" "}
             </button>
             <button
-              onClick={() => setActiveTab(1)}
+              onClick={() => handleActivePolicy(1)}
               className={`flex-grow text-center py-2 px-2 text-[14px] bg-white cursor-pointer ${
                 activeTab === 1
                   ? "border-b-2 border-primary-300-main text-primary-300-main font-bold"
@@ -94,7 +134,7 @@ export default function Policies() {
               Refund Policy{" "}
             </button>
             <button
-              onClick={() => setActiveTab(2)}
+              onClick={() => handleActivePolicy(2)}
               className={`flex-grow text-center py-2 px-2 text-[14px] bg-white cursor-pointer ${
                 activeTab === 2
                   ? "border-b-2 border-primary-300-main text-primary-300-main font-bold"
@@ -129,11 +169,12 @@ export default function Policies() {
           }}
           className="mt-2"
         >
-         <CustomEditor />
+         <CustomEditor content={editorContent} handleOnEditorChange={handleEditorChange} />
         </div>
         <div className="flex justify-end w-full mt-4 mb-4">
           <button
             className="cursor-pointer"
+            onClick={handleAddPolicy}
             style={{
               backgroundColor: "#4162FF",
               color: "#ffffff",

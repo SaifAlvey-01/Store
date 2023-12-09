@@ -24,7 +24,6 @@ export const addCategory = createAsyncThunk(
   }
 );
 
-
 export const getAllCategories = createAsyncThunk(
   "categories/getAllCategories",
   async (categoryData) => {
