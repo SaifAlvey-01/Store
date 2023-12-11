@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CustomEditor } from "../../../components/TinyMCE";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
-import { addPolicy, getAllPolicies } from "../../../redux/slices/policies/policies";
+import { addPolicy, getAllPolicies } from "../../../redux/slices/settings/policies/policies";
 import cogoToast from "cogo-toast";
 
 
@@ -43,7 +43,7 @@ export default function Policies() {
       const currentPolicyTypeData = policies?.data.find(type => type.policyType === policyType );
       setEditorContent(currentPolicyTypeData.policyContent);
     }
-  },[policyType])
+  },[policyType, policies])
 
   useEffect(()=>{
     dispatch(getAllPolicies(storeId));
