@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../../styles/StatusTracking.module.css";
+import styles from "../../../styles/StatusTracking.module.css";
 
 export default function StatusTracking() {
   const [currentStep, setCurrentStep] = useState(2);

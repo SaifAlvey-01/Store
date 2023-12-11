@@ -1,7 +1,8 @@
 import React from "react";
-import FreeTrialFooter from "../free-trial-footer";
+import FreeTrialFooter from "../../free-trial-footer";
 import StatusTracking from "./status-tracking";
 import { useMediaQuery } from "react-responsive";
+import DashboardOverview from "../inner-pages/dashboard-overview";
 
 export default function DashboardHome() {
   return (
@@ -98,7 +99,9 @@ export default function DashboardHome() {
         </div>
       </div>
 
-      <div
+      <DashboardOverview />
+
+      {/* <div
         className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
         style={{
           backgroundColor: "var(--white-color, #FFF)",
@@ -106,52 +109,52 @@ export default function DashboardHome() {
           boxShadow: `#00000011 0px 2px 4px 2px`,
         }}
       >
-        <div className="flex justify-center items-center">
-          <div
-            className="m-0 sm:my-8 sm:mx-24 lg:w-[70%] w-[100%]"
-            style={{
-              // border: mqMD ? "none" : "1px solid #e3e3e3",
-              backgroundColor: "var(--white-color, #FFF)",
-              borderRadius: "10px",
-            }}
-          >
-            <div className="flex flex-col items-start justify-start p-4 md:p-6 ">
-              <h2
-                style={{ color: "#4B4B4B", fontSize: "20px" }}
-                className="mt-0 mb-2 font-bold font-freesans"
-              >
-                Complete your store setup..{" "}
-              </h2>
+          <div className="flex justify-center items-center">
+            <div
+              className="m-0 sm:my-8 sm:mx-24 lg:w-[70%] w-[100%]"
+              style={{
+                // border: mqMD ? "none" : "1px solid #e3e3e3",
+                backgroundColor: "var(--white-color, #FFF)",
+                borderRadius: "10px",
+              }}
+            >
+              <div className="flex flex-col items-start justify-start p-4 md:p-6 ">
+                <h2
+                  style={{ color: "#4B4B4B", fontSize: "20px" }}
+                  className="mt-0 mb-2 font-bold font-freesans"
+                >
+                  Complete your store setup..{" "}
+                </h2>
 
-              <p
-                style={{
-                  color: "#8E8E8E",
-                  fontSize: "14px",
-                  // textAlign: "center",
-                }}
-                className="mt-0 mb-0 my-0 font-thin text-base "
-              >
-                Use high quality images and product descriptions to have a great
-                looking product page. Let's get started.
-              </p>
+                <p
+                  style={{
+                    color: "#8E8E8E",
+                    fontSize: "14px",
+                    // textAlign: "center",
+                  }}
+                  className="mt-0 mb-0 my-0 font-thin text-base "
+                >
+                  Use high quality images and product descriptions to have a
+                  great looking product page. Let's get started.
+                </p>
 
-              <div className="flex md:flex-row flex-col items-center justify-center mt-4 md:mt-8 w-9/10">
-                <div className="mb-2">
-                  <StatusTracking />
-                </div>
-                <div className="flex flex-col items-center justify-start px-10 py-10 ml-0 md:ml-auto sm:self-center border border-dashed border-blue-600 rounded-lg mb-10">
-                  <img src={"/image-outline.png"} className="mb-6" />
-                  <img src={"/group-line.png"} />
+                <div className="flex md:flex-row flex-col items-center justify-center mt-4 md:mt-8 w-9/10">
+                  <div className="mb-2">
+                    <StatusTracking />
+                  </div>
+                  <div className="flex flex-col items-center justify-start px-10 py-10 ml-0 md:ml-auto sm:self-center border border-dashed border-blue-600 rounded-lg mb-10">
+                    <img src={"/image-outline.png"} className="mb-6" />
+                    <img src={"/group-line.png"} />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="w-[90%] mx-2 mb-8 mt-4   flex flex-col items-center justify-between">
-          <FreeTrialFooter />
-        </div>
-      </div>
+          <div className="w-[90%] mx-2 mb-8 mt-4   flex flex-col items-center justify-between">
+            <FreeTrialFooter />
+          </div>
+      </div> */}
     </div>
   );
 }

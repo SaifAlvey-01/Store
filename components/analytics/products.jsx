@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
-import SessionsChart from "../line-charts/traffic/sessions";
-import AverageViewPerCategoryChart from "../doughnut-charts/products/average-view-per-category";
-import AverageViewPerProductChart from "../doughnut-charts/products/average-view-per-product";
-import ProductViewsChart from "../line-charts/product/product-views";
+import AverageViewPerCategoryChart from "../doughnut-charts/analytics/products/average-view-per-category";
+import AverageViewPerProductChart from "../doughnut-charts/analytics/products/average-view-per-product";
+import ProductViewsChart from "../line-charts/analytics/product/product-views";
 
 export default function Products() {
   return (

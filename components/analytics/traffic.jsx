@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
-import AverageStoreViewsChart from "../doughnut-charts/traffic/average-store-views";
-import ReturningVisitorsChart from "../doughnut-charts/traffic/returning-visitors";
-import StoreViewsChart from "../line-charts/traffic/store-views";
-import SessionsChart from "../line-charts/traffic/sessions";
+import AverageStoreViewsChart from "../doughnut-charts/analytics/traffic/average-store-views";
+import ReturningVisitorsChart from "../doughnut-charts/analytics/traffic/returning-visitors";
+import StoreViewsChart from "../line-charts/analytics/traffic/store-views";
+import SessionsChart from "../line-charts/analytics/traffic/sessions";
 
 export default function Traffic() {
   return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
-import TotalOrdersChart from "../line-charts/sales/total-orders";
-import GrossSalesChart from "../line-charts/sales/gross-sales";
-import StoreConversionRateChart from "../line-charts/sales/store-conversion-rate";
+import TotalOrdersChart from "../line-charts/analytics/sales/total-orders";
+import GrossSalesChart from "../line-charts/analytics/sales/gross-sales";
+import StoreConversionRateChart from "../line-charts/analytics/sales/store-conversion-rate";
 
 export default function Sales() {
   return (
