@@ -5,7 +5,7 @@ import axiosInstance from "../../../middleware/axiosInstance";
 const baseUrl = process.env.BASE_URL;
 
 const initialState = {
-  policy: {},
+  policies: [], // Change to an array to store multiple policies
   loading: false,
   error: null,
 };
@@ -23,7 +23,18 @@ export const addPolicy = createAsyncThunk(
   }
 );
 
-// You can add more async thunks if needed, similar to getAllCategories
+export const getAllPolicies = createAsyncThunk(
+  "policies/getAllPolicies",
+  async (storeId) => {
+    try {
+      const url = `${baseUrl}/policies/get-all-policies`;
+      const response = await axiosInstance.get(url, { params: { storeId } });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
 
 const policySlice = createSlice({
   name: "policies",
@@ -37,11 +48,22 @@ const policySlice = createSlice({
       })
       .addCase(addPolicy.fulfilled, (state, action) => {
         state.loading = false;
-        state.policy = action.payload;
+        state.policies.push(action.payload); // Assuming addPolicy returns a single policy
       })
       .addCase(addPolicy.rejected, (state, action) => {
         state.loading = false;
-        console.log(action.error, "<---action.error")
+        state.error = action.error.message;
+      })
+      .addCase(getAllPolicies.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getAllPolicies.fulfilled, (state, action) => {
+        state.loading = false;
+        state.policies = action.payload;
+      })
+      .addCase(getAllPolicies.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       });
   },

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CustomEditor } from "../../../components/TinyMCE";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
-import { addPolicy } from "../../../redux/slices/policies/policies";
+import { addPolicy, getAllPolicies } from "../../../redux/slices/policies/policies";
 import cogoToast from "cogo-toast";
 
 
@@ -13,13 +13,14 @@ export default function Policies() {
   const [editorContent, setEditorContent] = useState("");
   const [policyType, setpolicyType] = useState("Privacy Policy");
   const storeId = Cookies.get("id");
-  const {error, loading,  policy} = useSelector(state => state.policies)
+  const {error, loading,  policies} = useSelector(state => state.policies)
 
   const handleEditorChange = (content) => {
     setEditorContent(content);
   };
+
   
-  console.log(error, "<----error")
+
   
   const handleActivePolicy = (id) =>{
     
@@ -38,6 +39,19 @@ export default function Policies() {
   }
 
   useEffect(()=>{
+    if(policies?.data?.length > 0 ){
+      const currentPolicyTypeData = policies?.data.find(type => type.policyType === policyType );
+      setEditorContent(currentPolicyTypeData.policyContent);
+    }
+  },[policyType])
+
+  useEffect(()=>{
+    dispatch(getAllPolicies(storeId));
+
+  },[dispatch])
+
+  useEffect(()=>{
+
     if(error){
       cogoToast.error(error)
     }
