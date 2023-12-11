@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import FreeTrialFooter from "../free-trial-footer";
-import GrowthChart from "../bar-charts/growth";
+import GrowthChart from "../bar-charts/tools/growth";
 
 export default function Tools() {
   const [activeDiv, setActiveDiv] = useState("qr");

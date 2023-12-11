@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import QuillNoSSRWrapper from "../../../RichTextEditor";
 import { useDispatch, useSelector } from "react-redux";
+import SubCategoryEditDropdown from "../../../dropdowns/subcategory-edit-dropdown";
 
 const modules = {
   toolbar: [
@@ -35,11 +36,15 @@ const formats = [
   "video",
 ];
 
-export default function EditCategory({categoryId}) {
+export default function EditCategory({ categoryId }) {
   const [isChecked, setIsChecked] = useState(false);
-  const categories = useSelector((state)=> state?.categories?.category?.data?.data || []);
-  const SingleCategory = categories.filter((category) => category.categoryId == categoryId);
-  console.log(SingleCategory, "<---SingleCategory")
+  const categories = useSelector(
+    (state) => state?.categories?.category?.data?.data || []
+  );
+  const SingleCategory = categories.filter(
+    (category) => category.categoryId == categoryId
+  );
+  console.log(SingleCategory, "<---SingleCategory");
   const [content, setContent] = useState(SingleCategory[0]?.description);
 
   const handleQuillChange = (value) => {
@@ -93,7 +98,10 @@ export default function EditCategory({categoryId}) {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={SingleCategory[0]?.mainImageUrl} className="w-7 h-7 object-contain" />
+                <img
+                  src={SingleCategory[0]?.mainImageUrl}
+                  className="w-7 h-7 object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 {" "}
@@ -175,66 +183,142 @@ export default function EditCategory({categoryId}) {
               />
             </div>
 
-            <div className="flex items-center mt-2">
-              <input
+            {subCategories.length === 0 && (
+              <div
+                className="p-4 mt-2"
                 style={{
-                  appearance: "none",
-                  display: "none",
+                  borderRadius: "10px",
+                  backgroundColor: "var(--white-color, #FFF)",
+                  border: "1px solid #e3e3e3",
                 }}
-                checked={isChecked}
-                onChange={() => setIsChecked(!isChecked)}
-                id="checked-checkbox"
-                type="checkbox"
-                value=""
-              />
-              <label
-                style={{
-                  color: "#4B5563",
-                  fontSize: "14px",
-                  fontStyle: 500,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  position: "relative",
-                }}
-                htmlFor="checked-checkbox"
-                className="ml-1.5 text-sm font-medium cursor-pointer"
               >
-                <span
-                  style={{
-                    width: "16px",
-                    height: "16px",
-                    borderRadius: "4px",
-                    border: isChecked
-                      ? "2px solid #3B82F6"
-                      : "2px solid #D1D5DB",
-                    backgroundColor: isChecked ? "white" : "transparent",
-                    marginRight: "8px",
-                    display: "inline-block",
-                  }}
-                ></span>
-                {isChecked && (
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    className="absolute text-blue-600 w-4 h-4"
+                {" "}
+                <div className="font-freesans flex flex-col items-start justify-start  mb-6">
+                  <span
+                    className="font-freesans mb-2"
                     style={{
-                      left: "2px",
-                      top: "50%",
-                      transform: "translateY(-50%)",
+                      color: "#4B4B4B",
+                      fontWeight: 500,
+                      fontSize: "14px",
                     }}
                   >
-                    <path
-                      d="M20 6L9 17L4 12"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-                Add as Subcategory{" "}
-              </label>
-            </div>
+                    Add Subcategory{" "}
+                  </span>
+                  <span
+                    className="m-0 font-freesans"
+                    style={{
+                      color: "#8E8E8E",
+                      fontWeight: 400,
+                      fontSize: "12px",
+                    }}
+                  >
+                    Add subcategories if you have any.{" "}
+                  </span>
+                </div>
+                <div className="flex flex-row items-center justify-center">
+                  {" "}
+                  <button
+                    className=" cursor-pointer"
+                    style={{
+                      backgroundColor: "#ffffff",
+                      color: "#4162FF",
+                      padding: "8px 24px",
+                      borderRadius: "4px",
+                      border: "1px dashed #4162FF",
+                    }}
+                    onClick={handleShowSubCategory}
+                  >
+                    Add Subcategory{" "}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {subCategories.length > 0 && (
+              <div className="mt-4">
+                <div
+                  className="pb-3"
+                  style={{
+                    borderBottom: "1px solid #E5E7EB",
+                  }}
+                >
+                  <span
+                    className="font-freesans mb-2"
+                    style={{
+                      color: "#4B4B4B",
+                      fontWeight: 500,
+                      fontSize: "14px",
+                    }}
+                  >
+                    Add Subcategory{" "}
+                  </span>
+                  <span
+                    className="m-0 font-freesans"
+                    style={{
+                      color: "#8E8E8E",
+                      fontWeight: 400,
+                      fontSize: "12px",
+                    }}
+                  >
+                    Add subcategories if you have any.{" "}
+                  </span>
+                </div>
+                {subCategories.map((subcategory) => {
+                  return (
+                    <div
+                      style={{
+                        borderBottom: "1px solid #E5E7EB",
+                      }}
+                      className="flex flex-row justify-between items-center py-3 mt-6"
+                    >
+                      <div className="flex items-center">
+                        <img
+                          className="h-10 w-10"
+                          src={
+                            subcategory.mainImageUrl
+                              ? subcategory.mainImageUrl
+                              : "/product-img.png"
+                          }
+                        />
+                        <span
+                          className="font-freesans ml-2.5"
+                          style={{ color: "#4B4B4B", fontSize: "12px" }}
+                        >
+                          {subcategory.name}
+                        </span>
+                      </div>
+                      <div className="relative">
+                        <img
+                          onClick={handleOpenDropdown}
+                          src={"/menu-dots-round.png"}
+                          className="w-6 h-6 object-contain cursor-pointer"
+                        />
+                        <SubCategoryEditDropdown
+                          isOpen={showDropdown}
+                          onClose={handleCloseDropdown}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="flex flex-row items-center justify-center mt-6">
+                  {" "}
+                  <button
+                    className=" cursor-pointer"
+                    style={{
+                      backgroundColor: "#ffffff",
+                      color: "#4162FF",
+                      padding: "8px 24px",
+                      borderRadius: "4px",
+                      border: "1px dashed #4162FF",
+                    }}
+                    onClick={handleShowSubCategory}
+                  >
+                    Add Subcategory{" "}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -280,7 +364,10 @@ export default function EditCategory({categoryId}) {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={SingleCategory[0]?.mobileBannerUrl} className="w-7 h-7 object-contain" />
+                <img
+                  src={SingleCategory[0]?.mobileBannerUrl}
+                  className="w-7 h-7 object-contain"
+                />
               </div>{" "}
               <button
                 className="cursor-pointer"
@@ -299,7 +386,10 @@ export default function EditCategory({categoryId}) {
             <div className="flex items-center mt-6">
               {" "}
               <div className="bg-[#E1E1E1] rounded-[8px] mr-4 w-14 h-14 flex items-center justify-center p-2.5">
-                <img src={SingleCategory[0]?.desktopBannerUrl} className="w-7 h-7 object-contain" />
+                <img
+                  src={SingleCategory[0]?.desktopBannerUrl}
+                  className="w-7 h-7 object-contain"
+                />
               </div>{" "}
               <button
                 className="cursor-pointer"

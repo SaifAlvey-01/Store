@@ -148,8 +148,8 @@ export default function CategoriesToolBar({ setShowAddNewCategory }) {
           >
             Add New Category
             <img
-              src={"/chevron-down-fill.png"}
-              className=" ml-1 md:ml-2 w-4 h-4"
+              src={"/arrow-down-white.png"}
+              className=" ml-1 md:ml-2 w-5 h-5"
             />
           </button>
         </div>

@@ -23,6 +23,9 @@ import AddCheckoutFields from "./settings-module/add-checkout-fields";
 import ConnectDomain from "./settings-module/connect-domain";
 import AddLanguages from "./settings-module/add-languages";
 import KYCVerification from "./settings-module/kyc-verification";
+import SalesBreakdown from "./dashboard-module/sales-breakdown";
+import OnlineStoreVisitors from "./dashboard-module/online-store-visitors";
+import TotalOrders from "./dashboard-module/total-orders";
 
 export default function CustomDrawer({
   showSidebar,
@@ -177,6 +180,15 @@ export default function CustomDrawer({
                 setShowSidebar={setShowSidebar}
                 setIsKYCVerified={setIsKYCVerified}
               />
+            )}
+            {contentType === "sales-breakdown" && (
+              <SalesBreakdown setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "online-store-visitors" && (
+              <OnlineStoreVisitors setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "total-orders" && (
+              <TotalOrders setShowSidebar={setShowSidebar} />
             )}
           </div>
         </div>

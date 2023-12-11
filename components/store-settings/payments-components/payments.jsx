@@ -223,11 +223,11 @@ export default function Payments() {
               >
                 <div className="flex items-center">
                   {" "}
-                  <div className="bg-[#E9F4FF] rounded-[6px] mr-3 w-8 h-8 flex items-center justify-center p-2.5">
+                  <div className="rounded-[6px] mr-3 h-10 w-10 flex items-center justify-center">
                     <img
                       src={item.image}
                       alt={`Description for ${item.title}`}
-                      className="max-w-full max-h-full object-contain"
+                      className="max-w-full max-h-full object-cover rounded-[6px]"
                     />
                   </div>
                   <div className="flex flex-col w-[60%]">
