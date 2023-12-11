@@ -17,7 +17,8 @@ import showConnectExistingDomainReducer from "./storeSettingsSlices/connectExist
 import showSetupCustomDomainReducer from "./storeSettingsSlices/setupCustomDomain";
 import getBusiness from "./getBusiness";
 import categories from "./categoriesSlices/addCategory";
-import policies from "./policies/policies";
+import policies from "./settings/policies/policies";
+import taxesSlice from "./settings/taxes/taxesSlice";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
   categories,
   addSubCategory: addSubCategoryReducer,
   policies: policies,
+  taxesSlice: taxesSlice
 });
 
 export default rootReducer;
