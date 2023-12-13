@@ -4,6 +4,8 @@ import AddNewCategory from "../inner-pages/categories/add-new-category";
 import CategoriesToolBar from "../inner-pages/categories/categories-tool-bar";
 import CategoriesListing from "../inner-pages/categories/categories-listing";
 import EditCategory from "../inner-pages/categories/edit-category";
+import Lottie from "lottie-react";
+import animationData from "../../../public/animation_ll6mnwur.json";
 import addCategory, {
   getAllCategories,
 } from "../../../redux/slices/categoriesSlices/addCategory";
@@ -46,7 +48,15 @@ export default function Categories({
   }
 
   if(loading){
-    return <p>Loading</p>
+    return <div
+    className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-center "
+  >
+      <Lottie
+    animationData={animationData}
+    loop={true}
+    autoplay={true}
+  />
+      </div>
   }  
    
 

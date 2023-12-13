@@ -13,6 +13,7 @@ export default function Tax() {
   const {loading, error, taxes, status} = useSelector(state => state.taxesSlice);
 
   const schema = yup.object({
+    x: yup.string().required("Please select Exclusive or Exclusive of tax"),
     productPrices: yup.string().required("Please select Exclusive or Exclusive of tax"),
     gstNumber: yup.string().required("GST number is required"),
     gstPercentage: yup.number("gstPercentage must be a number").required("GST Percentage are required"),
@@ -33,7 +34,7 @@ export default function Tax() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      productPrices: '',
+      productPrices: 'asd',
       gstNumber:'',
       gstPercentage: ''
     }
