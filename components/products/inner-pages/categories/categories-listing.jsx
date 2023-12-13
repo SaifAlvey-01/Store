@@ -60,8 +60,7 @@ const data = [
 export default function CategoriesListing({ onEditClick, categories }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
-
-  console.log(categories, "<----categoriesss")
+  
   useEffect(() => {
     function handleOutsideClick(event) {
       if (
