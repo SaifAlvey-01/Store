@@ -1,32 +1,53 @@
-import React, { use, useEffect, useState } from "react";
+import React, {use, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import {addTax} from "../../../redux/slices/settings/taxes/taxesSlice"
+import {addTax, getAllTaxes} from "../../../redux/slices/settings/taxes/taxesSlice"
 import cogoToast from "cogo-toast";
+import Cookies from "js-cookie";
 
 
 export default function Tax() {
-  const [inclusiveOfTax, setInclusiveOfTax] = useState(false);
   const dispatch = useDispatch();
   const {loading, error, taxes, status} = useSelector(state => state.taxesSlice);
-
+  const [initialData, setInitialData] = useState(taxes?.data?.data[0]);
+  const [inclusiveOfTax, setInclusiveOfTax] = useState(false);
+  const stoteID = Cookies.get("id");
   const schema = yup.object({
-    x: yup.string().required("Please select Exclusive or Exclusive of tax"),
     productPrices: yup.string().required("Please select Exclusive or Exclusive of tax"),
     gstNumber: yup.string().required("GST number is required"),
-    gstPercentage: yup.number("gstPercentage must be a number").required("GST Percentage are required"),
+    gstPercentage: yup.number().required(),
   }).required();
+  
+  useEffect(()=>{
+    const params = {
+      stoteID, 
+      page: 1,
+      limit:1
+    }
+    dispatch(getAllTaxes(params));
+    
+  },[])
 
   useEffect(()=>{
-    if(status){
-      cogoToast.success("Successfully added")
+    if(taxes?.data?.data[0]?.taxStatus === "Enable"){
+      setInclusiveOfTax(true)
     } 
+    
+       setInitialData(taxes?.data?.data[0]);
+    
+  },[taxes])
+
+  useEffect(()=>{
+    if(status?.add === true){
+      cogoToast.success("Successfully added");
+    }
     if(error){
       cogoToast.error(error)
     }
-  }, [status, error])
+  }, [error])
+  
   const {
     register,
     handleSubmit,
@@ -34,9 +55,9 @@ export default function Tax() {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      productPrices: 'asd',
-      gstNumber:'',
-      gstPercentage: ''
+      productPrices: initialData ? initialData?.productPrices : '',
+      gstNumber:initialData ? initialData?.gstNumber :'',
+      gstPercentage: initialData ? initialData?.gstPercentage : ''
     }
   }); 
   
@@ -46,7 +67,13 @@ export default function Tax() {
   };
 
   const onSubmitHandler =  (data) => {
-    dispatch(addTax(data))
+    if(inclusiveOfTax){
+      const body = {
+        taxStatus : "Enable",
+        ...data
+      }
+      dispatch(addTax(body));  
+    }
   }
 
   return (
@@ -116,10 +143,10 @@ export default function Tax() {
               <input
                 onChange={handleCheckboxChange}
                 type="checkbox"
-                value=""
+                value="true"
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 focus:ring-0 peer-focus:outline-none dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <div className={`${initialData?.taxStatus === "Enable" ? "active" : ""} w-11 h-6 bg-gray-200 focus:ring-0 peer-focus:outline-none dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-300 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600`}></div>
             </label>
           </div>
 
