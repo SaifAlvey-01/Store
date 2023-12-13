@@ -19,17 +19,17 @@ export const addTax = createAsyncThunk(
       const response = await axiosInstance.post(url, taxData);
       return response.data;
     } catch (error) {
-      throw error;
+      throw error.response.data.message;
     }
   }
 );
 
 export const getAllTaxes = createAsyncThunk(
   "taxes/getAllTaxes",
-  async (storeId) => {
+  async (params) => {
     try {
       const url = `${baseUrl}/taxes/get-all-taxes`;
-      const response = await axiosInstance.get(url, { params: { storeId } });
+      const response = await axiosInstance.get(url, { params: { storeId: params.stoteID, page: params.page, limit:params.limit} });
       return response.data;
     } catch (error) {
       throw error;
