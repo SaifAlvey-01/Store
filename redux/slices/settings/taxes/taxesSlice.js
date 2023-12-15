@@ -5,7 +5,7 @@ import axiosInstance from "../../../../middleware/axiosInstance";
 const baseUrl = process.env.BASE_URL;
 
 const initialState = {
-  taxes: [], 
+  taxes: [],
   loading: false,
   error: null,
   status: null,
@@ -24,18 +24,35 @@ export const addTax = createAsyncThunk(
   }
 );
 
+export const editTax = createAsyncThunk(
+  "taxes/editTax",
+  async ({ taxId, taxData }) => {
+    console.log(taxData,"----taxData")
+    try {
+      const url = `${baseUrl}/taxes/update-tax/${taxId}`;
+      const response = await axiosInstance.patch(url, taxData);
+      return response.data;
+    } catch (error) {
+      throw error.response.data.message;
+    }
+  }
+);
+
 export const getAllTaxes = createAsyncThunk(
   "taxes/getAllTaxes",
   async (params) => {
     try {
       const url = `${baseUrl}/taxes/get-all-taxes`;
-      const response = await axiosInstance.get(url, { params: { storeId: params.stoteID, page: params.page, limit:params.limit} });
+      const response = await axiosInstance.get(url, {
+        params: { storeId: params.storeID, page: params.page, limit: params.limit },
+      });
       return response.data;
     } catch (error) {
       throw error;
     }
   }
 );
+
 
 const taxSlice = createSlice({
   name: "taxes",
@@ -50,9 +67,29 @@ const taxSlice = createSlice({
       .addCase(addTax.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-        state.taxes.push(action.payload); 
+        state.taxes.push(action.payload);
       })
       .addCase(addTax.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(editTax.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editTax.fulfilled, (state, action) => {
+        state.loading = false;
+        state.status = true;
+        console.log(action.payload, "<-----action.payload")
+        // Update the corresponding tax in the taxes array
+        const editedTaxIndex = state.taxes.data.data.findIndex(
+          (tax) => tax.taxId === action.payload.taxId
+        );
+        if (editedTaxIndex !== -1) {
+          state.taxes.data.data[editedTaxIndex] = action.payload.data;
+        }
+      })
+      .addCase(editTax.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

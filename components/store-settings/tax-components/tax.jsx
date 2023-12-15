@@ -1,9 +1,9 @@
-import React, {use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import {addTax, getAllTaxes} from "../../../redux/slices/settings/taxes/taxesSlice"
+import {addTax, getAllTaxes, editTax} from "../../../redux/slices/settings/taxes/taxesSlice"
 import cogoToast from "cogo-toast";
 import Cookies from "js-cookie";
 
@@ -13,31 +13,23 @@ export default function Tax() {
   const {loading, error, taxes, status} = useSelector(state => state.taxesSlice);
   const [initialData, setInitialData] = useState(taxes?.data?.data[0]);
   const [inclusiveOfTax, setInclusiveOfTax] = useState(false);
-  const stoteID = Cookies.get("id");
+  const storeID = Cookies.get("id");
   const schema = yup.object({
     productPrices: yup.string().required("Please select Exclusive or Exclusive of tax"),
     gstNumber: yup.string().required("GST number is required"),
     gstPercentage: yup.number().required(),
   }).required();
-  
-  useEffect(()=>{
+ 
+
+  useEffect( ()=>{
     const params = {
-      stoteID, 
+      storeID, 
       page: 1,
       limit:1
     }
     dispatch(getAllTaxes(params));
-    
   },[])
-
-  useEffect(()=>{
-    if(taxes?.data?.data[0]?.taxStatus === "Enable"){
-      setInclusiveOfTax(true)
-    } 
-    
-       setInitialData(taxes?.data?.data[0]);
-    
-  },[taxes])
+  
 
   useEffect(()=>{
     if(status?.add === true){
@@ -46,34 +38,59 @@ export default function Tax() {
     if(error){
       cogoToast.error(error)
     }
-  }, [error])
-  
+  }, [error]);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: {
-      productPrices: initialData ? initialData?.productPrices : '',
-      gstNumber:initialData ? initialData?.gstNumber :'',
-      gstPercentage: initialData ? initialData?.gstPercentage : ''
-    }
   }); 
-  
 
-  const handleCheckboxChange = () => {
+  useEffect(() => {
+    if(taxes?.data?.data[0]?.taxStatus === "Enable"){
+      setInclusiveOfTax(true);
+    } 
+    if (taxes?.data?.data[0]) {
+      setInitialData(taxes?.data?.data[0]);
+      reset({
+        productPrices: taxes?.data?.data[0]?.productPrices || "",
+        gstNumber: taxes?.data?.data[0]?.gstNumber || "",
+        gstPercentage: taxes?.data?.data[0]?.gstPercentage || "",
+      });
+    }
+  }, [taxes, reset]);
+
+  const handleCheckboxChange =  () => {
     setInclusiveOfTax((prev) => !prev);
   };
-
-  const onSubmitHandler =  (data) => {
-    if(inclusiveOfTax){
+  
+  console.log(taxes, "<------taxes")
+  const onSubmitHandler = (data) => {
+    if(inclusiveOfTax && taxes == []){
       const body = {
         taxStatus : "Enable",
         ...data
       }
       dispatch(addTax(body));  
     }
+    if(inclusiveOfTax){
+      const taxId = taxes.data.data[0];
+      const body = {
+        taxStatus : "Enable",
+        ...data
+      }
+
+      console.log(body, "<----body")
+       dispatch(editTax({taxId, body}));  
+    }
+
+  }
+
+  if (!initialData) {
+    return <div>Loading...</div>; 
   }
 
   return (
