@@ -26,6 +26,12 @@ import KYCVerification from "./settings-module/kyc-verification";
 import SalesBreakdown from "./dashboard-module/sales-breakdown";
 import OnlineStoreVisitors from "./dashboard-module/online-store-visitors";
 import TotalOrders from "./dashboard-module/total-orders";
+import SelectCouponType from "./discount-module/select-coupon-type";
+import PercentageDiscount from "./discount-module/create-coupon/percentage-discount";
+import FlatDiscount from "./discount-module/create-coupon/flat-discount";
+import BuyXGetYFreeDiscount from "./discount-module/create-coupon/buyX-getY-free-discount";
+import FreeShippingDiscount from "./discount-module/create-coupon/free-shipping-discount";
+import FreebieDiscount from "./discount-module/create-coupon/freebie-discount";
 
 export default function CustomDrawer({
   showSidebar,
@@ -189,6 +195,27 @@ export default function CustomDrawer({
             )}
             {contentType === "total-orders" && (
               <TotalOrders setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "select-coupon-type" && (
+              <SelectCouponType
+                setShowSidebar={setShowSidebar}
+                setContentType={setContentType}
+              />
+            )}
+            {contentType === "percentage-discount" && (
+              <PercentageDiscount setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "flat-discount" && (
+              <FlatDiscount setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "buyX-getY-free-discount" && (
+              <BuyXGetYFreeDiscount setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "free-shipping-discount" && (
+              <FreeShippingDiscount setShowSidebar={setShowSidebar} />
+            )}
+            {contentType === "freebie-discount" && (
+              <FreebieDiscount setShowSidebar={setShowSidebar} />
             )}
           </div>
         </div>
