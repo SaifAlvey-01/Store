@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import CustomDrawer from "../../drawer-contents/custom-drawer";
 import TotalOnlineStoreVisitorsChart from "../../bar-charts/dashboard/total-online-store-visitors";
 import TotalOrdersChart from "../../multiaxis-line-chart/dashboard/total-orders";
+import Link from "next/link";
 
 export default function DashboardOverview() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -599,21 +600,19 @@ export default function DashboardOverview() {
               >
                 Orders{" "}
               </h2>
-              <button
-                className="cursor-pointer p-0"
-                style={{
-                  backgroundColor: "#ffffff",
-                  color: "#4162FF",
-                  borderRadius: "4px",
-                  fontSize: "13px",
-                }}
-                onClick={() => {
-                  setShowSidebar(true);
-                  setContentType("sales-breakdown");
-                }}
-              >
-                View All{" "}
-              </button>{" "}
+              <Link href="/orders/all-orders">
+                <button
+                  className="cursor-pointer p-0"
+                  style={{
+                    backgroundColor: "#ffffff",
+                    color: "#4162FF",
+                    borderRadius: "4px",
+                    fontSize: "13px",
+                  }}
+                >
+                  View All{" "}
+                </button>{" "}
+              </Link>
             </div>
 
             <div
@@ -855,7 +854,7 @@ export default function DashboardOverview() {
               display: "grid",
               gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
               gap: "60px",
-              maxWidth: "1200px",
+              maxWidth: "2000px",
             }}
           >
             {data.map((item, index) => (

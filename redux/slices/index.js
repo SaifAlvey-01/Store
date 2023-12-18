@@ -15,6 +15,7 @@ import showDeliveredButtonsReducer from "./ordersSlices/showDeliveredButtons";
 import showUpgradePlanReducer from "./storeSettingsSlices/upgradePlanSlice";
 import showConnectExistingDomainReducer from "./storeSettingsSlices/connectExistingDomain";
 import showSetupCustomDomainReducer from "./storeSettingsSlices/setupCustomDomain";
+import showDiscountCouponsReducer from "./discountsSlices/discountCouponsSlice";
 import getBusiness from "./getBusiness";
 import categories from "./categoriesSlices/addCategory";
 import policies from "./settings/policies/policies";
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   showUpgradePlan: showUpgradePlanReducer,
   showConnectExistingDomain: showConnectExistingDomainReducer,
   showSetupCustomDomain: showSetupCustomDomainReducer,
+  showDiscountCoupons: showDiscountCouponsReducer,
   getBusiness,
   categories,
   addSubCategory: addSubCategoryReducer,
