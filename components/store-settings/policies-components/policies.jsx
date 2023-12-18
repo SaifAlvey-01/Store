@@ -3,28 +3,46 @@ import { useState } from "react";
 import { CustomEditor } from "../../../components/TinyMCE";
 import Cookies from "js-cookie";
 import { useDispatch, useSelector } from "react-redux";
-import { addPolicy, getAllPolicies } from "../../../redux/slices/settings/policies/policies";
+import { addPolicy, getAllPolicies, updatePolicy } from "../../../redux/slices/settings/policies/policies";
 import cogoToast from "cogo-toast";
 
 
 export default function Policies() {
   const dispatch = useDispatch();
-  const [activeTab, setActiveTab] = useState(0);
-  const [editorContent, setEditorContent] = useState("");
   const [policyType, setpolicyType] = useState("Privacy Policy");
+  const [activeTab, setActiveTab] = useState(0);
+  const [content, setContent] = useState([
+    {
+      type:"Privacy Policy",
+      value:"",
+      modified: false,
+    },
+    {
+      type:"Refund Policy",
+      value:"",
+      modified: false,
+    },
+    {
+      type:"Terms and Conditions",
+      value:"",
+      modified: false,
+    },
+  ]);
+
   const storeId = Cookies.get("id");
-  const {error, loading,  policies} = useSelector(state => state.policies)
+  const {error, loading,  policies, status} = useSelector(state => state.policies)
+  const singleContent = content.find(item=> item.type === policyType)
 
   const handleEditorChange = (content) => {
-    setEditorContent(content);
+    if(content){
+      setContent(prevContent => prevContent.map(item =>
+        item.type === policyType ? { ...item, value: content,  modified: true } : item
+      ));
+    }
   };
 
-  
-
-  
   const handleActivePolicy = (id) =>{
-    
-    setActiveTab(id)
+    setActiveTab(id);
     if(id === 0){
       setpolicyType("Privacy Policy");
     }
@@ -36,14 +54,18 @@ export default function Policies() {
     if(id === 2){
       setpolicyType("Terms and Conditions");
     }
-  }
+  };
 
   useEffect(()=>{
     if(policies?.data?.length > 0 ){
       const currentPolicyTypeData = policies?.data.find(type => type.policyType === policyType );
-      setEditorContent(currentPolicyTypeData.policyContent);
+      if(currentPolicyTypeData?.policyContent){
+        setContent(prevContent => prevContent.map(item =>
+          item.type === policyType && !item.modified ?  { ...item, value: currentPolicyTypeData?.policyContent } : item
+        ));
+      }
     }
-  },[policyType, policies])
+  },[policyType, policies]);
 
   useEffect(()=>{
     dispatch(getAllPolicies(storeId));
@@ -55,25 +77,37 @@ export default function Policies() {
     if(error){
       cogoToast.error(error)
     }
-  }, [error])
+    console.log(status, ",---status")
+    if(status === true){
+      cogoToast.success("successfully updated")
+
+    }
+  }, [error, status])
   
 
   const handleAddPolicy = async () => {
+    const singleContent = content.find(item=> item.type === policyType);
+    const privacyPolicyExists = policies?.data?.some(
+      (policy) => policy.policyType === policyType
+    );
     const policyData = {
       policyType,
-      policyContent: editorContent,
+      policyContent: singleContent.value,
       storeId
-    }
-    try {
-      // Dispatch the addPolicy action with the policyData
-      await dispatch(addPolicy(policyData));
+    }   
+    if(!privacyPolicyExists){
+      dispatch(addPolicy(policyData));
+    }else{
+      const updatedPolicyData = {
+        policyType,
+        policyContent: singleContent.value
+      }
+      const currentPolicyTypeData = policies?.data.find(type => type.policyType === policyType );
+      const policyId = currentPolicyTypeData.policyId;
+      console.log(policyId, "<---policyId")
+        dispatch(updatePolicy({policyId, updatedPolicyData}));
+      }
 
-      // You can perform additional actions after dispatch if needed
-      // For example, reset the form or navigate to another page
-    } catch (error) {
-      // Handle any errors that may occur during the dispatch
-      console.error("Error adding policy:", error.message);
-    }
   };
 
   return (
@@ -183,7 +217,7 @@ export default function Policies() {
           }}
           className="mt-2"
         >
-         <CustomEditor content={editorContent} handleOnEditorChange={handleEditorChange} />
+         <CustomEditor content={singleContent.value} handleOnEditorChange={handleEditorChange} />
         </div>
         <div className="flex justify-end w-full mt-4 mb-4">
           <button
@@ -196,7 +230,7 @@ export default function Policies() {
               borderRadius: "4px",
             }}
           >
-            Add As Store Page{" "}
+            {loading ? "Loading" : "Add As Store Page"}
           </button>
         </div>
       </div>
