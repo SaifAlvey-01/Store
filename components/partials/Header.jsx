@@ -27,6 +27,7 @@ function Header({
   showUpgradePlan,
   showConnectExistingDomain,
   showSetupCustomDomain,
+  showDiscountCoupons,
 }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -172,12 +173,11 @@ function Header({
     cogoToast.success("Sub Categorry added successfully");
   };
 
-  const handleCategory = () =>{
-    emitCustomEvent("add-category")
+  const handleCategory = () => {
+    emitCustomEvent("add-category");
     handleBackClick();
     // cogoToast.success("Categorry added successfully");
-
-  }
+  };
 
   return (
     <>
@@ -204,12 +204,15 @@ function Header({
               {backText ? (
                 <>
                   <div className="flex items-center mr-2">
-                    <img
-                      onClick={handleBackClick}
-                      src={backImageUrl}
-                      alt="Back"
-                      className="mr-1.5 cursor-pointer h-6 w-6"
-                    />
+                    {!showDiscountCoupons && (
+                      <img
+                        onClick={handleBackClick}
+                        src={backImageUrl}
+                        alt="Back"
+                        className="mr-1.5 cursor-pointer h-6 w-6"
+                      />
+                    )}
+
                     <span
                       style={{ fontSize: "16px" }}
                       className="text-[#4B5563] font-bold leading-18 font-freesans"
