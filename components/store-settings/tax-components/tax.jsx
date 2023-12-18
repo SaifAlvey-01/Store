@@ -66,8 +66,6 @@ export default function Tax() {
   const handleCheckboxChange =  () => {
     setInclusiveOfTax((prev) => !prev);
   };
-  
-  console.log(taxes, "<------taxes")
   const onSubmitHandler = (data) => {
     if(inclusiveOfTax && taxes == []){
       const body = {
@@ -82,14 +80,12 @@ export default function Tax() {
         taxStatus : "Enable",
         ...data
       }
-
-      console.log(body, "<----body")
        dispatch(editTax({taxId, body}));  
     }
 
   }
 
-  if (!initialData) {
+  if (loading) {
     return <div>Loading...</div>; 
   }
 
