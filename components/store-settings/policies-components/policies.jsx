@@ -77,7 +77,6 @@ export default function Policies() {
     if(error){
       cogoToast.error(error)
     }
-    console.log(status, ",---status")
     if(status === true){
       cogoToast.success("successfully updated")
 

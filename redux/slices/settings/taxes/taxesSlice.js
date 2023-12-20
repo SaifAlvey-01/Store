@@ -27,7 +27,6 @@ export const addTax = createAsyncThunk(
 export const editTax = createAsyncThunk(
   "taxes/editTax",
   async ({ taxId, taxData }) => {
-    console.log(taxData,"----taxData")
     try {
       const url = `${baseUrl}/taxes/update-tax/${taxId}`;
       const response = await axiosInstance.patch(url, taxData);
@@ -80,7 +79,6 @@ const taxSlice = createSlice({
       .addCase(editTax.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-        console.log(action.payload, "<-----action.payload")
         // Update the corresponding tax in the taxes array
         const editedTaxIndex = state.taxes.data.data.findIndex(
           (tax) => tax.taxId === action.payload.taxId
