@@ -1,11 +1,23 @@
 import React from "react";
 import Style from "./warehouseSearchStyle.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CustomDrawer from "../../drawer-contents/custom-drawer";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllWarehouses } from "../../../redux/slices/settings/warehouse/warehouseSlice";
 
 export default function Warehouse() {
+  const dispatch = useDispatch();
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
+  const [warehouseToEdit, setWarehouseToEdit] = useState(null);
+  const {warehouses} = useSelector((state)=> state.warehouseSlice);
+
+  useEffect(()=>{
+    dispatch(getAllWarehouses())
+  },[])
+
+
+
   return (
     <>
       <div
@@ -61,6 +73,7 @@ export default function Warehouse() {
 
           <button
             onClick={() => {
+              setWarehouseToEdit(null)
               setShowSidebar(true);
               setContentType("add-warehouse");
             }}
@@ -76,7 +89,11 @@ export default function Warehouse() {
           </button>
         </div>
 
-        <div
+       
+          {/* New div for span and button */}
+          {warehouses?.map((warehouese)=>{
+           return (
+            <div
           style={{
             border: "1px solid #EAECF0",
             padding: "14px",
@@ -84,8 +101,7 @@ export default function Warehouse() {
           }}
           className="mt-6"
         >
-          {/* New div for span and button */}
-          <div className="flex justify-between items-center">
+           <div className="flex justify-between items-center">
             <div className="font-freesans flex flex-col items-start justify-start">
               <span
                 className="font-freesans mb-2"
@@ -95,7 +111,7 @@ export default function Warehouse() {
                   fontSize: "14px",
                 }}
               >
-                Jain{" "}
+                {warehouese.warehouseName}
               </span>
               <span
                 className="m-0 font-freesans"
@@ -105,13 +121,14 @@ export default function Warehouse() {
                   fontSize: "12px",
                 }}
               >
-                J909, Dehli, 123342, 12313{" "}
+                {warehouese.address}
               </span>
             </div>
             <img
               onClick={() => {
                 setShowSidebar(true);
                 setContentType("add-warehouse");
+                setWarehouseToEdit(warehouese);
               }}
               style={{
                 color: "#8E8E8E",
@@ -121,9 +138,12 @@ export default function Warehouse() {
             />
           </div>
         </div>
+          )
+          })}
       </div>
       <CustomDrawer
         key={contentType}
+        warehouseToEdit={warehouseToEdit}
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         contentType={contentType}
