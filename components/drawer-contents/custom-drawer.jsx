@@ -42,6 +42,7 @@ export default function CustomDrawer({
   setShowConnectExistingDomain,
   onAddLanguages,
   setIsKYCVerified,
+  warehouseToEdit
 }) {
   const [addingNewCustomer, setAddingNewCustomer] = useState(false);
   const sidebarRef = useRef(null);
@@ -164,7 +165,7 @@ export default function CustomDrawer({
               />
             )}
             {contentType === "add-warehouse" && (
-              <AddWarehouse setShowSidebar={setShowSidebar} />
+              <AddWarehouse warehouseToEdit={warehouseToEdit} />
             )}
             {contentType === "add-checkout-fields" && (
               <AddCheckoutFields setShowSidebar={setShowSidebar} />

@@ -74,7 +74,6 @@ export default function Tax() {
     };
     if(taxes){
       const taxId = taxes.data.data[0].taxId;
-      console.log(data, "<----data")
       const body = {
         taxStatus : "Enable",
         ...data

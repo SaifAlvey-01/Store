@@ -41,6 +41,7 @@ axiosInstance.interceptors.response.use(
         const response = await axios.put("https://api.launchmystore.io/auth/refresh-token", {
           refresh_token: refreshToken,
         });
+        console.log(response, "<----response")
         // If refresh is successful, update the access token and retry the original request
         Cookies.set("token", response.data.accessToken);
         Cookies.set("referhToken", response.data.referhToken);
@@ -63,7 +64,7 @@ const handleLogout = async () => {
   // Perform additional cleanup/logic before signing out
   localStorage.removeItem("signupCurrentStep");
   Cookies.remove("token");
-  Cookies.remove("refreshToken");
+  Cookies.remove("referhToken");
   Cookies.remove("id");
 
   // Sign out the user
