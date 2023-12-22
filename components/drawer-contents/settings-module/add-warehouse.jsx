@@ -10,7 +10,8 @@ import { addWarehouse, editWarehouse } from "../../../redux/slices/settings/ware
 
 export default function AddWarehouse({warehouseToEdit, isEdit}) {
   const [isChecked, setIsChecked] = useState(false);
-  const [addPostRequestStatus, setAddPostRequestStatus] = useState('idle')
+  const [addPostRequestStatus, setAddPostRequestStatus] = useState('idle');
+  const [checkValidate, setCheckValidate] = useState(false);
   const {loading, status, error} = useSelector((state)=> state.warehouseSlice);
   const dispatch = useDispatch();
   const schema = yup.object({
@@ -25,7 +26,6 @@ export default function AddWarehouse({warehouseToEdit, isEdit}) {
     gstNumber: yup
     .string()
     .matches(/\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/, 'Invalid GST number')
-    .required('GST number is required'),
   }).required();
 
   const defaultValues = {
@@ -86,11 +86,16 @@ export default function AddWarehouse({warehouseToEdit, isEdit}) {
   }, []);
 
   const onSubmitHandler = (data) => {
-    if(isChecked && isEdit === false){
+
+      if(!isChecked){
+        return setCheckValidate(true)
+      }
+      
+    if(isEdit === false){
       dispatch(addWarehouse( data));
       reset();
     }
-    if(isChecked && isEdit === true){
+    if(isEdit === true){
       const warehouseId = warehouseToEdit?.warehouseId;
       dispatch(editWarehouse({ warehouseId, data}));
     }
@@ -495,7 +500,7 @@ export default function AddWarehouse({warehouseToEdit, isEdit}) {
               </label>
               
             </div>
-              {!isChecked && <p className="text-sm	text-red-600">please accept terms & conditions</p>}
+              {checkValidate  && <p className="text-sm	text-red-600">please accept terms & conditions</p>}
           </div>
 
           <div
