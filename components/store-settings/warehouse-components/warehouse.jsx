@@ -9,14 +9,13 @@ export default function Warehouse() {
   const dispatch = useDispatch();
   const [showSidebar, setShowSidebar] = useState(false);
   const [contentType, setContentType] = useState("");
+  const [isEdit, setIsEdit] = useState(false)
   const [warehouseToEdit, setWarehouseToEdit] = useState(null);
   const {warehouses} = useSelector((state)=> state.warehouseSlice);
 
   useEffect(()=>{
     dispatch(getAllWarehouses())
   },[])
-
-
 
   return (
     <>
@@ -128,6 +127,7 @@ export default function Warehouse() {
               onClick={() => {
                 setShowSidebar(true);
                 setContentType("add-warehouse");
+                setIsEdit(true)
                 setWarehouseToEdit(warehouese);
               }}
               style={{
@@ -147,6 +147,8 @@ export default function Warehouse() {
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
         contentType={contentType}
+        isEdit={isEdit} 
+        setIsEdit = {setIsEdit}
         setContentType={setContentType}
       />
     </>

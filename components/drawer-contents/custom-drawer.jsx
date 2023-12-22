@@ -37,11 +37,13 @@ export default function CustomDrawer({
   showSidebar,
   setShowSidebar,
   contentType,
+  isEdit,
   setContentType,
   onSetUpButtonClick,
   setShowConnectExistingDomain,
   onAddLanguages,
   setIsKYCVerified,
+  setIsEdit,
   warehouseToEdit
 }) {
   const [addingNewCustomer, setAddingNewCustomer] = useState(false);
@@ -51,6 +53,7 @@ export default function CustomDrawer({
     function handleClickOutside(event) {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
         setShowSidebar(false);
+        setIsEdit(false);
       }
     }
 
@@ -98,7 +101,9 @@ export default function CustomDrawer({
               alt="Close"
               className="cursor-pointer h-5 w-5 self-end mt-2 mr-2"
               style={{ position: "absolute", top: 10, right: 0 }}
-              onClick={() => setShowSidebar(false)}
+              onClick={() =>{ 
+                setIsEdit(false);
+                setShowSidebar(false)}}
             />{" "}
             {contentType === "add-variant" && (
               <AddVariants setShowSidebar={setShowSidebar} />
@@ -165,7 +170,7 @@ export default function CustomDrawer({
               />
             )}
             {contentType === "add-warehouse" && (
-              <AddWarehouse warehouseToEdit={warehouseToEdit} />
+              <AddWarehouse isEdit= {isEdit} warehouseToEdit={warehouseToEdit} />
             )}
             {contentType === "add-checkout-fields" && (
               <AddCheckoutFields setShowSidebar={setShowSidebar} />

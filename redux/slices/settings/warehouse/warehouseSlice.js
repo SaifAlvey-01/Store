@@ -81,7 +81,7 @@ const warehouseSlice = createSlice({
           (warehouse) => warehouse.warehouseId === action.payload.warehouseId
         );
         if (editedWarehouseIndex !== -1) {
-          state.warehouses[editedWarehouseIndex] = action.payload;
+          state.warehouses[editedWarehouseIndex] = action.payload.data;
         }
       })
       .addCase(editWarehouse.rejected, (state, action) => {
