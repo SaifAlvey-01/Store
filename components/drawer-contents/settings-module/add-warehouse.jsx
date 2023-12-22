@@ -8,8 +8,9 @@ import cogoToast from "cogo-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { addWarehouse, editWarehouse } from "../../../redux/slices/settings/warehouse/warehouseSlice";
 
-export default function AddWarehouse({warehouseToEdit}) {
+export default function AddWarehouse({warehouseToEdit, isEdit}) {
   const [isChecked, setIsChecked] = useState(false);
+  const [addPostRequestStatus, setAddPostRequestStatus] = useState('idle')
   const {loading, status, error} = useSelector((state)=> state.warehouseSlice);
   const dispatch = useDispatch();
   const schema = yup.object({
@@ -85,14 +86,13 @@ export default function AddWarehouse({warehouseToEdit}) {
   }, []);
 
   const onSubmitHandler = (data) => {
-    if(isChecked && warehouseToEdit === null){
+    if(isChecked && isEdit === false){
       dispatch(addWarehouse( data));
-      reset()
+      reset();
     }
-    if(isChecked){
-      console.log(data, "<----data")
-      const warehouseId = warehouseToEdit.warehouseId;
-      dispatch(editWarehouse({ warehouseId, data}))
+    if(isChecked && isEdit === true){
+      const warehouseId = warehouseToEdit?.warehouseId;
+      dispatch(editWarehouse({ warehouseId, data}));
     }
   }
 

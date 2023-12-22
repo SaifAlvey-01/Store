@@ -4,6 +4,8 @@ import Header from "./partials/Header";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
+import pageload from "../public/logoutLoader.json"
+import Lottie from "lottie-react";
 
 const Layout = (props) => {
   const router = useRouter();
@@ -21,8 +23,25 @@ const Layout = (props) => {
   }, []);
 
   if (!token) {
-    return <div></div>;
+    return <div
+    style={{ backgroundColor: "#F7F9FB" }}
+    className="flex h-screen overflow-hidden"
+  >
+    <div className="min-h-[calc(108vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-center w-full"
+      >
+        <div className="h-1/2 w-96">
+        <Lottie
+            animationData={pageload}
+            loop={true}
+            autoplay={true}
+          />;
+        </div>
+
+    </div>
+  </div>
   }
+
+  
 
   return (
     <div
