@@ -15,7 +15,7 @@ export default function Warehouse() {
 
   useEffect(()=>{
     dispatch(getAllWarehouses())
-  },[])
+  },[showSidebar, dispatch]);
 
   return (
     <>

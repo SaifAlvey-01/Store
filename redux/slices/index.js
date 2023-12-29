@@ -21,6 +21,7 @@ import categories from "./categoriesSlices/addCategory";
 import policies from "./settings/policies/policies";
 import taxesSlice from "./settings/taxes/taxesSlice";
 import warehouseSlice from "./settings/warehouse/warehouseSlice";
+import socialSlice from "./settings/social/socialSlice";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -44,7 +45,8 @@ const rootReducer = combineReducers({
   addSubCategory: addSubCategoryReducer,
   policies: policies,
   taxesSlice: taxesSlice,
-  warehouseSlice
+  warehouseSlice,
+  socialSlice
 });
 
 export default rootReducer;
