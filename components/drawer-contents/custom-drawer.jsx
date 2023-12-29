@@ -170,7 +170,7 @@ export default function CustomDrawer({
               />
             )}
             {contentType === "add-warehouse" && (
-              <AddWarehouse isEdit= {isEdit} warehouseToEdit={warehouseToEdit} />
+              <AddWarehouse isEdit= {isEdit} warehouseToEdit={warehouseToEdit} setShowSidebar={setShowSidebar}/>
             )}
             {contentType === "add-checkout-fields" && (
               <AddCheckoutFields setShowSidebar={setShowSidebar} />
