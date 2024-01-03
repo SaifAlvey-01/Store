@@ -21,12 +21,11 @@ export default function AddLanguages({ setShowSidebar, onAddLanguages }) {
       (language) => checkedStates[language.code]
     );
     onAddLanguages(selectedLanguages);
-    setShowSidebar(false); // Close the drawer after adding languages
+    setShowSidebar(false); 
   };
 
   return (
     <div className="flex flex-col h-screen">
-      {" "}
       <div className="flex justify-between items-center">
         <div className="flex flex-col items-start mt-4">
           <h3

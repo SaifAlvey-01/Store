@@ -1,12 +1,33 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 
 export default function ExtraCharges() {
+  const dispatch = useDispatch();
   const [showSection, setShowSection] = useState("initial");
 
   const radioOptions = [
     { id: "bordered-radio-1", label: "Percent" },
     { id: "bordered-radio-2", label: "Flat Price" },
   ];
+
+  const schema = yup.object({
+    extraCharges: yup.string().required("Please select chargePercent"),
+    chargeName: yup.string().required("chargeName number is required"),
+    chargePercent: yup.number().required(),
+  }).required();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  }); 
 
   const handleCreateButtonClick = () => {
     if (showSection === "initial") {
@@ -15,6 +36,10 @@ export default function ExtraCharges() {
       setShowSection("liveCharges");
     }
   };
+
+  const onSubmitHandler = () =>{
+    console.log("onSubmitHandler", "<----onSubmitHandler")
+  }
 
   return (
     <div
@@ -25,6 +50,7 @@ export default function ExtraCharges() {
         border: "1px solid #e3e3e3",
       }}
     >
+      
       <div className="flex flex-row items-center">
         <h3
           className="m-0 mr-4"
@@ -96,137 +122,139 @@ export default function ExtraCharges() {
         </div>
       )}
 
+<form onSubmit={handleSubmit(onSubmitHandler)} >
       {showSection === "createCharges" && (
-        <div>
-          <div
-            style={{
-              border: "1px solid #EAECF0",
-              borderRadius: "8px",
-            }}
-            className="mt-6 p-4 pt-2"
-          >
-            <div className="flex flex-col">
-              <div className="flex flex-row items-center">
-                {radioOptions.map((option) => (
-                  <div
-                    key={option.id}
-                    className="flex items-center pr-6 border border-gray-200 rounded dark:border-gray-700 mr-12"
-                  >
-                    <input
-                      id={option.id}
-                      type="radio"
-                      value=""
-                      name="bordered-radio"
-                      className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      style={{
-                        boxShadow: "none",
-                      }}
-                    />
-                    <label
-                      htmlFor={option.id}
-                      className="w-full py-3 ml-2 text-sm font-medium font-lato flex items-center"
-                      style={{
-                        color: "var(--Neutral-600, #4B4B4B)",
-                        fontSize: "14px",
-                        fontStyle: "normal",
-                        fontWeight: "600",
-                        lineHeight: "normal",
-                        letterSpacing: "0.14px",
-                      }}
+          <div>
+            <div
+              style={{
+                border: "1px solid #EAECF0",
+                borderRadius: "8px",
+              }}
+              className="mt-6 p-4 pt-2"
+            >
+              <div className="flex flex-col">
+                <div className="flex flex-row items-center">
+                  {radioOptions.map((option) => (
+                    <div
+                      key={option.id}
+                      className="flex items-center pr-6 border border-gray-200 rounded dark:border-gray-700 mr-12"
                     >
-                      {option.label}
-                    </label>
-                  </div>
-                ))}
-              </div>
-              <div className="grid mb-3 gap-6 md:grid-cols-2 mt-5">
-                <div className="flex flex-col">
-                  <div className="flex">
-                    <label
-                      className="block mb-2 font-freesans font-medium dark:text-white mr-0.5"
+                      <input
+                        id={option.id}
+                        type="radio"
+                        value=""
+                        name="bordered-radio"
+                        className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        style={{
+                          boxShadow: "none",
+                        }}
+                      />
+                      <label
+                        htmlFor={option.id}
+                        className="w-full py-3 ml-2 text-sm font-medium font-lato flex items-center"
+                        style={{
+                          color: "var(--Neutral-600, #4B4B4B)",
+                          fontSize: "14px",
+                          fontStyle: "normal",
+                          fontWeight: "600",
+                          lineHeight: "normal",
+                          letterSpacing: "0.14px",
+                        }}
+                      >
+                        {option.label}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                <div className="grid mb-3 gap-6 md:grid-cols-2 mt-5">
+                  <div className="flex flex-col">
+                    <div className="flex">
+                      <label
+                        className="block mb-2 font-freesans font-medium dark:text-white mr-0.5"
+                        style={{
+                          color: "#4B5563",
+                          fontSize: "14px",
+                          fontStyle: 500,
+                        }}
+                      >
+                        Charge Name{" "}
+                      </label>
+                      <span
+                        style={{
+                          color: "#FF4A4A",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        *
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      className="bg-gray-50 font-freesans p-3 focus:border-red-500"
                       style={{
-                        color: "#4B5563",
+                        borderRadius: "8px",
+                        border: "1.5px solid #E5E7EB",
+                        background: "#FFF",
+                      }}
+                      placeholder="Enter Name"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label
+                      className="block mb-2 font-freesans font-medium"
+                      style={{
+                        color: "var(--text-color-body-color-600, #4B5563)",
                         fontSize: "14px",
                         fontStyle: 500,
                       }}
                     >
-                      Charge Name{" "}
+                      Charges in Percent{" "}
+                      <span
+                        style={{
+                          color: "#FF4A4A",
+                          fontSize: "14px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        *
+                      </span>
                     </label>
-                    <span
+                    <input
+                      type="text"
+                      className="bg-gray-50 font-freesans p-3 focus:border-red-500"
                       style={{
-                        color: "#FF4A4A",
-                        fontSize: "14px",
-                        fontWeight: "bold",
+                        borderRadius: "8px",
+                        border: "1.5px solid #E5E7EB",
+                        background: "#FFF",
                       }}
-                    >
-                      *
-                    </span>
+                      placeholder="Charges"
+                      required
+                    />
                   </div>
-                  <input
-                    type="text"
-                    className="bg-gray-50 font-freesans p-3 focus:border-red-500"
-                    style={{
-                      borderRadius: "8px",
-                      border: "1.5px solid #E5E7EB",
-                      background: "#FFF",
-                    }}
-                    placeholder="Enter Name"
-                    required
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <label
-                    className="block mb-2 font-freesans font-medium"
-                    style={{
-                      color: "var(--text-color-body-color-600, #4B5563)",
-                      fontSize: "14px",
-                      fontStyle: 500,
-                    }}
-                  >
-                    Charges in Percent{" "}
-                    <span
-                      style={{
-                        color: "#FF4A4A",
-                        fontSize: "14px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      *
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    className="bg-gray-50 font-freesans p-3 focus:border-red-500"
-                    style={{
-                      borderRadius: "8px",
-                      border: "1.5px solid #E5E7EB",
-                      background: "#FFF",
-                    }}
-                    placeholder="Charges"
-                    required
-                  />
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex justify-end mt-4">
-            {" "}
-            <button
-              onClick={handleCreateButtonClick}
-              className="cursor-pointer ml-4"
-              style={{
-                backgroundColor: "#4162FF",
-                color: "#ffffff",
-                padding: "10px 30px",
-                borderRadius: "4px",
-              }}
-            >
-              Create{" "}
-            </button>
-          </div>
-        </div>
+            <div className="flex justify-end mt-4">
+              {" "}
+              <button
+                type="submit"
+                className="cursor-pointer ml-4"
+                style={{
+                  backgroundColor: "#4162FF",
+                  color: "#ffffff",
+                  padding: "10px 30px",
+                  borderRadius: "4px",
+                }}
+              >
+                Create
+              </button>
+            </div>
+          </div> 
       )}
+      </form>
 
       {showSection === "liveCharges" && (
         <div
@@ -268,6 +296,7 @@ export default function ExtraCharges() {
           </div>
         </div>
       )}
+
     </div>
   );
 }
