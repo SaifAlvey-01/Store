@@ -106,7 +106,7 @@ export default function AddWarehouse({warehouseToEdit, isEdit, setShowSidebar}) 
       const warehouseId = warehouseToEdit?.warehouseId;
       dispatch(editWarehouse({ warehouseId, warehouseData:data}));
     }
-    setShowSidebar(false)
+    setShowSidebar(false);
   }
 
 
@@ -547,6 +547,5 @@ export default function AddWarehouse({warehouseToEdit, isEdit, setShowSidebar}) 
           </div>
           </form>
       </div>
-    
   );
 }
