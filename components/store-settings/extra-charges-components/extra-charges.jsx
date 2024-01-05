@@ -37,8 +37,10 @@ export default function ExtraCharges() {
     }
   };
 
-  const onSubmitHandler = () =>{
-    console.log("onSubmitHandler", "<----onSubmitHandler")
+  console.log(errors, "<----errors")
+
+  const onSubmitHandler = (data) =>{
+    console.log(data, "<----onSubmitHandler")
   }
 
   return (
@@ -117,7 +119,7 @@ export default function ExtraCharges() {
               borderRadius: "4px",
             }}
           >
-            Create Extra Charges{" "}
+            Create Extra Charges 
           </button>
         </div>
       )}
@@ -134,23 +136,20 @@ export default function ExtraCharges() {
             >
               <div className="flex flex-col">
                 <div className="flex flex-row items-center">
-                  {radioOptions.map((option) => (
+                 
                     <div
-                      key={option.id}
                       className="flex items-center pr-6 border border-gray-200 rounded dark:border-gray-700 mr-12"
                     >
                       <input
-                        id={option.id}
                         type="radio"
-                        value=""
-                        name="bordered-radio"
+                        {...register("extraCharges")}
+                        value="Percent"
                         className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         style={{
                           boxShadow: "none",
                         }}
                       />
                       <label
-                        htmlFor={option.id}
                         className="w-full py-3 ml-2 text-sm font-medium font-lato flex items-center"
                         style={{
                           color: "var(--Neutral-600, #4B4B4B)",
@@ -161,10 +160,39 @@ export default function ExtraCharges() {
                           letterSpacing: "0.14px",
                         }}
                       >
-                        {option.label}
+                        Percent
                       </label>
                     </div>
-                  ))}
+
+                    <div
+                      
+                      className="flex items-center pr-6 border border-gray-200 rounded dark:border-gray-700 mr-12"
+                    >
+                      <input
+                        type="radio"
+                        {...register("extraCharges")}
+                        value="FlatPrice"
+                        className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        style={{
+                          boxShadow: "none",
+                        }}
+                      />
+                      <label
+                        className="w-full py-3 ml-2 text-sm font-medium font-lato flex items-center"
+                        style={{
+                          color: "var(--Neutral-600, #4B4B4B)",
+                          fontSize: "14px",
+                          fontStyle: "normal",
+                          fontWeight: "600",
+                          lineHeight: "normal",
+                          letterSpacing: "0.14px",
+                        }}
+                      >
+                        Flat Price
+                      </label>
+                    </div>
+                    {errors.extraCharges && <p className="text-red-500">{errors.extraCharges.message}</p> }
+
                 </div>
                 <div className="grid mb-3 gap-6 md:grid-cols-2 mt-5">
                   <div className="flex flex-col">
@@ -190,6 +218,7 @@ export default function ExtraCharges() {
                       </span>
                     </div>
                     <input
+                        {...register("chargeName")}
                       type="text"
                       className="bg-gray-50 font-freesans p-3 focus:border-red-500"
                       style={{
@@ -198,9 +227,11 @@ export default function ExtraCharges() {
                         background: "#FFF",
                       }}
                       placeholder="Enter Name"
-                      required
+                      
                     />
+                  {errors.chargeName && <p className="text-red-500">{errors.chargeName.message}</p> }
                   </div>
+
                   <div className="flex flex-col">
                     <label
                       className="block mb-2 font-freesans font-medium"
@@ -222,6 +253,7 @@ export default function ExtraCharges() {
                       </span>
                     </label>
                     <input
+                        {...register("chargePercent")}
                       type="text"
                       className="bg-gray-50 font-freesans p-3 focus:border-red-500"
                       style={{
@@ -232,9 +264,12 @@ export default function ExtraCharges() {
                       placeholder="Charges"
                       required
                     />
+                  {errors.chargePercent && <p className="text-red-500">{errors.chargePercent.message}</p> }
+
                   </div>
                 </div>
               </div>
+              
             </div>
 
             <div className="flex justify-end mt-4">
