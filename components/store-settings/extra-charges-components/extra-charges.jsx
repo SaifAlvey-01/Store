@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { addExtraCharge, getAllExtraCharges } from "../../../redux/slices/settings/extra-charges/extraCharges";
+import Cookies from "js-cookie";
 
 
 export default function ExtraCharges() {
   const dispatch = useDispatch();
+  const storeID = Cookies.get("id");
   const [showSection, setShowSection] = useState("initial");
+  const {extraCharges, loading} = useSelector((state)=> state.extraChargesReducer);
 
-  const radioOptions = [
-    { id: "bordered-radio-1", label: "Percent" },
-    { id: "bordered-radio-2", label: "Flat Price" },
-  ];
 
   const schema = yup.object({
     extraCharges: yup.string().required("Please select chargePercent"),
@@ -28,6 +28,24 @@ export default function ExtraCharges() {
   } = useForm({
     resolver: yupResolver(schema),
   }); 
+  useEffect(()=>{
+    const params = {
+     storeID, 
+     page: 1,
+     limit:1
+   }
+   dispatch(getAllExtraCharges(params))
+ },[]);
+
+  useEffect(() => {
+    if (extraCharges?.data) {
+      reset({
+        extraCharges: extraCharges?.data[0]?.extraCharges || "",
+        chargeName: extraCharges?.data[0]?.chargeName || "",
+        chargePercent: extraCharges?.data[0]?.chargePercent || "",
+      });
+    }
+  }, [extraCharges, reset]);
 
   const handleCreateButtonClick = () => {
     if (showSection === "initial") {
@@ -37,11 +55,11 @@ export default function ExtraCharges() {
     }
   };
 
-  console.log(errors, "<----errors")
-
   const onSubmitHandler = (data) =>{
-    console.log(data, "<----onSubmitHandler")
+    dispatch(addExtraCharge(data))
   }
+
+  
 
   return (
     <div

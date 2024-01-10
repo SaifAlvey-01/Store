@@ -5,7 +5,7 @@ import axiosInstance from "../../../../middleware/axiosInstance";
 const baseUrl = process.env.BASE_URL;
 
 const initialState = {
-  extraCharges: [], // Change to an array to store multiple extra charges
+  extraCharges: [], 
   loading: false,
   error: null,
   status: null,
@@ -26,10 +26,13 @@ export const addExtraCharge = createAsyncThunk(
 
 export const getAllExtraCharges = createAsyncThunk(
   "extraCharges/getAllExtraCharges",
-  async () => {
+  async (params) => {
     try {
       const url = `${baseUrl}/settings-extraCharges/get-all-settings-extraCharges`;
-      const response = await axiosInstance.get(url);
+      const response = await axiosInstance.get(url,
+        {
+         params: { storeId: params.storeID, page: params.page, limit: params.limit },
+        });
       return response.data;
     } catch (error) {
       throw error;
@@ -63,7 +66,7 @@ const extraChargesSlice = createSlice({
       .addCase(addExtraCharge.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-        state.extraCharges.push(action.payload);
+        // state.extraCharges = action.payload ;
       })
       .addCase(addExtraCharge.rejected, (state, action) => {
         state.loading = false;
@@ -75,7 +78,7 @@ const extraChargesSlice = createSlice({
       })
       .addCase(getAllExtraCharges.fulfilled, (state, action) => {
         state.loading = false;
-        state.extraCharges = action.payload;
+        state.extraCharges = action?.payload?.data;
       })
       .addCase(getAllExtraCharges.rejected, (state, action) => {
         state.loading = false;
