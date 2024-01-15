@@ -25,7 +25,7 @@ export default function SEOHead() {
 
 
   const description =
-    "Experience LaunchMyStore for free and Start a new business venture or expand an existing one. Gain access to more than just ecommerce software – leverage tools to efficiently manage every aspect of your enterprise";
+    "Join the Entrepreneurial Revolution , Launch Your Online E-commerce Store In 60 Seconds";
 
   const keywords = "LaunchMyStore";
 
