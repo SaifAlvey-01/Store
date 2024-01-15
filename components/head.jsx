@@ -1,12 +1,28 @@
 import React from "react";
 import NextHead from "next/head";
+import { usePathname } from 'next/navigation'
 
 export default function SEOHead() {
-  const logo = "/images/final_banner.webp";
+  const logo = "/assets/Fb-cover-banner.webp";
   const favicon = "/images/favicon.ico";
+  const params = usePathname();
+  let title =
+    "Join the Entrepreneurial Revolution , Launch Your Online E-commerce Store In 60 Seconds";
 
-  const title =
-    "LaunchMyStore - Create & Grow Your Ecommerce Store Effortlessly With 7 Days Free Trial";
+  switch(params) {
+    case '/':
+      title = "Login | LaunchMyStore"
+      break;
+    case '/signup':
+      title = "Signup | LaunchMyStore"
+      break;
+      case '/forgot':
+        title = "Forgot Password | LaunchMyStore"
+        break;
+    default:
+      title = "Join the Entrepreneurial Revolution , Launch Your Online E-commerce Store In 60 Seconds";
+  }
+
 
   const description =
     "Experience LaunchMyStore for free and Start a new business venture or expand an existing one. Gain access to more than just ecommerce software – leverage tools to efficiently manage every aspect of your enterprise";
