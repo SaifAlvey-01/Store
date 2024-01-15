@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 
 export default function SEOHead() {
   const logo = "/assets/Fb-cover-banner.webp";
-  const favicon = "/images/favicon.ico";
+  const favicon = "/favicon.ico";
   const params = usePathname();
   let title =
     "Join the Entrepreneurial Revolution , Launch Your Online E-commerce Store In 60 Seconds";
@@ -14,7 +14,7 @@ export default function SEOHead() {
       title = "Login | LaunchMyStore"
       break;
     case '/signup':
-      title = "Signup | LaunchMyStore"
+      title = "Start 7 Days Free Trial | LaunchMyStore "
       break;
       case '/forgot':
         title = "Forgot Password | LaunchMyStore"
