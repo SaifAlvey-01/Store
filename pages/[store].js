@@ -9,3 +9,17 @@ export default function store() {
     <div>{`the store name is ${store}`}</div>
   )
 }
+
+// Fetch dynamic content based on the slug
+export async function getServerSideProps({ params }) {
+  const { slug } = params;
+
+  // Fetch content based on the slug from your data source
+  const content = await fetchContentBySlug(slug);
+
+  return {
+    props: {
+      content,
+    },
+  };
+}
