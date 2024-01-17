@@ -1,19 +1,55 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useForm, Controller } from 'react-hook-form';
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
+import { updateShippingOption, getShippingOption } from "../../../redux/slices/settings/shipping/shippingSlice";
+
 
 export default function Shipping() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useDispatch();
+  const storeId  = Cookies.get("id");
+
+  const schema = yup.object({
+    deliveryTime: yup.string().required("Please select deliveryTime"),
+    deliveryChargesType: yup.string().required("deliveryChargesType is required"),
+    deliveryChargePerOrder: yup.number().required("deliveryChargePerOrder is required"),
+    freeDeliveryAbove: yup.number().required("freeDeliveryAbove is required"),
+    chargeOnline: yup.boolean().required("chargeOnline is required"),
+    onlineDeliveryCharge: yup.number().required("onlineDeliveryCharge is required"),
+  }).required();
+
+
+  const {shippingOptions} = useSelector((state)=> state.shippingSlice);
+
   const { control, 
       handleSubmit, 
       register, 
       reset,
      formState:{errors} } = useForm({
     resolver: yupResolver(schema),
-
      });
+
+  useEffect(()=>{ 
+    dispatch(getShippingOption(storeId ))
+  },[])
+
+  useEffect(()=>{ 
+    reset({
+    DeliveryChargesType: shippingOptions.DeliveryChargesType,
+    chargeOnline:shippingOptions.chargeOnline ,
+    deliveryChargePerOrder:shippingOptions.deliveryChargePerOrder ,
+    deliveryTime:shippingOptions.deliveryTime ,
+    freeDeliveryAbove: shippingOptions.freeDeliveryAbove,
+    onlineDeliveryCharge: shippingOptions.onlineDeliveryCharge,
+  });
+  },[shippingOptions])
+
 
   const dropdownItems = [
     "30 - 60 Minnutes",
@@ -35,7 +71,8 @@ export default function Shipping() {
   };
 
   const onSubmit = (data) => {
-    console.log(data.selectedItem, "<----Selected Item");
+    const shippingData = data
+    dispatch(updateShippingOption(shippingData));
   }
 
   return (
@@ -160,7 +197,7 @@ export default function Shipping() {
                 }}
               >
                   <Controller
-                    name="selectedItem"
+                    name="deliveryTime"
                     control={control}
                     defaultValue={null}
                     render={({ field }) => (
@@ -186,6 +223,8 @@ export default function Shipping() {
                       </ul>
                     )}
                   />
+                  {errors.deliveryTime && <p className="text-red-500">{errors.deliveryTime.message}</p> }
+                  
               </div>
             )}
           </div>
@@ -218,23 +257,20 @@ export default function Shipping() {
             </label>
           </div>
           <div className="flex flex-row items-center mt-2">
-            {radioOptions.map((option) => (
+            
               <div
-                key={option.id}
                 className="flex items-center pr-6 border border-gray-200 rounded dark:border-gray-700 mr-12"
               >
                 <input
-                  id={option.id}
                   type="radio"
-                  value=""
-                  name="bordered-radio"
+                  {...register("deliveryChargesType")}
+                  value="Fixed"
                   className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   style={{
                     boxShadow: "none",
                   }}
                 />
                 <label
-                  htmlFor={option.id}
                   className="w-full py-3 ml-2 text-sm font-medium font-lato flex items-center"
                   style={{
                     color: "var(--Neutral-600, #4B4B4B)",
@@ -245,10 +281,36 @@ export default function Shipping() {
                     letterSpacing: "0.14px",
                   }}
                 >
-                  {option.label}
+                  Fixed
                 </label>
               </div>
-            ))}
+              <div
+                className="flex items-center pr-6 border border-gray-200 rounded dark:border-gray-700 mr-12"
+              >
+                <input
+                  type="radio"
+                  {...register("deliveryChargesType")}
+                  value="Variable"
+                  className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  style={{
+                    boxShadow: "none",
+                  }}
+                />
+                <label
+                  className="w-full py-3 ml-2 text-sm font-medium font-lato flex items-center"
+                  style={{
+                    color: "var(--Neutral-600, #4B4B4B)",
+                    fontSize: "14px",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    lineHeight: "normal",
+                    letterSpacing: "0.14px",
+                  }}
+                >
+                  Variable
+                </label>
+              </div>
+              
           </div>
           <div className="grid gap-6 mb-4 md:grid-cols-2 mt-6">
             <div className="flex flex-col">
@@ -275,6 +337,7 @@ export default function Shipping() {
               </div>
               <input
                 type="text"
+                {...register("deliveryChargePerOrder")}
                 className="bg-gray-50 font-freesans p-3 focus:border-red-500"
                 style={{
                   borderRadius: "8px",
@@ -284,6 +347,8 @@ export default function Shipping() {
                 placeholder="Enter Delivery Charge"
                 required
               />
+                  {errors.deliveryChargePerOrder && <p className="text-red-500">{errors.deliveryChargePerOrder.message}</p> }
+
             </div>
             <div className="flex flex-col">
               <label
@@ -298,6 +363,7 @@ export default function Shipping() {
               </label>
               <input
                 type="text"
+                {...register("freeDeliveryAbove")}
                 className="bg-gray-50 font-freesans p-3 focus:border-red-500"
                 style={{
                   borderRadius: "8px",
@@ -307,6 +373,8 @@ export default function Shipping() {
                 placeholder="Enter Free Delivery above"
                 required
               />
+                  {errors.freeDeliveryAbove && <p className="text-red-500">{errors.freeDeliveryAbove.message}</p> }
+
             </div>
           </div>
           <div className="flex flex-col">
@@ -316,11 +384,12 @@ export default function Shipping() {
                   appearance: "none",
                   display: "none",
                 }}
+                {...register("chargeOnline")}
                 checked={isChecked}
                 onChange={() => setIsChecked(!isChecked)}
                 id="checked-checkbox"
                 type="checkbox"
-                value=""
+                value={true}
               />
               <label
                 style={{
@@ -367,6 +436,7 @@ export default function Shipping() {
                 )}
                 Offer different delivery charge for online paid orders.
               </label>
+
             </div>
 
             {isChecked && (
@@ -400,8 +470,9 @@ export default function Shipping() {
                     border: "1.5px solid #E5E7EB",
                     background: "#FFF",
                   }}
+                  {...register("onlineDeliveryCharge")}
                   placeholder="Charges for online paid orders"
-                  required
+                  
                 />
               </div>
             )}
