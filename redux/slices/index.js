@@ -23,6 +23,8 @@ import taxesSlice from "./settings/taxes/taxesSlice";
 import warehouseSlice from "./settings/warehouse/warehouseSlice";
 import socialSlice from "./settings/social/socialSlice";
 import extraChargesReducer from "./settings/extra-charges/extraCharges";
+import shippingSlice from "./settings/shipping/shippingSlice";
+import staffSlice from "./settings/staff/staffSlice";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -48,7 +50,9 @@ const rootReducer = combineReducers({
   taxesSlice: taxesSlice,
   warehouseSlice,
   socialSlice,
-  extraChargesReducer
+  extraChargesReducer,
+  shippingSlice,
+  staffSlice
 });
 
 export default rootReducer;

@@ -1,11 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import RoleSelect from "../../dropdown-selects/role-select";
+import { useForm } from 'react-hook-form';
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import Cookies from "js-cookie";
+import { registerManagerEmail } from "../../../redux/slices/settings/staff/staffSlice";
 
 export default function AddStaff({ setShowSidebar }) {
+  const [role, setSelectedRole] = useState(null);
+  const dispatch = useDispatch();
+  const storeId  = Cookies.get("id");
+
+
+
   const handleRoleChange = (selectedOption) => {
-    console.log(`Selected: ${selectedOption.value}`);
+    setSelectedRole(selectedOption.value)
   };
+  const {business} = useSelector((state) => state?.getBusiness?.business || ""
+  );
+
+ 
+
+  const schema = yup.object({
+    email: yup.string().email().required("email is required"),
+    name: yup.string().required("name is required"),    
+  }).required();
+
+  const { control, 
+    handleSubmit, 
+    register, 
+    reset,
+   formState:{errors} } = useForm({
+  resolver: yupResolver(schema),
+   });
+
+   const onSubmit = (data) =>{
+    
+    const managerEmailData = {
+      email:  data.email,
+      name: data.name,
+      role: role,
+      storeName: business,
+      parentId: storeId
+    }
+    console.log("as")
+    dispatch(registerManagerEmail(managerEmailData))
+   }
+
   return (
+          <form onSubmit={handleSubmit(onSubmit)}>
     <div className="flex flex-col h-screen">
       {" "}
       <div className="flex justify-between items-center">
@@ -18,10 +62,12 @@ export default function AddStaff({ setShowSidebar }) {
           </h3>
         </div>
       </div>
+        
       <div
         className="flex-1 overflow-y-auto pb-[80px]"
         style={{ overflowY: "scroll" }}
-      >
+        >
+        
         <div className="mt-7">
           <span
             className="font-freesans"
@@ -48,11 +94,14 @@ export default function AddStaff({ setShowSidebar }) {
               border: "1.5px solid #E5E7EB",
               boxSizing: "border-box",
             }}
+            {...register("email")}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
             placeholder="Enter Email or Mobile Number"
-            required
+            
           />
+        {errors.email && <p className="text-red-500">{errors.email.message}</p> }
+
         </div>
 
         <div className="mt-4">
@@ -81,11 +130,13 @@ export default function AddStaff({ setShowSidebar }) {
               border: "1.5px solid #E5E7EB",
               boxSizing: "border-box",
             }}
+            {...register("name")}
             onFocus={(e) => (e.target.style.borderColor = "#bdbfc0")}
             onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
             placeholder="Enter Name of the Staff Member"
-            required
           />
+        {errors.name && <p className="text-red-500">{errors.name.message}</p> }
+
         </div>
 
         <div className="mt-4">
@@ -106,12 +157,16 @@ export default function AddStaff({ setShowSidebar }) {
         }}
       >
         <button
-          onClick={() => setShowSidebar(false)}
+          type="submit"
+          // onClick={() => setShowSidebar(false)}
           className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer"
         >
           Send Invites{" "}
         </button>
       </div>
+
+        
     </div>
+      </form>
   );
 }
