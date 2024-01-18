@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=FreeSans:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chivo:wght@400&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  @apply leading-[normal] m-0;
+}
+*,
+::before,
+::after {
+  border-width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /* for vertical scrollbars */
+  height: 10px; /* for horizontal scrollbars */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.inputWithAsterisk {
+  display: flex;
+  align-items: center;
+  background: #eee;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  overflow: hidden;
+}
+
+.redAsteriskSpan {
+  color: red;
+  padding-left: 5px;
+  position: absolute;
+}
+
+.ql-container.ql-snow {
+  border: none !important;
+}
+.ql-toolbar.ql-snow {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.scroll-section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.flex-1::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.flex-1 {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
