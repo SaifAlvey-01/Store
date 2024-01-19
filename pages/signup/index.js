@@ -4,11 +4,10 @@ import SignUp1 from "./step1";
 import SignUp2 from "./step2";
 import SignUp3 from "./step3";
 import SignUp4 from "./step4";
-import Footer from "../../components/footer/footer";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Cookie from "js-cookie";
-import Loading from "../../components/loading";
+import Loading from "../.././components/loading";
 //seo
 
 const SignupComponent = () => {
@@ -126,7 +125,6 @@ const SignupComponent = () => {
 
           {renderStep()}
         </div>
-        <Footer />
       </div>
     </>
   );
