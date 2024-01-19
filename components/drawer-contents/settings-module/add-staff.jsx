@@ -8,7 +8,6 @@ import Cookies from "js-cookie";
 import { registerManagerEmail } from "../../../redux/slices/settings/staff/staffSlice";
 
 export default function AddStaff({ setShowSidebar }) {
-  const [role, setSelectedRole] = useState(null);
   const dispatch = useDispatch();
   const storeId  = Cookies.get("id");
 

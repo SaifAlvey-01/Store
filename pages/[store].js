@@ -10,16 +10,3 @@ export default function store() {
   )
 }
 
-// Fetch dynamic content based on the slug
-export async function getServerSideProps({ params }) {
-  const { slug } = params;
-
-  // Fetch content based on the slug from your data source
-  const content = await fetchContentBySlug(slug);
-
-  return {
-    props: {
-      content,
-    },
-  };
-}
