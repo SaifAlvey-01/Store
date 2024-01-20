@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const step6 = () => {
+const step3 = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const step6 = () => {
   );
 };
 
-export default step6;
+export default step3;

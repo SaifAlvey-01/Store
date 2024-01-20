@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const step6 = () => {
+const forgot4 = () => {
   const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/partner/partnerdashboard");
+      router.push("/partner/partnerlogin");
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -22,4 +22,4 @@ const step6 = () => {
   );
 };
 
-export default step6;
+export default forgot4;

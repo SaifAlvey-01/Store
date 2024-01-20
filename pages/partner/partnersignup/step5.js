@@ -59,10 +59,9 @@ const step5 = ({ setloading, setCurrentStep }) => {
     }
   }, [loading, selectedCountry, resdata, isActive, defaultCountry]);
 
-
   const handleSignInClick = () => {
     // this is done in signup
-    setCurrentStep(6)
+    setCurrentStep(6);
     // setloading(true)
     // const timer = setTimeout(() => {
     //   router.push("/dashboard");
@@ -78,60 +77,74 @@ const step5 = ({ setloading, setCurrentStep }) => {
 
   return (
     <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-      <div className='bg-[#E9F2FF] flex w-[372px] h-[450px] xl:w-[1240px] xl:h-[686px] rounded-[32px]'>
-      <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
-        <div className='bg-white w-[372px] h-[450px] xl:h-[686px] xl:w-[400px] flex content-center rounded-[32px]'>
-          <div className='my-[24px] mx-[16px] xl:my-[137px] xl:mx-[28px] '>
-            <img src={'/partner_assets/launch-logo.svg'} alt="launch my store logo" className='w-[167px] h-[35px] mb-1' />
-            <p className='font-chivo text-[#374151] font-bold text-[24px] w-[364px]'>Enter Your Basics</p>
-            <p className='font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]'>Enter essential details to initialize your dashboard.<br /> setup seamlessly and efficiently.</p>
-            <p className='text-[#374151] pt-3'>Country</p>
-            <div className='h-[20px] w-[334px] mt-[-12px] text-[#9CA3AF] rounded-[12px] px-3 mr-3 ml-[-8px] focus:border-blue-500 relative cursor-default ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4162FF]'>
-                    <CountrySelect
-                      value={selectedCountry}
-                      onChange={handleCountryChange}
-                      options={countryOptions}
-                    />
-                    
-                  <div
-                  className={`rounded mt-5 text-[16px] cursor-pointer flex justify-center items-center font-normal leading-[24px] h-[44px] w-[364px]  ${
-                    isActive ? "bg-primary-300-main" : "bg-primary-100"
-                  } w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
-                  onClick={handleSignInClick}
-                >
-                  <div className="relative w-[80px] h-0" />
-                  {loading ? (
-                    <svg
-                      aria-hidden="true"
-                      role="status"
-                      class="inline mr-3 w-6 h-6 text-white animate-spin"
-                      viewBox="0 0 100 101"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                        fill="#E5E7EB"
-                      ></path>
-                      <path
-                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                        fill="currentColor"
-                      ></path>
-                    </svg>
-                  ) : (
-                    <div className="relative leading-[24px] font-medium">
-                      Finish
-                    </div>
-                  )}
-                </div>
-            <p className='text-[11.5px] ml-2 font-normal leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
-            <p className='text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span className='text-[#4162FF]'>Sign In</span></p>
+      <div className="bg-[#E9F2FF] flex w-[398px] h-[465px] lg:w-[1240px] lg:h-[686px] rounded-[32px]">
+        <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden lg:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
+        <div className="bg-white w-[398px] h-[465px] lg:h-[686px] lg:w-[400px] flex content-center rounded-[32px]">
+          <div className="my-[24px] mx-[32px] lg:my-[137px] lg:mx-[28px] ">
+            <img
+              src={"/partner_assets/launch-logo.svg"}
+              alt="launch my store logo"
+              className="w-[167px] h-[35px] mb-1"
+            />
+            <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+              Enter Your Basics
+            </p>
+            <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
+              Enter essential details to initialize your dashboard.
+              <br /> setup seamlessly and efficiently.
+            </p>
+            <p className="text-[#374151] pt-3">Country</p>
+            <div className="h-[20px] w-[334px] mt-[-12px] text-[#9CA3AF] rounded-[12px] px-3 mr-3 ml-[-8px] focus:border-blue-500 relative cursor-default ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4162FF]">
+              <CountrySelect
+                value={selectedCountry}
+                onChange={handleCountryChange}
+                options={countryOptions}
+              />
+
+              <div
+                className={`rounded mt-5 text-[16px] cursor-pointer flex justify-center items-center font-normal leading-[24px] h-[44px] w-[364px]  ${
+                  isActive ? "bg-primary-300-main" : "bg-primary-100"
+                } w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
+                onClick={handleSignInClick}
+              >
+                <div className="relative w-[80px] h-0" />
+                {loading ? (
+                  <svg
+                    aria-hidden="true"
+                    role="status"
+                    class="inline mr-3 w-6 h-6 text-white animate-spin"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="#E5E7EB"
+                    ></path>
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                ) : (
+                  <div className="relative leading-[24px] font-medium">
+                    Finish
+                  </div>
+                )}
+              </div>
+              <p className="text-[11.5px] ml-2 font-normal leading-[18px] font-chivo text-[#6B7280]">
+                By continuing, you agree to our Terms of Use and Privacy Policy.
+              </p>
+              <p className="text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]">
+                Already have an partner program account?{" "}
+                <span className="cursor-pointer text-[#4162FF]">Sign In</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      </div>
     </div>
-  )
-}
+  );
+};
 
 export default step5;

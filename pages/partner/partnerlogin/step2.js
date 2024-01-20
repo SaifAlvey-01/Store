@@ -2,14 +2,15 @@ import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/useAxios";
 import Cookie from "js-cookie";
 import { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
 
-function step2({ setCurrentStep, setFormData, email }) {
+function step2({ inputData, setCurrentStep }) {
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
-  const { resdata, error, loading, putData: putRequest } = useAxios();
+  const { resdata, error, loading, postData: postRequest } = useAxios();
   const [customError, setCustomError] = useState(null);
 
   useEffect(() => {
@@ -27,16 +28,16 @@ function step2({ setCurrentStep, setFormData, email }) {
 
   const onSubmit = (data) => {
     const savedEmail = Cookie.get("email");
-    console.log(savedEmail);
-    putRequest("/auth/create-password", {
-      password: data.password,
-      email: savedEmail,
+    postRequest("/auth/manual-login", {
+      accountId: inputData,
+      password: data?.password,
     });
-    setFormData((prevData) => ({ ...prevData, ...data }));
+    setCurrentStep(3);
+    Cookie.remove("email");
   };
 
   const handleGetStartedClick = () => {
-    router.push("/partner/partnerlogin");
+    router.push("/partner/partnersignup");
   };
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
@@ -49,25 +50,29 @@ function step2({ setCurrentStep, setFormData, email }) {
 
   return (
     <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-      <div className="bg-[#E9F2FF] flex w-[398px] h-[470px] lg:w-[1240px] lg:h-[686px] rounded-[32px]">
-        <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden lg:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
+      <div className="bg-[#E9F2FF] flex w-[398px] h-[455px] rounded-[32px]">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="bg-white w-[398px] h-[470px] lg:h-[686px] lg:w-[400px] flex content-center rounded-[32px]">
-            <div className="my-[24px] mx-[32px] lg:my-[137px] lg:mx-[32px] ">
+          <div className="bg-white w-[398px] h-[455px] flex content-center rounded-[32px]">
+            <div className="my-[24px] mx-[32px]  ">
               <img
                 src={"/partner_assets/launch-logo.svg"}
                 alt="launch my store logo"
                 className="w-[167px] h-[35px] mb-1"
               />
               <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
-                Create a Password
+                Enter Password
               </p>
               <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
-                Secure your store with a strong password for
-                <br />
-                enhanced protection and peace of mind.
+                Please enter your password to complete signin.
               </p>
-              <p className="text-[#374151] pt-3">Password</p>
+              <p className="text-[#374151] relative  pt-3">
+                Password
+                <Link legacyBehavior href="/partner/forgot">
+                  <a className="absolute right-0 pr-10 leading-[20px] text-[12px] text-[#4162FF] cursor-pointer no-underline">
+                    Forgot Password?
+                  </a>
+                </Link>
+              </p>
               <div className="relative mx-auto">
                 <input
                   type={isPasswordVisible ? "text" : "password"}
@@ -166,14 +171,14 @@ function step2({ setCurrentStep, setFormData, email }) {
               </p>
               <p
                 onClick={onAlreadyHaveAnClick}
-                className="text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
+                className="text-[14px] ml-[22px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
               >
-                Already have an partner program account?{" "}
+                Don't have a partner program account?{" "}
                 <span
                   onClick={handleGetStartedClick}
                   className="cursor-pointer text-[#4162FF]"
                 >
-                  Sign In
+                  Sign Up
                 </span>
               </p>
             </div>

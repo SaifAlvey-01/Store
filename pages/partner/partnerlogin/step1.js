@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import useAxios from "../../../hooks/useAxios";
 import { signIn, useSession } from "next-auth/react";
 
-function step1({ setCurrentStep, setFormData, setEmail }) {
+function step1({ setCurrentStep, setInputData }) {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
   const [Loading, setLoading] = useState(false);
@@ -25,7 +25,6 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
       if (resdata?.data?.isProfileComplete === true) {
         router.push("/partner/partnerdashboard");
       } else {
-        setCurrentStep(5);
       }
     }
   }, [resdata]);
@@ -33,7 +32,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
   useEffect(() => {
     //google login
     const email = getValues();
-    if (session && session?.user) {
+    if (session?.user) {
       postRequest("/auth/google-login", { access_token: session.accessToken });
       Cookies.set("email", session.user.email, { expires: 7 });
     }
@@ -49,13 +48,13 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
 
   const onSubmit = async (data) => {
     const email = getValues();
-    setEmail(email.email);
-    setFormData((prevData) => ({ ...prevData, ...data }));
-    postRequest("/auth/register-email", email, 1);
+    setInputData(email.email);
+    Cookies.set("email", email.email, { expires: 7 });
+    setCurrentStep((prevStep) => prevStep + 1);
   };
 
   const handleGetStartedClick = () => {
-    router.push("/partner/partnerlogin");
+    router.push("/partner/partnersignup");
   };
 
   const handleGoogle = async () => {
@@ -68,23 +67,21 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-        <div className="bg-[#E9F2FF] flex w-[398px] h-[590] lg:w-[1240px] lg:h-[686px] rounded-[32px]">
-          <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden lg:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
-          <div className="bg-white w-[398px] h-[590px] lg:h-[686px] lg:w-[400px] flex content-center rounded-[32px]">
-            <div className="my-[24px] mx-[32px] lg:my-[87px] lg:mx-[32px] ">
+        <div className="bg-[#E9F2FF] flex w-[398px] h-[560px] rounded-[32px]">
+          <div className="bg-white w-[398px] h-[570px] flex content-center rounded-[32px]">
+            <div className="my-[24px] mx-[32px]">
               <img
                 src={"/partner_assets/launch-logo.svg"}
                 alt="launch my store logo"
                 className="w-[167px] h-[35px] mb-1"
               />
               <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
-                Start Making Extra Money
+                SignIn to Partner Program
               </p>
               <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
                 Hi there,
                 <br />
-                Welcome to our platform please create your partner program
-                account in few clicks!
+                Welcome to our platform please SignIn to continue!
               </p>
               <p className="text-[#374151] pt-5">Email</p>
               <input
@@ -147,7 +144,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                       ></path>
                     </svg>
                   ) : (
-                    <div>Get Started</div>
+                    <div>Continue</div>
                   )}
                 </div>
               </button>
@@ -197,14 +194,14 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
               </p>
               <p
                 onClick={onAlreadyHaveAnClick}
-                className="text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
+                className="text-[14px] ml-[20px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
               >
-                Already have an partner program account?{" "}
+                Don't have a partner program account?{" "}
                 <span
                   onClick={handleGetStartedClick}
                   className="cursor-pointer text-[#4162FF]"
                 >
-                  Sign In
+                  Sign Up
                 </span>
               </p>
             </div>
