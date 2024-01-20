@@ -5,6 +5,7 @@ import SignUp2 from "./step2";
 import SignUp3 from "./step3";
 import SignUp4 from "./step4";
 import SignUp5 from "./step5";
+import SignUp6 from "./step6";
 import Footer from "../../../components/footer/footer";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
@@ -62,12 +63,7 @@ const SignupComponent = () => {
       case 5:
         return <SignUp5 setCurrentStep={setCurrentStep} email={email} setloading={setloading}/>;
         case 6:
-        return (
-          <Loading
-            url="/partnerdashboard"
-            message=""
-            duration="3000"
-          />)
+          return <SignUp6 />;
       default:
         return null;
     }
@@ -81,8 +77,8 @@ const SignupComponent = () => {
     <>
       <NextSeo
         openGraph={{
-          title: 'The title used by twitter',
-          description: 'The description used by twitter',
+          title: 'Sign up for Partner',
+          description: 'Partner can sign up using this page.',
           images: [
             {
               url: 'https://example.com/og-image.jpg', // Replace with your image URL
@@ -91,7 +87,7 @@ const SignupComponent = () => {
               alt: 'Open Graph Image Alt Text', // Replace with alt text
             },
           ],
-          site_name: 'Your Site Name', // Replace with your site name
+          site_name: 'LaunchMyStore', // Replace with your site name
           type: 'website', // Replace with the appropriate type
         }}
         twitter={{

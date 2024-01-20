@@ -49,7 +49,7 @@ const step5 = ({ setloading, setCurrentStep }) => {
     }
     if (resdata.state && resdata.state === "success") {
       setloading(true);
-      setCurrentStep(5);
+      setCurrentStep(6);
     }
 
     if (Object.keys(selectedCountry).length > 0) {
@@ -57,12 +57,12 @@ const step5 = ({ setloading, setCurrentStep }) => {
     } else {
       setIsactive(false);
     }
-  }, [loading, business, selectedCountry, resdata, isActive, defaultCountry]);
+  }, [loading, selectedCountry, resdata, isActive, defaultCountry]);
 
 
   const handleSignInClick = () => {
     // this is done in signup
-    // setCurrentStep(5)
+    setCurrentStep(6)
     // setloading(true)
     // const timer = setTimeout(() => {
     //   router.push("/dashboard");
@@ -70,23 +70,23 @@ const step5 = ({ setloading, setCurrentStep }) => {
     // return () => clearTimeout(timer);
 
     setloading(loading);
-    putRequest(`/accounts/add-business-detail/${id}`, {
-      country: selectedCountry.label,
-    });
+    // putRequest(`/accounts/add-business-detail/${id}`, {
+    //   country: selectedCountry.label,
+    // });
     Cookie.remove("email");
   };
 
   return (
     <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-      <div className='bg-[#E9F2FF] flex w-[396px] h-[435px] xl:w-[1340px] xl:h-[786px] rounded-[32px]'>
-      <div className="bg-[url('/partner_assets/signup-image.svg')] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[786px] w-[912px]"></div>
-        <div className='bg-white w-[396px] h-[435px] xl:h-[786px] xl:w-[428px] flex content-center rounded-[32px]'>
-          <div className='my-[24px] mx-[16px] xl:my-[197px] xl:mx-[32px] '>
+      <div className='bg-[#E9F2FF] flex w-[372px] h-[450px] xl:w-[1240px] xl:h-[686px] rounded-[32px]'>
+      <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
+        <div className='bg-white w-[372px] h-[450px] xl:h-[686px] xl:w-[400px] flex content-center rounded-[32px]'>
+          <div className='my-[24px] mx-[16px] xl:my-[137px] xl:mx-[28px] '>
             <img src={'/partner_assets/launch-logo.svg'} alt="launch my store logo" className='w-[167px] h-[35px] mb-1' />
             <p className='font-chivo text-[#374151] font-bold text-[24px] w-[364px]'>Enter Your Basics</p>
             <p className='font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]'>Enter essential details to initialize your dashboard.<br /> setup seamlessly and efficiently.</p>
             <p className='text-[#374151] pt-3'>Country</p>
-            <div className='h-[20px] w-[364px] mt-[-12px] text-[#9CA3AF] rounded-[12px] px-3 mr-3 ml-[-8px] focus:border-blue-500 relative cursor-default ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4162FF]'>
+            <div className='h-[20px] w-[334px] mt-[-12px] text-[#9CA3AF] rounded-[12px] px-3 mr-3 ml-[-8px] focus:border-blue-500 relative cursor-default ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4162FF]'>
                     <CountrySelect
                       value={selectedCountry}
                       onChange={handleCountryChange}
@@ -99,7 +99,7 @@ const step5 = ({ setloading, setCurrentStep }) => {
                   } w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
                   onClick={handleSignInClick}
                 >
-                  <div className="relative w-[90px] h-0" />
+                  <div className="relative w-[80px] h-0" />
                   {loading ? (
                     <svg
                       aria-hidden="true"
@@ -125,7 +125,7 @@ const step5 = ({ setloading, setCurrentStep }) => {
                   )}
                 </div>
             <p className='text-[11.5px] ml-2 font-normal leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
-            <p className='text-[14px] ml-6 font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span className='text-[#4162FF]'>Sign In</span></p>
+            <p className='text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span className='text-[#4162FF]'>Sign In</span></p>
           </div>
         </div>
       </div>

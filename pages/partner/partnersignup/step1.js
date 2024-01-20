@@ -25,7 +25,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/partnerdashboard");
       }else{
-        setCurrentStep(4);
+        setCurrentStep(5);
       }
 
     }
@@ -75,10 +75,10 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
     <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-      <div className='bg-[#E9F2FF] flex w-[396px] h-[546px] xl:w-[1340px] xl:h-[786px] rounded-[32px]'>
-        <div className="bg-[url('/partner_assets/signup-image.svg')] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[786px] w-[912px]"></div>
-        <div className='bg-white  w-[410px] h-[546px] xl:h-[786px] xl:w-[428px] flex content-center rounded-[32px]'>
-          <div className='my-[24px] mx-[16px] xl:my-[144px] xl:mx-[25px] '>
+      <div className='bg-[#E9F2FF] flex w-[368px] h-[575] xl:w-[1240px] xl:h-[686px] rounded-[32px]'>
+      <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
+        <div className='bg-white w-[368px] h-[575px] xl:h-[686px] xl:w-[400px] flex content-center rounded-[32px]'>
+          <div className='my-[24px] mx-[16px] xl:my-[87px] xl:mx-[32px] '>
             <img src={'/partner_assets/launch-logo.svg'} alt="launch my store logo" className='w-[167px] h-[35px] mb-1' />
             <p className='font-chivo text-[#374151] font-bold text-[24px] w-[364px]'>Start Making Extra Money</p>
             <p className='font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]'>Hi there,<br />Welcome to our platform please create your partner program account in few clicks!</p>
@@ -94,7 +94,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                             message: "Invalid email ",
                           },
                         })}
-                        className={`h-[20px] w-[340px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start mt-[-8px] text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                        className={`h-[20px] w-[296px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start mt-[-8px] text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                           errors.email ? "border-red-500" : ""
                         }`}
                       />
@@ -114,7 +114,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                         </div>
                       )}
                       <button
-                      className="rounded bg-primary-300-main mt-5 w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                      className="rounded bg-primary-300-main mt-5 w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
                       type="submit"
                     >
                       <div className="relative w-[90px] h-0" />
@@ -142,8 +142,8 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                         )}
                       </div>
                     </button>
-            <img src={'/partner_assets/continue.svg'} alt="" className='mx-6 mt-3 mb-2' />
-            <div onClick={handleGoogle} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
+            <img src={'/partner_assets/continue.svg'} alt="" className='mx-2 mt-3 mb-2' />
+            <div onClick={handleGoogle} className="cursor-pointer rounded bg-white box-border w-[334px] flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                   <div className="relative w-[90px] h-0" />
                   {Loading ?
                     (
@@ -178,8 +178,8 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                   </div>
                     ) }
                 </div>
-            <p className='text-[11.5px] ml-2 font-normal leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
-            <p onClick={onAlreadyHaveAnClick} className='text-[14px] ml-6 font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span onClick={handleGetStartedClick} className='text-[#4162FF]'>Sign In</span></p>
+                <p className='text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
+            <p onClick={onAlreadyHaveAnClick} className='text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span onClick={handleGetStartedClick} className='text-[#4162FF]'>Sign In</span></p>
           </div>
           </div>
         </div>

@@ -50,10 +50,10 @@ function step3({ setCurrentStep }) {
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
   return (
     <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-      <div className='bg-[#E9F2FF] flex w-[396px] h-[425px] xl:w-[1340px] xl:h-[786px] rounded-[32px]'>
-      <div className="bg-[url('/partner_assets/signup-image.svg')] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[786px] w-[912px]"></div>
-        <div className='bg-white w-[396px] h-[545px] xl:h-[786px] xl:w-[428px] flex content-center rounded-[32px]'>
-          <div className='my-[24px] mx-[16px] xl:my-[153px] xl:mx-[32px] '>
+      <div className='bg-[#E9F2FF] flex w-[396px] h-[560px] xl:w-[1240px] xl:h-[686px] rounded-[32px]'>
+      <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
+        <div className='bg-white w-[396px] h-[560px] xl:h-[686px] xl:w-[400px] flex content-center rounded-[32px]'>
+          <div className='my-[24px] mx-[32px] xl:my-[87px] xl:mx-[32px] '>
             <img src={'/partner_assets/launch-logo.svg'} alt="launch my store logo" className='w-[167px] h-[35px] mb-1' />
             <p className='font-chivo text-[#374151] font-bold text-[24px] w-[364px]'>Verify Code</p>
             <p className='font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]'>We sent a verification code at your email, please see<br /> your email to get a code.</p>
@@ -69,14 +69,14 @@ function step3({ setCurrentStep }) {
                     ({savedEmail})
                   </a></p>
             <p className='text-[#374151] pt-3'>Code</p>
-            <div className="w-full mt-[-12px] ml-[-3px] flex flex-row items-center justify-center  gap-[4px] cursor-pointer text-sm text-dimgray">
+            <div className="w-[340px] mt-[-12px] ml-[-3px] flex flex-row items-center justify-center  gap-[4px] cursor-pointer text-sm text-dimgray">
                   <Verify OTP={OTP} setOTP={setOTP} />
                 </div>
 
                 <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
                   {error}
                 </p>
-                <div onClick={handleresend} className=" text-[14px] mb-5 ml-40 font-normal leading-[20px] font-roboto text-[#6B7280]">
+                <div onClick={handleresend} className=" text-[12px] mb-5 ml-40 font-normal leading-[20px] font-roboto text-[#6B7280]">
                     Didn’t get the code?{" "}
                     <a className="text-[#4162FF] ml-1">Resend OTP</a>
                   </div>
@@ -87,7 +87,7 @@ function step3({ setCurrentStep }) {
                   OTP.length === 6
                     ? "bg-primary-300-main cursor-pointer"
                     : "bg-primary-100 cursor-not-allowed"
-                } h-[44px] text-[16px] cursor-pointer rounded-[8px] font-normal leading-[24px] w-[364px] mt-4 md:w-[370px] flex flex-col p-2 box-border items-center mb-2  ml-[-2px] justify-center text-center text-white font-poppins`}
+                } h-[44px] text-[16px] cursor-pointer rounded-[8px] font-normal leading-[24px] w-[364px] mt-4 md:w-[334px] flex flex-col p-2 box-border items-center mb-2  ml-[-2px] justify-center text-center text-white font-poppins`}
               >
                 {loading ? (
                   <svg
@@ -111,8 +111,8 @@ function step3({ setCurrentStep }) {
                   <div>Verify</div>
                 )}
               </button>
-            <p className='text-[11.5px] ml-2 font-normal leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
-            <p onClick={onAlreadyHaveAnClick} className='text-[14px] ml-6 font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span onClick={handleGetStartedClick} className='text-[#4162FF]'>Sign In</span></p>
+              <p className='text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
+            <p onClick={onAlreadyHaveAnClick} className='text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span onClick={handleGetStartedClick} className='text-[#4162FF]'>Sign In</span></p>
           </div>
         </div>
       </div>

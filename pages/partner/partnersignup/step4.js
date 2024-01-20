@@ -51,7 +51,7 @@ const sign4 = ({ setloading, setCurrentStep }) => {
     } else {
       setIsactive(false);
     }
-  }, [loading, business, selectedCountry, resdata, isActive, defaultCountry]);
+  }, [loading, business,resdata, isActive, defaultCountry]);
 
 
   const handleChange = (e) => {
@@ -60,7 +60,7 @@ const sign4 = ({ setloading, setCurrentStep }) => {
 
   const handleSignInClick = () => {
     // this is done in signup
-    // setCurrentStep(5)
+    setCurrentStep(5)
     // setloading(true)
     // const timer = setTimeout(() => {
     //   router.push("/dashboard");
@@ -68,9 +68,9 @@ const sign4 = ({ setloading, setCurrentStep }) => {
     // return () => clearTimeout(timer);
 
     setloading(loading);
-    putRequest(`/accounts/add-business-detail/${id}`, {
-      business,
-    });
+    // putRequest(`/accounts/add-business-detail/${id}`, {
+    //   business,
+    // });
   };
 
   
@@ -83,10 +83,10 @@ const sign4 = ({ setloading, setCurrentStep }) => {
 
   return (
     <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
-      <div className='bg-[#E9F2FF] flex w-[396px] h-[440px] xl:w-[1340px] xl:h-[786px] rounded-[32px]'>
-      <div className="bg-[url('/partner_assets/signup-image.svg')] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[786px] w-[912px]"></div>
-        <div className='bg-white w-[396px] h-[440px] xl:h-[786px] xl:w-[428px] flex content-center rounded-[32px]'>
-          <div className='my-[24px] mx-[16px] xl:my-[183px] xl:mx-[32px] '>
+      <div className='bg-[#E9F2FF] flex w-[368px] h-[460px] xl:w-[1240px] xl:h-[686px] rounded-[32px]'>
+      <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:812px_633px] hidden xl:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
+        <div className='bg-white w-[368px] h-[460px] xl:h-[686px] xl:w-[400px] flex content-center rounded-[32px]'>
+          <div className='my-[24px] mx-[16px] xl:my-[137px] xl:mx-[32px] '>
             <img src={'/partner_assets/launch-logo.svg'} alt="launch my store logo" className='w-[167px] h-[35px] mb-1' />
             <p className='font-chivo text-[#374151] font-bold text-[24px] w-[364px]'>Enter Your Basics</p>
             <p className='font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]'>Enter essential details to initialize your dashboard<br />setup seamlessly and efficiently.</p>
@@ -95,11 +95,11 @@ const sign4 = ({ setloading, setCurrentStep }) => {
                       type="text"
                       onChange={(e) => handleChange(e)}
                       placeholder="Enter Your Name"
-                      className="'h-[20px] w-[332px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                      className="'h-[20px] w-[302px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
                     />
                 
             <div
-                  className={`text-[16px] cursor-pointer flex justify-center items-center font-normal leading-[24px] h-[44px] w-[364px] mt-4 rounded ${
+                  className={`text-[16px] cursor-pointer flex justify-center items-center font-normal leading-[24px] h-[44px] w-[334px] mt-4 rounded ${
                     isActive ? "bg-primary-300-main" : "bg-primary-100"
                   } w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
                   onClick={handleSignInClick}
@@ -129,8 +129,8 @@ const sign4 = ({ setloading, setCurrentStep }) => {
                     </div>
                   )}
                 </div>
-            <p className='text-[11.5px] ml-2 font-normal leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
-            <p onClick={onAlreadyHaveAnClick} className='text-[14px] ml-6 font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span onClick={handleGetStartedClick} className='text-[#4162FF]'>Sign In</span></p>
+            <p className='text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] font-chivo text-[#6B7280]'>By continuing, you agree to our Terms of Use and Privacy Policy.</p>
+            <p onClick={onAlreadyHaveAnClick} className='text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]'>Already have an partner program account? <span onClick={handleGetStartedClick} className='text-[#4162FF]'>Sign In</span></p>
           </div>
           </div>
         </div>
