@@ -72,11 +72,12 @@ const Login2 = ({ inputData }) => {
       }
     }
 
-  },[resdata])
+  },[resdata]);
+
   const onSubmit = (data, e) => {
     e.preventDefault();
     postRequest("/auth/manual-login", {
-      accountId: data?.email,
+      accountId: data?.email.toLowerCase(),
       password: data?.password,
     });
   };
