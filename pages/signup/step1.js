@@ -57,8 +57,9 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const onSubmit = async (data) => {
     const email = getValues();
     setEmail(email.email);
+    console.log(email, "<----email")
     setFormData((prevData) => ({ ...prevData, ...data }));
-    postRequest("/auth/register-email", email);
+    postRequest("/auth/register-email",{ email: email.email.toLowerCase()});
   };
 
   const handleGetStartedClick = () => {
