@@ -60,7 +60,7 @@ const Forgot3 = ({ setCurrentStep, inputValue, OTP }) => {
   };
 
   const handleSignInClick = () => {
-    router.push("/partner/partnerlogin");
+    router.push("/partner");
   };
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 

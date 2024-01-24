@@ -6,7 +6,7 @@ const forgot4 = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/partner/partnerlogin");
+      router.push("/partner");
     }, 2000);
     return () => clearTimeout(timer);
   }, []);

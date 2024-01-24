@@ -22,7 +22,7 @@ const Forgot2 = ({ setCurrentStep, inputValue, OTP, setOTP }) => {
   };
 
   const handleSignInClick = () => {
-    router.push("/partner/partnerlogin");
+    router.push("/partner");
   };
 
   useEffect(() => {
