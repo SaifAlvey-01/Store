@@ -34,7 +34,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
     //google login
     const email = getValues();
     if (session && session?.user) {
-      postRequest("/auth/google-login", { access_token: session.accessToken });
+      postRequest("/auth/google-login", { access_token: session.accessToken, role: "1" });
       Cookies.set("email", session.user.email, { expires: 7 });
     }
     //menual login
@@ -51,7 +51,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
     const email = getValues();
     setEmail(email.email);
     setFormData((prevData) => ({ ...prevData, ...data }));
-    postRequest("/auth/register-email", email, 1);
+    postRequest("/auth/register-email", {email: email, role: "1"});
   };
 
   const handleGetStartedClick = () => {
