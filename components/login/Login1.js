@@ -15,12 +15,16 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   const { resdata, error, loading: resLoading, postData: postRequest } = useAxios();
   const { data: session, status } = useSession();
 
-  useEffect(()=>{
-    console.log(session, "<----status")
-    if(status === "authenticated"){
-      setLoading(true)
-    }
-  },[]);
+  // useEffect(()=>{
+  //   if(status === "authenticated"){
+  //     if(resdata?.data?.isProfileComplete ===  true){
+  //       router.push("/dashboard");
+  //     }else{
+  //       router.push("/signup");
+  //       localStorage.setItem("signupCurrentStep", 4);
+  //     }
+  //   }
+  // },[status, resdata]);
 
   const {
     handleSubmit,
@@ -47,23 +51,21 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   };
   
   useEffect(()=>{
-    if(Object.keys(resdata).length > 0 ){
+    if(Object.keys(resdata).length > 0 && status === "authenticated"){
       if(resdata?.data?.isProfileComplete ===  true){
         router.push("/dashboard");
-      }else{
+      }else {
         router.push("/signup");
         localStorage.setItem("signupCurrentStep", 4);
       }
-
     }
-
-  },[resdata])
+  },[resdata, status])
 
   useEffect(()=>{
     if(session?.user) {
       postRequest("/auth/google-login", {access_token:session.accessToken});
       // setTimeout(() => {
-        router.push("/dashboard");
+        // router.push("/dashboard");
       // }, 2000);
     }
    
@@ -75,12 +77,18 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
    
   } 
 
+
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
-  if(loading === true) return (<Loading url="/dashboard" message="Loading..." duration="2000" />)
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <>
+    {
+      resLoading ?
+      <Loading url="/dashboard" message="Loading..." duration="2000" />
+      :
+      <>
+      <form onSubmit={handleSubmit(onSubmit)}>
       <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-12 px-2 sm:px-2 md:px-3 lg:px-4 mx-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
         <div className="flex flex-col items-center gap-[30px]">
           <div className="flex flex-col items-center justify-start gap-[32px]">
@@ -198,6 +206,11 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
         </div>
       </div>
     </form>
+      
+      </>
+  }
+  </>
+
   );
 };
 
