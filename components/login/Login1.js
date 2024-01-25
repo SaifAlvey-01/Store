@@ -19,7 +19,7 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
     console.log(status, "<----status")
     if(status === "loading"){
       setLoading(true)
-      router.push("/dashboard");
+      // router.push("/dashboard");
     }
   },[]);
 
@@ -46,6 +46,7 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   const handleGetStartedClick = () => {
     router.push("/signup");
   };
+  
   useEffect(()=>{
     if(Object.keys(resdata).length > 0 ){
       if(resdata?.data?.isProfileComplete ===  true){
