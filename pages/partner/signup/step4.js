@@ -72,7 +72,7 @@ const sign4 = ({ setloading, setCurrentStep }) => {
   };
 
   const handleGetStartedClick = () => {
-    router.push("/partner/partnerlogin");
+    router.push("/partner");
   };
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);

@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import Dashboard1 from "./dashboard1";
 import Dashboard2 from "./dashboard2";
