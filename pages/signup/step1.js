@@ -40,12 +40,12 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     const email = getValues();
     if(session && session?.user){
       postRequest("/auth/google-login", {access_token: session.accessToken});
-      Cookies.set('email', session.user.email, { expires: 7 });
+      Cookies.set('email', session.user.email.toLowerCase(), { expires: 7 });
     
     }
     //menual login
     if (resdata.state === "success" && email.email) {
-      Cookies.set('email', email.email, { expires: 7 });
+      Cookies.set('email', email.email.toLowerCase(), { expires: 7 });
       setCurrentStep(2);
     }
     if(error){
