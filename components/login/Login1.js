@@ -16,6 +16,7 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
   const { data: session, status } = useSession();
 
   useEffect(()=>{
+    console.log(status, "<----status")
     if(status === "authenticated"){
       setLoading(true)
       router.push("/dashboard");
