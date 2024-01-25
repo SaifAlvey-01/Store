@@ -22,7 +22,7 @@ const Layout = (props) => {
     }
   }, []);
 
-  if (!token) {
+  if (!token && status !== "authenticated") {
     return <div
     style={{ backgroundColor: "#F7F9FB" }}
     className="flex h-screen overflow-hidden"

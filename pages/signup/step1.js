@@ -5,15 +5,17 @@ import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from 'next-auth/react';
+import Loading from "../../components/loading";
 
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
-  const [Loading, setLoading] = useState(false);
+  const [Loadings, setLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  status, data: session } = useSession();
   
+
   const {
     handleSubmit,
     register,
@@ -57,7 +59,6 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const onSubmit = async (data) => {
     const email = getValues();
     setEmail(email.email);
-    console.log(email, "<----email")
     setFormData((prevData) => ({ ...prevData, ...data }));
     postRequest("/auth/register-email",{ email: email.email.toLowerCase()});
   };
@@ -73,6 +74,9 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
 
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
+
+  if(loading) return (<Loading url="/dashboard" message="" duration="2000" />)
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -164,7 +168,7 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                 </div>
                 <div onClick={handleGoogle} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                   <div className="relative w-[90px] h-0" />
-                  {Loading ?
+                  {Loadings ?
                     (
                       <svg
                         aria-hidden="true"

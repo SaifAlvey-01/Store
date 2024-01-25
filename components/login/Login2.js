@@ -19,7 +19,6 @@ const Login2 = ({ inputData }) => {
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  data: session } = useSession();
 
-
   const {
     handleSubmit,
     register,
@@ -32,9 +31,9 @@ const Login2 = ({ inputData }) => {
       setPasswordError(null);
       setLoading(false);
       setIsLoading(true);
-      // setTimeout(() => {
-        //   router.push("/dashboard");
-        // }, 2000);
+      setTimeout(() => {
+          router.push("/dashboard");
+        }, 2000);
       }
       
       
