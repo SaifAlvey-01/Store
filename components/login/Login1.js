@@ -17,12 +17,11 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
 
   useEffect(()=>{
     console.log(status, "<----status")
-    if(status === "authenticated"){
+    if(status === "loading"){
       setLoading(true)
       router.push("/dashboard");
-
     }
-  },[status]);
+  },[]);
 
   const {
     handleSubmit,
@@ -78,7 +77,7 @@ const Login1 = ({ setCurrentStep, setInputData }) => {
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
-  if(loading) return (<Loading url="/dashboard" message="Logging in..." duration="2000" />)
+  if(status === "loading") return (<Loading url="/dashboard" message="Logging in..." duration="2000" />)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
