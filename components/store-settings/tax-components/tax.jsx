@@ -70,11 +70,16 @@ export default function Tax() {
   };
   const onSubmitHandler = async (data) => {
     if(inclusiveOfTax && taxes == []){
-      const body = {
-        taxStatus : "Enable",
-        ...data
+      try{
+        const body = {
+          taxStatus : "Enable",
+          ...data
+        }
+        dispatch(addTax(body));  
+      cogoToast.success('Post saved successfully!');
+      }catch(error){
+        cogoToast.error('Failed to save the post');
       }
-      dispatch(addTax(body));  
     };
     if(taxes){
       try { 
