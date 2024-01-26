@@ -11,8 +11,12 @@ import Cookies from "js-cookie";
 export default function Tax() {
   const dispatch = useDispatch();
   const {loading, error, taxes, status} = useSelector(state => state.taxesSlice);
-  const [initialData, setInitialData] = useState(taxes?.data?.data[0]);
+  const [initialData, setInitialData] = useState(taxes);
   const [inclusiveOfTax, setInclusiveOfTax] = useState(false);
+  const [addRequestStatus, setAddRequestStatus] = useState('idle')
+
+  console.log(status, "<----status")
+
   const storeID = Cookies.get("id");
   const schema = yup.object({
     productPrices: yup.string().required("Please select Exclusive or Exclusive of tax"),
@@ -48,15 +52,15 @@ export default function Tax() {
   }); 
 
   useEffect(() => {
-    if(taxes?.data?.data[0]?.taxStatus === "Enable"){
+    if(taxes?.taxStatus === "Enable"){
       setInclusiveOfTax(true);
     } 
-    if (taxes?.data?.data[0]) {
-      setInitialData(taxes?.data?.data[0]);
+    if (taxes) {
+      setInitialData(taxes);
       reset({
-        productPrices: taxes?.data?.data[0]?.productPrices || "",
-        gstNumber: taxes?.data?.data[0]?.gstNumber || "",
-        gstPercentage: taxes?.data?.data[0]?.gstPercentage || "",
+        productPrices: taxes?.productPrices || "",
+        gstNumber: taxes?.gstNumber || "",
+        gstPercentage: taxes?.gstPercentage || "",
       });
     }
   }, [taxes, reset]);
@@ -64,21 +68,32 @@ export default function Tax() {
   const handleCheckboxChange =  () => {
     setInclusiveOfTax((prev) => !prev);
   };
-  const onSubmitHandler = (data) => {
+  const onSubmitHandler = async (data) => {
     if(inclusiveOfTax && taxes == []){
-      const body = {
-        taxStatus : "Enable",
-        ...data
+      try{
+        const body = {
+          taxStatus : "Enable",
+          ...data
+        }
+        dispatch(addTax(body));  
+      cogoToast.success('Post saved successfully!');
+      }catch(error){
+        cogoToast.error('Failed to save the post');
       }
-      dispatch(addTax(body));  
     };
     if(taxes){
-      const taxId = taxes.data.data[0].taxId;
+      try { 
+        setAddRequestStatus('pending');
+      const taxId = taxes.taxId;
       const body = {
         taxStatus : "Enable",
         ...data
       }
-       dispatch(editTax({taxId, body}));  
+      await dispatch(editTax({taxId, body})).unwrap();
+      cogoToast.success('Post saved successfully!');
+    }catch(error){
+      cogoToast.error('Failed to save the post');
+    }
     }
   }
 
@@ -169,7 +184,7 @@ export default function Tax() {
                       <input
                         type="radio"
                         {...register("productPrices")}
-                        value="ExclusiveOfTax"
+                        value="InclusiveOfTax"
                         className="w-6 h-6 cursor-pointer m-0 text-blue-600 bg-gray-100 border-none focus:ring-none dark:focus:ring-none focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         style={{
                           boxShadow: "none",
