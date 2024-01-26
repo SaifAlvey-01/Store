@@ -55,7 +55,7 @@ const Login2 = ({ inputData }) => {
           }else{
             if(!error && resdata?.data?.isVerified ===  false ){
               router.push("/signup");
-              localStorage.setItem("signupCurrentStep", 4);
+              localStorage.setItem("signupCurrentStep", 3);
             }
           }
 

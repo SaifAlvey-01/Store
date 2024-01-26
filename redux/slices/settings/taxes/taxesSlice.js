@@ -26,10 +26,10 @@ export const addTax = createAsyncThunk(
 
 export const editTax = createAsyncThunk(
   "taxes/editTax",
-  async ({ taxId, taxData }) => {
+  async ( {taxId, body} ) => {
     try {
       const url = `${baseUrl}/taxes/update-tax/${taxId}`;
-      const response = await axiosInstance.patch(url, taxData);
+      const response = await axiosInstance.patch(url, body);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -66,7 +66,7 @@ const taxSlice = createSlice({
       .addCase(addTax.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-        state.taxes.push(action.payload);
+        state.taxes = action.payload;
       })
       .addCase(addTax.rejected, (state, action) => {
         state.loading = false;
@@ -78,14 +78,8 @@ const taxSlice = createSlice({
       })
       .addCase(editTax.fulfilled, (state, action) => {
         state.loading = false;
-        state.status = true;
-        // Update the corresponding tax in the taxes array
-        const editedTaxIndex = state.taxes.data.data.findIndex(
-          (tax) => tax.taxId === action.payload.taxId
-        );
-        if (editedTaxIndex !== -1) {
-          state.taxes.data.data[editedTaxIndex] = action.payload.data;
-        }
+        state.status = action.payload.state;
+        state.taxes = action.payload.data;
       })
       .addCase(editTax.rejected, (state, action) => {
         state.loading = false;
@@ -97,7 +91,7 @@ const taxSlice = createSlice({
       })
       .addCase(getAllTaxes.fulfilled, (state, action) => {
         state.loading = false;
-        state.taxes = action.payload;
+        state.taxes = action.payload.data.data[0];
       })
       .addCase(getAllTaxes.rejected, (state, action) => {
         state.loading = false;
