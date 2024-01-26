@@ -6,7 +6,8 @@ import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
 import pageload from "/public/logoutLoader.json";
 import Lottie from "lottie-react";
-import DailyPerformanceGraph from "./DailyPerformanceGraph";
+import RefferalList from "./RefferalList";
+
 
 const dashboard1 = ({ setCurrentStep, currentStep }) => {
   const [code, setCode] = useState("84005550001");
@@ -90,11 +91,10 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
               </p>
             </div>
             <div className="absolute flex justify-center items-center right-0">
-              {note>0 && (
+              {note > 0 && (
                 <div
-                  className={`${
-                    data == " " ? "hidden" : "visible"
-                  } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
+                  className={`${data == " " ? "hidden" : "visible"
+                    } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
                 >
                   <svg
                     width="24"
@@ -132,7 +132,7 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                       <p className="text-[24px] font-[600] font-sans">$0.00</p>
                     </div>
                   </div>
-                  <div className="items-center h-[94px] flex ml-[24px] w-[344px] shadow bg-[#f7f9ff] border-solid border-l-4 rounded-[16px] border-[#9a6aff] justify-between">
+                  <div className="items-center h-[94px] flex ml-[24px] mr-[24px] w-[344px] shadow bg-[#f7f9ff] border-solid border-l-4 rounded-[16px] border-[#9a6aff] justify-between">
                     <p className="ml-4 text-[14px]">Number of Referrals</p>
                     <div className="flex mr-4 items-center justify-center bg-[#e9f2ff] text-[#9a6aff] h-[67px] w-[102px] rounded-[12px]">
                       <p className="text-[24px] font-[600] font-sans">00.00</p>
@@ -169,9 +169,9 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                       {code}
                     </p>
                     <div
-                      onClick={() => {
-                        getCode();
-                      }}
+                      onClick={() =>
+                        getCode()
+                      }
                       className="mx-4 cursor-pointer w-[132px] h-[36px] rounded-3xl flex items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
                     >
                       <svg
@@ -206,7 +206,7 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg mt-[20px] h-[274px] w-full">
+              <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg mt-[20px] h-[480px] w-full">
                 <div className="flex p-[30px] align-center justify-between">
                   <div>
                     <p className="text-[18px] font-[600] mt-[8px]">
@@ -258,14 +258,14 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                       </svg>
                       <p className="text-[14px]">Last 14 Days</p>
                     </div>
-                    <div className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
+                    <div onClick={() => setCurrentStep(2)} className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
                       <p className="text-[14px] font-[400]">View List</p>
                     </div>
                   </div>
                 </div>
                 <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
-                <div>
-                <DailyPerformanceGraph />
+                <div className="h-[278px] my-10 flex justify-center align-center mx-10">
+                  <RefferalList />
                 </div>
               </div>
               <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg mt-[20px] w-full">
@@ -275,118 +275,13 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                       Recent Referrals From Your Code
                     </p>
                   </div>
-                  <div className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
+                  <div onClick={() => setCurrentStep(2)} className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
                     <p className="text-[14px] font-[400]">View List</p>
                   </div>
                 </div>
                 <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
                 <div className="pb-[25px] flex">
                   <div className="flex flex-wrap row-span-5">
-                    <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
-                      <img
-                        className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"
-                        src="/partner_assets/profile.svg"
-                      />
-                      <p className="text-[16px] leading-[24px] ml-[40px] w-[168px] h-[24px] mt-[-5px]">
-                        Sledge Hammer
-                      </p>
-                      <p className="text-[16px] leading-[24px] ml-[50px] w-[168px] h-[20px] text-[#6B7280] mt-[-20px]">
-                        @s_Hammer
-                      </p>
-                      <div
-                        onClick={() => {
-                          sendMail();
-                        }}
-                        className="ml-[30px] cursor-pointer w-[132px] h-[36px] rounded-3xl flex justify-center items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
-                      >
-                        <p className="text-[14px]">Say Thanks</p>
-                      </div>
-                    </div>
-
-                    <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
-                      <img
-                        className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"
-                        src="/partner_assets/profile.svg"
-                      />
-                      <p className="text-[16px] leading-[24px] ml-[40px] w-[168px] h-[24px] mt-[-5px]">
-                        Sledge Hammer
-                      </p>
-                      <p className="text-[16px] leading-[24px] ml-[50px] w-[168px] h-[20px] text-[#6B7280] mt-[-20px]">
-                        @s_Hammer
-                      </p>
-                      <div
-                        onClick={() => {
-                          sendMail();
-                        }}
-                        className="ml-[30px] cursor-pointer w-[132px] h-[36px] rounded-3xl flex justify-center items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
-                      >
-                        <p className="text-[14px]">Say Thanks</p>
-                      </div>
-                    </div>
-
-                    <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
-                      <img
-                        className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"
-                        src="/partner_assets/profile.svg"
-                      />
-                      <p className="text-[16px] leading-[24px] ml-[40px] w-[168px] h-[24px] mt-[-5px]">
-                        Sledge Hammer
-                      </p>
-                      <p className="text-[16px] leading-[24px] ml-[50px] w-[168px] h-[20px] text-[#6B7280] mt-[-20px]">
-                        @s_Hammer
-                      </p>
-                      <div
-                        onClick={() => {
-                          sendMail();
-                        }}
-                        className="ml-[30px] cursor-pointer w-[132px] h-[36px] rounded-3xl flex justify-center items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
-                      >
-                        <p className="text-[14px]">Say Thanks</p>
-                      </div>
-                    </div>
-
-                    <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
-                      <img
-                        className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"
-                        src="/partner_assets/profile.svg"
-                      />
-                      <p className="text-[16px] leading-[24px] ml-[40px] w-[168px] h-[24px] mt-[-5px]">
-                        Sledge Hammer
-                      </p>
-                      <p className="text-[16px] leading-[24px] ml-[50px] w-[168px] h-[20px] text-[#6B7280] mt-[-20px]">
-                        @s_Hammer
-                      </p>
-                      <div
-                        onClick={() => {
-                          sendMail();
-                        }}
-                        className="ml-[30px] cursor-pointer w-[132px] h-[36px] rounded-3xl flex justify-center items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
-                      >
-                        <p className="text-[14px]">Say Thanks</p>
-                      </div>
-                    </div>
-
-                    <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
-                      <img
-                        className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"
-                        src="/partner_assets/profile.svg"
-                      />
-                      <p className="text-[16px] leading-[24px] ml-[40px] w-[168px] h-[24px] mt-[-5px]">
-                        Sledge Hammer
-                      </p>
-                      <p className="text-[16px] leading-[24px] ml-[50px] w-[168px] h-[20px] text-[#6B7280] mt-[-20px]">
-                        @s_Hammer
-                      </p>
-                      <div
-                        onClick={() => {
-                          sendMail();
-                        }}
-                        className="ml-[30px] cursor-pointer w-[132px] h-[36px] rounded-3xl flex justify-center items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
-                      >
-                        <p className="text-[14px]">Say Thanks</p>
-                      </div>
-                    </div>
-
                     <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
                       <img
                         className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"

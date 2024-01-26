@@ -5,11 +5,11 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
 
   return (
     <>
-      <div className="h-screen relative w-[240px] flex-col bg-white">
+      <div className="h-screen relative w-[192px] lg:w-[240px] flex-col bg-white">
         <div>
           <img
             src="/partner_assets/launch-logo.svg"
-            className="p-[20px] w-[200px] h-[40px]"
+            className="p-[10px] lg:p-[20px] w-[170px] lg:w-[200px] h-[40px]"
           />
         </div>
         <div
@@ -18,7 +18,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 1
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } cursor-pointer hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] mb-[-10px] flex items-center m-[20px] bg-no-repeat w-[200px] h-[46px]`}
+          } cursor-pointer hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] flex items-center mb-[-10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -67,7 +67,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 2
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[20px] bg-no-repeat w-[200px] h-[46px]`}
+          } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -137,7 +137,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 3
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[20px] bg-no-repeat w-[200px] h-[46px]`}
+          } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -179,7 +179,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 4
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } hover:text-[#6B7280] m-[20px] bg-no-repeat w-[200px] h-[46px]`}
+          } hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -224,7 +224,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
               currentStep == 5
                 ? "bg-[url('/partner_assets/bd.svg')] text-white"
                 : "text-[#6B7280] "
-            } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[20px] bg-no-repeat w-[200px] h-[46px]`}
+            } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
           >
             <svg
               className={`pl-[18px] pr-2 ${
@@ -265,7 +265,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
           </div>
           <div
             onClick={() => {setCurrentStep(6)}}
-            className={`mb-[18px] cursor-pointer flex items-center text-[#6B7280] hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[20px] bg-no-repeat w-[200px] h-[46px]`}
+            className={`mb-[18px] cursor-pointer flex items-center text-[#6B7280] hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
           >
             <svg
               className="pl-[18px] pr-2"
