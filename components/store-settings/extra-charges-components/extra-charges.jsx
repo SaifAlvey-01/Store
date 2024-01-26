@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { addExtraCharge, getAllExtraCharges } from "../../../redux/slices/settings/extra-charges/extraCharges";
+import { addExtraCharge, getAllExtraCharges, updateExtraCharge } from "../../../redux/slices/settings/extra-charges/extraCharges";
 import Cookies from "js-cookie";
 
 
@@ -38,11 +38,12 @@ export default function ExtraCharges() {
  },[]);
 
   useEffect(() => {
-    if (extraCharges?.data) {
+    if (Object.keys(extraCharges).length > 0) {
+      setShowSection("createCharges")
       reset({
-        extraCharges: extraCharges?.data[0]?.extraCharges || "",
-        chargeName: extraCharges?.data[0]?.chargeName || "",
-        chargePercent: extraCharges?.data[0]?.chargePercent || "",
+        extraCharges: extraCharges?.extraCharges || "",
+        chargeName: extraCharges?.chargeName || "",
+        chargePercent: extraCharges?.chargePercent || "",
       });
     }
   }, [extraCharges, reset]);
@@ -56,7 +57,12 @@ export default function ExtraCharges() {
   };
 
   const onSubmitHandler = (data) =>{
-    dispatch(addExtraCharge(data))
+    if(extraCharges == []){
+      dispatch(addExtraCharge(data)).unwrap();
+    }else{
+      dispatch(updateExtraCharge({extraChargesId:extraCharges.extraChargesId, data}))
+      
+    }
   }
 
   

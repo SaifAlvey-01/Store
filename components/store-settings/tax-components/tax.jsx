@@ -13,16 +13,30 @@ export default function Tax() {
   const {loading, error, taxes, status} = useSelector(state => state.taxesSlice);
   const [initialData, setInitialData] = useState(taxes);
   const [inclusiveOfTax, setInclusiveOfTax] = useState(false);
-  const [addRequestStatus, setAddRequestStatus] = useState('idle')
-
-  console.log(status, "<----status")
 
   const storeID = Cookies.get("id");
-  const schema = yup.object({
-    productPrices: yup.string().required("Please select Exclusive or Exclusive of tax"),
-    gstNumber: yup.string().required("GST number is required"),
-    gstPercentage: yup.number().required(),
-  }).required();
+    const schema = yup.object({
+      productPrices: yup.string().required("Please select Exclusive or Exclusive of tax"),
+      gstNumber: yup.string().test('is-gst', 'Invalid GST number', function (value) {
+        if (this.resolve(yup.ref('gstNumber'))) {
+          return yup.string().matches(/\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}/).isValidSync(value);
+        }
+        return true;
+      }),
+      gstPercentage: yup
+      .number("Enter number only")
+      .required()
+      .test({
+        name: 'maxValue',
+        message: 'Gst Percentage cannot be 100%',
+        test: value => value !== 100,
+      })
+      .test({
+        name: 'maxDigits',
+        message: 'Gst Percentage should not have more than 2 digits',
+        test: value => (value + '').length <= 2,
+      }),
+    }).required();
  
   useEffect( ()=>{
     const params = {
@@ -83,7 +97,6 @@ export default function Tax() {
     };
     if(taxes){
       try { 
-        setAddRequestStatus('pending');
       const taxId = taxes.taxId;
       const body = {
         taxStatus : "Enable",
