@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";

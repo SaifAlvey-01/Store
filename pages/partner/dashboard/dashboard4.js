@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
@@ -83,7 +82,7 @@ const dashboard4 = ({ setCurrentStep, currentStep }) => {
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
             <div>
               <p className="text-[20px] font-freesans font-semibold ml-5 content-center">
-                Dashboard
+                FAQs
               </p>
             </div>
             <div className="absolute flex justify-center items-center right-0">

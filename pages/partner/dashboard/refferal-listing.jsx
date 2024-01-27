@@ -108,7 +108,7 @@ export default function RefferalListing({
                   fontSize: "12px",
                 }}
               >
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row justify-center items-center">
                   {header.title}
                   <img className="ml-2" src={"/sort.png"} width="16" />
                 </div>
@@ -154,7 +154,7 @@ export default function RefferalListing({
               </td>
               <td style={{ borderBottom: "1px solid #EAECF0" }} className="">
                 <div
-                  className="flex items-center justify-center p-1.5 ml-5 w-[70%]"
+                  className="flex items-center justify-center p-1.5 mx-5 w-[70%]"
                   style={{
                     borderRadius: "16px",
                     background: getStatusBackgroundColor(row.status),
@@ -187,17 +187,17 @@ export default function RefferalListing({
                   </span>
                 </div>
               </td>
-
               <td
                 style={{
                   borderBottom: "1px solid #EAECF0",
                   color: "#0c9d61",
                   fontSize: "13px",
                 }}
-                className="p-4"
+                className="p-4 w-[100px]"
               >
                 ${row.commission}
               </td>
+
             </tr>
           ))}
         </tbody>

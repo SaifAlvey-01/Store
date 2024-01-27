@@ -1,13 +1,16 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
 import pageload from "/public/logoutLoader.json"
 import Lottie from "lottie-react";
+import IncomeList from "./IncomeList";
+import OrderListing from "./refferal-listing";
 
 const dashboard3 = ({ setCurrentStep, currentStep }) => {
+  const[opc, setOpc] = useState(0);
+  const [selectedOrder, setSelectedOrder] = useState(null);
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { status, data: session } = useSession();
@@ -59,40 +62,40 @@ const dashboard3 = ({ setCurrentStep, currentStep }) => {
 
   if (!token) {
     return <div
-    style={{ backgroundColor: "#F7F9FB" }}
-    className="flex h-screen overflow-hidden"
-  >
-    <div className=" overflow-y-auto flex flex-col items-center justify-center w-full"
+      style={{ backgroundColor: "#F7F9FB" }}
+      className="flex h-screen overflow-hidden"
+    >
+      <div className=" overflow-y-auto flex flex-col items-center justify-center w-full"
       >
         <div className="h-1/2 w-96 mx-auto my-auto">
-        <Lottie
+          <Lottie
             animationData={pageload}
             loop={true}
             autoplay={true}
           />;
         </div>
 
+      </div>
     </div>
-  </div>
   }
 
-  
+
 
   return (
     <div
       style={{ backgroundColor: "#F7F9FB" }}
-      className="flex h-screen overflow-hidden "
+      className={`flex h-screen overflow-hidden ${opc == 1? "opacity-20": ""}`} 
     >
       <Sidebar
         setCurrentStep={setCurrentStep}
         currentStep={currentStep}
       />
-      <div className="relative flex flex-col flex-1 overflow-x-hidden h-full">
-      <>
+      <div className={`relative flex flex-col flex-1 overflow-x-hidden h-full ${opc == 1? "opacity-20": ""}`} >
+        <>
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
             <div>
               <p className="text-[20px] font-freesans font-semibold ml-5 content-center">
-                Dashboard
+                Income
               </p>
             </div>
             <div className="absolute flex justify-center items-center right-0">
@@ -126,9 +129,66 @@ const dashboard3 = ({ setCurrentStep, currentStep }) => {
         <main className="flex-grow ">
           <div
             style={{ backgroundColor: "#F7F9FB" }}
-            className="mt-4 sm:mt-0 px-4 sm:px-6 lg:px-8 py-6 max-w-9xl mx-auto "
+            className=" py-5 ml-1 mr-11"
           >
-            333333333333333333333333
+            <>
+
+              <div>
+                <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg mt-[-25px] h-[630px] w-full">
+                  <div className="py-[24px] flex">
+                    <div className="items-center justify-between h-[94px] mt-5 flex ml-[24px] w-[344px] shadow bg-[#f7f9ff] border-solid border-l-4 rounded-[16px] border-[#6983ff]">
+                      <p className="ml-4 text-[14px]">Total Revenue</p>
+                      <div className="flex mr-4 items-center justify-center bg-[#e9f2ff] text-[#6983ff] h-[67px] w-[102px] rounded-[12px]">
+                        <p className="text-[24px] font-[600] font-sans">$1.05</p>
+                      </div>
+                    </div>
+                    <div onClick={() => setOpc(1)} className="items-center h-[94px] flex ml-[24px] mt-5 w-[344px] shadow bg-[#f7f9ff] border-solid border-l-4 rounded-[16px] border-[#9a6aff] justify-between">
+                      <p className="ml-4 text-[14px]">Withdraw Balance</p>
+                      <div className="flex mr-4 items-center justify-center bg-[#e9f2ff] text-[#9a6aff] h-[67px] w-[102px] rounded-[12px]">
+                        <p className="text-[24px] font-[600] font-sans">$724</p>
+                      </div>
+                    </div>
+                    <div className="items-center h-[94px] flex ml-[24px] mt-5  mr-[24px] w-[344px] shadow bg-[#fff8f9] border-solid border-l-4 rounded-[16px] border-[#ff4162] justify-between">
+                      <p className="ml-4 text-[14px]">Pending</p>
+                      <div className="flex mr-4 items-center justify-center bg-[#ffecef] text-[#ff4162] h-[67px] w-[102px] rounded-[12px]">
+                        <p className="text-[24px] font-[600] font-sans">$438</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
+                  <div className="h-[278px] my-10 flex justify-center align-center mx-10">
+                    <IncomeList />
+                  </div>
+                  <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
+                  <div className="flex absolute mr-[55px] right-0 pt-7">
+                    <div onClick={() => setCurrentStep(5)} className="mx-4 cursor-pointer w-[134px] h-[36px] rounded-md flex items-center justify-center border-2 border-dashed text-[#4162ff] border-[#4162ff]">
+                      <p className="text-[14px]">Settings</p>
+                    </div>
+                    <div className="mx-2 justify-center cursor-pointer w-[162px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
+                      <p className="text-[14px] font-[400]">Withdraw Balance</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg mt-[20px] w-full">
+                  <div className="flex p-[30px] align-center justify-between">
+                    <div>
+                      <p className="text-[18px] font-[600] mt-[8px]">
+                        Recent referrals Earnings
+                      </p>
+                    </div>
+                    <div onClick={() => setCurrentStep(2)} className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
+                      <p className="text-[14px] font-[400]">View List</p>
+                    </div>
+                  </div>
+                  <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
+                  <div className="py-5 flex-grow justify-center items-center">
+                    <OrderListing
+                      setSelectedOrder={setSelectedOrder}
+                      className=""
+                    /></div>
+                </div>
+              </div>
+            </>
           </div>
         </main>
       </div>

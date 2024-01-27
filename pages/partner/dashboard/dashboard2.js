@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
@@ -86,7 +85,7 @@ const dashboard2 = ({ setCurrentStep, currentStep }) => {
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
             <div>
               <p className="text-[20px] font-freesans font-semibold ml-5 content-center">
-                Dashboard
+                Refferal List
               </p>
             </div>
             <div className="absolute flex justify-center items-center right-0">
@@ -178,7 +177,7 @@ const dashboard2 = ({ setCurrentStep, currentStep }) => {
                   </div>
                 </div>
                 <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
-                <div className="py-5">
+                <div className="py-5 flex-grow justify-center items-center">
                   <OrderListing
                   setSelectedOrder={setSelectedOrder}
                   className=""

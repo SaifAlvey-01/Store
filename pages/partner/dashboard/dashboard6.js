@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
-import Header from "./Header";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import Cookie from "js-cookie";
@@ -46,7 +45,7 @@ const dashboard6 = ({ setCurrentStep, currentStep }) => {
     >
       <Sidebar setCurrentStep={setCurrentStep} currentStep={currentStep} />
       <div className="relative flex flex-col flex-1 overflow-x-hidden h-full">
-        <Header />
+    
         <main className="flex-grow ">
           <div
             style={{ backgroundColor: "#F7F9FB" }}
