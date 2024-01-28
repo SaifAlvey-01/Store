@@ -1,0 +1,10 @@
+{
+    "editor.suggest.preview": true,
+    "editor.hideCursorInOverviewRuler": true,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "workbench.editor.sharedViewState": true,
+    "chat.editor.wordWrap": "on",
+    "editor.wordWrap": "on"
+}

@@ -139,6 +139,12 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                     </svg>
                   </div>
                   <div className="mx-[5px] border-t-[1px] border-solid border-slate-200"></div>
+                  <div className="items-center w-full h-[94px] flex mt-5 shadow bg-[#f7f9ff] border-solid border-l-4 rounded-[16px] border-[#9a6aff] justify-between ml-[-3px]">
+                    <p className="ml-4 text-[14px]">Available Balance</p>
+                    <div className="flex mr-4 items-center justify-center bg-[#e9f2ff] text-[#9a6aff] h-[67px] w-[102px] rounded-[12px]">
+                      <p className="text-[24px] font-[600] font-sans">$724</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </>
