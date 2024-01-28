@@ -9,7 +9,7 @@ import IncomeList from "./IncomeList";
 import OrderListing from "./refferal-listing";
 
 const dashboard3 = ({ setCurrentStep, currentStep }) => {
-  const[opc, setOpc] = useState(0);
+  const [opc, setOpc] = useState(0);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -84,13 +84,14 @@ const dashboard3 = ({ setCurrentStep, currentStep }) => {
   return (
     <div
       style={{ backgroundColor: "#F7F9FB" }}
-      className={`flex h-screen overflow-hidden ${opc == 1? "opacity-20": ""}`} 
+      className={`flex h-screen overflow-hidden ${opc == 1 ? "hidden" : "visible"}`}
     >
+      
       <Sidebar
         setCurrentStep={setCurrentStep}
         currentStep={currentStep}
       />
-      <div className={`relative flex flex-col flex-1 overflow-x-hidden h-full ${opc == 1? "opacity-20": ""}`} >
+      <div className={`relative flex flex-col flex-1 overflow-x-hidden h-full ${opc == 1 ? "opacity-20" : ""}`} >
         <>
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
             <div>

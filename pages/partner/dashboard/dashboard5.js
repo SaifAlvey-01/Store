@@ -14,6 +14,7 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
   const [headerValue, setHeaderValue] = useState(
     router.pathname === "/partner/dashboard" ? "Dashboard" : ""
   );
+  const [opc, setOpc] = useState(0);
 
   const [note, setNote] = useState(0);
   const [data, setData] = useState(" ");
@@ -60,24 +61,24 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
 
   if (!token) {
     return <div
-    style={{ backgroundColor: "#F7F9FB" }}
-    className="flex h-screen overflow-hidden"
-  >
-    <div className=" overflow-y-auto flex flex-col items-center justify-center w-full"
+      style={{ backgroundColor: "#F7F9FB" }}
+      className="flex h-screen overflow-hidden"
+    >
+      <div className=" overflow-y-auto flex flex-col items-center justify-center w-full"
       >
         <div className="h-1/2 w-96 mx-auto my-auto">
-        <Lottie
+          <Lottie
             animationData={pageload}
             loop={true}
             autoplay={true}
           />;
         </div>
 
+      </div>
     </div>
-  </div>
   }
 
-  
+
 
   return (
     <div
@@ -89,7 +90,7 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
         currentStep={currentStep}
       />
       <div className="relative flex flex-col flex-1 overflow-x-hidden h-full">
-      <>
+        <>
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
             <div>
               <p className="text-[20px] font-freesans font-semibold ml-5 content-center">
@@ -124,12 +125,23 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
             </div>
           </header>
         </>
-        <main className="flex-grow ">
+        <main className="flex-grow">
           <div
             style={{ backgroundColor: "#F7F9FB" }}
-            className="mt-4 sm:mt-0 px-4 sm:px-6 lg:px-8 py-6 max-w-9xl mx-auto "
+            className="py-5 ml-1 mr-11 flex justify-center items-center "
           >
-            55555555555555555555555555
+            <>
+              <div className={`w-[508px] h-[539px] visible rounded-[24px] bg-white`}>
+                <div className="p-[24px]">
+                  <div className="flex justify-between mx-2"><p className="text-[20px] font-semibold font-freesans mt-[-1px]">Withdraw Funds</p>
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.9998 6.49982C17.8123 6.31235 17.558 6.20703 17.2928 6.20703C17.0277 6.20703 16.7733 6.31235 16.5858 6.49982L11.9998 11.0858L7.41382 6.49982C7.22629 6.31235 6.97198 6.20703 6.70682 6.20703C6.44165 6.20703 6.18735 6.31235 5.99982 6.49982C5.81235 6.68735 5.70703 6.94165 5.70703 7.20682C5.70703 7.47198 5.81235 7.72629 5.99982 7.91382L10.5858 12.4998L5.99982 17.0858C5.81235 17.2733 5.70703 17.5277 5.70703 17.7928C5.70703 18.058 5.81235 18.3123 5.99982 18.4998C6.18735 18.6873 6.44165 18.7926 6.70682 18.7926C6.97198 18.7926 7.22629 18.6873 7.41382 18.4998L11.9998 13.9138L16.5858 18.4998C16.7733 18.6873 17.0277 18.7926 17.2928 18.7926C17.558 18.7926 17.8123 18.6873 17.9998 18.4998C18.1873 18.3123 18.2926 18.058 18.2926 17.7928C18.2926 17.5277 18.1873 17.2733 17.9998 17.0858L13.4138 12.4998L17.9998 7.91382C18.1873 7.72629 18.2926 7.47198 18.2926 7.20682C18.2926 6.94165 18.1873 6.68735 17.9998 6.49982Z" fill="#374957" />
+                    </svg>
+                  </div>
+                  <div className="mx-[5px] border-t-[1px] border-solid border-slate-200"></div>
+                </div>
+              </div>
+            </>
           </div>
         </main>
       </div>
