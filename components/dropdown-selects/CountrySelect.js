@@ -98,13 +98,13 @@ const CountrySelect = ({ value, onChange, options }) => {
     >
       <div className="flex-raw flex ">
         <img src={data.image} alt={label} className="w-6 h-6 pl-2 " />
-        <div className="justify-center items-center flex pl-4 font-roboto text-[#8E8E8E]">
+        <div className="justify-center items-center flex pl-4  font-roboto text-[#8E8E8E]">
           {label}
         </div>
       </div>
       <div
         style={{ marginRight: "30px" }}
-        className="m-2 font-roboto w-12 text-center m"
+        className="m-2 font-roboto w-12 text-center border-2 border-solid m"
       >
         <p className="p-2 rounded-sm text-sm bg-[#F6F7FF] w-full text-[#4162FF] font-medium">
           {data.cur}

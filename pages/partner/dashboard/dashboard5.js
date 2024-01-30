@@ -1,7 +1,12 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Sidebar";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
+import useAxios from "../../../hooks/useAxios";
+import { countryOptions } from "../../../components/constants/countryOptions";
+import CountrySelect from "../../../components/dropdown-selects/CountrySelect";
+
 import Cookie from "js-cookie";
 import pageload from "/public/logoutLoader.json"
 import Lottie from "lottie-react";
@@ -9,15 +14,57 @@ import Lottie from "lottie-react";
 const dashboard5 = ({ setCurrentStep, currentStep }) => {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState({});
+  const [isActive, setIsactive] = useState(false);
+  const [defaultCountry, setDefault] = useState(null);
+
   const { status, data: session } = useSession();
   const token = Cookie.get("token");
   const [headerValue, setHeaderValue] = useState(
     router.pathname === "/partner/dashboard" ? "Dashboard" : ""
   );
+  const {
+    handleSubmit,
+    register,
+    getValues,
+    formState: { errors },
+  } = useForm();
   const [opc, setOpc] = useState(0);
 
   const [note, setNote] = useState(0);
   const [data, setData] = useState(" ");
+  const { resdata, error, loading, putData: putRequest } = useAxios();
+  const [customError, setCustomError] = useState(null);
+
+  useEffect(() => {
+    if (
+      resdata.message &&
+      resdata.message === "OTP has been send on provided email"
+    ) {
+      setCurrentStep(3);
+    }
+
+    if (resdata.message && resdata.state === "success") {
+      setCustomError(error);
+    }
+
+    if (defaultCountry && !isSelect) {
+      const country = countryOptions.filter(
+        (opt) => opt.label === defaultCountry
+      );
+      setSelectedCountry(country[0]);
+    }
+    if (resdata.state && resdata.state === "success") {
+      setloading(true);
+      setCurrentStep(6);
+    }
+
+    if (Object.keys(selectedCountry).length > 0) {
+      setIsactive(true);
+    } else {
+      setIsactive(false);
+    }
+  }, [loading, selectedCountry, resdata, isActive, defaultCountry, resdata]);
   const getCode = () => {
     navigator.clipboard.writeText(code);
     setNote(1);
@@ -52,6 +99,12 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
       setNote(0);
     }, 4000);
   };
+  const handleCountryChange = (selectedOption) => {
+    if (selectedOption) {
+      setIsSelect(true);
+      setSelectedCountry(selectedOption);
+    }
+  };
 
   useEffect(() => {
     if (!token) {
@@ -78,7 +131,11 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
     </div>
   }
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+  function togglePasswordVisibility() {
+    setIsPasswordVisible((prevState) => !prevState);
+  }
 
   return (
     <div
@@ -128,30 +185,182 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
         <main className="flex-grow">
           <div
             style={{ backgroundColor: "#F7F9FB" }}
-            className="py-5 ml-1 mr-11 flex justify-center items-center "
+            className=" py-5 ml-1 mr-11"
           >
-            <>
-              <div className={`w-[508px] h-[539px] visible rounded-[24px] bg-white`}>
-                <div className="p-[24px]">
-                  <div className="flex justify-between mx-2"><p className="text-[20px] font-semibold font-freesans mt-[-1px]">Withdraw Funds</p>
-                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M17.9998 6.49982C17.8123 6.31235 17.558 6.20703 17.2928 6.20703C17.0277 6.20703 16.7733 6.31235 16.5858 6.49982L11.9998 11.0858L7.41382 6.49982C7.22629 6.31235 6.97198 6.20703 6.70682 6.20703C6.44165 6.20703 6.18735 6.31235 5.99982 6.49982C5.81235 6.68735 5.70703 6.94165 5.70703 7.20682C5.70703 7.47198 5.81235 7.72629 5.99982 7.91382L10.5858 12.4998L5.99982 17.0858C5.81235 17.2733 5.70703 17.5277 5.70703 17.7928C5.70703 18.058 5.81235 18.3123 5.99982 18.4998C6.18735 18.6873 6.44165 18.7926 6.70682 18.7926C6.97198 18.7926 7.22629 18.6873 7.41382 18.4998L11.9998 13.9138L16.5858 18.4998C16.7733 18.6873 17.0277 18.7926 17.2928 18.7926C17.558 18.7926 17.8123 18.6873 17.9998 18.4998C18.1873 18.3123 18.2926 18.058 18.2926 17.7928C18.2926 17.5277 18.1873 17.2733 17.9998 17.0858L13.4138 12.4998L17.9998 7.91382C18.1873 7.72629 18.2926 7.47198 18.2926 7.20682C18.2926 6.94165 18.1873 6.68735 17.9998 6.49982Z" fill="#374957" />
-                    </svg>
+            <div>
+              <div className="mt-[-25px]">
+                <div className="flex ml-5"><svg className="cursor-pointer" onClick={() => router.back()} width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.77217 5.93555L3.20801 11.4997L8.77217 17.0639" stroke="#374151" stroke-width="1.3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M18.7918 11.5H3.36426" stroke="#374151" stroke-width="1.375" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                  <p className="text-[20px] font-freesans ml-3 mt-[-1px] content-center">
+                    Overview
+                  </p>
+                </div>
+                <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg h-full w-full">
+                  <div className=" flex items-center py-5 pl-6"><svg className="pr-2" width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect y="0.5" width="42" height="42" rx="12" fill="#E9F2FF" />
+                    <path d="M19.4299 11.92C20.3999 11.36 21.5999 11.36 22.5799 11.92L28.5199 15.35C29.4899 15.91 30.0899 16.95 30.0899 18.08V24.92C30.0899 26.04 29.4899 27.08 28.5199 27.65L22.5799 31.08C21.6099 31.64 20.4099 31.64 19.4299 31.08L13.4899 27.65C12.5199 27.09 11.9199 26.05 11.9199 24.92V18.08C11.9199 16.96 12.5199 15.92 13.4899 15.35L15.3899 14.25" stroke="#4162FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M20.9999 20.4998C22.2867 20.4998 23.3299 19.4566 23.3299 18.1698C23.3299 16.883 22.2867 15.8398 20.9999 15.8398C19.7131 15.8398 18.6699 16.883 18.6699 18.1698C18.6699 19.4566 19.7131 20.4998 20.9999 20.4998Z" stroke="#4162FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M25 26.1594C25 24.3594 23.21 22.8994 21 22.8994C18.79 22.8994 17 24.3594 17 26.1594" stroke="#4162FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                    <p className="text-[16px] font-freesans font-[500]">
+                      Profile
+                    </p>
                   </div>
-                  <div className="mx-[5px] border-t-[1px] border-solid border-slate-200"></div>
-                  <div className="items-center w-full h-[94px] flex mt-5 shadow bg-[#f7f9ff] border-solid border-l-4 rounded-[16px] border-[#9a6aff] justify-between ml-[-3px]">
-                    <p className="ml-4 text-[14px]">Available Balance</p>
-                    <div className="flex mr-4 items-center justify-center bg-[#e9f2ff] text-[#9a6aff] h-[67px] w-[102px] rounded-[12px]">
-                      <p className="text-[24px] font-[600] font-sans">$724</p>
+                  <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
+                  <div className="flex justify-start items-center">
+                    <div className="ml-10">
+                      <p className="text-[#374151] text-[14px] pt-5">Your Name</p>
+                      <input
+                        type="text"
+                        style={{
+                          fontSize: "16px",
+                          color: "#9CA3AF",
+                          "::placeholder": { color: "#9CA3AF" },
+                        }}
+                        placeholder="Enter Your Name"
+                        className="'h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                      />
+                    </div>
+                    <div className="ml-10">
+                      <p className="text-[#374151] text-[14px] pt-5">Email</p>
+                      <input
+                        type="text"
+                        style={{
+                          fontSize: "16px",
+                          color: "#9CA3AF",
+                          "::placeholder": { color: "#9CA3AF" },
+                        }}
+                        placeholder="Enter your email "
+                        {...register("email", {
+                          required: "Enter A Valid Email Address !",
+                          pattern: {
+                            value:
+                              /^(?:[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|^\+[0-9]{10,15}$)/i,
+                            message: "Invalid email ",
+                          },
+                        })}
+                        className={`'h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.email ? "border-red-500" : ""
+                          }`}
+                      />
+                      {errors.email && (
+                        <div className="flex flex-col w-full items-start">
+                          <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
+                            {errors.email.message}
+                          </p>
+                        </div>
+                      )}
+
+                      {!errors.email && error && (
+                        <div className="flex flex-col w-full items-start">
+                          <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
+                            {error}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex justify-start items-center">
+                    <div className="ml-10">
+                      <p className="text-[#374151] text-[14px] pt-5">Phone Number</p>
+                      <input
+                        type="number"
+                        style={{
+                          fontSize: "16px",
+                          color: "#9CA3AF",
+                          "::placeholder": { color: "#9CA3AF" },
+                        }}
+                        placeholder="Enter Phone Number"
+                        className="mr-3 ml-[-8px] relative cursor-default h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                      />
+                    </div>
+                    <div className="ml-10">
+                      <p className="text-[#374151] text-[14px]">Country</p>
+                      <div className="h-[20px] w-[430px] border-2 mt-[-12px] text-[#9CA3AF] rounded-[12px] px-3 mr-3 ml-[-8px] focus:border-blue-500 relative cursor-default ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4162FF]">
+                        <CountrySelect
+                          value={selectedCountry}
+                          onChange={handleCountryChange}
+                          options={countryOptions}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="ml-7">
+                      <p className="text-[#374151] text-[14px] pt-5">Password</p>
+                      <div className="relative mx-auto">
+                        <input
+                          type={isPasswordVisible ? "text" : "password"}
+                          placeholder="Enter your password"
+                          className={`h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row  py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.password ? "border-red-500" : ""
+                            }`}
+                          {...register("password", {
+                            required: "Password is required",
+                            pattern: {
+                              value:
+                                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/,
+                              message:
+                                "Password must be at least 8 characters, 1 uppercase, 1 lowercase & 1 number",
+                            },
+                          })}
+                        />
+                        <button
+                          className="absolute inset-y-0 right-0 flex items-center bg-transparent pr-12 text-gray-600"
+                          onClick={togglePasswordVisibility}
+                        >
+                          {isPasswordVisible ? (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                              />
+                            </svg>
+                          ) : (
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="w-4 h-4"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                          )}
+                        </button>
+                      </div>
+                      {errors.password && (
+                        <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
+                          {customError ? customError : errors.password.message}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>
               </div>
-            </>
-          </div>
+            </div>
+            </div>
         </main>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
