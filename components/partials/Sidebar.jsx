@@ -26,8 +26,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const businessNam = useRef();
   const dispatch = useDispatch(); 
   const id = Cookies.get("id");
-  const business = useSelector((state) => state?.getBusiness?.business?.business
+  const {business} = useSelector((state) => state?.getBusiness
   );
+
+  console.log(business, "<----business");
 
   const activeItemIndex = navItems.findIndex(
     (item) => item.section === curPath
@@ -56,10 +58,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   useEffect(()=>{
     dispatch(fetchBusiness(id));
-  },[id])
-
-  
-
+  },[id]);
 
   
   const storedValue = businessNam.current;
@@ -71,7 +70,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   }
 
   const handleFile = (event) => {
-    console.log("Event Object:", event);
     const formData = new FormData();
     const selectedFile = event.target.files[0];
     if (selectedFile) {
@@ -86,11 +84,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
 
   const handleBusinessImage = () =>{
     inputFile.current.click();
-    
   }
 
-
-  
   // useEffect(()=>{
   //   if(selectedImage){
   //     const formData = new FormData();
@@ -186,7 +181,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     className="mb-2"
                     style={{ color: "#FAFAFA", fontWeight: 600 }}
                   >
-                    {business}
+                    {business?.business}
                   </span>{" "}
                   <a style={{ color: "#FAFAFA", fontSize: "12px" }} href="#">
                     Visit Store
