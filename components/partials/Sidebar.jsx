@@ -175,7 +175,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     className={`${selectedImage? " h-9 w-9" : ""} cursor-pointer`}
                   />
                 </div>
-                
+
                 <div className="flex flex-col items-center justify-center ml-3">
                   <span
                     className="mb-2"
@@ -247,7 +247,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                             return (
                               <li
                                 className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-r-xl dark:border-gray-600 ${
-                                  activeSubIndex === idx ? "font-bold" : ""
+                                  activeSubIndex === idx ? "bg-[#323346] rounded-r-full p-[8px] xl:p-[12px]  w-[180px] font-freesans transition hover:duration-150" : "hover:bg-[#323346] rounded-r-full hover:p-[8px] hover:xl:p-[12px]  w-[180px] font-freesans hover:transition hover:duration-150"
                                 }`}
                               >
                                 {" "}
