@@ -8,7 +8,7 @@ import { useNavigation } from "../../hooks/useNavigation";
 import Cookies from "js-cookie";
 import useAxios from "../../hooks/useAxios";
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBusiness } from '../../redux/slices/getBusiness';
+import { fetchBusiness, addBusinessLogo, fetchBusinessLogo } from '../../redux/slices/getBusiness';
 import FormData from 'form-data'
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
@@ -21,7 +21,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
   const { navItems } = useNavigation();
   const trigger = useRef(null);
   const sidebar = useRef(null);
-  const ID = Cookies.get("id");
   const inputFile = useRef(null);
   const businessNam = useRef();
   const dispatch = useDispatch(); 
@@ -76,7 +75,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
       const imageUrl = URL.createObjectURL(selectedFile);
       setSelectedImage(imageUrl)
       formData.append("file", selectedFile);
-      postRequest(`/media`, formData);
+
+      console.log(formData, "<----formData")
+      dispatch(addBusinessLogo({ id, logoData: formData }));
     } else {
       console.error("No file selected");
     }
@@ -122,9 +123,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
         <div
           id="sidebar"
           ref={sidebar}
-          className={`flex flex-col absolute z-40 left-0 top-0 xl:static xl:left-auto xl:top-auto xl:translate-x-0 h-screen 
-        overflow-y-scroll xl:overflow-y-auto no-scrollbar w-64 xl:w-64 xl:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] 
-        transition-transform duration-200 ease-in-out ${
+          className={`flex rounded-r-xl flex-col absolute z-40 left-0 top-0 xl:static xl:left-auto xl:top-auto xl:translate-x-0 h-screen 
+          overflow-y-scroll xl:overflow-y-auto no-scrollbar w-64 xl:w-64 xl:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-[#1F1D2B] 
+          transition-transform duration-200 ease-in-out ${
           sidebarOpen ? "translate-x-0 rounded-r-xl" : "-translate-x-64"
         }`}
         >
@@ -166,7 +167,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     borderRadius: "6px",
                   }}
                 >
-                  <input type="file" id="file" ref={inputFile} style={{ display: "none" }} onChange={handleFile} />
+                  <input type="file" id="file" ref={inputFile} style={{ display: "none" }} onChange={()=> handleFile} />
                   <img
                     src={selectedImage? selectedImage :"/logo.png"}
                     onClick={handleBusinessImage}
@@ -174,7 +175,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                     className={`${selectedImage? " h-9 w-9" : ""} cursor-pointer`}
                   />
                 </div>
-
 
                 <div className="flex flex-col items-center justify-center ml-3">
                   <span
@@ -199,30 +199,30 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                 <div className="space-y-80" key={index}>
                   {/* Pages group */}
                   <div>
-                    <ul className="mt-1 xl:mt-2 list-none m-2 p-0 ">
+                    <ul className="mt-1 xl:mt-2 list-none m-2 p-0  ">
                       <div
                         style={
                           activeIndex === index
-                            ? { backgroundColor: "white", borderRadius: 12 }
+                            ? { backgroundColor: "white" }
                             : { backgroundColor: "transparent" }
                         }
-                        className=" p-[8px] xl:p-[12px]  w-[180px] font-freesans last:mb-0 "
+                        className="rounded-r-full p-[8px] xl:p-[12px]  w-[180px] font-freesans last:mb-0 "
                       >
                         <Link
                           style={{ textDecoration: "none" }}
                           href={item.href}
                         >
                           <div
-                            className={`no-underline block truncate transition duration-150 `}
+                            className={activeIndex === index ? 'no-underline block truncate transition duration-150' : `hover:bg-[#323346] rounded-r-full rounded-r-full hover:p-[8px] hover:xl:p-[12px]  w-[180px] font-freesans hover:transition hover:duration-150 `}
                           >
                             <div className="flex flex-row items-center">
                               {item.icon}
                               <span
                                 style={{
                                   color:
-                                    activeIndex === index
-                                      ? "#1F1D2B"
-                                      : "#FAFAFA",
+                                  activeIndex === index
+                                  ? "#1F1D2B"
+                                  : "#FAFAFA",
                                   fontWeight: activeIndex === index ? 500 : 400,
                                   marginLeft: 14,
                                 }}
@@ -246,8 +246,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, setHeaderValue }) => {
                           {item.subItems.map((itm, idx) => {
                             return (
                               <li
-                                className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-t-xl dark:border-gray-600 ${
-                                  activeSubIndex === idx ? "font-bold" : ""
+                                className={`w-full px-4 py-2 mb-1 border-b border-gray-200 rounded-r-xl dark:border-gray-600 ${
+                                  activeSubIndex === idx ? "bg-[#323346] rounded-r-full p-[8px] xl:p-[12px]  w-[180px] font-freesans transition hover:duration-150" : "hover:bg-[#323346] rounded-r-full hover:p-[8px] hover:xl:p-[12px]  w-[180px] font-freesans hover:transition hover:duration-150"
                                 }`}
                               >
                                 {" "}
