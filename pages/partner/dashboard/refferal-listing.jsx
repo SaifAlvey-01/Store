@@ -108,7 +108,7 @@ export default function RefferalListing({
                   fontSize: "12px",
                 }}
               >
-                <div className="flex flex-row justify-center items-center">
+                <div className="flex flex-row">
                   {header.title}
                   <img className="ml-2" src={"/sort.png"} width="16" />
                 </div>
