@@ -164,7 +164,7 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <p id="copy-target-2" className="text-[16px] font-[400]">
+                    <p id="copy-target-2" className="text-[16px] font-[400] hidden lg:block">
                       {code}
                     </p>
                     <div
