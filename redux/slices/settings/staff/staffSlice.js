@@ -6,11 +6,9 @@ const baseUrl = process.env.BASE_URL;
 
 const initialState = {
   // Define your initial state here for the new slice
-<<<<<<< HEAD
   EmailInfo: {},
-=======
+
   managerEmailInfo: "",
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   loading: false,
   error: null,
   status: null,
@@ -41,12 +39,9 @@ const registerManagerEmailSlice = createSlice({
       })
       .addCase(registerManagerEmail.fulfilled, (state, action) => {
         state.loading = false;
-        state.status = true;
-<<<<<<< HEAD
-        state.managerEmailInfo = action.payload.data;
-=======
+        state.status = true;        state.managerEmailInfo = action.payload.data;
+
         state.managerEmailInfo = action.payload.message;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(registerManagerEmail.rejected, (state, action) => {
         state.loading = false;

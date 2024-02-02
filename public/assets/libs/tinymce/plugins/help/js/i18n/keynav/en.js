@@ -24,11 +24,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '\n' +
   '<p>To move from one UI section to the previous, press <strong>Shift+Tab</strong>.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>The <strong>Tab</strong> order of these UI sections is:</p>\n' +
-=======
-  '<p>The <strong>Tab</strong> order of these UI sections is:\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Menu bar</li>\n' +
@@ -43,11 +39,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '<p>If a UI section is not present, it is skipped.</p>\n' +
   '\n' +
   '<p>If the footer has keyboard navigation focus, and there is no visible sidebar, pressing <strong>Shift+Tab</strong>\n' +
-<<<<<<< HEAD
   '  moves focus to the first toolbar group, not the last.</p>\n' +
-=======
-  '  moves focus to the first toolbar group, not the last.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navigate within UI sections</h1>\n' +
   '\n' +
@@ -62,11 +54,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '  <li>move between items in the footer’s element path.</li>\n' +
   '</ul>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>The <strong>Down</strong> and <strong>Up</strong> arrow keys</p>\n' +
-=======
-  '<p>The <strong>Down</strong> and <strong>Up</strong> arrow keys\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>move between menu items in a menu.</li>\n' +
@@ -75,11 +63,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '\n' +
   '<p><strong>Arrow</strong> keys cycle within the focused UI section.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>To close an open menu, an open sub-menu, or an open pop-up menu, press the <strong>Esc</strong> key.</p>\n' +
-=======
-  '<p>To close an open menu, an open sub-menu, or an open pop-up menu, press the <strong>Esc</strong> key.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>If the current focus is at the ‘top’ of a particular UI section, pressing the <strong>Esc</strong> key also exits\n' +
   '  keyboard navigation entirely.</p>\n' +
@@ -87,11 +71,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.en',
   '<h1>Execute a menu item or toolbar button</h1>\n' +
   '\n' +
   '<p>When the desired menu item or toolbar button is highlighted, press <strong>Return</strong>, <strong>Enter</strong>,\n' +
-<<<<<<< HEAD
   '  or the <strong>Space bar</strong> to execute the item.</p>\n' +
-=======
-  '  or the <strong>Space bar</strong> to execute the item.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navigate non-tabbed dialogs</h1>\n' +
   '\n' +

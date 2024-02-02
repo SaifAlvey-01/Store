@@ -129,7 +129,7 @@ const dashboard2 = ({ setCurrentStep, currentStep }) => {
                       All of Recent Refferals
                     </p>
                   </div>
-                  <div className="flex">
+                  <div className="flex mr-2">
                     <div className="mx-4 cursor-pointer w-[134px] h-[36px] rounded-md flex items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]">
                       <svg
                         width="18"

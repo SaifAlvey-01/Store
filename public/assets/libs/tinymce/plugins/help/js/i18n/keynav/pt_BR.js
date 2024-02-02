@@ -24,11 +24,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.pt_BR',
   '\n' +
   '<p>Para ir de uma seção da IU para a anterior, pressione <strong>Shift+Tab</strong>.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>A ordem de <strong>Tab</strong> destas seções da IU é:</p>\n' +
-=======
-  '<p>A ordem de <strong>Tab</strong> destas seções da IU é:\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Barra de menus</li>\n' +
@@ -43,11 +39,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.pt_BR',
   '<p>Se não houver uma seção da IU, ela será pulada.</p>\n' +
   '\n' +
   '<p>Se o rodapé tiver o foco da navegação pelo teclado e não houver uma barra lateral visível, pressionar <strong>Shift+Tab</strong>\n' +
-<<<<<<< HEAD
   '  move o foco para o primeiro grupo da barra de ferramentas, não para o último.</p>\n' +
-=======
-  '  move o foco para o primeiro grupo da barra de ferramentas, não para o último.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navegar dentro das seções da IU</h1>\n' +
   '\n' +
@@ -62,11 +54,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.pt_BR',
   '  <li>movem entre itens no caminho do elemento do rodapé.</li>\n' +
   '</ul>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>As teclas de seta <strong>Abaixo</strong> e <strong>Acima</strong></p>\n' +
-=======
-  '<p>As teclas de seta <strong>Abaixo</strong> e <strong>Acima</strong>\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>movem entre itens de menu em um menu.</li>\n' +
@@ -75,11 +63,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.pt_BR',
   '\n' +
   '<p>As teclas de <strong>Seta</strong> alternam dentre a seção da IU em foco.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Para fechar um menu aberto, um submenu aberto ou um menu suspenso aberto, pressione <strong>Esc</strong>.</p>\n' +
-=======
-  '<p>Para fechar um menu aberto, um submenu aberto ou um menu suspenso aberto, pressione <strong>Esc</strong>.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>Se o foco atual estiver no ‘alto’ de determinada seção da IU, pressionar <strong>Esc</strong> também sai\n' +
   '  totalmente da navegação pelo teclado.</p>\n' +
@@ -87,11 +71,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.pt_BR',
   '<h1>Executar um item de menu ou botão da barra de ferramentas</h1>\n' +
   '\n' +
   '<p>Com o item de menu ou botão da barra de ferramentas desejado destacado, pressione <strong>Return</strong>, <strong>Enter</strong>,\n' +
-<<<<<<< HEAD
   '  ou a <strong>Barra de espaço</strong> para executar o item.</p>\n' +
-=======
-  '  ou a <strong>Barra de espaço</strong> para executar o item.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navegar por caixas de diálogo sem guias</h1>\n' +
   '\n' +

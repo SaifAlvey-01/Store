@@ -24,8 +24,6 @@ export const fetchBusiness = createAsyncThunk('business/fetchBusiness', async (i
   }
 });
 
-<<<<<<< HEAD
-=======
 // New async thunk for fetching business logo
 export const fetchBusinessLogo = createAsyncThunk('business/fetchBusinessLogo', async (id) => {
   const url = `${baseUrl}/accounts/business-logo/${id}`;
@@ -51,8 +49,6 @@ export const addBusinessLogo = createAsyncThunk('business/addBusinessLogo', asyn
     throw error;
   }
 });
-
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 const businessSlice = createSlice({
   name: 'business',
   initialState,
@@ -68,10 +64,7 @@ const businessSlice = createSlice({
       })
       .addCase(fetchBusiness.rejected, (state, action) => {
         state.loading = 'rejected';
-        state.error = action.error.message;
-<<<<<<< HEAD
-      });
-=======
+        state.error = action.error.message
       })
       .addCase(fetchBusinessLogo.pending, (state) => {
         state.loading = 'pending';
@@ -96,7 +89,6 @@ const businessSlice = createSlice({
         state.loading = 'rejected';
         state.error = action.error.message;
       })
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   },
 });
 

@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
  * TinyMCE version 6.8.2 (2023-12-11)
-=======
- * TinyMCE version 6.7.2 (2023-10-25)
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
  */
 
 (function () {
@@ -355,11 +351,7 @@
     };
 
     const keys = Object.keys;
-<<<<<<< HEAD
     const hasOwnProperty = Object.hasOwnProperty;
-=======
-    const hasOwnProperty$1 = Object.hasOwnProperty;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const each = (obj, f) => {
       const props = keys(obj);
       for (let k = 0, len = props.length; k < len; k++) {
@@ -428,11 +420,7 @@
     const get$g = (obj, key) => {
       return has$2(obj, key) ? Optional.from(obj[key]) : Optional.none();
     };
-<<<<<<< HEAD
     const has$2 = (obj, key) => hasOwnProperty.call(obj, key);
-=======
-    const has$2 = (obj, key) => hasOwnProperty$1.call(obj, key);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const hasNonNullableKey = (obj, key) => has$2(obj, key) && obj[key] !== undefined && obj[key] !== null;
 
     const is$1 = (lhs, rhs, comparator = tripleEquals) => lhs.exists(left => comparator(left, rhs));
@@ -1643,11 +1631,7 @@
     const shallow$1 = (old, nu) => {
       return nu;
     };
-<<<<<<< HEAD
     const deep$1 = (old, nu) => {
-=======
-    const deep = (old, nu) => {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const bothObjects = isPlainObject(old) && isPlainObject(nu);
       return bothObjects ? deepMerge(old, nu) : nu;
     };
@@ -1668,11 +1652,7 @@
         return ret;
       };
     };
-<<<<<<< HEAD
     const deepMerge = baseMerge(deep$1);
-=======
-    const deepMerge = baseMerge(deep);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const merge$1 = baseMerge(shallow$1);
 
     const required$2 = () => ({
@@ -2421,10 +2401,7 @@
 
     const clone$1 = (original, isDeep) => SugarElement.fromDom(original.dom.cloneNode(isDeep));
     const shallow = original => clone$1(original, false);
-<<<<<<< HEAD
     const deep = original => clone$1(original, true);
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const getHtml = element => {
       if (isShadowRoot(element)) {
@@ -2838,7 +2815,6 @@
     const get$8 = element => read(element, 'class');
     const add$3 = (element, clazz) => add$4(element, 'class', clazz);
     const remove$3 = (element, clazz) => remove$4(element, 'class', clazz);
-<<<<<<< HEAD
     const toggle$5 = (element, clazz) => {
       if (contains$2(get$8(element), clazz)) {
         return remove$3(element, clazz);
@@ -2846,8 +2822,6 @@
         return add$3(element, clazz);
       }
     };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const add$2 = (element, clazz) => {
       if (supports(element)) {
@@ -2871,14 +2845,11 @@
       }
       cleanClass(element);
     };
-<<<<<<< HEAD
     const toggle$4 = (element, clazz) => {
       const result = supports(element) ? element.dom.classList.toggle(clazz) : toggle$5(element, clazz);
       cleanClass(element);
       return result;
     };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const has = (element, clazz) => supports(element) && element.dom.classList.contains(clazz);
 
     const add$1 = (element, classes) => {
@@ -2891,14 +2862,11 @@
         remove$2(element, x);
       });
     };
-<<<<<<< HEAD
     const toggle$3 = (element, classes) => {
       each$1(classes, x => {
         toggle$4(element, x);
       });
     };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const hasAll = (element, classes) => forall(classes, clazz => has(element, clazz));
     const getNative = element => {
       const classList = element.dom.classList;
@@ -3743,11 +3711,7 @@
         exhibit: exhibit$6
     });
 
-<<<<<<< HEAD
     const focus$3 = (element, preventScroll = false) => element.dom.focus({ preventScroll });
-=======
-    const focus$3 = element => element.dom.focus();
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const blur$1 = element => element.dom.blur();
     const hasFocus = element => {
       const root = getRootNode(element).dom;
@@ -6096,11 +6060,7 @@
       return contains$2(keys, raw.which);
     };
     const and = preds => event => forall(preds, pred => pred(event));
-<<<<<<< HEAD
     const isShift$1 = event => {
-=======
-    const isShift = event => {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const raw = event.raw;
       return raw.shiftKey === true;
     };
@@ -6108,11 +6068,7 @@
       const raw = event.raw;
       return raw.ctrlKey === true;
     };
-<<<<<<< HEAD
     const isNotShift = not(isShift$1);
-=======
-    const isNotShift = not(isShift);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const rule = (matches, action) => ({
       matches,
@@ -6272,11 +6228,7 @@
       const exit = (component, simulatedEvent, tabbingConfig) => tabbingConfig.onEscape.bind(f => f(component, simulatedEvent));
       const getKeydownRules = constant$1([
         rule(and([
-<<<<<<< HEAD
           isShift$1,
-=======
-          isShift,
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           inSet(TAB)
         ]), goBackwards),
         rule(inSet(TAB), goForwards),
@@ -6457,11 +6409,7 @@
       rule(inSet(UP), north$1(moveNorth$1)),
       rule(inSet(DOWN), south$1(moveSouth$1)),
       rule(and([
-<<<<<<< HEAD
         isShift$1,
-=======
-        isShift,
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         inSet(TAB)
       ]), handleTab),
       rule(and([
@@ -6635,11 +6583,7 @@
       rule(inSet(UP), move$1(moveUp)),
       rule(inSet(DOWN), move$1(moveDown)),
       rule(and([
-<<<<<<< HEAD
         isShift$1,
-=======
-        isShift,
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         inSet(TAB)
       ]), fireShiftTab),
       rule(and([
@@ -6673,19 +6617,11 @@
         inSet(ENTER)
       ]), specialInfo.onEnter),
       rule(and([
-<<<<<<< HEAD
         isShift$1,
         inSet(ENTER)
       ]), specialInfo.onShiftEnter),
       rule(and([
         isShift$1,
-=======
-        isShift,
-        inSet(ENTER)
-      ]), specialInfo.onShiftEnter),
-      rule(and([
-        isShift,
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         inSet(TAB)
       ]), specialInfo.onShiftTab),
       rule(and([
@@ -8165,95 +8101,9 @@
       };
     };
 
-<<<<<<< HEAD
     const {entries, setPrototypeOf, isFrozen, getPrototypeOf, getOwnPropertyDescriptor} = Object;
     let {freeze, seal, create: create$1} = Object;
     let {apply, construct} = typeof Reflect !== 'undefined' && Reflect;
-=======
-    function _typeof(obj) {
-      '@babel/helpers - typeof';
-      return _typeof = 'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator ? function (obj) {
-        return typeof obj;
-      } : function (obj) {
-        return obj && 'function' == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? 'symbol' : typeof obj;
-      }, _typeof(obj);
-    }
-    function _setPrototypeOf(o, p) {
-      _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-        o.__proto__ = p;
-        return o;
-      };
-      return _setPrototypeOf(o, p);
-    }
-    function _isNativeReflectConstruct() {
-      if (typeof Reflect === 'undefined' || !Reflect.construct)
-        return false;
-      if (Reflect.construct.sham)
-        return false;
-      if (typeof Proxy === 'function')
-        return true;
-      try {
-        Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {
-        }));
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-    function _construct(Parent, args, Class) {
-      if (_isNativeReflectConstruct()) {
-        _construct = Reflect.construct;
-      } else {
-        _construct = function _construct(Parent, args, Class) {
-          var a = [null];
-          a.push.apply(a, args);
-          var Constructor = Function.bind.apply(Parent, a);
-          var instance = new Constructor();
-          if (Class)
-            _setPrototypeOf(instance, Class.prototype);
-          return instance;
-        };
-      }
-      return _construct.apply(null, arguments);
-    }
-    function _toConsumableArray(arr) {
-      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-    }
-    function _arrayWithoutHoles(arr) {
-      if (Array.isArray(arr))
-        return _arrayLikeToArray(arr);
-    }
-    function _iterableToArray(iter) {
-      if (typeof Symbol !== 'undefined' && iter[Symbol.iterator] != null || iter['@@iterator'] != null)
-        return Array.from(iter);
-    }
-    function _unsupportedIterableToArray(o, minLen) {
-      if (!o)
-        return;
-      if (typeof o === 'string')
-        return _arrayLikeToArray(o, minLen);
-      var n = Object.prototype.toString.call(o).slice(8, -1);
-      if (n === 'Object' && o.constructor)
-        n = o.constructor.name;
-      if (n === 'Map' || n === 'Set')
-        return Array.from(o);
-      if (n === 'Arguments' || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-        return _arrayLikeToArray(o, minLen);
-    }
-    function _arrayLikeToArray(arr, len) {
-      if (len == null || len > arr.length)
-        len = arr.length;
-      for (var i = 0, arr2 = new Array(len); i < len; i++)
-        arr2[i] = arr[i];
-      return arr2;
-    }
-    function _nonIterableSpread() {
-      throw new TypeError('Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.');
-    }
-    var hasOwnProperty = Object.hasOwnProperty, setPrototypeOf = Object.setPrototypeOf, isFrozen = Object.isFrozen, getPrototypeOf = Object.getPrototypeOf, getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-    var freeze = Object.freeze, seal = Object.seal, create$1 = Object.create;
-    var _ref = typeof Reflect !== 'undefined' && Reflect, apply = _ref.apply, construct = _ref.construct;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     if (!apply) {
       apply = function apply(fun, thisValue, args) {
         return fun.apply(thisValue, args);
@@ -8271,7 +8121,6 @@
     }
     if (!construct) {
       construct = function construct(Func, args) {
-<<<<<<< HEAD
         return new Func(...args);
       };
     }
@@ -8286,21 +8135,6 @@
     const stringTrim = unapply(String.prototype.trim);
     const regExpTest = unapply(RegExp.prototype.test);
     const typeErrorCreate = unconstruct(TypeError);
-=======
-        return _construct(Func, _toConsumableArray(args));
-      };
-    }
-    var arrayForEach = unapply(Array.prototype.forEach);
-    var arrayPop = unapply(Array.prototype.pop);
-    var arrayPush = unapply(Array.prototype.push);
-    var stringToLowerCase = unapply(String.prototype.toLowerCase);
-    var stringMatch = unapply(String.prototype.match);
-    var stringReplace = unapply(String.prototype.replace);
-    var stringIndexOf = unapply(String.prototype.indexOf);
-    var stringTrim = unapply(String.prototype.trim);
-    var regExpTest = unapply(RegExp.prototype.test);
-    var typeErrorCreate = unconstruct(TypeError);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     function unapply(func) {
       return function (thisArg) {
         for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -8317,7 +8151,6 @@
         return construct(func, args);
       };
     }
-<<<<<<< HEAD
     function addToSet(set, array, transformCaseFunc) {
       var _transformCaseFunc;
       transformCaseFunc = (_transformCaseFunc = transformCaseFunc) !== null && _transformCaseFunc !== void 0 ? _transformCaseFunc : stringToLowerCase;
@@ -8329,17 +8162,6 @@
         let element = array[l];
         if (typeof element === 'string') {
           const lcElement = transformCaseFunc(element);
-=======
-    function addToSet(set, array) {
-      if (setPrototypeOf) {
-        setPrototypeOf(set, null);
-      }
-      var l = array.length;
-      while (l--) {
-        var element = array[l];
-        if (typeof element === 'string') {
-          var lcElement = stringToLowerCase(element);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           if (lcElement !== element) {
             if (!isFrozen(array)) {
               array[l] = lcElement;
@@ -8352,28 +8174,15 @@
       return set;
     }
     function clone(object) {
-<<<<<<< HEAD
       const newObject = create$1(null);
       for (const [property, value] of entries(object)) {
         newObject[property] = value;
-=======
-      var newObject = create$1(null);
-      var property;
-      for (property in object) {
-        if (apply(hasOwnProperty, object, [property])) {
-          newObject[property] = object[property];
-        }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       }
       return newObject;
     }
     function lookupGetter(object, prop) {
       while (object !== null) {
-<<<<<<< HEAD
         const desc = getOwnPropertyDescriptor(object, prop);
-=======
-        var desc = getOwnPropertyDescriptor(object, prop);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (desc) {
           if (desc.get) {
             return unapply(desc.get);
@@ -8390,11 +8199,7 @@
       }
       return fallbackValue;
     }
-<<<<<<< HEAD
     const html$1 = freeze([
-=======
-    var html$1 = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'a',
       'abbr',
       'acronym',
@@ -8513,11 +8318,7 @@
       'video',
       'wbr'
     ]);
-<<<<<<< HEAD
     const svg$1 = freeze([
-=======
-    var svg$1 = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'svg',
       'a',
       'altglyph',
@@ -8562,11 +8363,7 @@
       'view',
       'vkern'
     ]);
-<<<<<<< HEAD
     const svgFilters = freeze([
-=======
-    var svgFilters = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'feBlend',
       'feColorMatrix',
       'feComponentTransfer',
@@ -8575,10 +8372,7 @@
       'feDiffuseLighting',
       'feDisplacementMap',
       'feDistantLight',
-<<<<<<< HEAD
       'feDropShadow',
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'feFlood',
       'feFuncA',
       'feFuncB',
@@ -8596,19 +8390,11 @@
       'feTile',
       'feTurbulence'
     ]);
-<<<<<<< HEAD
     const svgDisallowed = freeze([
-=======
-    var svgDisallowed = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'animate',
       'color-profile',
       'cursor',
       'discard',
-<<<<<<< HEAD
-=======
-      'fedropshadow',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'font-face',
       'font-face-format',
       'font-face-name',
@@ -8628,11 +8414,7 @@
       'unknown',
       'use'
     ]);
-<<<<<<< HEAD
     const mathMl$1 = freeze([
-=======
-    var mathMl$1 = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'math',
       'menclose',
       'merror',
@@ -8661,16 +8443,10 @@
       'mtext',
       'mtr',
       'munder',
-<<<<<<< HEAD
       'munderover',
       'mprescripts'
     ]);
     const mathMlDisallowed = freeze([
-=======
-      'munderover'
-    ]);
-    var mathMlDisallowed = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'maction',
       'maligngroup',
       'malignmark',
@@ -8687,13 +8463,8 @@
       'mprescripts',
       'none'
     ]);
-<<<<<<< HEAD
     const text$1 = freeze(['#text']);
     const html = freeze([
-=======
-    var text$1 = freeze(['#text']);
-    var html = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'accept',
       'action',
       'align',
@@ -8804,11 +8575,7 @@
       'xmlns',
       'slot'
     ]);
-<<<<<<< HEAD
     const svg = freeze([
-=======
-    var svg = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'accent-height',
       'accumulate',
       'additive',
@@ -8992,11 +8759,7 @@
       'z',
       'zoomandpan'
     ]);
-<<<<<<< HEAD
     const mathMl = freeze([
-=======
-    var mathMl = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'accent',
       'accentunder',
       'align',
@@ -9051,18 +8814,13 @@
       'width',
       'xmlns'
     ]);
-<<<<<<< HEAD
     const xml = freeze([
-=======
-    var xml = freeze([
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       'xlink:href',
       'xml:id',
       'xlink:title',
       'xml:space',
       'xmlns:xlink'
     ]);
-<<<<<<< HEAD
     const MUSTACHE_EXPR = seal(/\{\{[\w\W]*|[\w\W]*\}\}/gm);
     const ERB_EXPR = seal(/<%[\w\W]*|[\w\W]*%>/gm);
     const TMPLIT_EXPR = seal(/\${[\w\W]*}/gm);
@@ -9102,33 +8860,6 @@
           },
           createScriptURL(scriptUrl) {
             return scriptUrl;
-=======
-    var MUSTACHE_EXPR = seal(/\{\{[\w\W]*|[\w\W]*\}\}/gm);
-    var ERB_EXPR = seal(/<%[\w\W]*|[\w\W]*%>/gm);
-    var DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]/);
-    var ARIA_ATTR = seal(/^aria-[\-\w]+$/);
-    var IS_ALLOWED_URI = seal(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
-    var IS_SCRIPT_OR_DATA = seal(/^(?:\w+script|data):/i);
-    var ATTR_WHITESPACE = seal(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g);
-    var DOCTYPE_NAME = seal(/^html$/i);
-    var getGlobal = function getGlobal() {
-      return typeof window === 'undefined' ? null : window;
-    };
-    var _createTrustedTypesPolicy = function _createTrustedTypesPolicy(trustedTypes, document) {
-      if (_typeof(trustedTypes) !== 'object' || typeof trustedTypes.createPolicy !== 'function') {
-        return null;
-      }
-      var suffix = null;
-      var ATTR_NAME = 'data-tt-policy-suffix';
-      if (document.currentScript && document.currentScript.hasAttribute(ATTR_NAME)) {
-        suffix = document.currentScript.getAttribute(ATTR_NAME);
-      }
-      var policyName = 'dompurify' + (suffix ? '#' + suffix : '');
-      try {
-        return trustedTypes.createPolicy(policyName, {
-          createHTML: function createHTML(html) {
-            return html;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           }
         });
       } catch (_) {
@@ -9137,23 +8868,14 @@
       }
     };
     function createDOMPurify() {
-<<<<<<< HEAD
       let window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getGlobal();
       const DOMPurify = root => createDOMPurify(root);
       DOMPurify.version = '3.0.5';
-=======
-      var window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getGlobal();
-      var DOMPurify = function DOMPurify(root) {
-        return createDOMPurify(root);
-      };
-      DOMPurify.version = '2.3.8';
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       DOMPurify.removed = [];
       if (!window || !window.document || window.document.nodeType !== 9) {
         DOMPurify.isSupported = false;
         return DOMPurify;
       }
-<<<<<<< HEAD
       const originalDocument = window.document;
       const currentScript = originalDocument.currentScript;
       let {document} = window;
@@ -9165,23 +8887,10 @@
       const getParentNode = lookupGetter(ElementPrototype, 'parentNode');
       if (typeof HTMLTemplateElement === 'function') {
         const template = document.createElement('template');
-=======
-      var originalDocument = window.document;
-      var document = window.document;
-      var DocumentFragment = window.DocumentFragment, HTMLTemplateElement = window.HTMLTemplateElement, Node = window.Node, Element = window.Element, NodeFilter = window.NodeFilter, _window$NamedNodeMap = window.NamedNodeMap, NamedNodeMap = _window$NamedNodeMap === void 0 ? window.NamedNodeMap || window.MozNamedAttrMap : _window$NamedNodeMap, HTMLFormElement = window.HTMLFormElement, DOMParser = window.DOMParser, trustedTypes = window.trustedTypes;
-      var ElementPrototype = Element.prototype;
-      var cloneNode = lookupGetter(ElementPrototype, 'cloneNode');
-      var getNextSibling = lookupGetter(ElementPrototype, 'nextSibling');
-      var getChildNodes = lookupGetter(ElementPrototype, 'childNodes');
-      var getParentNode = lookupGetter(ElementPrototype, 'parentNode');
-      if (typeof HTMLTemplateElement === 'function') {
-        var template = document.createElement('template');
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (template.content && template.content.ownerDocument) {
           document = template.content.ownerDocument;
         }
       }
-<<<<<<< HEAD
       let trustedTypesPolicy;
       let emptyHTML = '';
       const {implementation, createNodeIterator, createDocumentFragment, getElementsByTagName} = document;
@@ -9206,26 +8915,6 @@
         ...xml
       ]);
       let CUSTOM_ELEMENT_HANDLING = Object.seal(Object.create(null, {
-=======
-      var trustedTypesPolicy = _createTrustedTypesPolicy(trustedTypes, originalDocument);
-      var emptyHTML = trustedTypesPolicy ? trustedTypesPolicy.createHTML('') : '';
-      var _document = document, implementation = _document.implementation, createNodeIterator = _document.createNodeIterator, createDocumentFragment = _document.createDocumentFragment, getElementsByTagName = _document.getElementsByTagName;
-      var importNode = originalDocument.importNode;
-      var documentMode = {};
-      try {
-        documentMode = clone(document).documentMode ? document.documentMode : {};
-      } catch (_) {
-      }
-      var hooks = {};
-      DOMPurify.isSupported = typeof getParentNode === 'function' && implementation && typeof implementation.createHTMLDocument !== 'undefined' && documentMode !== 9;
-      var MUSTACHE_EXPR$1 = MUSTACHE_EXPR, ERB_EXPR$1 = ERB_EXPR, DATA_ATTR$1 = DATA_ATTR, ARIA_ATTR$1 = ARIA_ATTR, IS_SCRIPT_OR_DATA$1 = IS_SCRIPT_OR_DATA, ATTR_WHITESPACE$1 = ATTR_WHITESPACE;
-      var IS_ALLOWED_URI$1 = IS_ALLOWED_URI;
-      var ALLOWED_TAGS = null;
-      var DEFAULT_ALLOWED_TAGS = addToSet({}, [].concat(_toConsumableArray(html$1), _toConsumableArray(svg$1), _toConsumableArray(svgFilters), _toConsumableArray(mathMl$1), _toConsumableArray(text$1)));
-      var ALLOWED_ATTR = null;
-      var DEFAULT_ALLOWED_ATTR = addToSet({}, [].concat(_toConsumableArray(html), _toConsumableArray(svg), _toConsumableArray(mathMl), _toConsumableArray(xml)));
-      var CUSTOM_ELEMENT_HANDLING = Object.seal(Object.create(null, {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         tagNameCheck: {
           writable: true,
           configurable: false,
@@ -9245,7 +8934,6 @@
           value: false
         }
       }));
-<<<<<<< HEAD
       let FORBID_TAGS = null;
       let FORBID_ATTR = null;
       let ALLOW_ARIA_ATTR = true;
@@ -9267,26 +8955,6 @@
       let USE_PROFILES = {};
       let FORBID_CONTENTS = null;
       const DEFAULT_FORBID_CONTENTS = addToSet({}, [
-=======
-      var FORBID_TAGS = null;
-      var FORBID_ATTR = null;
-      var ALLOW_ARIA_ATTR = true;
-      var ALLOW_DATA_ATTR = true;
-      var ALLOW_UNKNOWN_PROTOCOLS = false;
-      var SAFE_FOR_TEMPLATES = false;
-      var WHOLE_DOCUMENT = false;
-      var SET_CONFIG = false;
-      var FORCE_BODY = false;
-      var RETURN_DOM = false;
-      var RETURN_DOM_FRAGMENT = false;
-      var RETURN_TRUSTED_TYPE = false;
-      var SANITIZE_DOM = true;
-      var KEEP_CONTENT = true;
-      var IN_PLACE = false;
-      var USE_PROFILES = {};
-      var FORBID_CONTENTS = null;
-      var DEFAULT_FORBID_CONTENTS = addToSet({}, [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         'annotation-xml',
         'audio',
         'colgroup',
@@ -9313,13 +8981,8 @@
         'video',
         'xmp'
       ]);
-<<<<<<< HEAD
       let DATA_URI_TAGS = null;
       const DEFAULT_DATA_URI_TAGS = addToSet({}, [
-=======
-      var DATA_URI_TAGS = null;
-      var DEFAULT_DATA_URI_TAGS = addToSet({}, [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         'audio',
         'video',
         'img',
@@ -9327,13 +8990,8 @@
         'image',
         'track'
       ]);
-<<<<<<< HEAD
       let URI_SAFE_ATTRIBUTES = null;
       const DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, [
-=======
-      var URI_SAFE_ATTRIBUTES = null;
-      var DEFAULT_URI_SAFE_ATTRIBUTES = addToSet({}, [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         'alt',
         'class',
         'for',
@@ -9349,7 +9007,6 @@
         'style',
         'xmlns'
       ]);
-<<<<<<< HEAD
       const MATHML_NAMESPACE = 'http://www.w3.org/1998/Math/MathML';
       const SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
       const HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
@@ -9391,48 +9048,11 @@
         FORBID_CONTENTS = 'FORBID_CONTENTS' in cfg ? addToSet({}, cfg.FORBID_CONTENTS, transformCaseFunc) : DEFAULT_FORBID_CONTENTS;
         FORBID_TAGS = 'FORBID_TAGS' in cfg ? addToSet({}, cfg.FORBID_TAGS, transformCaseFunc) : {};
         FORBID_ATTR = 'FORBID_ATTR' in cfg ? addToSet({}, cfg.FORBID_ATTR, transformCaseFunc) : {};
-=======
-      var MATHML_NAMESPACE = 'http://www.w3.org/1998/Math/MathML';
-      var SVG_NAMESPACE = 'http://www.w3.org/2000/svg';
-      var HTML_NAMESPACE = 'http://www.w3.org/1999/xhtml';
-      var NAMESPACE = HTML_NAMESPACE;
-      var IS_EMPTY_INPUT = false;
-      var PARSER_MEDIA_TYPE;
-      var SUPPORTED_PARSER_MEDIA_TYPES = [
-        'application/xhtml+xml',
-        'text/html'
-      ];
-      var DEFAULT_PARSER_MEDIA_TYPE = 'text/html';
-      var transformCaseFunc;
-      var CONFIG = null;
-      var formElement = document.createElement('form');
-      var isRegexOrFunction = function isRegexOrFunction(testValue) {
-        return testValue instanceof RegExp || testValue instanceof Function;
-      };
-      var _parseConfig = function _parseConfig(cfg) {
-        if (CONFIG && CONFIG === cfg) {
-          return;
-        }
-        if (!cfg || _typeof(cfg) !== 'object') {
-          cfg = {};
-        }
-        cfg = clone(cfg);
-        ALLOWED_TAGS = 'ALLOWED_TAGS' in cfg ? addToSet({}, cfg.ALLOWED_TAGS) : DEFAULT_ALLOWED_TAGS;
-        ALLOWED_ATTR = 'ALLOWED_ATTR' in cfg ? addToSet({}, cfg.ALLOWED_ATTR) : DEFAULT_ALLOWED_ATTR;
-        URI_SAFE_ATTRIBUTES = 'ADD_URI_SAFE_ATTR' in cfg ? addToSet(clone(DEFAULT_URI_SAFE_ATTRIBUTES), cfg.ADD_URI_SAFE_ATTR) : DEFAULT_URI_SAFE_ATTRIBUTES;
-        DATA_URI_TAGS = 'ADD_DATA_URI_TAGS' in cfg ? addToSet(clone(DEFAULT_DATA_URI_TAGS), cfg.ADD_DATA_URI_TAGS) : DEFAULT_DATA_URI_TAGS;
-        FORBID_CONTENTS = 'FORBID_CONTENTS' in cfg ? addToSet({}, cfg.FORBID_CONTENTS) : DEFAULT_FORBID_CONTENTS;
-        FORBID_TAGS = 'FORBID_TAGS' in cfg ? addToSet({}, cfg.FORBID_TAGS) : {};
-        FORBID_ATTR = 'FORBID_ATTR' in cfg ? addToSet({}, cfg.FORBID_ATTR) : {};
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         USE_PROFILES = 'USE_PROFILES' in cfg ? cfg.USE_PROFILES : false;
         ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false;
         ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false;
         ALLOW_UNKNOWN_PROTOCOLS = cfg.ALLOW_UNKNOWN_PROTOCOLS || false;
-<<<<<<< HEAD
         ALLOW_SELF_CLOSE_IN_ATTR = cfg.ALLOW_SELF_CLOSE_IN_ATTR !== false;
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         SAFE_FOR_TEMPLATES = cfg.SAFE_FOR_TEMPLATES || false;
         WHOLE_DOCUMENT = cfg.WHOLE_DOCUMENT || false;
         RETURN_DOM = cfg.RETURN_DOM || false;
@@ -9440,19 +9060,12 @@
         RETURN_TRUSTED_TYPE = cfg.RETURN_TRUSTED_TYPE || false;
         FORCE_BODY = cfg.FORCE_BODY || false;
         SANITIZE_DOM = cfg.SANITIZE_DOM !== false;
-<<<<<<< HEAD
         SANITIZE_NAMED_PROPS = cfg.SANITIZE_NAMED_PROPS || false;
         KEEP_CONTENT = cfg.KEEP_CONTENT !== false;
         IN_PLACE = cfg.IN_PLACE || false;
         IS_ALLOWED_URI$1 = cfg.ALLOWED_URI_REGEXP || IS_ALLOWED_URI;
         NAMESPACE = cfg.NAMESPACE || HTML_NAMESPACE;
         CUSTOM_ELEMENT_HANDLING = cfg.CUSTOM_ELEMENT_HANDLING || {};
-=======
-        KEEP_CONTENT = cfg.KEEP_CONTENT !== false;
-        IN_PLACE = cfg.IN_PLACE || false;
-        IS_ALLOWED_URI$1 = cfg.ALLOWED_URI_REGEXP || IS_ALLOWED_URI$1;
-        NAMESPACE = cfg.NAMESPACE || HTML_NAMESPACE;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (cfg.CUSTOM_ELEMENT_HANDLING && isRegexOrFunction(cfg.CUSTOM_ELEMENT_HANDLING.tagNameCheck)) {
           CUSTOM_ELEMENT_HANDLING.tagNameCheck = cfg.CUSTOM_ELEMENT_HANDLING.tagNameCheck;
         }
@@ -9462,13 +9075,6 @@
         if (cfg.CUSTOM_ELEMENT_HANDLING && typeof cfg.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements === 'boolean') {
           CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements = cfg.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements;
         }
-<<<<<<< HEAD
-=======
-        PARSER_MEDIA_TYPE = SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? PARSER_MEDIA_TYPE = DEFAULT_PARSER_MEDIA_TYPE : PARSER_MEDIA_TYPE = cfg.PARSER_MEDIA_TYPE;
-        transformCaseFunc = PARSER_MEDIA_TYPE === 'application/xhtml+xml' ? function (x) {
-          return x;
-        } : stringToLowerCase;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (SAFE_FOR_TEMPLATES) {
           ALLOW_DATA_ATTR = false;
         }
@@ -9476,11 +9082,7 @@
           RETURN_DOM = true;
         }
         if (USE_PROFILES) {
-<<<<<<< HEAD
           ALLOWED_TAGS = addToSet({}, [...text$1]);
-=======
-          ALLOWED_TAGS = addToSet({}, _toConsumableArray(text$1));
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           ALLOWED_ATTR = [];
           if (USE_PROFILES.html === true) {
             addToSet(ALLOWED_TAGS, html$1);
@@ -9506,37 +9108,22 @@
           if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) {
             ALLOWED_TAGS = clone(ALLOWED_TAGS);
           }
-<<<<<<< HEAD
           addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
-=======
-          addToSet(ALLOWED_TAGS, cfg.ADD_TAGS);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
         if (cfg.ADD_ATTR) {
           if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) {
             ALLOWED_ATTR = clone(ALLOWED_ATTR);
           }
-<<<<<<< HEAD
           addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
         }
         if (cfg.ADD_URI_SAFE_ATTR) {
           addToSet(URI_SAFE_ATTRIBUTES, cfg.ADD_URI_SAFE_ATTR, transformCaseFunc);
-=======
-          addToSet(ALLOWED_ATTR, cfg.ADD_ATTR);
-        }
-        if (cfg.ADD_URI_SAFE_ATTR) {
-          addToSet(URI_SAFE_ATTRIBUTES, cfg.ADD_URI_SAFE_ATTR);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
         if (cfg.FORBID_CONTENTS) {
           if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) {
             FORBID_CONTENTS = clone(FORBID_CONTENTS);
           }
-<<<<<<< HEAD
           addToSet(FORBID_CONTENTS, cfg.FORBID_CONTENTS, transformCaseFunc);
-=======
-          addToSet(FORBID_CONTENTS, cfg.FORBID_CONTENTS);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
         if (KEEP_CONTENT) {
           ALLOWED_TAGS['#text'] = true;
@@ -9552,7 +9139,6 @@
           addToSet(ALLOWED_TAGS, ['tbody']);
           delete FORBID_TAGS.tbody;
         }
-<<<<<<< HEAD
         if (cfg.TRUSTED_TYPES_POLICY) {
           if (typeof cfg.TRUSTED_TYPES_POLICY.createHTML !== 'function') {
             throw typeErrorCreate('TRUSTED_TYPES_POLICY configuration option must provide a "createHTML" hook.');
@@ -9570,46 +9156,31 @@
             emptyHTML = trustedTypesPolicy.createHTML('');
           }
         }
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (freeze) {
           freeze(cfg);
         }
         CONFIG = cfg;
       };
-<<<<<<< HEAD
       const MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, [
-=======
-      var MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         'mi',
         'mo',
         'mn',
         'ms',
         'mtext'
       ]);
-<<<<<<< HEAD
       const HTML_INTEGRATION_POINTS = addToSet({}, [
-=======
-      var HTML_INTEGRATION_POINTS = addToSet({}, [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         'foreignobject',
         'desc',
         'title',
         'annotation-xml'
       ]);
-<<<<<<< HEAD
       const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, [
-=======
-      var COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         'title',
         'style',
         'font',
         'a',
         'script'
       ]);
-<<<<<<< HEAD
       const ALL_SVG_TAGS = addToSet({}, svg$1);
       addToSet(ALL_SVG_TAGS, svgFilters);
       addToSet(ALL_SVG_TAGS, svgDisallowed);
@@ -9628,23 +9199,6 @@
         if (!ALLOWED_NAMESPACES[element.namespaceURI]) {
           return false;
         }
-=======
-      var ALL_SVG_TAGS = addToSet({}, svg$1);
-      addToSet(ALL_SVG_TAGS, svgFilters);
-      addToSet(ALL_SVG_TAGS, svgDisallowed);
-      var ALL_MATHML_TAGS = addToSet({}, mathMl$1);
-      addToSet(ALL_MATHML_TAGS, mathMlDisallowed);
-      var _checkValidNamespace = function _checkValidNamespace(element) {
-        var parent = getParentNode(element);
-        if (!parent || !parent.tagName) {
-          parent = {
-            namespaceURI: HTML_NAMESPACE,
-            tagName: 'template'
-          };
-        }
-        var tagName = stringToLowerCase(element.tagName);
-        var parentTagName = stringToLowerCase(parent.tagName);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (element.namespaceURI === SVG_NAMESPACE) {
           if (parent.namespaceURI === HTML_NAMESPACE) {
             return tagName === 'svg';
@@ -9672,37 +9226,20 @@
           }
           return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
         }
-<<<<<<< HEAD
         if (PARSER_MEDIA_TYPE === 'application/xhtml+xml' && ALLOWED_NAMESPACES[element.namespaceURI]) {
           return true;
         }
         return false;
       };
       const _forceRemove = function _forceRemove(node) {
-=======
-        return false;
-      };
-      var _forceRemove = function _forceRemove(node) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         arrayPush(DOMPurify.removed, { element: node });
         try {
           node.parentNode.removeChild(node);
         } catch (_) {
-<<<<<<< HEAD
           node.remove();
         }
       };
       const _removeAttribute = function _removeAttribute(name, node) {
-=======
-          try {
-            node.outerHTML = emptyHTML;
-          } catch (_) {
-            node.remove();
-          }
-        }
-      };
-      var _removeAttribute = function _removeAttribute(name, node) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         try {
           arrayPush(DOMPurify.removed, {
             attribute: node.getAttributeNode(name),
@@ -9729,7 +9266,6 @@
           }
         }
       };
-<<<<<<< HEAD
       const _initDocument = function _initDocument(dirty) {
         let doc;
         let leadingWhitespace;
@@ -9743,21 +9279,6 @@
           dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + '</body></html>';
         }
         const dirtyPayload = trustedTypesPolicy ? trustedTypesPolicy.createHTML(dirty) : dirty;
-=======
-      var _initDocument = function _initDocument(dirty) {
-        var doc;
-        var leadingWhitespace;
-        if (FORCE_BODY) {
-          dirty = '<remove></remove>' + dirty;
-        } else {
-          var matches = stringMatch(dirty, /^[\r\n\t ]+/);
-          leadingWhitespace = matches && matches[0];
-        }
-        if (PARSER_MEDIA_TYPE === 'application/xhtml+xml') {
-          dirty = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + dirty + '</body></html>';
-        }
-        var dirtyPayload = trustedTypesPolicy ? trustedTypesPolicy.createHTML(dirty) : dirty;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (NAMESPACE === HTML_NAMESPACE) {
           try {
             doc = new DOMParser().parseFromString(dirtyPayload, PARSER_MEDIA_TYPE);
@@ -9767,19 +9288,11 @@
         if (!doc || !doc.documentElement) {
           doc = implementation.createDocument(NAMESPACE, 'template', null);
           try {
-<<<<<<< HEAD
             doc.documentElement.innerHTML = IS_EMPTY_INPUT ? emptyHTML : dirtyPayload;
           } catch (_) {
           }
         }
         const body = doc.body || doc.documentElement;
-=======
-            doc.documentElement.innerHTML = IS_EMPTY_INPUT ? '' : dirtyPayload;
-          } catch (_) {
-          }
-        }
-        var body = doc.body || doc.documentElement;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (dirty && leadingWhitespace) {
           body.insertBefore(document.createTextNode(leadingWhitespace), body.childNodes[0] || null);
         }
@@ -9788,7 +9301,6 @@
         }
         return WHOLE_DOCUMENT ? doc.documentElement : body;
       };
-<<<<<<< HEAD
       const _createIterator = function _createIterator(root) {
         return createNodeIterator.call(root.ownerDocument || root, root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT, null, false);
       };
@@ -9808,58 +9320,20 @@
       };
       const _sanitizeElements = function _sanitizeElements(currentNode) {
         let content;
-=======
-      var _createIterator = function _createIterator(root) {
-        return createNodeIterator.call(root.ownerDocument || root, root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT, null, false);
-      };
-      var _isClobbered = function _isClobbered(elm) {
-        return elm instanceof HTMLFormElement && (typeof elm.nodeName !== 'string' || typeof elm.textContent !== 'string' || typeof elm.removeChild !== 'function' || !(elm.attributes instanceof NamedNodeMap) || typeof elm.removeAttribute !== 'function' || typeof elm.setAttribute !== 'function' || typeof elm.namespaceURI !== 'string' || typeof elm.insertBefore !== 'function');
-      };
-      var _isNode = function _isNode(object) {
-        return _typeof(Node) === 'object' ? object instanceof Node : object && _typeof(object) === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string';
-      };
-      var _executeHook = function _executeHook(entryPoint, currentNode, data) {
-        if (!hooks[entryPoint]) {
-          return;
-        }
-        arrayForEach(hooks[entryPoint], function (hook) {
-          hook.call(DOMPurify, currentNode, data, CONFIG);
-        });
-      };
-      var _sanitizeElements = function _sanitizeElements(currentNode) {
-        var content;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         _executeHook('beforeSanitizeElements', currentNode, null);
         if (_isClobbered(currentNode)) {
           _forceRemove(currentNode);
           return true;
         }
-<<<<<<< HEAD
         const tagName = transformCaseFunc(currentNode.nodeName);
         _executeHook('uponSanitizeElement', currentNode, {
           tagName,
-=======
-        if (regExpTest(/[\u0080-\uFFFF]/, currentNode.nodeName)) {
-          _forceRemove(currentNode);
-          return true;
-        }
-        var tagName = transformCaseFunc(currentNode.nodeName);
-        _executeHook('uponSanitizeElement', currentNode, {
-          tagName: tagName,
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           allowedTags: ALLOWED_TAGS
         });
         if (currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && (!_isNode(currentNode.content) || !_isNode(currentNode.content.firstElementChild)) && regExpTest(/<[/\w]/g, currentNode.innerHTML) && regExpTest(/<[/\w]/g, currentNode.textContent)) {
           _forceRemove(currentNode);
           return true;
         }
-<<<<<<< HEAD
-=======
-        if (tagName === 'select' && regExpTest(/<template/i, currentNode.innerHTML)) {
-          _forceRemove(currentNode);
-          return true;
-        }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (!ALLOWED_TAGS[tagName] || FORBID_TAGS[tagName]) {
           if (!FORBID_TAGS[tagName] && _basicCustomElementTest(tagName)) {
             if (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.tagNameCheck, tagName))
@@ -9868,19 +9342,11 @@
               return false;
           }
           if (KEEP_CONTENT && !FORBID_CONTENTS[tagName]) {
-<<<<<<< HEAD
             const parentNode = getParentNode(currentNode) || currentNode.parentNode;
             const childNodes = getChildNodes(currentNode) || currentNode.childNodes;
             if (childNodes && parentNode) {
               const childCount = childNodes.length;
               for (let i = childCount - 1; i >= 0; --i) {
-=======
-            var parentNode = getParentNode(currentNode) || currentNode.parentNode;
-            var childNodes = getChildNodes(currentNode) || currentNode.childNodes;
-            if (childNodes && parentNode) {
-              var childCount = childNodes.length;
-              for (var i = childCount - 1; i >= 0; --i) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
                 parentNode.insertBefore(cloneNode(childNodes[i], true), getNextSibling(currentNode));
               }
             }
@@ -9892,24 +9358,15 @@
           _forceRemove(currentNode);
           return true;
         }
-<<<<<<< HEAD
         if ((tagName === 'noscript' || tagName === 'noembed' || tagName === 'noframes') && regExpTest(/<\/no(script|embed|frames)/i, currentNode.innerHTML)) {
-=======
-        if ((tagName === 'noscript' || tagName === 'noembed') && regExpTest(/<\/no(script|embed)/i, currentNode.innerHTML)) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           _forceRemove(currentNode);
           return true;
         }
         if (SAFE_FOR_TEMPLATES && currentNode.nodeType === 3) {
           content = currentNode.textContent;
-<<<<<<< HEAD
           content = stringReplace(content, MUSTACHE_EXPR, ' ');
           content = stringReplace(content, ERB_EXPR, ' ');
           content = stringReplace(content, TMPLIT_EXPR, ' ');
-=======
-          content = stringReplace(content, MUSTACHE_EXPR$1, ' ');
-          content = stringReplace(content, ERB_EXPR$1, ' ');
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           if (currentNode.textContent !== content) {
             arrayPush(DOMPurify.removed, { element: currentNode.cloneNode() });
             currentNode.textContent = content;
@@ -9918,28 +9375,18 @@
         _executeHook('afterSanitizeElements', currentNode, null);
         return false;
       };
-<<<<<<< HEAD
       const _isValidAttribute = function _isValidAttribute(lcTag, lcName, value) {
         if (SANITIZE_DOM && (lcName === 'id' || lcName === 'name') && (value in document || value in formElement)) {
           return false;
         }
         if (ALLOW_DATA_ATTR && !FORBID_ATTR[lcName] && regExpTest(DATA_ATTR, lcName));
         else if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR, lcName));
-=======
-      var _isValidAttribute = function _isValidAttribute(lcTag, lcName, value) {
-        if (SANITIZE_DOM && (lcName === 'id' || lcName === 'name') && (value in document || value in formElement)) {
-          return false;
-        }
-        if (ALLOW_DATA_ATTR && !FORBID_ATTR[lcName] && regExpTest(DATA_ATTR$1, lcName));
-        else if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName));
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         else if (!ALLOWED_ATTR[lcName] || FORBID_ATTR[lcName]) {
           if (_basicCustomElementTest(lcTag) && (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) || CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.tagNameCheck(lcTag)) && (CUSTOM_ELEMENT_HANDLING.attributeNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName) || CUSTOM_ELEMENT_HANDLING.attributeNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.attributeNameCheck(lcName)) || lcName === 'is' && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && (CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof RegExp && regExpTest(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value) || CUSTOM_ELEMENT_HANDLING.tagNameCheck instanceof Function && CUSTOM_ELEMENT_HANDLING.tagNameCheck(value)));
           else {
             return false;
           }
         } else if (URI_SAFE_ATTRIBUTES[lcName]);
-<<<<<<< HEAD
         else if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value, ATTR_WHITESPACE, '')));
         else if ((lcName === 'src' || lcName === 'xlink:href' || lcName === 'href') && lcTag !== 'script' && stringIndexOf(value, 'data:') === 0 && DATA_URI_TAGS[lcTag]);
         else if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA, stringReplace(value, ATTR_WHITESPACE, '')));
@@ -9962,31 +9409,6 @@
           return;
         }
         const hookEvent = {
-=======
-        else if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value, ATTR_WHITESPACE$1, '')));
-        else if ((lcName === 'src' || lcName === 'xlink:href' || lcName === 'href') && lcTag !== 'script' && stringIndexOf(value, 'data:') === 0 && DATA_URI_TAGS[lcTag]);
-        else if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value, ATTR_WHITESPACE$1, '')));
-        else if (!value);
-        else {
-          return false;
-        }
-        return true;
-      };
-      var _basicCustomElementTest = function _basicCustomElementTest(tagName) {
-        return tagName.indexOf('-') > 0;
-      };
-      var _sanitizeAttributes = function _sanitizeAttributes(currentNode) {
-        var attr;
-        var value;
-        var lcName;
-        var l;
-        _executeHook('beforeSanitizeAttributes', currentNode, null);
-        var attributes = currentNode.attributes;
-        if (!attributes) {
-          return;
-        }
-        var hookEvent = {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           attrName: '',
           attrValue: '',
           keepAttr: true,
@@ -9995,17 +9417,10 @@
         l = attributes.length;
         while (l--) {
           attr = attributes[l];
-<<<<<<< HEAD
           const {name, namespaceURI} = attr;
           value = name === 'value' ? attr.value : stringTrim(attr.value);
           const initValue = value;
           lcName = transformCaseFunc(name);
-=======
-          var _attr = attr, name = _attr.name, namespaceURI = _attr.namespaceURI;
-          value = name === 'value' ? attr.value : stringTrim(attr.value);
-          lcName = transformCaseFunc(name);
-          var initValue = value;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           hookEvent.attrName = lcName;
           hookEvent.attrValue = value;
           hookEvent.keepAttr = true;
@@ -10019,32 +9434,20 @@
             _removeAttribute(name, currentNode);
             continue;
           }
-<<<<<<< HEAD
           if (!ALLOW_SELF_CLOSE_IN_ATTR && regExpTest(/\/>/i, value)) {
-=======
-          if (regExpTest(/\/>/i, value)) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             _removeAttribute(name, currentNode);
             continue;
           }
           if (SAFE_FOR_TEMPLATES) {
-<<<<<<< HEAD
             value = stringReplace(value, MUSTACHE_EXPR, ' ');
             value = stringReplace(value, ERB_EXPR, ' ');
             value = stringReplace(value, TMPLIT_EXPR, ' ');
           }
           const lcTag = transformCaseFunc(currentNode.nodeName);
-=======
-            value = stringReplace(value, MUSTACHE_EXPR$1, ' ');
-            value = stringReplace(value, ERB_EXPR$1, ' ');
-          }
-          var lcTag = transformCaseFunc(currentNode.nodeName);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           if (!_isValidAttribute(lcTag, lcName, value)) {
             _removeAttribute(name, currentNode);
             continue;
           }
-<<<<<<< HEAD
           if (SANITIZE_NAMED_PROPS && (lcName === 'id' || lcName === 'name')) {
             _removeAttribute(name, currentNode);
             value = SANITIZE_NAMED_PROPS_PREFIX + value;
@@ -10064,8 +9467,6 @@
               }
             }
           }
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           if (value !== initValue) {
             try {
               if (namespaceURI) {
@@ -10080,15 +9481,9 @@
         }
         _executeHook('afterSanitizeAttributes', currentNode, null);
       };
-<<<<<<< HEAD
       const _sanitizeShadowDOM = function _sanitizeShadowDOM(fragment) {
         let shadowNode;
         const shadowIterator = _createIterator(fragment);
-=======
-      var _sanitizeShadowDOM = function _sanitizeShadowDOM(fragment) {
-        var shadowNode;
-        var shadowIterator = _createIterator(fragment);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         _executeHook('beforeSanitizeShadowDOM', fragment, null);
         while (shadowNode = shadowIterator.nextNode()) {
           _executeHook('uponSanitizeShadowNode', shadowNode, null);
@@ -10102,56 +9497,27 @@
         }
         _executeHook('afterSanitizeShadowDOM', fragment, null);
       };
-<<<<<<< HEAD
       DOMPurify.sanitize = function (dirty) {
         let cfg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
         let body;
         let importedNode;
         let currentNode;
         let returnNode;
-=======
-      DOMPurify.sanitize = function (dirty, cfg) {
-        var body;
-        var importedNode;
-        var currentNode;
-        var oldNode;
-        var returnNode;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         IS_EMPTY_INPUT = !dirty;
         if (IS_EMPTY_INPUT) {
           dirty = '<!-->';
         }
         if (typeof dirty !== 'string' && !_isNode(dirty)) {
-<<<<<<< HEAD
           if (typeof dirty.toString === 'function') {
-=======
-          if (typeof dirty.toString !== 'function') {
-            throw typeErrorCreate('toString is not a function');
-          } else {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             dirty = dirty.toString();
             if (typeof dirty !== 'string') {
               throw typeErrorCreate('dirty is not a string, aborting');
             }
-<<<<<<< HEAD
           } else {
             throw typeErrorCreate('toString is not a function');
           }
         }
         if (!DOMPurify.isSupported) {
-=======
-          }
-        }
-        if (!DOMPurify.isSupported) {
-          if (_typeof(window.toStaticHTML) === 'object' || typeof window.toStaticHTML === 'function') {
-            if (typeof dirty === 'string') {
-              return window.toStaticHTML(dirty);
-            }
-            if (_isNode(dirty)) {
-              return window.toStaticHTML(dirty.outerHTML);
-            }
-          }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           return dirty;
         }
         if (!SET_CONFIG) {
@@ -10163,11 +9529,7 @@
         }
         if (IN_PLACE) {
           if (dirty.nodeName) {
-<<<<<<< HEAD
             const tagName = transformCaseFunc(dirty.nodeName);
-=======
-            var tagName = transformCaseFunc(dirty.nodeName);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             if (!ALLOWED_TAGS[tagName] || FORBID_TAGS[tagName]) {
               throw typeErrorCreate('root node is forbidden and cannot be sanitized in-place');
             }
@@ -10194,16 +9556,8 @@
         if (body && FORCE_BODY) {
           _forceRemove(body.firstChild);
         }
-<<<<<<< HEAD
         const nodeIterator = _createIterator(IN_PLACE ? dirty : body);
         while (currentNode = nodeIterator.nextNode()) {
-=======
-        var nodeIterator = _createIterator(IN_PLACE ? dirty : body);
-        while (currentNode = nodeIterator.nextNode()) {
-          if (currentNode.nodeType === 3 && currentNode === oldNode) {
-            continue;
-          }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           if (_sanitizeElements(currentNode)) {
             continue;
           }
@@ -10211,13 +9565,7 @@
             _sanitizeShadowDOM(currentNode.content);
           }
           _sanitizeAttributes(currentNode);
-<<<<<<< HEAD
         }
-=======
-          oldNode = currentNode;
-        }
-        oldNode = null;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (IN_PLACE) {
           return dirty;
         }
@@ -10230,32 +9578,19 @@
           } else {
             returnNode = body;
           }
-<<<<<<< HEAD
           if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) {
-=======
-          if (ALLOWED_ATTR.shadowroot) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             returnNode = importNode.call(originalDocument, returnNode, true);
           }
           return returnNode;
         }
-<<<<<<< HEAD
         let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
-=======
-        var serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         if (WHOLE_DOCUMENT && ALLOWED_TAGS['!doctype'] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) {
           serializedHTML = '<!DOCTYPE ' + body.ownerDocument.doctype.name + '>\n' + serializedHTML;
         }
         if (SAFE_FOR_TEMPLATES) {
-<<<<<<< HEAD
           serializedHTML = stringReplace(serializedHTML, MUSTACHE_EXPR, ' ');
           serializedHTML = stringReplace(serializedHTML, ERB_EXPR, ' ');
           serializedHTML = stringReplace(serializedHTML, TMPLIT_EXPR, ' ');
-=======
-          serializedHTML = stringReplace(serializedHTML, MUSTACHE_EXPR$1, ' ');
-          serializedHTML = stringReplace(serializedHTML, ERB_EXPR$1, ' ');
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
         return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? trustedTypesPolicy.createHTML(serializedHTML) : serializedHTML;
       };
@@ -10271,13 +9606,8 @@
         if (!CONFIG) {
           _parseConfig({});
         }
-<<<<<<< HEAD
         const lcTag = transformCaseFunc(tag);
         const lcName = transformCaseFunc(attr);
-=======
-        var lcTag = transformCaseFunc(tag);
-        var lcName = transformCaseFunc(attr);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         return _isValidAttribute(lcTag, lcName, value);
       };
       DOMPurify.addHook = function (entryPoint, hookFunction) {
@@ -10816,13 +10146,10 @@
         processor: 'boolean',
         default: editor.hasPlugin('help')
       });
-<<<<<<< HEAD
       registerOption('default_font_stack', {
         processor: 'string[]',
         default: []
       });
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     };
     const isReadOnly = option$2('readonly');
     const getHeightOption = option$2('height');
@@ -10861,10 +10188,7 @@
     const getSidebarShow = option$2('sidebar_show');
     const promotionEnabled = option$2('promotion');
     const useHelpAccessibility = option$2('help_accessibility');
-<<<<<<< HEAD
     const getDefaultFontStack = option$2('default_font_stack');
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const isSkinDisabled = editor => editor.options.get('skin') === false;
     const isMenubarEnabled = editor => editor.options.get('menubar') !== false;
     const getSkinUrl = editor => {
@@ -10880,10 +10204,7 @@
         }
       }
     };
-<<<<<<< HEAD
     const getSkinUrlOption = editor => Optional.from(editor.options.get('skin_url'));
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const getLineHeightFormats = editor => editor.options.get('line_height_formats').split(' ');
     const isToolbarEnabled = editor => {
       const toolbar = getToolbar(editor);
@@ -10941,10 +10262,7 @@
         get ToolbarLocation () { return ToolbarLocation$1; },
         register: register$e,
         getSkinUrl: getSkinUrl,
-<<<<<<< HEAD
         getSkinUrlOption: getSkinUrlOption,
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         isReadOnly: isReadOnly,
         isSkinDisabled: isSkinDisabled,
         getHeightOption: getHeightOption,
@@ -10992,12 +10310,8 @@
         getResize: getResize,
         getPasteAsText: getPasteAsText,
         getSidebarShow: getSidebarShow,
-<<<<<<< HEAD
         useHelpAccessibility: useHelpAccessibility,
         getDefaultFontStack: getDefaultFontStack
-=======
-        useHelpAccessibility: useHelpAccessibility
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     });
 
     const autocompleteSelector = '[data-mce-autocompleter]';
@@ -12571,7 +11885,6 @@
     const fireToggleToolbarDrawer = (editor, state) => {
       editor.dispatch('ToggleToolbarDrawer', { state });
     };
-<<<<<<< HEAD
     const fireStylesTextUpdate = (editor, data) => {
       editor.dispatch('StylesTextUpdate', data);
     };
@@ -12590,8 +11903,6 @@
     const fireFontFamilyTextUpdate = (editor, data) => {
       editor.dispatch('FontFamilyTextUpdate', data);
     };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const composeUnbinders = (f, g) => () => {
       f();
@@ -12975,17 +12286,13 @@
       const id = name === 'forecolor' ? 'tox-icon-text-color__color' : 'tox-icon-highlight-bg-color__color';
       splitButtonApi.setIconFill(id, newColor);
     };
-<<<<<<< HEAD
     const setTooltip = (buttonApi, tooltip) => {
       buttonApi.setTooltip(tooltip);
     };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const select$1 = (editor, format) => value => {
       const optCurrentHex = getCurrentColor(editor, format);
       return is$1(optCurrentHex, value.toUpperCase());
     };
-<<<<<<< HEAD
     const getToolTipText = (editor, format, lastColor) => {
       if (isEmpty(lastColor)) {
         return format === 'forecolor' ? 'Text color' : 'Background color';
@@ -13001,11 +12308,6 @@
     const registerTextColorButton = (editor, name, format, lastColor) => {
       editor.ui.registry.addSplitButton(name, {
         tooltip: getToolTipText(editor, format, lastColor.get()),
-=======
-    const registerTextColorButton = (editor, name, format, tooltip, lastColor) => {
-      editor.ui.registry.addSplitButton(name, {
-        tooltip,
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         presets: 'color',
         icon: name === 'forecolor' ? 'text-color' : 'highlight-bg-color',
         select: select$1(editor, format),
@@ -13028,10 +12330,7 @@
           const handler = e => {
             if (e.name === name) {
               setIconColor(splitButtonApi, e.name, e.color);
-<<<<<<< HEAD
               setTooltip(splitButtonApi, getToolTipText(editor, format, e.color));
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             }
           };
           editor.on('TextColorChange', handler);
@@ -13046,10 +12345,7 @@
         text,
         icon: name === 'forecolor' ? 'text-color' : 'highlight-bg-color',
         onSetup: api => {
-<<<<<<< HEAD
           setTooltip(api, getToolTipText(editor, format, lastColor.get()));
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           setIconColor(api, name, lastColor.get());
           return onSetupEditableToggle(editor)(api);
         },
@@ -13130,13 +12426,8 @@
       const fallbackColorBackground = getDefaultBackgroundColor(editor);
       const lastForeColor = Cell(fallbackColorForeground);
       const lastBackColor = Cell(fallbackColorBackground);
-<<<<<<< HEAD
       registerTextColorButton(editor, 'forecolor', 'forecolor', lastForeColor);
       registerTextColorButton(editor, 'backcolor', 'hilitecolor', lastBackColor);
-=======
-      registerTextColorButton(editor, 'forecolor', 'forecolor', 'Text color', lastForeColor);
-      registerTextColorButton(editor, 'backcolor', 'hilitecolor', 'Background color', lastBackColor);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       registerTextColorMenuItem(editor, 'forecolor', 'forecolor', 'Text color', lastForeColor);
       registerTextColorMenuItem(editor, 'backcolor', 'hilitecolor', 'Background color', lastBackColor);
     };
@@ -13240,15 +12531,11 @@
 
     const cellOverEvent = generate$6('cell-over');
     const cellExecuteEvent = generate$6('cell-execute');
-<<<<<<< HEAD
     const makeAnnouncementText = backstage => (row, col) => backstage.shared.providers.translate([
       '{0} columns, {1} rows',
       col,
       row
     ]);
-=======
-    const makeAnnouncementText = backstage => (row, col) => backstage.shared.providers.translate(`${ col } columns, ${ row } rows`);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const makeCell = (row, col, label) => {
       const emitCellOver = c => emitWith(c, cellOverEvent, {
         row,
@@ -13381,7 +12668,6 @@
           descendant(component.element, `svg path[class="${ id }"], rect[class="${ id }"]`).each(underlinePath => {
             set$9(underlinePath, 'fill', value);
           });
-<<<<<<< HEAD
         },
         setTooltip: tooltip => {
           const translatedTooltip = providersBackstage.translate(tooltip);
@@ -13389,8 +12675,6 @@
             'aria-label': translatedTooltip,
             'title': translatedTooltip
           });
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
       });
       const structure = renderItemStructure({
@@ -14161,16 +13445,12 @@
       });
     };
     const register$b = (editor, sharedBackstage) => {
-<<<<<<< HEAD
       const autocompleterId = generate$6('autocompleter');
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const processingAction = Cell(false);
       const activeState = Cell(false);
       const autocompleter = build$1(InlineView.sketch({
         dom: {
           tag: 'div',
-<<<<<<< HEAD
           classes: ['tox-autocompleter'],
           attributes: { id: autocompleterId }
         },
@@ -14182,13 +13462,6 @@
               getOpt(se.event.target, 'id').each(id => set$9(SugarElement.fromDom(editor.getBody()), 'aria-activedescendant', id));
             })
           ])]),
-=======
-          classes: ['tox-autocompleter']
-        },
-        components: [],
-        fireDismissalEventInstead: {},
-        inlineBehaviours: derive$1([config('dismissAutocompleter', [run$1(dismissRequested(), () => cancelIfNecessary())])]),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         lazySink: sharedBackstage.getSink
       }));
       const isMenuOpen = () => InlineView.isOpen(autocompleter);
@@ -14196,15 +13469,12 @@
       const hideIfNecessary = () => {
         if (isMenuOpen()) {
           InlineView.hide(autocompleter);
-<<<<<<< HEAD
           editor.dom.remove(autocompleterId, false);
           const editorBody = SugarElement.fromDom(editor.getBody());
           getOpt(editorBody, 'aria-owns').filter(ariaOwnsAttr => ariaOwnsAttr === autocompleterId).each(() => {
             remove$7(editorBody, 'aria-owns');
             remove$7(editorBody, 'aria-activedescendant');
           });
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
       };
       const getMenu = () => InlineView.getContent(autocompleter).bind(tmenu => {
@@ -14249,18 +13519,14 @@
         const combinedItems = getCombinedItems(lookupData);
         if (combinedItems.length > 0) {
           display(lookupData, combinedItems);
-<<<<<<< HEAD
           set$9(SugarElement.fromDom(editor.getBody()), 'aria-owns', autocompleterId);
           if (!editor.inline) {
             cloneAutocompleterToEditorDoc();
           }
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         } else {
           hideIfNecessary();
         }
       };
-<<<<<<< HEAD
       const cloneAutocompleterToEditorDoc = () => {
         if (editor.dom.get(autocompleterId)) {
           editor.dom.remove(autocompleterId, false);
@@ -14286,8 +13552,6 @@
           remove$6(child, 'max-height');
         });
       };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       editor.on('AutocompleterStart', ({lookupData}) => {
         activeState.set(true);
         processingAction.set(false);
@@ -15053,14 +14317,11 @@
 
     const renderCollection = (spec, providersBackstage, initialData) => {
       const pLabel = spec.label.map(label => renderLabel$3(label, providersBackstage));
-<<<<<<< HEAD
       const icons = providersBackstage.icons();
       const getIcon = icon => {
         var _a;
         return (_a = icons[icon]) !== null && _a !== void 0 ? _a : icon;
       };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const runOnItem = f => (comp, se) => {
         closest$1(se.event.target, '[data-collection-item-value]').each(target => {
           f(comp, se, target, get$f(target, 'data-collection-item-value'));
@@ -15070,11 +14331,7 @@
         const htmlLines = map$2(items, item => {
           const itemText = global$8.translate(item.text);
           const textContent = spec.columns === 1 ? `<div class="tox-collection__item-label">${ itemText }</div>` : '';
-<<<<<<< HEAD
           const iconContent = `<div class="tox-collection__item-icon">${ getIcon(item.icon) }</div>`;
-=======
-          const iconContent = `<div class="tox-collection__item-icon">${ item.icon }</div>`;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           const mapItemName = {
             '_': ' ',
             ' - ': ' ',
@@ -15496,10 +14753,7 @@
         };
       }
     });
-<<<<<<< HEAD
     const isShift = event => isShift$1(event.event);
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const spectrumPart = required({
       schema: [customField('mouseIsDown', () => Cell(false))],
       name: 'spectrum',
@@ -15511,20 +14765,12 @@
           behaviours: derive$1([
             Keying.config({
               mode: 'special',
-<<<<<<< HEAD
               onLeft: (spectrum, event) => model.onLeft(spectrum, detail, isShift(event)),
               onRight: (spectrum, event) => model.onRight(spectrum, detail, isShift(event)),
               onUp: (spectrum, event) => model.onUp(spectrum, detail, isShift(event)),
               onDown: (spectrum, event) => model.onDown(spectrum, detail, isShift(event))
             }),
             Tabstopping.config({}),
-=======
-              onLeft: spectrum => model.onLeft(spectrum, detail),
-              onRight: spectrum => model.onRight(spectrum, detail),
-              onUp: spectrum => model.onUp(spectrum, detail),
-              onDown: spectrum => model.onDown(spectrum, detail)
-            }),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             Focusing.config({})
           ]),
           events: derive$2([
@@ -15582,11 +14828,7 @@
     const yRange = detail => range(detail, maxY, minY);
     const halfX = detail => xRange(detail) / 2;
     const halfY = detail => yRange(detail) / 2;
-<<<<<<< HEAD
     const step = (detail, useMultiplier) => useMultiplier ? detail.stepSize * detail.speedMultiplier : detail.stepSize;
-=======
-    const step = detail => detail.stepSize;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const snap = detail => detail.snapToGrid;
     const snapStart = detail => detail.snapStart;
     const rounded = detail => detail.rounded;
@@ -15789,7 +15031,6 @@
       const max = maxX(detail);
       fireSliderChange$2(spectrum, max);
     };
-<<<<<<< HEAD
     const moveBy$2 = (direction, spectrum, detail, useMultiplier) => {
       const f = direction > 0 ? increaseBy : reduceBy;
       const xValue = f(currentValue(detail), minX(detail), maxX(detail), step(detail, useMultiplier));
@@ -15797,15 +15038,6 @@
       return Optional.some(xValue);
     };
     const handleMovement$2 = direction => (spectrum, detail, useMultiplier) => moveBy$2(direction, spectrum, detail, useMultiplier).map(always);
-=======
-    const moveBy$2 = (direction, spectrum, detail) => {
-      const f = direction > 0 ? increaseBy : reduceBy;
-      const xValue = f(currentValue(detail), minX(detail), maxX(detail), step(detail));
-      fireSliderChange$2(spectrum, xValue);
-      return Optional.some(xValue);
-    };
-    const handleMovement$2 = direction => (spectrum, detail) => moveBy$2(direction, spectrum, detail).map(always);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const getValueFromEvent$2 = simulatedEvent => {
       const pos = getEventSource(simulatedEvent);
       return pos.map(p => p.left);
@@ -15907,7 +15139,6 @@
       const max = maxY(detail);
       fireSliderChange$1(spectrum, max);
     };
-<<<<<<< HEAD
     const moveBy$1 = (direction, spectrum, detail, useMultiplier) => {
       const f = direction > 0 ? increaseBy : reduceBy;
       const yValue = f(currentValue(detail), minY(detail), maxY(detail), step(detail, useMultiplier));
@@ -15915,15 +15146,6 @@
       return Optional.some(yValue);
     };
     const handleMovement$1 = direction => (spectrum, detail, useMultiplier) => moveBy$1(direction, spectrum, detail, useMultiplier).map(always);
-=======
-    const moveBy$1 = (direction, spectrum, detail) => {
-      const f = direction > 0 ? increaseBy : reduceBy;
-      const yValue = f(currentValue(detail), minY(detail), maxY(detail), step(detail));
-      fireSliderChange$1(spectrum, yValue);
-      return Optional.some(yValue);
-    };
-    const handleMovement$1 = direction => (spectrum, detail) => moveBy$1(direction, spectrum, detail).map(always);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const getValueFromEvent$1 = simulatedEvent => {
       const pos = getEventSource(simulatedEvent);
       return pos.map(p => {
@@ -16006,7 +15228,6 @@
       fireSliderChange(spectrum, val);
       return val;
     };
-<<<<<<< HEAD
     const moveBy = (direction, isVerticalMovement, spectrum, detail, useMultiplier) => {
       const f = direction > 0 ? increaseBy : reduceBy;
       const xValue = isVerticalMovement ? currentValue(detail).x : f(currentValue(detail).x, minX(detail), maxX(detail), step(detail, useMultiplier));
@@ -16015,16 +15236,6 @@
       return Optional.some(xValue);
     };
     const handleMovement = (direction, isVerticalMovement) => (spectrum, detail, useMultiplier) => moveBy(direction, isVerticalMovement, spectrum, detail, useMultiplier).map(always);
-=======
-    const moveBy = (direction, isVerticalMovement, spectrum, detail) => {
-      const f = direction > 0 ? increaseBy : reduceBy;
-      const xValue = isVerticalMovement ? currentValue(detail).x : f(currentValue(detail).x, minX(detail), maxX(detail), step(detail));
-      const yValue = !isVerticalMovement ? currentValue(detail).y : f(currentValue(detail).y, minY(detail), maxY(detail), step(detail));
-      fireSliderChange(spectrum, sliderValue(xValue, yValue));
-      return Optional.some(xValue);
-    };
-    const handleMovement = (direction, isVerticalMovement) => (spectrum, detail) => moveBy(direction, isVerticalMovement, spectrum, detail).map(always);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const setToMin = (spectrum, detail) => {
       const mX = minX(detail);
       const mY = minY(detail);
@@ -16076,10 +15287,7 @@
 
     const SliderSchema = [
       defaulted('stepSize', 1),
-<<<<<<< HEAD
       defaulted('speedMultiplier', 10),
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       defaulted('onChange', noop),
       defaulted('onChoose', noop),
       defaulted('onInit', noop),
@@ -16181,12 +15389,9 @@
         detail.onDragEnd(slider, getThumb(slider));
         choose(slider);
       };
-<<<<<<< HEAD
       const focusWidget = component => {
         getPart(component, detail, 'spectrum').map(Keying.focusIn);
       };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       return {
         uid: detail.uid,
         dom: detail.dom,
@@ -16194,13 +15399,7 @@
         behaviours: augment(detail.sliderBehaviours, [
           Keying.config({
             mode: 'special',
-<<<<<<< HEAD
             focusIn: focusWidget
-=======
-            focusIn: slider => {
-              return getPart(slider, detail, 'spectrum').map(Keying.focusIn).map(always);
-            }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           }),
           Representing.config({
             store: {
@@ -16227,14 +15426,10 @@
           }),
           run$1(touchstart(), onDragStart),
           run$1(touchend(), onDragEnd),
-<<<<<<< HEAD
           run$1(mousedown(), (component, event) => {
             focusWidget(component);
             onDragStart(component, event);
           }),
-=======
-          run$1(mousedown(), onDragStart),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           run$1(mouseup(), onDragEnd)
         ]),
         apis: {
@@ -16291,16 +15486,12 @@
         dom: {
           tag: 'div',
           classes: [getClass('hue-slider')],
-<<<<<<< HEAD
           attributes: {
             'role': 'slider',
             'aria-valuemin': 0,
             'aria-valuemax': 360,
             'aria-valuenow': 120
           }
-=======
-          attributes: { role: 'presentation' }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         },
         rounded: false,
         model: {
@@ -16313,10 +15504,7 @@
         ],
         sliderBehaviours: derive$1([Focusing.config({})]),
         onChange: (slider, _thumb, value) => {
-<<<<<<< HEAD
           set$9(slider.element, 'aria-valuenow', Math.floor(360 - value * 3.6));
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           emitWith(slider, sliderUpdate, { value });
         }
       });
@@ -16603,11 +15791,7 @@
       return rgbFormSketcher;
     };
 
-<<<<<<< HEAD
     const paletteFactory = (translate, getClass) => {
-=======
-    const paletteFactory = (_translate, getClass) => {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const spectrumPart = Slider.parts.spectrum({
         dom: {
           tag: 'canvas',
@@ -16654,14 +15838,11 @@
           x: hsv.saturation,
           y: 100 - hsv.value
         });
-<<<<<<< HEAD
         set$9(slider.element, 'aria-valuetext', translate([
           'Saturation {0}%, Brightness {1}%',
           hsv.saturation,
           hsv.value
         ]));
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       };
       const factory = _detail => {
         const getInitialValue = constant$1({
@@ -16669,7 +15850,6 @@
           y: 0
         });
         const onChange = (slider, _thumb, value) => {
-<<<<<<< HEAD
           if (!isNumber(value)) {
             set$9(slider.element, 'aria-valuetext', translate([
               'Saturation {0}%, Brightness {1}%',
@@ -16677,8 +15857,6 @@
               Math.floor(100 - value.y)
             ]));
           }
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           emitWith(slider, paletteUpdate, { value });
         };
         const onInit = (_slider, _thumb, spectrum, _value) => {
@@ -16691,7 +15869,6 @@
         return Slider.sketch({
           dom: {
             tag: 'div',
-<<<<<<< HEAD
             attributes: {
               'role': 'slider',
               'aria-valuetext': translate([
@@ -16700,9 +15877,6 @@
                 0
               ])
             },
-=======
-            attributes: { role: 'presentation' },
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             classes: [getClass('sv-palette')]
           },
           model: {
@@ -16909,15 +16083,11 @@
       'aria.input.invalid': 'Invalid input'
     };
     const translate$1 = providerBackstage => key => {
-<<<<<<< HEAD
       if (isString(key)) {
         return providerBackstage.translate(english[key]);
       } else {
         return providerBackstage.translate(key);
       }
-=======
-      return providerBackstage.translate(english[key]);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     };
     const renderColorPicker = (_spec, providerBackstage, initialData) => {
       const getClass = key => 'tox-' + key;
@@ -19995,11 +19165,7 @@
       const memUrlPickerButton = record(renderButton$1({
         name: spec.name,
         icon: Optional.some('browse'),
-<<<<<<< HEAD
         text: spec.picker_text.or(spec.label).getOr(''),
-=======
-        text: spec.label.getOr(''),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         enabled: spec.enabled,
         primary: false,
         buttonType: Optional.none(),
@@ -22366,11 +21532,7 @@
       },
       components: [{ dom: fromHtml('<div class="tox-spinner"><div></div><div></div><div></div></div>') }]
     });
-<<<<<<< HEAD
     const focusBusyComponent = throbber => Composing.getCurrent(throbber).each(comp => focus$3(comp.element, true));
-=======
-    const focusBusyComponent = throbber => Composing.getCurrent(throbber).each(comp => focus$3(comp.element));
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const toggleEditorTabIndex = (editor, state) => {
       const tabIndexAttr = 'tabindex';
       const dataTabIndexAttr = `data-mce-${ tabIndexAttr }`;
@@ -23971,7 +23133,6 @@
       editor.on('remove', () => styleSheetLoader.unload(stylesheetUrl));
       return styleSheetLoader.load(stylesheetUrl);
     };
-<<<<<<< HEAD
     const loadRawCss = (editor, key, css, styleSheetLoader) => {
       editor.on('remove', () => styleSheetLoader.unloadRawCss(key));
       return styleSheetLoader.loadRawCss(key, css);
@@ -24020,31 +23181,10 @@
         }
       });
       const skinUrl = getSkinUrl(editor);
-=======
-    const loadUiSkins = (editor, skinUrl) => {
-      const skinUiCss = skinUrl + '/skin.min.css';
-      return loadStylesheet(editor, skinUiCss, editor.ui.styleSheetLoader);
-    };
-    const loadShadowDomUiSkins = (editor, skinUrl) => {
-      const isInShadowRoot$1 = isInShadowRoot(SugarElement.fromDom(editor.getElement()));
-      if (isInShadowRoot$1) {
-        const shadowDomSkinCss = skinUrl + '/skin.shadowdom.min.css';
-        return loadStylesheet(editor, shadowDomSkinCss, global$7.DOM.styleSheetLoader);
-      } else {
-        return Promise.resolve();
-      }
-    };
-    const loadSkin = (isInline, editor) => {
-      const skinUrl = getSkinUrl(editor);
-      if (skinUrl) {
-        editor.contentCSS.push(skinUrl + (isInline ? '/content.inline' : '/content') + '.min.css');
-      }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       if (!isSkinDisabled(editor) && isString(skinUrl)) {
         return Promise.all([
           loadUiSkins(editor, skinUrl),
           loadShadowDomUiSkins(editor, skinUrl)
-<<<<<<< HEAD
         ]).then();
       }
     };
@@ -24059,16 +23199,6 @@
       editor.translate(value)
     ]);
 
-=======
-        ]).then(fireSkinLoaded(editor), fireSkinLoadError(editor, 'Skin could not be loaded'));
-      } else {
-        return Promise.resolve(fireSkinLoaded(editor)());
-      }
-    };
-    const iframe = curry(loadSkin, false);
-    const inline = curry(loadSkin, true);
-
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const generateSelectItems = (_editor, backstage, spec) => {
       const generateItem = (rawItem, response, invalid, value) => {
         const translatedText = backstage.shared.providers.translate(rawItem.title);
@@ -24136,7 +23266,6 @@
         getStyleItems
       };
     };
-<<<<<<< HEAD
     const createSelectButton = (editor, backstage, spec, tooltipWithPlaceholder, textUpdateEventName) => {
       const {items, getStyleItems} = createMenuItems(editor, backstage, spec);
       const getApi = comp => ({
@@ -24158,16 +23287,6 @@
           Disabling.set(api.getComponent(), !editor.selection.isEditable());
         })(api), () => editor.off(textUpdateEventName, handler));
       };
-=======
-    const createSelectButton = (editor, backstage, spec) => {
-      const {items, getStyleItems} = createMenuItems(editor, backstage, spec);
-      const getApi = comp => ({ getComponent: constant$1(comp) });
-      const onSetup = onSetupEvent(editor, 'NodeChange', api => {
-        const comp = api.getComponent();
-        spec.updateText(comp);
-        Disabling.set(api.getComponent(), !editor.selection.isEditable());
-      });
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       return renderCommonDropdown({
         text: spec.icon.isSome() ? Optional.none() : spec.text,
         icon: spec.icon,
@@ -24220,12 +23339,9 @@
       };
     };
 
-<<<<<<< HEAD
     const menuTitle$4 = 'Align';
     const btnTooltip$4 = 'Alignment {0}';
     const fallbackAlignment = 'left';
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const alignMenuItems = [
       {
         title: 'Left',
@@ -24258,23 +23374,14 @@
       const getPreviewFor = _format => Optional.none;
       const updateSelectMenuIcon = comp => {
         const match = getMatchingValue();
-<<<<<<< HEAD
         const alignment = match.fold(constant$1(fallbackAlignment), item => item.title.toLowerCase());
         emitWith(comp, updateMenuIcon, { icon: `align-${ alignment }` });
         fireAlignTextUpdate(editor, { value: alignment });
-=======
-        const alignment = match.fold(constant$1('left'), item => item.title.toLowerCase());
-        emitWith(comp, updateMenuIcon, { icon: `align-${ alignment }` });
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       };
       const dataset = buildBasicStaticDataset(alignMenuItems);
       const onAction = rawItem => () => find$5(alignMenuItems, item => item.format === rawItem.format).each(item => editor.execCommand(item.command));
       return {
-<<<<<<< HEAD
         tooltip: makeTooltipText(editor, btnTooltip$4, fallbackAlignment),
-=======
-        tooltip: 'Align',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         text: Optional.none(),
         icon: Optional.some('align-left'),
         isSelectedFor,
@@ -24287,19 +23394,11 @@
         isInvalid: item => !editor.formatter.canApply(item.format)
       };
     };
-<<<<<<< HEAD
     const createAlignButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$4(editor), btnTooltip$4, 'AlignTextUpdate');
     const createAlignMenu = (editor, backstage) => {
       const menuItems = createMenuItems(editor, backstage, getSpec$4(editor));
       editor.ui.registry.addNestedMenuItem('align', {
         text: backstage.shared.providers.translate(menuTitle$4),
-=======
-    const createAlignButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$4(editor));
-    const createAlignMenu = (editor, backstage) => {
-      const menuItems = createMenuItems(editor, backstage, getSpec$4(editor));
-      editor.ui.registry.addNestedMenuItem('align', {
-        text: backstage.shared.providers.translate('Align'),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         onSetup: onSetupEditableToggle(editor),
         getSubmenuItems: () => menuItems.items.validateItems(menuItems.getStyleItems())
       });
@@ -24314,15 +23413,10 @@
       }));
     };
 
-<<<<<<< HEAD
     const menuTitle$3 = 'Blocks';
     const btnTooltip$3 = 'Block {0}';
     const fallbackFormat = 'Paragraph';
     const getSpec$3 = editor => {
-=======
-    const getSpec$3 = editor => {
-      const fallbackFormat = 'Paragraph';
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const isSelectedFor = format => () => editor.formatter.match(format);
       const getPreviewFor = format => () => {
         const fmt = editor.formatter.get(format);
@@ -24339,18 +23433,11 @@
         const detectedFormat = findNearest(editor, () => dataset.data);
         const text = detectedFormat.fold(constant$1(fallbackFormat), fmt => fmt.title);
         emitWith(comp, updateMenuText, { text });
-<<<<<<< HEAD
         fireBlocksTextUpdate(editor, { value: text });
       };
       const dataset = buildBasicSettingsDataset(editor, 'block_formats', Delimiter.SemiColon);
       return {
         tooltip: makeTooltipText(editor, btnTooltip$3, fallbackFormat),
-=======
-      };
-      const dataset = buildBasicSettingsDataset(editor, 'block_formats', Delimiter.SemiColon);
-      return {
-        tooltip: 'Blocks',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         text: Optional.some(fallbackFormat),
         icon: Optional.none(),
         isSelectedFor,
@@ -24363,30 +23450,19 @@
         isInvalid: item => !editor.formatter.canApply(item.format)
       };
     };
-<<<<<<< HEAD
     const createBlocksButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$3(editor), btnTooltip$3, 'BlocksTextUpdate');
     const createBlocksMenu = (editor, backstage) => {
       const menuItems = createMenuItems(editor, backstage, getSpec$3(editor));
       editor.ui.registry.addNestedMenuItem('blocks', {
         text: menuTitle$3,
-=======
-    const createBlocksButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$3(editor));
-    const createBlocksMenu = (editor, backstage) => {
-      const menuItems = createMenuItems(editor, backstage, getSpec$3(editor));
-      editor.ui.registry.addNestedMenuItem('blocks', {
-        text: 'Blocks',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         onSetup: onSetupEditableToggle(editor),
         getSubmenuItems: () => menuItems.items.validateItems(menuItems.getStyleItems())
       });
     };
 
-<<<<<<< HEAD
     const menuTitle$2 = 'Fonts';
     const btnTooltip$2 = 'Font {0}';
     const systemFont = 'System Font';
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const systemStackFonts = [
       '-apple-system',
       'Segoe UI',
@@ -24398,7 +23474,6 @@
       const fonts = fontFamily.split(/\s*,\s*/);
       return map$2(fonts, font => font.replace(/^['"]+|['"]+$/g, ''));
     };
-<<<<<<< HEAD
     const matchesStack = (fonts, stack) => stack.length > 0 && forall(stack, font => fonts.indexOf(font.toLowerCase()) > -1);
     const isSystemFontStack = (fontFamily, userStack) => {
       if (fontFamily.indexOf('-apple-system') === 0 || userStack.length > 0) {
@@ -24409,35 +23484,17 @@
       }
     };
     const getSpec$2 = editor => {
-=======
-    const isSystemFontStack = fontFamily => {
-      const matchesSystemStack = () => {
-        const fonts = splitFonts(fontFamily.toLowerCase());
-        return forall(systemStackFonts, font => fonts.indexOf(font.toLowerCase()) > -1);
-      };
-      return fontFamily.indexOf('-apple-system') === 0 && matchesSystemStack();
-    };
-    const getSpec$2 = editor => {
-      const systemFont = 'System Font';
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const getMatchingValue = () => {
         const getFirstFont = fontFamily => fontFamily ? splitFonts(fontFamily)[0] : '';
         const fontFamily = editor.queryCommandValue('FontName');
         const items = dataset.data;
         const font = fontFamily ? fontFamily.toLowerCase() : '';
-<<<<<<< HEAD
         const userStack = getDefaultFontStack(editor);
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         const matchOpt = find$5(items, item => {
           const format = item.format;
           return format.toLowerCase() === font || getFirstFont(format).toLowerCase() === getFirstFont(font).toLowerCase();
         }).orThunk(() => {
-<<<<<<< HEAD
           return someIf(isSystemFontStack(font, userStack), {
-=======
-          return someIf(isSystemFontStack(font), {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             title: systemFont,
             format: font
           });
@@ -24466,18 +23523,11 @@
         const {matchOpt, font} = getMatchingValue();
         const text = matchOpt.fold(constant$1(font), item => item.title);
         emitWith(comp, updateMenuText, { text });
-<<<<<<< HEAD
         fireFontFamilyTextUpdate(editor, { value: text });
       };
       const dataset = buildBasicSettingsDataset(editor, 'font_family_formats', Delimiter.SemiColon);
       return {
         tooltip: makeTooltipText(editor, btnTooltip$2, systemFont),
-=======
-      };
-      const dataset = buildBasicSettingsDataset(editor, 'font_family_formats', Delimiter.SemiColon);
-      return {
-        tooltip: 'Fonts',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         text: Optional.some(systemFont),
         icon: Optional.none(),
         isSelectedFor,
@@ -24490,19 +23540,11 @@
         isInvalid: never
       };
     };
-<<<<<<< HEAD
     const createFontFamilyButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$2(editor), btnTooltip$2, 'FontFamilyTextUpdate');
     const createFontFamilyMenu = (editor, backstage) => {
       const menuItems = createMenuItems(editor, backstage, getSpec$2(editor));
       editor.ui.registry.addNestedMenuItem('fontfamily', {
         text: backstage.shared.providers.translate(menuTitle$2),
-=======
-    const createFontFamilyButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$2(editor));
-    const createFontFamilyMenu = (editor, backstage) => {
-      const menuItems = createMenuItems(editor, backstage, getSpec$2(editor));
-      editor.ui.registry.addNestedMenuItem('fontfamily', {
-        text: backstage.shared.providers.translate('Fonts'),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         onSetup: onSetupEditableToggle(editor),
         getSubmenuItems: () => menuItems.items.validateItems(menuItems.getStyleItems())
       });
@@ -24631,10 +23673,7 @@
         }
       };
       const makeStepperButton = (action, title, tooltip, classes) => {
-<<<<<<< HEAD
         const editorOffCellStepButton = Cell(noop);
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         const translatedTooltip = backstage.shared.providers.translate(tooltip);
         const altExecuting = generate$6('altExecuting');
         const onSetup = onSetupEvent(editor, 'NodeChange SwitchMode', api => {
@@ -24661,13 +23700,8 @@
               onControlAttached({
                 onSetup,
                 getApi
-<<<<<<< HEAD
               }, editorOffCellStepButton),
               onControlDetached({ getApi }, editorOffCellStepButton),
-=======
-              }, editorOffCell),
-              onControlDetached({ getApi }, editorOffCell),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
               run$1(keydown(), (comp, se) => {
                 if (se.event.raw.keyCode === Keys.space() || se.event.raw.keyCode === Keys.enter()) {
                   if (!Disabling.isDisabled(comp)) {
@@ -24695,24 +23729,12 @@
           }
         });
       };
-<<<<<<< HEAD
       const memMinus = record(makeStepperButton(focusBack => decrease(false, focusBack), 'minus', 'Decrease font size', []));
       const memPlus = record(makeStepperButton(focusBack => increase(false, focusBack), 'plus', 'Increase font size', []));
       const memInput = record({
         dom: {
           tag: 'div',
           classes: ['tox-input-wrapper']
-=======
-      const memMinus = record(makeStepperButton(focusBack => decrease(false, focusBack), 'minus', 'Decrease font size', ['highlight-on-focus']));
-      const memPlus = record(makeStepperButton(focusBack => increase(false, focusBack), 'plus', 'Increase font size', ['highlight-on-focus']));
-      const memInput = record({
-        dom: {
-          tag: 'div',
-          classes: [
-            'tox-input-wrapper',
-            'highlight-on-focus'
-          ]
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         },
         components: [Input.sketch({
             inputBehaviours: derive$1([
@@ -24812,12 +23834,9 @@
       };
     };
 
-<<<<<<< HEAD
     const menuTitle$1 = 'Font sizes';
     const btnTooltip$1 = 'Font size {0}';
     const fallbackFontSize = '12pt';
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const legacyFontSizes = {
       '8pt': '1',
       '10pt': '2',
@@ -24881,20 +23900,12 @@
         const {matchOpt, size} = getMatchingValue();
         const text = matchOpt.fold(constant$1(size), match => match.title);
         emitWith(comp, updateMenuText, { text });
-<<<<<<< HEAD
         fireFontSizeTextUpdate(editor, { value: text });
       };
       const dataset = buildBasicSettingsDataset(editor, 'font_size_formats', Delimiter.Space);
       return {
         tooltip: makeTooltipText(editor, btnTooltip$1, fallbackFontSize),
         text: Optional.some(fallbackFontSize),
-=======
-      };
-      const dataset = buildBasicSettingsDataset(editor, 'font_size_formats', Delimiter.Space);
-      return {
-        tooltip: 'Font sizes',
-        text: Optional.some('12pt'),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         icon: Optional.none(),
         isSelectedFor,
         getPreviewFor,
@@ -24906,11 +23917,7 @@
         isInvalid: never
       };
     };
-<<<<<<< HEAD
     const createFontSizeButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$1(editor), btnTooltip$1, 'FontSizeTextUpdate');
-=======
-    const createFontSizeButton = (editor, backstage) => createSelectButton(editor, backstage, getSpec$1(editor));
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const getConfigFromUnit = unit => {
       var _a;
       const baseConfig = { step: 1 };
@@ -24937,18 +23944,11 @@
             'unsupportedLength',
             'empty'
           ]);
-<<<<<<< HEAD
           const currentValue = getCurrentValue();
           const parsedText = parse(text, [
             'unsupportedLength',
             'empty'
           ]).or(parse(currentValue, [
-=======
-          const parsedText = parse(text, [
-            'unsupportedLength',
-            'empty'
-          ]).or(parse(getCurrentValue(), [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             'unsupportedLength',
             'empty'
           ]));
@@ -24956,15 +23956,11 @@
           const defaultUnit = getFontSizeInputDefaultUnit(editor);
           const unit = parsedText.map(res => res.unit).filter(u => u !== '').getOr(defaultUnit);
           const newValue = updateFunction(value, getConfigFromUnit(unit).step);
-<<<<<<< HEAD
           const res = `${ isValidValue(newValue) ? newValue : value }${ unit }`;
           if (res !== currentValue) {
             fireFontSizeInputTextUpdate(editor, { value: res });
           }
           return res;
-=======
-          return `${ isValidValue(newValue) ? newValue : value }${ unit }`;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
       };
     };
@@ -24972,21 +23968,14 @@
     const createFontSizeMenu = (editor, backstage) => {
       const menuItems = createMenuItems(editor, backstage, getSpec$1(editor));
       editor.ui.registry.addNestedMenuItem('fontsize', {
-<<<<<<< HEAD
         text: menuTitle$1,
-=======
-        text: 'Font sizes',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         onSetup: onSetupEditableToggle(editor),
         getSubmenuItems: () => menuItems.items.validateItems(menuItems.getStyleItems())
       });
     };
 
-<<<<<<< HEAD
     const menuTitle = 'Formats';
     const btnTooltip = 'Format {0}';
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const getSpec = (editor, dataset) => {
       const fallbackFormat = 'Paragraph';
       const isSelectedFor = format => () => editor.formatter.match(format);
@@ -25014,16 +24003,10 @@
         const detectedFormat = findNearest(editor, constant$1(flattenedItems));
         const text = detectedFormat.fold(constant$1(fallbackFormat), fmt => fmt.title);
         emitWith(comp, updateMenuText, { text });
-<<<<<<< HEAD
         fireStylesTextUpdate(editor, { value: text });
       };
       return {
         tooltip: makeTooltipText(editor, btnTooltip, fallbackFormat),
-=======
-      };
-      return {
-        tooltip: 'Formats',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         text: Optional.some(fallbackFormat),
         icon: Optional.none(),
         isSelectedFor,
@@ -25041,11 +24024,7 @@
         type: 'advanced',
         ...backstage.styles
       };
-<<<<<<< HEAD
       return createSelectButton(editor, backstage, getSpec(editor, dataset), btnTooltip, 'StylesTextUpdate');
-=======
-      return createSelectButton(editor, backstage, getSpec(editor, dataset));
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     };
     const createStylesMenu = (editor, backstage) => {
       const dataset = {
@@ -25054,11 +24033,7 @@
       };
       const menuItems = createMenuItems(editor, backstage, getSpec(editor, dataset));
       editor.ui.registry.addNestedMenuItem('styles', {
-<<<<<<< HEAD
         text: menuTitle,
-=======
-        text: 'Formats',
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         onSetup: onSetupEditableToggle(editor),
         getSubmenuItems: () => menuItems.items.validateItems(menuItems.getStyleItems())
       });
@@ -25433,7 +24408,6 @@
         },
         isActive: () => descendant(comp.element, 'span').exists(button => comp.getSystem().getByDom(button).exists(Toggling.isOn)),
         setText: text => descendant(comp.element, 'span').each(button => comp.getSystem().getByDom(button).each(buttonComp => emitWith(buttonComp, updateMenuText, { text }))),
-<<<<<<< HEAD
         setIcon: icon => descendant(comp.element, 'span').each(button => comp.getSystem().getByDom(button).each(buttonComp => emitWith(buttonComp, updateMenuIcon, { icon }))),
         setTooltip: tooltip => {
           const translatedTooltip = sharedBackstage.providers.translate(tooltip);
@@ -25442,9 +24416,6 @@
             'title': translatedTooltip
           });
         }
-=======
-        setIcon: icon => descendant(comp.element, 'span').each(button => comp.getSystem().getByDom(button).each(buttonComp => emitWith(buttonComp, updateMenuIcon, { icon })))
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       });
       const editorOffCell = Cell(noop);
       const specialisation = {
@@ -25732,22 +24703,12 @@
       const {mainUi, uiMotherships} = uiRefs;
       const lastToolbarWidth = Cell(0);
       const outerContainer = mainUi.outerContainer;
-<<<<<<< HEAD
-=======
-      editor.on('SkinLoaded', () => {
-        setToolbar(editor, uiRefs, rawUiConfig, backstage);
-      });
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       iframe(editor);
       const eTargetNode = SugarElement.fromDom(args.targetNode);
       const uiRoot = getContentContainer(getRootNode(eTargetNode));
       attachSystemAfter(eTargetNode, mainUi.mothership);
       attachUiMotherships(editor, uiRoot, uiRefs);
-<<<<<<< HEAD
       editor.on('SkinLoaded', () => {
-=======
-      editor.on('PostRender', () => {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         OuterContainer.setSidebar(outerContainer, rawUiConfig.sidebar, getSidebarShow(editor));
         setToolbar(editor, uiRefs, rawUiConfig, backstage);
         lastToolbarWidth.set(editor.getWin().innerWidth);
@@ -29683,12 +28644,8 @@
         'media',
         'file'
       ]),
-<<<<<<< HEAD
       enabled,
       optionString('picker_text')
-=======
-      enabled
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     ]);
     const urlInputSchema = objOf(urlInputFields);
     const urlInputDataProcessor = objOf([
@@ -30752,7 +29709,6 @@
         ModalDialog.setIdle(lazyDialog());
       }
     });
-<<<<<<< HEAD
     const fullscreenClass = 'tox-dialog--fullscreen';
     const largeDialogClass = 'tox-dialog--width-lg';
     const mediumDialogClass = 'tox-dialog--width-md';
@@ -30818,49 +29774,6 @@
         ]
       }
     }));
-=======
-    const renderModalDialog = (spec, initialData, dialogEvents, backstage) => {
-      const updateState = (_comp, incoming) => Optional.some(incoming);
-      return build$1(renderDialog$1({
-        ...spec,
-        firstTabstop: 1,
-        lazySink: backstage.shared.getSink,
-        extraBehaviours: [
-          Reflecting.config({
-            channel: `${ dialogChannel }-${ spec.id }`,
-            updateState,
-            initialData
-          }),
-          memory({}),
-          ...spec.extraBehaviours
-        ],
-        onEscape: comp => {
-          emit(comp, formCancelEvent);
-        },
-        dialogEvents,
-        eventOrder: {
-          [receive()]: [
-            Reflecting.name(),
-            Receiving.name()
-          ],
-          [attachedToDom()]: [
-            'scroll-lock',
-            Reflecting.name(),
-            'messages',
-            'dialog-events',
-            'alloy.base.behaviour'
-          ],
-          [detachedFromDom()]: [
-            'alloy.base.behaviour',
-            'dialog-events',
-            'messages',
-            Reflecting.name(),
-            'scroll-lock'
-          ]
-        }
-      }));
-    };
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const mapMenuButtons = (buttons, menuItemStates = {}) => {
       const mapItems = button => {
         const items = map$2(button.items, item => {
@@ -31133,24 +30046,10 @@
       return instanceApi;
     };
 
-<<<<<<< HEAD
-=======
-    const getDialogSizeClasses = size => {
-      switch (size) {
-      case 'large':
-        return ['tox-dialog--width-lg'];
-      case 'medium':
-        return ['tox-dialog--width-md'];
-      default:
-        return [];
-      }
-    };
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const renderDialog = (dialogInit, extra, backstage) => {
       const dialogId = generate$6('dialog');
       const internalDialog = dialogInit.internalDialog;
       const header = getHeader(internalDialog.title, dialogId, backstage);
-<<<<<<< HEAD
       const dialogSize = Cell(internalDialog.size);
       const dialogSizeClasses = getDialogSizeClass(dialogSize.get()).toArray();
       const updateState = (comp, incoming) => {
@@ -31158,8 +30057,6 @@
         updateDialogSizeClass(incoming.internalDialog.size, comp);
         return Optional.some(incoming);
       };
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const body = renderModalBody({
         body: internalDialog.body,
         initialData: internalDialog.initialData
@@ -31168,16 +30065,11 @@
       const objOfCells = extractCellsToObject(storedMenuButtons);
       const footer = someIf(storedMenuButtons.length !== 0, renderModalFooter({ buttons: storedMenuButtons }, dialogId, backstage));
       const dialogEvents = initDialog(() => instanceApi, getEventExtras(() => dialog, backstage.shared.providers, extra), backstage.shared.getSink);
-<<<<<<< HEAD
-=======
-      const dialogSize = getDialogSizeClasses(internalDialog.size);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const spec = {
         id: dialogId,
         header,
         body,
         footer,
-<<<<<<< HEAD
         extraClasses: dialogSizeClasses,
         extraBehaviours: [Reflecting.config({
             channel: `${ dialogChannel }-${ dialogId }`,
@@ -31187,33 +30079,13 @@
         extraStyles: {}
       };
       const dialog = renderModalDialog(spec, dialogEvents, backstage);
-=======
-        extraClasses: dialogSize,
-        extraBehaviours: [],
-        extraStyles: {}
-      };
-      const dialog = renderModalDialog(spec, dialogInit, dialogEvents, backstage);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const modalAccess = (() => {
         const getForm = () => {
           const outerForm = ModalDialog.getBody(dialog);
           return Composing.getCurrent(outerForm).getOr(outerForm);
         };
-<<<<<<< HEAD
         const toggleFullscreen$1 = () => {
           toggleFullscreen(dialog, dialogSize.get());
-=======
-        const toggleFullscreen = () => {
-          const fullscreenClass = 'tox-dialog--fullscreen';
-          const sugarBody = SugarElement.fromDom(dialog.element.dom);
-          if (!has(sugarBody, fullscreenClass)) {
-            remove$1(sugarBody, dialogSize);
-            add$2(sugarBody, fullscreenClass);
-          } else {
-            remove$2(sugarBody, fullscreenClass);
-            add$1(sugarBody, dialogSize);
-          }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         };
         return {
           getId: constant$1(dialogId),
@@ -31221,11 +30093,7 @@
           getBody: () => ModalDialog.getBody(dialog),
           getFooter: () => ModalDialog.getFooter(dialog),
           getFormWrapper: getForm,
-<<<<<<< HEAD
           toggleFullscreen: toggleFullscreen$1
-=======
-          toggleFullscreen
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         };
       })();
       const instanceApi = getDialogApi(modalAccess, extra.redial, objOfCells);
@@ -31235,24 +30103,11 @@
       };
     };
 
-<<<<<<< HEAD
     const renderInlineDialog = (dialogInit, extra, backstage, ariaAttrs = false, refreshDocking) => {
-=======
-    const getInlineDialogSizeClass = size => {
-      switch (size) {
-      case 'medium':
-        return Optional.some('tox-dialog--width-md');
-      default:
-        return Optional.none();
-      }
-    };
-    const renderInlineDialog = (dialogInit, extra, backstage, ariaAttrs = false) => {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const dialogId = generate$6('dialog');
       const dialogLabelId = generate$6('dialog-label');
       const dialogContentId = generate$6('dialog-content');
       const internalDialog = dialogInit.internalDialog;
-<<<<<<< HEAD
       const dialogSize = Cell(internalDialog.size);
       const dialogSizeClass = getDialogSizeClass(dialogSize.get()).toArray();
       const updateState = (comp, incoming) => {
@@ -31261,10 +30116,6 @@
         refreshDocking();
         return Optional.some(incoming);
       };
-=======
-      const dialogSize = getInlineDialogSizeClass(internalDialog.size);
-      const updateState = (_comp, incoming) => Optional.some(incoming);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const memHeader = record(renderInlineHeader({
         title: internalDialog.title,
         draggable: true
@@ -31295,11 +30146,7 @@
           classes: [
             'tox-dialog',
             inlineClass,
-<<<<<<< HEAD
             ...dialogSizeClass
-=======
-            ...dialogSize.toArray()
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           ],
           attributes: {
             role: 'dialog',
@@ -31351,21 +30198,8 @@
           ...optMemFooter.map(memFooter => memFooter.asSpec()).toArray()
         ]
       });
-<<<<<<< HEAD
       const toggleFullscreen$1 = () => {
         toggleFullscreen(dialog, dialogSize.get());
-=======
-      const toggleFullscreen = () => {
-        const fullscreenClass = 'tox-dialog--fullscreen';
-        const sugarBody = SugarElement.fromDom(dialog.element.dom);
-        if (!hasAll(sugarBody, [fullscreenClass])) {
-          remove$1(sugarBody, [inlineClass]);
-          add$1(sugarBody, [fullscreenClass]);
-        } else {
-          remove$1(sugarBody, [fullscreenClass]);
-          add$1(sugarBody, [inlineClass]);
-        }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       };
       const instanceApi = getDialogApi({
         getId: constant$1(dialogId),
@@ -31376,11 +30210,7 @@
           const body = memBody.get(dialog);
           return Composing.getCurrent(body).getOr(body);
         },
-<<<<<<< HEAD
         toggleFullscreen: toggleFullscreen$1
-=======
-        toggleFullscreen
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       }, extra.redial, objOfCells);
       return {
         dialog,
@@ -31486,7 +30316,6 @@
       const iframeUri = new global(internalDialog.url, { base_uri: new global(window.location.href) });
       const iframeDomain = `${ iframeUri.protocol }://${ iframeUri.host }${ iframeUri.port ? ':' + iframeUri.port : '' }`;
       const messageHandlerUnbinder = unbindable();
-<<<<<<< HEAD
       const updateState = (_comp, incoming) => Optional.some(incoming);
       const extraBehaviours = [
         Reflecting.config({
@@ -31494,9 +30323,6 @@
           updateState,
           initialData: internalDialog
         }),
-=======
-      const extraBehaviours = [
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         config('messages', [
           runOnAttached(() => {
             const unbind = bind(SugarElement.fromDom(window), 'message', e => {
@@ -31537,11 +30363,7 @@
         extraBehaviours,
         extraStyles: styles
       };
-<<<<<<< HEAD
       const dialog = renderModalDialog(spec, dialogEvents, backstage);
-=======
-      const dialog = renderModalDialog(spec, internalDialog, dialogEvents, backstage);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       const instanceApi = getUrlDialogApi(dialog);
       return {
         dialog,
@@ -31735,13 +30557,9 @@
           };
           const refreshDocking = () => inlineDialog.on(dialog => {
             InlineView.reposition(dialog);
-<<<<<<< HEAD
             if (!isStickyToolbar$1 || !isToolbarLocationTop) {
               Docking.refresh(dialog);
             }
-=======
-            Docking.refresh(dialog);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           });
           const dialogUi = renderInlineDialog(dialogInit, {
             redial: DialogManager.redial,
@@ -31751,11 +30569,7 @@
               inlineDialog.clear();
               closeWindow(dialogUi.instanceApi);
             }
-<<<<<<< HEAD
           }, extras.backstages.popup, windowParams.ariaAttrs, refreshDocking);
-=======
-          }, extras.backstages.popup, windowParams.ariaAttrs);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           const inlineDialogComp = build$1(InlineView.sketch({
             lazySink: extras.backstages.popup.shared.getSink,
             dom: {
@@ -31811,11 +30625,7 @@
               inlineDialog.clear();
               closeWindow(dialogUi.instanceApi);
             }
-<<<<<<< HEAD
           }, extras.backstages.popup, windowParams.ariaAttrs, refreshDocking);
-=======
-          }, extras.backstages.popup, windowParams.ariaAttrs);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           const inlineDialogComp = build$1(InlineView.sketch({
             lazySink: extras.backstages.popup.shared.getSink,
             dom: {
@@ -31872,11 +30682,7 @@
           };
           InlineView.showWithinBounds(inlineDialogComp, premade(dialogUi.dialog), { anchor }, getInlineDialogBounds);
           Docking.refresh(inlineDialogComp);
-<<<<<<< HEAD
           editor.on('ResizeEditor ScrollWindow ElementScroll ResizeWindow', refreshDocking);
-=======
-          editor.on('ResizeEditor ScrollWindow ElementScroll', refreshDocking);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           dialogUi.instanceApi.setData(initialData);
           Keying.focusIn(dialogUi.dialog);
           return dialogUi.instanceApi;

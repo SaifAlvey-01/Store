@@ -98,25 +98,21 @@ const CountrySelect = ({ value, onChange, options }) => {
     >
       <div className="flex-raw flex ">
         <img src={data.image} alt={label} className="w-6 h-6 pl-2 " />
-<<<<<<< HEAD
+
         <div className="justify-center items-center flex pl-4  font-roboto text-[#8E8E8E]">
-=======
+
         <div className="justify-center items-center flex pl-4 font-roboto text-[#8E8E8E]">
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           {label}
         </div>
       </div>
       <div
         style={{ marginRight: "30px" }}
-<<<<<<< HEAD
-        className="m-2 font-roboto w-12 text-center border-2 border-solid m"
-=======
-        className="m-2 font-roboto w-12 text-center m"
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
-      >
+
+        className="m-2 font-roboto w-12 text-center border-2 border-solid m">
         <p className="p-2 rounded-sm text-sm bg-[#F6F7FF] w-full text-[#4162FF] font-medium">
           {data.cur}
         </p>
+      </div>
       </div>
     </div>
   );
@@ -134,6 +130,7 @@ const CountrySelect = ({ value, onChange, options }) => {
       }}
     />
   );
+
 };
 
 export default CountrySelect;

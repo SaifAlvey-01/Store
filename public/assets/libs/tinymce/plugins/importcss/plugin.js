@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
  * TinyMCE version 6.8.2 (2023-12-11)
-=======
- * TinyMCE version 6.7.2 (2023-10-25)
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
  */
 
 (function () {
@@ -181,11 +177,7 @@
         } catch (e) {
         }
         global.each(rules, cssRule => {
-<<<<<<< HEAD
           if (isCssImportRule(cssRule) && cssRule.styleSheet) {
-=======
-          if (isCssImportRule(cssRule)) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             append(cssRule.styleSheet, true);
           } else if (isCssPageRule(cssRule)) {
             global.each(cssRule.selectorText.split(','), selector => {

@@ -86,8 +86,8 @@ export default function accordian({ ques, ans }) {
           </svg>
         )}
         <div
-          className={`text-[14px] mr-16 absolute bottom-0 pt-5 font-freesans h-[96px] ml-5 content-center ${
-            check == 0 ? "hidden" : "visible"
+          className={`text-[14px] mr-16 absolute transition-all ease-in-out bottom-0 pt-5 font-freesans h-[96px] ml-5 content-center ${
+            check == 0 ? "hidden" : "visible "
           }`}
         >
           <p className="w-full text-[#6B7280]">{ans}</p>

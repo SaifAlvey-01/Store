@@ -26,20 +26,13 @@ export const addTax = createAsyncThunk(
 
 export const editTax = createAsyncThunk(
   "taxes/editTax",
-<<<<<<< HEAD
-  async ({ taxId, taxData }) => {
+  async ({ taxId, taxData }, thunkAPI) => {
     try {
       const url = `${baseUrl}/taxes/update-tax/${taxId}`;
       const response = await axiosInstance.patch(url, taxData);
-=======
-  async ( {taxId, body} ) => {
-    try {
-      const url = `${baseUrl}/taxes/update-tax/${taxId}`;
-      const response = await axiosInstance.patch(url, body);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       return response.data;
     } catch (error) {
-      throw error.response.data.message;
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -73,11 +66,9 @@ const taxSlice = createSlice({
       .addCase(addTax.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-<<<<<<< HEAD
         state.taxes.push(action.payload);
-=======
+
         state.taxes = action.payload;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(addTax.rejected, (state, action) => {
         state.loading = false;
@@ -89,7 +80,6 @@ const taxSlice = createSlice({
       })
       .addCase(editTax.fulfilled, (state, action) => {
         state.loading = false;
-<<<<<<< HEAD
         state.status = true;
         // Update the corresponding tax in the taxes array
         const editedTaxIndex = state.taxes.data.data.findIndex(
@@ -98,10 +88,9 @@ const taxSlice = createSlice({
         if (editedTaxIndex !== -1) {
           state.taxes.data.data[editedTaxIndex] = action.payload.data;
         }
-=======
+
         state.status = action.payload.state;
         state.taxes = action.payload.data;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(editTax.rejected, (state, action) => {
         state.loading = false;
@@ -113,11 +102,8 @@ const taxSlice = createSlice({
       })
       .addCase(getAllTaxes.fulfilled, (state, action) => {
         state.loading = false;
-<<<<<<< HEAD
         state.taxes = action.payload;
-=======
         state.taxes = action.payload.data.data[0];
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(getAllTaxes.rejected, (state, action) => {
         state.loading = false;

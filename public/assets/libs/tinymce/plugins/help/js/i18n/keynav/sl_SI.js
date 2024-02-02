@@ -24,11 +24,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sl_SI',
   '\n' +
   '<p>Če se želite pomakniti z enega dela uporabniškega vmesnika na prejšnjega, pritisnite <strong>shift + tabulatorko</strong>.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Zaporedje teh razdelkov uporabniškega vmesnika, ko pritiskate <strong>tabulatorko</strong>, je:</p>\n' +
-=======
-  '<p>Zaporedje teh razdelkov uporabniškega vmesnika, ko pritiskate <strong>tabulatorko</strong>, je:\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Menijska vrstica</li>\n' +
@@ -43,11 +39,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sl_SI',
   '<p>Če razdelek uporabniškega vmesnika ni prisoten, je preskočen.</p>\n' +
   '\n' +
   '<p>Če ima noga fokus za krmarjenje s tipkovnico in ni vidne stranske vrstice, s pritiskom na <strong>shift + tabulatorko</strong>\n' +
-<<<<<<< HEAD
   '  fokus premaknete na prvo skupino orodne vrstice, ne zadnjo</p>.\n' +
-=======
-  '  fokus premaknete na prvo skupino orodne vrstice, ne zadnjo.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Krmarjenje v razdelkih uporabniškega vmesnika</h1>\n' +
   '\n' +
@@ -62,11 +54,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sl_SI',
   '  <li>omogočata premikanje med elementi na poti do elementov noge.</li>\n' +
   '</ul>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p><strong>Spodnja</strong> in <strong>zgornja</strong> puščična tipka</p>\n' +
-=======
-  '<p><strong>Spodnja</strong> in <strong>zgornja</strong> puščična tipka\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>omogočata premikanje med elementi menija.</li>\n' +
@@ -75,11 +63,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sl_SI',
   '\n' +
   '<p><strong>Puščične</strong> tipke omogočajo kroženje znotraj razdelka uporabniškega vmesnika, na katerem je fokus.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Če želite zapreti odprt meni, podmeni ali pojavni meni, pritisnite tipko <strong>Esc</strong>.</p>\n' +
-=======
-  '<p>Če želite zapreti odprt meni, podmeni ali pojavni meni, pritisnite tipko <strong>Esc</strong>.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>Če je trenutni fokus na »vrhu« določenega razdelka uporabniškega vmesnika, s pritiskom tipke <strong>Esc</strong> zaprete\n' +
   '  tudi celotno krmarjenje s tipkovnico.</p>\n' +
@@ -87,11 +71,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sl_SI',
   '<h1>Izvajanje menijskega elementa ali gumba orodne vrstice</h1>\n' +
   '\n' +
   '<p>Ko je označen želeni menijski element ali orodja vrstica, pritisnite <strong>vračalko</strong>, <strong>Enter</strong>\n' +
-<<<<<<< HEAD
   '  ali <strong>preslednico</strong>, da izvedete element.</p>\n' +
-=======
-  '  ali <strong>preslednico</strong>, da izvedete element.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Krmarjenje po pogovornih oknih brez zavihkov</h1>\n' +
   '\n' +

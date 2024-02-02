@@ -24,11 +24,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ja',
   '\n' +
   '<p>前の UI セクションに移動するには、<strong>Shift+Tab</strong> を押します。</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>これらの UI セクションの <strong>Tab</strong> の順序:</p>\n' +
-=======
-  '<p>これらの UI セクションの <strong>Tab</strong> の順序:\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>メニュー バー</li>\n' +
@@ -43,11 +39,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ja',
   '<p>UI セクションが存在しない場合は、スキップされます。</p>\n' +
   '\n' +
   '<p>フッターにキーボード ナビゲーション フォーカスがあり、表示可能なサイド バーがない場合、<strong>Shift+Tab</strong> を押すと、\n' +
-<<<<<<< HEAD
   '  フォーカスが最後ではなく最初のツール バー グループに移動します。</p>\n' +
-=======
-  '  フォーカスが最後ではなく最初のツール バー グループに移動します。\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>UI セクション内の移動</h1>\n' +
   '\n' +
@@ -62,11 +54,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ja',
   '  <li>フッターの要素パスの項目間で移動します。</li>\n' +
   '</ul>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p><strong>下矢印</strong>と<strong>上矢印</strong>のキー</p>\n' +
-=======
-  '<p><strong>下矢印</strong>と<strong>上矢印</strong>のキー\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>メニュー内のメニュー項目間で移動します。</li>\n' +
@@ -75,11 +63,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ja',
   '\n' +
   '<p><strong>矢印</strong>キーで、フォーカスされた UI セクション内で循環します。</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>開いたメニュー、開いたサブメニュー、開いたポップアップ メニューを閉じるには、<strong>Esc</strong> キーを押します。</p>\n' +
-=======
-  '<p>開いたメニュー、開いたサブメニュー、開いたポップアップ メニューを閉じるには、<strong>Esc</strong> キーを押します。\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>現在のフォーカスが特定の UI セクションの「一番上」にある場合、<strong>Esc</strong> キーを押すと\n' +
   '  キーボード ナビゲーションも完全に閉じられます。</p>\n' +
@@ -87,11 +71,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.ja',
   '<h1>メニュー項目またはツール バー ボタンの実行</h1>\n' +
   '\n' +
   '<p>目的のメニュー項目やツール バー ボタンが強調表示されている場合、<strong>リターン</strong>、<strong>Enter</strong>、\n' +
-<<<<<<< HEAD
   '  または<strong>スペース キー</strong>を押して項目を実行します。</p>\n' +
-=======
-  '  または<strong>スペース キー</strong>を押して項目を実行します。\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>タブのないダイアログの移動</h1>\n' +
   '\n' +

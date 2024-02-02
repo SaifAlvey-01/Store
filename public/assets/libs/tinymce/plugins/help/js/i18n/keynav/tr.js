@@ -24,11 +24,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.tr',
   '\n' +
   '<p>Önceki kullanıcı arabirimi bölümüne gitmek için <strong>Shift+Sekme</strong> tuşlarına basın.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Bu kullanıcı arabirimi bölümlerinin <strong>Sekme</strong> sırası:</p>\n' +
-=======
-  '<p>Bu kullanıcı arabirimi bölümlerinin <strong>Sekme</strong> sırası:\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Menü çubuğu</li>\n' +
@@ -43,11 +39,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.tr',
   '<p>Kullanıcı arabirimi bölümü yoksa atlanır.</p>\n' +
   '\n' +
   '<p>Alt bilgide klavyeyle gezinti odağı yoksa ve görünür bir kenar çubuğu mevcut değilse <strong>Shift+Sekme</strong> tuşlarına basıldığında\n' +
-<<<<<<< HEAD
   '  odak son araç çubuğu yerine ilk araç çubuğu grubuna taşınır.</p>\n' +
-=======
-  '  odak son araç çubuğu yerine ilk araç çubuğu grubuna taşınır.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Kullanıcı arabirimi bölümleri içinde gezinme</h1>\n' +
   '\n' +
@@ -62,11 +54,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.tr',
   '  <li>alt bilginin öğe yolundaki öğeler arasında hareket eder.</li>\n' +
   '</ul>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p><strong>Aşağı</strong> ve <strong>Yukarı</strong> ok tuşları</p>\n' +
-=======
-  '<p><strong>Aşağı</strong> ve <strong>Yukarı</strong> ok tuşları\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>menüdeki menü öğeleri arasında hareket eder.</li>\n' +
@@ -75,11 +63,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.tr',
   '\n' +
   '<p><strong>Ok</strong> tuşları, odaklanılan kullanıcı arabirimi bölümü içinde döngüsel olarak hareket eder.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Açık bir menüyü, açık bir alt menüyü veya açık bir açılır menüyü kapatmak için <strong>Esc</strong> tuşuna basın.</p>\n' +
-=======
-  '<p>Açık bir menüyü, açık bir alt menüyü veya açık bir açılır menüyü kapatmak için <strong>Esc</strong> tuşuna basın.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>Geçerli odak belirli bir kullanıcı arabirimi bölümünün "üst" kısmındaysa <strong>Esc</strong> tuşuna basıldığında\n' +
   '  klavyeyle gezintiden de tamamen çıkılır.</p>\n' +
@@ -87,11 +71,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.tr',
   '<h1>Menü öğesini veya araç çubuğu düğmesini yürütme</h1>\n' +
   '\n' +
   '<p>İstediğiniz menü öğesi veya araç çubuğu düğmesi vurgulandığında <strong>Return</strong>, <strong>Enter</strong>\n' +
-<<<<<<< HEAD
   '  veya <strong>Ara çubuğu</strong> tuşuna basın.</p>\n' +
-=======
-  '  veya <strong>Ara çubuğu</strong> tuşuna basın.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Sekme bulunmayan iletişim kutularında gezinme</h1>\n' +
   '\n' +

@@ -24,11 +24,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.nb_NO',
   '\n' +
   '<p>Du kan bevege deg fra én grensesnittdel til den forrige ved å trykke på <strong>Shift + tabulatortasten</strong>.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Rekkefølgen til <strong>tabulatortasten</strong> gjennom grensesnittdelene er:</p>\n' +
-=======
-  '<p>Rekkefølgen til <strong>tabulatortasten</strong> gjennom grensesnittdelene er:\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Menylinjen</li>\n' +
@@ -43,11 +39,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.nb_NO',
   '<p>Hvis en grensesnittdel ikke er til stede, blir den hoppet over.</p>\n' +
   '\n' +
   '<p>Hvis tastaturnavigeringen har uthevet bunnteksten og det ikke finnes en synlig sidestolpe, kan du trykke på <strong>Shift + tabulatortasten</strong>\n' +
-<<<<<<< HEAD
   '  for å flytte fokuset til den første gruppen på verktøylinjen i stedet for den siste.</p>\n' +
-=======
-  '  for å flytte fokuset til den første gruppen på verktøylinjen i stedet for den siste.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navigere innenfor grensesnittdeler</h1>\n' +
   '\n' +
@@ -62,11 +54,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.nb_NO',
   '  <li>beveger deg mellom elementer i elementstien i bunnteksten.</li>\n' +
   '</ul>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p><strong>Ned</strong>- og <strong>opp</strong>-piltastene</p>\n' +
-=======
-  '<p><strong>Ned</strong>- og <strong>opp</strong>-piltastene\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>beveger deg mellom menyelementer i en meny.</li>\n' +
@@ -75,11 +63,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.nb_NO',
   '\n' +
   '<p>Med <strong>piltastene</strong> kan du bevege deg innenfor den uthevede grensesnittdelen.</p>\n' +
   '\n' +
-<<<<<<< HEAD
   '<p>Du kan lukke en åpen meny, en åpen undermeny eller en åpen hurtigmeny ved å klikke på <strong>Esc</strong>-tasten.</p>\n' +
-=======
-  '<p>Du kan lukke en åpen meny, en åpen undermeny eller en åpen hurtigmeny ved å klikke på <strong>Esc</strong>-tasten.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>Hvis det øverste nivået i en grensesnittdel er uthevet, kan du ved å trykke på <strong>Esc</strong> også avslutte\n' +
   '  tastaturnavigeringen helt.</p>\n' +
@@ -87,11 +71,7 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.nb_NO',
   '<h1>Utføre et menyelement eller en knapp på en verktøylinje</h1>\n' +
   '\n' +
   '<p>Når det ønskede menyelementet eller verktøylinjeknappen er uthevet, trykker du på <strong>Retur</strong>, <strong>Enter</strong>,\n' +
-<<<<<<< HEAD
   '  eller <strong>mellomromstasten</strong> for å utføre elementet.</p>\n' +
-=======
-  '  eller <strong>mellomromstasten</strong> for å utføre elementet.\n' +
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navigere i dialogbokser uten faner</h1>\n' +
   '\n' +

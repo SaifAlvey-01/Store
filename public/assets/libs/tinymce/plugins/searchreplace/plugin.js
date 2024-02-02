@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
  * TinyMCE version 6.8.2 (2023-12-11)
-=======
- * TinyMCE version 6.7.2 (2023-10-25)
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
  */
 
 (function () {
@@ -364,13 +360,8 @@
     var global = tinymce.util.Tools.resolve('tinymce.dom.TreeWalker');
 
     const isSimpleBoundary = (dom, node) => dom.isBlock(node) || has(dom.schema.getVoidElements(), node.nodeName);
-<<<<<<< HEAD
     const isContentEditableFalse = (dom, node) => !dom.isEditable(node);
     const isContentEditableTrueInCef = (dom, node) => dom.getContentEditable(node) === 'true' && node.parentNode && !dom.isEditable(node.parentNode);
-=======
-    const isContentEditableFalse = (dom, node) => dom.getContentEditable(node) === 'false';
-    const isContentEditableTrueInCef = (dom, node) => dom.getContentEditable(node) === 'true' && node.parentNode && dom.getContentEditableParent(node.parentNode) === 'false';
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const isHidden = (dom, node) => !dom.isBlock(node) && has(dom.schema.getWhitespaceElements(), node.nodeName);
     const isBoundary = (dom, node) => isSimpleBoundary(dom, node) || isContentEditableFalse(dom, node) || isHidden(dom, node) || isContentEditableTrueInCef(dom, node);
     const isText = node => node.nodeType === 3;

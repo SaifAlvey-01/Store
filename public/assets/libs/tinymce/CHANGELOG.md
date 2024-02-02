@@ -6,7 +6,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-<<<<<<< HEAD
 ## 6.8.2 - 2023-12-11
 
 ### Fixed
@@ -78,8 +77,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Specific HTML content containing unescaped text nodes caused mXSS when using undo/redo. #TINY-10305
 - Specific HTML content containing unescaped text nodes caused mXSS when using the `getContent` and `setContent` APIs with the `format: 'raw'` option, which also affected the `resetContent` API and the draft restoration feature of the Autosave plugin. #TINY-10305
 
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 ## 6.7.2 - 2023-10-25
 
 ### Fixed
@@ -87,11 +84,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed use of `async` for editor rendering which caused visual blinking when reloading the editor in-place. #TINY-10249
 - Toggling a list that contains an LI element having another list as its first child would remove the remaining content within that LI element. #TINY-10213
 - List items containing a list element surrounded by non list nodes would cause some list operations to fail. #TINY-10268
-<<<<<<< HEAD
 - The `accordion` toggling with the Enter key press would behave incorrectly on Safari. #TINY-10177
 - Deleting a range that included both text of a cell and a nested table in that cell removed the entire content of the cell. #TINY-10254
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
 ## 6.7.1 - 2023-10-19
 

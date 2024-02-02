@@ -116,7 +116,7 @@ const dashboard4 = ({ setCurrentStep, currentStep }) => {
         <main className="flex-grow ">
           <div style={{ backgroundColor: "#F7F9FB" }} className="p-6">
             <>
-              <div className="shadow font-freesans flex-col bg-white border-b border-slate-200 rounded-lg mt-[-40px] h-screen">
+              <div className="shadow font-freesans flex-col pb-5 bg-white border-b border-slate-200 rounded-lg mt-[-40px] h-full">
                 <p className="text-[18px] font-semibold mx-5 mb-7 pt-7 content-center">
                   Got confused here are all basic questions!
                   <div className="my-7 mr-244 border-t-[1px] border-solid border-slate-200"></div>

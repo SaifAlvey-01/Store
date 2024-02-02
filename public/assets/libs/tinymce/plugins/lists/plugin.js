@@ -1,9 +1,5 @@
 /**
-<<<<<<< HEAD
  * TinyMCE version 6.8.2 (2023-12-11)
-=======
- * TinyMCE version 6.7.2 (2023-10-25)
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
  */
 
 (function () {
@@ -44,10 +40,7 @@
 
     const noop = () => {
     };
-<<<<<<< HEAD
     const compose1 = (fbc, fab) => a => fbc(fab(a));
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const constant = value => {
       return () => {
         return value;
@@ -276,14 +269,10 @@
     const lift2 = (oa, ob, f) => oa.isSome() && ob.isSome() ? Optional.some(f(oa.getOrDie(), ob.getOrDie())) : Optional.none();
 
     const COMMENT = 8;
-<<<<<<< HEAD
     const DOCUMENT = 9;
     const DOCUMENT_FRAGMENT = 11;
     const ELEMENT = 1;
     const TEXT = 3;
-=======
-    const ELEMENT = 1;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const fromHtml = (html, scope) => {
       const doc = scope || document;
@@ -349,7 +338,6 @@
     };
     const is = is$1;
 
-<<<<<<< HEAD
     const Global = typeof window !== 'undefined' ? window : Function('return this;')();
 
     const path = (parts, scope) => {
@@ -383,19 +371,6 @@
       const scope = resolve('ownerDocument.defaultView', x);
       return isObject(x) && (sandHTMLElement(scope).prototype.isPrototypeOf(x) || /^HTML\w*Element$/.test(getPrototypeOf(x).constructor.name));
     };
-=======
-    var ClosestOrAncestor = (is, ancestor, scope, a, isRoot) => {
-      if (is(scope, a)) {
-        return Optional.some(scope);
-      } else if (isFunction(isRoot) && isRoot(scope)) {
-        return Optional.none();
-      } else {
-        return ancestor(scope, a, isRoot);
-      }
-    };
-
-    typeof window !== 'undefined' ? window : Function('return this;')();
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const name = element => {
       const r = element.dom.nodeName;
@@ -404,7 +379,6 @@
     const type = element => element.dom.nodeType;
     const isType = t => element => type(element) === t;
     const isComment = element => type(element) === COMMENT || name(element) === '#comment';
-<<<<<<< HEAD
     const isHTMLElement = element => isElement$1(element) && isPrototypeOf(element.dom);
     const isElement$1 = isType(ELEMENT);
     const isText = isType(TEXT);
@@ -414,11 +388,6 @@
 
     const owner = element => SugarElement.fromDom(element.dom.ownerDocument);
     const documentOrOwner = dos => isDocument(dos) ? dos : owner(dos);
-=======
-    const isElement$1 = isType(ELEMENT);
-    const isTag = tag => e => isElement$1(e) && name(e) === tag;
-
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const parent = element => Optional.from(element.dom.parentNode).map(SugarElement.fromDom);
     const parentElement = element => Optional.from(element.dom.parentElement).map(SugarElement.fromDom);
     const nextSibling = element => Optional.from(element.dom.nextSibling).map(SugarElement.fromDom);
@@ -430,7 +399,6 @@
     const firstChild = element => child(element, 0);
     const lastChild = element => child(element, element.dom.childNodes.length - 1);
 
-<<<<<<< HEAD
     const isShadowRoot = dos => isDocumentFragment(dos) && isNonNullable(dos.dom.host);
     const supported = isFunction(Element.prototype.attachShadow) && isFunction(Node.prototype.getRootNode);
     const getRootNode = supported ? e => SugarElement.fromDom(e.dom.getRootNode()) : documentOrOwner;
@@ -460,9 +428,6 @@
     };
 
     const ancestor$3 = (scope, predicate, isRoot) => {
-=======
-    const ancestor$2 = (scope, predicate, isRoot) => {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       let element = scope.dom;
       const stop = isFunction(isRoot) ? isRoot : never;
       while (element.parentNode) {
@@ -476,7 +441,6 @@
       }
       return Optional.none();
     };
-<<<<<<< HEAD
     const closest$2 = (scope, predicate, isRoot) => {
       const is = (s, test) => test(s);
       return ClosestOrAncestor(is, ancestor$3, scope, predicate, isRoot);
@@ -498,13 +462,6 @@
     };
     const getRaw = element => element.dom.contentEditable;
 
-=======
-    const closest = (scope, predicate, isRoot) => {
-      const is = (s, test) => test(s);
-      return ClosestOrAncestor(is, ancestor$2, scope, predicate, isRoot);
-    };
-
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const before$1 = (marker, element) => {
       const parent$1 = parent(marker);
       parent$1.each(v => {
@@ -932,21 +889,13 @@
     };
 
     const isList = el => is(el, 'OL,UL');
-<<<<<<< HEAD
     const isListItem = el => is(el, 'LI');
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const hasFirstChildList = el => firstChild(el).exists(isList);
     const hasLastChildList = el => lastChild(el).exists(isList);
 
     const isEntryList = entry => 'listAttributes' in entry;
-<<<<<<< HEAD
     const isEntryComment = entry => 'isComment' in entry;
     const isEntryFragment = entry => 'isFragment' in entry;
-=======
-    const isEntryNoList = entry => 'isInPreviousLi' in entry;
-    const isEntryComment = entry => 'isComment' in entry;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const isIndented = entry => entry.depth > 0;
     const isSelected = entry => entry.isSelected;
     const cloneItemContent = li => {
@@ -987,11 +936,7 @@
     const createSegments = (scope, entry, size) => {
       const segments = [];
       for (let i = 0; i < size; i++) {
-<<<<<<< HEAD
         segments.push(createSegment(scope, isEntryList(entry) ? entry.listType : entry.parentListType));
-=======
-        segments.push(createSegment(scope, entry.listType));
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       }
       return segments;
     };
@@ -1000,15 +945,10 @@
         set(segments[i].item, 'list-style-type', 'none');
       }
       last(segments).each(segment => {
-<<<<<<< HEAD
         if (isEntryList(entry)) {
           setAll(segment.list, entry.listAttributes);
           setAll(segment.item, entry.itemAttributes);
         }
-=======
-        setAll(segment.list, entry.listAttributes);
-        setAll(segment.item, entry.itemAttributes);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         append(segment.item, entry.content);
       });
     };
@@ -1028,15 +968,6 @@
       append$1(segment.list, item);
       segment.item = item;
     };
-<<<<<<< HEAD
-=======
-    const createInPreviousLiItem = (scope, attr, content, tag) => {
-      const item = SugarElement.fromTag(tag, scope);
-      setAll(item, attr);
-      append(item, content);
-      return item;
-    };
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const writeShallow = (scope, cast, entry) => {
       const newCast = cast.slice(0, entry.depth);
       last(newCast).each(segment => {
@@ -1044,16 +975,8 @@
           const item = createItem(scope, entry.itemAttributes, entry.content);
           appendItem(segment, item);
           normalizeSegment(segment, entry);
-<<<<<<< HEAD
         } else if (isEntryFragment(entry)) {
           append(segment.item, entry.content);
-=======
-        } else if (isEntryNoList(entry)) {
-          if (entry.isInPreviousLi) {
-            const item = createInPreviousLiItem(scope, entry.attributes, entry.content, entry.type);
-            append$1(segment.item, item);
-          }
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         } else {
           const item = SugarElement.fromHtml(`<!--${ entry.content }-->`);
           append$1(segment.list, item);
@@ -1071,17 +994,10 @@
     const composeList = (scope, entries) => {
       let firstCommentEntryOpt = Optional.none();
       const cast = foldl(entries, (cast, entry, i) => {
-<<<<<<< HEAD
         if (!isEntryComment(entry)) {
           return entry.depth > cast.length ? writeDeep(scope, cast, entry) : writeShallow(scope, cast, entry);
         } else {
           if (i === 0) {
-=======
-        if (isEntryList(entry)) {
-          return entry.depth > cast.length ? writeDeep(scope, cast, entry) : writeShallow(scope, cast, entry);
-        } else {
-          if (i === 0 && isEntryComment(entry)) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
             firstCommentEntryOpt = Optional.some(entry);
             return cast;
           }
@@ -1151,24 +1067,6 @@
       };
     };
 
-<<<<<<< HEAD
-=======
-    const entryToEntryNoList = (entry, type, isInPreviousLi) => {
-      if (isEntryList(entry)) {
-        return {
-          depth: entry.depth,
-          dirty: entry.dirty,
-          content: entry.content,
-          isSelected: entry.isSelected,
-          type,
-          attributes: entry.itemAttributes,
-          isInPreviousLi
-        };
-      } else {
-        return entry;
-      }
-    };
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const parseSingleItem = (depth, itemSelection, selectionState, item) => {
       var _a;
       if (isComment(item)) {
@@ -1195,7 +1093,6 @@
       return currentItemEntry.toArray().concat(childListEntries);
     };
     const parseItem = (depth, itemSelection, selectionState, item) => firstChild(item).filter(isList).fold(() => parseSingleItem(depth, itemSelection, selectionState, item), list => {
-<<<<<<< HEAD
       const parsedSiblings = foldl(children(item), (acc, liChild, i) => {
         if (i === 0) {
           return acc;
@@ -1213,14 +1110,6 @@
             };
             return acc.concat(fragment);
           }
-=======
-      const parsedSiblings = foldl(children(item), (acc, s, i) => {
-        if (i === 0) {
-          return acc;
-        } else {
-          const parsedSibling = parseSingleItem(depth, itemSelection, selectionState, s).map(e => entryToEntryNoList(e, s.dom.nodeName.toLowerCase(), true));
-          return acc.concat(parsedSibling);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }
       }, []);
       return parseList(depth, itemSelection, selectionState, list).concat(parsedSiblings);
@@ -1300,11 +1189,7 @@
     const zeroWidth = '\uFEFF';
     const isZwsp = char => char === zeroWidth;
 
-<<<<<<< HEAD
     const ancestor$1 = (scope, predicate, isRoot) => ancestor$3(scope, predicate, isRoot).isSome();
-=======
-    const ancestor$1 = (scope, predicate, isRoot) => ancestor$2(scope, predicate, isRoot).isSome();
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const ancestor = (element, target) => ancestor$1(element, curry(eq, target));
 
@@ -1775,14 +1660,9 @@
       const childNodes = elm.childNodes;
       return childNodes.length === 1 && !isListNode(childNodes[0]) && dom.isBlock(childNodes[0]);
     };
-<<<<<<< HEAD
     const isUnwrappable = node => Optional.from(node).map(SugarElement.fromDom).filter(isHTMLElement).exists(el => isEditable(el) && !contains$1(['details'], name(el)));
     const unwrapSingleBlockChild = (dom, elm) => {
       if (hasOnlyOneBlockChild(dom, elm) && isUnwrappable(elm.firstChild)) {
-=======
-    const unwrapSingleBlockChild = (dom, elm) => {
-      if (hasOnlyOneBlockChild(dom, elm)) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         dom.remove(elm.firstChild, true);
       }
     };
@@ -1863,12 +1743,8 @@
         }
         const rng = normalizeRange(selection.getRng());
         const otherLi = dom.getParent(findNextCaretContainer(editor, rng, isForward, root), 'LI', root);
-<<<<<<< HEAD
         const willMergeParentIntoChild = otherLi && (isForward ? dom.isChildOf(li, otherLi) : dom.isChildOf(otherLi, li));
         if (otherLi && otherLi !== li && !willMergeParentIntoChild) {
-=======
-        if (otherLi && otherLi !== li) {
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           editor.undoManager.transact(() => {
             if (isForward) {
               mergeForward(editor, rng, otherLi, li);
@@ -1881,7 +1757,6 @@
             }
           });
           return true;
-<<<<<<< HEAD
         } else if (willMergeParentIntoChild && !isForward && otherLi !== li) {
           editor.undoManager.transact(() => {
             if (rng.commonAncestorContainer.parentElement) {
@@ -1894,8 +1769,6 @@
             }
           });
           return true;
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         } else if (!otherLi) {
           if (!isForward && rng.startOffset === 0 && rng.endOffset === 0) {
             editor.undoManager.transact(() => {
@@ -1929,13 +1802,8 @@
             'caption'
           ], name(element));
           const findRoot = node => node.dom === root;
-<<<<<<< HEAD
           const otherLiCell = closest$2(SugarElement.fromDom(otherLi), findValidElement, findRoot);
           const caretCell = closest$2(SugarElement.fromDom(rng.startContainer), findValidElement, findRoot);
-=======
-          const otherLiCell = closest(SugarElement.fromDom(otherLi), findValidElement, findRoot);
-          const caretCell = closest(SugarElement.fromDom(rng.startContainer), findValidElement, findRoot);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
           if (!equals(otherLiCell, caretCell, eq)) {
             return false;
           }

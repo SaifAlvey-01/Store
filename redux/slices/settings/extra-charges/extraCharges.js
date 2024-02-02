@@ -42,17 +42,10 @@ export const getAllExtraCharges = createAsyncThunk(
 
 export const updateExtraCharge = createAsyncThunk(
   "extraCharges/updateExtraCharge",
-<<<<<<< HEAD
   async ({ extraChargesId, updatedExtraChargeData }) => {
     try {
       const url = `${baseUrl}/settings-extraCharges/update-settings-extraCharges/${extraChargesId}`;
       const response = await axiosInstance.patch(url, updatedExtraChargeData);
-=======
-  async ({ extraChargesId, data }) => {
-    try {
-      const url = `${baseUrl}/settings-extraCharges/update-settings-extraCharges/${extraChargesId}`;
-      const response = await axiosInstance.patch(url, data);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -73,11 +66,9 @@ const extraChargesSlice = createSlice({
       .addCase(addExtraCharge.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-<<<<<<< HEAD
         // state.extraCharges = action.payload ;
-=======
+
         state.extraCharges = action.payload.data ;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(addExtraCharge.rejected, (state, action) => {
         state.loading = false;
@@ -89,11 +80,9 @@ const extraChargesSlice = createSlice({
       })
       .addCase(getAllExtraCharges.fulfilled, (state, action) => {
         state.loading = false;
-<<<<<<< HEAD
         state.extraCharges = action?.payload?.data;
-=======
+
         state.extraCharges = action?.payload?.data?.data[0];
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(getAllExtraCharges.rejected, (state, action) => {
         state.loading = false;
@@ -106,7 +95,6 @@ const extraChargesSlice = createSlice({
       .addCase(updateExtraCharge.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-<<<<<<< HEAD
         // Find the index of the updated extra charge in the array and replace it
         const updatedExtraChargeIndex = state.extraCharges.findIndex(
           (extraCharge) => extraCharge.id === action.payload.id
@@ -114,10 +102,8 @@ const extraChargesSlice = createSlice({
         if (updatedExtraChargeIndex !== -1) {
           state.extraCharges[updatedExtraChargeIndex] = action.payload;
         }
-=======
         console.log(action?.payload?.data)
         state.extraCharges = action?.payload?.data;
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       })
       .addCase(updateExtraCharge.rejected, (state, action) => {
         state.loading = false;
