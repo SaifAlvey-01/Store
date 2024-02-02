@@ -27,7 +27,7 @@ const dashboard6 = ({ setCurrentStep, currentStep }) => {
     return (
       <div
         style={{ backgroundColor: "#F7F9FB" }}
-        className="flex h-screen overflow-hidden"
+        className="bg-[url('/partner_assets/bg-gradient.svg')] flex h-screen overflow-hidden"
       >
         <div className=" overflow-y-auto flex flex-col items-center justify-center w-full">
           <div className="h-1/2 w-96 mx-auto my-auto">

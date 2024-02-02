@@ -8,7 +8,7 @@ import { countryOptions } from "../../../components/constants/countryOptions";
 import CountrySelect from "../../../components/dropdown-selects/CountrySelect";
 
 import Cookie from "js-cookie";
-import pageload from "/public/logoutLoader.json"
+import pageload from "/public/logoutLoader.json";
 import Lottie from "lottie-react";
 
 const dashboard5 = ({ setCurrentStep, currentStep }) => {
@@ -113,22 +113,18 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
   }, []);
 
   if (!token) {
-    return <div
-      style={{ backgroundColor: "#F7F9FB" }}
-      className="flex h-screen overflow-hidden"
-    >
-      <div className=" overflow-y-auto flex flex-col items-center justify-center w-full"
+    return (
+      <div
+        style={{ backgroundColor: "#F7F9FB" }}
+        className="bg-[url('/partner_assets/bg-gradient.svg')] flex h-screen overflow-hidden"
       >
-        <div className="h-1/2 w-96 mx-auto my-auto">
-          <Lottie
-            animationData={pageload}
-            loop={true}
-            autoplay={true}
-          />;
+        <div className=" overflow-y-auto flex flex-col items-center justify-center w-full">
+          <div className="h-1/2 w-96 mx-auto my-auto">
+            <Lottie animationData={pageload} loop={true} autoplay={true} />;
+          </div>
         </div>
-
       </div>
-    </div>
+    );
   }
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -142,10 +138,7 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
       style={{ backgroundColor: "#F7F9FB" }}
       className="flex h-screen overflow-hidden "
     >
-      <Sidebar
-        setCurrentStep={setCurrentStep}
-        currentStep={currentStep}
-      />
+      <Sidebar setCurrentStep={setCurrentStep} currentStep={currentStep} />
       <div className="relative flex flex-col flex-1 overflow-x-hidden h-full">
         <>
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
@@ -157,8 +150,9 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
             <div className="absolute flex justify-center items-center right-0">
               {note > 0 && (
                 <div
-                  className={`${data == " " ? "hidden" : "visible"
-                    } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
+                  className={`${
+                    data == " " ? "hidden" : "visible"
+                  } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
                 >
                   <svg
                     width="24"
@@ -189,21 +183,76 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
           >
             <div>
               <div className="mt-[-25px]">
-                <div className="flex ml-5"><svg className="cursor-pointer" onClick={() => router.back()} width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8.77217 5.93555L3.20801 11.4997L8.77217 17.0639" stroke="#374151" stroke-width="1.3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                  <path d="M18.7918 11.5H3.36426" stroke="#374151" stroke-width="1.375" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <div className="flex ml-5">
+                  <svg
+                    className="cursor-pointer"
+                    onClick={() => router.back()}
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.77217 5.93555L3.20801 11.4997L8.77217 17.0639"
+                      stroke="#374151"
+                      stroke-width="1.3"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M18.7918 11.5H3.36426"
+                      stroke="#374151"
+                      stroke-width="1.375"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                   <p className="text-[20px] font-freesans ml-3 mt-[-1px] content-center">
                     Overview
                   </p>
                 </div>
                 <div className="flex-col shadow font-freesans bg-white border-b mx-5 border-slate-200 rounded-lg h-full w-full">
-                  <div className=" flex items-center py-5 pl-6"><svg className="pr-2" width="42" height="43" viewBox="0 0 42 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect y="0.5" width="42" height="42" rx="12" fill="#E9F2FF" />
-                    <path d="M19.4299 11.92C20.3999 11.36 21.5999 11.36 22.5799 11.92L28.5199 15.35C29.4899 15.91 30.0899 16.95 30.0899 18.08V24.92C30.0899 26.04 29.4899 27.08 28.5199 27.65L22.5799 31.08C21.6099 31.64 20.4099 31.64 19.4299 31.08L13.4899 27.65C12.5199 27.09 11.9199 26.05 11.9199 24.92V18.08C11.9199 16.96 12.5199 15.92 13.4899 15.35L15.3899 14.25" stroke="#4162FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M20.9999 20.4998C22.2867 20.4998 23.3299 19.4566 23.3299 18.1698C23.3299 16.883 22.2867 15.8398 20.9999 15.8398C19.7131 15.8398 18.6699 16.883 18.6699 18.1698C18.6699 19.4566 19.7131 20.4998 20.9999 20.4998Z" stroke="#4162FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M25 26.1594C25 24.3594 23.21 22.8994 21 22.8994C18.79 22.8994 17 24.3594 17 26.1594" stroke="#4162FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
+                  <div className=" flex items-center py-5 pl-6">
+                    <svg
+                      className="pr-2"
+                      width="42"
+                      height="43"
+                      viewBox="0 0 42 43"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        y="0.5"
+                        width="42"
+                        height="42"
+                        rx="12"
+                        fill="#E9F2FF"
+                      />
+                      <path
+                        d="M19.4299 11.92C20.3999 11.36 21.5999 11.36 22.5799 11.92L28.5199 15.35C29.4899 15.91 30.0899 16.95 30.0899 18.08V24.92C30.0899 26.04 29.4899 27.08 28.5199 27.65L22.5799 31.08C21.6099 31.64 20.4099 31.64 19.4299 31.08L13.4899 27.65C12.5199 27.09 11.9199 26.05 11.9199 24.92V18.08C11.9199 16.96 12.5199 15.92 13.4899 15.35L15.3899 14.25"
+                        stroke="#4162FF"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.9999 20.4998C22.2867 20.4998 23.3299 19.4566 23.3299 18.1698C23.3299 16.883 22.2867 15.8398 20.9999 15.8398C19.7131 15.8398 18.6699 16.883 18.6699 18.1698C18.6699 19.4566 19.7131 20.4998 20.9999 20.4998Z"
+                        stroke="#4162FF"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M25 26.1594C25 24.3594 23.21 22.8994 21 22.8994C18.79 22.8994 17 24.3594 17 26.1594"
+                        stroke="#4162FF"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
                     <p className="text-[16px] font-freesans font-[500]">
                       Profile
                     </p>
@@ -211,7 +260,9 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                   <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
                   <div className="flex justify-start items-center">
                     <div className="ml-10">
-                      <p className="text-[#374151] text-[14px] pt-5">Your Name</p>
+                      <p className="text-[#374151] text-[14px] pt-5">
+                        Your Name
+                      </p>
                       <input
                         type="text"
                         style={{
@@ -241,8 +292,9 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                             message: "Invalid email ",
                           },
                         })}
-                        className={`'h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.email ? "border-red-500" : ""
-                          }`}
+                        className={`'h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                          errors.email ? "border-red-500" : ""
+                        }`}
                       />
                       {errors.email && (
                         <div className="flex flex-col w-full items-start">
@@ -263,7 +315,9 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                   </div>
                   <div className="flex justify-start items-center">
                     <div className="ml-10">
-                      <p className="text-[#374151] text-[14px] pt-5">Phone Number</p>
+                      <p className="text-[#374151] text-[14px] pt-5">
+                        Phone Number
+                      </p>
                       <input
                         type="number"
                         style={{
@@ -288,13 +342,16 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                   </div>
                   <div>
                     <div className="ml-7">
-                      <p className="text-[#374151] text-[14px] pt-5">Password</p>
+                      <p className="text-[#374151] text-[14px] pt-5">
+                        Password
+                      </p>
                       <div className="relative mx-auto">
                         <input
                           type={isPasswordVisible ? "text" : "password"}
                           placeholder="Enter your password"
-                          className={`h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row  py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${errors.password ? "border-red-500" : ""
-                            }`}
+                          className={`h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row  py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                            errors.password ? "border-red-500" : ""
+                          }`}
                           {...register("password", {
                             required: "Password is required",
                             pattern: {
@@ -357,10 +414,10 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                 </div>
               </div>
             </div>
-            </div>
+          </div>
         </main>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

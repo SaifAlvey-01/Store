@@ -60,7 +60,7 @@ const dashboard4 = ({ setCurrentStep, currentStep }) => {
     return (
       <div
         style={{ backgroundColor: "#F7F9FB" }}
-        className="flex h-screen overflow-hidden"
+        className="bg-[url('/partner_assets/bg-gradient.svg')] flex h-screen overflow-hidden"
       >
         <div className=" overflow-y-auto flex flex-col items-center justify-center w-full">
           <div className="h-1/2 w-96 mx-auto my-auto">
@@ -121,14 +121,14 @@ const dashboard4 = ({ setCurrentStep, currentStep }) => {
                   Got confused here are all basic questions!
                   <div className="my-7 mr-244 border-t-[1px] border-solid border-slate-200"></div>
                 </p>
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
               </div>
             </>
           </div>

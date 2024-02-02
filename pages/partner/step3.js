@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Lottie from "lottie-react";
+import pageload from "/public/logoutLoader.json";
 
 const step3 = () => {
   const router = useRouter();
@@ -12,13 +14,16 @@ const step3 = () => {
   }, []);
 
   return (
-    <div className="bg-[url('/partner_assets/bg-gradient.svg')] flex w-screen h-screen ">
-      <img
-        src={"/partner_assets/loading.svg"}
-        alt=""
-        className="w-[300px] h-full mx-auto my-auto"
-      />
-    </div>
+    <div
+        style={{ backgroundColor: "#F7F9FB" }}
+        className="bg-[url('/partner_assets/bg-gradient.svg')] flex h-screen overflow-hidden"
+      >
+        <div className=" overflow-y-auto flex flex-col items-center justify-center w-full">
+          <div className="h-1/2 w-96 mx-auto my-auto">
+            <Lottie animationData={pageload} loop={true} autoplay={true} />;
+          </div>
+        </div>
+      </div>
   );
 };
 
