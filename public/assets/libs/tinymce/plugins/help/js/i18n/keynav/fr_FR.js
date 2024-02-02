@@ -24,7 +24,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.fr_FR',
   '\n' +
   "<p>Pour passer d'une section de l'interface utilisateur à la précédente, appuyez sur <strong>Maj+Tabulation</strong>.</p>\n" +
   '\n' +
+<<<<<<< HEAD
   "<p>L'ordre de <strong>Tabulation</strong> de ces sections de l'interface utilisateur est le suivant :</p>\n" +
+=======
+  "<p>L'ordre de <strong>Tabulation</strong> de ces sections de l'interface utilisateur est le suivant :\n" +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Barre du menu</li>\n' +
@@ -39,7 +43,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.fr_FR',
   "<p>Si une section de l'interface utilisateur n'est pas présente, elle sera ignorée.</p>\n" +
   '\n' +
   "<p>Si le pied de page comporte un ciblage par navigation au clavier et qu'il n'y a aucune barre latérale visible, appuyer sur <strong>Maj+Tabulation</strong>\n" +
+<<<<<<< HEAD
   "  déplace le ciblage vers le premier groupe de barres d'outils et non le dernier.</p>\n" +
+=======
+  "  déplace le ciblage vers le premier groupe de barres d'outils et non le dernier.\n" +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   "<h1>Naviguer au sein des sections de l'interface utilisateur</h1>\n" +
   '\n' +
@@ -54,7 +62,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.fr_FR',
   "  <li>se déplacent entre les éléments du chemin d'éléments du pied de page.</li>\n" +
   '</ul>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p>Les touches fléchées <strong>Bas</strong> et <strong>Haut</strong></p>\n' +
+=======
+  '<p>Les touches fléchées <strong>Bas</strong> et <strong>Haut</strong>\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   "  <li>se déplacent entre les éléments de menu au sein d'un menu.</li>\n" +
@@ -63,7 +75,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.fr_FR',
   '\n' +
   "<p>Les <strong>Flèches</strong> parcourent la section de l'interface utilisateur ciblée.</p>\n" +
   '\n' +
+<<<<<<< HEAD
   '<p>Pour fermer un menu ouvert, un sous-menu ouvert ou un menu contextuel ouvert, appuyez sur <strong>Echap</strong>.</p>\n' +
+=======
+  '<p>Pour fermer un menu ouvert, un sous-menu ouvert ou un menu contextuel ouvert, appuyez sur <strong>Echap</strong>.\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   "<p>Si l'actuel ciblage se trouve en « haut » d'une section spécifique de l'interface utilisateur, appuyer sur <strong>Echap</strong> permet également de quitter\n" +
   '  entièrement la navigation au clavier.</p>\n' +
@@ -71,7 +87,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.fr_FR',
   "<h1>Exécuter un élément de menu ou un bouton de barre d'outils</h1>\n" +
   '\n' +
   "<p>Lorsque l'élément de menu ou le bouton de barre d'outils désiré est mis en surbrillance, appuyez sur la touche <strong>Retour arrière</strong>, <strong>Entrée</strong>\n" +
+<<<<<<< HEAD
   "  ou la <strong>Barre d'espace</strong> pour exécuter l'élément.</p>\n" +
+=======
+  "  ou la <strong>Barre d'espace</strong> pour exécuter l'élément.\n" +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Naviguer au sein de dialogues sans onglets</h1>\n' +
   '\n' +

@@ -4,10 +4,18 @@ import SignUp1 from "./step1";
 import SignUp2 from "./step2";
 import SignUp3 from "./step3";
 import SignUp4 from "./step4";
+<<<<<<< HEAD
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import Cookie from "js-cookie";
 import Loading from "../.././components/loading";
+=======
+import Footer from "../../components/footer/footer";
+import { NextSeo } from "next-seo";
+import Image from "next/image";
+import Cookie from "js-cookie";
+import Loading from "../../components/loading";
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 //seo
 
 const SignupComponent = () => {
@@ -125,6 +133,10 @@ const SignupComponent = () => {
 
           {renderStep()}
         </div>
+<<<<<<< HEAD
+=======
+        <Footer />
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       </div>
     </>
   );

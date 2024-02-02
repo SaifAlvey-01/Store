@@ -24,7 +24,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.eu',
   '\n' +
   '<p>EIko atal batetik aurrekora mugitzeko, sakatu <strong>Maius+Tabuladorea</strong>.</p>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p>EIko atal hauen <strong>Tabuladorea</strong> da:</p>\n' +
+=======
+  '<p>EIko atal hauen <strong>Tabuladorea</strong> da:\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Menu-barra</li>\n' +
@@ -39,7 +43,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.eu',
   '<p>EIko atal bat ez badago, saltatu egin da.</p>\n' +
   '\n' +
   '<p>Orri-oinak teklatuaren nabigazioa fokuratuta badago, eta alboko barra ikusgai ez badago, <strong>Maius+Tabuladorea</strong> sakatuz gero,\n' +
+<<<<<<< HEAD
   '  fokua tresna-barrako lehen taldera eramaten da, ez azkenera.</p>\n' +
+=======
+  '  fokua tresna-barrako lehen taldera eramaten da, ez azkenera.\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Nabigatu EIko atalen barruan</h1>\n' +
   '\n' +
@@ -54,7 +62,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.eu',
   '  <li>mugitu orri-oineko elementuaren bideko elementu batetik bestera.</li>\n' +
   '</ul>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p><strong>Gora</strong> eta <strong>Behera</strong> gezi-teklak</p>\n' +
+=======
+  '<p><strong>Gora</strong> eta <strong>Behera</strong> gezi-teklak\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>mugitu menu bateko menu-elementuen artean.</li>\n' +
@@ -63,15 +75,25 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.eu',
   '\n' +
   '<p><strong>Gezia</strong> teklen zikloa nabarmendutako EI atalen barruan.</p>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p>Irekitako menu bat ixteko, ireki azpimenua, edo ireki menu gainerakorra, sakatu <strong>Ihes</strong> tekla.</p>\n' +
   '\n' +
   '<p>Une horretan fokuratzea EIko atal jakin baten "goialdean" badago, <strong>Ihes</strong> tekla sakatuz gero\n' +
+=======
+  '<p>Irekitako menu bat ixteko, ireki azpimenua, edo ireki menu gainerakorra, sakatu <strong>Ihes</strong> tekla.\n' +
+  '\n' +
+  '<p>Une horretan fokuratzea EIko atal jakin baten "goialdean" badago, <strong>Ihes</strong> tekla sakatuz gero \n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '  teklatuaren nabigaziotik irtengo zara.</p>\n' +
   '\n' +
   '<h1>Exekutatu menuko elementu bat edo tresna-barrako botoi bat</h1>\n' +
   '\n' +
   '<p>Nahi den menuaren elementua edo tresna-barraren botoia nabarmenduta dagoenean, sakatu <strong>Itzuli</strong>, <strong>Sartu</strong>\n' +
+<<<<<<< HEAD
   '  edo <strong>Zuriune-barra</strong> elementua exekutatzeko.</p>\n' +
+=======
+  '  edo <strong>Zuriune-barra</strong> elementua exekutatzeko.\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Nabigatu fitxarik gabeko elkarrizketak</h1>\n' +
   '\n' +

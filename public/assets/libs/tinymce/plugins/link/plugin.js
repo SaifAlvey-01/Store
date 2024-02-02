@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * TinyMCE version 6.8.2 (2023-12-11)
+=======
+ * TinyMCE version 6.7.2 (2023-10-25)
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
  */
 
 (function () {
@@ -903,8 +907,12 @@
           name: 'url',
           type: 'urlinput',
           filetype: 'file',
+<<<<<<< HEAD
           label: 'URL',
           picker_text: 'Browse links'
+=======
+          label: 'URL'
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         }];
       const displayText = settings.anchor.text.map(() => ({
         name: 'text',

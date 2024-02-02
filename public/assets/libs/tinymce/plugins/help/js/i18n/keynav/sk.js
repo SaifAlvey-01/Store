@@ -24,7 +24,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '\n' +
   '<p>Ak sa chcete posunúť z jednej časti používateľského rozhrania do predchádzajúcej, stlačte tlačidlá <strong>Shift + Tab</strong>.</p>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p>Poradie prepínania medzi týmito časťami používateľského rozhrania pri stláčaní tlačidla <strong>Tab</strong>:</p>\n' +
+=======
+  '<p>Poradie prepínania medzi týmito časťami používateľského rozhrania pri stláčaní tlačidla <strong>Tab</strong>:\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ol>\n' +
   '  <li>Panel s ponukou</li>\n' +
@@ -39,7 +43,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '<p>Ak nejaká časť používateľského rozhrania nie je prítomná, preskočí sa.</p>\n' +
   '\n' +
   '<p>Ak je pätička vybratá na navigáciu pomocou klávesnice a nie je viditeľný bočný panel, stlačením klávesov <strong>Shift+Tab</strong>\n' +
+<<<<<<< HEAD
   '  prejdete na prvú skupinu panela nástrojov, nie na poslednú.</p>\n' +
+=======
+  '  prejdete na prvú skupinu panela nástrojov, nie na poslednú.\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navigácia v rámci častí používateľského rozhrania</h1>\n' +
   '\n' +
@@ -54,7 +62,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '  <li>umožňujú presun medzi položkami cesty prvku v pätičke.</li>\n' +
   '</ul>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p>Klávesy so šípkami <strong>dole</strong> a <strong>hore</strong></p>\n' +
+=======
+  '<p>Klávesy so šípkami <strong>dole</strong> a <strong>hore</strong>\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<ul>\n' +
   '  <li>umožňujú presun medzi položkami ponuky,</li>\n' +
@@ -63,7 +75,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '\n' +
   '<p>Klávesy so <strong>šípkami</strong> vykonávajú prepínanie v rámci vybranej časti používateľského rozhrania.</p>\n' +
   '\n' +
+<<<<<<< HEAD
   '<p>Ak chcete zatvoriť otvorenú ponuku, otvorenú podponuku alebo otvorenú kontextovú ponuku, stlačte kláves <strong>Esc</strong>.</p>\n' +
+=======
+  '<p>Ak chcete zatvoriť otvorenú ponuku, otvorenú podponuku alebo otvorenú kontextovú ponuku, stlačte kláves <strong>Esc</strong>.\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<p>Ak je aktuálne vybratá horná časť konkrétneho používateľského rozhrania, stlačením klávesu <strong>Esc</strong> úplne ukončíte tiež\n' +
   '  navigáciu pomocou klávesnice.</p>\n' +
@@ -71,7 +87,11 @@ tinymce.Resource.add('tinymce.html-i18n.help-keynav.sk',
   '<h1>Vykonanie príkazu položky ponuky alebo tlačidla panela nástrojov</h1>\n' +
   '\n' +
   '<p>Keď je zvýraznená požadovaná položka ponuky alebo tlačidlo panela nástrojov, stlačením klávesov <strong>Return</strong>, <strong>Enter</strong>\n' +
+<<<<<<< HEAD
   '  alebo <strong>medzerníka</strong> vykonáte príslušný príkaz položky.</p>\n' +
+=======
+  '  alebo <strong>medzerníka</strong> vykonáte príslušný príkaz položky.\n' +
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   '\n' +
   '<h1>Navigácia v dialógových oknách bez záložiek</h1>\n' +
   '\n' +

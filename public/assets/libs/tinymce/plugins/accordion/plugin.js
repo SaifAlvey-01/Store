@@ -1,11 +1,19 @@
 /**
+<<<<<<< HEAD
  * TinyMCE version 6.8.2 (2023-12-11)
+=======
+ * TinyMCE version 6.7.2 (2023-10-25)
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
  */
 
 (function () {
     'use strict';
 
+<<<<<<< HEAD
     var global$4 = tinymce.util.Tools.resolve('tinymce.PluginManager');
+=======
+    var global$3 = tinymce.util.Tools.resolve('tinymce.PluginManager');
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     let unique = 0;
     const generate = prefix => {
@@ -735,7 +743,11 @@
     const accordionBodyWrapperClass = 'mce-accordion-body';
     const accordionBodyWrapperTag = 'div';
 
+<<<<<<< HEAD
     var global$3 = tinymce.util.Tools.resolve('tinymce.util.Tools');
+=======
+    var global$2 = tinymce.util.Tools.resolve('tinymce.util.Tools');
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const isSummary = node => (node === null || node === void 0 ? void 0 : node.nodeName) === 'SUMMARY';
     const isDetails = node => (node === null || node === void 0 ? void 0 : node.nodeName) === 'DETAILS';
@@ -744,10 +756,13 @@
       const node = editor.selection.getNode();
       return isSummary(node) || Boolean(editor.dom.getParent(node, isSummary));
     };
+<<<<<<< HEAD
     const isAtDetailsStart = editor => {
       const rng = editor.selection.getRng();
       return isDetails(rng.startContainer) && rng.collapsed && rng.startOffset === 0;
     };
+=======
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const isInsertAllowed = editor => !isInSummary(editor) && editor.dom.isEditable(editor.selection.getNode());
     const getSelectedDetails = editor => Optional.from(editor.dom.getParent(editor.selection.getNode(), isDetails));
     const isDetailsSelected = editor => getSelectedDetails(editor).isSome();
@@ -781,7 +796,11 @@
       normalizeSummary(editor, accordion);
     };
     const normalizeDetails = editor => {
+<<<<<<< HEAD
       global$3.each(global$3.grep(editor.dom.select('details', editor.getBody())), normalizeAccordion(editor));
+=======
+      global$2.each(global$2.grep(editor.dom.select('details', editor.getBody())), normalizeAccordion(editor));
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     };
 
     const insertAccordion = editor => {
@@ -855,7 +874,11 @@
       editor.addCommand('RemoveAccordion', () => removeAccordion(editor));
     };
 
+<<<<<<< HEAD
     var global$2 = tinymce.util.Tools.resolve('tinymce.html.Node');
+=======
+    var global$1 = tinymce.util.Tools.resolve('tinymce.html.Node');
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
     const getClassList = node => {
       var _a, _b;
@@ -899,12 +922,20 @@
       };
     };
     const padInputNode = node => {
+<<<<<<< HEAD
       const br = new global$2('br', 1);
+=======
+      const br = new global$1('br', 1);
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       br.attr('data-mce-bogus', '1');
       node.empty();
       node.append(br);
     };
+<<<<<<< HEAD
     const setup$2 = editor => {
+=======
+    const setup$1 = editor => {
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       editor.on('PreInit', () => {
         const {serializer, parser} = editor;
         parser.addNodeFilter(accordionTag, nodes => {
@@ -914,7 +945,11 @@
               const accordionNode = node;
               const {summaryNode, wrapperNode, otherNodes} = getAccordionChildren(accordionNode);
               const hasSummaryNode = isNonNullable(summaryNode);
+<<<<<<< HEAD
               const newSummaryNode = hasSummaryNode ? summaryNode : new global$2('summary', 1);
+=======
+              const newSummaryNode = hasSummaryNode ? summaryNode : new global$1('summary', 1);
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
               if (isNullable(newSummaryNode.firstChild)) {
                 padInputNode(newSummaryNode);
               }
@@ -927,8 +962,12 @@
                 }
               }
               const hasWrapperNode = isNonNullable(wrapperNode);
+<<<<<<< HEAD
               const newWrapperNode = hasWrapperNode ? wrapperNode : new global$2(accordionBodyWrapperTag, 1);
               newWrapperNode.attr('data-mce-bogus', '1');
+=======
+              const newWrapperNode = hasWrapperNode ? wrapperNode : new global$1(accordionBodyWrapperTag, 1);
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
               addClasses(newWrapperNode, [accordionBodyWrapperClass]);
               if (otherNodes.length > 0) {
                 for (let j = 0; j < otherNodes.length; j++) {
@@ -937,7 +976,11 @@
                 }
               }
               if (isNullable(newWrapperNode.firstChild)) {
+<<<<<<< HEAD
                 const pNode = new global$2('p', 1);
+=======
+                const pNode = new global$1('p', 1);
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
                 padInputNode(pNode);
                 newWrapperNode.append(pNode);
               }
@@ -966,6 +1009,7 @@
       });
     };
 
+<<<<<<< HEAD
     var global$1 = tinymce.util.Tools.resolve('tinymce.util.VK');
 
     const setupEnterKeyInSummary = editor => {
@@ -977,6 +1021,20 @@
       });
     };
     const setup$1 = editor => {
+=======
+    var global = tinymce.util.Tools.resolve('tinymce.util.VK');
+
+    const setupEnterKeyInSummary = editor => {
+      editor.on('keydown', event => {
+        if (event.shiftKey || event.keyCode !== global.ENTER || !isInSummary(editor)) {
+          return;
+        }
+        event.preventDefault();
+        editor.execCommand('ToggleAccordion');
+      });
+    };
+    const setup = editor => {
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       setupEnterKeyInSummary(editor);
       editor.on('ExecCommand', e => {
         const cmd = e.command.toLowerCase();
@@ -986,6 +1044,7 @@
       });
     };
 
+<<<<<<< HEAD
     var global = tinymce.util.Tools.resolve('tinymce.Env');
 
     const setup = editor => {
@@ -1002,6 +1061,8 @@
       }
     };
 
+=======
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     const onSetup = editor => buttonApi => {
       const onNodeChange = () => buttonApi.setEnabled(isInsertAllowed(editor));
       editor.on('NodeChange', onNodeChange);
@@ -1040,12 +1101,20 @@
     };
 
     var Plugin = () => {
+<<<<<<< HEAD
       global$4.add('accordion', editor => {
         register(editor);
         register$1(editor);
         setup$1(editor);
         setup$2(editor);
         setup(editor);
+=======
+      global$3.add('accordion', editor => {
+        register(editor);
+        register$1(editor);
+        setup(editor);
+        setup$1(editor);
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       });
     };
 

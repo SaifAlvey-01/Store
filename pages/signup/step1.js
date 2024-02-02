@@ -5,15 +5,27 @@ import { useForm } from "react-hook-form";
 import Cookies from 'js-cookie';
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from 'next-auth/react';
+<<<<<<< HEAD
+=======
+import Loading from "../../components/loading";
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
 
 const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
   const router = useRouter();
   const [customError, setCustomError] = useState("");
+<<<<<<< HEAD
   const [Loading, setLoading] = useState(false);
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  status, data: session } = useSession();
   
+=======
+  const [Loadings, setLoading] = useState(false);
+  const { resdata, error, loading, postData: postRequest } = useAxios();
+  const {  status, data: session } = useSession();
+  
+
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   const {
     handleSubmit,
     register,
@@ -38,12 +50,20 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     const email = getValues();
     if(session && session?.user){
       postRequest("/auth/google-login", {access_token: session.accessToken});
+<<<<<<< HEAD
       Cookies.set('email', session.user.email, { expires: 7 });
+=======
+      Cookies.set('email', session.user.email.toLowerCase(), { expires: 7 });
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
     
     }
     //menual login
     if (resdata.state === "success" && email.email) {
+<<<<<<< HEAD
       Cookies.set('email', email.email, { expires: 7 });
+=======
+      Cookies.set('email', email.email.toLowerCase(), { expires: 7 });
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       setCurrentStep(2);
     }
     if(error){
@@ -58,7 +78,11 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
     const email = getValues();
     setEmail(email.email);
     setFormData((prevData) => ({ ...prevData, ...data }));
+<<<<<<< HEAD
     postRequest("/auth/register-email", email);
+=======
+    postRequest("/auth/register-email",{ email: email.email.toLowerCase()});
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   };
 
   const handleGetStartedClick = () => {
@@ -73,6 +97,12 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
+<<<<<<< HEAD
+=======
+  if(loading) return (<Loading url="/dashboard" message="" duration="2000" />)
+
+
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="rounded-3xl bg-white shadow-[2px_4px_6px_rgba(75,_85,_99,_0.06)] overflow-hidden flex flex-row py-12 px-3 sm:px-2 md:px-3 lg:px-4 mx-2 items-center justify-center border-[0.8px] border-solid border-gainsboro">
@@ -163,7 +193,11 @@ const SignUp1 = ({ setCurrentStep, setFormData, setEmail }) => {
                 </div>
                 <div onClick={handleGoogle} className="cursor-pointer rounded bg-white box-border w-full flex flex-col p-2 items-center justify-center text-center text-base text-neutral-600 border-[1px] border-solid border-neutral-300">
                   <div className="relative w-[90px] h-0" />
+<<<<<<< HEAD
                   {Loading ?
+=======
+                  {Loadings ?
+>>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
                     (
                       <svg
                         aria-hidden="true"
