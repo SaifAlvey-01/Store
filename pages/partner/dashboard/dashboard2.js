@@ -179,6 +179,8 @@ const dashboard2 = ({ setCurrentStep, currentStep }) => {
                 <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
                 <div className="py-5 flex-grow justify-center items-center">
                   <OrderListing
+                  setCurrentStep={setCurrentStep}
+                  currentStep={currentStep}
                   setSelectedOrder={setSelectedOrder}
                   className=""
                 /></div>

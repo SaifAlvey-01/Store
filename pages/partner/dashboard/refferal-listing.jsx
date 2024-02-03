@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 
 const headers = [
   { title: "Refferal ID" },
@@ -17,18 +18,18 @@ const data = [
     commission: "5",
   },
   {
-    refferalNumber: "1033",
-    name: "John Doe",
-    email: "johndoe@gmail.com",
-    status: "Subscribed",
-    commission: "5",
+    refferalNumber: "1034",
+    name: "John Boe",
+    email: "johnboe@gmail.com",
+    status: "UnSubscribed",
+    commission: "15",
   },
   {
     refferalNumber: "1033",
-    name: "John Doe",
-    email: "johndoe@gmail.com",
-    status: "UnSubscribed",
-    commission: "5",
+    name: "John Toe",
+    email: "johntoe@gmail.com",
+    status: "Subscribed",
+    commission: "25",
   },
 ];
 
@@ -36,9 +37,12 @@ export default function RefferalListing({
   showOrderDetails,
   setShowOrderDetails,
   setSelectedOrder,
+  setCurrentStep,
+  currentStep
 }) {
   const [dropdownOpenIndex, setDropdownOpenIndex] = useState(null);
   const dropdownRef = useRef([]);
+  const router = useRouter();
 
   useEffect(() => {
     function handleOutsideClick(event) {
@@ -68,8 +72,8 @@ export default function RefferalListing({
 
   function getStatusColor(status) {
     switch (status) {
-      case "Subscribed":
-        return "#4162ff";
+      case "UnSubscribed":
+        return "#FF4A4A";
       default:
         return "#4162FF";
     }
@@ -77,7 +81,7 @@ export default function RefferalListing({
 
   function getStatusTextColor(status) {
     switch (status) {
-      case "Subscribed":
+      case "UnSubscribed":
         return "#FF4A4A";
       default:
         return "#4162FF";
@@ -121,6 +125,7 @@ export default function RefferalListing({
             <tr
               key={index}
               className="h-auto cursor-pointer"
+              onClick={() => router.push(`/partner/dashboard/${row.refferalNumber}`)}
             >
               <td
                 style={{ borderBottom: "1px solid #EAECF0", cursor: "pointer" }}

@@ -32,20 +32,21 @@ export default function StatusTracking() {
             <div className={styles.circle}>
               {step.icon ? <img src={step.icon} alt="Step Icon" /> : index + 1}
             </div>
-            <div>
-              <p className={styles["step-title"]}>{step.title}</p>
-              <div className={styles["step-content"]}>{step.content}</div>
-              {step.link && (
-                <a className={styles.link} href={step.link}>
-                  Visit Store
-                </a>
-              )}
-              {step.button && (
-                <button className={styles.btn}>{step.button}</button>
-              )}
+            
+          </li>
+        ))}
+      </ul>
+      <div  className="flex flex-row  flex-wrap mt-12">
+     {steps.map((step, index) => ( 
+          
+            <div className="ml-12">
+              <p>{step.title}</p>
+              <div>{step.content}</div>
+              {step.link && <a href={step.link}>Visit Store</a>}
+              {step.button && <button>{step.button}</button>}
               {step.additionalText && (
-                <div className={styles["additional-content"]}>
-                  <span className={styles["mr-4"]}>{step.additionalText}</span>
+                <div>
+                  <span>{step.additionalText}</span>
                   {step.icons.map((icon, iconIndex) => (
                     <img
                       key={iconIndex}
@@ -55,10 +56,9 @@ export default function StatusTracking() {
                   ))}
                 </div>
               )}
+
+      </div>))}
             </div>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

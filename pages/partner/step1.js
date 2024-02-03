@@ -33,7 +33,7 @@ function step1({ setCurrentStep, setInputData }) {
     //google login
     const email = getValues();
     if (session?.user) {
-      postRequest("/auth/google-login", { access_token: session.accessToken, role: "1" });
+      postRequest("/auth/google-login", { access_token: session.accessToken, role: "partner" });
       Cookies.set("email", session.user.email, { expires: 7 });
     }
     //menual login

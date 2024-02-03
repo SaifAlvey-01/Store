@@ -88,8 +88,9 @@ const dashboard4 = ({ setCurrentStep, currentStep }) => {
             <div className="absolute flex justify-center items-center right-0">
               {note > 0 && (
                 <div
-                  className={`${data == " " ? "hidden" : "visible"
-                    } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
+                  className={`${
+                    data == " " ? "hidden" : "visible"
+                  } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
                 >
                   <svg
                     width="24"
@@ -119,16 +120,83 @@ const dashboard4 = ({ setCurrentStep, currentStep }) => {
               <div className="shadow font-freesans flex-col pb-5 bg-white border-b border-slate-200 rounded-lg mt-[-40px] h-full">
                 <p className="text-[18px] font-semibold mx-5 mb-7 pt-7 content-center">
                   Got confused here are all basic questions!
-                  <div className="my-7 mr-244 border-t-[1px] border-solid border-slate-200"></div>
+                  <div className="my-7 mr-244 border-t-[1px] border-solid  border-slate-200"></div>
                 </p>
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
-                <Accordian className= "cursor-pointer" ques="How much i earn from LMS referral program?" ans="Lorem ipsum dolor sit amet consectetur. Volutpat urna molestie dis enim non. Sit a consequat mi lectus. In aliquet sed parturient quam nisl neque ac felis. Nulla fermentum duis viverra vitae in duis a tincidunt." />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What type of businesses can use LaunchMyStore?"
+                  ans="LaunchMyStore is ideal for entrepreneurs primarily engaged in online business operations. Moreover, for businesses dependent on regular repeat purchases, Dukaan's supplementary features facilitate seamless and prompt transactions, enhancing customer loyalty and minimizing abandoned carts."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What payment providers are available?"
+                  ans="You have the option to receive payments from your customers through either LaunchMyStore Pay or by integrating with Razorpay for online transactions. Through LaunchMyStore Pay, we provide your customers with various payment methods, including UPI, Credit/Debit cards, and PayPal or Stripe for users located outside India."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Do I need to enter payment details to sign up?"
+                  ans="Signing up for LaunchMyStore is absolutely free, and we don't require any upfront payment or payment information. Enjoy a complimentary 7-day trial period to explore LaunchMyStore. After the trial, you'll need to choose and purchase a plan to continue using LaunchMyStore."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What delivery partner integrations do you offer?"
+                  ans="Experience top-tier shipping rates through LaunchMyStore's exclusive delivery service – LaunchMyStore Delivery. We've collaborated with premier courier companies, securing optimal rates to provide you with cost-effective shipping solutions. Say goodbye to the complexities of managing multiple providers, manual payment reconciliation, and error-prone order information entry into different interfaces. Learn more about the benefits of LaunchMyStore Delivery here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What is LaunchMyStore plugin market place?"
+                  ans="Explore the LaunchMyStore plugin marketplace to enhance your existing store with additional functionality. Choose from a variety of plugins designed for marketing, customer support, analytics, delivery, SEO, and other optimizations to elevate your online business. Discover more about LaunchMyStore plugins here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What is LaunchMyStore Marketing?"
+                  ans="Utilize LaunchMyStore Marketing to seamlessly execute marketing campaigns through SMS, WhatsApp, or Facebook and Instagram ads directly from your LaunchMyStore account, reaching your customers effectively. Explore further details about LaunchMyStore Marketing by clicking here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Can I use custom domain name for my site?"
+                  ans="Opting for a new personalized domain name through LaunchMyStore is available for an extra fee. This exclusive domain will seamlessly connect to your LaunchMyStore platform with HTTPS functionality, ensuring global accessibility within just 10 minutes."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Can I Link my existing domain for my site?"
+                  ans="Feel free to connect your existing domain to your LaunchMyStore store at no cost. For additional information on how to link an existing domain, please click here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Can I customize the design of my eCommerce store?"
+                  ans="Explore LaunchMyStore's themes marketplace, featuring a variety of themes tailored to suit your business needs. Customize fonts, colors, and different sections of the theme to create a unique look for your store. For more information on LaunchMyStore Themes, click here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What are LaunchMyStore credits?"
+                  ans="Introducing LaunchMyStore Credits – a wallet-centric solution enabling effortless management of marketing campaigns, seamless utilization of Dukaan Delivery and RTO Optimizer, along with automated order updates sent directly from your Whatsapp Business account. Each Dukaan Credit is equivalent to Rs. 1."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Do you provide a Whatsapp Business Solution?"
+                  ans="Certainly, you have the option to acquire a WhatsApp Business Solution through our plugin. This enables you to dispatch order updates to your customers directly from your WhatsApp business account."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Can I give access to my staff on LaunchMyStore?"
+                  ans="Feel free to grant access to your team by utilizing staff accounts on LaunchMyStore. Learn how to create a staff account by checking out the steps here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="What is multi-warehouse support?"
+                  ans="Having multiple warehouses enables you to select from more than one pickup location for product delivery. For additional information on multi-warehouse support, please click here."
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Can I upgrade my plan later on?"
+                  ans="Certainly! To enhance your LaunchMyStore plan, simply navigate to the Account details section on LaunchMyStore. Upgrade your current plan to either the Gold or Platinum tier for your preferred duration. If you require assistance, feel free to contact us at support@nftwatcher.net. We're here to help!"
+                />
+                <Accordian
+                  className="cursor-pointer"
+                  ques="Will there be an auto-debit after the subscription ends?"
+                  ans="No, the subscription fees will not be automatically deducted upon the conclusion of the subscription."
+                />
               </div>
             </>
           </div>

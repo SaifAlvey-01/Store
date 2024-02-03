@@ -22,9 +22,6 @@ const Layout = (props) => {
     }
   }, []);
 
-
-  if (!token) {
-
   if (!token && status !== "authenticated") {
     return <div
     style={{ backgroundColor: "#F7F9FB" }}
@@ -75,6 +72,5 @@ const Layout = (props) => {
     </div>
   );
 };
-}
 
 export default Layout;

@@ -17,7 +17,7 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
   const [selectedCountry, setSelectedCountry] = useState({});
   const [isActive, setIsactive] = useState(false);
   const [defaultCountry, setDefault] = useState(null);
-
+  const [isSelect, setIsSelect] = useState(false);
   const { status, data: session } = useSession();
   const token = Cookie.get("token");
   const [headerValue, setHeaderValue] = useState(
@@ -271,7 +271,7 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                           "::placeholder": { color: "#9CA3AF" },
                         }}
                         placeholder="Enter Your Name"
-                        className="'h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                        className="mr-3 ml-[-8px] relative cursor-default h-[20px] w-full mt-[-8px] rounded-[8px] pl-5 ring-0 ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-2 border-solid"
                       />
                     </div>
                     <div className="ml-10">
@@ -292,7 +292,7 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                             message: "Invalid email ",
                           },
                         })}
-                        className={`'h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                        className={`'mr-3 ml-[-8px] relative cursor-default h-[20px] w-full mt-[-8px] rounded-[8px] pl-5 ring-0 ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-2 border-solid ${
                           errors.email ? "border-red-500" : ""
                         }`}
                       />
@@ -326,89 +326,18 @@ const dashboard5 = ({ setCurrentStep, currentStep }) => {
                           "::placeholder": { color: "#9CA3AF" },
                         }}
                         placeholder="Enter Phone Number"
-                        className="mr-3 ml-[-8px] relative cursor-default h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro"
+                        className="mr-3 ml-[-8px] relative cursor-default h-[20px] w-full mt-[-8px] rounded-[8px] pl-5 ring-0 ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-2 border-solid"
                       />
                     </div>
                     <div className="ml-10">
                       <p className="text-[#374151] text-[14px]">Country</p>
-                      <div className="h-[20px] w-[430px] border-2 mt-[-12px] text-[#9CA3AF] rounded-[12px] px-3 mr-3 ml-[-8px] focus:border-blue-500 relative cursor-default ring-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4162FF]">
+                      <div className="mr-3 ml-[-8px] relative cursor-default h-[20px] w-full mt-[-8px] rounded-[8px] pl-5 ring-0 ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row py-3.5 px-3 items-center justify-start text-[#4B4B4B] font-roboto border-2 border-solid">
                         <CountrySelect
                           value={selectedCountry}
                           onChange={handleCountryChange}
                           options={countryOptions}
                         />
                       </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="ml-7">
-                      <p className="text-[#374151] text-[14px] pt-5">
-                        Password
-                      </p>
-                      <div className="relative mx-auto">
-                        <input
-                          type={isPasswordVisible ? "text" : "password"}
-                          placeholder="Enter your password"
-                          className={`h-[20px] w-[400px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row  py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
-                            errors.password ? "border-red-500" : ""
-                          }`}
-                          {...register("password", {
-                            required: "Password is required",
-                            pattern: {
-                              value:
-                                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&#]{8,}$/,
-                              message:
-                                "Password must be at least 8 characters, 1 uppercase, 1 lowercase & 1 number",
-                            },
-                          })}
-                        />
-                        <button
-                          className="absolute inset-y-0 right-0 flex items-center bg-transparent pr-12 text-gray-600"
-                          onClick={togglePasswordVisibility}
-                        >
-                          {isPasswordVisible ? (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-4 h-4"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
-                              />
-                            </svg>
-                          ) : (
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="w-4 h-4"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                            </svg>
-                          )}
-                        </button>
-                      </div>
-                      {errors.password && (
-                        <p className="text-[#F64C4C] text-[13px] my-1 mx-1">
-                          {customError ? customError : errors.password.message}
-                        </p>
-                      )}
                     </div>
                   </div>
                 </div>

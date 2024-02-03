@@ -8,6 +8,10 @@ import Dashboard5 from "./dashboard5";
 import Dashboard6 from "./dashboard6";
 import { NextSeo } from "next-seo";
 
+// const setCurr = (n) => {
+//   setCurrentStep(n);
+// }
+
 const index = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const renderStep = () => {

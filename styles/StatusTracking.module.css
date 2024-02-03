@@ -8,25 +8,29 @@
 .stepper {
   list-style-type: none;
   padding: 0;
-  position: relative;
+  display: flex;
 }
 
-.stepper::before {
+.stepper::before  {
   content: "";
   position: absolute;
-  top: 20px;
-  left: 15px;
-  height: calc(100% - 40px);
-  width: 3px;
-  background-color: #cacaca; /* default color */
+  top: 434px;
+  left: 77px;
+  height: 3px;
+  width: 761px;
+  margin-left: 20px;
+  background-color: blue;
 }
 
+
+
 .step {
+  flex: 1; /* Distribute equal width among children */
   position: relative;
-  padding-left: 60px;
-  margin-bottom: 50px;
+  padding: 0 200px; /* Adjust as needed */
   font-size: 18px;
   color: #8e8e8e;
+  box-sizing: border-box; /* Include padding in width */
 }
 
 .step-1 .step-title,
@@ -40,17 +44,21 @@
 }
 
 .step-2 {
-  color: #333;
+  color: #4B5563;
+}
+
+.step-3 {
+  color: #4B5563;
 }
 
 .step-2 .circle {
-  background-color: #ecefff;
-  border: 2px solid #4162ff;
+  background-color: #F5F5F5;
+  /* border: 2px solid #4162ff; */
 }
 
 .step-3 .circle {
-  background-color: white;
-  border: 2px solid #8e8e8e;
+  background-color: #F5F5F5;
+  /* border: 2px solid #8e8e8e; */
 }
 
 .step-3 .step-title {

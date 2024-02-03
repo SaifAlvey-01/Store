@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/useAxios";
 import Cookie from "js-cookie";
+import { useRouter } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 
 function step2({ setCurrentStep, setFormData, email }) {
@@ -11,6 +12,8 @@ function step2({ setCurrentStep, setFormData, email }) {
   } = useForm();
   const { resdata, error, loading, putData: putRequest } = useAxios();
   const [customError, setCustomError] = useState(null);
+  const router = useRouter();
+
 
   useEffect(() => {
     if (

@@ -34,12 +34,15 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
     //google login
     const email = getValues();
     if (session && session?.user) {
-      postRequest("/auth/google-login", { access_token: session.accessToken, role: "1" });
-      Cookies.set("email", session.user.email, { expires: 7 });
+      postRequest("/auth/google-login", {
+        access_token: session.accessToken,
+        role: "partner",
+      });
+      Cookies.set("email", session.user.email.toLowerCase(), { expires: 7 });
     }
     //menual login
     if (resdata.state === "success" && email.email) {
-      Cookies.set("email", email.email, { expires: 7 });
+      Cookies.set("email", email.email.toLowerCase(), { expires: 7 });
       setCurrentStep(2);
     }
     if (error) {
@@ -51,7 +54,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
     const email = getValues();
     setEmail(email.email);
     setFormData((prevData) => ({ ...prevData, ...data }));
-    postRequest("/auth/register-email", {email: email, role: "1"});
+    postRequest("/auth/register-email", { email: email.email.toLowerCase(), role: "partner" });
   };
 
   const handleGetStartedClick = () => {
@@ -89,11 +92,6 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
               <p className="text-[#374151] pt-5">Email</p>
               <input
                 type="text"
-                style={{
-                  fontSize: "16px",
-                  color: "#9CA3AF",
-                  "::placeholder": { color: "#9CA3AF" },
-                }}
                 placeholder="Enter your email "
                 {...register("email", {
                   required: "Enter A Valid Email Address !",

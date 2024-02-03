@@ -1,23 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from "next/router";
+import Sidebar from "../Sidebar";
 
-export default function item() {
+
+function getStatusBackgroundColor(status) {
+  switch (status) {
+    case "Subscribed":
+      return "#e9f2ff";
+    default:
+      return "#ECEFFF";
+  }
+}
+
+function getStatusColor(status) {
+  switch (status) {
+    case "UnSubscribed":
+      return "#FF4A4A";
+    default:
+      return "#4162FF";
+  }
+}
+
+function getStatusTextColor(status) {
+  switch (status) {
+    case "UnSubscribed":
+      return "#FF4A4A";
+    default:
+      return "#4162FF";
+  }
+}
+const index = () => {
     const router = useRouter();
+    const [note, setNote] = useState(0);
+    const[currentStep, setCurrentStep] = useState(2);
     return (
         <div
       style={{ backgroundColor: "#F7F9FB" }}
       className="flex h-screen overflow-hidden "
     >
-      <Sidebar
-        setCurrentStep={setCurrentStep}
-        currentStep={currentStep}
-      />
       <div className="relative flex flex-col flex-1 overflow-x-hidden h-full">
         <>
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">
             <div>
-              <p className="text-[20px] font-freesans font-semibold ml-5 content-center">
-                Settings
+              <p className="text-[20px] text-[#6b7280] font-freesans font-semibold ml-5 content-center">
+                Refferal List / <span className='text-black'>Overview</span>
               </p>
             </div>
             <div className="absolute flex justify-center items-center right-0">
@@ -83,10 +109,10 @@ export default function item() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between pb-5">
+                  <div className="flex items-center pb-5">
                     <div className="ml-10">
                       <p className="text-[#6B7280] text-[14px]">Referral ID</p>
-                      <p className="text-[16px] font-[600]">1001</p>
+                      <p className="text-[16px] font-[600]">{router.query.id}</p>
                     </div>
                     <div className="flex ml-16">
                       <div className="border-l-[1px] border-solid pl-20 h-[48px] border-slate-200">
@@ -150,3 +176,4 @@ export default function item() {
     </div>
     )
 }
+export default index;

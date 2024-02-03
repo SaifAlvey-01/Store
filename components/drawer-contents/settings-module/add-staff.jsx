@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 import RoleSelect from "../../dropdown-selects/role-select";
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
@@ -10,13 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { registerManagerEmail } from "../../../redux/slices/settings/staff/staffSlice";
-<<<<<<< HEAD
-
-export default function AddStaff({ setShowSidebar }) {
-  const [role, setSelectedRole] = useState(null);
-  const dispatch = useDispatch();
-  const storeId  = Cookies.get("id");
-=======
 import cogoToast from "cogo-toast";
 
 export default function AddStaff({ setShowSidebar }) {
@@ -28,24 +17,16 @@ export default function AddStaff({ setShowSidebar }) {
 
   const canSave =
   [storeId, business, role].every(Boolean) && addRequestStatus === 'idle'
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
 
 
   const handleRoleChange = (selectedOption) => {
     setSelectedRole(selectedOption.value)
   };
-<<<<<<< HEAD
-  const {business} = useSelector((state) => state?.getBusiness?.business || ""
-  );
-
- 
-=======
   
   // const {EmailInfo} = useSelector((state) => state?.getBusiness?.business || "");
   const {managerEmailInfo, loading,  error} = useSelector ((state)=> state?.staffSlice)
 
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
 
   const schema = yup.object({
     email: yup.string().email().required("email is required"),
@@ -60,21 +41,6 @@ export default function AddStaff({ setShowSidebar }) {
   resolver: yupResolver(schema),
    });
 
-<<<<<<< HEAD
-   const onSubmit = (data) =>{
-    
-    const managerEmailData = {
-      email:  data.email,
-      name: data.name,
-      role: role,
-      storeName: business,
-      parentId: storeId
-    }
-    console.log("as")
-    dispatch(registerManagerEmail(managerEmailData))
-   }
-
-=======
    const onSubmit = async (data) =>{
     if(canSave){
       try{
@@ -106,7 +72,6 @@ export default function AddStaff({ setShowSidebar }) {
     }
    },[addRequestStatus])
 
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   return (
           <form onSubmit={handleSubmit(onSubmit)}>
     <div className="flex flex-col h-screen">
@@ -217,12 +182,6 @@ export default function AddStaff({ setShowSidebar }) {
       >
         <button
           type="submit"
-<<<<<<< HEAD
-          // onClick={() => setShowSidebar(false)}
-          className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer"
-        >
-          Send Invites{" "}
-=======
           //  onClick={() =>  setShowSidebar(false)}
           className="bg-blue-600 text-white px-7 py-2.5 rounded cursor-pointer"
         >
@@ -243,7 +202,6 @@ export default function AddStaff({ setShowSidebar }) {
                               fill="currentColor"
                             ></path>
                           </svg> : "Send Invites"}
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
         </button>
       </div>
 

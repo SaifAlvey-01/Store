@@ -19,10 +19,6 @@ const Login2 = ({ inputData }) => {
   const { resdata, error, loading, postData: postRequest } = useAxios();
   const {  data: session } = useSession();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
   const {
     handleSubmit,
     register,
@@ -35,34 +31,14 @@ const Login2 = ({ inputData }) => {
       setPasswordError(null);
       setLoading(false);
       setIsLoading(true);
-<<<<<<< HEAD
-      // setTimeout(() => {
-        //   router.push("/dashboard");
-        // }, 2000);
-=======
       setTimeout(() => {
           router.push("/dashboard");
         }, 2000);
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       }
       
       
       if (resdata?.status === 200) {
         if(Object.keys(resdata).length > 0 ){
-<<<<<<< HEAD
-        if(resdata?.data?.isProfileComplete ===  true){
-          setPasswordError(null);
-          setIsLoading(true);
-          setTimeout(() => {
-            router.push("/dashboard");
-          }, 2000);
-        }else{
-          if(!error && resdata?.data?.isProfileComplete ===  false ){
-            router.push("/signup");
-            localStorage.setItem("signupCurrentStep", 4);
-          }
-        }
-=======
           if(resdata?.data?.isVerified ===  true){
             if(resdata?.data?.isProfileComplete ===  true){
               setPasswordError(null);
@@ -85,7 +61,6 @@ const Login2 = ({ inputData }) => {
 
 
         
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       }
     } 
     if(error){
@@ -106,20 +81,12 @@ const Login2 = ({ inputData }) => {
       }
     }
 
-<<<<<<< HEAD
-  },[resdata])
-  const onSubmit = (data, e) => {
-    e.preventDefault();
-    postRequest("/auth/manual-login", {
-      accountId: data?.email,
-=======
   },[resdata]);
 
   const onSubmit = (data, e) => {
     e.preventDefault();
     postRequest("/auth/manual-login", {
       accountId: data?.email.toLowerCase(),
->>>>>>> 1901fc3330c73e458f2b09a46d93a953dbf7aec0
       password: data?.password,
     });
   };

@@ -42,10 +42,10 @@ export const getAllExtraCharges = createAsyncThunk(
 
 export const updateExtraCharge = createAsyncThunk(
   "extraCharges/updateExtraCharge",
-  async ({ extraChargesId, updatedExtraChargeData }) => {
+  async ({ extraChargesId, data }) => {
     try {
       const url = `${baseUrl}/settings-extraCharges/update-settings-extraCharges/${extraChargesId}`;
-      const response = await axiosInstance.patch(url, updatedExtraChargeData);
+      const response = await axiosInstance.patch(url, data);
       return response.data;
     } catch (error) {
       throw error.response.data.message;
@@ -66,8 +66,6 @@ const extraChargesSlice = createSlice({
       .addCase(addExtraCharge.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-        // state.extraCharges = action.payload ;
-
         state.extraCharges = action.payload.data ;
       })
       .addCase(addExtraCharge.rejected, (state, action) => {
@@ -80,8 +78,6 @@ const extraChargesSlice = createSlice({
       })
       .addCase(getAllExtraCharges.fulfilled, (state, action) => {
         state.loading = false;
-        state.extraCharges = action?.payload?.data;
-
         state.extraCharges = action?.payload?.data?.data[0];
       })
       .addCase(getAllExtraCharges.rejected, (state, action) => {
@@ -95,13 +91,6 @@ const extraChargesSlice = createSlice({
       .addCase(updateExtraCharge.fulfilled, (state, action) => {
         state.loading = false;
         state.status = true;
-        // Find the index of the updated extra charge in the array and replace it
-        const updatedExtraChargeIndex = state.extraCharges.findIndex(
-          (extraCharge) => extraCharge.id === action.payload.id
-        );
-        if (updatedExtraChargeIndex !== -1) {
-          state.extraCharges[updatedExtraChargeIndex] = action.payload;
-        }
         console.log(action?.payload?.data)
         state.extraCharges = action?.payload?.data;
       })

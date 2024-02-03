@@ -49,6 +49,7 @@ export const addBusinessLogo = createAsyncThunk('business/addBusinessLogo', asyn
     throw error;
   }
 });
+
 const businessSlice = createSlice({
   name: 'business',
   initialState,
@@ -64,7 +65,7 @@ const businessSlice = createSlice({
       })
       .addCase(fetchBusiness.rejected, (state, action) => {
         state.loading = 'rejected';
-        state.error = action.error.message
+        state.error = action.error.message;
       })
       .addCase(fetchBusinessLogo.pending, (state) => {
         state.loading = 'pending';

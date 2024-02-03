@@ -62,7 +62,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
           <p>Dashboard</p>
         </div>
         <div
-          onClick={() => setCurrentStep(2)}
+          onClick={() => {setCurrentStep(2)}}
           className={` mb-[-10px] cursor-pointer flex items-center ${
             currentStep == 2
               ? "bg-[url('/partner_assets/bd.svg')] text-white"

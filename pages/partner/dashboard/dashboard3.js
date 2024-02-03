@@ -187,7 +187,7 @@ const dashboard3 = ({ setCurrentStep, currentStep }) => {
             <div className="mx-[5px] border-t-[1px] my-5 border-solid border-slate-200"></div>
             <div className="flex justify-end items-end">
               <div className="mx-2 justify-center cursor-pointer w-[132px] h-[36px] rounded-md flex items-center border-2 border-slate-200 border-solid text-white">
-                <p className="text-[14px] text-black font-[400]">Cancel</p>
+                <p onClick={() => setOpc(0)} className="text-[14px] text-black font-[400]">Cancel</p>
               </div>
               <div className="mx-2 justify-center cursor-pointer w-[132px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
                 <p className="text-[14px] font-[400]">Withdraw</p>
@@ -319,6 +319,8 @@ const dashboard3 = ({ setCurrentStep, currentStep }) => {
                     <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
                     <div className="py-5 flex-grow justify-center items-center">
                       <OrderListing
+                        setCurrentStep={setCurrentStep}
+                        currentStep={currentStep}
                         setSelectedOrder={setSelectedOrder}
                         className=""
                       />

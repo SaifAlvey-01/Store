@@ -28,7 +28,7 @@ export default function DashboardHome() {
         </div>
 
         {/* Description section */}
-        <div className="flex flex-col items-start justify-center mt-4 md:mt-0 ml-[1rem] sm:ml-[-10rem] md:ml-[13rem] lg:ml-[8rem] xl:ml-[10rem] 2xl:ml-[-6rem]">
+        <div className="flex flex-row items-start justify-center mt-4 md:mt-0 ml-[1rem] sm:ml-[-10rem] md:ml-[13rem] lg:ml-[8rem] xl:ml-[10rem] 2xl:ml-[-6rem]">
           <span className="text-sm text-gray-700 mb-1">
             Customers can visit the following link and place their orders.
           </span>
@@ -99,9 +99,9 @@ export default function DashboardHome() {
         </div>
       </div>
 
-      <DashboardOverview />
+      {/* <DashboardOverview /> */}
 
-      {/* <div
+      <div
         className="min-h-[calc(100vh-180px)] sm:min-h-[calc(100% - 100px)] overflow-y-auto flex flex-col items-center justify-between "
         style={{
           backgroundColor: "var(--white-color, #FFF)",
@@ -109,19 +109,19 @@ export default function DashboardHome() {
           boxShadow: `#00000011 0px 2px 4px 2px`,
         }}
       >
-          <div className="flex justify-center items-center">
+          <div className="flex items-start w-full">
             <div
-              className="m-0 sm:my-8 sm:mx-24 lg:w-[70%] w-[100%]"
+              className=" sm:my-8 sm:mr-12 w-[100%]"
               style={{
                 // border: mqMD ? "none" : "1px solid #e3e3e3",
                 backgroundColor: "var(--white-color, #FFF)",
                 borderRadius: "10px",
               }}
             >
-              <div className="flex flex-col items-start justify-start p-4 md:p-6 ">
+              <div className="flex flex-col items-start justify-start p-4 md:p-6 md:w-96  ">
                 <h2
                   style={{ color: "#4B4B4B", fontSize: "20px" }}
-                  className="mt-0 mb-2 font-bold font-freesans"
+                  className="mt-0 mb-2 font-bold font-Outfit"
                 >
                   Complete your store setup..{" "}
                 </h2>
@@ -132,20 +132,21 @@ export default function DashboardHome() {
                     fontSize: "14px",
                     // textAlign: "center",
                   }}
-                  className="mt-0 mb-0 my-0 font-thin text-base "
+                  className="mt-0 mb-0 my-0 font-Inter text-base "
                 >
                   Use high quality images and product descriptions to have a
                   great looking product page. Let's get started.
                 </p>
+                
 
                 <div className="flex md:flex-row flex-col items-center justify-center mt-4 md:mt-8 w-9/10">
                   <div className="mb-2">
                     <StatusTracking />
                   </div>
-                  <div className="flex flex-col items-center justify-start px-10 py-10 ml-0 md:ml-auto sm:self-center border border-dashed border-blue-600 rounded-lg mb-10">
+                  {/* <div className="flex flex-col items-center justify-start px-10 py-10 ml-0 md:ml-auto sm:self-center border border-dashed border-blue-600 rounded-lg mb-10">
                     <img src={"/image-outline.png"} className="mb-6" />
                     <img src={"/group-line.png"} />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -154,7 +155,7 @@ export default function DashboardHome() {
           <div className="w-[90%] mx-2 mb-8 mt-4   flex flex-col items-center justify-between">
             <FreeTrialFooter />
           </div>
-      </div> */}
+      </div>
     </div>
   );
 }
