@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from "next/router";
-import Sidebar from "../Sidebar";
+import Sidebar from ".././Sidebar";
 
 
 function getStatusBackgroundColor(status) {
@@ -32,12 +32,13 @@ function getStatusTextColor(status) {
 const index = () => {
     const router = useRouter();
     const [note, setNote] = useState(0);
-    const[currentStep, setCurrentStep] = useState(2);
+    const [currentStep, setCurrentStep] = useState(0);
     return (
         <div
       style={{ backgroundColor: "#F7F9FB" }}
       className="flex h-screen overflow-hidden "
     >
+    <Sidebar setCurrentStep={setCurrentStep} currentStep={2} />
       <div className="relative flex flex-col flex-1 overflow-x-hidden h-full">
         <>
           <header className="sticky m-6 items-center rounded-lg top-0 shadow flex bg-white border-b border-slate-200 h-[52px]">

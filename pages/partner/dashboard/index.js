@@ -4,7 +4,7 @@ import Dashboard1 from "./dashboard1";
 import Dashboard2 from "./dashboard2";
 import Dashboard3 from "./dashboard3";
 import Dashboard4 from "./dashboard4";
-import Dashboard5 from "./dashboard5";
+import Index from "./setting/index";
 import Dashboard6 from "./dashboard6";
 import { NextSeo } from "next-seo";
 
@@ -25,7 +25,7 @@ const index = () => {
       case 4:
         return <Dashboard4 setCurrentStep={setCurrentStep} currentStep={currentStep} />;
       case 5:
-        return <Dashboard5 setCurrentStep={setCurrentStep} currentStep={currentStep} />;
+        return <Index setCurrentStep={setCurrentStep} currentStep={currentStep} />;
       case 6:
         return <Dashboard6 setCurrentStep={setCurrentStep} currentStep={currentStep} />;
       default:
