@@ -6,10 +6,12 @@ import Cookie from "js-cookie";
 import pageload from "/public/logoutLoader.json";
 import Lottie from "lottie-react";
 import RefferalList from "./RefferalList";
-
+import useAxios from "../../../hooks/useAxios";
 
 const dashboard1 = ({ setCurrentStep, currentStep }) => {
   const [code, setCode] = useState("84005550001");
+  const { resdata, error, loading, postData: postRequest } = useAxios();
+
   const [note, setNote] = useState(0);
   const [data, setData] = useState(" ");
   const router = useRouter();
@@ -20,6 +22,24 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
     router.pathname === "/partner/dashboard" ? "Dashboard" : ""
   );
 
+  useEffect(() => {
+    postRequest("/auth/manual-login", {
+      accountId: "saif.alvey@gmail.com",
+      password: "Sraj786!",
+    })
+    .then(function (response) {
+      console.log("Response:", response); // Log the response
+      return response.json(); // Attempt to access 'json' property
+    })
+    .then(function (data) {
+      console.log("Data:", data); // Log the parsed JSON data
+    })
+    .catch(function (error) {
+      console.log("Error:", error); // Log any errors
+    });
+  }, []);
+
+  
   const getCode = () => {
     navigator.clipboard.writeText(code);
     setNote(1);
@@ -36,7 +56,6 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
       setNote(0);
     }, 4000);
   };
-
   const sendMail = () => {
     setNote(2);
     if (note == 1) {
@@ -58,7 +77,6 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
       router.push("/partner/");
     }
   }, []);
-
 
   if (!token) {
     return (
@@ -92,8 +110,9 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
             <div className="absolute flex justify-center items-center right-0">
               {note > 0 && (
                 <div
-                  className={`${data == " " ? "hidden" : "visible"
-                    } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
+                  className={`${
+                    data == " " ? "hidden" : "visible"
+                  } h-[40px] px-[10px] text-[14px] flex justify-center items-center rounded-md font-[400] font-freesans bg-[#e5f5ec]`}
                 >
                   <svg
                     width="24"
@@ -164,13 +183,14 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <p id="copy-target-2" className="text-[16px] font-[400] hidden lg:block">
+                    <p
+                      id="copy-target-2"
+                      className="text-[16px] font-[400] hidden lg:block"
+                    >
                       {code}
                     </p>
                     <div
-                      onClick={() =>
-                        getCode()
-                      }
+                      onClick={() => getCode()}
                       className="mx-4 cursor-pointer w-[132px] h-[36px] rounded-3xl flex items-center border-2 border-dashed text-[#4162ff] border-[#4162ff]"
                     >
                       <svg
@@ -257,7 +277,10 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                       </svg>
                       <p className="text-[14px]">Last 14 Days</p>
                     </div>
-                    <div onClick={() => setCurrentStep(2)} className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
+                    <div
+                      onClick={() => setCurrentStep(2)}
+                      className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white"
+                    >
                       <p className="text-[14px] font-[400]">View List</p>
                     </div>
                   </div>
@@ -274,7 +297,10 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                       Recent Referrals From Your Code
                     </p>
                   </div>
-                  <div onClick={() => setCurrentStep(2)} className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white">
+                  <div
+                    onClick={() => setCurrentStep(2)}
+                    className="mx-2 justify-center cursor-pointer w-[93px] h-[36px] rounded-md flex items-center border-2 bg-[#4162ff] border-[#4162ff] border-solid text-white"
+                  >
                     <p className="text-[14px] font-[400]">View List</p>
                   </div>
                 </div>
