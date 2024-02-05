@@ -37,7 +37,7 @@ const SignupComponent = () => {
   // };
 
   const renderStep = () => {
-    switch (currentStep) {
+    switch (5) {
       case 1:
         return (
           <SignUp1

@@ -18,7 +18,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 1
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } cursor-pointer hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] flex items-center mb-[-10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
+          } cursor-pointer ${currentStep == 1 ? "":"hover:bg-[url('/partner_assets/hover.svg')]"} ${currentStep == 1 ? "":"hover:text-[#6B7280]"} m-[10px] flex items-center mb-[-10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -67,7 +67,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 2
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] flex items-center mb-[-10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
+          } ${currentStep == 2 ? "":"hover:bg-[url('/partner_assets/hover.svg')]"} ${currentStep == 2 ? "":"hover:text-[#6B7280]"} m-[10px] flex items-center mb-[-10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -137,7 +137,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
             currentStep == 3
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
+          } ${currentStep == 3 ? "":"hover:bg-[url('/partner_assets/hover.svg')]"} ${currentStep == 3? "":"hover:text-[#6B7280]"} m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -175,11 +175,11 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
         </div>
         <div
           onClick={() => setCurrentStep(4)}
-          className={` mb-[-10px] cursor-pointer flex items-center hover:bg-[url('/partner_assets/hover.svg')] ${
+          className={` mb-[-10px] cursor-pointer flex items-center ${currentStep == 4 ? "":"hover:bg-[url('/partner_assets/hover.svg')]"} ${
             currentStep == 4
               ? "bg-[url('/partner_assets/bd.svg')] text-white"
               : "text-[#6B7280] "
-          } hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
+          } ${currentStep == 4 ? "":"hover:text-[#6B7280]"} m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
         >
           <svg
             className={`pl-[18px] pr-2 ${
@@ -224,7 +224,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
               currentStep == 5
                 ? "bg-[url('/partner_assets/bd.svg')] text-white"
                 : "text-[#6B7280] "
-            } hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
+            } ${currentStep == 5 ? "":"hover:bg-[url('/partner_assets/hover.svg')]"} ${currentStep == 5 ? "":"hover:text-[#6B7280]"} m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
           >
             <svg
               className={`pl-[18px] pr-2 ${
@@ -265,7 +265,7 @@ const Sidebar = ({ setCurrentStep, currentStep }) => {
           </div>
           <div
             onClick={() => {setCurrentStep(6)}}
-            className={`mb-[18px] cursor-pointer flex items-center text-[#6B7280] hover:bg-[url('/partner_assets/hover.svg')] hover:text-[#6B7280] m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
+            className={`mb-[18px] cursor-pointer flex items-center text-[#6B7280] hover:bg-[url('/partner_assets/hover.svg')] ${currentStep == 6 ? "":"hover:text-[#6B7280]"} m-[10px] lg:m-[20px] bg-no-repeat w-[170px] lg:w-[200px] rounded-r-3xl h-[46px]`}
           >
             <svg
               className="pl-[18px] pr-2"

@@ -6,6 +6,9 @@ import Cookie from "js-cookie";
 import useAxios from "../../../hooks/useAxios";
 import axios from "axios";
 import CountrySelect from "../../../components/dropdown-selects/CountrySelect";
+import { Inter, Outfit } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 const step5 = ({ setloading, setCurrentStep }) => {
   const { resdata, error, loading, putData: putRequest } = useAxios();
@@ -76,7 +79,7 @@ const step5 = ({ setloading, setCurrentStep }) => {
   };
 
   return (
-    <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
+    <div className={`bg-[url('/partner_assets/bg-gradient.svg')] overflow-hidden justify-center items-center w-screen h-screen flex ${inter.className}`}>
       <div className="bg-[#E9F2FF] flex w-[398px] h-[590] lg:w-[1140px] lg:h-[636px] rounded-[32px]">
           <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:742px_582px] hidden lg:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
           <div className="bg-white w-[398px] h-[590px] lg:h-[636px] lg:w-[400px] flex content-center rounded-[32px]">
@@ -86,10 +89,10 @@ const step5 = ({ setloading, setCurrentStep }) => {
               alt="launch my store logo"
               className="w-[167px] h-[35px] mb-1"
             />
-            <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+            <p className={`${outfit.className} text-[#374151] font-bold text-[24px] w-[364px]`}>
               Enter Your Basics
             </p>
-            <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
+            <p className=" mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
               Enter essential details to initialize your dashboard.
               <br /> setup seamlessly and efficiently.
             </p>
@@ -103,7 +106,7 @@ const step5 = ({ setloading, setCurrentStep }) => {
 
               <div
                 className={`rounded mt-5 text-[16px] cursor-pointer flex justify-center items-center font-normal leading-[24px] h-[44px] w-[364px]  ${
-                  isActive ? "bg-primary-300-main" : "bg-primary-100"
+                  isActive ? "bg-[#4162FF]" : "bg-primary-100"
                 } w-full flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white`}
                 onClick={handleSignInClick}
               >

@@ -264,7 +264,7 @@ const dashboard6 = ({ setCurrentStep, currentStep, currStep, setCurrStep }) => {
         }`}
       >
         <div
-          className={`w-[408px] z-50 h-full visible object-center rounded-[24px] shadow border-slate-200 bg-white`}
+          className={`w-[408px] z-50 ${opcc == 0?"h-[680px]":"h-full"} visible object-center rounded-[24px] shadow border-slate-200 bg-white`}
         >
           <div className="p-[24px]">
             <div className="flex justify-between mx-2">

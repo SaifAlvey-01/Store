@@ -4,6 +4,9 @@ import Verify from "../../../components/Verify/Verify";
 import Cookie from "js-cookie";
 import useAxios from "../../../hooks/useAxios";
 import Cookies from "js-cookie";
+import { Inter, Outfit } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 function step3({ setCurrentStep }) {
   const [OTP, setOTP] = useState("");
@@ -47,7 +50,7 @@ function step3({ setCurrentStep }) {
 
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
   return (
-    <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
+    <div className={`bg-[url('/partner_assets/bg-gradient.svg')] overflow-hidden justify-center items-center w-screen h-screen flex ${inter.className}`}>
       <div className="bg-[#E9F2FF] flex w-[398px] h-[590] lg:w-[1140px] lg:h-[636px] rounded-[32px]">
         <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:742px_582px] hidden lg:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
         <div className="bg-white w-[398px] h-[590px] lg:h-[636px] lg:w-[400px] flex content-center rounded-[32px]">
@@ -57,10 +60,10 @@ function step3({ setCurrentStep }) {
               alt="launch my store logo"
               className="w-[167px] h-[35px] mb-1"
             />
-            <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+            <p className={`${outfit.className} text-[#374151] font-bold text-[24px] w-[364px]`}>
               Verify Code
             </p>
-            <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
+            <p className={`${inter.className} mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]`}>
               We sent a verification code at your email, please see
               <br /> your email to get a code.
             </p>
@@ -97,7 +100,7 @@ function step3({ setCurrentStep }) {
               disabled={OTP.length !== 6}
               className={`rounded ${
                 OTP.length === 6
-                  ? "bg-primary-300-main cursor-pointer"
+                  ? "bg-[#4162FF] cursor-pointer"
                   : "bg-primary-100 cursor-not-allowed"
               } h-[44px] text-[16px] cursor-pointer rounded-[8px] font-normal leading-[24px] w-[364px] mt-4 md:w-[334px] flex flex-col p-2 box-border items-center mb-2  ml-[-2px] justify-center text-center text-white font-poppins`}
             >
@@ -123,12 +126,12 @@ function step3({ setCurrentStep }) {
                 <div>Verify</div>
               )}
             </button>
-            <p className="text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] font-chivo text-[#6B7280]">
+            <p className={`text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] ${outfit.className} text-[#6B7280]`}>
               By continuing, you agree to our Terms of Use and Privacy Policy.
             </p>
             <p
               onClick={onAlreadyHaveAnClick}
-              className="text-[14px] ml-[15px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
+              className={`text-[14px] ml-[15px] font-normal mt-8 leading-[20px] ${outfit.className} text-[#6B7280]`}
             >
               Already have an partner program account?{" "}
               <span

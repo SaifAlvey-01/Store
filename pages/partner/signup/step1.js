@@ -5,6 +5,10 @@ import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import useAxios from "../../../hooks/useAxios";
 import { signIn, useSession } from "next-auth/react";
+import { Inter, Outfit } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
+
 
 function step1({ setCurrentStep, setFormData, setEmail }) {
   const router = useRouter();
@@ -54,7 +58,10 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
     const email = getValues();
     setEmail(email.email);
     setFormData((prevData) => ({ ...prevData, ...data }));
-    postRequest("/auth/register-email", { email: email.email.toLowerCase(), role: "partner" });
+    postRequest("/auth/register-email", {
+      email: email.email.toLowerCase(),
+      role: "partner",
+    });
   };
 
   const handleGetStartedClick = () => {
@@ -69,8 +76,12 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
   const onAlreadyHaveAnClick = useCallback(() => {}, []);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
+    <form
+      className="overflow-hidden
+     h-screen"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <div className={`bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen ${outfit.className} flex`}>
         <div className="bg-[#E9F2FF] flex w-[398px] h-[590] lg:w-[1140px] lg:h-[636px] rounded-[32px]">
           <div className="bg-[url('/partner_assets/signup-image.svg')] bg-[length:742px_582px] hidden lg:flex bg-no-repeat mt-14 ml-[32px] h-[686px] w-[840px]"></div>
           <div className="bg-white w-[398px] h-[590px] lg:h-[636px] lg:w-[400px] flex content-center rounded-[32px]">
@@ -80,10 +91,10 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                 alt="launch my store logo"
                 className="w-[167px] h-[35px] mb-1"
               />
-              <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+              <p className={`${outfit.className} text-[#374151] font-bold text-[24px] w-[364px]`}>
                 Start Making Extra Money
               </p>
-              <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
+              <p className={`${inter.className} mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]`}>
                 Hi there,
                 <br />
                 Welcome to our platform please create your partner program
@@ -101,7 +112,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                     message: "Invalid email ",
                   },
                 })}
-                className={`h-[20px] w-[296px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start mt-[-8px] text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                className={`h-[20px] w-[296px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start mt-[-8px] text-[#374151] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                   errors.email ? "border-red-500" : ""
                 }`}
               />
@@ -121,7 +132,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                 </div>
               )}
               <button
-                className="rounded bg-primary-300-main mt-5 w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                className="rounded bg-[#4162FF] mt-5 w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base font-freesans text-white"
                 type="submit"
               >
                 <div className="relative w-[90px] h-0" />
@@ -184,7 +195,7 @@ function step1({ setCurrentStep, setFormData, setEmail }) {
                       alt=""
                       src="/google.svg"
                     />
-                    <div className="relative leading-[24px] font-medium">
+                    <div className="relative font-freesans leading-[24px] font-medium">
                       Google
                     </div>
                   </div>
