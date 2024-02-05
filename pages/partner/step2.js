@@ -3,6 +3,9 @@ import useAxios from "../../hooks/useAxios";
 import Cookie from "js-cookie";
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+import { Inter, Outfit } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 function step2({ inputData, setCurrentStep }) {
   const {
@@ -49,7 +52,7 @@ function step2({ inputData, setCurrentStep }) {
   }
 
   return (
-    <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
+    <div className={`bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex ${inter.className}`}>
       <div className="bg-[#E9F2FF] flex w-[398px] h-[455px] rounded-[32px]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="bg-white w-[398px] h-[455px] flex content-center rounded-[32px]">
@@ -59,10 +62,10 @@ function step2({ inputData, setCurrentStep }) {
                 alt="launch my store logo"
                 className="w-[167px] h-[35px] mb-1"
               />
-              <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+              <p className= {`${outfit.className} text-[#374151] font-bold text-[24px] w-[364px]`}>
                 Enter Password
               </p>
-              <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
+              <p className=" mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
                 Please enter your password to complete signin.
               </p>
               <p className="text-[#374151] relative  pt-3">
@@ -77,7 +80,7 @@ function step2({ inputData, setCurrentStep }) {
                 <input
                   type={isPasswordVisible ? "text" : "password"}
                   placeholder="Enter your password"
-                  className={`h-[20px] w-[296px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row  py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                  className={`h-[20px] w-[296px] mt-[-8px] rounded-[8px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300  self-stretch bg-white flex flex-row  py-3.5 px-4 items-center justify-start text-[#374151] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                     errors.password ? "border-red-500" : ""
                   }`}
                   {...register("password", {
@@ -138,7 +141,7 @@ function step2({ inputData, setCurrentStep }) {
                 </p>
               )}
               <button
-                className="rounded mt-5 bg-primary-300-main w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                className="rounded mt-5 bg-[#4162FF] w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
                 type="submit"
               >
                 <div className="relative w-[90px] h-0" />
@@ -166,12 +169,12 @@ function step2({ inputData, setCurrentStep }) {
                   )}
                 </div>
               </button>
-              <p className="text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] font-chivo text-[#6B7280]">
+              <p className={`text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] ${inter.className} text-[#6B7280]`}>
                 By continuing, you agree to our Terms of Use and Privacy Policy.
               </p>
               <p
                 onClick={onAlreadyHaveAnClick}
-                className="text-[14px] ml-[22px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
+                className={`text-[14px] ml-[22px] font-normal mt-8 leading-[20px] ${inter.className} text-[#6B7280]`}
               >
                 Don't have a partner program account?{" "}
                 <span

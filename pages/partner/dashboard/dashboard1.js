@@ -22,23 +22,6 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
     router.pathname === "/partner/dashboard" ? "Dashboard" : ""
   );
 
-  useEffect(() => {
-    postRequest("/auth/manual-login", {
-      accountId: "saif.alvey@gmail.com",
-      password: "Sraj786!",
-    })
-    .then(function (response) {
-      console.log("Response:", response); // Log the response
-      return response.json(); // Attempt to access 'json' property
-    })
-    .then(function (data) {
-      console.log("Data:", data); // Log the parsed JSON data
-    })
-    .catch(function (error) {
-      console.log("Error:", error); // Log any errors
-    });
-  }, []);
-
   
   const getCode = () => {
     navigator.clipboard.writeText(code);
@@ -307,7 +290,7 @@ const dashboard1 = ({ setCurrentStep, currentStep }) => {
                 <div className="mx-[25px] border-t-[1px] border-solid border-slate-200"></div>
                 <div className="pb-[25px] flex">
                   <div className="flex flex-wrap row-span-5">
-                    <div className="bg-white flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
+                    <div className="bg-[#f9fafb] hover:bg-white hover:shadow-slate-200 flex-col rounded-lg shadow w-[200px] h-[192px] mt-[25px] ml-[40px]">
                       <img
                         className="w-[44px] h-[44px] pt-6 pb-2 ml-[75px]"
                         src="/partner_assets/profile.svg"

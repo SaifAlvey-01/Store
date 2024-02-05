@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import Cookies from "js-cookie";
 import useAxios from "../../hooks/useAxios";
 import { signIn, useSession } from "next-auth/react";
+import { Inter, Outfit } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 function step1({ setCurrentStep, setInputData }) {
   const router = useRouter();
@@ -66,7 +69,7 @@ function step1({ setCurrentStep, setInputData }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex">
+      <div className={`bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex ${inter.className}`}>
         <div className="bg-[#E9F2FF] flex w-[398px] h-[560px] rounded-[32px]">
           <div className="bg-white w-[398px] h-[570px] flex content-center rounded-[32px]">
             <div className="my-[24px] mx-[32px]">
@@ -75,10 +78,10 @@ function step1({ setCurrentStep, setInputData }) {
                 alt="launch my store logo"
                 className="w-[167px] h-[35px] mb-1"
               />
-              <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+              <p className={`${outfit.className} text-[#374151] font-bold text-[24px] w-[364px]`}>
                 SignIn to Partner Program
               </p>
-              <p className="font-roboto mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
+              <p className="mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
                 Hi there,
                 <br />
                 Welcome to our platform please SignIn to continue!
@@ -88,7 +91,7 @@ function step1({ setCurrentStep, setInputData }) {
                 type="text"
                 style={{
                   fontSize: "16px",
-                  color: "#9CA3AF",
+                  color: "#374151",
                   "::placeholder": { color: "#9CA3AF" },
                 }}
                 placeholder="Enter your email "
@@ -100,7 +103,7 @@ function step1({ setCurrentStep, setInputData }) {
                     message: "Invalid email ",
                   },
                 })}
-                className={`h-[20px] w-[296px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start mt-[-8px] text-[#4B4B4B] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
+                className={`h-[20px] w-[296px] pl-5 ring-1 ring-inset ring-gray-300 focus:ring-[#4162FF] focus:border-[#b3c0ff] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start mt-[-8px] text-[#374151] font-roboto border-[1.5px] border-solid md:border-gainsboro ${
                   errors.email ? "border-red-500" : ""
                 }`}
               />
@@ -120,7 +123,7 @@ function step1({ setCurrentStep, setInputData }) {
                 </div>
               )}
               <button
-                className="rounded bg-primary-300-main mt-5 w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+                className="rounded font-freesans bg-[#4162FF] mt-5 w-[334px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
                 type="submit"
               >
                 <div className="relative w-[90px] h-0" />
@@ -189,12 +192,12 @@ function step1({ setCurrentStep, setInputData }) {
                   </div>
                 )}
               </div>
-              <p className="text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] font-chivo text-[#6B7280]">
+              <p className={`text-[11.5px] ml-2 font-normal w-[334px] leading-[18px] ${outfit.className} text-[#6B7280]`}>
                 By continuing, you agree to our Terms of Use and Privacy Policy.
               </p>
               <p
                 onClick={onAlreadyHaveAnClick}
-                className="text-[14px] ml-[20px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
+                className={`text-[14px] ml-[20px] font-normal mt-8 leading-[20px] ${outfit.className} text-[#6B7280]`}
               >
                 Don't have a partner program account?{" "}
                 <span

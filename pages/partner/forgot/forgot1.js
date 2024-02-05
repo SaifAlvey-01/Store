@@ -3,6 +3,9 @@ import { useRouter } from "next/navigation";
 import { users } from "../../../utils/userData";
 import useAxios from "../../../hooks/useAxios";
 import Cookies from "js-cookie";
+import { Inter, Outfit } from "next/font/google";
+const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
   const router = useRouter();
@@ -38,17 +41,17 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
   };
 
   return (
-    <div className=" bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex text-neutral-600">
+    <div className={` bg-[url('/partner_assets/bg-gradient.svg')] justify-center items-center w-screen h-screen flex text-neutral-600 ${inter.className}`}>
       <div className="rounded-3xl w-[386px] h-[436px] bg-white p-[32px]">
         <img
           src={"/partner_assets/launch-logo.svg"}
           alt="launch my store logo"
           className="w-[167px] h-[35px] mb-1"
         />
-        <p className="font-chivo text-[#374151] font-bold text-[24px] w-[364px]">
+        <p className={`${outfit.className} text-[#374151] font-bold text-[24px] w-[364px]`}>
           Forgot Password
         </p>
-        <p className="font-roboto mt-[-10px] text-[#4B5563] text-[15px] font-normal w-[364px] leading-[20px]">
+        <p className=" mt-[-10px] text-[#4B5563] text-[14px] font-normal w-[364px] leading-[20px]">
           Hi there,
           <br />
           Did you forgot your password? No worries, we'll help
@@ -68,7 +71,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
                   setErrorMessage("");
                 }}
                 required
-                className="focus:border-[#b3c0ff] w-[348px] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#4B4B4B] font-roboto border-[1.5px] border-solid "
+                className="focus:border-[#b3c0ff] w-[348px] focus:outline-none focus:ring-1 border-slate-300 self-stretch rounded-lg bg-white flex flex-row py-3.5 px-4 items-center justify-start text-[#374151] font-roboto border-[1.5px] border-solid "
               />
               {errorMessage && (
                 <div className="text-red-500  mx-1 text-[13px]">
@@ -79,7 +82,7 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
 
             <button
               type="submit"
-              className="rounded bg-primary-300-main w-[381px] h-[44px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
+              className="rounded bg-[#4162FF] font-freesans w-[381px] h-[44px] flex flex-col p-2 box-border items-center justify-center cursor-pointer text-center text-base text-white"
             >
               <div className="relative w-[90px] h-0" />
               {loading ? (
@@ -106,15 +109,15 @@ const Forgot1 = ({ setCurrentStep, inputValue, setInputValue }) => {
             </button>
           </form>
         </div>
-        <p className="text-[11.5px] ml-4 font-normal leading-[18px] font-chivo text-[#6B7280]">
+        <p className={`text-[11.5px] ml-4 font-normal leading-[18px] ${outfit.className} text-[#6B7280]`}>
         By continuing, you agree to our Terms of Use and Privacy Policy.
       </p>
       <p
-        className="text-[14px] ml-[80px] font-normal mt-8 leading-[20px] font-roboto text-[#6B7280]"
+        className={`text-[14px] ml-[80px] font-normal mt-8 leading-[20px] ${outfit.className} text-[#6B7280]`}
       >
         Remember your password?{" "}
         <span
-          className="cursor-pointer text-[#4162FF]"
+          className="cursor-pointer font-freesans text-[#4162FF]"
           onClick={handleSignInClick}
         >
           Sign In
